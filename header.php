@@ -1,24 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-
-
-
-
-
-
-
-
-
-
-
 <title>ACS Accounting, Invoicing and Inventory Management System</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
-<?php //include ("ajax/Demo/demo.php"); 
-//include ("calculator/index.php"); 
-
-?>
 <body style="margin: 0px; padding: 0px;">
 <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
   <tr>
@@ -45,24 +30,6 @@
     <td width="2%" valign="top" class="side_column">
 	<!-- Menu -->
 		<DIV ALIGN=CENTER>
-		
-	
-
-<?php
-
-echo <<< EOF
-
-<?php
-echo "kljn";<<< EOF
-EOF;
-?>
-
-EOF;
-
-?>
-
-
-
    <MAP NAME="map2">
 <AREA
    HREF="selectCust.php" ALT="Select Customer" TITLE="Select Customer"
@@ -109,9 +76,6 @@ EOF;
 <IMG SRC="Invoices.bmp"  align = "center"
    ALT="map3" BORDER=0 
    USEMAP="#map3"><!--<BR>-->
-
-
-   
 
 
 <!--	 <br>
