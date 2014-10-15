@@ -5,7 +5,7 @@ Create PDF invoices and manage transactions with a MySQL database using PDO or M
 
 
 Uploading 474 small php files.....
-Completion target date: 17.10.2014
+Completion target date: 22.11.2014
 
 
 Images for this project:
