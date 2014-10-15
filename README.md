@@ -25,3 +25,9 @@ customers.jpg (https://cloud.githubusercontent.com/assets/8816907/4650165/7e2b67
 invoices.jpg (https://cloud.githubusercontent.com/assets/8816907/4650178/8dba3a34-5491-11e4-879f-99b75ddf2b54.jpg)
 products.jpg (https://cloud.githubusercontent.com/assets/8816907/4650184/91f37886-5491-11e4-86bf-0a8ad85c8e60.jpg)
 transactions.jpg (https://cloud.githubusercontent.com/assets/8816907/4650187/9542fa0c-5491-11e4-87bf-a47a7f0463b2.jpg)
+
+
+P.S. Advnatage of this project: it is networkable.
+You can also put it online (for fun+AT OWN RISK), but only use it as a demo, because it does not have any security code as yet.
+
+
