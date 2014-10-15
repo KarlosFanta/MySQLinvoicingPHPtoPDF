@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+
 <title>ACS Accounting, Invoicing and Inventory Management System</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
@@ -30,72 +31,30 @@
     <td width="2%" valign="top" class="side_column">
 	<!-- Menu -->
 		<DIV ALIGN=CENTER>
+		
+
+
    <MAP NAME="map2">
-<AREA
-   HREF="selectCust.php" ALT="Select Customer" TITLE="Select Customer"
-   SHAPE=RECT COORDS="43,9,97,26">
-<!--<AREA
-   HREF="unselectCust.php" ALT="Unselect Customer" TITLE="Unselect Customer"
-   SHAPE=RECT COORDS="49,32,126,46">-->
-<AREA
-   HREF="Register.php" ALT="Add new Customer" TITLE="Add new customer"
-   SHAPE=RECT COORDS="49,51,85,67">
-<AREA
-   HREF="editCust.php" ALT="Edit Customer" TITLE="Edit customer"
-   SHAPE=RECT COORDS="48,74,86,85">
-<AREA
-   HREF="vc.php" ALT="View Customers" TITLE="View customers"
-   SHAPE=RECT COORDS="45,92,123,110">
- <IMG SRC="Customers.bmp"  align = "center"
-   ALT="map of customers" BORDER=0 
-   USEMAP="#map2">
-  
-     </MAP>
-
-
-	 <br>
-  
-   <MAP NAME="map3">
-<AREA
-   HREF="addInvCsess.php" ALT="Add new invoice" TITLE="Add new invoice"
-   SHAPE=RECT COORDS="44,16,104,39">
-<AREA
-   HREF="edit_invC.php" ALT="Edit invoice" TITLE="edit invoice"
-   SHAPE=RECT COORDS="51,40,103,56">
-<AREA
-   HREF="delInvC.php" ALT="Delete invoice" TITLE="Delete invoice"
-   SHAPE=RECT COORDS="51,59,117,77">
-<AREA
-   HREF="ve_inv.php" ALT="View invoice" TITLE="View invoice"
-   SHAPE=RECT COORDS="50,81,122,96">
-<AREA
-   HREF="select_invPDF.php" ALT="Print invoice" TITLE="Print invoice"
-   SHAPE=RECT COORDS="49,100,88,118">
-</MAP>
-
-<IMG SRC="Invoices.bmp"  align = "center"
-   ALT="map3" BORDER=0 
-   USEMAP="#map3"><!--<BR>-->
-
+<A HREF="selectCust.php" ALT="Select Customer" TITLE="Select Customer">
+<!--<A HREF="unselectCust.php" ALT="Unselect Customer" TITLE="Unselect Customer"49,32,126,46">-->
+<A HREF="Register.php" ALT="Add new Customer" TITLE="Add new customer">
+<A HREF="editCust.php" ALT="Edit Customer" TITLE="Edit customer">
+<A HREF="vc.php" ALT="View Customers" TITLE="View customers">
+ <br>
+<A HREF="addInvCsess.php" ALT="Add new invoice" TITLE="Add new invoice">
+<A HREF="edit_invC.php" ALT="Edit invoice" TITLE="edit invoice">
+<A HREF="delInvC.php" ALT="Delete invoice" TITLE="Delete invoice">
+<A HREF="ve_inv.php" ALT="View invoice" TITLE="View invoice">
+<A HREF="select_invPDF.php" ALT="Print invoice" TITLE="Print invoice">
 
 <!--	 <br>
   
    <MAP NAME="mapQuo">
-<AREA
-   HREF="addQuoCsess.php" ALT="Add new quote" TITLE="Add new quote"
-   SHAPE=RECT COORDS="44,16,104,39">
-<AREA
-   HREF="edit_QuoC.php" ALT="Edit quote" TITLE="edit quote"
-   SHAPE=RECT COORDS="51,40,103,56">
-<AREA
-   HREF="delQuoC.php" ALT="Delete quote" TITLE="Delete quote"
-   SHAPE=RECT COORDS="51,59,117,77">
-<AREA
-   HREF="ve_Quo.php" ALT="View quote" TITLE="View quote"
-   SHAPE=RECT COORDS="50,81,122,96">
-<AREA
-   HREF="select_QuoPDF.php" ALT="Print quote" TITLE="Print quote"
-   SHAPE=RECT COORDS="49,100,88,118">
+<A HREF="addQuoCsess.php" ALT="Add new quote" TITLE="Add new quote"44,16,104,39">
+<A HREF="edit_QuoC.php" ALT="Edit quote" TITLE="edit quote"51,40,103,56">
+<A HREF="delQuoC.php" ALT="Delete quote" TITLE="Delete quote"51,59,117,77">
+<A HREF="ve_Quo.php" ALT="View quote" TITLE="View quote"50,81,122,96">
+<A HREF="select_QuoPDF.php" ALT="Print quote" TITLE="Print quote"49,100,88,118">
 </MAP>
 
 <IMG SRC="quotes.bmp"  align = "center"
@@ -107,39 +66,16 @@
 <li class=""><a href="select_QuoPDF.php">Quotes To PDF</a></li><br />
 -->
 
-
-     
-      <MAP NAME="map4">
-<AREA
-   HREF="selectCustTrans.php" ALT="Add new transaction" TITLE="Add new transaction"
-   SHAPE=RECT COORDS="49,4,95,22"><!-- addTrans2sess   -->
-<AREA
-   HREF="selectCustTrans.php" ALT="Add transaction" TITLE="Add transaction"
-   SHAPE=RECT COORDS="49,24,89,38"><!-- addTrans   -->
-<AREA
-   HREF="edit_trans_CustProcessC.php" ALT="Edit transaction" TITLE="edit transaction"
-   SHAPE=RECT COORDS="48,42,89,57">
-<AREA
-   HREF="del_transC.php" ALT="Delete transaction" TITLE="Delete transaction"
-   SHAPE=RECT COORDS="51,43,106,75">
-<AREA
-   HREF="ve_trans.php" ALT="View transaction" TITLE="View transaction"
-   SHAPE=RECT COORDS="50,77,124,95">
-<AREA
-   HREF="view_trans_cust.php" ALT="Customer transaction" TITLE="Customer transaction"
-   SHAPE=RECT COORDS="50,98,110,117">
+    
+<A HREF="selectCustTrans.php" ALT="Add new transaction" TITLE="Add new transaction"><!-- addTrans2sess   -->
+<A HREF="selectCustTrans.php" ALT="Add transaction" TITLE="Add transaction"><!-- addTrans   -->
+<A HREF="edit_trans_CustProcessC.php" ALT="Edit transaction" TITLE="edit transaction">
+<A HREF="del_transC.php" ALT="Delete transaction" TITLE="Delete transaction">
+<A HREF="ve_trans.php" ALT="View transaction" TITLE="View transaction">
+<A HREF="view_trans_cust.php" ALT="Customer transaction" TITLE="Customer transaction">
 </MAP>
 
-<IMG SRC="Transactions.bmp" align = "center"
-   ALT="map4" BORDER=0 
-   USEMAP="#map4"><!--<BR>-->
-
-   
-   
-   
-   
-   
-   
+ 
       <br> 
 	  			<!--<li class=""><a href="./selectCustTrans.php">Add TransactionC</a></li><br />-->
 				<a href="./selectCustExp.php">Add Expenses/Profits</a></li><br /><br />
@@ -148,9 +84,7 @@
 		
 	<!--	
 <MAP NAME="map1">
-<AREA
-   HREF="urgent_events.php" ALT="Urgent events" TITLE="Urgent events"
-   SHAPE=RECT COORDS="16,2,124,25">
+<A HREF="urgent_events.php" ALT="Urgent events" TITLE="Urgent events"16,2,124,25">
 <IMG SRC="Urgentevents.bmp"
    ALT="map of urgent events" BORDER=0 
    USEMAP="#map1"><BR>
@@ -158,40 +92,14 @@
 
 -->
  
-      
-        <MAP NAME="map5">
-<AREA
-   HREF="addEventCsess.php" ALT="Add new event" TITLE="Add new event"
-   SHAPE=RECT COORDS="49,4,95,22">
-<AREA
-   HREF="addEventprocess.php" ALT="Add event" TITLE="Add event"
-   SHAPE=RECT COORDS="49,24,89,38">
-<AREA
-   HREF="edit_eventCQ.php" ALT="Edit event" TITLE="edit event"
-   SHAPE=RECT COORDS="48,42,89,57">
-<AREA
-   HREF="del_eventC.php" ALT="Delete event" TITLE="Delete event"
-   SHAPE=RECT COORDS="51,43,106,75">
-<AREA
-   HREF="ve_eve.php" ALT="View event" TITLE="View event"
-   SHAPE=RECT COORDS="50,77,124,95">
-<AREA
-   HREF="urgent_events.php" ALT="Customer event" TITLE="Customer event"
-   SHAPE=RECT COORDS="50,98,110,117">
-</MAP>
-
-<IMG SRC="events.bmp" align = "center"
-   ALT="map5" BORDER=0 
-   USEMAP="#map5"><!--<BR>-->
-   
+<A HREF="addEventCsess.php" ALT="Add new event" TITLE="Add new event">
+<A HREF="addEventprocess.php" ALT="Add event" TITLE="Add event">
+<A HREF="edit_eventCQ.php" ALT="Edit event" TITLE="edit event">
+<A HREF="del_eventC.php" ALT="Delete event" TITLE="Delete event">
+<A HREF="ve_eve.php" ALT="View event" TITLE="View event">
+<A HREF="urgent_events.php" ALT="Customer event" TITLE="Customer event">
   <br> 
-   
-   	<!--		<li class=""><a href="./view_event_all_HP.php">Edit All HighPriority events</a></li>-->
-   
   
-   
-   
-   
    
 </DIV>
 
