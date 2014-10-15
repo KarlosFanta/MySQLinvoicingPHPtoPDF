@@ -27,7 +27,7 @@ products.jpg (https://cloud.githubusercontent.com/assets/8816907/4650184/91f3788
 transactions.jpg (https://cloud.githubusercontent.com/assets/8816907/4650187/9542fa0c-5491-11e4-87bf-a47a7f0463b2.jpg)
 
 
-P.S. Advnatage of this project: it is networkable.
+P.S. Advantage of this project: it is networkable.
 You can also put it online (for fun+AT OWN RISK), but only use it as a demo, because it does not have any security code as yet.
 
 
