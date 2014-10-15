@@ -32,9 +32,48 @@
 	<!-- Menu -->
 		<DIV ALIGN=CENTER>
 		
+			<li class=""><a href="./urgent_events.php">Urgentevents</a></li>
+			<li class=""><a href="./selectCust.php">SELECT Customer</a></li>
+			<li class=""><a href="./unselectCust.php">UNSELECT Customer</a></li>
+				
+			<li class=""><a href="./Register.php">Add Customer</a></li>
+			<li class=""><a href="./editCust.php">Edit Customer</a></li>
+<!--			<li class=""><a href="./del_cust.php">Delete Customer</a></li>-->
+			
+			<li class=""><a href="./vc.php">View/Edit Customers</a></li>
+			<!--<li class="current_page_item"><a href="./view_customers2.php">View All Customers</a></li>-->
+			<!--<li class="current_page_item"><a href="./view_cust_all.php">Edit All Customers</a></li>-->
+			<!--<li class="current_page_item"><a href="./view_cust_all2.php">Edit All Customers</a></li>-->
+			<!--<li class=""><a href="./search_cust.php">Search Customers</a></li>-->
+			
+<!--			<li class="current_page_item"><a href="./view_quot_all.php">Quotes</a></li>
+<!--			<li class="current_page_item"><a href="#">Quotes</a></li>
+			<li class=""><a href="./add_quo.php">Add Quote</a></li>
+			<!--<li class=""><a href="./edit_quo.php">Edit/Delete Quote</a></li>
+			<li class=""><a href="./view_quo.php">View/Search Quotes</a></li>-->
+<!--			<li class="current_page_item"><a href="./view_ord_all.php">Orders</a></li>
+<!--			<li class="current_page_item"><a href="#">Quotes</a></li>
+			<li class=""><a href="./add_quo.php">Add Quote</a></li>
+			<!--<li class=""><a href="./edit_quo.php">Edit/Delete Quote</a></li>
+			<li class=""><a href="./view_quo.php">View/Search Quotes</a></li>-->
+
+		-	<li class="current_page_item"><a href="#">Invoices</a></li>
+<!--			<br />
+-			<li class=""><a href="./addInvCsess.php">Add InvoiceC</a></li>
+			<!--<li class=""><a href="./edit_invCsess.php">Edit InvoiceC</a></li>
+			<!--<li class=""><a href="./addInv.php">Add Invoice</a></li>-->
+			<li class=""><a href="./edit_inv.php">Edit Invoice</a></li>
+			<li class=""><a href="./edit_invC.php">Edit InvoiceC </a></li>
+			<li class=""><a href="./delInvC.php">Delete InvoiceC </a></li>
+
+			<li class=""><a href="./ve_inv.php">View/Edit Invoices</a></li>
+			<!--<li class=""><a href="./edit_invCQ.php">QuickEdit Invoice</a></li>
+			<li class="current_page_item"><a href="./view_inv_all.php">Edit All Invoices</a></li>
+			<!--<li class=""><a href="./view_inv.php">View Invoices</a></li>-->
+		<li class="current_page_item"><a href="./select_inv.php">Print Only</a></li>
+			
 
 
-   <MAP NAME="map2">
 <A HREF="selectCust.php" ALT="Select Customer" TITLE="Select Customer">
 <!--<A HREF="unselectCust.php" ALT="Unselect Customer" TITLE="Unselect Customer"49,32,126,46">-->
 <A HREF="Register.php" ALT="Add new Customer" TITLE="Add new customer">
