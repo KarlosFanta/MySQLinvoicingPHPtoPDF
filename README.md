@@ -5,7 +5,7 @@ Create PDF invoices and manage transactions with a MySQL database using PDO or M
 
 
 Uploading 474 small php files.....
-Completion target date: 22.11.2014
+Completion target date: 22.12.2014
 
 Hopefully this download link alternative works for now:
 https://www.facebook.com/download/947077888655199/invoicePHPmysqlPDF.zip
