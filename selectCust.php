@@ -270,9 +270,6 @@ echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-//now to check whter the Nov invoice has been created
-//so we slect all invoices containing summary part saying Nov
-include "NovChk.php"; //done
 
 
 }
