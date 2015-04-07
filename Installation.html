@@ -1,101 +1,99 @@
-
 <head>
 </head>
 <body lang=EN-US link=blue vlink=purple style='tab-interval:36.0pt'>
 
-<div class=WordSection1>
+<br>
 
-<p class=MsoNormal>To install <span class=GramE>Apache(</span>webserver) and
+<br>To install <b>Apache(</b>webserver) and
 PHP to make the accounting software work:<br>
 <br>
 (One can choose install WAMP or XAMPP or Apache+PHP+MySQL or IISExpress+PHP+MySQL:<br>
 <br>
-Download and install the following software: </p>
+Download and install the following software: 
 
-<p class=MsoNormal>1. An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox</p>
-
-
-<p class=MsoNormal>2. Disable IISExpress if you have a Professinoal edition (eg Win8Pro or Win7pro)</p>
-<p class=MsoNormal>3. Disable or uninstall Skype temporarily to prevent a port conflict</p>
-
-<p class=MsoNormal>4. Download & install Wamp (www.wampserver.com) or Xampp (or LAMP for Linux)</p>
-
-<p class=MsoNormal>5. Download wkhtmltoimage program from http://wkhtmltopdf.org/, rename it to wkhtmltoimage.exe and copy it into your project.(To make a jpg copy out of your invoice).</p>
-
-<p class=MsoNormal>6. Setup an email program such as Mozilla Thunderbird or Outlook.</p>
-<p class=MsoNormal>The next step is to set up php.ini.</p>
-
-<p class=MsoNormal>Enable al this lovely stuff inside php.ini:</p>
-
-<p class=MsoNormal><span class=GramE>extension=</span>php_mysql.dll</p>
-
-<p class=MsoNormal><span class=GramE>extension=</span>php_mysqli.dll</p>
-
-<p class=MsoNormal><span class=GramE>extension=</span>php_pdo.dll</p>
+<br>1. An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox
 
 
-<p class=MsoNormal>Download & install NotepadPlusPlus:  www.notepad-plus-plus.org (or Netbeans for PHP)<span
-style='mso-spacerun:yes'> You will need this for editing PHP files.  </span></p>
+<br>2. Disable IISExpress if you have a Professinoal edition (eg Win8Pro or Win7pro)
+<br>3. Disable or uninstall Skype temporarily to prevent a port conflict
+
+<br>4. Download & install Wamp (www.wampserver.com) or Xampp (or LAMP for Linux)
+
+<br>5. Download wkhtmltoimage program from http://wkhtmltopdf.org/, rename it to wkhtmltoimage.exe and copy it into your project.(To make a jpg copy out of your invoice).
+
+<br>6. Setup an email program such as Mozilla Thunderbird or Outlook.
+<br>The next step is to set up php.ini.
+
+<br>Enable al this lovely stuff inside php.ini:
+
+<br><b>extension=</b>php_mysql.dll
+
+<br><b>extension=</b>php_mysqli.dll
+
+<br><b>extension=</b>php_pdo.dll
+
+
+<br>Download & install NotepadPlusPlus:  www.notepad-plus-plus.org (or Netbeans for PHP) You will need this for editing PHP files.  </b>
 
 
 <br>Take the faster 64 bit version if you have 64bit version of Windows.<br>
 Copy all our PHP files into C:\wamp\www<br>
 Find your browser under C:\Program Files(x86)\Mozilla Firefox\firefox.exe<br><br>
-<p class=MsoNormal>Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br>
-(If you want to install Apache and PHP seperately click here: <a href= 'InstallationOld.html'>Apache/IIS</a></p>
+<br>Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br>
+(If you want to install Apache and PHP seperately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>
 
 
-<p class=MsoNormal>You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br>
-dotNetFx40_Full_x86_x64.exe</p>
+<br>You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br>
+dotNetFx40_Full_x86_x64.exe
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<br>&nbsp;
 
-<p class=MsoNormal><span class=GramE>new</span> mysql password: Itsmeagain007#</p>
+<br><b>new</b> mysql password: Itsmeagain007#
 
-<p class=MsoNormal><o:p>&nbsp;
+<br>&nbsp;
 Open up phpmyadmin, create a database and call it kc<br>
 then select the database.<br>
 then click on SQL and run the script inside (6)STRUCTUREONLYYY.sql to create the structure
 
-</o:p></p>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<br>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<br>
 
-<p class=MsoNormal>To be able to save invoices using Firefox you need to
-install this add-on for Firefox:</p>
+<br>
 
-<p class=MsoNormal>https://addons.mozilla.org/en-US/firefox/user/gm/?src=api</p>
+<br>To be able to save invoices using Firefox you need to
+install this add-on for Firefox:
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<br>https://addons.mozilla.org/en-US/firefox/user/gm/?src=api
 
-<p class=MsoNormal>TitleSave 0.3 by gm</p>
+<br>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+<br>TitleSave 0.3 by gm
 
-<p class=MsoNormal>https://addons.mozilla.org/en-US/firefox/addon/title-save</p>
+<br>&nbsp;
 
-<p class=MsoNormal><o:p>&nbsp;
+<br>https://addons.mozilla.org/en-US/firefox/addon/title-save
+
+<br>&nbsp;
 Also get this add-on: https://addons.mozilla.org/firefox/addon/ie-tab/
-</o:p></p>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
-<p class=MsoNormal><o:p>&nbsp;MySQL password: <br> http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html</o:p></p>
+<br>&nbsp;
+
+<br>&nbsp;MySQL password: <br> http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html
 <br><br>
 http://developer.nokia.com/community/wiki/Setup_MySQL_in_WAMP_-_password_setting,_service_shutdown_%26_startup
 <br>
-<p class=MsoNormal><o:p>&nbsp;
+<br>&nbsp;
 Using Windows 7, I went into Control Panel -> Services
 
 I changed the settings for "wampapache" and "wampmysql" to start: "Automatic".
 
 After that, when I restart my Win7 machine, both services start automatically before I even log into the machine
 
-</o:p></p>
+
 <br>
 To Disable the Backspace key (Go back one page) in Firefox:<br>
     Open Mozilla Firefox<br>
@@ -126,7 +124,7 @@ Pressing [Backspace] will scroll up a page in the current document and [Shift]+[
 <br><br><br>
 
 <br><br><br>(to run frameworks, get: Win32OpenSSL-1_0_1h.exe, Composer-Setup.exe)
-</div>
+
 
 </body>
 
