@@ -24,3 +24,4 @@ transactions.jpg (https://cloud.githubusercontent.com/assets/8816907/4650187/954
 
 P.S. Advantage of this project: it is networkable. (if you click "Online" on the Wampserver Control panel)
 You can also put it on the web (via CPanel or FTP) (for fun+AT OWN RISK), but preferably add password protection.
+Contributions are welcome!
