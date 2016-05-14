@@ -13,6 +13,8 @@ PHP MySQL with a touch of AJAX and javascript.
 Unzip the zip file MySQLinvoicingPHPtoPDF-master into c:\wamp\www or C:\htdocs. or C:\xampp\htdocs
 This is a localhost project. To put it online you will need to add a security password protection layer.
 You will need some extra files from TCPDF to get the PDF creation to work fully. http://www.tcpdf.org/
+please check my full installation manual:
+https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF/blob/master/Installation.html
 
 Optional Images for this project:
 
