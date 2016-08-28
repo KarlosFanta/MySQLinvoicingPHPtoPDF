@@ -1,10 +1,11 @@
+<title>AllTransactions</title>
 <?php
 
 	
 	//	require_once('login_check.php');
 	// -- Nothing Below this line requires editing -- 
 
-	$page_title = "Customer";
+	$page_title = "AllTransactions";
 	//require_once('header.php');	
 	//require_once('db.php');	
 	require_once("inc_OnlineStoreDB.php");
@@ -70,7 +71,7 @@ echo "</tr>\n";
 
 	  echo "<tr><th>";
 	  
- echo $x;
+ echo "Tr".$x;
 
 
 
@@ -142,7 +143,7 @@ echo "{$EDate}</b></th>";//TransDate
    
 
   // echo "<th>{$row2[0]}</th>";//CustLN
-   echo "<th align = left>{$shortenedFN}{$shortened}</th>";//CustLN
+   echo "<th align = left>{$CN}{$shortenedFN}{$shortened}</th>";//CustLN
 
 
 
@@ -150,7 +151,7 @@ echo "{$EDate}</b></th>";//TransDate
    $shortenedSDR = substr($row[23], 0, 7);
 
 echo "<th align = left>&nbsp;{$shortenedSDR}</th>\n";//SDR
-echo "<th align = right>{$row[3]}</th>";//TotAmt
+echo "<th align = right>R{$row[3]}</th>";//TotAmt
 
    $shortenedNotes = substr($row[4], 0, 18);
 
