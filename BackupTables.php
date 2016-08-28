@@ -1,5 +1,5 @@
 
-<b><br><font size = "4" type="arial">Add event/Work In Progress/Unconfirmed Order for Customer</b></font>
+<b><br><font size = "4" type="arial">Show all taqbles of Database</b></font>
 </br>
 </br>
 
