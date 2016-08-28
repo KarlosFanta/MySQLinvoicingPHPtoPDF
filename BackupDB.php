@@ -1,13 +1,9 @@
 <?php
  
  try {
-
         // open the connection to the database - $host, $user, $password, $database should already be set
-
        // $mysqli = new mysqli($host, $user, $password, $database);
 $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
-
-
         // did it work?
 /*
         if ($mysqli->connect_errno) {
@@ -17,87 +13,46 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
         }
 */
 
-
         header('Pragma: public');
-
         header('Expires: 0');
-
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-
         header('Content-Type: application/force-download');
-
         header('Content-Type: application/octet-stream');
-
         header('Content-Type: application/download');
-
         header('Content-Disposition: attachment;filename="backup_'.date('Y-m-d_h_i_s') . '.sql"');
-
         header('Content-Transfer-Encoding: binary');
 
-
-
         // start buffering output
-
         // it is not clear to me whether this needs to be done since the headers have already been set.
-
         // However in the PHP 'header' documentation (http://php.net/manual/en/function.header.php) it says that "Headers will only be accessible and output when a SAPI that supports them is in use."
-
         // rather than the possibility of falling through a real time window there seems to be no problem buffering the output anyway
-
         ob_start();
-
         $f_output = fopen("php://output", 'w');
 
-
-
         // put a few comments into the SQL file
-
         print("-- pjl SQL Dump\n");
-
         print("-- Server version:".$DBConnect->server_info."\n");
-
         print("-- Generated: ".date('Y-m-d h:i:s')."\n");
-
         print('-- Current PHP version: '.phpversion()."\n");
-
     //    print('-- Host: '.$host."\n");
-
      //   print('-- Database:'.$database."\n");
 
-
-
         //get a list of all the tables
-
         $aTables = array();
-
         $strSQL = 'SHOW TABLES';            // I put the SQL into a variable for debuggin purposes - better that "check syntax near '), "
-
         if (!$res_tables = $DBConnect->query($strSQL))
-
             throw new Exception("MySQL Error: " . $DBConnect->error . 'SQL: '.$strSQL);
 
-
-
         while($row = $res_tables->fetch_array()) {
-
             $aTables[] = $row[0];
-
         }
 
-
-
         // Don't really need to do this (unless there is loads of data) since PHP will tidy up for us but I think it is better not to be sloppy
-
         // I don't do this at the end in case there is an Exception
-
         $res_tables->free();
 
-
-
         //now go through all the tables in the database
-
         foreach($aTables as $table)
-
         {
 
             print("-- --------------------------------------------------------\n");
