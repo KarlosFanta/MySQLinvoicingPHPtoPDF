@@ -1,7 +1,7 @@
 <?php
 
 
-	
+	$page_title = "Stakeholders";
 	require_once('header.php');	
 			
 
@@ -11,9 +11,10 @@
 </br>
 </br>
 </br><img src = "ERD.bmp"/>
+</br>ERDpublic.bmp
+</br><img src = "ERD.bmp"/>
 </br>ERD.bmp
 </br>
-
 
 
 
