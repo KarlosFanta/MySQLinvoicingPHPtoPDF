@@ -10,7 +10,7 @@
 <b><font size = "4" type="arial">ERD</b></font>
 </br>
 </br>
-</br><img src = "ERD.bmp"/>
+</br><img src = "ERDpublic.bmp"/>
 </br>ERDpublic.bmp
 </br><img src = "ERD.bmp"/>
 </br>ERD.bmp
