@@ -19,3 +19,6 @@ https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF/blob/master/Installation.h
 P.S. Advantage of this project: it is networkable. (if you click "Online" on the Wampserver Control panel)
 You can also put it on the web (via CPanel or FTP) (for fun+AT OWN RISK), but preferably add password protection.
 Contributions/Comments are welcome!
+
+The DB stores date in American format: YYYY-MM-DD
+             But my API displays it in DD/MM/YYYY (South African)
