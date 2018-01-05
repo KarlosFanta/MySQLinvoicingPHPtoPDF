@@ -45,37 +45,8 @@ print "</option>";
 </select></p>  
 
 
-<br>
-<br>
-transaction<br>
-aproof<br>
-(comment)<br>
-customer<br>
-domaions<br>
-events<br>
-expenses<br>
-expensese<br>
-expensesh<br>
-hprofits (bank)<br>
-ledgernotes<br>
-lpr<br>
-norton (not used)<br>
-prices<br>
-prices2 <br>
-streets<br>
-streetsOH<br>
-streetsOHarea<br>
-streetsohblk<br>
-transaction<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+ 
+ 
  
  
 <?php
