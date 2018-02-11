@@ -11,9 +11,12 @@
 	
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	$CustNo = "";
+	//$CustNo = "";
+	if (@$CustNo == '')
 	@$CustNo = $_SESSION['CustNo'];
 
+
+//$CustNo = $CustInt; //this is for addExp.php
 ?> 
 <style type="text/css">
    <!-- table.form{width:100%}
@@ -28,13 +31,13 @@
     </tr>
 </table>-->
 <?php //require_once "header.php"; ?>
-<b><br><font size = "4" type="arial">View Expenses OF CUSTOMER</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpLatest.php
-</br>
+<b><br><font size = "4" type="arial">View Expenses OF CUSTOMER</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpLatestC.php
+</br><a href = "editExpCQ.php?CustNo=<?php echo $CustInt; ?>">edit Customer's expenses</a>
 
 
 
 <?php
-
+echo $CustInt;
 /*$ttt = range(4500,4569);
 echo $ttt;
 var_dump($ttt);
@@ -51,12 +54,12 @@ print_r($ttt);
 $date = date('Y-m-d',time()-(88*86400)); // 88 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
-echo "ddd".$date;
+//echo "ddd".$date;
 //$SQLstring = "select * from transaction  where TransDate WHERE date <='$date'";
-$SQLstring = "select * from expenses  where CustNo = $CustNo order by PurchDate";
+$SQLstring = "select * from expenses  where CustNo = $CustInt order by PurchDate desc";
 //THIS ONE WORKS 14MAy2014:  $SQLstring = "select * from expenses  where PurchDate >= '$date' order by PurchDate";
 //$SQLstring = "select * from transaction  where TransNo >  (select Max(TransNo) from transaction) -88 order by TransDate";
-echo "&nbsp;&nbsp;&nbsp;&nbsp;Any expenses of 88 days ago:";
+//echo "&nbsp;&nbsp;&nbsp;&nbsp;Any expenses of 88 days ago:";
 //$SQLstring = "select * from transaction  where TransDate between date_sub(now(),INTERVAL 1 WEEK) and now();  ";
 
 //where date between date_sub(now(),INTERVAL 1 WEEK) and now();
@@ -78,6 +81,7 @@ echo "<th>ProdCostExVAT</th>";
 echo "<th>Notes</th>\n";
 echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
+echo "<th>InvNo</th>\n";
 echo "</tr>\n";
 
 
@@ -167,7 +171,9 @@ echo "<th>".$row['ExpDesc']."</th>";
 echo "<th>".$row['SupCode']."</th>";
 echo "<th>".$row['PurchDate']."</th>";
 //echo "<th>testss</th>";
-echo "<th>".$row['ProdCostExVAT']."</th>";
+echo "<th>".$row['ProdCostExVAT']."";
+list($year, $month, $day) = explode('-', $row['PurchDate']);
+echo "<br>".$day.'/'.$month.'/'. $year."</th>";
 echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
@@ -181,6 +187,7 @@ $NNN = $rowCC['CustFN'];
 }}
 echo "<th>".$row['CustNo'].$NN.$NNN."</th>";
 echo "<th>".$row['SerialNo']."</th>";
+echo "<th>".$row['InvNo']."</th>";
 
 echo "</tr>";
 

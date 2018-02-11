@@ -11,6 +11,7 @@
 ?>
 <b><br><font size = "4" type="arial">View Expenses H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExp.php
 </br>
+<a href = 'viewExpHEandExpCust.php'>viewExpHEandExpCust</a> all expenses of Customer</br>
 <a href = 'viewExpHEandExpD.php'>viewExpHEandExpD by Date</a></br>
 <a href = 'viewExp.php'>viewExp only</a></br>
 <a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
@@ -19,6 +20,7 @@
 <a href = 'viewExpHmyedit.php'>viewExpHmyedit</a></br>
 <a href = 'UnassignedCustStk.php'>UnassignedCustStk</a></br>
 <a href = 'viewExpSelectCatg.php'>viewExpSelectCatg</a></br>
+<a href = 'viewExpHEandExpCategory.php'>viewExpHEandExpCategory</a></br>
 
 <a href = '../phpmyadmin/#PMAURL-3:sql.php?db=kc&table=expensese&server=1&target='>phpMyadmin</a></br>
 
@@ -62,6 +64,14 @@ SELECT c.ExpNo, c.Category, c.ExpDesc, c.SerialNo, c.SupCode, c.PurchDate, c.Pro
   FROM expensesE c      order by ExpNo desc";
 
   
+  $SQLstring = "SELECT a.ExpNo,  a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo , a.Category,a.InvNo, 'expenses' as Source
+  FROM expenses a
+UNION ALL
+SELECT b.ExpNo, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate, b.ProdCostExVAT, b.Notes, b.CustNo , b.Category, b.InvNo, 'expensesH' as Source
+  FROM expensesH b     
+UNION ALL
+SELECT c.ExpNo, c.ExpDesc, c.SerialNo, c.SupCode, c.PurchDate, c.ProdCostExVAT, c.Notes, c.CustNo , c.Category, c.InvNo,  'expensesE' as Source
+  FROM expensesE c      order by ExpNo desc";
   
   //$SQLstring = "select * from transaction  where TransNo >  (select Max(TransNo) from transaction) -88 order by TransDate";
 ////////echo "&nbsp;&nbsp;&nbsp;&nbsp;All expenses of 88 days ago:";
@@ -176,7 +186,7 @@ echo "<th align = left class='label'>&nbsp;&nbsp;&nbsp;{$shortenedNotes}</th>\n"
 */
 
 echo "<th>".$row['ExpNo']."</th>";
-echo "<th>".substr($row['ExpDesc'], 0, 25)."</th>";
+echo "<th>".substr($row['ExpDesc'], 0, 34)."</th>";
 echo "<th>".$row['SupCode']."</th>";
 echo "<th>".$row['PurchDate']."";
 $PDD = $row['PurchDate'];
@@ -189,7 +199,7 @@ $PEX= $row['ProdCostExVAT'];
 $PIV = number_format($PEX*1.14 , 2, '.', '');
 echo "<th>".$PIV."</th>";
 echo "<th>".@$row['InvNo']."</th>";
-echo "<th>".$row['Notes']."</th>";
+echo "<th>".chunk_split($row['Notes'], 15, '<br>')."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
@@ -197,11 +207,19 @@ while ($rowCC = mysqli_fetch_assoc($resultCC))
 { 
 
 $NN = $rowCC['CustLN'];
+$NN = mb_substr($NN, 0, 8);
 $NNN = $rowCC['CustFN'];
-
-}}
+$NNN = mb_substr($NNN, 0, 5);
+}
+mysqli_free_result($resultCC);
+}
 echo "<th>".$row['CustNo'].$NN.$NNN."</th>";
-echo "<th>".$row['SerialNo']."</th>";
+$CCCC = '';
+$NN = '';
+$NNN ='';
+$HHH = $row['SerialNo'];
+$HHH = str_replace("%20","<br>",$HHH);
+echo "<th>".$HHH."</th>";
 echo "<th>".$row['Category']."</th>";
 echo "<th>".$row['Source']."</th>";
 

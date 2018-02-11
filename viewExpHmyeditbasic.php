@@ -1,9 +1,24 @@
+<?php
+
+	
+	
+	require_once("inc_OnlineStoreDB.php");
+			
+?>
+<b><br><font size = "4" type="arial">View ExpensesH</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
+</br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpmyeditbasic.php'>viewExpmyeditbasic for editing</a></br>
+<a href = 'viewExpHmyeditbasic.php'>viewExpHmyeditbasic for editing</a></br>
+<a href = 'viewExpSelectCatg.php'>View Selected Category Only viewExpmyeditbasic for editing</a></br>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>expenses</title>
+	<title>expensesH</title>
 <style type="text/css">
 	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
 	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
@@ -17,31 +32,10 @@
 	td.pme-message { text-align: center; }
 	td.pme-stats   { text-align: right;  }
 </style>
-
 </head>
 <body>
+<h3>expensesH</h3>
 <?php
-require_once 'header.php';
-//echo "<h3>expenses</h3>";
-
-@session_start();
-if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
-{
-include "viewExpmyedit.php";
-
-exit();
-}
-
-//echo $_SESSION['CustNo'];
-
-
-
-$yo = @$_SESSION['CustNo'];
-//echo "CustNo:".$yo."<br>";
-echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
-;
-//$opts['filters'] = "CustNo = '$yo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
-
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -60,9 +54,11 @@ echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
-
-$opts['tb'] = 'expenses';
+$opts['hn'] = 'localhost';
+$opts['un'] = 'root';
+$opts['pw'] = 'Itsmeagain007#';
+$opts['db'] = 'kc';
+$opts['tb'] = 'expensesH';
 
 // Name of field which is the unique key
 $opts['key'] = 'ExpNo';
@@ -75,7 +71,7 @@ $opts['sort_field'] = array('-ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 92400;
+$opts['inc'] = 1000;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -156,6 +152,7 @@ appear in generated list. Here are some most used field options documented.
   This is useful for giving more meaning to column values. Multiple
   descriptions fields are also possible. Check documentation for this.
 */
+
 $opts['fdd']['ExpNo'] = array(
   'name'     => 'ExpNo',
   'select'   => 'T',
@@ -166,12 +163,6 @@ $opts['fdd']['Category'] = array(
   'name'     => 'Category',
   'select'   => 'T',
   'maxlen'   => 90,
-  'sort'     => true
-);
-$opts['fdd']['ProdCostExVAT'] = array(
-  'name'     => 'ProdCostExVAT',
-  'select'   => 'T',
-  'maxlen'   => 45,
   'sort'     => true
 );
 $opts['fdd']['ExpDesc'] = array(
@@ -198,6 +189,35 @@ $opts['fdd']['PurchDate'] = array(
   'maxlen'   => 10,
   'sort'     => true
 );
+$opts['fdd']['ProdCostExVAT'] = array(
+  'name'     => 'ProdCost',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+
+
+
+/*
+$opts['fdd']['tttt']['sql'] = 'CAST(ProdCostExVAT AS UNSIGNED)*1.14' = array(
+  'name'     => 'mmm',
+  'select'   => 'T',
+  'maxlen'   => 1500,
+  'sort'     => true
+);
+
+
+
+
+/*$opts['fdd']['ProdCostExVAT'*1.14] = array(
+  'name'     => 'inVAT',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+*/
+
+
 $opts['fdd']['Notes'] = array(
   'name'     => 'Notes',
   'select'   => 'T',
@@ -210,17 +230,10 @@ $opts['fdd']['CustNo'] = array(
   'maxlen'   => 30,
   'sort'     => true
 );
-$opts['fdd']['InvNo'] = array(
-  'name'     => 'InvNo',
-  'select'   => 'T',
-  'maxlen'   => 30,
-  'sort'     => true
-);
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-
 
 ?>
 

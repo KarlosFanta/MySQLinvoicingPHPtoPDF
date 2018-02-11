@@ -1,3 +1,29 @@
+<?php
+
+	
+	
+	require_once("inc_OnlineStoreDB.php");
+	$TBLrow = $_POST['mydropdownEC'];
+
+//echo "TBLrow: " .$TBLrow."</BR>";
+$Custno = explode(';', $TBLrow );
+//while ($TBLrow !=NULL) {
+//echo "$Custno</br />";
+//$Custno = strtok(";");
+//}
+//echo "CustnozERO: ";
+//echo $Custno[0]."</br />";
+$Category = ($Custno[0]);
+
+echo "<br>Category:".$Category."<br />";		
+?>
+<b><br><font size = "4" type="arial">View Expenses</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
+</br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpmyeditbasic.php'>viewExpmyeditbasic for editing</a></br>
+<a href = 'viewExpSelectCatg.php'>View Selected Category Only viewExpmyeditbasic for editing</a></br>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,31 +43,10 @@
 	td.pme-message { text-align: center; }
 	td.pme-stats   { text-align: right;  }
 </style>
-
 </head>
 <body>
+<h3>expenses</h3>
 <?php
-require_once 'header.php';
-//echo "<h3>expenses</h3>";
-
-@session_start();
-if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
-{
-include "viewExpmyedit.php";
-
-exit();
-}
-
-//echo $_SESSION['CustNo'];
-
-
-
-$yo = @$_SESSION['CustNo'];
-//echo "CustNo:".$yo."<br>";
-echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
-;
-//$opts['filters'] = "CustNo = '$yo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
-
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -60,9 +65,11 @@ echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
-
-$opts['tb'] = 'expenses';
+$opts['hn'] = 'localhost';
+$opts['un'] = 'root';
+$opts['pw'] = 'Itsmeagain007#';
+$opts['db'] = 'kc';
+$opts['tb'] = 'expensesE';
 
 // Name of field which is the unique key
 $opts['key'] = 'ExpNo';
@@ -71,11 +78,11 @@ $opts['key'] = 'ExpNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('-ExpNo');
+$opts['sort_field'] = array('ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 92400;
+$opts['inc'] = 1000;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -118,6 +125,7 @@ $opts['filters'] = "column1 like '%11%' AND column2<17";
 $opts['filters'] = "section_id = 9";
 $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
+$opts['filters'] = "Category like '$Category'";
 
 /* Field definitions
    
@@ -156,6 +164,7 @@ appear in generated list. Here are some most used field options documented.
   This is useful for giving more meaning to column values. Multiple
   descriptions fields are also possible. Check documentation for this.
 */
+
 $opts['fdd']['ExpNo'] = array(
   'name'     => 'ExpNo',
   'select'   => 'T',
@@ -166,12 +175,6 @@ $opts['fdd']['Category'] = array(
   'name'     => 'Category',
   'select'   => 'T',
   'maxlen'   => 90,
-  'sort'     => true
-);
-$opts['fdd']['ProdCostExVAT'] = array(
-  'name'     => 'ProdCostExVAT',
-  'select'   => 'T',
-  'maxlen'   => 45,
   'sort'     => true
 );
 $opts['fdd']['ExpDesc'] = array(
@@ -198,6 +201,35 @@ $opts['fdd']['PurchDate'] = array(
   'maxlen'   => 10,
   'sort'     => true
 );
+$opts['fdd']['ProdCostExVAT'] = array(
+  'name'     => 'ProdCost',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+
+
+
+/*
+$opts['fdd']['tttt']['sql'] = 'CAST(ProdCostExVAT AS UNSIGNED)*1.14' = array(
+  'name'     => 'mmm',
+  'select'   => 'T',
+  'maxlen'   => 1500,
+  'sort'     => true
+);
+
+
+
+
+/*$opts['fdd']['ProdCostExVAT'*1.14] = array(
+  'name'     => 'inVAT',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+*/
+
+
 $opts['fdd']['Notes'] = array(
   'name'     => 'Notes',
   'select'   => 'T',
@@ -210,17 +242,10 @@ $opts['fdd']['CustNo'] = array(
   'maxlen'   => 30,
   'sort'     => true
 );
-$opts['fdd']['InvNo'] = array(
-  'name'     => 'InvNo',
-  'select'   => 'T',
-  'maxlen'   => 30,
-  'sort'     => true
-);
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-
 
 ?>
 

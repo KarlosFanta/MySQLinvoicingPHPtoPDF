@@ -20,26 +20,20 @@
 
 </head>
 <body>
+
 <?php
 require_once 'header.php';
 //echo "<h3>expenses</h3>";
 
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
-{
-include "viewExpmyedit.php";
 
-exit();
-}
-
-//echo $_SESSION['CustNo'];
+echo $_SESSION['CustNo'];
 
 
 
-$yo = @$_SESSION['CustNo'];
-//echo "CustNo:".$yo."<br>";
-echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
-;
+$yo = $_SESSION['CustNo'];
+echo "CustNo:".$yo;
 //$opts['filters'] = "CustNo = '$yo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
 
 
@@ -62,7 +56,7 @@ echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
 // MySQL host name, user name, password, database, and table
 require_once "phpmyEditdb.php";
 
-$opts['tb'] = 'expenses';
+$opts['tb'] = 'expensesE';
 
 // Name of field which is the unique key
 $opts['key'] = 'ExpNo';
@@ -71,11 +65,11 @@ $opts['key'] = 'ExpNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('-ExpNo');
+$opts['sort_field'] = array('ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 92400;
+$opts['inc'] = 400;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -168,12 +162,6 @@ $opts['fdd']['Category'] = array(
   'maxlen'   => 90,
   'sort'     => true
 );
-$opts['fdd']['ProdCostExVAT'] = array(
-  'name'     => 'ProdCostExVAT',
-  'select'   => 'T',
-  'maxlen'   => 45,
-  'sort'     => true
-);
 $opts['fdd']['ExpDesc'] = array(
   'name'     => 'ExpDesc',
   'select'   => 'T',
@@ -198,6 +186,12 @@ $opts['fdd']['PurchDate'] = array(
   'maxlen'   => 10,
   'sort'     => true
 );
+$opts['fdd']['ProdCostExVAT'] = array(
+  'name'     => 'ProdCostExVAT',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
 $opts['fdd']['Notes'] = array(
   'name'     => 'Notes',
   'select'   => 'T',
@@ -210,17 +204,10 @@ $opts['fdd']['CustNo'] = array(
   'maxlen'   => 30,
   'sort'     => true
 );
-$opts['fdd']['InvNo'] = array(
-  'name'     => 'InvNo',
-  'select'   => 'T',
-  'maxlen'   => 30,
-  'sort'     => true
-);
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-
 
 ?>
 

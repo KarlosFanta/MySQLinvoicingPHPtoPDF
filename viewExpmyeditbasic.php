@@ -7,9 +7,14 @@
 ?>
 <b><br><font size = "4" type="arial">View Expenses</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
 </br>
-<a href = 'viewExpHandExp.php'>viewExpHandExp</a></br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
 <a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
 <a href = 'viewExpmyeditbasic.php'>viewExpmyeditbasic for editing</a></br>
+<a href = 'viewExpHmyeditbasic.php'>viewExpHmyeditbasic for editing</a></br>
+<a href = 'viewExpEmyeditbasic.php'>viewExpEmyeditbasic for editing</a></br>
+<a href = 'viewExpALLmyeditbasic.php'>viewExpALLmyeditbasic for editing</a></br>
+
+<a href = 'viewExpSelectCatg.php'>View Selected Category Only viewExpmyeditbasic for editing</a></br>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
@@ -65,7 +70,7 @@ $opts['key'] = 'ExpNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('ExpNo');
+$opts['sort_field'] = array('-ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
@@ -169,12 +174,6 @@ $opts['fdd']['ExpDesc'] = array(
   'maxlen'   => 1500,
   'sort'     => true
 );
-$opts['fdd']['SerialNo'] = array(
-  'name'     => 'SerialNo',
-  'select'   => 'T',
-  'maxlen'   => 120,
-  'sort'     => true
-);
 $opts['fdd']['SupCode'] = array(
   'name'     => 'SupCode',
   'select'   => 'T',
@@ -191,6 +190,12 @@ $opts['fdd']['ProdCostExVAT'] = array(
   'name'     => 'ProdCost',
   'select'   => 'T',
   'maxlen'   => 45,
+  'sort'     => true
+);
+$opts['fdd']['SerialNo'] = array(
+  'name'     => 'SerialNo',
+  'select'   => 'T',
+  'maxlen'   => 120,
   'sort'     => true
 );
 
@@ -224,6 +229,12 @@ $opts['fdd']['Notes'] = array(
 );
 $opts['fdd']['CustNo'] = array(
   'name'     => 'CustNo',
+  'select'   => 'T',
+  'maxlen'   => 30,
+  'sort'     => true
+);
+$opts['fdd']['InvNo'] = array(
+  'name'     => 'InvNo',
   'select'   => 'T',
   'maxlen'   => 30,
   'sort'     => true

@@ -23,8 +23,11 @@
 
 <?php
 require_once 'header.php';
-//echo "<h3>expenses</h3>";
-
+?>
+<a href = 'selectCustAssignStkInv.php'>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
+assignStkInv</br></br>
+<a href = 'selectCustAssignStk.php'>Assign any Stock to a Customer and then invoice</a></br></br>
+<?php
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
@@ -32,11 +35,52 @@ echo $_SESSION['CustNo'];
 
 
 
-$yo = $_SESSION['CustNo'];
-echo "CustNo:".$yo;
-$opts['filters'] = "CustNo = '$yo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
+$CustNo = $_SESSION['CustNo'];
+echo "CustNo:".$CustNo;
+
+if(isset($_GET["CustNo"])) echo "GET CustNo:".$CustNo."<br>";
+	if (!empty($_POST["CustNo"])) {
+    echo "Yes, CustNo is set";    
+}else{  
+    echo "No, CustNo is not set";
+} 
 
 
+	 //eg. URL: editExpCQ.php?CustNo=3
+	 
+/*	 function url() {
+ return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+}
+
+echo "The current page name is ".url();
+$url = url();
+$url = $_SERVER["SCRIPT_NAME"];
+$url = $_SERVER["REQUEST_URI"];
+$url = $_SERVER["QUERY_STRING"];
+echo "request uri is ".$url."]]";
+
+$path = parse_url($url, PHP_URL_PATH);
+$pathPart = explode('?CustNo=', $path);
+$end = end($pathPart);	 
+echo "End: ". $end. ".";
+	 
+*/	 
+ //editExpCQ.php?CustNo=3&name=eddie
+//	echo "<h1>Hello " . $_GET["name"] . "</h1>";
+if(isset($_GET["CustNo"]))
+{
+	echo "GET CustNo: ".$_GET["CustNo"]."<br>";
+	$CustNo= $_GET["CustNo"];
+	//force session:
+	$_SESSION['CustNo'] = $_GET["CustNo"];
+	
+}
+else{echo " no Getter";}
+
+
+$opts['filters'] = "CustNo = '$CustNo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
+
+	 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -69,7 +113,7 @@ $opts['sort_field'] = array('ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 15;
+$opts['inc'] = 1500000;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -156,28 +200,15 @@ $opts['fdd']['ExpNo'] = array(
   'maxlen'   => 11,
   'sort'     => true
 );
-$opts['fdd']['Category'] = array(
-  'name'     => 'Category',
+$opts['fdd']['InvNo'] = array(
+  'name'     => 'InvNo',
   'select'   => 'T',
-  'maxlen'   => 90,
+  'maxlen'   => 30,
   'sort'     => true
-);
-$opts['fdd']['ExpDesc'] = array(
+);$opts['fdd']['ExpDesc'] = array(
   'name'     => 'ExpDesc',
   'select'   => 'T',
   'maxlen'   => 1500,
-  'sort'     => true
-);
-$opts['fdd']['SerialNo'] = array(
-  'name'     => 'SerialNo',
-  'select'   => 'T',
-  'maxlen'   => 120,
-  'sort'     => true
-);
-$opts['fdd']['SupCode'] = array(
-  'name'     => 'SupCode',
-  'select'   => 'T',
-  'maxlen'   => 90,
   'sort'     => true
 );
 $opts['fdd']['PurchDate'] = array(
@@ -204,12 +235,46 @@ $opts['fdd']['CustNo'] = array(
   'maxlen'   => 30,
   'sort'     => true
 );
+$opts['fdd']['Category'] = array(
+  'name'     => 'Category',
+  'select'   => 'T',
+  'maxlen'   => 90,
+  'sort'     => true
+);
+$opts['fdd']['SupCode'] = array(
+  'name'     => 'SupCode',
+  'select'   => 'T',
+  'maxlen'   => 90,
+  'sort'     => true
+);
+$opts['fdd']['SerialNo'] = array(
+  'name'     => 'SerialNo',
+  'select'   => 'T',
+  'maxlen'   => 120,
+  'sort'     => true
+);
+
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
+include 'viewExpCustSelect.php';
+//include 'viewExpCustSelect.php?mydropdownEC=$yo';
 
 ?>
+<b><br><font size = "4" type="arial">View Expenses H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExp.php
+</br>
+<a href = 'viewExpHEandExpCust.php'>viewExpHEandExpCust</a> all expenses of Customer</br>
+<a href = 'viewExpHEandExpD.php'>viewExpHEandExpD by Date</a></br>
+<a href = 'viewExp.php'>viewExp only</a></br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpEmyedit.php'>viewExpEmyedit</a></br>
+<a href = 'viewExpHmyedit.php'>viewExpHmyedit</a></br>
+<a href = 'UnassignedCustStk.php'>UnassignedCustStk</a></br>
+<a href = 'viewExpSelectCatg.php'>viewExpSelectCatg</a></br>
+
+<a href = '../phpmyadmin/#PMAURL-3:sql.php?db=kc&table=expensese&server=1&target='>phpMyadmin</a></br>
 
 
 </body>

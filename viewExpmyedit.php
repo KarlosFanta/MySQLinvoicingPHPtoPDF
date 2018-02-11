@@ -7,7 +7,7 @@
 ?>
 <b><br><font size = "4" type="arial">View Expenses</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
 </br>
-<a href = 'viewExpHandExp.php'>viewExpHandExp</a></br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
 <a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
 <a href = 'viewExpmyeditbasic.php'>viewExpmyeditbasic for editing</a></br>
 
@@ -59,13 +59,13 @@ $opts['db'] = 'kc';
 $opts['tb'] = 'expenses';
 
 // Name of field which is the unique key
-$opts['key'] = 'ExpNo';
+$opts['key'] = '-ExpNo';
 
 // Type of key field (int/real/string/date etc.)
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('ExpNo');
+$opts['sort_field'] = array('-ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
@@ -74,7 +74,8 @@ $opts['inc'] = 1000;
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
 // F - filter, I - initial sort suppressed
-$opts['options'] = 'ACPVDF';
+//$opts['options'] = 'ACPVDF';
+$opts['options'] = '';
 
 // Number of lines to display on multiple selection filters
 $opts['multiple'] = '4';
@@ -169,6 +170,12 @@ $opts['fdd']['ExpDesc'] = array(
   'maxlen'   => 1500,
   'sort'     => true
 );
+$opts['fdd']['SupCode'] = array(
+  'name'     => 'SupCode',
+  'select'   => 'T',
+  'maxlen'   => 120,
+  'sort'     => true
+);
 $opts['fdd']['SerialNo'] = array(
   'name'     => 'SerialNo',
   'select'   => 'T',
@@ -196,7 +203,9 @@ $opts['fdd']['ProdCostExVAT'] = array(
 
 //$opts['fdd']['yy']['sql'] = 'CONCAT( ProdCostExVAT, Notes)';
 $opts['fdd']['tttt'] =  array(
-  'sql'     => 'CAST(ProdCostExVAT AS UNSIGNED)*1.14',
+// 'sql'     => 'CAST(ProdCostExVAT AS UNSIGNED)*1.14',
+    'sql'     => 'round(ProdCostExVAT *1.14 ,2)',
+
   'name'     => 'mmm',
   'select'   => 'T',
   'maxlen'   => 1500,

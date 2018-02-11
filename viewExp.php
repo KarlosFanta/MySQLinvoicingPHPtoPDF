@@ -1,3 +1,4 @@
+<title>viewExp</title>
 <?php
 
 	
@@ -7,8 +8,9 @@
 ?>
 <b><br><font size = "4" type="arial">View Expenses</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
 </br>
-<a href = 'viewExpHandExp.php'>viewExpHandExp</a></br>
-<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpHEandExp.php' target='_blank'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php' target='_blank'>viewExpmyedit</a></br>
+<a href = 'ExpCombo.php' target='_blank'>Home Expenses Extra Expenses and Work Expenses Combo</a></br>
 
 
 <?php
@@ -51,16 +53,27 @@ echo "<tr><th>ExpNo</th>";
 echo "<th>ExpDesc&nbsp;&nbsp;</th>";
 echo "<th>SupCode</th>";
 echo "<th>PurchDate</th>";
-echo "<th>ProdCostExVAT</th>";
+echo "<th>ExVAT</th>";
+echo "<th>inVAT</th>";
+
+echo "<th>Inv</th>";
 echo "<th>Notes</th>\n";
 echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
+echo "<th>InvNo</th>\n";
+echo "<th>ExpNo</th>\n";
 echo "</tr>\n";
 
 
 while ($row = mysqli_fetch_assoc($result)) 
 //while($row = $result->fetch_array())
 {
+	$D1 = explode("-", $row['PurchDate']);
+$EDate = $D1[2]."/".$D1[1]."/".$D1[0];
+//$DDD =  $D1[2];
+//$arr2 = str_split($DDD, 1);
+//echo $EDate;	 
+
 
 /*
 foreach($rows as $row)
@@ -139,14 +152,23 @@ echo "<th align = left class='label'>&nbsp;&nbsp;&nbsp;{$shortenedNotes}</th>\n"
 
 */
 
-echo "<th>".$row['ExpNo']."</th>";
-echo "<th>".$row['ExpDesc']."</th>";
+echo "<th>".$row['ExpNo']."</th><th>";
+$CCCC = $row['CustNo'];
+if ($CCCC  == '300')
+	echo "<font color = 'green'>";
+
+
+echo "".chunk_split($row['ExpDesc'], 33, '<br>')."</th>";
 echo "<th>".$row['SupCode']."</th>";
-echo "<th>".$row['PurchDate']."</th>";
+echo "<th>".$row['PurchDate']."<br>".$EDate."</th>";
 //echo "<th>testss</th>";
 echo "<th>".$row['ProdCostExVAT']."</th>";
-echo "<th>".$row['Notes']."</th>";
-$CCCC = $row['CustNo'];
+$PEX= $row['ProdCostExVAT'];
+$PIV = number_format($PEX*1.14 , 2, '.', '');
+echo "<th>".$PIV."</th>";
+
+echo "<th>".$row['InvNo']."</th>";
+echo "<th>".chunk_split($row['Notes'], 13, '<br>')."</th>";
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
 while ($rowCC = mysqli_fetch_assoc($resultCC)) 
@@ -157,7 +179,15 @@ $NNN = $rowCC['CustFN'];
 
 }}
 echo "<th>".$row['CustNo'].$NN.$NNN."</th>";
-echo "<th>".$row['SerialNo']."</th>";
+
+//$SerialNo = $row['SerialNo']
+$SerialNo = chunk_split($row['SerialNo'], 13, '<br>');
+
+//join('-', str_split($str, 3))
+echo "<th>".$SerialNo."</th>";
+echo "<th>".$row['InvNo']."</th>";
+echo "<th>".$row['ExpNo']."</th>";
+	echo "</font>";
 
 echo "</tr>";
 
