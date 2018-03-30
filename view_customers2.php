@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Accounting CMS System</title>
+    <title>Customers</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
   </head> 
 <?php //require_once "header.php"; ?>
@@ -29,8 +29,11 @@
 </br>
 </br>
 
-<form name="Editcust" action="selectCustProcess.php" method="post">
-<select name="mydropdownEC">
+<form name="selField" action="selectVC.php" method="post">
+    <input type="submit" name="formSubmit" value="Submit" /><br>
+	
+	<select name="mydropdownEC">
+	<option value='all'>all</option>
 <?php
 
 /*	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
@@ -74,7 +77,7 @@ $result->free();
 //$mysqli->close();
 
 print " </option>"; 
-echo $item3;
+echo @$item3b;
 ?>
 
 <br><br>
@@ -85,6 +88,56 @@ echo $item3;
 
 
 
+
+<?php
+
+
+
+$query="SELECT * from customer";
+$Cnt = 0;
+if ($result=mysqli_query($DBConnect,$query))
+  {
+  // Get field information for all fields
+  while ($fieldinfo=mysqli_fetch_field($result))
+    {
+	$TableName = $fieldinfo->name;
+	echo "<input type='checkbox' name='formDoor[]' value='$TableName' ";
+	
+	//echo "<br>input type = checkbox name= formDoor[] value='$TableName' ";
+	
+    if ($TableName == 'CustNo')
+	echo "checked";
+   if ($TableName == 'CustFN')
+	echo "checked";
+   if ($TableName == 'CustLN')
+	echo "checked";
+   if ($TableName == 'CustEmail')
+	echo "checked";
+   if ($TableName == 'CustDetails')
+	echo "checked";
+   if ($TableName == 'Important')
+	echo "checked";
+ 
+	
+	echo " />";	
+	echo $TableName;
+	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+	if ($Cnt == 6)
+	{
+	echo "<br>";
+	$Cnt = 0;
+	}
+	$Cnt++;
+	
+    //printf("Table: %s\n",$fieldinfo->table);
+    //printf("max. Len: %d\n",$fieldinfo->max_length);
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+?>
+<input type="submit" name="btn_submit" value="Select the table columns to view" /> 
+</form>
 
 
 
@@ -150,7 +203,7 @@ echo "</tr>\n";
 
 echo "<tr>";
 echo "<th>{$row[2]}</th>";//surn
-echo "<th>{$row[0]}</th>";//Cno
+echo "<th><a href='editCust.php?mydropdownEC={$row[0]}'>{$row[0]}</a></th>";//Cno
 echo "<th>{$row[1]}</th>";//FN
 echo "<th>{$row[3]}</th>";//Tel
 echo "<th>{$row[4]}</th>";
