@@ -14,8 +14,11 @@ require_once('header.php');
 require_once("inc_OnlineStoreDB.php");
 @session_start();
 //echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-$CustInt = $_SESSION['CustNo'];
-$Prof = @$_POST['Prof'];
+
+$CustInt = '';
+$CustInt = @$_GET['CustNo'];
+//     echo " ". $_GET['CustNo']. ".";
+
 
 if (isset($_POST["mydropdownEC"]))
 {
@@ -24,22 +27,12 @@ $Custno = explode(';', $TBLrow );
 $CustInt = intval($Custno[0]);
 echo 'isset';
 }
-else
-{
-$CustInt = $_SESSION['CustNo'];
-echo 'issetgg'.$CustInt;
-}
 
-if ($CustInt == '0')
-$CustInt = @$_POST['CustNo'];
 if ($CustInt == '')
-{
-	$name = '';
-$name = $_GET['CustNo'];
-     echo " ". $_GET['CustNo']. ".";
-	 $CustInt = $_GET['CustNo'];
-}
+$CustInt = @$_POST['CustNo'];
 
+if ($CustInt == '')
+$CustInt = $_SESSION['CustNo'];
 
 echo " Expense not here? <a href = 'addExp.php?CustNo=".$CustInt."'>Click here to add Expense for customer.</a><br>";
 
