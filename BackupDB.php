@@ -12,6 +12,7 @@ NB Unfortunately there is no ROLLBACK option!<br><br>
 
 Don;t forget to backup your online databases!<br>
 <br>
+
 <br>
 to backup online databases in CPAnel:
 phpmyAdmin> Export > SQL/CSV
