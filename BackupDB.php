@@ -31,7 +31,7 @@ $row_getRS = mysqli_fetch_assoc($result);
 
 while( $row = mysqli_fetch_row( $result ) ):
         if (($row[0]!="information_schema") && ($row[0]!="mysql")) {
-            echo "<a href = 'backupDb2get.php?dadb=".$row[0]."'>".$row[0].".</a>\r\n<br>";
+            echo "<a href = 'BackupDB2get.php?dadb=".$row[0]."'>".$row[0].".</a>\r\n<br>";
 
         }
 endwhile;
