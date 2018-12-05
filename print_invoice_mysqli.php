@@ -8,7 +8,9 @@
 <HEAD>
 <?php 
 $InvNo2 = 0;
-$InvNo2 = mysql_escape_string($_POST['InvNo']);
+//$InvNo2 = mysql_escape_string($_POST['InvNo']);
+InvNo2 = mysqli_escape_string($DBConnect, $_POST['InvNo']);
+	//mysql_escape_string is deprecated
 $SDR = "0";
 $SDR = mysql_escape_string($_POST['SDR']);
 $SQLstringO = "INSERT INTO invoice (SDR) VALUES('$SDR') WHERE InvNo = $InvNo2";
