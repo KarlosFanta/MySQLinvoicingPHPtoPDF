@@ -8,9 +8,9 @@
 <HEAD>
 <?php 
 $InvNo2 = 0;
-$InvNo2 = $_POST['InvNo'];
+$InvNo2 = mysql_escape_string($_POST['InvNo']);
 $SDR = "0";
-$SDR = $_POST['SDR'];
+$SDR = mysql_escape_string($_POST['SDR']);
 $SQLstringO = "INSERT INTO invoice (SDR) VALUES('$SDR') WHERE InvNo = $InvNo2";
 
 $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
