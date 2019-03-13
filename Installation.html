@@ -4,15 +4,58 @@
 <body>
 
 
+<br> March 2019 : I tested my code on Wampserver3 (apache 2.4.37+php7.2.14) and came with these tips:
+
+I chose 64bit edition (becasue I have 64bit Windows) 
+What a mission to install it on Windows10:
+I had to google and download and isntall about:<br>
+ 3 different versions of vc_redist.x64
+ 3 different versions of vc_redist.x86
+ vcredist_2008_sp1_atl_x64
+ vcredist_2008_sp1_atl_x86
+vcredist_2008_sp1_mfc_x64
+vcredist_2008_sp1_mfc_x86
+vcredist_2008_sp1_x64
+ 2 different versions ofvcredist_2013_upd5_x64
+ 2 different versions of vcredist_2013_upd5_x86
+ 2 different versions of vcredist_arm
+vcredist_ia64
+
+9x different versions of vcredist_x64
+9x different versions of vcredist_x86
+<br>
+to get wampserver3.1.7_x64 to work!!!<br>
+And you download check_vcredist.exe to test it for you.<br>
 <br>
 
-<br>To install <b>Apache(</b>webserver) and PHP to make the PHP MySQL software work:<br>
+
+(Some of my code does not work in this latest but it's repairable- code suggestions welcome)<br>
+To have other PCs accessing your local server you do not need to modify httpd.conf anymore! And you only don;t need to put it "Online" anymore! 
+instead it uses a virtual host option. <br>
+Right-click on green wampserver,  Allow VirtualHost Local IP saddresses other than 127*<br>
+Then edit httpd-vhosts.conf to look like this: (Find it in C:\wamp64\<br>
+<VirtualHost *:80>
+ ServerName localhost
+ DocumentRoot c:/wamp64/www
+  <Directory  "c:/wamp64/www/">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+  </Directory>
+</VirtualHost>
+
+
+
+<br>
+<br>Installation Procedure for <b>Apache(</b>webserver) and PHP to make the PHP MySQL accounting software work:<br>
+											 
 <br>
 (One can choose install WAMP or XAMPP or Apache+PHP+MySQL or IISExpress+PHP+MySQL:<br>
 <br>
 Download and install the following software: 
 
 <br>1. An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox
+
 
 <br>2. Disable IISExpress if you have a Professinoal edition (eg Win8Pro or Win7pro)
 <br>3. Disable or uninstall Skype temporarily to prevent a port conflict
@@ -35,14 +78,18 @@ Download and install the following software:
 
 <br>Download & install NotepadPlusPlus:  www.notepad-plus-plus.org (or Netbeans for PHP) You will need this for editing PHP files.  </b>
 
+
+
 <br>Take the faster 64 bit version if you have 64bit version of Windows.<br>
 Copy all our PHP files into C:\wamp\www<br>
 (Find your browser under C:\Program Files(x86)\Mozilla Firefox\firefox.exe)<br><br>
 <br>Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br>
 (If you want to install Apache and PHP seperately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>)
 
+
 <br>You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br>
 dotNetFx40_Full_x86_x64.exe  for 64bit Windows
+
 
 <br>&nbsp;
 
