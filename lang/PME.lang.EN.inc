@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * phpMyEdit language file
+ * PDO
+ * language: english
+ * encoding: iso-8859-1
+ * date: 2000, 2001, 2003-05-01
+ * author: John McCreesh <jpmcc@users.sourceforge.net>
+ */
+
+/* $Platon: phpMyEdit/lang/PME.lang.EN.inc,v 1.11 2004/12/27 20:14:29 nepto Exp $ */
 
 return Array(
 		'Add'           	=>'Add',
@@ -45,7 +55,7 @@ return Array(
 			'10'=>'October',
 			'11'=>'November',
 			'12'=>'December'),
-		// report
+		// phpMyEdit-report
 		'Make report'			=> 'Make report',
 		'Select fields'			=> 'Select fields',
 		'Records per screen'	=> 'Records per screen',
