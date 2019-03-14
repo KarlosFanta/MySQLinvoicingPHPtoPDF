@@ -27,9 +27,7 @@ vcredist_ia64
 to get wampserver3.1.7_x64 to work!!!<br>
 And you download check_vcredist.exe to test it for you.<br>
 <br>
-
-
-(Some of my code does not work in this latest but it's repairable- code suggestions welcome)<br>
+<br>
 To have other PCs accessing your local server you do not need to modify httpd.conf anymore! And you only don;t need to put it "Online" anymore! 
 instead it uses a virtual host option. <br>
 Right-click on green wampserver,  Allow VirtualHost Local IP saddresses other than 127*<br>
@@ -57,7 +55,7 @@ Download and install the following software:
 <br>1. An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox
 
 
-<br>2. Disable IISExpress if you have a Professinoal edition (eg Win8Pro or Win7pro)
+<br>2. Disable IISExpress if you have a Professional edition (eg Win8Pro or Win7pro)
 <br>3. Disable or uninstall Skype temporarily to prevent a port conflict
 
 <br>4. Download & install Wamp (www.wampserver.com) or Xampp (or LAMP for Linux)
@@ -67,9 +65,9 @@ Download and install the following software:
 <br>6. Setup an email program such as Mozilla Thunderbird or Outlook.
 <br>The next step is to set up php.ini.
 
-<br>Enable al this lovely stuff inside php.ini:
+<br>Enable al this lovely stuff inside php.ini: (by default already enabled)
 
-<br><b>extension=</b>php_mysql.dll
+<br><b>extension=</b>php_mysql.dll (this one is not required anymore- outdated)
 
 <br><b>extension=</b>php_mysqli.dll
 
@@ -81,14 +79,14 @@ Download and install the following software:
 
 
 <br>Take the faster 64 bit version if you have 64bit version of Windows.<br>
-Copy all our PHP files into C:\wamp\www<br>
+Copy all our PHP files into C:\wamp\www   (or C:\wamp64\www )<br>
 (Find your browser under C:\Program Files(x86)\Mozilla Firefox\firefox.exe)<br><br>
 <br>Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br>
 (If you want to install Apache and PHP seperately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>)
 
 
 <br>You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br>
-dotNetFx40_Full_x86_x64.exe  for 64bit Windows
+dotNetFx40_Full_x86_x64.exe  for 64bit Windows (see above notes)
 
 
 <br>&nbsp;
@@ -129,23 +127,24 @@ Wampserver: MySQL > MysQSL console<br>
 
 <br>
 Now we want wampserver to be 'online' > available on the whole network<br>
-To do that launch the pink Wampserver icon on your desktop, then click "Online"<br>
+>>> SEE COMMENTS ABOVE <<<<
+To do that launch the pink Wampserver icon on your desktop, then click "Online" (check notes above)<br>
 If the network name of your server is Alpha-PC, then open Explorer in any other PC on the network and type in \\Alpha-PC into the address bar.
 (Alternatively use a static IP address on the server, then \\192.168.0.5 )
 Also change Windows Firewall in Control panel to allow Apache to work on private and public networks<br>
 <br>
-C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf<br>
+C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf   [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]<br>
 <br>
 
 <Directory "c:/wamp/bin/apache/apache2.4.9/cgi-bin"><br>
 
-    AllowOverride None<br>
+    AllowOverride None<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
 
-    Options None<br>
+    Options None<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
 
-    Order allow,deny<br>
+    Order allow,deny<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
 
-	Allow from all<br>
+	Allow from all<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
 
 </Directory>
 
@@ -209,7 +208,7 @@ http://developer.nokia.com/community/wiki/Setup_MySQL_in_WAMP_-_password_setting
 <br>&nbsp;
 Using Windows 7, I went into Control Panel -> Services
 
-I changed the settings for "wampapache" and "wampmysql" to start: "Automatic".
+I changed the settings for "wampapache" and "wampmysql" to start: "Automatic" or "Delayed".
 
 After that, when I restart my Win7 machine, both services start automatically before I even log into the machine
 
