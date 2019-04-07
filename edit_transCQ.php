@@ -19,21 +19,25 @@
 </style>
 </head>
 <body>
-
+NB Click on sort by InvNoA and check if numbers ascend or descend correctly<br>
 <?php
 require_once 'header.php';
+require_once 'monthtables.php';
 //echo "<h3>transaction</h3>";
+echo "<a href = 'edit_transCQ.php'>edit_transCQ.php</a><br>";
+echo "<a href = 'edit_transCQmin.php'>edit_transCQmin.php</a><br>";
 
 @session_start();
-if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
+$CustNo = 1;
+//if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
-echo $_SESSION['CustNo'];
+//echo $_SESSION['CustNo'];
 
 
-
-$yo = $_SESSION['CustNo'];
-echo "CustNo:".$yo;
-$opts['filters'] = "CustNo = '$yo'";
+	if (isset($_SESSION['CustNo']))
+$CustNo = $_SESSION['CustNo'];
+echo "CustNo:".$CustNo;
+$opts['filters'] = "CustNo = '$CustNo'";
 
 
 /*
@@ -68,7 +72,7 @@ $opts['sort_field'] = array('TransNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 25;
+$opts['inc'] = 105;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -184,16 +188,16 @@ $opts['fdd']['AmtPaid'] = array(
   'maxlen'   => 12,
   'sort'     => true
 );
-$opts['fdd']['Notes'] = array(
-  'name'     => 'Notes',
-  'select'   => 'T',
-  'maxlen'   => 300,  //this does not affect the visuals. please keep it otherwise you cannot add details longer than
-  'sort'     => true
-);
 $opts['fdd']['CustSDR'] = array(
   'name'     => 'CustSDR',
   'select'   => 'T',
   'maxlen'   => 90,
+  'sort'     => true
+);
+$opts['fdd']['Notes'] = array(
+  'name'     => 'Notes',
+  'select'   => 'T',
+  'maxlen'   => 300,  //this does not affect the visuals. please keep it otherwise you cannot add details longer than
   'sort'     => true
 );
 $opts['fdd']['TMethod'] = array(

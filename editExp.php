@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -10,8 +11,8 @@
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
-$query = "select * from expenses";
-//echo $query."<br>";
+$query = "select distinct SupCode from expenses";
+echo $query."<br>";
 /*$result = mysql_query($query) or die(mysql_error());
 
 if (!$result) {
@@ -34,12 +35,77 @@ if (mysql_num_rows($result) == 0) {
 //$query="insert into transaction (TransNo, CustNo, TransDate, Amtpaid, Notes, TMethod, InvNoA, InvNoAincl, InvNoB, InvNoBincl, InvNoC, InvNoCincl, InvNoD, InvNoDincl, InvNoE, InvNoEincl, InvNoF, InvNoFincl, InvNoG, InvNoGincl, InvNoH, InvNoHincl, Priority)
 //values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA, 
 //$InvNoAincl, $InvNoB, $InvNoBincl, $InvNoC, $InvNoCincl, $InvNoD, $InvNoDincl, $InvNoE, $InvNoEincl, $InvNoF, $InvNoFincl, $InvNoG, $InvNoGincl, $InvNoH, $InvNoHincl, '$Priority')";
+echo "<form name='EditExp' action='editExpProcess.php' method='post'>";
 
 
+$ExpNo = '';
+$ExpNo = $_GET['ExpNo'];
+     echo "ExpNo ". $_GET['ExpNo']. ".";
+$TN = 'expenses';
+@$TN = @$_GET['TN'];
+     echo "TN ". @$_GET['TN']. ".";
+
+$Equery = "select * from $TN where ExpNo = $ExpNo";
+echo $Equery;
+
+if ($resultE = mysqli_query($DBConnect, $Equery)) {
+echo "<table width='10' border='1'>\n";
+echo "<tr><th>ExpNo</th>";
+echo "<th>Category</th>";
+echo "<th>ExpDesc</th>";
+echo "<th>SupCode</th>";
+echo "<th>SerialNo</th>";
+echo "<th>PurchDate</th>";
+echo "<th>ProdCostExVAT</th>";
+echo "<th>Notes</th>";
+echo "<th>CustNo</th>";
+echo "<th>InvNo</th>";
+echo "<th>TN</th>";
+echo "</tr>\n";
+
+while ($row = mysqli_fetch_assoc($resultE)) {
+echo "<tr>";
+echo "<th><input type='text' name='ExpNo' value='".$row["ExpNo"]."' size = 4></th>";
+echo "<th><input type='text' name='Category' value='".$row["Category"]."' size = 7></th>";
+echo "<th><input type='text' name='ExpDesc' value='".$row["ExpDesc"]."' size = 24></th>";
+echo "<th><input type='text' name='SupCode' value='".$row["SupCode"]."' size = 5></th>";
+echo "<th><input type='text' name='SerialNo' value='".$row["SerialNo"]."' size = 10></th>";
+echo "<th><input type='text' name='PurchDate' value='".$row["PurchDate"]."' size = 9></th>";
+echo "<th><input type='text' name='ProdCostExVAT' value='".$row["ProdCostExVAT"]."' size = 6></th>";
+echo "<th><input type='text' name='Notes' value='".$row["Notes"]."' size = 14></th>";
+echo "<th><input type='text' name='CustNo' value='".$row["CustNo"]."' size = 4></th>";
+echo "<th><input type='text' name='InvNo' value='".$row["InvNo"]."' size = 4></th>";
+echo "<th>".$TN."</th>";
+$row_cnt = mysqli_num_rows($resultE);
+echo "</tr>\n";
+
+}
+mysqli_free_result($resultE);
+}
+
+//mysqli_close($DBConnect);
+echo "</table>";
+echo " rows: $row_cnt"; //counter
+
+//echo "<input type='text' name='TN' value='".$TN."' >";
+echo "<input type='hidden' name='TN' value='".$TN."' >";
 
 
 ?>
-<b><font size = "4" type="arial">Edit a transaction's Details</b></font>
+<input type="submit" name="btn_submit" value="Update this expense" /> 
+</form>
+
+<br><br>
+<a href = editExpQ.php>editExpQ.php</a>QuickEdit Basic all expenses
+<br><br>
+<br><br>
+<a href = 'viewExpHEandExpCust.php'>viewExpHEandExpCust</a> all expenses of Customer Advanced View</br>
+<br><br>
+<br><br>
+<b><font size = "4" type="arial"><a href = 'editExp2.php'>Edit expenses(E/H) of a supplier/category</a></b> </font>
+</br>
+</br>
+<b><font size = "4" type="arial"><a href = 'editExpCQ.php'>Change expense to another customer</a> </b> </font>
 </br>
 </br>
 
@@ -47,18 +113,18 @@ if (mysql_num_rows($result) == 0) {
 
 <select name="mydropdownEC" onchange='this.form.submit()'>
 
-<option value="_no_selection_">Select transaction to be updated</option>";
+<option value="_no_selection_">Select expense to be updated</option>";
 
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
   //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
-if ($result = mysqli_query($DBConnect, $query)) {
+/*if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
-$item1 = $row["ExpNo"];
+$item1 = $row["SupCode"];
 $item2 =  $row["CustNo"];
-$item3 = $row["ExpDate"];
+$item3 = $row["PurchDate"];
 $item4 = $row["AmtPaid"];
 $item5 = $row["Notes"];
 $item6 = $row["TMethod"];
@@ -79,19 +145,16 @@ print "_".$item7;
 
 print " </option>"; 
 
-/*    echo $row["TransNo"];//case sensitive!
-    echo $row["TransFN"];//case sensitive!
-    echo $row["TransLN"];//case sensitive!
-*/
+
 	}
 $result->free();
 //mysql_free_result($result);
 
 }
-/* close connection */
+ */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Update selected transaction" /> 
+<input type="submit" name="btn_submit" value="Edit selected expense" /> 
 	
 </select></p>  
 
@@ -146,18 +209,5 @@ while($row = mysql_fetch_array($result)){
 //$daNextNo = intval($row[0])+1;
 }
 */
-?>
 
-<?php
-/*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
-//$var_term;
- foreach($row as $item)
-   {
-      print "<option value='$item'>$item";
-  print " </option>"; 
- }
-}
-*/
 ?>

@@ -1,15 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
 <head>
 <title>Add a transaction</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
 	<script  type="text/javascript">
-
-
+	function enable1() {
+    document.getElementById("btn1").disabled=false;
+}
 
 function formValidator(){
 	// Make quick references to our fields
@@ -18,27 +18,20 @@ function formValidator(){
 	var AmtPaid = document.getElementById('AmtPaid');
 	var Notes = document.getElementById('Notes');
 	var TMethod = document.getElementById('TMethod');//Payment method
-	
-
-	
 	// Check each input in the order that it appears in the form!
-						if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
-				if(lengthRestriction(TransDate, 10,10)){
-				if(notEmpty(AmtPaid, "Please enter a valid FLOAT amoutn Paid isFloat")){
-			if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
-//				if(isDate(TransDate, "Please put in Da 	te")){
+	if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
+		if(lengthRestriction(TransDate, 10,10)){
+			if(notEmpty(AmtPaid, "Please enter a valid FLOAT amount Paid isFloat")){
+				if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
+					if(isDate(TransDate, "Please put in Da 	te")){
 					if(madeSelection(TMethod, "Please Choose Payment Method")){
-				
-						
-						
-						
-							return true;
-						}
+				return true;
+				}
+			}
+		}
+	}
 }
-}}}
-
 						return false;
-	
 }
 
 function notEmpty(elem, helperMsg){
@@ -129,6 +122,7 @@ function emailValidator(elem, helperMsg){
 
 
 
+
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
@@ -181,6 +175,8 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
+
+
 //JQUERY: LOOK AT : include 'invJQuery.php' 		
 //	<input type="text"  size="3" id="InvNoA"  name="InvNoA"  class='clInvNoA' />
 /*	
@@ -199,79 +195,173 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 </head>
 <body>
 
+<?php
+require_once('header.php');	
+require_once("inc_OnlineStoreDB.php");
+
+//$CustInt = $_POST['acc1'];
+//echo "<br>CustintAAA:".$CustInt."<br />";
+$TransDate = '';
+$TransDate = @$_POST['TransDate'];
+echo ''.$TransDate;
+//if (@$arraySDR != '')
+//{
+$arraySDR = @$_POST['SDR'];
+echo ' '.$arraySDR;
+//}
 
 
 
-<?php	//this is "addTransCustProcess2.php"
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-$TBLrow = $_POST['mydropdownEC'];
+if (@$_POST['acc1'] == '')
+{
+$TBLrow = @$_POST['mydropdownEC'];
+
 
 //echo "TBLrow: " .$TBLrow."</BR>";
 $Custno = explode(';', $TBLrow );
-//while ($TBLrow !=NULL) {
-//echo "$Custno</br />";
-//$Custno = strtok(";");
-//}
-//echo "CustnozERO: ";
-//echo $Custno[0]."</br />";
 $CustInt = intval($Custno[0]);
+}
+else
+{
+	//we received a account number from the form
+	//account number is the same as the customer number.
+$CustInt = $_POST['acc1'];
+}
 
-echo "<br>Custint:".$CustInt."<br />";
 
-	@session_start();
+
+if (@$_POST['inv1'] != '')
+{
+	//we received an inv1 umber from the form
+	//check whom this invoice belongs to
+	$inin = $_POST['inv1'] ;
+	$queryC = "select CustNo from invoice where InvNo = $inin";
+echo $queryC;
+if ($resultC = mysqli_query($DBConnect, $queryC)) {
+
+while ($row = mysqli_fetch_assoc($resultC)) {
+echo "".$row["CustNo"]."</th>";//CustNo is case senSitiVe
+//echo "".$row["InvNo"]."</th>";//CustFN is case senSitiVe
+$row_cnt = mysqli_num_rows($resultC);
+echo " rows: $row_cnt</th>"; //not ttested yet
+
+$CCCCC = $row["CustNo"];
+	$CustInt = $CCCCC;
+	}
+mysqli_free_result($resultC);
+}
+
+
+	
+	
+		if ($_POST['inv1'] == '1878')
+		$CustInt = 9; //mielck
+	
+}
+
+if (@$_POST['csdr'] != '')
+{
+	//we received an csdr umber from the form
+	//check whom this invoice belongs to
+	$inin = $_POST['csdr'] ;
+	$queryC = "select CustNo from invoice where SDR LIKE '%$inin%'  UNION ALL  select CustNo from customer where CommonSDR LIKE '%$inin%' ";
+echo $queryC;
+echo "statement seems to work now";
+if ($resultC = mysqli_query($DBConnect, $queryC)) {
+
+while ($row = mysqli_fetch_assoc($resultC)) {
+echo "".$row["CustNo"]."</th>";//CustNo is case senSitiVe
+//echo "".$row["InvNo"]."</th>";//CustFN is case senSitiVe
+$row_cnt = mysqli_num_rows($resultC);
+echo " rows: $row_cnt</th>"; //not ttested yet
+$CCCCC = $row["CustNo"];
+}
+mysqli_free_result($resultC);
+}
+
+	$CustInt = $CCCCC;
+	
+	
+	
+	if ($_POST['csdr'] == '1878')
+		$CustInt = 9; //mielck
+	
+	
+	
+}
+
+
+//echo "<br>Custint:".$CustInt."<br />";
+@session_start();
+
+if(isset($_GET["CustNo"]))
+{
+	echo "YES GETTING <a href = 'acceptCustNo.php?CustNo=$CustInt' target='_blank'>Accept CustNo into session</a>";
+$CustInt  = $_GET['CustNo'];
+$_SESSION['CustNo'] = $CustInt ; // force into session
+
+}
 
 $_SESSION['CustNo'] = $CustInt;
 
-	
-	if(isset($_SESSION['CustNo']))
-echo "yes";
+$file = fopen("sessCustNo.txt","w");
+echo fwrite($file,"$CustInt");
+fclose($file);
+
+
+echo "sessionCustno: ".$_SESSION['CustNo']."<br>";
+if(isset($_SESSION['CustNo']))
+echo "";
 else
-echo "<a href = 'selectCust.php' >no  PLEASE SELECT A CUSTOMER!!  <a href = 'selectCust.php' >Click here</a><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+echo "<a href = 'selectCust.php' >no  PLEASE SELECT A CUSTOMER!!  <a href = 'selectCust.php' >Click here</a><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 
-
-	
-	if(($_SESSION['CustNo'])== '0')
+if(($_SESSION['CustNo'])== '0')
+{
 echo "<a href = 'selectCust.php' >no  PLEASE SELECT dA CUSTOMER!!  <a href = 'selectCust.php' >Click here</a><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//if ($TBLrow == '')
+
+}
+
+
 
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
-include "monthtables.php";
+//<?php include "calculator/indexKL.php"; ? >
+//	include "monthtables.php";
+//include "calculator/indexKL.php";
+//include "calculator/indexB.php";
+
+//echo "select_CustProcess: SESSION CustNo: ". $_SESSION['CustNo'] ."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+//echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
 
 
-echo "select_CustProcess: SESSION CustNo: ". $_SESSION['CustNo'] ."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
-
-
-
-
-?>
-<!--<form name="addTransCustProcess2"  action="addTransprocess_last2.php" onsubmit='return formValidator()'   method="post">-->
-
-<!--before we can add a transaction, we check what transactions the customer has done:
-<br><br>-->
-<?php
-
-//$TBLrow = $_POST['mydropdownEC'];
 $AmtPaid = "";
-//$AmtPaid = @$_POST['AmtPaid'];
+if(isset($_GET["AmtPaid"]))
+{
+$AmtPaid  = $_GET['AmtPaid'];
+	echo "got AmtPaid: $AmtPaid ";
+}
+if(isset($_POST["AmtPaid"]))
+{
+$AmtPaid  = $_POST['AmtPaid'];
+	echo " POST <font size = 5>AmtPaid: <b>R$AmtPaid</b> </font>";
+}
+$AmtPd = "";
+if(isset($_GET["AmtPd"]))
+{
+$AmtPd  = $_GET['AmtPd'];
+	echo "got AmtPd: $AmtPd ";
+}
+if(isset($_POST["AmtPd"]))
+{
+$AmtPd  = $_POST['AmtPd'];
+	echo "POST AmtPd: $AmtPd";
+}
 
-/*echo "TBLrow: " .$TBLrow."</BR>";
-$CustNo = explode(';', $TBLrow );
-//while ($TBLrow !=NULL) {
-//echo "$TransNo</br />";
-//$TransNo = strtok(";");
-//}
-//echo "TransNozERO: ";
-//echo $TransNo[0]."</br />";
-$CustInt = intval($CustNo[0]);
 
-
-//echo "<br>Transint:".$CustInt."</br />";
-*/
+$CommonSDR = "";
 $SQLString = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
-//echo $SQLstring."<br>";
-
+//echo $SQLString;
 if ($result = mysqli_query($DBConnect, $SQLString)) {
   while ($row = mysqli_fetch_assoc($result)) {
 $item1 = $row["CustNo"];
@@ -279,23 +369,14 @@ $item2 =  $row["CustFN"];
 $item3 =  $row["CustLN"];
 $item4 = $row["CustEmail"];
 $Important = $row["Important"];
-/*$item5 = $row["Notes"];
-$item6 = $row["CustSDR"];
-$item7 = $row["TMethod"];
-$item8 = $row["InvNoA"];
-$item9 = $row["InvNoAincl"];
-$item10 = $row["Priority"];*/
-print "$item1";
+$PayNotes = $row["PayNotes"];
+$CommonSDR = $row["CommonSDR"];
+
+print "CustNo: $item1";
 print " ".$item2;
 print " <b><Font size = 4>".$item3;
 print "</font></b> ".$item4." ".$Important;
 echo "..{$row['dotdot']}";
-/*print "_".$item5;
-print "_".$item6;
-print "_".$item7;
-print "_".$item8;
-print "_".$item9;
-print "_".$item10;*/
 }
 $result->free();
 };
@@ -305,106 +386,74 @@ $result->free();
 <input type="hidden" id="CustLN"  name="CustLN" value="<?php echo $item3;?>">
 <input type="hidden" id="CustEmail"  name="CustEmail" value="<?php echo $item4;?>">
 <?php
-/*if ($result = $DBConnect->query($SQLstring)) {
-    while ($row = $result->fetch_row()) {
-      //  printf ("%s (%s)\n", $row[0], $row[1]);
 
 
-echo "{$row[0]}&nbsp;&nbsp;";
-echo "<font size = '3'><b>";
-echo "{$row[1]}&nbsp;&nbsp;";
-echo "{$row[2]}&nbsp;&nbsp;</font></b>";
-echo "{$row[3]}&nbsp;&nbsp;";
-echo "{$row[4]}&nbsp;&nbsp;";
-echo "{$row[5]}&nbsp;&nbsp;";
-echo "{$row[6]}&nbsp;&nbsp;";
-echo "{$row[7]}&nbsp;&nbsp;";
-echo "{$row[8]}&nbsp;&nbsp;";
-echo "{$row[9]}&nbsp;&nbsp;";
-
-		}
-    $result->close();
-}*/
-
-
-?>
-
-
-
-
-<?php	
-
-	//require_once ('inc_OnlineStoreDB.php');
-
-$daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
-
-
-$result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
-$daNextNo = 1; //forces a 1 if table is completely empty.
-while($row = mysqli_fetch_array($result)){
-//	echo "The max no TransNo in customer table is:  ". $row[0] . "&nbsp;";
-$daNextNo = intval($row[0])+1;
-}
-
-?>
-
-
-<!--<form name="AddTrans" action="addTransprocess.php" method="post" target="_blank">
-
-<!--<select name="mydropdownDC" onclick="hi">
-
-<!--<option value="_no_selection_">Select Customer</option>";-->
-<?php
-
-// If submitted, check the value of "select". If its not blank value, get the value and put it into $select.
-/*if(isset($select)&&$select!="")
-{
-$select = $_GET['select'];
-}*/
-?>
-
-<!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addTransprocess.php"  method="post" >-->
-
-<?php
-echo "Add new transactions:<br>";
-?>
-
-
-
-<?php
-
-
-$queryCP = "select * from aproof where CustNo = $CustInt";
+$queryCP = "select * from aproof where CustNo = $CustInt order by ProofDate desc";
 echo $queryCP;
 if ($resultCP1 = mysqli_query($DBConnect, $queryCP)) {
-
-    // determine number of rows result set 
     $row_cnt = mysqli_num_rows($resultCP1);
-	
-
     printf("proof has %d rows.\n", $row_cnt);
-
-    
     mysqli_free_result($resultCP1);
 }
 
+?><br>
+
+<form   method='post' action = "addProof.php?='<?php echo $TransDate; ?>'">
+<input type='submit' value='(or first add a Proof)' style="height:20px; width:160px">
+<?php echo "<font size = '1'>CommonSDR: $CommonSDR </font>"; ?>
+
+<input type="hidden" id="CustNo" size='5' name="CustNo"  value="<?php echo $CustInt;?>">
+</form>
+<?php
+
+echo "Unassigned proofs:<br>";
+$item2b = '';
+
+$queryUP = "select * from aproof where CustNo = $CustInt and TransNO = '' order by ProofDate desc";
+echo $queryUP;
+if ($resultUP = mysqli_query($DBConnect, $queryUP)) {
+echo "<table width='10' border='1'>\n";
+echo "<tr><th>ProofNo</th>";
+echo "<th>Amt</th>";
+echo "<th>InvNoA</th>";
+echo "<th>InvNoB</th>";
+echo "<th>ProofDate</th>";
+echo "<th>TransNo</th>";
+echo "</tr>\n";
+
+while ($rowUP = mysqli_fetch_assoc($resultUP)) {
+echo "<tr>";
+echo "<th>".$rowUP["ProofNo"]."</th>";//CustNo is case senSitiVe
+echo "<th>".$rowUP["Amt"]."</th>";//CustFN is case senSitiVe
+echo "<th>".$rowUP["InvNoA"]."</th>";//CustLN is case senSitiVe
+echo "<th>".$rowUP["InvNoB"]."</th>";//CustLN is case senSitiVe
+echo "<th>".$rowUP["ProofDate"]."</th>";//CustLN is case senSitiVe
+echo "<th>".$rowUP["TransNo"]."</th>";//CustLN is case senSitiVe
+echo "</tr>\n";
+$item2b =  $rowUP["InvNoA"];
+
+}
+mysqli_free_result($resultUP);
+}
+echo "</table>";
+
+
+
+
+
+
+
+
+
 if ($row_cnt > 0)
 {
-
-	echo "<form   method='post'   action='addTransProof.php'  >";
-echo "<br><br><br><br><b>Proof No.";
-echo "<select name='ProofToPay' id='ProofToPay' onchange='this.form.submit()'>";
-
+echo "<form   method='post'   action='addTransProof.php'  >";
+echo "<br><b>Proof No.";
+echo "<select onclick='enable1()' name='ProofToPay' id='ProofToPay' onchange='this.form.submit()'>";
 echo "Before entering anything first select the proof if there is one.<br>";
-
 echo "<option value='Select a Proof'>Select a Proof</option>"; 	
-
 if ($resultCP = mysqli_query($DBConnect, $queryCP)) {
   while ($row2 = mysqli_fetch_assoc($resultCP)) {
- 
 $ProofNo = $row2["ProofNo"];
 $Amt =  $row2["Amt"];
 $item2b =  $row2["InvNoA"];
@@ -413,13 +462,10 @@ $item4b = $row2["ProofDate"];
 $TransNo1 = $row2["TransNo"];
 //$SM = $row2["Summary"];
 $queryII = "select * from invoice where InvNo = $item2b";
-
-
 echo "<option value='";
 echo $ProofNo;
 echo "'>";
 echo $ProofNo;
-
 
 //to determine whether the proof has been paid we got to look at the aproof table
 //which has a TransNo column.
@@ -474,87 +520,140 @@ print " </option>";
 $resultCP->free();
 }
 
-echo "</select><br>";
-echo "<input type='submit' value='Select Proof'   style='width:300px;height:30px' /> ";
+echo "</select><br><br>";
+echo "<input type='submit' value='Select Proof' id='btn1' disabled='true'   style='width:300px;height:30px' /> ";
 
 echo " <br>(in addTransprocessLast2 it will say update aproof set TransNo = '1015' where ProofNo = 'ProofNo34' )<br><a href = 'http://localhost/phpMyAdmin-3.5.2-english/sql.php?db=kc&goto=db_structure.php&table=aproof&pos=0' target= '_blank'>phpMyadmin</a> &nbsp; &nbsp; &nbsp;
-<a href = 'http://localhost/ACS/view_inv_by_custADV.php' target= '_blank'>view_inv_by_custADV.php</a><br>
+<a href = 'view_inv_by_custADV.php' target= '_blank'>view_inv_by_custADV.php</a><br>
+<a href = 'editProof.php' target= '_blank'>Click here to assign a proof to another paid invoice</a><br>
 
+<b>";
+if ($CommonSDR == '')
+echo "<a href= editCust.php><b>CommonSDR is blank! editCust</a></b>";
 
-<br><br><b><br><br><br><br><br><br>";
+echo "<br><br>";
 
 }
 else "no new proof of payments received";
-
-
-
 echo "</form>";
 
 
 
+include "view_inv_by_custADV3.php"; //gives only totals
+
+$indesc = 0;
+$ShowDraft = "N";
+include "view_Underpaid_inv_by_cust2b.php"; //2b is the one with checkboxes
+echo "<b>WARNING! CHECK FOR SIMILARITIES: 88p04 above and 8804 below is the same invoice:</b>";
+include "view_Unpaid_inv_by_cust2bATb.php"; //2b is the one with checkboxes
+
+echo "<br>";
+echo "<br><font size = '3' > <b><a href='addProofMultipleProofs.php?CustNo=$CustInt'>add multiple Proofs</a></font></b><br>";
+
+//include "calculator/indexKL.php"; // works here
+echo "UPIS:".$UnpaidInvsummm;
+
+if ($UnpaidInvsummm < 4)
+echo "<br><font size = '6' > <b>No unpaid invoices. <br><font size = '4' > <a href = 'addInvCsess.php'>Click here to create new invoice</a></b><br><br>
+<a href = 'addInvCsessDadsl.php'>Click here to create new ADSL invoice</a></b><br>
+<br><br></font><br><br>";
+else
+echo "<br><font size = '3' > <b> <br><a href = 'addInvCsess.php'>Click here to create new invoice</a></b><br><br>
+<a href = 'addInvCsessDadsl.php'>Click here to create new ADSL invoice</a></b><br>
+<br><br></font><br><br>";
+	
+//	include "calculator/indexKL.php"; //not working here
+//include "calculator/index.php"; //not working here
+	
+$daNextNo = 1; //default when table is empty.
+$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
+$result = mysqli_query($DBConnect, $query);// or die(mysql_error());
+while($row = mysqli_fetch_array($result))
+{
+//	echo "The max no TransNo in customer table is:  ". $row[0] . "&nbsp;";
+$daNextNo = intval($row[0])+1;
+}
 
 
+include "view_transLatestC.php"; //
 
+echo "Add new transactions:<br>";
+include "calculator/indexKL.php"; // works here
+
+
+//include "calculator/indexKL.php"; // may not be placed inside another form calculation screwd up
 ?>
-
-<form  action="addTransMulti.php"   method="post">
-<!--<form onsubmit='return formValidator()'  action="addTransprocessLast2.php"   method="post">-->
-
+<form  action="addTMchk.php"   method="post">
+<br>
+<?php //include "calculator/indexKL.php"; ?>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>Only if invoices do not show above, scroll down here:
+<br>
+<br>
 <br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+<br>
+
 here we can select multiple invoices for the transaction using jQuery:
-<br>First select related invoices:
-
-<table>
+<br>First select related invoices:<br>
+Payment Notes: <input type="text" id="PayNotes" size = '30' name="PayNotes" value="<?php echo $PayNotes;?>" > <br>
 <?php
-
+include "viewExpCust2.php";
+echo "<table>";
 echo "<tr><th>TransNo</th>";
-//echo "<th>CustNo</th>";
-echo "<th>TransDate";
-//echo date("d/m/Y");
+echo "<th>TransDate<br>Hover and wait";
 echo "</th>";
 echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CustSDR&nbsp;&nbsp;</th>";
 echo "<th>AmtPaid</th>";
 echo "<th>Payment Method</th>";
-echo "</tr>\n";
+echo "</tr>\n<tr>";
 ?>
-		<tr>
-			<!--<th><label>* Transaction AutoNumber: (!! Different for internet transactions!)</label>
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<th><input type="text" size="2"  id="TransNo"  name="TransNo" value="<?php echo $daNextNo;?>" />
-		</th>
-
-<input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
-
-
-
+<th><input type="text" size="2"  id="TransNo"  name="TransNo" value="<?php echo $daNextNo;?>" />
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
 		$NewFormat = date("d/m/Y");
 		?>
-			<!--<label>TransDate:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
-			<!--<label>TransDate:</label></dt>-->
-			<!--<input type="text" size="10" id="TransDate"  name="TransDate" value="<?php //echo $TransDate; ?>" /> -->
 			<?php include("yesterday.php"); ?>
-			<input id='lst' id="TransDate" size="10" name="TransDate"  >
+			<input id="TransDate" size="10" name="TransDate" value = "<?php echo $TransDate; ?>" >
 		</th>
 
 		<th>
-			<!--<label>&nbsp; CustSDR:</label></dt>-->
-			<input type="text"  size="19" id="CustSDR"  name="CustSDR" size = '20' value="" />
-			<!--<textarea id="CustSDR"  name="CustSDR" ></textarea>-->
-			
-			
+			CustSDR<input type="text"  size="19" id="CustSDR"  name="CustSDR" size = '20' value="<?php echo $CommonSDR; ?>" />
+
 		</th>
 
 		<th>
-			<!--<label>&nbsp; AmtPaid:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="5" id="AmtPaid"  name="AmtPaid" value="<?php echo $AmtPaid; ?>"   class='clAmt'/>
 		</th>
-	
-	
 		<th>
+
+		<!-- drop down requires a name and not an id: The reason it's not sending through is becasue i did not select anyhting here,
+i only chose the existing proof from the other dropdown which autosubmitted-->
 			<select name="TMethod"  id="TMethod"  >
                 <option value="Please Choose">Please Choose</option><!-- the javascript function requires phrase Please Choose -->
 				<!--VERY IMPORTANT THAT value must equal to please choose as well!!!-->
@@ -568,143 +667,60 @@ echo "</tr>\n";
                 <option value="Mixed">Mixed</option>	
                 <option value="-">-</option>	
 </select>
-			
 		</th>
-		</tr>
-		</table>
+		<th>
+		<select name="AP"  id="AP"  >
+ <!-- the javascript function requires phrase Please Choose -->
+		<!--VERY IMPORTANT THAT value must equal to please choose as well!!!-->
+
+                <option value="DoNotAddAProof">DoNotAddAProof</option>
+                <option value="AddAProof">AddAProof</option>
+				<option value="AddAProofSAMEDATE">AddAProofSAMEDATE</option>
+</select>
+		</th>
+		
+		</tr></table>
 		<table>
 		<tr>
-
-		
-				
 		<?php
 		echo "<th>Invoices details incl VAT &nbsp;&nbsp;eg 7313, 209, Jun2014adsl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-		//echo "<th>HOVER and wait InvB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 		
 	?>	
-		</tr>
-		</tr>
-		</table>
-		<!--<tr>
-		<th>-->
-			<!--<label>&nbsp; InvNoA:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+		</tr></tr>	</table>
+
 <?php include 'invJQuery2.php' ?>
 			<input type="text"  size="3" id="InvNoA"  name="InvNoA" class='clInvNoA' />(click and wait)<br>
-	<!--	</th>
-	<tr></tr>
-		<th>
-			<!--<label>&nbsp; InvNoB:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoB"  name="InvNoB"  class='clInvNoA'/>(click and wait)
-<!--		</th>
-	<tr></tr>
-		<th>
-			<!--<label>&nbsp; InvNoC:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" id="InvNoC"    size="1" name="InvNoC"  class='clInvNoA' />(click and wait)<br>
-<!--		</th>
-	
-	<tr></tr>
-		<th>
-			<!--<label>&nbsp; InvNoD:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="1"  id="InvNoD"  name="InvNoD"  class='clInvNoA' />click and wait)
-<!--		</th>
-	
-	<tr></tr>
-		<th>
-			<!--<label>&nbsp; InvNoE:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" id="InvNoE"   size="1" name="InvNoE"  class='clInvNoA' />
-<!--		</th>
-		
-		
-		<tr></tr>
-		
-		
-		<th>
-			<!--<label>&nbsp; InvNoF:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="1"  id="InvNoF"  name="InvNoF"  class='clInvNoA' />
-<!--		</th>
-	<tr></tr>
-	
-		<th>
-			<!--<label>&nbsp; InvNoG:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoG"  name="InvNoG"  class='clInvNoA' />
-<!--		</th>
-	
-	<tr></tr>
-		<th>
-			<!--<label>&nbsp; InvNoH:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="1"  id="InvNoH"  name="InvNoH"  class='clInvNoA' />
-<!--	</th>
+			<input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $item1;?>">
 
-	<tr></tr>
-	
-<!--		<th>
-			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
-                <option value=".">.</option>
-                <option value="Low">Low</option>
-                <option value="High">High</option>
-			</select>
-			
-</th>-->
-<!--		</tr>
-		</table>
-
-
-
-
-
-<!--<input type="submit" name="btn_submit" value="Select the proof" style="width:300px;height:30px" /> -->
-<!--	<br><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br>
-<br><br><br><br><br><br><br><br><br><br><br>
--->
-
-<!--<input type="submit" value="Create transaction" onclick="return confirm('Are you sure about the date?');" /> -->
 <input type='submit' value="Create transaction"   style="width:300px;height:30px" /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
-
 <input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
-
-
-
 
 </form>
 
-
 <?php
-include "view_transLatest.php";
+include "view_trans_by_custUNDERorOVERPAID.php";
+
+$ShowDraft = "Y";
+include "view_Unpaid_inv_by_cust2.php";
+echo "<br><br>";
+$indesc = '0';
+//include "view_transLatest.php";
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
 
-
-
-
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
-
 echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 include ("view_event_by_cust.php");
-
-
-
-/*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
-echo "<SCRIPT>
-alert('$message');
-</SCRIPT>";
-
-*/
 ?> 
-
-
-
 </body>
 </html>

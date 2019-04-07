@@ -13,7 +13,7 @@
 // $type: nofilter, alpha, numeric, alnum, email, url, ip
 // $len: maximum length
 // $chars: array of any non alpha-numeric characters to allow
-function validate($input, $type, $len = null, $chars = null) {
+/*function validate($input, $type, $len = null, $chars = null) {
     $tmp = str_replace(' ', '', $input);
     if(!empty($tmp)) {
         if(isset($len)) {
@@ -72,11 +72,11 @@ function validate($input, $type, $len = null, $chars = null) {
         return FALSE;
     }
 }
-
+*/
 // example use:
-$phone = isset($_POST['phone']) && validate($_POST['phone'], 'numeric', 20, array('(',')','-')) ? $_POST['phone'] : null;
-$email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
-$msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
+//$phone = isset($_POST['phone']) && validate($_POST['phone'], 'numeric', 20, array('(',')','-')) ? $_POST['phone'] : null;
+//$email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
+//$msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
 
 
 ?>
@@ -159,38 +159,73 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 <body>
 <?php	$page_title = "View a Customer";
 	require_once('header.php');	
-?>
+	@session_start();
+	$CustNo = "";
+	if (isset($_SESSION['CustNo']))
+		{
+	echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
+	$CustNo = $_SESSION['CustNo'];
+		}
+	if ($CustNo == '')
+		$CustNo = 1;
+//$Prof = @$_POST['Prof'];
+
+	?>
 
 
-<form name="Addcust" action="add_CustProcess.php" onsubmit="return validateForm()" method="post">
+<!--<form name="Addcust" action="add_CustProcess.php" onsubmit="return validateForm()" method="post">
 		<div>
+</form>
+-->
+
 <h1> QuickEdit TransactionC</h1>
 
 <a href = "edit_transCQ.php">QuickEdit TransactionC of selected customer</a></br></br></br>
+<a href = "edit_proofsCQ.php">QuickEdit proofsC of selected customer</a></br></br></br>
+<a href = "view_proof_all.php">QuickEdit proofs of ALL customers</a></br></br></br>
 
 
 <h1> Edit Transaction</h1>
 <a href = "edit_trans.php">Edit Any Transaction </a></br></br></br>
 
-<h1> View Transaction of Selected Customer</h1>
-<a href="./view_trans_cust.php">Customer Transactions</a></br></br></br>
-<a href="./view_trans_custALL.php">Customer All Transactions and all Invoices</a></br></br></br>
+<h1> View Transactions of Selected Customer</h1>
+
+<a href="./view_trans_cust.php">Customer Transactions?CustNo=<?php echo $CustNo; ?><br>to check if they are overpaid or underpaid
+
+<a href="./view_trans_cust.php">Customer Transactions<br>
+<a href="./view_trans_cust2.php">Customer Transactions2</a></br><a href="./viewProofCust.php">Customer's Proofs</a></br>
+<a href="./viewProof.php">All Customers Proofs</a></br>
+
+<form name="Pro" action="addProof.php" method="post">
+
+<input type='hidden' size = 4  name='CustNo'  id='CustNo' value = '<?php echo $CustNo; ?>'>
+<input type="submit" name="btn_submit" value="Add Proof of Payment" style="width:200px;height:20px" /> 
+</form>
+
+
+
+</br></br>
+<a href="./view_trans_custALL.php"><b>Customer's Transactions and Invoices (STATEMENT)></b></a></br></br></br>
 
 
 <h1> View All Transactions of ALL Customers</h1>
 <a href="./view_trans.php">View All Transactions</a></br></br></br>
 
-<h1> Edit All Transactions</h1>
+<a href="./view_trans.php">View All Transactions </a></br></br></br>
+
+<h1> Edit All Transactions of ALL Customers</h1>
 <a href="./view_trans_all.php">Edit All Transactions</a></br></br></br>
+
+<h2> Edit All UNASSIGNED Transactions ALL Customers</h2>
+<a href="./view_trans_allNoInvNoA.php">Edit All UNASSIGNED Transactions Missing InvNoA</a></br></br></br>
 
 
 		<dl>
 			<dt></dt>
 			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> 
+			<!--<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> -->
 			
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
-			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
 
 	</div>

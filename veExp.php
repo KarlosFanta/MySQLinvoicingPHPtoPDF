@@ -29,7 +29,7 @@
 
 
 <h1> Edit Expenses</h1>
-<a href = "editExp.php"></a>Edit Any Expenses </br></br>
+<a href = "editExpA.php">Edit Any Expenses</a> </br></br>
 <!--<a href = 'selectCustAssignStk.php'>Assign Stock to any Customer</a></br>-->
 <a href = 'selectCustAssignStkInv.php'>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
 assignStkInv</br></br>
@@ -43,8 +43,8 @@ assignStkInv</br></br>
 
 
 
-<h1> Check Expenses of a supplier</h1>
-<a href = "editExp2.php">Edit Any Expenses of certain supplier </a></br></br></br>
+<h1> View and Edit Expenses of a supplier or category</h1>
+<a href = "editExp2.php">View and Edit Any Expenses of certain supplier </a></br></br></br>
 
 
 
