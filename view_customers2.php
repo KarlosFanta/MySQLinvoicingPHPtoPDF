@@ -18,13 +18,84 @@
     <meta charset="utf-8">
     <title>Customers</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-  </head> 
+	
+<style type="text/css">
+    body{
+        font-family: Arail, sans-serif;
+    }
+    /* Formatting search box */
+    .search-box{
+        width: 300px;
+        position: relative;
+        display: inline-block;
+        font-size: 14px;
+    }
+    .search-box input[type="text"]{
+        height: 32px;
+        padding: 5px 10px;
+        border: 1px solid #CCCCCC;
+        font-size: 14px;
+    }
+    .result{
+        position: absolute;        
+        z-index: 999;
+        top: 100%;
+        left: 0;
+    }
+    .search-box input[type="text"], .result{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* Formatting result items */
+    .result p{
+        margin: 0;
+        padding: 7px 10px;
+        border: 1px solid #CCCCCC;
+        border-top: none;
+        cursor: pointer;
+    }
+    .result p:hover{
+        background: #f2f2f2;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.search-box input[type="text"]').on("keyup input", function(){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        var resultDropdown = $(this).siblings(".result");
+        if(inputVal.length){
+            $.get("backend-search.php", {term: inputVal}).done(function(data){
+                // Display the returned data in browser
+                resultDropdown.html(data);
+            });
+        } else{
+            resultDropdown.empty();
+        }
+    });
+    
+    // Set search input value on click of result item
+    $(document).on("click", ".result p", function(){
+        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        $(this).parent(".result").empty();
+    });
+});
+</script>
+</head>
+<body>
+    <div class="search-box">
+        <input type="text" autocomplete="off" placeholder="Search Customer First Name..."  autofocus />
+        <div class="result"></div>
+    </div>
+	
+	
 <?php //require_once "header.php"; ?>
 <b><font size = "4" type="arial">View Customers</b></font>
-</br>
+</br><br><br><br><br><br>
 <?php
 ?>
-<b><font size = "4" type="arial">Select A Customer into the session</b></font><font color = dark yellow> view_customers2.php</font>
+<b><font size = "4" type="arial" color = "grey">Select A Customer into the session</b></font><font color = dark yellow> view_customers2.php</font>
 
 </br>
 </br>
@@ -115,7 +186,11 @@ if ($result=mysqli_query($DBConnect,$query))
 	echo "checked";
    if ($TableName == 'CustDetails')
 	echo "checked";
+   if ($TableName == 'CustDetailsTXT')
+	echo "checked";
    if ($TableName == 'Important')
+	echo "checked";
+   if ($TableName == 'Extra')
 	echo "checked";
  
 	
