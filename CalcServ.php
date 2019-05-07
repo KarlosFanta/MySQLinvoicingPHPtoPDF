@@ -18,26 +18,26 @@ elseif ($_REQUEST["manipulator"] == "divide")
 */
 
     $X1 = $_REQUEST["ex1"] * $_REQUEST["Q1"];
-	$X1i = $X1*1.14;
-	$X2 = $_REQUEST["ex2"] * $_REQUEST["Q2"];
-	$X2i = $X2*1.14;
-	$X3 = $_REQUEST["ex3"] * $_REQUEST["Q3"];
-	$X3i = $X3*1.14;
-	$X4 = $_REQUEST["ex4"] * $_REQUEST["Q4"];
-	$X4i = $X4*1.14;
-	$X5 = $_REQUEST["ex5"] * $_REQUEST["Q5"];
-	$X5i = $X5*1.14;
-	$X6 = $_REQUEST["ex6"] * $_REQUEST["Q6"];
-	$X6i = $X6*1.14;
-	$X7 = $_REQUEST["ex7"] * $_REQUEST["Q7"];
-	$X7i = $X7*1.14;
-	$X8 = $_REQUEST["ex8"] * $_REQUEST["Q8"];
-	$X8i = $X8*1.14;
+	$X1i = $X1*1.15;
+	@$X2 = $_REQUEST["ex2"] * $_REQUEST["Q2"]; // A non-numeric value encountered
+	$X2i = $X2*1.15;
+	@$X3 = $_REQUEST["ex3"] * $_REQUEST["Q3"]; // A non-numeric value encountered
+	$X3i = $X3*1.15;
+	@$X4 = $_REQUEST["ex4"] * $_REQUEST["Q4"]; // A non-numeric value encountered
+	$X4i = $X4*1.15;
+	@$X5 = $_REQUEST["ex5"] * $_REQUEST["Q5"];
+	$X5i = $X5*1.15;
+	@$X6 = $_REQUEST["ex6"] * $_REQUEST["Q6"];
+	$X6i = $X6*1.15;
+	@$X7 = $_REQUEST["ex7"] * $_REQUEST["Q7"];
+	$X7i = $X7*1.15;
+	@$X8 = $_REQUEST["ex8"] * $_REQUEST["Q8"];
+	$X8i = $X8*1.15;
 	
     
 	$Tx = $X1 + $X2 + $X3 + $X4 + $X5 +  $X6 +  $X7 +  $X8 ;
-	$Ti = $Tx * 1.14;
-	$Ti14 = $Tx * 0.14;
+	$Ti = $Tx * 1.15;
+	$Ti14 = $Tx * 0.15;
 	
 	// $eq = " = ";
   
@@ -57,15 +57,15 @@ echo "</tr>";
 echo "<tr>";
 echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>";
 
-echo "<td>Plus 14% VAT</td>";
+echo "<td>Plus 15% VAT</td>";
 echo "<td>R ".$Ti14." </td>";
 echo "</tr>";
 echo "<tr>";
 echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>";
 
 echo "<td>Invoice Total</td>";
-echo "<td> ".number_format($Ti+0.0008, 3)." or  <b>R".number_format($Ti+0.0008, 2)." incl VAT </b></td>";
-$TTTT = number_format($Ti+0.001, 2);
+echo "<td> ".number_format($Ti+0.0008, 3, '.', '')." or  <b>R".number_format($Ti+0.0008, 2, '.', '')." incl VAT </b></td>";
+$TTTT = number_format($Ti+0.001, 2, '.', '');
 
 echo "<input type = 'hidden' name = 'TTTT' value = $TTTT >";
 

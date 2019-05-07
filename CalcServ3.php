@@ -18,10 +18,10 @@ elseif ($_REQUEST["manipulator"] == "divide")
 */
 
     $X1 = $_REQUEST["ex1"] * $_REQUEST["Q1"];
-	//$X1i = $X1*1.14;
+	//$X1i = $X1*1.15;
     
 	$Tx = $X1;
-	$Ti = $Tx / 1.14;
+	$Ti = $Tx / 1.15;
 	//$Ti14 = $Tx / 0.14;
 	
 	// $eq = " = ";
@@ -34,8 +34,8 @@ elseif ($_REQUEST["manipulator"] == "divide")
 
 echo "";
 //echo "".number_format($Ti+0.0008, 3)." or  ";
-echo "<b>R ".number_format($Ti+0.0008, 2)." ex VAT </b>";
-$TTTT = number_format($Ti+0.001, 2);
+echo "<b>R ".number_format($Ti+0.0008, 2, '.', '')." ex VAT </b>";
+$TTTT = number_format($Ti+0.001, 2, '.', '');
 
 //echo "<input type = 'hidden' name = 'TTTT' value = $TTTT >";
 
