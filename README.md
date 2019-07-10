@@ -9,14 +9,15 @@ No framework except TCPDF to create PDF files and PHPmyEdit for userfriendly tab
 It comes with a handy installation manual.
 The date format is DD/MM/YYYY (and my currency) but you can easily change the code to suit your needs. 
 PHP MySQL with a touch of AJAX and Javascript. 
+Unfortunately settings and your currency need to be hardcoded.
 (Make sure your mySQLi and PDO extensions are enabled in your PHP.ini configuration file.)
 Unzip the zip file MySQLinvoicingPHPtoPDF-master into c:\wamp\www or C:\htdocs. or C:\xampp\htdocs
 This is a localhost project. To put it online you will need to add a security password protection layer.
-You will need some extra files from TCPDF to get the PDF creation to work fully. http://www.tcpdf.org/
+You will need some extra files from TCPDF to get the PDF creation to work fully: http://www.tcpdf.org/
 please check my full installation manual:
 https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF/blob/master/Installation.html
 
-P.S. Advantage of this project: it is networkable. (if you click "Online" on the Wampserver Control panel)
+P.S. Advantage of this project: it is networkable. (Wampserver Control panel has a virtual host option for this)
 You can also put it on the web (via CPanel or FTP) (for fun+AT OWN RISK), but preferably add password protection.
 Contributions/Comments are welcome!
 
