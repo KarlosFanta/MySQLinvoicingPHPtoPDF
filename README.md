@@ -23,3 +23,5 @@ Contributions/Comments are welcome!
 
 The DB stores date in American format: YYYY-MM-DD
              But my API displays it in DD/MM/YYYY (South African)
+
+Oh and I stumbled on a similar project which is more up to date than mine: https://www.invoiceplane.com
