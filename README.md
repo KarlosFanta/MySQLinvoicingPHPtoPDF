@@ -9,7 +9,7 @@ No framework except TCPDF to create PDF files and PHPmyEdit for userfriendly tab
 It comes with a handy installation manual.
 The date format is DD/MM/YYYY (and my currency) but you can easily change the code to suit your needs. 
 PHP MySQL with a touch of AJAX and Javascript. 
-Unfortunately settings and your currency need to be hardcoded.
+Unfortunately settings and your currency are hardcoded (but that means a lot less code).
 (Make sure your mySQLi and PDO extensions are enabled in your PHP.ini configuration file.)
 Unzip the zip file MySQLinvoicingPHPtoPDF-master into c:\wamp\www or C:\htdocs. or C:\xampp\htdocs
 This is a localhost project. To put it online you will need to add a security password protection layer.
