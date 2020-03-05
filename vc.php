@@ -1,182 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-
-
-
-
 
 <?php
-// validate user input
-// $input: variable to be validated
-// $type: nofilter, alpha, numeric, alnum, email, url, ip
-// $len: maximum length
-// $chars: array of any non alpha-numeric characters to allow
-function validate($input, $type, $len = null, $chars = null) {
-    $tmp = str_replace(' ', '', $input);
-    if(!empty($tmp)) {
-        if(isset($len)) {
-            if(strlen($input) > $len) {
-                return FALSE;
-            }
-        }
-        if(isset($chars)) {
-            $input = str_replace($chars, '', $input);
-        }
-        $input = str_replace(' ', '', $input);
 
-        switch($type) {
-            case 'alpha':
-                if(!ctype_alpha($input)) {
-                    return FALSE;
-                }
-            break;
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
-            case 'numeric':
-                if(!ctype_digit($input)) {
-                    return FALSE;
-                }
-            break;
-
-            case 'alnum':
-                if(!ctype_alnum($input)) {
-                    return FALSE;
-                }
-            break;
-
-            case 'email':
-                if(!filter_var($input, FILTER_VALIDATE_EMAIL)) {
-                    return FALSE;
-                }
-            break;
-
-            case 'url':
-                if(!filter_var($input, FILTER_VALIDATE_URL)) {
-                    return FALSE;
-                }
-            break;
-
-            case 'ip':
-                if(!filter_var($input, FILTER_VALIDATE_IP)) {
-                    return FALSE;
-                }
-            break;
-
-            case 'nofilter':
-                return TRUE;
-            break;
-        }
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-}
-
-// example use:
-$phone = isset($_POST['phone']) && validate($_POST['phone'], 'numeric', 20, array('(',')','-')) ? $_POST['phone'] : null;
-$email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
-$msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
-
+	$page_title = "Customer";
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+	require_once("header.php");
+			
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-function validateForm()
-{
-var x=document.forms["Addcust"]["CustFName"].value;
-var ln=document.forms["Addcust"]["CustLName"].value;
-var tl=document.forms["Addcust"]["CustTN"].value;
-var cl=document.forms["Addcust"]["CustCN"].value;
-var em=document.forms["Addcust"]["CustEm"].value;
-var pa=document.forms["Addcust"]["CustPA"].value;
-var di=document.forms["Addcust"]["CustDi"].value;
-
-
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-  
-  if (ln==null || ln=="")
-  {
-  alert("Surname must be filled out");
-  return false;
-  }
- 
-if ( tl == null ||  tl == "")
-  {
-  alert(" Telephone number must be filled out");
-  return false;
-  }
-if ( em == null || em == "")
-  {
-  alert("Email Address must be filled out");
-  return false;
-  }
-if ( pa == null || pa == "")
-  {
-  alert("Postal ADdress must be filled out");
-  return false;
-  }
-if ( di == null ||  == "")
-  {
-  alert(" must be filled out");
-  return false;
-  }
-
-  var atpos=em.indexOf("@");
-var dotpos=em.lastIndexOf(".");
-if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
-  {
-  alert("Not a valid e-mail address");
-  return false;
-  }
-
-  
-  
-  
-  
-  
-}*/
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Customers</title>
+    <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
+	
+<style type="text/css">
+    body{
+        font-family: Arail, sans-serif;
+    }
+    /* Formatting search box */
+    .search-box{
+        width: 300px;
+        position: relative;
+        display: inline-block;
+        font-size: 14px;
+    }
+    .search-box input[type="text"]{
+        height: 32px;
+        padding: 5px 10px;
+        border: 1px solid #CCCCCC;
+        font-size: 14px;
+    }
+    .result{
+        position: absolute;        
+        z-index: 999;
+        top: 100%;
+        left: 0;
+    }
+    .search-box input[type="text"], .result{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* Formatting result items */
+    .result p{
+        margin: 0;
+        padding: 7px 10px;
+        border: 1px solid #CCCCCC;
+        border-top: none;
+        cursor: pointer;
+    }
+    .result p:hover{
+        background: #f2f2f2;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.search-box input[type="text"]').on("keyup input", function(){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        var resultDropdown = $(this).siblings(".result");
+        if(inputVal.length){
+            $.get("backend-search.php", {term: inputVal}).done(function(data){
+                // Display the returned data in browser
+                resultDropdown.html(data);
+            });
+        } else{
+            resultDropdown.empty();
+        }
+    });
+    
+    // Set search input value on click of result item
+    $(document).on("click", ".result p", function(){
+        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        $(this).parent(".result").empty();
+    });
+});
 </script>
 </head>
-
 <body>
-<?php	$page_title = "View a Customer";
-	require_once('header.php');	
+&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; <div class="search-box">
+        <input type="text" autocomplete="off" placeholder="Search Customer First Name..."  autofocus />
+        <div class="result"></div>
+    </div>
+	
+	
+<?php //require_once "header.php"; ?>
+<b><font size = "4" type="arial">View Customers</b></font>
+</br><br><br><br><br><br>
+<?php
 ?>
+<!--<b><font size = "4" type="arial" color = "grey">Select A Customer into the session</b></font><font color = dark yellow> view_customers2.php</font>
+-->
+</br>
+</br>
 
 
-<form name="Addcust" action="add_CustProcess.php" onsubmit="return validateForm()" method="post">
-		<div>
-<h1>  </h1>
-
-<a href = "view_cust.php"></a></br></br></br>
 
 
-<h1> View All Customers</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4> View All Customers</h4>
 <a href = "view_customers2.php">View All Customers </a></br></br></br>
 
 
-<h1> Edit All Customers</h1>
+<h4> Edit All Customers</h4>
 <a href = "view_cust_all2.php">Edit All Customers </a></br></br></br>
 
-<h1> Edit All Customers one big page</h1>
+<h4> Edit All Customers one big page</h4>
 <a href = "view_cust_all3.php">Edit All Customers BIG PAGE </a></br></br></br>
 
 		<dl>
