@@ -775,7 +775,7 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value
 		<dl>
 			<dt></dt>
 			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
-			<dd><input type="submit" name="btn_submit" value="Submit/Save"  onsubmit='return formValidator()'
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onsubmit='return formValidator()'
 			onclick="return confirm('Is the Invoice number AND Date correct?')"/>
 	<!--		onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
 

@@ -295,7 +295,7 @@ $select = $_GET['select'];
 
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<form action="addTransprocess.php"  onsubmit='return formValidator()'  method="post" >
+<form action="addTransprocess.php" onsubmit='return formValidator()' method="post">
 <table width='100%' border='1'>
 		<tr>
 			<!--<th><label>* Transaction AutoNumber: (!! Different for internet transactions!)</label>

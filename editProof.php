@@ -5,8 +5,8 @@
 <title>Edit proof</title>
 <!--<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />-->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 <!--<script type='text/javascript'>-->
@@ -428,7 +428,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddProof" action="addProofprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addProofprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addProofprocess.php" method="post">-->
 <table border='0'>
 <?php
 $SQLstring = "SELECT * FROM aproof WHERE CustNo = $CustInt order by ProofDate desc";
@@ -538,7 +538,7 @@ $result->free();
 <!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
 <!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
 
 <!--

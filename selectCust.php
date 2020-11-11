@@ -24,7 +24,7 @@ $item3b='';
 <head>
 <title>Add a customer</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	       <script type="text/javascript">
                $(document).ready(function(){
                     $("#button").click(function(){

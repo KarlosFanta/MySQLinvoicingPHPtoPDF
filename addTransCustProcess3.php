@@ -320,7 +320,7 @@ $select = $_GET['select'];
 
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<form action="addTransprocess.php"  onsubmit='return formValidator()'  method="post" >
+<form action="addTransprocess.php" onsubmit='return formValidator()' method="post">
 <table width='10' border='1'>
 <?php
 echo "<br><tr><th>Trans No</th>";

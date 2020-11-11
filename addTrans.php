@@ -4,8 +4,8 @@
 <title>Add a transaction</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
 	<script  type="text/javascript">
 	function enable1() {
     document.getElementById("btn1").disabled=false;
@@ -684,7 +684,7 @@ i only chose the existing proof from the other dropdown which autosubmitted-->
 			<input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $item1;?>">
 
 <input type='submit' value="Create transaction"   style="width:300px;height:30px" />
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 
 </form>
 

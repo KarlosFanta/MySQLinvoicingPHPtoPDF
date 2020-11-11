@@ -5,8 +5,8 @@
 <title>Add proof</title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 <script type='text/javascript'>

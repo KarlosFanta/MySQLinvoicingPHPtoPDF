@@ -54,8 +54,8 @@ $newformat7 = date('d-m-Y',$time7);
 	<style type="text/css">
 $('.ui-autocomplete-input').css({fontSize: '7px', width: '200px'});
 </style>
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 	$('.ui-autocomplete-input').css({fontSize: '7px', width: '200px'});
 

@@ -5,8 +5,8 @@
 <title>Add a expense</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 
@@ -439,7 +439,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addTransprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addTransprocess.php" method="post">-->
 
 <?php
 echo "Add new expenses:<br>";
@@ -537,7 +537,7 @@ echo "</form>";
 	  <span id="resp"></span><!-- in here possibly AJAX invoice total CalcServ.php-->
 
 </form>
-<form name="AddExp"  onsubmit="return formValidator()"  action="addExpMulti.php"   method="post">
+<form name="AddExp" onsubmit="return formValidator()"  action="addExpMulti.php"   method="post">
 <!--<form onsubmit='return formValidator()'  action="addTransprocessLast2.php"   method="post">-->
 
 <br><br>
@@ -859,7 +859,7 @@ echo "</tr>\n";
 <!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
 <!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 
 
 

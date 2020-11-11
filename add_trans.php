@@ -275,7 +275,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addTransprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addTransprocess.php" method="post">-->
 <table width='10' border='0'>
 <?php
 echo "Add new transactions: &nbsp;&nbsp;&nbsp;&nbsp;<font color = red>Keep the LOGICAL order by Date when entering transactions!<br></font>";
@@ -342,7 +342,7 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" id="TMethod"  name="TMethod" value="." />-->
 
 
-			<select name="TMethod"  id="TMethod" >
+			<select name="TMethod" id="TMethod">
 
                 <option value="Please Choose">Please Choose</option><!--VERY IMPORTANT THAT value must equla to please choose as well!!!-->
                 <option value="EFT">EFT</option>
@@ -529,7 +529,7 @@ echo "<br>";
 <!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
 <!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  />
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
 
 <!--

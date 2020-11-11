@@ -26,7 +26,7 @@ $item1b='';
 <title>Job Cards</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    </head>
- <script src="jquery-1.10.1.min.js"></script>
+ <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	       <script type="text/javascript">
                $(document).ready(function(){
                     $("#button").click(function(){

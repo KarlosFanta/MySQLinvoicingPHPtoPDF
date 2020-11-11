@@ -10,51 +10,10 @@
 <title>EditCustProcess</title>
 <meta charset="UTF-8">
 
-<!--  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
-  <script src="jquery-1.10.2.min.js" ></script>
-<script type="text/javascript">
-/*    function init() {
-        label.button {
-    padding: 0.2em 0.4em;
-    -webkit-appearance: button;
-}
-
-#customize {
-    display: none;
-}
-
-#customize + #submit {
-    display: none;
-}
-
-#customize:checked + #submit {
-    display: inline-block;
-}
-    }
-    window.onload = init;
-	*/
-</script>
-	<script type="text/javascript">
-$('#clickMe').toggle(
-            function(){
-                $('#textBox').show();
-                $('#clickMe').text('hide');
-            },
-            function(){
-                $('#textBox').hide();
-                $('#clickMe').text('show');
-            });
-</script>-->
 </head>
 
 <body>
-<!--
-<input type="button" width = 6 width="48" height="48" id="clickMe" value = "show/hide">
 
-<div id="textBox" style="display: none">
-    <textarea>Thoggled</textarea></div>
-
--->
 <form name="Addcust" action="editCustProcess_lastCF.php" method="post">
 
 

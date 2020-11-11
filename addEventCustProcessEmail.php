@@ -272,7 +272,7 @@ $daNextNo = intval($row[0])+1;
 
 
 <!--<form name="Addevent" action="addEventprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form action="addEventprocess.php"  onsubmit='return formValidator()'  method="post" >-->
+<!--<form action="addEventprocess.php" onsubmit='return formValidator()' method="post">-->
 <table width='10' border='1'>
 <?php
 echo "<br>Add new event:<br>";
@@ -360,7 +360,7 @@ echo $CustLN;
 <?php //echo date('g.i a', time()) ?>
 <th>
 
-	<select name="Priority" >
+	<select name="Priority">
 
           <option value=".">.</option>
 		  <option value="Low">Low</option>
@@ -417,7 +417,7 @@ $result2->free();
 
 
 
-<select name="mydropdownEC" >
+<select name="mydropdownEC">
 
 <!--<option value="_no_selection_">Select Customer</option>";-->
 

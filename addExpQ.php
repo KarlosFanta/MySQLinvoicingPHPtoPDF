@@ -5,8 +5,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 
@@ -332,7 +332,7 @@ $category = '';$SupCode = '';
 
 ?>
 
-<form  action="addExpMulti.php"  onsubmit="return formValidator()"   method="post">
+<form  action="addExpMulti.php" onsubmit="return formValidator()"   method="post">
 ExpNo: <input type="text" size="6"  id="ExpNo"  name="ExpNo" value="<?php echo $daNextNo;?>" /><br>
 SDR: <input type="text" id="ItemA" size = 34 name="ItemA" value="<?php echo $arraySDR;?>">
 AmtPaid: <input type="text" id="AmtPaid" size = 7 name="AmtPaid" value="<?php echo $AA;?>">
@@ -459,7 +459,7 @@ mysqli_free_result($resultinner);
 </select>
 
 
-	<select name="mydropdownEC" >
+	<select name="mydropdownEC">
 <option value="_no_selection_">View Customersss</option>";
 <?php
 		$query = "select CustNo,  CustFN, CustLN from customer ORDER BY custLN";
@@ -481,7 +481,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 
 
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />  <button type="or Skip validation"   onsubmit='return formValidator()'  style="width:300px;height:30px"  formnovalidate>or: submit without validation</button>
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />  <button type="or Skip validation"   onsubmit='return formValidator()'  style="width:300px;height:30px"  formnovalidate>or: submit without validation</button>
 
 </form>
 

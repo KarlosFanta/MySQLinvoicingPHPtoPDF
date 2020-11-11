@@ -397,7 +397,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addTransprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addTransprocess.php" method="post">-->
 <table border='0'>
 <?php
 echo "Add new transactions:<br>";
@@ -640,7 +640,7 @@ echo "<th>Priority</th></tr>\n";
 <!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
 <!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
 
 <!--

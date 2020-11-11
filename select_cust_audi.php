@@ -10,7 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a customer</title>
-<script src="jquery-1.10.1.min.js">
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 </script>
 
 <script>

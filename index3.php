@@ -40,7 +40,7 @@ echo "<div id='userInfo'></div>";
 echo $query;
 ?>
 
-<script src="jquery-1.10.1.min.js" ></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function(){
         $("#mydropdownEC").change(function(){

@@ -75,7 +75,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddProof" action="addProofprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addProofprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addProofprocess.php" method="post">-->
 <table border='0'>
 <?php
 echo "Select stock to be assigned to selected customer:<br>";
@@ -461,7 +461,7 @@ include ("view_proof_all.php");
 	<!-- selecting too many files above can casue conflicts-->
 <!--	<link rel="stylesheet" href="/resources/demos/style.css">-->
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {

@@ -10,7 +10,7 @@
 <title>NoteboardAJAXmySQL.php Noteboard with MySQL</title>
 <!--<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" /> this one casues issues-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	       <script type="text/javascript">
 
 

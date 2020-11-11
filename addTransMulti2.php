@@ -14,7 +14,7 @@ function copyToClipboard(element) {
 
 </script>
 <!-- jquery required for copyToClipbrd -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 </head>
 
 <?php	//this is "process_Trans.php"
@@ -915,8 +915,8 @@ $RRR  = $Notes;  // this is for putting month details into EFT receipt.
 
 ?>
 
-<script src="jquery.js"></script>
-<script src="dist/jquery.zeroclipboard.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="ZeroClipboard.min.js"></script>
 <script>
   jQuery(document).ready(function($) {
     $("body")

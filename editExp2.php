@@ -45,7 +45,7 @@ if (mysql_num_rows($result) == 0) {
 
 <form name="EditTrans" action="editExp2process.php" method="post">
 loads editExp2process.php
-<select name="mydropdownEC" >
+<select name="mydropdownEC">
 
 <option value="_no_selection_">Select supplier</option>";
 

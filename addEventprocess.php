@@ -138,7 +138,7 @@ function emailValidator(elem, helperMsg){
 	$CNN = $CustInt;
 
 ?>
-<form name="addEventCustProcess2"  onsubmit="return formValidator()"  action="addEventprocess_last2b.php" method="post">
+<form name="addEventCustProcess2" onsubmit="return formValidator()"  action="addEventprocess_last2b.php" method="post">
 <?php
 $daNextNo = 1; //default when table is empty.
 $query = "SELECT  MAX(EventNo)  AS MAXNUM FROM events";
@@ -164,7 +164,7 @@ $daNextNo = intval($row[0])+1;
 ?>
 
 <!--<form name="Addevent" action="addEventprocess.php" onsubmit="return formValidator();" method="post">-->
-<form action="addEventprocess.php"  onsubmit='return formValidator()'  method="post" >
+<form action="addEventprocess.php" onsubmit='return formValidator()' method="post">
 <table width='10' border='1'>
 <?php
 echo "<br>Add new events:<br>";
@@ -227,7 +227,7 @@ echo $CustLN;
 </th>
 <th>
 	<!--<select name="Priority" value="<?php $oldpri = "High"; echo $oldpri; ?>" >-->
-	<select name="Priority" value="High" >
+	<select name="Priority" value="High">
         <option value="High">High</option>
         <option value="Low">Low</option>
         <option value="Med">Med</option>
@@ -281,7 +281,7 @@ $result2->free();
 
 
 
-<select name="mydropdownEC" >
+<select name="mydropdownEC">
 
 <!--<option value="_no_selection_">Select Customer</option>";-->
 
