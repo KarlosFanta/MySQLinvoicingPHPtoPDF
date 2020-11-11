@@ -11,29 +11,29 @@
     Change this to “1” in order to disable backspace in firefox.
 */
 	$page_title = "Select a customer";
-//	include('dalogin/index.php');
-//	include('dalogin/USerSession.php');
-	//include('dalogin/CheckLogin.php');
+//	include 'dalogin/index.php';
+//	include 'dalogin/USerSession.php';
+	//include 'dalogin/CheckLogin.php';
 
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-//include "calculator/index.php"; 
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+//include 'calculator/index.php';
 $item3b='';
 $item1b='';
-?>	
+?>
 <html>
 <head>
 <title>Job Cards</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    </head>
- <script src="jquery-1.10.1.min.js"></script>
+ <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	       <script type="text/javascript">
                $(document).ready(function(){
                     $("#button").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process72jobcards.php",
@@ -41,15 +41,15 @@ $item1b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
                    $("#button2").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process72jobcards.php",
@@ -57,15 +57,15 @@ $item1b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
                    $("#button3").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process72jobcards.php",
@@ -73,23 +73,21 @@ $item1b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
 
-
 				});
-				
+
 //now the stuff to make things fancy:
 //function changeTest ( form ) { form.echoText.value = form.origText.value; }
-function changeTest ( form ) { 
+function changeTest ( form ) {
 //document.getElementById("button").style.background='#055300';
 	document.getElementById("button").value="Save Note";
 	document.getElementById("button2").value="Save Note";
 	document.getElementById("button").disabled=false;
 	document.getElementById("button2").disabled=false;
-
 
 	window.onbeforeunload = function() {
     return "You have attempted to leave this page. "
@@ -105,13 +103,12 @@ function reply_click(clicked_id)
 	//document.getElementById("button").style.background='#00ff00';
 	//document.getElementById("button").disabled=false;
 	//document.getElementById("button").enabled=true;
-	document.getElementById('message').focus(); 
+	document.getElementById('message').focus();
 document.getElementById("button").disabled=true;
 document.getElementById("button2").disabled=true;
 
-
 	//document.getElementById("button").style.background='#F0FFFF';
-}	
+}
 	function disable()
 {
 //document.getElementById("message").focus();
@@ -122,9 +119,9 @@ document.getElementById("button2").disabled=true;
 //don;t forget body onload below:
        </script>
    </head>
- 
+
  <body onload="javascript:disable();">
-	
+
 
 <br><!--<br>
 <b><a href="viewDraftInv.php" >viewDraftInv.php</a>
@@ -137,7 +134,7 @@ document.getElementById("button2").disabled=true;
 else
 	$CustNo = 1;
 
-include "justCustDetails.php";
+include 'justCustDetails.php';
 	$queryS = "SELECT * FROM jobcards where CustNo = $CustNo ORDER BY id DESC LIMIT 1";
 echo 	$queryS;
 
@@ -145,11 +142,11 @@ echo 	$queryS;
 	  while ($row2 = mysqli_fetch_assoc($result2)) {
 			$item1b = $row2["message"];
 			$row_cnt = mysqli_num_rows($result2);
-			
+
 		}
 mysqli_free_result($result2);
 	}
-$rowsE = substr_count( $item1b, "\n" )+2; 	
+$rowsE = substr_count( $item1b, "\n" )+2;
 		//echo $rowsE ;
 	?>
 
@@ -162,12 +159,12 @@ $rowsE = substr_count( $item1b, "\n" )+2;
    </form>
   </body>
 </html>
-														 
-	<?php
-	
 
-	
-	
+	<?php
+
+
+
+
 	?>
-	&nbsp;&nbsp;&nbsp;	
-	
+	&nbsp;&nbsp;&nbsp;
+

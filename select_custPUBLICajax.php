@@ -1,29 +1,27 @@
 
 <?php
-	require_once("inc_OnlineStoreDB.php");
-
-
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>NoteboardAJAXmySQL.php Noteboard with MySQL</title>
 <!--<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" /> this one casues issues-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-<script src="jquery-1.10.1.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	       <script type="text/javascript">
-		   
- 		   
-		   
-		   
+
+
+
+
                $(document).ready(function(){
                     $("#button").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -31,16 +29,16 @@
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
 					//button2:
                    $("#button2").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -48,22 +46,19 @@
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
-					
-					
+
                });
 //function changeTest ( form ) { form.echoText.value = form.origText.value; }
-function changeTest ( form ) { 
+function changeTest ( form ) {
 //document.getElementById("button").style.background='#055300';
 	document.getElementById("button").value="Save Note";
 	document.getElementById("button2").value="Save Note";
 	document.getElementById("button").disabled=false;
 	document.getElementById("button2").disabled=false;
-
-
 
 	window.onbeforeunload = function() {
     return "You have attempted to leave this page. "
@@ -99,12 +94,12 @@ function reply_click(clicked_id)
 	//document.getElementById("button").style.background='#00ff00';
 	//document.getElementById("button").disabled=false;
 	//document.getElementById("button").enabled=true;
-	document.getElementById('message').focus(); 
+	document.getElementById('message').focus();
 document.getElementById("button").disabled=true;
 document.getElementById("button2").disabled=true;
 
 	//document.getElementById("button").style.background='#F0FFFF';
-}	
+}
 
 	function disable()
 {
@@ -115,10 +110,10 @@ document.getElementById("message").focus();
 document.getElementById("button").disabled=true;
 document.getElementById("button2").disabled=true;
 }
-//don;t forget body onload below:			   
+//don;t forget body onload below:
        </script>
    </head>
- 
+
  <body onload="javascript:disable();">
 <?php
 	$queryS = "SELECT * FROM comment ORDER BY id DESC LIMIT 1";

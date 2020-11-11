@@ -1,17 +1,16 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	//require_once('db.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+	//require_once 'db.php';
+require_once 'inc_OnlineStoreDB.php';
 
-?> 
-<?php //require_once "header.php"; ?>
+?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">View Invoices</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view_inv.php
 </br>
 
@@ -44,22 +43,18 @@ echo "<th>D2</th>";
 echo "<th>InvPdStatus</th>";
 echo "</tr>\n";
 
-
-    // fetch object array 
+    // fetch object array
 	  while ($row = mysqli_fetch_assoc($result)) {
     //////////while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
-
 
 	  ////$x = $row[0];
 	  $x = $row["InvNo"];
 //	  echo "<th>".$row["CustNo"]."</th>";
 //echo "<th>".$row["CustFN"]."</th>";
 
-
-
 	  echo "<tr><th>";
-	  
+
 	  if ($x >= 4400 && $x <= 4469)
 	  echo "<FONT color = 'red'>".$x." JAN2012";
 	  else if ($x >= 4500 && $x <= 4569)
@@ -110,11 +105,6 @@ echo "</tr>\n";
 	  echo "<FONT color = 'red'>".$x. " DEC2013 ";
 	  else echo $x;
 
-
-
-
-
-
 	  echo "</th></FONT>";
 echo "<th>".$row['CustNo'];
 $CN = $row["CustNo"];
@@ -138,11 +128,9 @@ echo "</tr>\n";
 		}
     //
     $result->close();
-	
+
 }
 echo "</table>";
-
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -235,7 +223,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 </table>
 
@@ -284,5 +272,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

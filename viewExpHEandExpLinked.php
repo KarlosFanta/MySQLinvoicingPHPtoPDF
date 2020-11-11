@@ -1,13 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>View Expenses H & Exp</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <?php
-	require_once("inc_OnlineStoreDB.php");
-			
+require_once 'inc_OnlineStoreDB.php';
+
 ?>
 <b><br><font size = "4" type="arial">View Expenses, E, H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExpLinked.php
 </br>
@@ -38,9 +38,9 @@ print_r($ttt);
 //$SQLstring = "select * from transaction  where TransDate > '2013-01-24' ";
 //$SQLstring = "select * from transaction  where TransDate = '2013-01-01' ";
 //$SQLstring = "SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC ";
-//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;  
+//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;
 //echo "____".WEEKOFYEAR(date);
-//echo "______".WEEKOFYEAR(NOW())-1; 
+//echo "______".WEEKOFYEAR(NOW())-1;
 //$date = date('Y-m-d',time()-(88*86400)); // 88 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
@@ -48,33 +48,30 @@ print_r($ttt);
 //$SQLstring = "select * from transaction  where TransDate WHERE date <='$date'";
 $SQLstring = "select * from expenses  order by ExpNo  desc";
 
-
 $SQLstring = "SELECT a.ExpNo, a.Category, a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo , a.InvNo
   FROM expenses a
 UNION ALL
 SELECT b.ExpNo, b.Category, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate, b.ProdCostExVAT, b.Notes, b.CustNo , b.Category
   FROM expensesH b      order by ExpNo desc";
 
-
   $SQLstring = "SELECT a.ExpNo, a.Category, a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo , a.InvNo, 'expenses' as Source
   FROM expenses a
 UNION ALL
 SELECT b.ExpNo, b.Category, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate, b.ProdCostExVAT, b.Notes, b.CustNo , b.Category, 'expensesH' as Source
-  FROM expensesH b     
+  FROM expensesH b
 UNION ALL
 SELECT c.ExpNo, c.Category, c.ExpDesc, c.SerialNo, c.SupCode, c.PurchDate, c.ProdCostExVAT, c.Notes, c.CustNo , c.Category, 'expensesE' as Source
   FROM expensesE c      order by ExpNo desc";
 
-  
   $SQLstring = "SELECT a.ExpNo,  a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo , a.Category,a.InvNo, 'expenses' as Source
   FROM expenses a
 UNION ALL
 SELECT b.ExpNo, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate, b.ProdCostExVAT, b.Notes, b.CustNo , b.Category, b.InvNo, 'expensesH' as Source
-  FROM expensesH b     
+  FROM expensesH b
 UNION ALL
 SELECT c.ExpNo, c.ExpDesc, c.SerialNo, c.SupCode, c.PurchDate, c.ProdCostExVAT, c.Notes, c.CustNo , c.Category, c.InvNo,  'expensesE' as Source
   FROM expensesE c      order by ExpNo desc";
-  
+
   //$SQLstring = "select * from transaction  where TransNo >  (select Max(TransNo) from transaction) -88 order by TransDate";
 ////////echo "&nbsp;&nbsp;&nbsp;&nbsp;All expenses of 88 days ago:";
 //$SQLstring = "select * from transaction  where TransDate between date_sub(now(),INTERVAL 1 WEEK) and now();  ";
@@ -101,7 +98,7 @@ echo "<th>Category</th>\n";
 echo "<th>TN</th>\n";
 echo "</tr>\n";
 
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 {
 	$SRC = $row['Source'];
 $EEXP = $row['ExpNo'];
@@ -125,7 +122,7 @@ echo "<th>".chunk_split($row['Notes'], 15, '<br>')."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
 {
 $NN = $rowCC['CustLN'];
 $NN = mb_substr($NN, 0, 8);
@@ -153,8 +150,8 @@ echo "</table>";
 
 //mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
 
- 
-  
+
+
 ?>
 <?php
 /*$SQLstring = "select * from expensesE  order by ExpNo  desc";
@@ -182,8 +179,7 @@ echo "<th>Serial</th>\n";
 echo "<th>Catgory</th>\n";
 echo "</tr>\n";
 
-
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 {
 echo "<th>".$row['ExpNo']."</th>";
 echo "<th>".substr($row['ExpDesc'], 0, 25)."</th>";
@@ -199,8 +195,8 @@ echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
-{ 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
+{
 
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
@@ -216,7 +212,6 @@ echo "</tr>";
 echo "</table >";
 
 mysqli_free_result($result);
-
 
 }
 

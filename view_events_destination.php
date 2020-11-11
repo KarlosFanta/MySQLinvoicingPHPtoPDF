@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,8 +14,8 @@ still comes out quite tiny, maybe shorten too long text. Do a Print Preview Edit
 <?php
 //echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-	require_once("inc_OnlineStoreDB.php");//page567
-	//require_once("header.php");//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+	//require_once 'header.php';//page567
 
 //$query = "SELECT * FROM events order by destination " ;
 //$query = "SELECT * FROM events where destination is not null  AND destination <> ''  AND destination <> '_'" ;
@@ -45,12 +45,10 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
 
 			//echo "selected CustomerNo: ".$row2['CustNo']."<br>";
 			//echo "selected CustomerLN: ".$row2['CustLN']."<br>";
-	
+
 echo "<tr>";
 echo "<th>{$row2['Destination']}</th>";
 //echo "<th>{$row2['CustNo']}</th>";
@@ -71,19 +69,16 @@ echo "<th align = left>{$row3['ABBR']}</th>";
 echo "<th>{$row2['EventNo']}</th>";
 echo "<th align = left>{$row2['ENotes']}</th>";
 //echo "<th  align = left>{$row2['Priority']}</th>";
-echo "</tr>"; 
+echo "</tr>";
 
-
-
-	
     // free result set
  //   $result->close();
-	
+
 //}
 }
 echo "</table>";
 }
-	
+
 
 /*
 
@@ -109,11 +104,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
-
-
-
 
 echo "<tr><th>{$row2['CustNo']}</th>";
 echo "<th>{$row2['CustFN']}</th>";
@@ -129,14 +119,14 @@ $Abbr = $row2['ABBR'];
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td>";
 echo "</tr>\n";
-		
-    //free result set 
+
+    //free result set
    // $result->close();
-	
+
 }
 echo "</table>";
 }
-	
+
 
 
 

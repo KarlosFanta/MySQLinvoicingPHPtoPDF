@@ -14,14 +14,14 @@ if (isset($_GET['term'])){
    		$stmt = $conn->prepare('SELECT ae FROM customer WHERE CustNo = $CustInt');
         $stmt->execute(array('term' => '%'.$_GET['term'].'%'));
         while($row = $stmt->fetch()) {
-            $return_arr[] =  $row['ae']; 
+            $return_arr[] =  $row['ae'];
         }
- 
+
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
     }
- 
- 
+
+
     /* Toss back results as json encoded array. */
     echo json_encode($return_arr);
 }

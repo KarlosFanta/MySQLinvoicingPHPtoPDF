@@ -1,8 +1,8 @@
 <?php
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+
+?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -53,10 +53,9 @@ $TransDate = @$_GET['DA'];
 $queryS = "select CustNo, CustFN, CustLN, CommonSDR from customer where CustNo = $CNN";
 //echo $queryS."<br>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -69,9 +68,6 @@ print "_".$item3b;
 */
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
-
-
-
 
 	}
 $result2->free();
@@ -117,17 +113,16 @@ $result2->free();
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-	
+
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Add Customer's payment</option>";
 else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -146,16 +141,13 @@ print "_".$item3b;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 	}
 $result2->free();
 	}
 }
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -169,10 +161,7 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["CustNo"];//case sensitive!
     echo $row["CustFN"];//case sensitive!
@@ -186,12 +175,7 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option>"; 
-
-
-
-
-
+print " </option>";
 
 echo "<option> </option>";
 echo "<option> </option>";
@@ -250,7 +234,7 @@ $resultCC->free();
 print "_".$item3;
 print "_".$item4;
 print "_R".$item5;
-print " </option>"; 
+print " </option>";
 }
 $resultI->free();
 //mysql_free_result($resultI);
@@ -281,17 +265,17 @@ $resultI->free();
 
 ?>
 </select>
-<input type="submit" name="btn_submit" value="Select the customer" style="width:130px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the customer" style="width:130px;height:30px" />
 <!--	<br><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br>
 <br><br><br><br><br><br><br><br><br><br><br>
 -->
-<br>  
+<br>
 AccNo: <input type="text" name="acc1"    style="width:120px;height:30px" />
-InvNo: <input type="text" name="inv1"  placeholder="or type in inv no"  style="width:120px;height:30px" /> 
-CSDR: <input type="text" name="csdr"  placeholder="or type in common SDR"  style="width:120px;height:30px" /> 
+InvNo: <input type="text" name="inv1"  placeholder="or type in inv no"  style="width:120px;height:30px" />
+CSDR: <input type="text" name="csdr"  placeholder="or type in common SDR"  style="width:120px;height:30px" />
 <a href = "view_inv.php" target = _blank>View all invoices</a>
 <br>
-<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" />
 
 
 
@@ -334,17 +318,17 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
-*/	//require_once('view_cust.php');	
-//require_once('view_cust_all3.php');	
+*/	//require_once 'view_cust.php';
+//require_once 'view_cust_all3.php';
 ?><b>
 </form>
 <!--<a href="view_cust_all3.php" onmouseover="window.open (this.href, 'child')">view_cust_all3.php</a>-->
@@ -482,7 +466,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <?php
-//include "selectCustTransDropDown.php";
+//include 'selectCustTransDropDown.php';
 ?>
 <!--
 
@@ -502,7 +486,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <?php
-//include "OnSelect8.php";
+//include 'OnSelect8.php';
 ?>
 <br><br>Or Select type of proof: (not confirmed payment):<br>
         <form  action="selectCustProof.php" method="post">
@@ -517,20 +501,20 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 <?php
 
-include "view_transLatestsortbyTrNo.php";
-include "viewExpHEandExptransLatest.php";
-include "view_transLatest.php";
-include "viewExpHEandExp.php";
+include 'view_transLatestsortbyTrNo.php';
+include 'viewExpHEandExptransLatest.php';
+include 'view_transLatest.php';
+include 'viewExpHEandExp.php';
 
-include "view_proofLatest.php";
+include 'view_proofLatest.php';
 ?>
 
 <br><a href = "view_invD.php">View All Invoices ALL CUSTOMERS by Date</a></br></br>
 <a href = "view_invDunpaid.php">View All UNPAID Invoices ALL CUSTOMERS by Date</a></br></br>
 <?php
-include "view_invLatest.php";
+include 'view_invLatest.php';
 ?>
 
 </body>
 
-</html> 
+</html>

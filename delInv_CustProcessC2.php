@@ -1,8 +1,8 @@
 <?php	//this is "editCustProcess.php"
  $page_title = "You seleted a Invomer";
-	require_once('header.php');	
-	//require_once ('db.php');//mysqli connection and databse selection
-		require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+	//require_once 'db.php';//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="delInv_processC2" action="delInv_process_last.php" method="post">
@@ -45,7 +45,6 @@ $result->free();
 }	echo "<br>";
 //$mysqli->close();
 
-
 $SQLStringC = "SELECT * FROM customer WHERE CustNo = $item2";
 //echo $SQLStringC."<br>";
 if ($result = mysqli_query($DBConnect, $SQLStringC)) {
@@ -78,7 +77,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo "> </dd>";
 		echo "</th>";
 
-
  	//	echo "<th>";
 	//		echo "<dt><label>CustNo<br></label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -88,7 +86,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 //			echo "</dd>";
 //		echo "</th>";
 
-
  		echo "<th>";
 			echo "<dt><label>invoice Date <br></label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -96,7 +93,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo $row['InvDate'];
 			echo "> </dd>";
 		echo "</th>";
-
 
  		echo "<th>";
 			echo "<dt><label>Amount Paid</label></dt>";
@@ -141,14 +137,9 @@ echo strtr($row['D1'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 		echo "</tr> ";
 		echo "</table> ";
@@ -158,9 +149,9 @@ echo strtr($row['D1'], array(' ' => '&nbsp;')) ;
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Confirm Deletion" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Confirm Deletion" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -216,7 +207,7 @@ echo "<th>InvNoH incl VAT</th>\n";
 */
 echo "<th>D1</th></tr>\n";
 
-    /* 
+    /*
     while ($row = $result->fetch_row()) {  //from invoice table
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
@@ -235,9 +226,6 @@ $CN = $row[1];                  //CustNO from invoice table
 echo "<th>{$row[2]}</th>";  //InvDate from invoice table
 echo "<th>{$row[3]}</th>";  //TotAmt from invoice table
 $yo = $yo+$row[3];
-
-
-
 
 echo "<th>{$row[4]}</th>\n";  //Summaryfrom invoice table
 echo "<th>{$row[5]}</th>\n";  //TMethfrom invoice table
@@ -269,17 +257,15 @@ echo "<th>{$row[21]}</th>\n";  //from invoice table
 		}
     /* free result set */
 //    $result->close();
-	
+
 //}
 echo "</table>";
 //echo "R".$yo."<br>";
-?> 
+?>
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 include ("view_inv_by_cust.php");
-
-
 
 $SQLStringI = "select * from invoice where CustNo = $CustInt";
 //echo $SQLString."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -332,12 +318,9 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
 
 ?>
 
@@ -360,7 +343,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

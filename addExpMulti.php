@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Add a expense</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script>
 
 function copyToClipboard(element) {
@@ -14,15 +14,15 @@ function copyToClipboard(element) {
 
 </script>
 <!-- jquery required for copyToClipbrd -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 
 
 </head>
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added an expense";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $ExpNo = 0;
 $ExpNo = $_POST['ExpNo'];
 $ExpNo = $_POST['ExpNo'];
@@ -99,21 +99,16 @@ if ($mydropdownINV != '_no_selection_')
 	$V = explode ('_', $mydropdownINV);
 	$InvNo1 = $V[0];
 
-
 if ($InvNo1== '')
 	$InvNo1=$_POST['InvNo1'];
 
-	
 	echo "<font size = 6>Invoice No $InvNo1 assigned to:<br></font>";
-	
-	
+
 }
 //$pieces = explode(" ", $pizza);
 //echo $pieces[0]; // piece1
-else 
+else
 	$InvNo1 = $_POST['InvNo1'];
-
-
 
 $InvNo2 = @$_POST['InvNo2'];
 $InvNo3 = @$_POST['InvNo3'];
@@ -130,8 +125,6 @@ $EK = @$_POST['EK'];
 $FK = @$_POST['FK'];
 $GK = @$_POST['GK'];
 $HK = @$_POST['HK'];
-
-
 
 $ItemA = '';
 $Aex = '';
@@ -174,8 +167,6 @@ $HS = '';
 $HC = '';
 $HN = '';
 
-
-
 $ItemA = $_POST['ItemA'];
 $ItemA = str_replace("'", "", $ItemA);
 $Aex = $_POST['Aex'];
@@ -190,14 +181,14 @@ $BC = @$_POST['BC'];
 $BN = @$_POST['BN'];
 $ItemC = @$_POST['ItemC'];
 $ItemC = str_replace("'", "", $ItemC);
-								  
+
 $Cex = @$_POST['Cex'];
 $CS = @$_POST['CS'];
 $CC = @$_POST['CC'];
 $CN = @$_POST['CN'];
 $ItemD = @$_POST['ItemD'];
 $ItemD = str_replace("'", "", $ItemD);
-								  
+
 $Dex = @$_POST['Dex'];
 $DS = @$_POST['DS'];
 $DC = @$_POST['DC'];
@@ -248,9 +239,6 @@ $GC = @$GC[0];
 $HC = explode(",", $HC);
 $HC = @$HC[0];
 
-
-
-
 @$Ain = $_POST['Ain'];
 @$Bin = $_POST['Bin'];
 @$Cin = $_POST['Cin'];
@@ -263,21 +251,21 @@ $HC = @$HC[0];
 if ($Ain != '')
 {
 	$Aex = $Ain /1.14;
-	//$Aex = number_format((float)$Aex, 2, '.', ''); 
+	//$Aex = number_format((float)$Aex, 2, '.', '');
 	$Aex = sprintf('%0.2f', $Aex);
 echo "<br>Ain divide by 1.14 gives $Aex  ";
 }
 if ($Bin != '')
 {
 	$Bex = $Bin /1.14;
-	//$Bex = number_format((float)$Bex, 2, '.', ''); 
+	//$Bex = number_format((float)$Bex, 2, '.', '');
 	$Bex = sprintf('%0.2f', $Bex);
 echo "<br>Bin divide by 1.14 gives $Bex ";
 }
 if ($Cin != '')
 {
 	$Cex = $Cin /1.14;
-	//$Bex = number_format((float)$Bex, 2, '.', ''); 
+	//$Bex = number_format((float)$Bex, 2, '.', '');
 	$Cex = sprintf('%0.2f', $Cex);
 echo "<br>Cin divide by 1.14 gives $Cex ";
 }
@@ -285,7 +273,7 @@ echo "<br>Cin divide by 1.14 gives $Cex ";
 if ($Din != '')
 {
 	$Dex = $Din /1.14;
-	//$Dex = number_format((float)$Dex, 2, '.', ''); 
+	//$Dex = number_format((float)$Dex, 2, '.', '');
 	$Dex = sprintf('%0.2f', $Dex);
 echo "<br>Din divide by 1.14 gives $Dex";
 }
@@ -293,7 +281,7 @@ echo "<br>Din divide by 1.14 gives $Dex";
 if ($Ein != '')
 {
 	$Eex = $Ein /1.14;
-	//$Eex = number_format((float)$Eex, 2, '.', ''); 
+	//$Eex = number_format((float)$Eex, 2, '.', '');
 	$Eex = sprintf('%0.2f', $Eex);
 echo "<br>Ein divide by 1.14 gives $Eex";
 }
@@ -301,7 +289,7 @@ echo "<br>Ein divide by 1.14 gives $Eex";
 if ($Fin != '')
 {
 	$Fex = $Fin /1.14;
-	//$Fex = number_format((float)$Fex, 2, '.', ''); 
+	//$Fex = number_format((float)$Fex, 2, '.', '');
 	$Fex = sprintf('%0.2f', $Fex);
 echo "<br>Fin divide by 1.14 gives $Fex";
 }
@@ -309,7 +297,7 @@ echo "<br>Fin divide by 1.14 gives $Fex";
 if ($Gin != '')
 {
 	$Gex = $Gin /1.14;
-	//$ex = number_format((float)$ex, 2, '.', ''); 
+	//$ex = number_format((float)$ex, 2, '.', '');
 	$Gex = sprintf('%0.2f', $Gex);
 echo "<br>Gin divide by 1.14 gives $Gex";
 }
@@ -317,7 +305,7 @@ echo "<br>Gin divide by 1.14 gives $Gex";
 if ($Hin != '')
 {
 	$Hex = $Hin /1.14;
-	//$ex = number_format((float)$ex, 2, '.', ''); 
+	//$ex = number_format((float)$ex, 2, '.', '');
 	$Hex = sprintf('%0.2f', $Hex);
 echo "<br>Hin divide by 1.14 gives $Hex";
 }
@@ -356,10 +344,10 @@ $D2 = explode("/", $D1);
 
 $PurchDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $PurchDate;	 
+//echo $PurchDate;
 $charset = mysqli_character_set_name($DBConnect);//chek for UTF-8
 $AS = @$_POST['AS'];
-$AS = mysqli_real_escape_string($DBConnect, $AS); 
+$AS = mysqli_real_escape_string($DBConnect, $AS);
 mb_convert_encoding($AS, "ISO-8859-1");
 echo "CSR: $AS";
 echo "CSR:special".htmlspecialchars($AS);
@@ -379,7 +367,6 @@ mb_convert_encoding($AS, "UTF-8");
 $AS = str_replace("SPACE","%20",$AS); //for mailto to work
 
 echo " back to whitepace: $AS";
-
 
 $SupCode = $_POST['SupCode'];
 $Notes = @$_POST['Notes'];
@@ -410,16 +397,16 @@ $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);  
-$AS = str_replace($von, $zu, $AS);  
+$Notes = str_replace($von, $zu, $Notes);
+$AS = str_replace($von, $zu, $AS);
 //echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
-$AS = mysqli_real_escape_string($DBConnect, $AS); 
+$Notes = mysqli_real_escape_string($DBConnect, $Notes);
+$AS = mysqli_real_escape_string($DBConnect, $AS);
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $AS = preg_replace("/ö/","oe",$AS); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes); 
+//iconv("UTF-8", "ISO-8859-1", $Notes);
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -435,11 +422,7 @@ $Notes = str_replace(' ', '_', $Notes);
 $SupCode = preg_replace("/,/","",$SupCode);
 $AS = preg_replace("/,/","",$AS);
 
-
 $Notes = mysqli_real_escape_string($DBConnect, $Notes);
-
-
-
 
 //echo "Thank you for adding the expense's details: ".$ExpNo." ".$CustNo ." ".$D1 ."."  ;
 
@@ -451,7 +434,6 @@ if ($InvNo1 != '')
 
 echo "</font><br>";
 
-
 $query="insert into expenses (ExpNo, CustNo, PurchDate, SupCode, Notes, SerialNo, ExpDesc, ProdCostExVAT, Category, InvNo )
 VALUES               ( $ExpNo, $AC, '$PurchDate', '$SupCode', '$AN', '$AS', '$ItemA', '$Aex','$AK', '$InvNo1' ) ";
 echo '</br>';
@@ -461,8 +443,6 @@ if (mysqli_affected_rows($DBConnect) == -1)
 echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: ExpNo <input type='text' value = '$ExpNo'  size='4'> $ItemA</font><br>a: $query<br>";
-
-
 
 if ($ItemB != '')
 {
@@ -596,12 +576,12 @@ echo "<font size = 4 color= green>insert success: ExpNo $ExpNo</font><br>h: $que
 <?php
 
 $CustInt =$AC;
-//include "viewExpCust.php";
-include "viewExpCust2.php";
-//include "viewExpCustMinimal.php";
-include "viewExp.php";
+//include 'viewExpCust.php';
+include 'viewExpCust2.php';
+//include 'viewExpCustMinimal.php';
+include 'viewExp.php';
 
-//include "viewExpLatest.php";
+//include 'viewExpLatest.php';
 ?>
 <a href = 'viewExpLatest.php'>viewExpLatest</a></br>
 
@@ -655,24 +635,24 @@ print "_".$item9;
 }
 mysqli_free_result($result);
 }
-	
+
 
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/	
+*/
 
 
 $CustInt = $CustNo ;
@@ -688,11 +668,11 @@ $CustInt = $CustNo ;
 <input type = "hidden" name="PurchDate" value="<?php echo $PurchDate ?>">
 <input type = "hidden" name="SupCode" value="<?php echo $SupCode ?>">
 
-	
+
 	<!--<input type = "submit" value = "Click to add another expense">-->
 
 
-	
+
 
 <?php
 echo $query;
@@ -705,12 +685,10 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
-
 if ($ItemA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE Item = $ItemA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -930,15 +908,8 @@ mysqli_free_result($result);
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
-
-
 $sptp = 'w';
 //echo sptp;
-
-
-
-
-
 
  ?>
 <font size= 2><b>
@@ -950,12 +921,12 @@ $sptp = 'w';
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <script type="text/javascript">

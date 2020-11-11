@@ -58,10 +58,8 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
 
-
-	
 ?>

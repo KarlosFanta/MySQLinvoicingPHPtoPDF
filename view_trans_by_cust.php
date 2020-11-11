@@ -1,24 +1,23 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
+	//require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+
 $pr = "20";
 $pr = @$_POST['pr']; //inv descriptions
 //echo "indesc:".$indesc;
 if (@$indesc == '')
   $indesc = 8;
-  
+
 //  echo "indesc:".$indesc;
 $yo = 0;
 $loop = 0;
 $in = 8;
-
 
 if (@$_POST['in'] != "")
 $in = @$_POST['in'];
@@ -40,11 +39,11 @@ $SQLstring = "select * from transaction where CustNo = '$CustInt' order by trans
 ?>
 			</b></font> &nbsp; &nbsp;  <font color=#65F5DC>view_trans_by_cust.php   order by transdate desc
 			<?php echo $SQLstring; ?>
-			
+
 			</font>
 			<a href = "edit_transCQ.php">edit_transCQ.php</a>
 			<a href = "../phpMyAdmin-3.5.2-english/index.php?db=kc&table=transaction">../phpMyAdmin-3.5.2-english/index.php?db=kc&table=transaction</a>
-			
+
 </br>
 <?php
 $summm = 0;
@@ -104,11 +103,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 				{ echo "<tr><th>".$un."N dont display trans</th><tr>";}
 */
 //if ($un == 'N')  //Display paid reconciled invoices and reconciled transactions
-			//{ 	
-$mmm =  $row['InvNoA'];  //invNoA    
+			//{
+$mmm =  $row['InvNoA'];  //invNoA
 //echo "mmm: ".$mmm;
-
-
 
 //if ($mmm >= 0)     //invNoA   if a zero OR if not a number  for exmaple 44p55   part paid.
 
@@ -148,9 +145,8 @@ echo "<th>{$row['CustSDR']}</th>";//CustSDR
 
 //echo "<th>24:{$row[24]}</th>";//ERROR
 
-//echo "<th>R{$row[29]}</th>"; 
+//echo "<th>R{$row[29]}</th>";
 $summm = $summm + $row['AmtPaid'];
-
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
 
@@ -232,7 +228,6 @@ echo "</tr>\n";
 {
 echo "<tr><th>";
 
-
 $mmm =  $row['InvNoA'];
 //echo "$mmm: ".$mmm;
 if ($mmm == '0')
@@ -248,7 +243,7 @@ echo "{$row['0']}</font></th>";//TransNo
 
 			//echo "<th>{$row2[0']}</th>";
 			//}
-			
+
 //echo "<th>{$row['2']}</th>";//Date
 $date_array = explode("-",$row['2']);
 $year = $date_array[0];
@@ -267,9 +262,8 @@ echo "<th>{$row['23']}</th>";//CustSDR
 
 //echo "<th>24:{$row['24']}</th>";//ERROR
 
-//echo "<th>R{$row['29']}</th>"; 
+//echo "<th>R{$row['29']}</th>";
 $summm = $summm + $row['3'];
-
 
 //echo "<th align = 'left'>{$row['5']}</th>\n</font></p>";//Summary
 
@@ -364,7 +358,6 @@ echo "<th><font color = green>{$row['InvNoF']}</font></th>";
 $loop++;
 $PaidInvs[$loop]=$row['InvNoF'];
 
-
 if ($indesc >5)
 {
 echo "<th>";
@@ -420,15 +413,12 @@ echo "</tr>";
 		}
     // free result set
     mysqli_free_result($result);
-	
+
 }
 echo "</table>";
 
-
 //if ($un == 'Y')
 echo "Transactions Paid totals to: R ".$summm."<br />";
-
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -511,7 +501,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -554,5 +544,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

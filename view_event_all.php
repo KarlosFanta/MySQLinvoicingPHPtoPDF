@@ -1,25 +1,62 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-		"http://www.w3.org/TR/html4/loose.dtd">
+  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>events</title>
-<style type="text/css">
-	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
-	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-	table.pme-navigation { border: #004d9c 0px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
-	td.pme-navigation-0, td.pme-navigation-1 { white-space: nowrap; }
-	th.pme-header	     { border: #004d9c 1px solid; padding: 4px; background: #add8e6; }
-	td.pme-key-0, td.pme-value-0, td.pme-help-0, td.pme-navigation-0, td.pme-cell-0,
-	td.pme-key-1, td.pme-value-1, td.pme-help-0, td.pme-navigation-1, td.pme-cell-1,
-	td.pme-sortinfo, td.pme-filter { border: #004d9c 1px solid; padding: 3px; }
-	td.pme-buttons { text-align: left;   }
-	td.pme-message { text-align: center; }
-	td.pme-stats   { text-align: right;  }
-</style>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>events</title>
+    <style type="text/css">
+      hr.pme-hr {
+          border: 0px solid;
+          padding: 0px;
+          margin: 0px;
+          border-top-width: 1px;
+          height: 1px;
+      }
+
+      table.pme-main {
+          border: #004d9c 1px solid;
+          border-collapse: collapse;
+          border-spacing: 0px;
+          width: 100%;
+      }
+
+      table.pme-navigation {
+          border: #004d9c 0px solid;
+          border-collapse: collapse;
+          border-spacing: 0px;
+          width: 100%;
+      }
+
+      td.pme-navigation-0,
+      td.pme-navigation-1 {
+          white-space: nowrap;
+      }
+
+      th.pme-header {
+          border: #004d9c 1px solid;
+          padding: 4px;
+          background: #add8e6;
+      }
+
+      td.pme-key-0, td.pme-value-0, td.pme-help-0, td.pme-navigation-0, td.pme-cell-0, td.pme-key-1, td.pme-value-1, td.pme-help-0, td.pme-navigation-1, td.pme-cell-1, td.pme-sortinfo, td.pme-filter {
+          border: #004d9c 1px solid;
+          padding: 3px;
+      }
+
+      td.pme-buttons {
+          text-align: left;
+      }
+
+      td.pme-message {
+          text-align: center;
+      }
+
+      td.pme-stats {
+          text-align: right;
+      }
+    </style>
 <?php
-require_once "header.php";
+require_once 'header.php';
 ?>
 </head>
 <body>
@@ -42,7 +79,7 @@ require_once "header.php";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'events';
 
@@ -102,7 +139,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -189,7 +226,7 @@ $opts['fdd']['CustNo'] = array(
       'description'=> 'CustFN',
       'orderby' => 'CustNo'
   )
-); 
+);
 $opts['fdd']['CustFN'] = array(
   'default'  => 'default',
   'maxlen'   => 10,
@@ -202,7 +239,7 @@ $opts['fdd']['CustFN'] = array(
       'description'=> 'CustFN',
       'orderby' => 'CustNo'
   )
-); 
+);
 //www.php-form-generator.com/php-form-generator.php?s=56
 */
 $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 'on clause'
@@ -220,10 +257,7 @@ $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 
      ),
      'orderby'=>'CustLN'
    )
-); 
-
-
-
+);
 
 $opts['fdd']['ENotes'] = array(
   'name'     => 'ENotes',

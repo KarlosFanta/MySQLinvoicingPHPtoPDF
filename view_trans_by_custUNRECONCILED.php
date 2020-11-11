@@ -1,17 +1,16 @@
 <?php
-require_once("inc_OnlineStoreDB.php");
-	
+require_once 'inc_OnlineStoreDB.php';
+
 $pr = "20";
 $pr = @$_POST['pr']; //inv descriptions
 //echo "indesc:".$indesc;
 if (@$indesc == '')
   $indesc = 8;
-  
+
 //  echo "indesc:".$indesc;
 $yo = 0;
 $loop = 0;
 $in = 8;
-
 
 if (@$_POST['in'] != "")
 $in = @$_POST['in'];
@@ -22,7 +21,6 @@ $DisplayInvPdStatus = @$_POST['DisplayInvPdStatus'];
 echo "<BR />";
 $un = 'N';
 echo "Only Unreconciled transactions:";
-
 
 ?>
 
@@ -89,14 +87,12 @@ echo "<th>TMethod</th>";
 //if ($indesc == "1")
 echo "<th>Priority</th></tr>\n";
 
-    // fetch object array 
+    // fetch object array
     while ($row = mysqli_fetch_row($result)) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-$mmm =  $row[6];  //invNoA    
+$mmm =  $row[6];  //invNoA
 //echo "$mmm: ".$mmm;
-
-
 
 //if ($mmm >= 0)     //invNoA   if a zero OR if not a number  for exmaple 44p55   part paid.
 
@@ -136,9 +132,8 @@ echo "<th>{$row[23]}</th>";//CustSDR
 
 //echo "<th>24:{$row[24]}</th>";//ERROR
 
-//echo "<th>R{$row[29]}</th>"; 
+//echo "<th>R{$row[29]}</th>";
 $summm = $summm + $row[3];
-
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
 
@@ -219,9 +214,8 @@ else
 echo "";
 //echo "<tr><th>nope</th></tr>";
 
-
 {
-				
+
 echo "";//no row just put into memory.
 $mmm =  $row[6];
 //echo "$mmm: ".$mmm;
@@ -307,7 +301,7 @@ echo "{$row[21]}";//InhHincl  Dont forget to enable invoice descriptions as well
 //echo "{$row[22]}";//priority
 
 echo "";
-}		
+}
 
 
 

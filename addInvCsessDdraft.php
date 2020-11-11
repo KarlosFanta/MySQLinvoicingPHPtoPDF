@@ -1,17 +1,17 @@
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 
 
-	require_once("header.php");//page567
-	
+require_once 'header.php';//page567
+
     @session_start();
 	@$_SESSION['sel'] = "addInvC";
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
 ?>
 
-<?php	
+<?php
 	$query = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
 
 if ($result = mysqli_query($DBConnect, $query)) {      //I think this is all Cust Details
@@ -23,15 +23,6 @@ mysqli_free_result($result);
 }
 $dotdot = intval($dotstr);
 //echo "dotdot:".$dotdot;
-
-	
-	
-	
-	
-	
-	
-	
-
 
 ?>
 <form name="EditInv" action="edit_inv_process.php" method="post">
@@ -78,7 +69,7 @@ $item5 = $row["TotAmt"];
 print "_".$item3;
 print "_".$item4;
 print "_R".$item5;
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -98,12 +89,12 @@ echo "<br><br>";
 echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 }
 //echo "<br><br>Notes: <br>";
-//include "notes/index.php"; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
+//include 'notes/index.php'; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
 
 
 ?>
-	
-</select></p>  
-	
+
+</select></p>
+
 	</form>
-	
+

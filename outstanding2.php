@@ -26,7 +26,6 @@
 
 //echo "<br>Cust Int:".$CustInt."</br />";
 
-
 //  $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 
 
@@ -117,7 +116,7 @@ echo "</tr>\n";
 
   */  while ($row = $resultT1->fetch_row()) {  //from transaction table
       //  printf ("%s (%s)\n", $row[0], $row[1]);
-$CN = $row[1];   
+$CN = $row[1];
 $yo = $yo+$row[3];
 /*echo "<tr><th>{$row[0]}</th>";  //TransNo from transaction table
 //echo "<th>{$row[1]}</th>";       //CustNofrom transaction table
@@ -172,14 +171,10 @@ echo "</tr>\n";  //end row transaction table
 */
 }
 $resultT1->close();
-	
+
 }
 //echo "</table>";
 //echo "All transactions total to: R".$yo."<br>";
-
-
-
-
 
 $SQLstring = "select * from invoice where CustNo = $CustInt";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -196,7 +191,6 @@ echo "<th>Summary</th>";
 if ($DisplayInvPdStatus == 'Y')
 
 echo "<th>Inv Paid Statusss</th>";
-
 
   */
     while ($row = $resultI1->fetch_row()) {
@@ -215,12 +209,10 @@ $Invsummm = $Invsummm + $row[29];
 		}
     /* free result set */
     $resultI1->close();
-	
+
 }
 //echo "</table>";
 
-
-	
 echo "<BR />Invoices: R".$Invsummm."<br />";
 echo "Transactions: R".$yo."<br>";
 $out  = 0;
@@ -241,11 +233,9 @@ echo "<b> R".round($out, 0)."</b><BR /><BR /><BR />";
 }
 echo "</font><br><br>";
 
-
-
 ?>
 
- 
+
 
 
 

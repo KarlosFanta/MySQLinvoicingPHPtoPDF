@@ -33,21 +33,19 @@ if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
 echo $_SESSION['CustNo'];
 
-
-
 $CustNo = $_SESSION['CustNo'];
 echo "CustNo:".$CustNo;
 
 if(isset($_GET["CustNo"])) echo "GET CustNo:".$CustNo."<br>";
 	if (!empty($_POST["CustNo"])) {
-    echo "Yes, CustNo is set";    
-}else{  
+    echo "Yes, CustNo is set";
+}else{
     echo "No, CustNo is not set";
-} 
+}
 
 
 	 //eg. URL: editExpCQ.php?CustNo=3
-	 
+
 /*	 function url() {
  return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 }
@@ -61,10 +59,10 @@ echo "request uri is ".$url."]]";
 
 $path = parse_url($url, PHP_URL_PATH);
 $pathPart = explode('?CustNo=', $path);
-$end = end($pathPart);	 
+$end = end($pathPart);
 echo "End: ". $end. ".";
-	 
-*/	 
+
+*/
  //editExpCQ.php?CustNo=3&name=eddie
 //	echo "<h1>Hello " . $_GET["name"] . "</h1>";
 if(isset($_GET["CustNo"]))
@@ -73,14 +71,14 @@ if(isset($_GET["CustNo"]))
 	$CustNo= $_GET["CustNo"];
 	//force session:
 	$_SESSION['CustNo'] = $_GET["CustNo"];
-	
+
 }
 else{echo " no Getter";}
 
 
 $opts['filters'] = "CustNo = '$CustNo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
 
-	 
+
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -98,7 +96,7 @@ $opts['filters'] = "CustNo = '$CustNo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'expenses';
 
@@ -158,7 +156,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -254,12 +252,11 @@ $opts['fdd']['SerialNo'] = array(
   'sort'     => true
 );
 
-
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 include 'viewExpCustSelect.php';
-//include 'viewExpCustSelect.php?mydropdownEC=$yo';
+//include "viewExpCustSelect.php?mydropdownEC=$yo";
 
 ?>
 <b><br><font size = "4" type="arial">View Expenses H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExp.php

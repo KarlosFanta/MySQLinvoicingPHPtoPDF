@@ -28,7 +28,6 @@ if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
 echo "<h3>Quotes</h3> of CustNo".$_SESSION['CustNo'];
 
-
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -46,7 +45,7 @@ echo "<h3>Quotes</h3> of CustNo".$_SESSION['CustNo'];
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'Quotes';
 
@@ -106,7 +105,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 

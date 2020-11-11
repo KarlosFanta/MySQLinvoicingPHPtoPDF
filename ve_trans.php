@@ -78,7 +78,6 @@
 //$email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
 //$msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
 
-
 ?>
 
 
@@ -105,19 +104,18 @@ var em=document.forms["Addcust"]["CustEm"].value;
 var pa=document.forms["Addcust"]["CustPA"].value;
 var di=document.forms["Addcust"]["CustDi"].value;
 
-
 if (x==null || x=="")
   {
   alert("First name must be filled out");
   return false;
   }
-  
+
   if (ln==null || ln=="")
   {
   alert("Surname must be filled out");
   return false;
   }
- 
+
 if ( tl == null ||  tl == "")
   {
   alert(" Telephone number must be filled out");
@@ -147,18 +145,18 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
   return false;
   }
 
-  
-  
-  
-  
-  
+
+
+
+
+
 }*/
 </script>
 </head>
 
 <body>
 <?php	$page_title = "View a Customer";
-	require_once('header.php');	
+require_once 'header.php';
 	@session_start();
 	$CustNo = "";
 	if (isset($_SESSION['CustNo']))
@@ -199,7 +197,7 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 <form name="Pro" action="addProof.php" method="post">
 
 <input type='hidden' size = 4  name='CustNo'  id='CustNo' value = '<?php echo $CustNo; ?>'>
-<input type="submit" name="btn_submit" value="Add Proof of Payment" style="width:200px;height:20px" /> 
+<input type="submit" name="btn_submit" value="Add Proof of Payment" style="width:200px;height:20px" />
 </form>
 
 
@@ -222,9 +220,9 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
 			<!--<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> -->
-			
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 		</dl>
 

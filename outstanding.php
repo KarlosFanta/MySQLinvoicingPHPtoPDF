@@ -1,7 +1,7 @@
 <?php	//this is "edit_trans_CustProcess.php"
  $page_title = "Outstanding payments of ALL customers";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $pr = "N";
 //$pr = $_POST['pr']; //inv descriptions
 $pm = "N";
@@ -20,8 +20,6 @@ $Invsummm = 0;
 <?php
 
 echo "<b>ALL CUSTOMERS</b>    Date: ".date("j M Y")." <BR />";
-
-
 
 $SQLstring = "select * from customer";
 if ($result = $DBConnect->query($SQLstring)) {
@@ -77,24 +75,9 @@ include ("outstanding2.php");
 		}
     /* free result set */
     $result->close();
-	
+
 }
 //echo "</table>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 

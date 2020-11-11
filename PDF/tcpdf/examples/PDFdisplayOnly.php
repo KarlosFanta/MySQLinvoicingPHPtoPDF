@@ -619,7 +619,7 @@ echo $tbl;
 
 
 
-	   //max lenght of totalSDR may be 30 chars long 
+	   //max length of totalSDR may be 30 chars long 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="0" border="1">
    <tr>

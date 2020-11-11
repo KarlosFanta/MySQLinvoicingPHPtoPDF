@@ -19,18 +19,18 @@
 </style>
 </head>
 <body>
-<?php require_once "header.php";?>
+<?php require_once 'header.php';?>
 
 <?php
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 $CustNo = 1; //for main events
-else 
+else
 {
 $CustNo = $_SESSION['CustNo'];
 }
 echo "<h3>event</h3> of CustNo".$CustNo;
- 
+
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -48,7 +48,7 @@ echo "<h3>event</h3> of CustNo".$CustNo;
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'events';
 
@@ -108,7 +108,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -179,7 +179,6 @@ $opts['fdd']['Priority'] = array(
   'sort'     => true
 );
 
-
 $opts['fdd']['Destination'] = array(
   'name'     => 'Destination',
   'select'   => 'T',
@@ -187,16 +186,12 @@ $opts['fdd']['Destination'] = array(
   'sort'     => true
 );
 
-
 // Now important call to phpMyEdit
 //require_once 'view_trans_all.php';
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 
-
-
-
-	require_once('inc_OnlineStoreDB.php');	
+require_once 'inc_OnlineStoreDB.php';
 
 @session_start();
 //if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
@@ -218,8 +213,6 @@ if ($resultC = mysqli_query($DBConnect, $queryC)) {
 $item1C = $row["CustNo"];
 $item2C =  $row["CustFN"];
 $item3C = $row["CustLN"];
-
-
 
 print "_".$item1C;
 //print "_CNo: ".$item2C;

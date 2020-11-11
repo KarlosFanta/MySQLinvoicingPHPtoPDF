@@ -1,7 +1,7 @@
 <?php	//this is "edit_trans_CustProcessC2.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_trans_processC2" action="edit_trans_process_last_2nd.php" method="post">
@@ -22,7 +22,7 @@ $SQLString = "SELECT * FROM transaction WHERE TransNo = $TransInt";
 ?>
 <b><font size = "4" type="arial">Edit transaction (processC2)</b></font>calling edit_trans_process_last.php
 <?php
-include "monthtables.php";
+include 'monthtables.php';
 ?>
 </br>
 <?php
@@ -45,7 +45,6 @@ print "_".$item6;
 $result->free();
 }	//echo "<br>";
 //$mysqli->close();
-
 
 $SQLStringC = "SELECT * FROM customer WHERE CustNo = $item2";
 //echo $SQLStringC."<br>";
@@ -79,10 +78,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo "> </dd>";
 		echo "</th>";
 
-
-
-
-
  	//	echo "<th>";
 	//		echo "<dt><label>CustNo<br></label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -92,10 +87,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 //			echo "</dd>";
 //		echo "</th>";
 
-
-
-
-
  		echo "<th>";
 			echo "<dt><label>Transaction Date <br></label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -103,8 +94,6 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo $row['TransDate'];
 			echo "> </dd>";
 		echo "</th>";
-
-
 
  		echo "<th>";
 			echo "<dt><label>Amount Paid</label></dt>";
@@ -131,15 +120,11 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 //			echo $row['Notes'];
 			echo "> </dd>";
 		echo "</th>";
- 
-
-
 
 $grrr = 0;
 $grrr = $row['InvNoA'];
 if ($grrr == 0)
 $grrr = "";
-
 
 		echo "<th>";
 			echo "<dt><label>InvNoA</label></dt>";
@@ -156,10 +141,6 @@ $grrr = "";
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
-
-
  		echo "<th>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -175,7 +156,6 @@ $grrr = "";
 			echo "> </dd>";
 		echo "</th> ";
 
-		
 			echo "<th>";
 			echo "<dt><label>InvNoC</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -190,7 +170,6 @@ $grrr = "";
 			echo $row["InvNoCincl"];
 			echo "> </dd>";
 		echo "</th> ";
-
 
 			echo "<th>";
 			echo "<dt><label>InvNoD</label></dt>";
@@ -207,8 +186,6 @@ $grrr = "";
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
 				echo "<th>";
 			echo "<dt><label>InvNoE</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -224,7 +201,6 @@ $grrr = "";
 			echo "> </dd>";
 		echo "</th> ";
 
-
 		echo "<th>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -239,7 +215,6 @@ $grrr = "";
 			echo $row["InvNoFincl"];
 			echo "> </dd>";
 		echo "</th> ";
-
 
 		echo "<th>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -271,10 +246,6 @@ $grrr = "";
 			echo "> </dd>";
 		echo "</th> ";
 
-
-		
-		
-		
 		echo "<th>";
 			echo "<dt><label>TM</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -292,7 +263,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
 /*
  		echo "<th>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -309,10 +279,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
-
-
  		echo "<th>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -327,8 +293,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo $row["InvNoDincl"];
 			echo "> </dd>";
 		echo "</th> ";
-
-
 
  		echo "<th>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -345,8 +309,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
  		echo "<th>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -362,7 +324,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
  		echo "<th>";
 			echo "<dt><label>InvNoG</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -377,8 +338,6 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo $row["InvNoGincl"];
 			echo "> </dd>";
 		echo "</th> ";
-
-
 
  		echo "<th>";
 			echo "<dt><label>InvNoH</label></dt>";
@@ -403,20 +362,9 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
-
-
-
-
-
-
-		
-
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 		echo "</tr> ";
 		echo "</table> ";
@@ -426,9 +374,9 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -489,16 +437,14 @@ echo "<th>InvNoH incl VAT</th>\n";
 
 echo "<th>Priority</th></tr>\n";
 
-
 echo "</table>";
 //echo "R".$yo."<br>";
 */
-?> 
+?>
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 //include ("view_inv_by_cust.php");
-
 
 /*
 $SQLStringI = "select * from invoice where CustNo = $CustInt";
@@ -551,10 +497,9 @@ echo "<th>{$row[9]}</th>\n";
 echo "</tr>\n";
 		}
     $result->close();
-	
+
 }
 echo "</table>";
-
 
 */
 
@@ -562,10 +507,6 @@ echo "</table>";
 
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -582,7 +523,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

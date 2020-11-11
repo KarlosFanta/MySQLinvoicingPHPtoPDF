@@ -2,8 +2,8 @@
 
 
 	$page_title = "Select a customer";
-	require_once('header.php');	
-	require_once('inc_OnlineStoreDB.php');	
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -48,11 +48,9 @@ echo "<option value='_no_selection_'>Select Customer</option>";
 else
 echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
-
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -66,10 +64,7 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 	}
 $result->free();
@@ -83,7 +78,7 @@ echo "<input type='submit' name='btn_submit' value='select customer' /> </select
 <form name='Ledger2' action='Ledger2.php' method='post'>
 <br>
 <?php
-$cy = date('Y')-1; 
+$cy = date('Y')-1;
 ?>
 Type in year:
 <input type="text" name="cy" size = '4' value= "<?php echo $cy; ?>" >
@@ -109,7 +104,7 @@ Select months:
 <input type='submit' name='btn_submit' value='Submit' /><br>
 <br><br><br><br>
 
-Submitted: 
+Submitted:
 2011 02<br>
 2011 04<br>
 2011 06<br>
@@ -160,7 +155,7 @@ Save, VAT profile UserNmber assume no1<br>
 
 
 <?php
-include "LedgerNotes.php";
+include 'LedgerNotes.php';
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";
@@ -198,13 +193,13 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
 */

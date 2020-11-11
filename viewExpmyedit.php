@@ -1,9 +1,6 @@
 <?php
+require_once 'inc_OnlineStoreDB.php';
 
-	
-	
-	require_once("inc_OnlineStoreDB.php");
-			
 ?>
 <b><br><font size = "4" type="arial">View Expenses</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExp.php
 </br>
@@ -115,7 +112,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -212,7 +209,6 @@ $opts['fdd']['tttt'] =  array(
   'sort'     => true
 );
 
-
 /*
 $opts['fdd']['tttt']['sql'] = 'CAST(ProdCostExVAT AS UNSIGNED)*1.14' = array(
   'name'     => 'mmm',
@@ -220,9 +216,6 @@ $opts['fdd']['tttt']['sql'] = 'CAST(ProdCostExVAT AS UNSIGNED)*1.14' = array(
   'maxlen'   => 1500,
   'sort'     => true
 );
-
-
-
 
 /*$opts['fdd']['ProdCostExVAT'*1.14] = array(
   'name'     => 'inVAT',
@@ -254,7 +247,7 @@ $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 
      ),
      'orderby'=>'CustLN'
    )
-); 
+);
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';

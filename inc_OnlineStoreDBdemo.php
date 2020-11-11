@@ -1,7 +1,7 @@
 <?php
 //OBJECT ORIENTED:
 // $DBConnect = new mysqli("localhost", "root","myPasswrd#", "myDBname");
-//PROCEDURAL 
+//PROCEDURAL
  $DBConnect = mysqli_connect("localhost", "root", "myPasswrd#", "myDBname");
 
  if($DBConnect->connect_errno)
@@ -10,7 +10,7 @@ else
 {
 	echo "<p>Database connection up and running ";
 }
-	
+
 	if (mysqli_connect_errno())
   die(sprintf("[%d] %s\n", mysqli_connect_errno(), mysqli_connect_error()));
 	if ($DBConnect->connect_error) {
@@ -24,7 +24,7 @@ if ($result = $DBConnect->query("SELECT DATABASE()")) {
 }
 
 $SQLstring = "select * from expenses  order by PurchDate";
-echo $SQLstring."<br><br>"; 
+echo $SQLstring."<br><br>";
 $NN = '';
 $NNN = '';
 
@@ -42,8 +42,7 @@ echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
 echo "</tr>\n";
 
-
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 
 echo "<th>".$row['ExpNo']."</th>";
 echo "<th>".$row['ExpDesc']."</th>";
@@ -54,8 +53,8 @@ echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
-{ 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
+{
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
 }}

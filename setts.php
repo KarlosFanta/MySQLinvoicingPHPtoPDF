@@ -1,7 +1,7 @@
 
 <?php
-include "header.php";
-include "Installation.html";
+include 'header.php';
+include 'Installation.html';
 ?>
 //create the databse:
 CREATE DATABASE myDB;
@@ -10,12 +10,12 @@ CREATE DATABASE myDB;
 USE myDB;
 
 CREATE TABLE customer
-(CustNo integer not null  AUTO_INCREMENT  primary key, 
+(CustNo integer not null  AUTO_INCREMENT  primary key,
 CustFN VARCHAR(140),
 CustLN VARCHAR(140),
 ABBR varchar(10),
 );
 <?php
-include "setts2.php";
+include 'setts2.php';
 ?>
 

@@ -1,15 +1,14 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
-?> 
+?>
 <style type="text/css">
    <!-- table.form{width:100%}
     td.label{width:7px;white-space:nowrap;}
@@ -22,7 +21,7 @@
         <td>yello</td>
     </tr>
 </table>-->
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">View Transactions</b></font>&nbsp;&nbsp;&nbsp;&nbsp;view_transLatest.php
 </br>
 
@@ -40,9 +39,9 @@ print_r($ttt);
 //$SQLstring = "select * from transaction  where TransDate > '2013-01-24' ";
 //$SQLstring = "select * from transaction  where TransDate = '2013-01-01' ";
 //$SQLstring = "SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC ";
-//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;  
+//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;
 //echo "____".WEEKOFYEAR(date);
-//echo "______".WEEKOFYEAR(NOW())-1; 
+//echo "______".WEEKOFYEAR(NOW())-1;
 $date = date('Y-m-d',time()-(35*86400)); // 35 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
@@ -103,7 +102,7 @@ $D1 = explode("-", $row['TransDate']);
 $EDate = $D1[2]."/".$D1[1]."/".$D1[0];
 $DDD =  $D1[2];
 $arr2 = str_split($DDD, 1);
-//echo $EDate;	 
+//echo $EDate;
 
 echo "<th>";
 if ($EDate == "03/01/2012")
@@ -135,7 +134,6 @@ $CN = $row['CustNo'];
 $SQLstringLN = "select CustFN, CustLN from customer where CustNo = $CN";
 //echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 $result2 = $DBConnect->query($SQLstringLN);
-
 
    while ($row2 = $result2->fetch_row()) {
    $shortened = substr($row2[0], 0, 6);
@@ -183,20 +181,14 @@ echo "<th>".$row['InvNoEincl']."</th>";
 echo "<th>".$row['Priority']."</th>";
 echo "<th>".$row['TMethod']."</th>";
 
-
 }
 echo "</tr></table >";
-
 
 $result->close();
 
 /* close connection */
 //$mysqli->close();
 
-
-
-
- 
 ?>
 
 
@@ -204,5 +196,5 @@ $result->close();
 </html>
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

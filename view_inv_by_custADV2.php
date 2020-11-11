@@ -1,15 +1,15 @@
 <?php
-require_once("inc_OnlineStoreDB.php");
+require_once 'inc_OnlineStoreDB.php';
 
 $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 @session_start();
 $_SESSION['sel'] = "editCust";
 $CustInt = intval($_SESSION['CustNo'] );
-//include "monthtables.php";
+//include 'monthtables.php';
 include ("view_trans_by_cust.php");
 echo "<br>";
-//include "monthtables.php";
+//include 'monthtables.php';
 echo "<br>Your Invoices History";
 ?>
 
@@ -92,22 +92,15 @@ echo "<th>ex8</th>";
 echo "</tr>\n";
 
  	  while (@$row = mysqli_fetch_assoc($resultINV)) {
-			
+
 			$TrR ="";
 			echo "<tr><th>";
-			
+
 			//$Amtpd
-		//echo "R{$row['TotAmt']} req"; ///TOTAL AMOUNT TotAmt	
+		//echo "R{$row['TotAmt']} req"; ///TOTAL AMOUNT TotAmt
 		//echo "<br>";
 		//echo "paid: R".number_format($Amtpd, 2, '.', '');
 
-			
-			
-			
-			
-			
-			
-			
 			$IInv = $row['InvNo'];
 			$IIII = $row['InvNo'];
 $SS = "select TransNo from transaction where InvNoA = '$IInv' or  InvNoB = '$IInv'  or  InvNoC = '$IInv'  or  InvNoD = '$IInv'  or  InvNoE = '$IInv'  or  InvNoF = '$IInv'  or  InvNoG = '$IInv'  ";
@@ -118,18 +111,18 @@ $SS = "select TransNo from transaction where InvNoA = '$IInv' or  InvNoB = '$IIn
 			$TrR = $rowPrf['TransNo'];
 					}
     $resultSS->close();
-				}		
+				}
 
 
 			if ( $TrR == '')
 			echo "<font color = red>{$row['InvNo']}</th>\n";
 			else
 			echo "<font color = green>{$row['InvNo']}Paid</th>\n";
-			
+
 			$TrR ="";//reset
 			$rowPrf['TransNo'] ="";//reset
-			
-			
+
+
 			$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -141,7 +134,7 @@ $day = $date_array[2];
 
 echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 			echo "<th>{$row['Summary']}</th>"; //summary 3
-			
+
 
 echo "<th>R{$row['TotAmt']}"; ///TOTAL AMOUNT TotAmt
 $TACol = $row['TotAmt'];
@@ -164,7 +157,7 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			//echo " ".$Pday."/".$Pmonth."/".$Pyear."";//ProofDate
 			}
     $resultP->close();
-}		
+}
 
 if ($daPrfekse == "")
 echo "-";
@@ -172,7 +165,7 @@ echo "</th>";  //ProofNo
 
 
 
-			
+
 		echo "<th>";  //forst part ProofNo
 if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 	  while (@$rowP = mysqli_fetch_assoc($resultP)) {
@@ -186,14 +179,14 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			echo " ".$Pday."/".$Pmonth."/".$Pyear."";//ProofDate
 			}
     $resultP->close();
-}	
+}
 if ($daPrfekse == "")
 echo ".";
-	
+
 echo "</th>";  //ProofNo
-			
-			
-			
+
+
+
 		echo "<th>";  //forst part ProofNo
 if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 	  while (@$rowP = mysqli_fetch_assoc($resultP)) {
@@ -206,21 +199,21 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			$Pday = $Pdate_array[2];
 			echo $Notes;			}
     $resultP->close();
-}	
+}
 if ($daPrfekse == "")
 echo ".";
-	
+
 echo "</th>";  //ProofNo
-			
-			
-			
-			
+
+
+
+
 			$Tdate= "";
 			$transss = 0;
 			$InvNoo = $row['InvNo'];
 			$trsql = "select * from transaction where InvNoA  = '$InvNoo' || InvNoB = '$InvNoo'  || InvNoC = '$InvNoo'  || InvNoD = '$InvNoo'  || InvNoE = '$InvNoo'  || InvNoF = '$InvNoo'  || InvNoG = '$InvNoo'  || InvNoH = '$InvNoo'   ";
 			echo "<th>";
-			
+
 			echo "<font size= 2>";
 			//echo $trsql;
 			//echo "</th>";
@@ -229,54 +222,43 @@ echo "</th>";  //ProofNo
 				while ($rowT = mysqli_fetch_assoc($resultT)) {
 				//echo "<th>";
 				$APCol = $rowT['AmtPaid'];
-				
+
 				//if ($rowT['TransNo'] == $rowT['AmtPaid'])
 				//echo "APCol:".$APCol;
 				//echo "TACol:".$TACol;
 				if ($APCol == $TACol)
 				echo "<font color = green>";
-								
+
 				echo "Trans ".$rowT['TransNo'];
-				
+
 				echo " (r".$rowT['AmtPaid'].")";
 				echo " on ";
 				//.$rowT['TransDate']."";
 			$Tdate = $rowT['TransDate'];
-				
+
 			$Tdate_array = explode("-",$Tdate);
 			$Tyear = $Tdate_array[0];
 			@$Tmonth = $Tdate_array[1];
 			@$Tday = $Tdate_array[2];
 			echo " ".$Tday."/".$Tmonth."/".$Tyear."";//ProofDate
 			echo "<br>";
-				
+
 				}
-			}	  
-			
+			}
+
 			echo "</font>";
 			echo "</th>";
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			//echo "<th></th>"; ///TOTAL AMOUNT TotAmt
 			if ($InvPdStatus == "Y")
 			echo "<th>{$row['InvPdStatus']}</th>\n"; //PDSTATUS 4
-			
+
 			$Invsummm = $Invsummm + $row['TotAmt'];
 			$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			//echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//D1
 			$iubh = $row['ex1']*1.14;
 			$iubh2 = $row['ex2']*1.14;
-			
+
 			if ($indesc > "1")
 			{
 			echo "<th>{$row['D1']}</th>\n";//D1  5
@@ -339,27 +321,22 @@ echo "<th>{$row['D3']}</th>\n";
 				//else do not display paid invoices
 
 			//}
-			
-			
-		//}	
-	
-	
+
+
+		//}
+
+
 
 
 
 	}
     // free result set
     $resultINV->close();
-	
+
 }
 echo "</table>";
-//echo "Paid invoice total to: 
+//echo "Paid invoice total to:
 echo "Invoices total to: R ".$Invsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
-
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -370,11 +347,8 @@ else
 echo "<b>Total Amount owing to you: R".-number_format(($Invsummm - $yo), 2, '.', ' ')."</b><BR />";
 echo "<br /><br />";
 
-
 include ("view_Unpaid_inv_by_cust.php");
 
-
-
 echo "<br /><br />";
 echo "<br /><br />";
 echo "<br /><br />";
@@ -391,175 +365,6 @@ echo "<br /><br />";
 echo "<br /><br />";
 echo "<br /><br />";
 echo "<br /><br />";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 $SQLstring = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
 
@@ -579,20 +384,15 @@ if ($result = $DBConnect->query($SQLstring)) {
  		echo "";
 			echo "* First Name, / VAT no:";
 
-			
 		//	echo "<textarea id='cust_fn' style='white-space:pre-wrap;font-family:arial;height:22px;width:300px;font-size: 10pt' name='CustFName' >";
 echo $row['CustFN'];
 //echo "</textarea>";
-		
-			
-			
-			
-			
+
 		echo "<br>";
 
  		echo "";
 			echo "<label>* Surname:</label></dt>";
-	
+
 //echo "<textarea id='CustLName' style='white-space:pre-wrap;font-family:arial;height:22px;width:300px;font-size: 10pt' name='CustLName' >";
 echo $row['CustLN'];
 //echo "</textarea>";
@@ -604,12 +404,10 @@ echo $row['CustLN'];
 			$CLN = $row['CustLN'];
 
 						$ADSLTel = $row["ADSLTel"];
-			
-		
+
 			echo " ";
 				echo " <a href = 'interrogate.php' target=_blank>Old</a>";
 		echo "<br>";
-
 
  		echo "";
 			echo "Telephone Number:";
@@ -617,7 +415,6 @@ echo $row['CustLN'];
 echo $row['CustTel'];
 //echo "</textarea>";
 
-				
 		echo "<br>";
 
  		echo "";
@@ -630,14 +427,10 @@ echo "</textarea>";
  		echo "";
 			echo "<label>Email Address:</label></dt>";
 			echo "<input type='text' size = 60 name='CustEm' value=";
-			
 
 			$CE = strtr($row['CustEmail'], array(' ' => '&nbsp;')) ;
 			$CEd = str_replace(';', ';&nbsp;', $CE);
 
-
-			
-			
 			echo $CE ; //or should this be $CEd ???
 //			echo $row[5];
 
@@ -660,18 +453,17 @@ echo "</textarea>";
 
  		//echo "&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' name='btn_submit' value='Submit/Save' /> ";
 			//echo "<label><br>Details </label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			
+
 			$DDD= $row["CustDetails"];
 			//$DDD = $row[8];
 			$FF = urlencode($DDD);
 			//echo $FF;
-			
-//$str = strtr($DDD, array(' ' => '&nbsp;', ',' => ','));			
-//$str = strtr($DDD, array(' ' => '&nbsp;'));		
+
+//$str = strtr($DDD, array(' ' => '&nbsp;', ',' => ','));
+//$str = strtr($DDD, array(' ' => '&nbsp;'));
 //echo "<br>";
 //echo $DDD;
 //echo "<br>";
-
 
 //$DDD = str_replace("/_/","&nbsp;",$DDD);
 //$DDD = preg_replace("/__/","&nbsp;&nbsp;",$DDD);
@@ -685,32 +477,25 @@ $DDD = str_replace("YenCurrency", "¥", $DDD);
 $DDD = str_replace("PoundCurrency", "£", $DDD);
 $DDD = str_replace("centT", "¢", $DDD);
 
-
-			
-			
 //     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 echo "<br> ";echo "<textarea id='CustDetails' style='white-space:pre-wrap; font-family:arial;width:800px;font-size: 8pt' rows = '5' size = '80' name='CustDetails' >";
 	//echo $row["CustDetails"];
-	
+
 	echo $DDD;echo "</textarea>";
 
-	
-	
-	
 			echo "<br>extra: <br>";
 			//echo "<label><br>Details </label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			
+
 			$EEE= $row["Extra"];
 			//$EEE = $row[8];
 			$FF = urlencode($EEE);
 			//echo $FF;
-			
-//$str = strtr($EEE, array(' ' => '&nbsp;', ',' => ','));			
-//$str = strtr($EEE, array(' ' => '&nbsp;'));		
+
+//$str = strtr($EEE, array(' ' => '&nbsp;', ',' => ','));
+//$str = strtr($EEE, array(' ' => '&nbsp;'));
 //echo "<br>";
 //echo $EEE;
 //echo "<br>";
-
 
 //$EEE = str_replace("/_/","&nbsp;",$EEE);
 //$EEE = preg_replace("/__/","&nbsp;&nbsp;",$EEE);
@@ -724,34 +509,24 @@ $EEE = str_replace("YenCurrency", "¥", $EEE);
 $EEE = str_replace("PoundCurrency", "£", $EEE);
 $EEE = str_replace("centT", "¢", $EEE);
 
-
-			
-			
 //     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 echo "<br> ";echo "<textarea id='Extra' style='white-space:pre-wrap; font-family:arial;width:800px;font-size: 7pt' rows= '5' size = '80' name='Extra' >";
-	
+
 	echo $EEE;echo "</textarea>";
-	
-	
-	
-	
-	
-	
-	
+
 			echo "<br>Confid: <br>";
 			//echo "<label><br>Details </label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			
+
 			$EEE= $row["Confid"];
 			//$EEE = $row[8];
 			$FF = urlencode($EEE);
 			//echo $FF;
-			
-//$str = strtr($EEE, array(' ' => '&nbsp;', ',' => ','));			
-//$str = strtr($EEE, array(' ' => '&nbsp;'));		
+
+//$str = strtr($EEE, array(' ' => '&nbsp;', ',' => ','));
+//$str = strtr($EEE, array(' ' => '&nbsp;'));
 //echo "<br>";
 //echo $EEE;
 //echo "<br>";
-
 
 //$EEE = str_replace("/_/","&nbsp;",$EEE);
 //$EEE = preg_replace("/__/","&nbsp;&nbsp;",$EEE);
@@ -765,60 +540,35 @@ $EEE = str_replace("YenCurrency", "¥", $EEE);
 $EEE = str_replace("PoundCurrency", "£", $EEE);
 $EEE = str_replace("centT", "¢", $EEE);
 
-
-			
-			
 //     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 echo "<br> ";echo "<textarea id='Confid' style='white-space:pre-wrap; font-family:arial;width:800px;font-size: 7pt' rows= '1' size = '80' name='Confid' >";
-	
+
 	echo $EEE;echo "</textarea>";
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 ?><br>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<br>
 
 
 
 <?php
 echo "<br/> ";
-		
 
-	
-	
-			
-	
-			
 			echo "<label>Abbr</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 			echo "<input type='text' size = '10' name='Abbr' value=";
 //echo $row["ABBR"];
 //			echo $row[9];
 
-
 			$ABBB = strtr($row['ABBR'], array(' ' => '_')) ;
 			echo $ABBB;
 			echo "> ";
 		echo "<br> ";
 
-
-
-		
-		
  		echo "";
 			echo "<label>ADSL Password:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -830,7 +580,6 @@ echo "<br/> ";
 			echo ">";
 		echo "<br> ";
 
-		
  		echo "";
 			echo "<label>Distance:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -840,7 +589,6 @@ echo "<br/> ";
 
 			echo "> ";
 		echo "<br> ";
-
 
  		echo "";
 			echo "<label>ADSL Tel No:</label></dt>";
@@ -852,45 +600,38 @@ echo "<br/> ";
 			echo "> ";
 		echo "<br> ";
 
-		
-
  		echo "";
 			echo "<label>ADSL Username:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 			echo "<input type='text' name='u1' style='font-weight: bold;' value=";
 			echo $row["u1"];
 			echo ">@";
-		
+
 			echo "<input type='text' name='u2' style='font-weight: bold;'  value=";
 			echo $row["u2"];
 	//echo $row[12];
 
 			echo "> &nbsp;&nbsp;";
-			
-			
+
 			echo $row["u1"];
 			echo "@";
 			echo $row["u2"];
 			echo "&nbsp;&nbsp;";
-			
+
 			echo $row['CustPW'];
-			
-			
-			
+
 		echo "<br> ";
 
-		
 		 		echo "";
 			echo "<label><b><font color = red size = 3>Important for ".$ABBB.": </b></label></font></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
-			
+
 					echo "<textarea id='Important' style='white-space:pre-wrap; height:20px;font-family:Times New Roman;width:750px;font-size: 10pt'  name='Important'  >";
 	//echo $row["CustDetails"];
-	
-	echo $row['Important'];echo "</textarea>";
-			
-			echo "<br> ";
 
+	echo $row['Important'];echo "</textarea>";
+
+			echo "<br> ";
 
 			$newfldr = "1";
 			$newfldr = "file:///".$row['L1'] ;
@@ -902,61 +643,40 @@ echo "<br/> ";
 			//$newfldr = "file:///F:\_work\Customers";
 			//echo "<br><br> newfldr: ".$newfldr." <br>";
 			//echo "<br> <a href= '".$newfldr."'>OPen newfolder</a>   <br>";
-			
+
 			//echo "<b>Last topup invoiced:<input type='text' name='topup' size = '50' value=";
-			
+
 			//$rt = strtr($row['topup'], array(' ' => '_')) ;
-			
-			
+
 		//	echo $rt;
 		//	echo "></b> ";
-	
-			
+
 //strtr($newfldr, array('/' => '\\')) ;
 strtr($newfldr, array('\\' => '/')) ;
 
-			
 			//echo "<br><br> newfldr: ".$newfldr." <br>";
-			
+
 	//echo "<br> <a href= 'file:///".$newfldr."'>Open customer folder: ".$newfldr." </a>  <br>";
 	echo "<br> <a href= '".$newfldr."' alt= 'Right-click in Ext App'>Open customer folder: ".$newfldr." </a> &nbsp;&nbsp;&nbsp; ";
 //	echo "<br> <a href= 'file://".$newfldr."'>Open customer folder: ".$newfldr." </a>  <br>";
 //	echo "<br> <a href= 'file://".$row['L1']."'>Open customer folder: file://".$row['L1']." </a>  <br>";
 //	echo "<br> <a href= 'file:".$row['L1']."'>Open customer folder: ".$row['L1']." </a>  <br>";
-	
-	
-	
 
-
-
-
-
-		
-		
 						 		echo "";
 			echo "<label>Folder Location L1:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 			echo "<input type='text' size = 53  name='L1' value=";
 			//echo $row["L1"];
 			echo strtr($row['L1'], array('/' => '\\')) ;
-			
-			
+
 //			$L1 = str_replace('\\', '/', $L1);
-			
-			
+
 		//	echo $row[13];
 			echo "> ";
 		echo "<br> ";
 		//echo "file:///";
 			//echo $row['L1'] ;
-			
-			
 
-			
-		
-
-		
-				 
 			echo "<label>adslinv:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
 			echo "<input type='text' size = 103  name='adslinv' value=";
@@ -969,7 +689,7 @@ strtr($newfldr, array('\\' => '/')) ;
 				 		echo "";
 			echo "<label>ae:</label></dt>";
 			//     <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; q_mark>" />-->
-			
+
 $ae1 = "j";
 //echo " h ";
 //echo strtr($row['ae'], array(' ' => '&nbsp;')) ;
@@ -979,16 +699,15 @@ $ae1 = "j";
 
 $ae1 = $row['ae'];
 
-
-//nl2br(preg_replace('#(\\]{1})(\\s?)\\n#Usi', ']', stripslashes($ae1))); 
+//nl2br(preg_replace('#(\\]{1})(\\s?)\\n#Usi', ']', stripslashes($ae1)));
 //echo " ae1__: ". $ae1;
-			
+
 		if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae1))
 {
     echo " one or more of the 'special characters' found ";
-}	
-			
-			
+}
+
+
 		//	echo strtr($row['ae'], array(' ' => '&nbsp;')) ;
 		//	echo $row['ae'];
 		//echo $ae1;
@@ -997,27 +716,23 @@ $ae1 = $row['ae'];
 		$ae1 = strtr($ae1, array('_' => '&nbsp;')) ;
 
 	//echo " ____spec: ";
-	
+
 		htmlspecialchars($ae1);
 	//echo " ent: ";
 
 		htmlentities($ae1);
-		
-		
 
 if ($ae1 > 0.2)
 {
 		//echo "R".$ae1 * 1.14;
 		$ae1 =  $ae1 * 1.14;
-		
+
 		 $ae1 = number_format ($ae1, 2, ".", "");
  //echo "<br>";
  echo "<b>R ".$ae1." inin VAT</b><br>";
 //$ae1N = number_format($ae1,1);  //I removed the last cent here
 //echo " ".$ae1N;
 
-		
-		
 }
 
 echo "<br />";
@@ -1026,11 +741,6 @@ echo "ae:R<textarea id='ae' style='white-space:pre-wrap; height:20px;width:350px
 	//echo $row["CustDetails"];
 	echo $row['ae'];echo "</textarea>";
 
-	
-	
-	
-	
-		 
 echo "<br><label>invD2:</label></dt>";
 echo "<input type='text' size = 103  name='invD2' value=";
 echo strtr($row['invD2'], array(' ' => '&nbsp;')) ;
@@ -1044,7 +754,7 @@ $ae2 = $row['ae2'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae2))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae2 = strtr($row['ae2'], array(' ' => '_')) ;
 $ae2 = strtr($ae2, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1079,7 +789,7 @@ $ae3 = $row['ae3'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae3))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae3 = strtr($row['ae3'], array(' ' => '_')) ;
 $ae3 = strtr($ae3, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1114,7 +824,7 @@ $ae4 = $row['ae4'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae4))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae4 = strtr($row['ae4'], array(' ' => '_')) ;
 $ae4 = strtr($ae4, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1139,7 +849,7 @@ echo "<b>R ".$ae4." inin VAT</b><br>";
 
 
 
-		 
+
 echo "<br><label>invD5:</label></dt>";
 echo "<input type='text' size = 103  name='invD5' value=";
 echo strtr($row['invD5'], array(' ' => '&nbsp;')) ;
@@ -1153,7 +863,7 @@ $ae5 = $row['ae5'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae5))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae5 = strtr($row['ae5'], array(' ' => '_')) ;
 $ae5 = strtr($ae5, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1177,7 +887,7 @@ echo "<b>R ".$ae5." inin VAT</b><br>";
 
 
 
-		 
+
 echo "<br><label>invD6:</label></dt>";
 echo "<input type='text' size = 103  name='invD6' value=";
 echo strtr($row['invD6'], array(' ' => '&nbsp;')) ;
@@ -1191,7 +901,7 @@ $ae6 = $row['ae6'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae6))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae6 = strtr($row['ae6'], array(' ' => '_')) ;
 $ae6 = strtr($ae6, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1216,7 +926,7 @@ echo "<b>R ".$ae6." inin VAT</b><br>";
 
 
 
-		 
+
 echo "<br><label>invD7:</label></dt>";
 echo "<input type='text' size = 103  name='invD7' value=";
 echo strtr($row['invD7'], array(' ' => '&nbsp;')) ;
@@ -1230,7 +940,7 @@ $ae7 = $row['ae7'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae7))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae7 = strtr($row['ae7'], array(' ' => '_')) ;
 $ae7 = strtr($ae7, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1254,7 +964,7 @@ echo "<b>R ".$ae7." inin VAT</b><br>";
 
 
 
-		 
+
 echo "<br><label>invD8:</label></dt>";
 echo "<input type='text' size = 103  name='invD8' value=";
 echo strtr($row['invD8'], array(' ' => '&nbsp;')) ;
@@ -1268,7 +978,7 @@ $ae8 = $row['ae8'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae8))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae8 = strtr($row['ae8'], array(' ' => '_')) ;
 $ae8 = strtr($ae8, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -1290,10 +1000,10 @@ echo "<b>R ".$ae8." inin VAT</b><br>";
 }
 
 
-			
-			
-			
-			
+
+
+
+
 		echo "<br> ";
 
 				 		echo "";
@@ -1306,25 +1016,14 @@ echo "<b>R ".$ae8." inin VAT</b><br>";
 			echo "> ";
 		echo "<br> ";
 
-
-			
-			
 			echo "<b>Last topup invoiced:<textarea id='topup' style='white-space:pre-wrap; height:20px;width:350px;font-size: 10pt'  name='topup'  >";
 	//echo $row["CustDetails"];
-	
+
 	echo $row['topup'];echo "</textarea>";
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 }}
-	
-?>			
+
+?>
 <br />
 <script>
 function openfolder()

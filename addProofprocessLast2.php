@@ -1,8 +1,8 @@
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -40,21 +40,12 @@ $InvNoGincl = 0;
 $InvNoH = 0;
 $InvNoHincl = 0;
 
-
-//$CustNo" 
+//$CustNo"
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
 
-
 //$CustNo = $_POST['CustNo'];
-
-
-
-
-
-
-
 
 $CustFN = $_POST['CustFN'];
 $CustLN = $_POST['CustLN'];
@@ -62,20 +53,18 @@ $CustEmail = $_POST['CustEmail'];
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
 
-
 //$ProofNo = $_POST['ProofNo'];
 
 $Numb = "ProofNo1"; //default when table is empty.
-//$query = "SELECT  MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
+//$query = "SELECT MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
 //$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
 //$query = "select ProofNo from aproof asc limit 1";
-//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead 
+//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead
 //$query = "select ProofNo from aproof order by ProofDate desc limit 1";
 $query = "SELECT ProofNo,CONVERT(SUBSTRING_INDEX(ProofNo,'ProofNo',-1),UNSIGNED INTEGER) AS num
 FROM aproof ORDER BY num desc limit 1;  ";
  //http://stackoverflow.com/questions/5960620/convert-text-into-number-in-mysql-query
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
 
 while($row = mysqli_fetch_array($result)){
 	echo "<br>The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -86,20 +75,10 @@ $Numb++;
 echo "<br><br>";
 $ProofNo = "ProofNo".$Numb;
 
-
-
-
-
-
-
-
-
-
 $CustNo = $_POST['CustNo'];
 $CustInt = $CustNo;
 if ($CustNo == 0)
 echo "<font size = '5'>ERROR CUSTNo is zero</FONT>";
-
 
 $D1 = $_POST['ProofDate'];
 $D2 = explode("/", $D1);
@@ -113,12 +92,9 @@ $D2 = explode("/", $D1);
 
 $ProofDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $ProofDate;	 
-
+//echo $ProofDate;
 
 $CustSDR = $_POST['CustSDR'];
-
-
 
 $Amt = $_POST['Amt'];
 $Notes = $_POST['Notes'];
@@ -150,19 +126,18 @@ htmlXentities($Notes);
 htmlX_entity_decode($Notes);
 */
 $Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;  
-
+$EEmail = $Notes;
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;");
-$Notes = str_replace($von, $zu, $Notes);  
+$Notes = str_replace($von, $zu, $Notes);
 echo " specNotes:".$Notes."<br>" ;
 $Notes = mysqli_real_escape_string($DBConnect, $Notes); //Note, that if no connection is open, mysqli_real_escape_string() will return an empty string!
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes); 
+//iconv("UTF-8", "ISO-8859-1", $Notes);
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -217,19 +192,14 @@ echo " notes:".$Notes ;
 echo " CustSSDR:".$CustSDR ;
 echo "ProofMethod:".$PMethod." ";
 
-
-
-
 echo "Thank you for adding the proof's details: ".$ProofNo." ".$CustNo ." ".$D1 ."."  ;
 
 //$ProofNoInt = intval($ProofNo);
 
-
-
 if ($InvNoBincl  == '')
 $InvNoBincl = 0;
 
-$query="insert into aproof (ProofNo, CustNo, ProofDate, Amt, TransNo, Notes, CustSDR, PMethod,  
+$query="insert into aproof (ProofNo, CustNo, ProofDate, Amt, TransNo, Notes, CustSDR, PMethod,
 InvNoA,InvNoAincl,
 InvNoB, InvNoBincl ,
 InvNoC, InvNoCincl ,
@@ -240,7 +210,7 @@ InvNoG , InvNoGincl ,
 InvNoH , InvNoHincl,
 Priority )
 VALUES
-( '$ProofNo',  $CustNo, '$ProofDate', '$Amt', '', '$Notes', '$CustSDR', '$PMethod', 
+( '$ProofNo',  $CustNo, '$ProofDate', '$Amt', '', '$Notes', '$CustSDR', '$PMethod',
 '$InvNoA', '$InvNoAincl' ,
  '$InvNoB', '$InvNoBincl' ,
  '$InvNoC', $InvNoCincl ,
@@ -251,8 +221,7 @@ VALUES
 '$InvNoH',  $InvNoHincl ,
 '$Priority') ";
 
-
-/*(TransNo = $ProofNo, CustNo = $CustNo, ProofDate ='$ProofDate', Amt = $Amt, Notes = '$Notes', PMethod = '$PMethod', 
+/*(TransNo = $ProofNo, CustNo = $CustNo, ProofDate ='$ProofDate', Amt = $Amt, Notes = '$Notes', PMethod = '$PMethod',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -276,20 +245,14 @@ echo "<font size = 3  color = red><b><b>insert or update NOT successfull!!!<br> 
 else
 echo "<font size = 4>insert success! </font><br><br> $query</b><br>";
 
-
 //echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
 
 //echo "<input type='text' id='CNN'  name='CNN' value=".$CustNo.">";
 
 //include ("addTransCustProcess3.php");
 
-
-
-
-
 //php to sql does not understand semicolon. remove the semicolon!!!
 //$ProofInt = intval($ProofNoInt);
-
 
 $SQLString = "SELECT * FROM aproof WHERE ProofNo = $ProofNo";
 //$SQLString = "SELECT * FROM transaction WHERE WHERE CustNo = $item2;
@@ -324,24 +287,24 @@ print "_".$item10;
 }
 $result->free();
 }
-	
+
 
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/	
+*/
 ?>
 
 
@@ -357,11 +320,11 @@ echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br
 
 <a href = "add_proof.php"> Click to add another proof</a>	<br><br>
 <a href = "add_trans.php"> Click to add another transaction</a>	<br><br>
-	
+
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 
 
-	
+
 
 <?php
 //echo $query;
@@ -370,17 +333,14 @@ $ttttt = 0;
 echo "<br><br>";
 echo "Details: <br>";
 
-
 echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
-
 
 if ($InvNoA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE InvNo = $InvNoA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -405,7 +365,6 @@ echo "</th>";
 $result->free();
 }
 echo "</tr>";
-
 
 }
 
@@ -618,7 +577,6 @@ $result->free();
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
-
 $nL = "%0D%0A"; //new line
 
 $b5 = "For Proof of: ".$Notes. " Invoice No ".@$InvNoA." ";
@@ -638,8 +596,6 @@ $b5k = $b5k." , ".@$InvNoG;
 if ($InvNoH != '0')
 $b5k = $b5k." , ".@$InvNoH;
 
-
-
 $NN = $EEmail;
 If ($Notes == ".")
 $NN = "";
@@ -650,14 +606,9 @@ $b2 = "Proof Number: ". $ProofNo;
 $b3 = "From: ". $CustLN.", ".$CustFN;
 $b4 = "Amount: R". $Amt;
 
-
 $b5b = "Customer statement: ".$CustSDR;
 $b6 = "Received by: CompanyName ";
 $b7 = "Proof method: ". $PMethod;
-
-
-
-
 
 $b8 = "Thank you";
 $b9 = "CompanyName";
@@ -672,7 +623,6 @@ $bg = "Sales terms: TermsWebpage";
 $bh = "Support: SupportPage";
 
 //echo $body.$nL.$b1.$nL.$b2.$nL.$b3.$nL.$b4.$nL.$b5.$nL.$b6.$nL.$b7.$nL.$nL.$b8.$nL.$nL.$b9.$nL.$nL.$ba.$nL.$nL.$bb.$nL.$nL.$bc.$nL.$nL.$bd.$nL.$nL.$be.$nL.$nL.$bf.$nL.$nL.$bg.$nL.$nL.$bh;
-
 
 echo "<br><br>";
 ?><font size = 4><b>
@@ -693,7 +643,7 @@ Click to EMail Receipt to customer</a><br>
 
 
 
- 
+
 <font size= 2><b>
 
 <a href='selectCustProof.php'>Click to add email proof for another customer</a> or <input type = "submit" value = "Click to add email proof for the same customer">
@@ -704,12 +654,12 @@ Click to EMail Receipt to customer</a><br>
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <?php
@@ -771,16 +721,13 @@ echo "<br><br>Method: ";
 echo $PMethod;
 echo "<br><br>";
 
-
 echo "<br><br><br>".$query;
-
 
 echo ";<br><br></form>";
 ?>
-Test mailto: <?php echo $CustEmail.$PMethod."<br>".$body."<br><br>".$nL.$b7b.$nL.$nL.$b1.$nL.$b2.$nL.$b3.$nL.$b4.$nL.$b5.$nL.$b5b.$nL.$b6.$nL.$b7.$nL.$nL.$nL.$b8.$nL.$b9.$nL.$nL.$ba.$nL.$bb.$nL.$bc.$nL.$nL.$bd.$nL.$bf.$nL.$nL.$bg.$nL.$nL.$bh; 
+Test mailto: <?php echo $CustEmail.$PMethod."<br>".$body."<br><br>".$nL.$b7b.$nL.$nL.$b1.$nL.$b2.$nL.$b3.$nL.$b4.$nL.$b5.$nL.$b5b.$nL.$b6.$nL.$b7.$nL.$nL.$nL.$b8.$nL.$b9.$nL.$nL.$ba.$nL.$bb.$nL.$bc.$nL.$nL.$bd.$nL.$bf.$nL.$nL.$bg.$nL.$nL.$bh;
 
 //$body = "Thank you for Proof of ".$NN." Invoice No ".@$InvNoA." ".$b5k.".".$nL.$nL.$PMethod." Receipt (This email is the receipt, there is no attachment in this email)".$nL;
-
 
 //$body = "testing";
 ?>

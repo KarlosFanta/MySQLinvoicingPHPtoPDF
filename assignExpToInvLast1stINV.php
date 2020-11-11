@@ -1,24 +1,21 @@
  <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $CustNo = '';
 $ProofDate = '';
 $Amt = '';
 $Notes ='';
 
-//$CustNo" 
+//$CustNo"
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
-
 
 $CustNo = $_POST['CustNo'];
 
 if ($CustNo == 0)
 echo "<font size = '5'>ERROR CUSTNo is zero</FONT>";
-
-
 
 $clInv = $_POST['mydropdownEC'];
 echo "mydropdownEC:";
@@ -37,13 +34,9 @@ $CustEmail = $_POST['CustEmail'];
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
 
-
 //$ProofNo = $_POST['ProofNo'];
 
-
 echo "CustNo ".$CustNo ." ExpNo ".$clInv ."."  ;
-
-
 
 //$SQLString = "SELECT * FROM expenses WHERE CustNo = $CustNo";
 //$SQLString = "SELECT * FROM transaction WHERE WHERE CustNo = $item2;
@@ -72,8 +65,7 @@ echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
 echo "</tr>\n";
 
-
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 {
 echo "<th>".$row['ExpNo']."</th>";
 echo "<th>".$row['ExpDesc']."</th>";
@@ -92,8 +84,8 @@ $row_cnt = mysqli_num_rows($resultC);
 
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
-{ 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
+{
 
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
@@ -109,20 +101,15 @@ echo "</table >";
 
 mysqli_free_result($result);
 
-
 }
 
 echo " There are currently $row_cnt expenses for this invoice.";
 
-
 //mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
-//include "edit_invCQ.php";
+//include 'edit_invCQ.php';
 //echo "<br>";
-//include "view_inv_by_custBasic.php";
- 
-	
-	
-	
+//include 'view_inv_by_custBasic.php';
+
 echo "Select an expense to be assigned to: ";
 
 ?>
@@ -141,7 +128,7 @@ $query = "select * from expenses where CustNo = $CustNo ORDER BY ExpNo DESC";
 
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -169,7 +156,7 @@ else
 	print "_".$PurchDate;
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
-	print " </option>"; 
+	print " </option>";
   }
 
 
@@ -185,9 +172,9 @@ else
 //echo "item2: ".$item2 ."<br>";
 ?>
 <br>
-<input type="submit" name="btn_submit" value="Select invoice" /> 
+<input type="submit" name="btn_submit" value="Select invoice" />
 
-</select></p>  
+</select></p>
 
 <a href = "edit_invCQ.php" target=_blank>Search through customer's invoices here</a>
 
@@ -227,15 +214,12 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-
-    // fetch object array 
+    // fetch object array
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
 
-
-
 	  echo "<tr><th>";
-	  
+
 	   echo $x;
 echo "</th></FONT>";
 
@@ -266,7 +250,7 @@ echo "</tr>\n";
 		}
     //
     $result->close();
-	
+
 }
 echo "</table>";
 echo "<br><br>";
@@ -304,15 +288,12 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-
-    // fetch object array 
+    // fetch object array
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
 
-
-
 	  echo "<tr><th>";
-	  
+
 	   echo $x;
 echo "</th></FONT>";
 
@@ -343,24 +324,11 @@ echo "</tr>\n";
 		}
     //
     $result->close();
-	
+
 }
 echo "</table>";
 echo "<br><br>Exclude ADSL invoices:<br>";
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 ?>
 
 
@@ -388,15 +356,13 @@ echo "<br><br>Exclude ADSL invoices:<br>";
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 
 
-	
+
 
 <?php
 //echo $query;
 $ttttt = 0;
 
 echo "<br><br>";
-
-
 
 ?>
 <a href='selectCustProof.php'>Click to add email proof for another customer</a> or <input type = "submit" value = "Click to add email proof for the same customer">
@@ -407,12 +373,12 @@ echo "<br><br>";
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <?php

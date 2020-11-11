@@ -1,10 +1,10 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once("inc_OnlineStoreDB.php");
-?> 
+require_once 'inc_OnlineStoreDB.php';
+?>
 
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b>Proofs matched to unpaid invoices</b><!--<font size = "2" type="arial">-->
 <br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;</font> </b><font color=#F5F5DC>unreconciledProofs.php &nbsp;&nbsp;&nbsp;order by  desc</font>
@@ -83,33 +83,26 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-    // fetch object array 
+    // fetch object array
 //    while ($row = $resultINV->fetch_row()) {
 	  while ($row = mysqli_fetch_assoc($resultINV)) {
 
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-	  
-	  
-	  
-	  
-	  
-//	echo "unnn:".$un;  
-	  
-	  
-	  
+//	echo "unnn:".$un;
+
 //echo "<tr><th>";  deosnt work here when making paid invoices dissappear.
 
-if (@in_array(@$row['InvNo'], @$PaidInvs)) 
+if (@in_array(@$row['InvNo'], @$PaidInvs))
 {
     if ($un == 'Y')
 			{
 			/*echo "<tr><th><font color = green>{$row['InvNo']}Paid</th>\n";
 		//	echo "<th>{$row[2]}</th>";  //invdate
-			
-			
-			
-			
+
+
+
+
 			$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -121,25 +114,25 @@ $day = $date_array[2];
 
 echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //			echo "<th>R{$row[29]}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>R{$row['TotAmt']}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>{$row['Summary']}</th>"; //summary 3
@@ -150,7 +143,7 @@ echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 			//echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//D1
 			$iubh = $row['ex1']*1.14;
 			$iubh2 = $row['ex2']*1.14;
-			
+
 			if ($indesc > "1")
 			{
 			echo "<th>{$row['D1']}</th>\n";//D1  5
@@ -218,14 +211,14 @@ echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 							$Invsummm = $Invsummm + $row['TotAmt'];
 							$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			}
-			
-			
-		}	
+
+
+		}
 	else
 		{
 			echo "<tr><th><font color = red>{$row['InvNo']}</th>\n"; //0
 //			echo "<th>{$row[2]}</th>";  //invdate
-			
+
 						$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -238,9 +231,9 @@ $day = $date_array[2];
 echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 
 
-			
-			
-			
+
+
+
 			echo "<th>R{$row['TotAmt']}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>{$row['Summary']}</th>"; //summary
 			if ($InvPdStatus == "Y")
@@ -313,15 +306,14 @@ echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 	}
     // free result set
     $resultINV->close();
-	
+
 }
 echo "</table>";
-//echo "Paid invoice total to: 
+//echo "Paid invoice total to:
 if ($un == 'Y')
 echo "Invoices total to: R ".$Invsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
 else
 echo "Only Unpaid Invoices total to: R ".$UnpaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -404,7 +396,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -447,5 +439,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

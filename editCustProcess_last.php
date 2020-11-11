@@ -1,8 +1,8 @@
 <?php	//this is "editCustProcess_last.php"
  $page_title = "You updated a customer";
-include('header.php');	
+include 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,6 @@ $CustNo = 0;
 //	$CustNo = @$_SESSION['CustNo'];
 echo"<font size = 1>";
 
-	
 $CustFName = '';
 $Cust_LName = '';
 $u1 = '';
@@ -105,11 +104,6 @@ $dotdot = '';
 $L1 = '';
 $Abbr = '';
 $Confid = '';
-
-
-
-
-
 
 $Cust_No = $_POST['CustNo'];
 $CustFName = $_POST['CustFName'];
@@ -161,7 +155,7 @@ $CustDetails = preg_replace("/\xA5/","YenCurrency",$CustDetails);
 $CustDetails = preg_replace("/\xA3/","PoundCurrency",$CustDetails);
 $CustDetails = preg_replace("/\xA2/","centT",$CustDetails);
 //$CustDetails = preg_replace("/\xAE/","RegTrademark",$CustDetails);
-$CustDetails = preg_replace("/%/","Percent",$CustDetails); // % and _ have special meaning in LIKE clauses. 
+$CustDetails = preg_replace("/%/","Percent",$CustDetails); // % and _ have special meaning in LIKE clauses.
 
 
 
@@ -183,14 +177,14 @@ $Important = preg_replace("/\xA5/","YenCurrency",$Important);
 $Important = preg_replace("/\xA3/","PoundCurrency",$Important);
 $Important = preg_replace("/\xA2/","centT",$Important);
 $Important = preg_replace("/\xAE/","RegTrademark",$Important);
-$Important = str_replace('"', '&quot;', $Important);  //double quotes for mailto: emails.  
-$Important = str_replace('  ', '&nbsp;', $Important);  //double spaces  
-$Important = str_replace('\xC2', '&nbsp;', $Important);  //double quotes for mailto: emails.  
-$Important = preg_replace("/\xC2/","&nbsp;",$Important);  //might prevent spaces 
+$Important = str_replace('"', '&quot;', $Important);  //double quotes for mailto: emails.
+$Important = str_replace('  ', '&nbsp;', $Important);  //double spaces
+$Important = str_replace('\xC2', '&nbsp;', $Important);  //double quotes for mailto: emails.
+$Important = preg_replace("/\xC2/","&nbsp;",$Important);  //might prevent spaces
 $Important = str_replace('\xA0', '&nbsp;', $Important);  //might prevent spaces increasing
-$Important = str_replace("\xA0", '&nbsp;', $Important);   //might prevent spaces increasing 
+$Important = str_replace("\xA0", '&nbsp;', $Important);   //might prevent spaces increasing
 $Important = preg_replace("/\xA0/","&nbsp;",$Important);  //might prevent spaces increasing
-$Important = str_replace(' ', '&nbsp;', $Important);  //double quotes for mailto: emails.  
+$Important = str_replace(' ', '&nbsp;', $Important);  //double quotes for mailto: emails.
 
 
 
@@ -204,74 +198,36 @@ $Important = str_replace(' ', '&nbsp;', $Important);  //double quotes for mailto
 
 //echo "<br>".htmlentities($Important);
 
-
-
-
-
-
-
-
-
-
-
 //VERY IMPORTANT FOR TESTING JUL2014:
 //	echo html_entity_decode($CustDetails);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	$CustDetails = str_replace("Ã¤","&auml;", $CustDetails);  
-
-
-
+	$CustDetails = str_replace("Ã¤","&auml;", $CustDetails);
 
     $von = array("ä","ö","ü","ß","Ä","Ö","Ü","é");  //to correct double whitepaces as well
     $zu  = array("&auml;","oe","ue","ss","Ae","Oe","Ue","&#233;");
- //  $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&#233;");  
+ //  $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&#233;");
 
-
-
-
-
-
-
-	
-    $Important = str_replace($von, $zu, $Important);  
-    $CustDetails = str_replace($von, $zu, $CustDetails);  
-  // $CustDetails = str_replace("\xE9","&#233;", $CustDetails);  
+    $Important = str_replace($von, $zu, $Important);
+    $CustDetails = str_replace($von, $zu, $CustDetails);
+  // $CustDetails = str_replace("\xE9","&#233;", $CustDetails);
 //	echo "<br>After vonzu: ";
 //echo htmlentities($Important);
 
-$Important = mysqli_real_escape_string($DBConnect, $Important); //header must be UTF 8, 
+$Important = mysqli_real_escape_string($DBConnect, $Important); //header must be UTF 8,
 
 //echo "<br>After escape: ";
 //echo htmlentities($Important)."<br>";
 
 $CustDetails = mysqli_real_escape_string($DBConnect, $CustDetails);
-$Extra = mysqli_real_escape_string($DBConnect, $Extra); 
-$Confid = mysqli_real_escape_string($DBConnect, $Confid); 
+$Extra = mysqli_real_escape_string($DBConnect, $Extra);
+$Confid = mysqli_real_escape_string($DBConnect, $Confid);
 
 //the following code actualy changes the char set to UTF8 - without it, the tradmark sign give issues.
 if (!mysqli_set_charset($DBConnect, "utf8")) {
     printf("Error loading character set utf8: %s\n", mysqli_error($DBConnect));
 } else {
 
-echo "";   
+echo "";
    //printf("Current character set: %s\n", mysqli_character_set_name($DBConnect));
 }
 
@@ -314,9 +270,6 @@ $v1 = preg_replace("/&/","and",$v1);
 //$v1 = preg_replace("/,/","+",$v1);
 //$v1 = preg_replace("/…/",".",$v1);
 
-
-
-
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
 $v1 = str_replace(' ', '_', $v1);
@@ -328,10 +281,6 @@ $v1 = str_replace(" ","_",$v1);
 $v1 = str_replace("&nbsp;","_",$v1);
 
 //echo "<br>afterstreplacec:".$v1."<br><br><br>";
-
-
-
-
 
 /*
 $old_pattern = array("/[^a-zA-Z0-9]/", "/_+/", "/_$/");
@@ -377,7 +326,6 @@ $v1 = preg_replace("/&/","and",$v1);
 //$v1 = preg_replace("/,/","+",$v1);
 //$v1 = preg_replace("/…/",".",$v1);
 
-
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
 $v1 = str_replace(' ', '_', $v1);
@@ -388,18 +336,7 @@ $v1 = strtr($v1, array_flip(get_html_translation_table(HTML_ENTITIES, ENT_QUOTES
 $v1 = str_replace(" ","_",$v1);
 $v1 = str_replace("&nbsp;","_",$v1);
 
-
-
-
-
-
 //echo "<br>afterstreplacec:".$v1."<br><br><br>";
-
-
-
-
-
-
 
 $old_pattern = array("/[^a-zA-Z0-9]/", "/_+/", "/_$/");
 $new_pattern = array("_", "_", "");
@@ -408,171 +345,6 @@ $v2 = preg_replace($old_pattern, $new_pattern , $v1);
 
 
 return $v2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 //$CustFName = changeV($CustFName);
@@ -589,33 +361,10 @@ $Cust_Email = preg_replace("/\xA0\xA0/","",$Cust_Email);
 //$CustIDdoc = changeV($CustIDdoc);
 //$CustDetails = changeV($CustDetails);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //echo "<br>CustDetails2: ".$CustDetails;
 
 $content = nl2br($_POST["CustDetails"]);
 $content = trim($content);
-
-
-
-
-
-
-
-
-
-
 
 //$ADSLTel = changeV($ADSLTel);
 $CustPW = changeSoft($CustPW);
@@ -626,52 +375,18 @@ $invD2 = changeV($invD2);
 $Abbr = changeV($Abbr);
 //$topup = changeV($topup);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //echo "Thank you for updating the customer's details: ".$Cust_No." &nbsp;&nbsp; ".$CustFName ." &nbsp;&nbsp; ".$Cust_LName ."."  ;
 //echo " ".$L1." ";
     $L1 = str_replace('\\', '/', $L1);
 //echo " ".$L1." ";
-
-
-
-
-
-
-
-
-
-
-
-
 
 $Cust_NoInt = intval($Cust_No);
 //echo "<br>CustDetails3: ".$CustDetails;
 
 /*echo "<textarea  style='white-space:pre-wrap; height:100px;width:500px'  size = '80' >";
 	echo $_POST['CustDetails'];
-	
+
 	echo " ";
-
-
-
-
-
-
-
-
-
 
 	echo "</textarea>";
 echo "<br> ";
@@ -714,7 +429,7 @@ echo "<br> ";
 echo "<textarea id='CustDetailsTXT' style='white-space:pre-wrap; height:100px;width:500px'  size = '80' name='CustDetailsTXT' >";
 echo $_POST['CustDetailsTXT'];
 //	echo $CustDetailsTXT;
-	
+
 	echo "</textarea>";
 echo "<br> ";
 
@@ -828,148 +543,20 @@ echo "<textarea  style='white-space:pre-wrap; height:100px;width:500px'  size = 
 	echo $CustDetails;
 	echo "</textarea>";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 echo "<br> ";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 echo "<br> ";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 */
-//echo "<font size = 6><a href = 'editCust.php'>Edit again</a></font>";		
+//echo "<font size = 6><a href = 'editCust.php'>Edit again</a></font>";
 
-
-
-
-
-
-
-
-
-$query="update customer set 
-custfn = '$CustFName', 
-custln ='$Cust_LName', 
-custtel = '$Cust_Tel', 
-custcell= '$Cust_Cell', 
-custemail = '$Cust_Email', 
-custaddr = '$Cust_Addr', 
+$query="update customer set
+custfn = '$CustFName',
+custln ='$Cust_LName',
+custtel = '$Cust_Tel',
+custcell= '$Cust_Cell',
+custemail = '$Cust_Email',
+custaddr = '$Cust_Addr',
 CustIDdoc = '$CustIDdoc',
 CustDetails = '$CustDetails',
 Extra = '$Extra',
@@ -981,7 +568,7 @@ Confid = '$Confid',
 
 
 CustPW = '$CustPW',
-distance = '$Cust_Dist', 
+distance = '$Cust_Dist',
 ADSLTel = '$ADSLTel',
 Important = '$Important',
 adslinv = '$adslinv',
@@ -1080,78 +667,10 @@ echo $query."</textarea><br>";
 
 echo '';echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";echo '</br>';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 else
-include("editCustProcess.php");
+include 'editCustProcess.php';
 //echo "update success! <br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //php to sql does not understand semicolon. remove the semicolon!!!
 //oracle: $stmt = oci_parse($conn,$query);
@@ -1159,15 +678,15 @@ include("editCustProcess.php");
 //oci_bind_by_name($stmt, ':Cust_NoInt', $Cust_NoInt, ':$CustFName', $CustFName, ':$Cust_LName', $Cust_LName);
 //editCustProcess
 
-//include("editCust.php");
+//include 'editCust.php';
 
 //oracle: $rc=oci_execute($stmt);
 
 $Cust_Dist = 0;
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
@@ -1183,7 +702,7 @@ include("FileWriting/FileWriting.php");
 //$rc=oci_execute($stmt);-->
 <?php
 /*
-//oracle: 
+//oracle:
 if(!$rc)
 
 
@@ -1227,169 +746,6 @@ oci_commit($conn);
 
 oci_free_statement($stmt);
 oci_close($conn);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //}
 

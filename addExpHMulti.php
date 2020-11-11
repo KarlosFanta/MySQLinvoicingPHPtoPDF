@@ -1,17 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a expense</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
 
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added an expense";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -63,8 +63,6 @@ $FK = $_POST['FK'];
 $GK = $_POST['GK'];
 $HK = $_POST['HK'];
 
-
-
 $ItemA = '';
 $Aex = '';
 $AS = '';
@@ -105,8 +103,6 @@ $Hex = @'';
 $HS = '';
 $HC = '';
 $HN = '';
-
-
 
 $ItemA = $_POST['ItemA'];
 $Aex = $_POST['Aex'];
@@ -173,10 +169,6 @@ $GC = @$GC[0];
 $HC = explode(",", $HC);
 $HC = @$HC[0];
 
-
-
-
-
 $ExpNo = $_POST['ExpNo'];
 $CustInt = $AC;
 //$CustNo = $_POST['CustNo'];
@@ -211,10 +203,10 @@ $D2 = explode("/", $D1);
 
 $PurchDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $PurchDate;	 
+//echo $PurchDate;
 $charset = mysqli_character_set_name($DBConnect);//chek for UTF-8
 $AS = $_POST['AS'];
-$AS = mysqli_real_escape_string($DBConnect, $AS); 
+$AS = mysqli_real_escape_string($DBConnect, $AS);
 mb_convert_encoding($AS, "ISO-8859-1");
 echo "CSR: $AS";
 echo "CSR:special".htmlspecialchars($AS);
@@ -234,7 +226,6 @@ mb_convert_encoding($AS, "UTF-8");
 $AS = str_replace("SPACE","%20",$AS); //for mailto to work
 
 echo " back to whitepace: $AS";
-
 
 $SupCode = $_POST['SupCode'];
 $Notes = @$_POST['Notes'];
@@ -265,16 +256,16 @@ $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);  
-$AS = str_replace($von, $zu, $AS);  
+$Notes = str_replace($von, $zu, $Notes);
+$AS = str_replace($von, $zu, $AS);
 //echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
-$AS = mysqli_real_escape_string($DBConnect, $AS); 
+$Notes = mysqli_real_escape_string($DBConnect, $Notes);
+$AS = mysqli_real_escape_string($DBConnect, $AS);
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $AS = preg_replace("/ö/","oe",$AS); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes); 
+//iconv("UTF-8", "ISO-8859-1", $Notes);
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -290,17 +281,11 @@ $Notes = str_replace(' ', '_', $Notes);
 $SupCode = preg_replace("/,/","",$SupCode);
 $AS = preg_replace("/,/","",$AS);
 
-
 $Notes = mysqli_real_escape_string($DBConnect, $Notes);
-
-
-
 
 //echo "Thank you for adding the expense's details: ".$ExpNo." ".$CustNo ." ".$D1 ."."  ;
 
 //$ExpNoInt = intval($ExpNo);
-
-
 
 $query="insert into expensesH (ExpNo, CustNo, PurchDate, SupCode, Notes, SerialNo, ExpDesc, ProdCostExVAT, Category )
 VALUES               ( $ExpNo, $AC, '$PurchDate', '$SupCode', '$AN', '$AS', '$ItemA', '$Aex','$AK' ) ";
@@ -311,8 +296,6 @@ if (mysqli_affected_rows($DBConnect) == -1)
 echo "<br><font size = 5  color = red><b><b>insert into expensesH NOT successfull!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: </font><br>a: $query<br>";
-
-
 
 if ($ItemB != '')
 {
@@ -441,148 +424,9 @@ echo "<font size = 4 color= green>insert success: </font><br>h: $query<br>";
 
 
 
-include "viewExp.php";
+include 'viewExp.php';
 
-include "viewExpLatest.php";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+include 'viewExpLatest.php';
 
 /*
 
@@ -622,24 +466,24 @@ print "_".$item9;
 }
 mysqli_free_result($result);
 }
-	
+
 
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/	
+*/
 ?>
 
 
@@ -653,11 +497,11 @@ echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br
 <input type = "hidden" name="SupCode" value="<?php echo $SupCode ?>">
 
 <a href = "selectCustExp.php"> Click to add another expense</a>	<br><br>
-	
+
 	<!--<input type = "submit" value = "Click to add another expense">-->
 
 
-	
+
 
 <?php
 echo $query;
@@ -670,12 +514,10 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
-
 if ($ItemA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE Item = $ItemA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -895,15 +737,8 @@ mysqli_free_result($result);
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
-
-
 $sptp = 'w';
 //echo sptp;
-
-
-
-
-
 
  ?>
 <font size= 2><b>
@@ -915,12 +750,12 @@ $sptp = 'w';
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <script type="text/javascript">

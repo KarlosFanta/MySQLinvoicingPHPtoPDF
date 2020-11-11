@@ -8,7 +8,7 @@ $.ajax({
   type: 'POST',
   data: {func : sign, equate : equation},
   url: "/calculate.php",
-  success: function(data) { 
+  success: function(data) {
   $('#screen').html(data.response);
   $('.posted').val("true");
         },
@@ -33,7 +33,7 @@ function subtract($calculate) {  }
 function multiply($calculate) {  }
 
 function divide($calculate) {  }
-*/?> 
+*/?>
 
 - See more at: http://func5studios.com/blog/php-ajax-calculator-0#sthash.rrLnumZZ.dpuf
 

@@ -1,8 +1,8 @@
 <?php	//this is "del_CustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
-	//require_once ('db.php');//mysqli connection and databse selection
-		require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+	//require_once 'db.php';//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';
 ?>
 <form name="Del_event_process_lastNEXT" action="del_event_CustProcessC2.php" method="post">
 
@@ -51,9 +51,7 @@ echo "<input type='hidden' name='CustNo' value=";
 			echo $CustInt ;
 			echo "> ";
 
-
 //echo "<br>CustInt:".$CustInt."</br />";
-
 
 if ($CustInt ==  0)
 $CustInt = $_POST['CustNo'];
@@ -63,7 +61,7 @@ $CustInt = $_POST['CustNo'];
 $item3 = "anyone";
 $SQLString = "SELECT * FROM events order by EventNo desc";
 }*/
-else 
+else
 $SQLString = "SELECT * FROM events WHERE CustNo = $CustInt order by EventNo desc";
 
 $SQLStringC = "SELECT * FROM customer WHERE CustNo = $CustInt";
@@ -73,7 +71,6 @@ if ($result = mysqli_query($DBConnect, $SQLStringC)) {
 $item1 = $row["CustNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustFN"];
-
 
 $item3 = $row["CustLN"];
 $item4 = $row["Important"];
@@ -88,7 +85,7 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //$sql = "DELETE FROM Transomer WHERE TransNo = $TransInt" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -98,7 +95,6 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //oci_execute($stid);
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Account No ".$TBLrow."</BR>"   ;
-
 
 ?>
 
@@ -118,7 +114,6 @@ $item1 = $row["EventNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustNo"];
 
-
 $item3 = $row["EDate"];
 //$item4 = $row["AmtPaid"];
 $item5 = $row["ENotes"];
@@ -131,10 +126,7 @@ print "_".$item5;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -149,9 +141,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Delete selected event" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Delete selected event" />
+
+</select></p>
 
 
 
@@ -243,26 +235,21 @@ echo "<th>{$row[2]}</th>";  //TransDate from transaction table
 echo "<th>{$row[3]}</th>";  //AmtPaid from transaction table
 $yo = $yo+$row[3];
 
-
-
-
 echo "<th>{$row[4]}</th>\n";  //Notesfrom transaction table
 echo "<th>{$row[5]}</th>\n";  //TMethfrom transaction table
 echo "</tr>\n";  //Priority from transaction table
 		}
     /* free result set */
     $result->close();
-	
+
 //}
 echo "</table>";
 echo "R".$yo."<br>";
-?> 
+?>
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 include ("view_inv_by_cust.php");
-
-
 
 $SQLString = "select * from invoice where CustNo = $CustInt";
 //echo $SQLString."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -315,13 +302,11 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
 
-
-
-?> 
+?>
 
 
 

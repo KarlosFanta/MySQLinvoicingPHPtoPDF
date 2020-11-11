@@ -1,12 +1,12 @@
 
 <head>
-<script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
- 
+
 function addRecord()
 {
 var term_name = $('#name').val();        //Storing the value of textbox into a variable
- 
+
 if(term_name == '')        //Checking for NULL
 {
 $('#propspectDiv').html('Enter A Valid Name');    //Prints the progress text into our Progress DIV
@@ -17,7 +17,7 @@ else{
 $('#name').removeClass('error');
 $('#propspectDiv').removeClass('error'); //Removing the error class from the progress DIV
 $('#propspectDiv').html('Submitting your Request.<img src="ajax.gif" />');//Prints the progress text into our Progress DIV
- 
+
 $.ajax({
 url : 'data.php', //Declaration of file, in which we will send the data
 data:{
@@ -33,17 +33,17 @@ $('#data').html(data);                //Prints the data into the table
 });
 }
 }
- 
+
 </script>
 </head>
 <?php	//this is "process_Quo.php"
  $page_title = "You added a quote";
-	//include_once('header.php');	
+	//include_once 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-//require_once('db.php');//mysql connection and database selection
-require_once('logprog.php');//mysql connection and database selection
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
+//require_once 'db.php';//mysql connection and database selection
+require_once 'logprog.php';//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
 ?>
 
@@ -100,8 +100,6 @@ $CustNo = $_POST['CustNo']; //DO NOT REMOVE! DO NOT REMOVE!!!
 $QuoSQLDateDD = $_POST['QuoSQLDateDD'];
 $QuoSQLDateMM = $_POST['QuoSQLDateMM'];
 $QuoSQLDateYY = $_POST['QuoSQLDateYY'];
-
-
 
 $Da1 = explode("/", $QuoDate);
 /*echo $Da1[2]."____";
@@ -165,7 +163,6 @@ $TAmt = $_POST['TotAmt'];
 //$D1 = str_replace(' ', '_', $D1);
 //$D1 = str_replace('  ', '__', $D1);
 
-
 function changeA($v1)
 {
 //WARNING! DO NOT USE FOR EMAILS ! Function removes the @ sign and the fullstop!
@@ -187,7 +184,6 @@ $v1 = str_replace(' ', '_', $v1);
 
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
-
 
 //$v1 = strtr($v1, array_flip(get_html_translation_table(HTML_ENTITIES, ENT_QUOTES))); //this baby does the trick!!!
 
@@ -235,16 +231,16 @@ $earlySDR = "_";
 $earlySDR = $Abbr.',inv'.$QuoNo.','.$Summary;
 if ($TotAmt == "")
 $TotAmt = 0;
-$isql = "INSERT INTO quotes (QuoNo, CustNo, QDate, QNotes, Summary, D1, Q1, ex1, 
+$isql = "INSERT INTO quotes (QuoNo, CustNo, QDate, QNotes, Summary, D1, Q1, ex1,
 D2 , Q2 , ex2,
 D3, Q3, ex3,
 D4 , Q4 , ex4 ,
 D5 , Q5 , ex5,
 D6, Q6, ex6,
 D7, Q7, ex7,
-D8, Q8 , ex8, TotAmt, SDR) 
+D8, Q8 , ex8, TotAmt, SDR)
 VALUES(" . $Quo_NoInt. ", ".$CustNo.", '". $QuoSQLDate."', '". $QNotes."', '". $Summary."',
-'$D1', $Q1, '$ex1', 
+'$D1', $Q1, '$ex1',
  '$D2',  $Q2, $ex2,
  '$D3', $Q3, $ex3,
  '$D4',  $Q4, $ex4,
@@ -264,39 +260,33 @@ $DBConnect->query($isql);
 echo "<br><font size = 4>";
  echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 
-
 if (mysqli_affected_rows($DBConnect) == -1)
 echo "<br><font size = 5 color = red><b>insert or update NOT successfull!!!</b></font><br>
-<font size = 3>if the error message says Duplicate entry for PRIMARY, 
-then the quote number already exists with another customer <a href = view_inv.php><b>Click here to check </a></b> 
+<font size = 3>if the error message says Duplicate entry for PRIMARY,
+then the quote number already exists with another customer <a href = view_inv.php><b>Click here to check </a></b>
 <br>or yuo have already written the quote into the sytem. <a href = view_inv.php><b>Click here to check </a></b> <br>
 If it says something about syntax then u used an apostophee or komma</font>";
 else
 echo "insert into MySQL database table success! <br></font>";
 
-
-
-
 $file = "FileWriting/bkp.php";
-//include("FileWriting/FileWriting.php");
+//include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file'><br />";
-	
+
 //$file = "logaddtrans.php";
 $open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add quote:</b> <br>" .$isql. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add quote:</b> <br>" .$isql. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /></font><br /><a href = '$file'><b>FILE WRITTEN </B>Check log file:</a> <br />";
 
-
-
 /*
-$isql="update quote set CustNo = $CustNo, QuoDate ='$QuoDate', QuoPdStatus = '$QuoPdStatus', Summary= '$Summary', 
-D1 = '$D1', Q1 = '$Q1', ex1 = '$ex1', 
+$isql="update quote set CustNo = $CustNo, QuoDate ='$QuoDate', QuoPdStatus = '$QuoPdStatus', Summary= '$Summary',
+D1 = '$D1', Q1 = '$Q1', ex1 = '$ex1',
 D2 = '$D2', Q2 = '$Q2', ex2 = '$ex2',
 D3 = '$D3', Q3 = '$Q3', ex3 = '$ex3',
 D4 = '$D4', Q4 = '$Q4', ex4 = '$ex4',
@@ -313,7 +303,7 @@ printf("###Affected rows (UPDATE): %d\n", mysqli_affected_rows($DBConnect));
 echo "<br>".$isql;
 
 $open = fopen($file, "a+"); //open the file, (log.htm).
-fwrite($open, "<br><br><b>editaddInvprocess_last:</b> " .$isql . "<br/>"); 
+fwrite($open, "<br><br><b>editaddInvprocess_last:</b> " .$isql . "<br/>");
 fwrite($open, "<b>Date & Time:</b>". $date. "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 
@@ -378,15 +368,15 @@ echo "<font face = 'arial' size = 5 color= red><b>WARNING TAmt does not equal To
 echo "<label>* quote AutoNumber:</label>";
 echo "<input type='text' name='QuoNo' size = 5 value=";
 			echo "'$Quo_NoInt'";
-			
+
 		$Summary = $_POST['Summary'];
 		$SDR = $Abbr.',inv'. $QuoNo.','. $Summary;
 	//	$SDR = $Abbr.',acc'.$CustNo.',inv'. $QuoNo.','. $Summary;
 		?>
 
-		
+
 <div>
- 
+
 		<?php //http://www.webstutorial.com/insert-record-into-database-using-ajax-how-to-insert-data-into-database-using-ajax/ajax ?>
 
 <!--<div id="wrapper">
@@ -396,39 +386,39 @@ echo "<input type='text' name='QuoNo' size = 5 value=";
 <div id="propspectDiv"></div>
 <table id="data" border="1" cellspacing="0" cellpadding="0" width="75" style="display:none;"></table>
 </div>-->
- 
+
 		<br />
 			<dd>SDR: <input type="text" name="SDR" id="SDR" size = "50" value="<?php echo $earlySDR; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 	<dl>
 			<dt></dt>
 			<dd>TAmt: <input type="text" name="TAmt" id="TAmt" size = "10" value="<?php echo $TotAmt; ?>" /> Summary: <input type="text" name="Summary" id="Summary" size = "30" value="<?php echo $Summary; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 		<dl>
-			
+
 			<dd>Swap Surname with First Name:<input type="text" name="Swap" id="Swap" size = "2" value="N" /></dd>
 		</dd>
 	</dl>
 
-	
-	
+
+
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
 			<dd><input type="submit" name="btn_submit" value="Display Quote" /> action="PDF/tcpdf/examples/PDF.php
-			
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
-		
-		
-		
-		
-		
+
+
+
+
+
 </div>
 
 
@@ -439,34 +429,31 @@ Abbr: <input type='text' name='Abbr'  value="<?php echo $Abbr; ?>">
 <?php
 $querySDR = "UPDATE quotes SET SDR = '$SDR', Summary = '$Summary', TotAmt = $TAmt WHERE QuoNo = $QuoNo";
 //echo "<br>".$querySDR;
-if (mysqli_query($DBConnect, $querySDR) === TRUE) {   
+if (mysqli_query($DBConnect, $querySDR) === TRUE) {
 
 	//echo '<script //type="text/javascript">alert("SDR,TAmt successfully updated  $querySDR ")</script>';
 }
-else 
+else
 	echo '<script type="text/javascript">alert("ERROR SDR,TAmt NOT updated .$querySDR.")</script>';
-	
-	
+
 		if ($TAmtN != $ITN)
 echo "<font face = 'arial' size = 5 color= red><b>WARNING TAmt does not equal Total</FONT></b><br>";
 
-include "invEmail.php";
-?> 
+include 'invEmail.php';
+?>
 <a href = "signaturePaid.php">signaturePaid.php</a><br>
 
 
 <?php
 echo "<br>";echo "Customer's Email Address:  ";
 
-
 			$newfldr = $L1;
-			
+
 //strtr($newfldr, array('/' => '\\')) ;
 strtr($newfldr, array('\\' => '/')) ;
 
-			
 			echo "<br><br> newfldr: ".$newfldr." <br>";
-			
+
 			echo "<br> <a href= 'file:///".$newfldr."'>OPen newfolder</a>   <br>";
 //   file:///F:/_work/Customers/A/Abel_Jutta
 
@@ -474,24 +461,17 @@ strtr($newfldr, array('\\' => '/')) ;
 echo "LOCATION<br>
 <a href='mailto:".$CustEmail."?Subject=Quotes'>".$CustEmail."</a>&nbsp;&nbsp;" .$CustEmail."<br>";
 
-
 echo "<br>";
 include ("signature.php");
-
-
-
-
-
-
 
 /*
 $queryST = "UPDATE customer SET Topup = '$Topup' WHERE CustNo = $CustNo";
 echo "<br>".$queryST;
-if (mysqli_query($DBConnect, $queryST) === TRUE) {   
+if (mysqli_query($DBConnect, $queryST) === TRUE) {
 
 	echo '<script //type="text/javascript">alert("ST, last quoted topup successfully updated  $queryST ")</script>';
 }
-else 
+else
 {
 	//echo '<script type="text/javascript">alert("ERROR ST,Topup NOT updated .$queryST.")</script>';
 	//echo $queryST;

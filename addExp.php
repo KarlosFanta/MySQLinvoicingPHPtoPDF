@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a expense</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 
@@ -18,9 +18,9 @@ function formValidator(){
 	var SupCode = document.getElementById('SupCode');
 	//var Notes = document.getElementById('Notes');
 	//var TMethod = document.getElementById('TMethod');//Payment method
-	
 
-	
+
+
 	// Check each input in the order that it appears in the form!
 						if(isNumeric(ExpNo, "Please enter a valid numeric expense number")){
 				if(lengthRestriction(PurchDate, 10,10)){
@@ -126,11 +126,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
- 
-        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
+
+        value = value.replace(/-/g, "/").replace(/\./g, "/");
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -146,17 +146,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
- 
+
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
-                    
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
+
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {  
+                        if (Month == 2) {
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        } 
+                        }
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -175,9 +175,9 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
-//JQUERY: LOOK AT : include 'invJQuery.php' 		
+//JQUERY: LOOK AT : include 'invJQuery.php'
 //	<input type="text"  size="3" id="ItemA"  name="ItemA"  class='clInvNoA' />
-/*	
+/*
 	$(function() {
 		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
 		var availableTags = ["yp","jj"];
@@ -191,7 +191,7 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 */
 function calc()
 {
-		
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -220,10 +220,10 @@ function calc()
   val16 = document.getElementById("Q8").value;
   */
   mani = "multiply";
-  
+
   if (val1 != "" && val2 != "")
   {
-  	
+
   document.getElementById("resp").innerHTML="Calculating...";
 //    queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
     queryPath = "CalcServ3.php?ex1="+val1+"&Q1="+val2;
@@ -234,9 +234,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	
+
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-        
+
     }
   }
 
@@ -253,14 +253,14 @@ function calc()
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
-//include "monthtables.php";
-include "viewExpLatest.php";
-include "viewExpLatestC.php";
+//include 'monthtables.php';
+include 'viewExpLatest.php';
+include 'viewExpLatestC.php';
 
 $TBLrow = @$_POST['mydropdownEC'];
 $addstk = @$_POST['btnSubmit'];
@@ -283,7 +283,6 @@ $CustInt = intval($Custno[0]);
 
 //echo "<br>Custint:".$CustInt."<br />";
 
-
 $_SESSION['CustNo'] = $CustInt;
 $CustNo = $CustInt;
 /*if ($CustInt == "")
@@ -296,9 +295,6 @@ else echo "custno declared as ".$Custno;
 
 //echo "select_CustProcess: SESSION CustNo: ". $_SESSION['CustNo'] ."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 //echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
-
-
-
 
 ?>
 <!--<form name="addTransCustProcess2"  action="addTransprocess_last2.php" onsubmit='return formValidator()'   method="post">-->
@@ -320,7 +316,6 @@ $CustNo = explode(';', $TBLrow );
 //echo "ExpNozERO: ";
 //echo $ExpNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
-
 
 //echo "<br>Transint:".$CustInt."</br />";
 */
@@ -367,7 +362,6 @@ if ($CustEmail == '') echo "Please add CustEmailAddress";
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-
 echo "{$row[0]}&nbsp;&nbsp;";
 echo "<font size = '3'><b>";
 echo "{$row[1]}&nbsp;&nbsp;";
@@ -390,21 +384,12 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 
 
-<?php	
+<?php
+//require_once 'inc_OnlineStoreDB.php';
 
-	//require_once ('inc_OnlineStoreDB.php');
-
-	
-	
-	
-	
-	
-	
-	
-/*	
+/*
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expenses";
-
+$query = "SELECT MAX(ExpNo)  AS MAXNUM FROM expenses";
 
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 
@@ -416,11 +401,10 @@ $daNextNo = intval($row[0])+1;
 */
 
 $daNextNo = 1; //default when table is empty.
-$queryH = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expensesH";
+$queryH = "SELECT MAX(ExpNo)  AS MAXNUM FROM expensesH";
 $resultH = mysqli_query($DBConnect, $queryH);// or die(mysql_error());
-$query = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expenses";
+$query = "SELECT MAX(ExpNo)  AS MAXNUM FROM expenses";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
 
 $daNextNo = 1; //forces a 1 if table is completely empty.
 while($row = mysqli_fetch_array($resultH)){
@@ -435,29 +419,6 @@ $daNextNo = intval($row[0]);
 $daNextNo =  max (array($daNextNo, $daNextNoH));
 
 $daNextNo = $daNextNo+1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 
@@ -477,7 +438,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddTrans" action="addTransprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addTransprocess.php"  method="post" >-->
+<!--<form  onsubmit='return formValidator()' action="addTransprocess.php" method="post">-->
 
 <?php
 echo "Add new expenses:<br>";
@@ -492,13 +453,11 @@ $queryCP = "select * from aproof where CustNo = $CustInt";
 
 if ($resultCP1 = mysqli_query($DBConnect, $queryCP)) {
 
-    // determine number of rows result set 
+    // determine number of rows result set
     $row_cnt = mysqli_num_rows($resultCP1);
-	
 
     printf("proof has %d rows.\n", $row_cnt);
 
-    
     mysqli_free_result($resultCP1);
 }
 
@@ -511,11 +470,11 @@ echo "<select name='ProofToPay' id='ProofToPay' onchange='this.form.submit()'>";
 
 echo "Before entering anything first select the proof if there is one.<br>";
 
-echo "<option value='Select a Proof'>Select a Proof</option>"; 	
+echo "<option value='Select a Proof'>Select a Proof</option>";
 
 if ($resultCP = mysqli_query($DBConnect, $queryCP)) {
   while ($row2 = mysqli_fetch_assoc($resultCP)) {
- 
+
 $ProofNo = $row2["ProofNo"];
 $Amt =  $row2["Amt"];
 $item2b =  $row2["InvNoA"];
@@ -530,7 +489,7 @@ echo $ProofNo;
 
 //to determine whether the proof has been paid we got to look at the aproof table
 //which has a ExpNo column.
-//in addTransprocessLast2 it will say update aproof set ExpNo = '1015' where ProofNo = 'ProofNo34' 
+//in addTransprocessLast2 it will say update aproof set ExpNo = '1015' where ProofNo = 'ProofNo34'
 
 //NOPE:
 //to determine whether the invoice(s) have been paid we got to look at the expense table
@@ -544,7 +503,7 @@ print "_".$item2b;
 print "_".$item3b;
 print "__".$item4b;
 
-print " </option>"; 
+print " </option>";
 
 	}
 $resultCP->free();
@@ -573,11 +532,11 @@ echo "</form>";
 
 <form name= "yoo">
 		<input type='text'  style="width:26px"  name='Q1' id='Q1' size='5' value='1' onkeyup='calc()'> * R
-	  <input type='text'  style="width:66px" name='ex1' id='ex1' size='10' class='exxx1' onkeyup='calc()'  >incl VAT = 
+	  <input type='text'  style="width:66px" name='ex1' id='ex1' size='10' class='exxx1' onkeyup='calc()'  >incl VAT =
 	  <span id="resp"></span><!-- in here possibly AJAX invoice total CalcServ.php-->
 
 </form>
-<form name="AddExp"  onsubmit="return formValidator()"  action="addExpMulti.php"   method="post">
+<form name="AddExp" onsubmit="return formValidator()"  action="addExpMulti.php"   method="post">
 <!--<form onsubmit='return formValidator()'  action="addTransprocessLast2.php"   method="post">-->
 
 <br><br>
@@ -604,17 +563,15 @@ echo "</tr>\n";
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
-
-
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 			<!--<label>PurchDate:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
 			<!--<label>PurchDate:</label></dt>-->
 			<!--<input type="text" size="10" id="PurchDate"  name="PurchDate" value="<?php //echo $PurchDate; ?>" /> -->
-			<?php include("yesterday.php"); ?>
+			<?php include 'yesterday.php'; ?>
 			<input id='lst' id="PurchDate" size="10" name="PurchDate"  >
 		</th>
 
@@ -624,19 +581,18 @@ echo "</tr>\n";
 			<!--<input type="text"  size="19" id="SupCode"  name="SupCode" size = '20' value="" />-->
 <?php include 'invJQueryExp.php';
 
-	
- ?>	
+ ?>
 		<input id="SupCode"  name="SupCode" size="6" class='clSC' >
-			
-			
+
+
 		</th>
 		<th></b>Parking can sometimes relate to a customer otherwise add it to Business Expense
 </th>
-	
-	
+
+
 		<!--<th>
 			<select name="TMethod"  id="TMethod"  >
-                <option value="Please Choose">Please Choose</option><!-- the javascript function requires phrase Please Choose 
+                <option value="Please Choose">Please Choose</option><!-- the javascript function requires phrase Please Choose
 			//VERY IMPORTANT THAT value must equal to please choose as well!!!
 
                 <option value="EFT">EFT</option>
@@ -644,33 +600,33 @@ echo "</tr>\n";
                 <option value="Cash Bank Deposit">Cash Bank Desposit</option>
                 <option value="Stop-order">Stop-order</option>
                 <option value="Debit">Debit</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Mixed">Mixed</option>	
-                <option value="-">-</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Mixed">Mixed</option>
+                <option value="-">-</option>
 </select>
-			
+
 		</th>-->
 		</tr>
 		</table>
 		<table>
 		<tr>
 
-		
-				
+
+
 		<?php
-	
+
 		echo "<th>Item Description: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 		//echo "<th>HOVER and wait InvB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-		
-	?>	
-	
+
+	?>
+
 	<th>
 	Ex VAT
 	</th>
 	<th>
 	Serial Number
 	</th>
-	
+
 	<th>
 	Notes
 	</th>
@@ -683,19 +639,18 @@ echo "</tr>\n";
 	if ($addstk == 'Add Stock')
 	$CCC = '300';
 
-
 	?>
 	Click to select Customer: <?php echo $CCC; ?>&nbsp;&nbsp;&nbsp;(business301)(300stock)<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
 	</th>
-	
-	
+
+
 			<tr></tr>
 		<th>
 
 			<input type="text"  size="3" id="ItemA"  name="ItemA"  /> <!--item Description-->
 		</th>
-	
-	
+
+
 			<th>
 			<input type="text"  size="5" id="Aex"  name="Aex"   /><!--ex VAT-->
 		</th>
@@ -715,13 +670,13 @@ echo "</tr>\n";
 			<input type="text"  size="5" id="AC"  name="AC" class='clCN'  value='<?php echo $CCC; ?>' /><!--Select a Customer-->
 		</th>
 
-		
+
 		</tr>
 		<tr><th> </th></tr>	<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
-		
 
-	
-	
+
+
+
 		<th>
 			<input type="text"  size="1" id="ItemB"  name="ItemB"  />
 		</th>
@@ -742,8 +697,8 @@ echo "</tr>\n";
 			<input type="text"  size="5" id="BC"  name="BC" class='clCN'  />
 		</th>
 
-		
-		
+
+
 	<tr></tr>
 		<th>
 			<input type="text" id="ItemC"    size="1" name="ItemC" />
@@ -809,10 +764,10 @@ echo "</tr>\n";
 			<th>
 			<input type="text"  size="5" id="EC"  name="EC" class='clCN'  />
 		</th>
-	
+
 		<tr></tr>
-		
-		
+
+
 		<th>
 			<input type="text" size="1"  id="ItemF"  name="ItemF"  />
 		</th>
@@ -833,7 +788,7 @@ echo "</tr>\n";
 		</th>
 
 	<tr></tr>
-	
+
 		<th>
 				<input type="text"  size="1" id="ItemG"  name="ItemG" />
 		</th>
@@ -853,7 +808,7 @@ echo "</tr>\n";
 			<th>
 			<input type="text"  size="5" id="GC"  name="GC" class='clCN'  />
 		</th>
-	
+
 	<tr></tr>
 		<th>
 			<input type="text" size="1"  id="ItemH"  name="ItemH"  />
@@ -875,19 +830,19 @@ echo "</tr>\n";
 		</th>
 
 	<tr></tr>
-	
+
 <!--		<th>
 			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
 			</select>
-			
+
 </th>-->
 		</tr>
 		</table>
-	
-	
+
+
 
 
 
@@ -899,11 +854,11 @@ echo "</tr>\n";
 -->
 
 <!--<input type="submit" value="Create expense" onclick="return confirm('Are you sure about the date?');" /> -->
-<input type='submit' value="Create expense"   style="width:300px;height:30px" /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<input type='submit' value="Create expense"   style="width:300px;height:30px" />
+<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 
 
 
@@ -942,10 +897,6 @@ echo "</tr>\n";
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
-
-
-
-
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All expenses total to: R".$yo."<br>";
 
@@ -953,15 +904,13 @@ echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 include ("view_event_by_cust.php");
 
-
-
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
 alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

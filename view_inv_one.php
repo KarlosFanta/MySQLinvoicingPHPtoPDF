@@ -1,17 +1,16 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	//require_once('db.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+	//require_once 'db.php';
+require_once 'inc_OnlineStoreDB.php';
 
-?> 
-<?php //require_once "header.php"; ?>
+?>
+<?php //require_once 'header.php'; ?>
 <!--<b><br><font size = "4" type="arial">View Invoices</b></font>
 </br>-->
 <?php
@@ -33,7 +32,6 @@ echo "<th>InvPdStatus</th>";
 
 echo "<th>D1</th>";
 echo "<th>ex1</th></tr>\n";
-
 
     /* fetch object array */
     while ($row = $result->fetch_row()) {
@@ -63,10 +61,9 @@ echo "<th>{$row[5]}</th></tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -159,7 +156,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -208,5 +205,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

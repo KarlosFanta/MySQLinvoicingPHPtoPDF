@@ -1,8 +1,8 @@
 <?php	//this is "process_Trans.php"
  $page_title = "You added a event";
-	include('header.php');	
-//require_once('db.php');//mysql connection and database selection
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+//require_once 'db.php';//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';
 echo "addEventprocess_last2.php<br>";
 ?>
 
@@ -17,8 +17,6 @@ $CustEmail = "_";
 //$CustFN = $_POST['CustFN'];
 //$CustLN = $_POST['CustLN'];
 //$CustEmail = $_POST['CustEmail'];
-
-
 
 $EventNo = 0;
 $CustNo = 1;
@@ -49,10 +47,9 @@ $CustNo = '1';
 $queryS = "select * from customer where CustNo = $CustInt";
 //echo $queryS."<br>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $CustFN = $row2["CustFN"];
 $CustLN =  $row2["CustLN"];
@@ -64,9 +61,6 @@ $CustLN =  $row2["CustLN"];
 
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
-
-
-
 
 	}
 $result2->free();
@@ -93,7 +87,7 @@ echo $D1[1]."____";
 
 $EDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-echo $EDate;	 
+echo $EDate;
 
 $ENotes = $_POST['ENotes'];
 //I need to keep this lot enable becasue somehow the changeV function is not functioning
@@ -159,7 +153,7 @@ $query="insert into events (EventNo, CustNo, EDate, ENotes, Priority , Destinati
 VALUES
 ( $EventNo,  '$CustNo', '$EDate', '$ENotes', '$Priority', '$Destination') ";
 
-/*(EventNo = $EventNo, CustNo = $CustNo, EDate ='$EDate', AmtPaid = $AmtPaid, ENotes = '$ENotes', TMethod = '$TMethod', 
+/*(EventNo = $EventNo, CustNo = $CustNo, EDate ='$EDate', AmtPaid = $AmtPaid, ENotes = '$ENotes', TMethod = '$TMethod',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -197,17 +191,15 @@ echo ";<br><br>";
 echo '</br>';echo '</br>..';
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
 
 echo "edit_eventCQ.php<br>";
-include("edit_eventCQ.php");
-
-
+include 'edit_eventCQ.php';
 
 ?>
 

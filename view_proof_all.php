@@ -21,7 +21,7 @@
 </head>
 <body>
 <?php
-require_once "header.php";
+require_once 'header.php';
 ?>
 
 <h3>Proofs</h3>
@@ -44,7 +44,7 @@ require_once "header.php";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'aproof';
 
@@ -69,7 +69,6 @@ Now, let's assume you want to sort your table according to the 'company' column,
 Example 3-15. Multiple sort fields
 
 $opts['sort_field'] = array('company', 'department');
-
 
  Allow users to sort the display on this column. Use true for enable, false for disable.
 
@@ -128,7 +127,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 //$opts['filters'] = "ProofDate desc";
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -210,15 +209,13 @@ $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 
      ),
      'orderby'=>'CustLN'
    )
-); 
+);
 $opts['fdd']['Notes'] = array(
   'name'     => 'Notes',
   'select'   => 'T',
   'maxlen'   => 90,
   'sort'     => true
 );
-
-
 
 /*
 $opts['fdd']['CustNo'] = array(
@@ -341,7 +338,7 @@ $opts['fdd']['Priority'] = array(
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-//require_once "view_cust.php";
+//require_once 'view_cust.php';
 ?>
 
 

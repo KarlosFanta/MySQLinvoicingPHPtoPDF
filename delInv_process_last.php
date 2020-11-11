@@ -1,8 +1,8 @@
 <?php	//this is "process_Inv.php"
  $page_title = "You added a Invaction";
-	include('header.php');	
+	include 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 
 
@@ -25,9 +25,6 @@ $InvDate = $_POST['InvDate'];
 //$CustSDR = $_POST['CustSDR'];
 //$TMethod = $_POST['TMethod'];
 
-
-
-
 echo "Thank you for deleting the invoice: ".$Inv_No." ".$CustNo ." ".$InvDate ."."  ;
 
 $Inv_NoInt = intval($Inv_No);
@@ -41,16 +38,14 @@ echo $query;
 
 echo ";<br>";
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
 
 echo "<a href = 'view_inv_all.php'>view_inv_all.php</a></a><br>";
-
-
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -100,7 +95,7 @@ $result->free();
 //$rc=oci_execute($stmt);-->
 <?php
 /*
-//oracle: 
+//oracle:
 if(!$rc)
 {
 $e=oci_error($stmt);

@@ -2,11 +2,11 @@
 <?php
 //This is the database connection to the old mysql database:
 
-/*$conn = mysql_connect('localhost','root','123456'); 
-if (!$conn) { 
-	die('Could not connect to MySQL: ' . mysql_error()); 
-} 
-echo 'Connection OK changed DB from kc to online_stores'; 
+/*$conn = mysql_connect('localhost','root','123456');
+if (!$conn) {
+	die('Could not connect to MySQL: ' . mysql_error());
+}
+echo 'Connection OK changed DB from kc to online_stores';
 mysql_select_db("online_stores");
 if (!mysql_select_db("online_stores")) {
     echo "Unable toselect mydbname: " . mysql_error();
@@ -18,7 +18,6 @@ echo "dbold.php";
 
 $conn = mysql_connect("localhost", "root", "Itsmeagain007#");
 //$conn = "DISABLED";
-
 
 //$link = @mysqli_connect('localhost', 'root', 'oijn#', 'ohio');
 //If your MySQL port is different from default one (3308), you need to give the port number as the fifth parameter.

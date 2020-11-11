@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -36,9 +36,9 @@ function formValidator(){
 	//		}
 	//	}
 	}//very important bracket part of isNumeric!!!!!
-	
+
 	return false;
-	
+
 }//very important end of formvalidator!!
 
 function notEmpty(elem, helperMsg){
@@ -127,7 +127,7 @@ function emailValidator(elem, helperMsg){
 
 function calc()
 {
-		
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -154,10 +154,10 @@ function calc()
   val15 = document.getElementById("ex8").value;
   val16 = document.getElementById("Q8").value;
   mani = "multiply";
-  
+
   if (val1 != "" && val2 != "")
   {
-  	
+
   document.getElementById("resp").innerHTML="Calculating...";
     queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
 //   queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+mani;
@@ -167,9 +167,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	
+
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-        
+
     }
   }
 
@@ -192,20 +192,18 @@ function calc()
 
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
-		
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
+
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
 
-
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
-$query = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
+$query = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
-
 
 /*while($row = mysqli_fetch_array($result)){
 //	echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -218,7 +216,7 @@ $InvNo = $InvNo+1;
 
 //echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
 
-/*	
+/*
 	$InvDate = $_POST['Date1'];
 	//$Summary = $_POST['Summary'];
 
@@ -229,7 +227,6 @@ $InvNo = $InvNo+1;
 	//echo " 0: ".$TBLrow[0]."<br>";
 	//$Custno = explode( "_", $TBLrow);
 	//echo "___:".$CustInt."   ";
-
 
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
@@ -255,8 +252,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
 
 			//echo "selected CustomerNo: ".$row2['CustNo']."<br>";
 			//echo "selected CustomerLN: ".$row2['CustLN']."<br>";
@@ -272,7 +267,6 @@ echo "<th>Distance</th>";
 echo "<th>ABBR</th>";
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
-
 
 echo "{$row2['CustNo']}&nbsp;";
 echo "{$row2['CustFN']}&nbsp;";
@@ -299,27 +293,25 @@ $Abbr = $row2['ABBR'];
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td>";
 echo "</tr>\n";
-		
 
     $result->close();
-	
+
 }
 //echo "</table>";
 
 	}
-	
-	
-	
-*/	
-	
-	
-	
-	
-	
+
+
+
+*/
+
+
+
+
+
 	$OrdPd = "_";
 
-
-//$DateD = date("Y.m.d"); 
+//$DateD = date("Y.m.d");
 //$NewFormat = date("d/m/Y");
 //$InvSQLDate = $D1[2]."-".$D1[1]."-".$D1[0];
 $InvSQLDateDD = date("d");
@@ -355,7 +347,7 @@ $InvSQLDateYY =  date("Y");
 //$sql = "DELETE FROM invoice WHERE InvNo = $InvNo" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -365,7 +357,6 @@ $InvSQLDateYY =  date("Y");
 //oci_execute($stid);
 ///echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Thank you for selecting ".$TBLrow." from your database. You may now change its details.</BR>"   ;
-
 
 //$objResult = mysql_query($sql) or die(mysql_error());
 
@@ -382,8 +373,6 @@ echo "This is addInvprocessCsess.php  ";
 echo "<a href='addInvprocessCsessD.php'><font size = '3'>First Click here to if you need to add descriptions</font>";
 echo "addInvprocessCsessD.php</a><br>";
 
-
-
 if ($result = mysqli_query($DBConnect, $query)) {      //I think this is to determine the MAX invoice number
   while ($row = @mysqli_fetch_assoc($result)) {
 
@@ -396,24 +385,22 @@ if ($result = mysqli_query($DBConnect, $query)) {      //I think this is to dete
 
  		echo "<dl>";
 			echo "Customer: ";
-			
+
 			if ($result2 = $DBConnect->query($query)) {
 
     while ($row2 = $result2->fetch_assoc()) {
 
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 			//echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
 	//		echo $row['CustLN'];
-			
-			
-			
+
 			echo "{$row2['CustNo']}&nbsp;";
 			echo "<b><FONT size = 4 face = arial>&nbsp;&nbsp;";
 echo $row2['CustFN']."&nbsp;";
@@ -431,80 +418,63 @@ echo "{$row2['ABBR']}&nbsp;"; //CASE SENSITIVE!!!
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 
 			   $result->close();
-	
-	
 
-			
 	//		echo "&nbsp;&nbsp;Account No: ";
 	//		echo $row['CustNo'];
-			
+
 			// DO NOT DISABLE!!! addInvprocess_lastC needs to know which customer got selected!!
 			//There is no inserting here yet!!!
 			echo " <input type='hidden' name='CustNo' value=";
 			echo " ";
 			echo $row['CustNo'];
 			echo "> ";
-			
+
 			echo " Abbr: <input type='hidden' name='Abbr' value=";
 			echo " ";
 			echo $Abbr;
 			echo "> ";
-			
+
 			echo $Abbr;
-			
+
 }
 //echo "</table>";
 
 	}
-			
-			
+
+
 		echo "</dl>";
 		echo "This is addQuoprocessCsess.php ";
 echo "<b><a href='addInvprocessCsessD.php'><font face= arial size = '3'>NB NB NB First Click here to if you need to add descriptions</font></b></a>";
 echo "addInvprocessCsessD.php</a><br>";
-
 
  		echo "<dl><label>InvDate:&nbsp;&nbsp;&nbsp;&nbsp;</label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='InvSQLDateDD' size = '2' value=";
 			//echo $InvSQLDateDD;
 			echo "> ";
-			
+
 			echo "<input type='text' name='InvSQLDateMM' size = '2' value=";
 			//echo $InvSQLDateMM;
 			echo "> ";
-			
+
 			echo "<input type='text' name='InvSQLDateYY' size = '2' value=";
 			//echo $InvSQLDateYY;
 			echo "201";
 			echo "> ";
-			
-				
+
 		echo"	DD/MM/YYYY ";
-		
-					
+
 			echo "Today: ".$InvSQLDateDD;
 			echo "/";
-			
+
 			echo $InvSQLDateMM;
 			echo "/";
-			
+
 			echo $InvSQLDateYY;
 			echo " ";
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		echo "</dd>";
 		echo "</dl>";
-
 
  		echo "<dl>Summary: &nbsp;</label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -518,10 +488,7 @@ echo "addInvprocessCsessD.php</a><br>";
 			echo "<input type='text' name='InvPdStatus' value=";
 			echo "_";
 			echo "> </dd></dl>";
-			
-			
-			
-	
+
 			  		echo "<dl><font color = red size = 4 >Important: <label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='Important' size = 100 value=";
@@ -530,49 +497,46 @@ echo "addInvprocessCsessD.php</a><br>";
 
 		//echo "</dl> Watch <b>AJAX</B> in action:<br>";
 
- 		
 /*echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
 		<TH WIDTH=52%><label>Description1</label>
-		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></TH>
+		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></th>
 
 		<TH WIDTH=11%><label>Qty1</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label></label>
-		</TH>
+		</th>
 		<!--<TH WIDTH=23%><label>Unit Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>-->";
+		</th>-->";
 
 		echo "</TR> ";
-		echo "<TR>		<TH>";
+		echo "<TR>		<th>";
 
-
-				
 		echo "<input id='D1' type='text' name='D1' size='55'  value='0'><br/>";
-	
-		echo "</TH>
-		<TH ><input type='text' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
-	
-		</TH>
-		<TH >
+
+		echo "</th>
+		<th><input type='text' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
+
+		</th>
+		<th>
 			<input type='text' name='ex1' id='ex1' size='5' value='0' onkeyup='calc()'>
-		</TH>
+		</th>
 
-		<TH >
+		<th>
 			</label></B>no apostrophees.
-		</TH>
+		</th>
 
 
-		
+
 	";
 
 */
@@ -605,22 +569,18 @@ echo "<b><font size = '3'>1GIG FREE</font></b>&nbsp;&nbsp;";
 else
 echo "";
 
- 
-
-
-
 	?>
- 
+
 Don't forget TOPUP checkup!!!  For discounts use a negative value
 
 
 		<input id='D1' type='hidden' name='D1' size='45'  value='0'><br/>
-	
+
 		<input type='hidden' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
-	
-		
+
+
 			<input type='hidden' name='ex1' id='ex1' size='5' value='0' onkeyup='calc()'>
-		
+
 
 
 
@@ -628,74 +588,74 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value
 
 
 		<input type='hidden' name='D2' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
-		
-		
-		
+
+
+
 			<input type='hidden' name='ex2'  size='5' value='0' id='ex2'  onkeyup='calc()'>
-		
-	
 
-	
+
+
+
 		<input type='hidden' name='D3' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q3' size='5'  value='0' id='Q3'  onkeyup='calc()'>
-		
-		
+
+
 			<input type='hidden' name='ex3'  size='5' value='0' id='ex3'  onkeyup='calc()'>
-		
-	
 
-	
+
+
+
 		<input type='hidden' name='D4' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q4' size='5' value='0' id='Q4'  onkeyup='calc()'>
-		
-		
+
+
 			<input type='hidden' name='ex4'  size='5' value='0' id='ex4'  onkeyup='calc()'>
-		
-	
 
-	
+
+
+
 		<input type='hidden' name='D5' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q5'  size='5' value='0' id='Q5'  onkeyup='calc()'>
-		
-		
+
+
 			<input type='hidden' name='ex5'  size='5' value='0' id='ex5'  onkeyup='calc()'>
-		
-	
 
-	
+
+
+
 		<input type='hidden' name='D6' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q6'  size='5' value='0' id='Q6'  onkeyup='calc()'>
-		
-		
+
+
 			<input type='hidden' name='ex6'  size='5'   value='0' id='ex6'  onkeyup='calc()'>
-		
-	
 
-	
+
+
+
 		<input type='hidden' name='D7' size='45'  value='0'>
-		
-		<input type='hidden' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
-		
-		
-			<input type='hidden' name='ex7'  size='5' value='0' id='ex7'  onkeyup='calc()'>
-		
-	
 
-	
+		<input type='hidden' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
+
+
+			<input type='hidden' name='ex7'  size='5' value='0' id='ex7'  onkeyup='calc()'>
+
+
+
+
 		<input type='hidden' name='D8' size='45'  value='0'>
-		
+
 		<input type='hidden' name='Q8'  size='5' value='0' id='Q8'  onkeyup='calc()'>
-		
-		
+
+
 			<input type='hidden' name='ex8' size='5'  value='0' id='ex8'  onkeyup='calc()'>
-		
-	
+
+
 
 
 
@@ -722,81 +682,81 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value
 
 <!--		</TR>
 	<TR>
-		<TH><input type='text' name='D2' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
-		
-		</TH>
-		<TH >
+		<th><input type='text' name='D2' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
+
+		</th>
+		<th>
 			<input type='text' name='ex2'  size='5' value='0' id='ex2'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D3' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q3' size='5'  value='0' id='Q3'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D3' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q3' size='5'  value='0' id='Q3'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex3'  size='5' value='0' id='ex3'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D4' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q4' size='5' value='0' id='Q4'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D4' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q4' size='5' value='0' id='Q4'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex4'  size='5' value='0' id='ex4'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D5' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q5'  size='5' value='0' id='Q5'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D5' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q5'  size='5' value='0' id='Q5'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex5'  size='5' value='0' id='ex5'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D6' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q6'  size='5' value='0' id='Q6'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D6' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q6'  size='5' value='0' id='Q6'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex6'  size='5'   value='0' id='ex6'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D7' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D7' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex7'  size='5' value='0' id='ex7'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text' name='D8' size='45'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q8'  size='5' value='0' id='Q8'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text' name='D8' size='45'  value='0'>
+		</th>
+		<th><input type='text' name='Q8'  size='5' value='0' id='Q8'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex8' size='5'  value='0' id='ex8'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 
 
-	
+
 	</table>
-	
+
 	<span id="resp"></span>
 -->
 	<?php
@@ -807,8 +767,6 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value
 			echo "> </dd>";
 		echo "</dl>";
 
-
-
 	}
 	}
 	?>
@@ -816,12 +774,12 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save"  onsubmit='return formValidator()'  
-			onclick="return confirm('Is the Invoice number AND Date correct?')"/> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onsubmit='return formValidator()'
+			onclick="return confirm('Is the Invoice number AND Date correct?')"/>
 	<!--		onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
-			
-			
+
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<!--<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -833,7 +791,7 @@ include ("view_event_by_cust.php");
 include ("view_trans_by_cust.php");
 include ("view_inv.php");
 
-//require_once "view_inv_one.php";
+//require_once 'view_inv_one.php';
 
 ?>
 

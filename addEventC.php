@@ -1,11 +1,9 @@
 <?php
-
-
-	$page_title = "Select a customer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	//PROCEDURAL
-	//$DBConnect = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
+$page_title = "Select a customer";
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+//PROCEDURAL
+//$DBConnect = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
 $query = "select CustNo,  CustFN, CustLN from customer ORDER BY custLN";
 echo $query;
@@ -46,60 +44,37 @@ if (mysql_num_rows($result) == 0) {
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
-  while ($row = mysqli_fetch_assoc($result)) {
-$item1 = $row["CustNo"];
-$item2 =  $row["CustLN"];
-$item3 = $row["CustFN"];
-print "<option value='$item1'>$item2";
-print "_".$item1;
-print "_".$item3;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $item1 = $row["CustNo"];
+        $item2 =  $row["CustLN"];
+        $item3 = $row["CustFN"];
+        print "<option value='$item1'>$item2";
+        print "_".$item1;
+        print "_".$item3;
 
-//print "<option value='$item2'>$item2";
-//print "<option value='$item3'>$item3";
+        //print "<option value='$item2'>$item2";
+        //print "<option value='$item3'>$item3";
 
+        print " </option>";
 
-
-
-print " </option>"; 
-
-/*    echo $row["CustNo"];//case sensitive!
-    echo $row["CustFN"];//case sensitive!
-    echo $row["CustLN"];//case sensitive!
-*/
-	}
-$result->free();
-//mysql_free_result($result);
-
+        //echo $row["CustNo"];//case sensitive!
+        //echo $row["CustFN"];//case sensitive!
+        //echo $row["CustLN"];//case sensitive!
+    }
+    $result->free();
+    //mysql_free_result($result);
 }
 /* close connection */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="select customer" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="select customer" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</select></p>
 <?php
-require_once ("view_event_all.php");
+require_once 'view_event_all.php';
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";
@@ -127,23 +102,23 @@ $i++;
 //echo "<br>3rdWhile:<br><br>";
 
 /*
-while($row = mysql_fetch_array($result)){
-	echo "The max no CustNo in customer table is:  ". $row[0];
-	echo "&nbps;";
-//$daNextNo = intval($row[0])+1;
+while ($row = mysql_fetch_array($result)) {
+    echo "The max no CustNo in customer table is:  ". $row[0];
+    echo "&nbps;";
+    //$daNextNo = intval($row[0])+1;
 }
 */
 ?>
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
 */

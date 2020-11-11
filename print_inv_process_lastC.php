@@ -6,12 +6,12 @@
 
 <?php	//this is "process_Inv.php"
  $page_title = "You loadng an invoice";
-	//include_once('header.php');	
+	//include_once 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-//require_once('db.php');//mysql connection and database selection
-require_once('logprog.php');//mysql connection and database selection
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
+//require_once 'db.php';//mysql connection and database selection
+require_once 'logprog.php';//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
 ?>
 
@@ -21,7 +21,6 @@ require_once('logprog.php');//mysql connection and database selection
 
 
 $TBLrow = $_POST['mydropdownEC'];
-
 
 echo "TBLrow: " .$TBLrow."</BR>";
 $Invno = explode('_', $TBLrow );
@@ -51,7 +50,6 @@ echo "<th>Distance</th>";
 echo "<th>LastLogin</th>";
 echo "<th>CustPW</th></tr>\n";
 
-
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -78,14 +76,11 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
 
-
-
-
-echo $InvNo2; 
+echo $InvNo2;
 echo "&nbsp;";
 echo " ".$rowI['Summary'];
 $Summary = $rowI['Summary'];
@@ -101,18 +96,17 @@ $Dt1 = explode("-", $rowI['InvDate']);
 
 $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
-echo $TransDate;	
+echo $TransDate;
 echo "&nbsp;";
 
 $SDR = $rowI['SDR'];
 echo "&nbsp;";
 $TAmt = $rowI['TotAmt'];
  //$TAmt = number_format ($TAmt, 2, ".", "");
- echo $TAmt; 
+ echo $TAmt;
 
 $Inv_NoInt = intval($InvNo2);
 $InvNo = $InvNo2;
-
 
 $earlySDR = "_";
 //$earlySDR = $Abbr.',acc'.$CustNo.',inv'.$InvNo.','.$Summary;
@@ -133,29 +127,29 @@ echo "<input type='hidden' name='InvNo'  value=";
 			<dd><input type="text" name="SDR" id="SDR" size = "100" value="<?php echo $SDR; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 	<dl>
-			
+
 			<dd><input type="text" name="TAmt" id="TAmt" size = "100" value="<?php echo $TAmt; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 	<dl>
-			
+
 			<dd>Swap Surname with First Name:<input type="text" name="Swap" id="Swap" size = "2" value="N" /></dd>
 		</dd>
 	</dl>
 
 	<dl>
-			
+
 			<dd><input type="hidden" name="Summary" id="Summary" size = "100" value="<?php echo $Summary; ?>" /></dd>
 		</dd>
 	</dl>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Display Invoice" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Display Invoice" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
@@ -169,15 +163,15 @@ echo "<input type='hidden' name='InvNo'  value=";
 <?php
 $querySDR = "UPDATE invoice SET SDR = '$SDR', Summary = '$Summary', TotAmt = $TAmt WHERE InvNo = $InvNo";
 //echo "<br>".$querySDR;
-if (mysqli_query($DBConnect, $querySDR) === TRUE) {   
+if (mysqli_query($DBConnect, $querySDR) === TRUE) {
 
 	//echo '<script //type="text/javascript">alert("SDR,TAmt successfully updated  $querySDR ")</script>';
 }
-else 
+else
 {
 //	echo '<script type="text/javascript">alert("ERROR SDR,TAmt NOT updated .$querySDR.")</script>';
-}	
-include "invEmail.php";
+}
+include 'invEmail.php';
 echo "Customer's Email Address: <br><a href='mailto:".$CustEmail."?Subject=Invoice'>".$CustEmail."</a>&nbsp;&nbsp;" .$CustEmail."<br><br>";
 
 include ("signature.php");

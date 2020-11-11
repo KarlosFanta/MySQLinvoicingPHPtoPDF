@@ -1,8 +1,8 @@
 <?php	//this is "process_Trans.php"
  $page_title = "You added a event";
-	include('header.php');	
-//require_once('db.php');//mysql connection and database selection
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+//require_once 'db.php';//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 
@@ -35,7 +35,7 @@ $D2 = explode("-", $D1);
 
 $EDate = $D2[0]."/".$D2[1]."/".$D2[2];   //check addEventCustProcess_sessT.php
 
-echo $EDate;	 
+echo $EDate;
 
 //$AmtPaid = $_POST['AmtPaid'];
 $ENotes = $_POST['ENotes'];
@@ -47,7 +47,6 @@ $ENotes = preg_replace("/,/","+",$ENotes);
 
 $ENotes = preg_replace("/…/",".",$ENotes);
 
-
 echo " ENotes:".$ENotes ;
 //echo "TMeth:".$TMethod." ";
 
@@ -58,7 +57,7 @@ $query="insert into events (EventNo, CustNo, EDate, ENotes, Priority, Destinatio
 VALUES
 ( $EventNo,  $CustNo, '$EDate', '$ENotes', '$Priority', '$Destination') ";
 
-/*(EventNo = $EventNo, CustNo = $CustNo, EDate ='$EDate', AmtPaid = $AmtPaid, ENotes = '$ENotes', TMethod = '$TMethod', 
+/*(EventNo = $EventNo, CustNo = $CustNo, EDate ='$EDate', AmtPaid = $AmtPaid, ENotes = '$ENotes', TMethod = '$TMethod',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -97,13 +96,12 @@ echo ";<br><br>";
 echo '</br>';
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-
 
 echo '</br>..';
 ?>

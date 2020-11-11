@@ -1,14 +1,12 @@
 
 
-<?php	
-//	require_once("inc_OnlineStoreDB.php");//page567
-	//require_once('header.php');
+<?php
+//require_once 'inc_OnlineStoreDB.php';//page567
+	//require_once 'header.php';
 
 $table = $_POST['mydropdownEC'];
 echo "<br>table:".$table."</br />";
 
-
- 
  try {
 
         // open the connection to the database - $host, $user, $password, $database should already be set
@@ -52,8 +50,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
 
             throw new Exception("MySQL Error: " . $DBConnect->error . 'SQL: '.$strSQL);
 
-
-
         while($row = $res_tables->fetch_array()) {
 
             $aTables[] = $row[0];
@@ -68,8 +64,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
 
         $res_tables->free();
 
-
-
         //now go through all the tables in the database
 
         foreach($aTables as $table)
@@ -82,15 +76,12 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
 
             print("--\n\n");
 
-
-
             // remove the table if it exists
 
   //          print('DROP TABLE IF EXISTS '.$table.';');
 
 //		   echo "<br>";
 //		   echo "<br>";
-
 
             // ask MySQL how to create the table
 //echo $table;
@@ -121,8 +112,6 @@ while($row = mysql_fetch_array($res)) {
 
   //          $res_create->free();
 
-
-
             // get the data from the table
 
             $strSQL = 'SELECT * FROM '.$table;
@@ -131,13 +120,9 @@ while($row = mysql_fetch_array($res)) {
 
                 throw new Exception("MySQL Error: " . $DBConnect->error . 'SQL: '.$strSQL);
 
-
-
             // get information about the fields
 
             $fields_info = $res_select->fetch_fields();
-
-
 
             // now we can go through every field/value pair.
 
@@ -156,8 +141,6 @@ while($row = mysql_fetch_array($res)) {
                     if ($strFields != '') $strFields .= ',';
 
                     $strFields .= "`".$field->name."`";
-
-
 
                     // put quotes round everything - MYSQL will do type convertion (I hope) - also strip out any nasty characters
 
@@ -179,11 +162,7 @@ while($row = mysql_fetch_array($res)) {
 
             print("\n\n\n");
 
-
-
             $res_select->free();
-
-
 
         //}
 
@@ -206,5 +185,5 @@ while($row = mysql_fetch_array($res)) {
     print(ob_get_clean());
 
     $DBConnect->close();
-	
+
 	?>

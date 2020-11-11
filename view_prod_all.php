@@ -20,7 +20,7 @@
 </head>
 <body>
 <?php
-require_once "header.php";
+require_once 'header.php';
 ?>
 
 <h3>Products</h3>
@@ -45,7 +45,7 @@ require_once "header.php";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'product';
 
@@ -105,7 +105,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 

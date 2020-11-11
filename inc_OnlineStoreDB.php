@@ -9,11 +9,9 @@
 //OBJECT ORIENTED:
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");
 
-//PROCEDURAL 
+//PROCEDURAL
  $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "kc");
 
-
-	
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -29,14 +27,14 @@ if (!mysqli_set_charset($DBConnect, "utf8")) {
 echo "";
     //printf("Current character set: %s\n", mysqli_character_set_name($DBConnect));
 }
-	
+
 /*
-/* Connection 1, connection bound SQL user variable, no SELECT thus run on master 
+/* Connection 1, connection bound SQL user variable, no SELECT thus run on master
 if (!$DBConnect->query("SET @myrole='master'")) {
  printf("[%d] %s\n", $DBConnect->errno, $DBConnect->error);
 }
 
-/* //Connection 2, run on slave because SELECT, provoke connection error 
+/* //Connection 2, run on slave because SELECT, provoke connection error
 if (!($res = $DBConnect->query("SELECT @myrole AS _role"))) {
  printf("[%d] %s\n", $DBConnect->errno, $DBConnect->error);
 } else {
@@ -44,16 +42,16 @@ if (!($res = $DBConnect->query("SELECT @myrole AS _role"))) {
  $res->close();
 printf("@myrole = '%s'\n", $row['_role']);
 }
-	
+
 	*/
-	
+
 /*	if ($DBConnect->connect_error) {
     die('Connect Error (' . $DBConnect->connect_errno . ') '
             . $DBConnect->connect_error);
 }
 
-	
-	// return name of current default database 
+
+	// return name of current default database
 	//object oriented:
 if ($result = $DBConnect->query("SELECT DATABASE()")) {
     $row = $result->fetch_row();
@@ -87,18 +85,18 @@ if ($result = $DBConnect->query("SELECT DATABASE()")) {
 
 
 
-/* change db to another db 
+/* change db to another db
 $DBConnect->select_db("kc");
 
-//return name of current default database 
+//return name of current default database
 if ($result = $DBConnect->query("SELECT DATABASE()")) {
     $row = $result->fetch_row();
     printf("Default database is %s.\n", $row[0]);
     $result->close();
 }
 */
-	
-	
-	
-	
+
+
+
+
 ?>

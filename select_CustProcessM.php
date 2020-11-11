@@ -2,10 +2,10 @@
  $page_title = "You seleted a customer";
 //if( ! @$_SESSION){
     session_start();
-//} 
+//}
 
-	require_once('header.php');	
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 
 
@@ -28,65 +28,65 @@
 */
 
 if (isset($_POST['mydropdownEC'][0])) {
-  
+
             echo '<h1>mydropdownEC  was clicked</h1>';
      }
  if (isset($_POST['d1'][0])) {
-  
+
             echo '<h1>d1  was clicked</h1>';
      }
-	 
-	 
+
+
  if (isset($_POST["mydropdownEC"]) && !empty($_POST["mydropdownEC"])) {
-    echo "Yes, mydropdownEC is set";    
-}else{  
+    echo "Yes, mydropdownEC is set";
+}else{
     echo "N0, mydropdownEC is not set";
 }
- 
+
 
 if (!empty($_POST["mydropdownEC"])) {
-    echo "Yes, mydropdownEC is full";    
-}else{  
+    echo "Yes, mydropdownEC is full";
+}else{
     echo "N0, mydropdownEC is empty";
 }
 
 
 
 if (isset($_POST['drop'][0])) {
-  
+
             echo '<h1>drop  was clicked</h1>';
      }
  if (isset($_POST['drop'][0])) {
-  
+
             echo '<h1>drop  was clicked</h1>';
      }
-	 
-	 
+
+
  if (isset($_POST["drop"]) && !empty($_POST["drop"])) {
-    echo "Yes, drop is set";    
-}else{  
+    echo "Yes, drop is set";
+}else{
     echo "N0, drop is not set";
 }
- 
+
 
 if (!empty($_POST["drop"])) {
-    echo "Yes, drop is full";    
-}else{  
+    echo "Yes, drop is full";
+}else{
     echo "N0, drop is empty";
 }
 
 
 if (!empty($_POST["drop2"])) {
-    echo "Yes, drop is full";    
-}else{  
+    echo "Yes, drop is full";
+}else{
     echo "N0, drop is empty";
 }
 
 
 /*
 if (($_POST["drop2"])) {
-    echo "Yes, drop is full";    
-}else{  
+    echo "Yes, drop is full";
+}else{
     echo "N0, drop is empty";
 }
 */
@@ -138,12 +138,10 @@ $CustInt = intval($Custno[0]);
 
 //echo "<br>Custint:".$CustInt."<br />";
 
-
 $_SESSION['CustNo'] = $CustInt;
 
 echo "select_CustProcess: SESSION CustNo: ". $_SESSION['CustNo'] ."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
-
 
 if (@$_SESSION['sel'] == "addInvC")
 include ("addInvCsessD.php");
@@ -169,7 +167,6 @@ echo "selectCust.php</a><br>";
 
 echo "<a href='addQuoCsess.php'><font size = '3'>Click here to add <b>quotes</b>:</font>";
 echo "addQuoCsess.php</a><br>";
-
 
 echo "<a href='addInvCsess.php'><font size = '3'>Click here to add <b>invoices</b>:</font>";
 echo "addInvCsess.php</a><br>";
@@ -214,7 +211,7 @@ echo "<br><br>";
 //include ("view_inv_by_custPD.php");
 //include (".php");
 */
-?> 
+?>
 
 
 

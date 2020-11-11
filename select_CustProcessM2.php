@@ -2,10 +2,10 @@
  $page_title = "You seleted a customer";
 //if( ! @$_SESSION){
     session_start();
-//} 
+//}
 
-	require_once('header.php');	
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 <!--<form name="Addcust" action="editCustProcess_last.php" method="post">-->
 
@@ -28,12 +28,10 @@ $CustInt = intval($Custno[0]);
 
 //echo "<br>Custint:".$CustInt."<br />";
 
-
 $_SESSION['CustNo'] = $CustInt;
 
 echo "select_CustProcess: SESSION CustNo: ". $_SESSION['CustNo'] ."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
-
 
 if (@$_SESSION['sel'] == "addInvC")
 include ("addInvCsessD.php");
@@ -59,7 +57,6 @@ echo "selectCust.php</a><br>";
 
 echo "<a href='addQuoCsess.php'><font size = '3'>Click here to add <b>quotes</b>:</font>";
 echo "addQuoCsess.php</a><br>";
-
 
 echo "<a href='addInvCsess.php'><font size = '3'>Click here to add <b>invoices</b>:</font>";
 echo "addInvCsess.php</a><br>";
@@ -104,7 +101,7 @@ echo "<br><br>";
 //include ("view_inv_by_custPD.php");
 //include (".php");
 */
-?> 
+?>
 
 
 

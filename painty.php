@@ -5,7 +5,7 @@ $html="yo";
 if(get_magic_quotes_gpc())
 	$html = stripslashes($html);
 if(!$html)
-	$html='<h1>No Text</h1><hr/><p>You did not give a html parameter to show:<br /><b>...painty.php?html=...</b></p><p><img src="http://static.php.net/www.php.net/images/php.gif" /></p>';
+	$html='<h1>No Text</h1><hr/><p>You did not give an HTML parameter to show:<br /><b>...painty.php?html=...</b></p><p><img src="http://static.php.net/www.php.net/images/php.gif" /></p>';
 $config = array
 (
 	'input' => $html,
@@ -40,7 +40,7 @@ function painty($str) //html2img
 			'' => ''
 		);
 		$str = $config['input'];
-		if(get_magic_quotes_gpc()) 
+		if(get_magic_quotes_gpc())
 		{
 			$str = stripslashes($str);
 		}
@@ -76,7 +76,7 @@ function painty($str) //html2img
 		$nstr = preg_replace("/<p[^>]*>/", str_repeat(chr(1), 4), $nstr);
 		$nstr = preg_replace("/<\/p[^>]*>/", str_repeat(chr(1), 4), $nstr);
 		$nstr = preg_replace("/<hr[^>]*>/", str_repeat(chr(1), 8), $nstr);
-	
+
 		foreach($m[0] as $i=>$full) {
 			$img_pos[] = strpos($nstr, $full);
 			$str = str_replace($full, chr(1), $str);
@@ -109,12 +109,12 @@ function painty($str) //html2img
 		while(strpos($str, "<h1>") !== false) {
 			$p = strpos($str, "<h1>");
 			$h1_start[] = $p;
-			$str = substr($str, 0, $p).substr($str, $p + strlen("<h1>"));	
+			$str = substr($str, 0, $p).substr($str, $p + strlen("<h1>"));
 		}
 		while(strpos($str, "</h1>") !== false) {
 			$p = strpos($str, "</h1>");
 			$h1_end[] = $p;
-			$str = substr($str, 0, $p).substr($str, $p + strlen("</h1>"));	
+			$str = substr($str, 0, $p).substr($str, $p + strlen("</h1>"));
 		}
 	}
 	//Remove plain line breaks

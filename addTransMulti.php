@@ -1,14 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a transaction</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -45,7 +45,6 @@ $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
 
-
 $TMethod = $_POST['TMethod'];
 
 $InvNoA = $_POST['InvNoA'];
@@ -56,7 +55,6 @@ $InvNoB = $_POST['InvNoB'];
 $InvNoB = explode(",", $InvNoB);
 $InvNoB = $InvNoB[0];
 
-
 $InvNoC = $_POST['InvNoC'];
 $InvNoC = explode(",", $InvNoC);
 $InvNoC = $InvNoC[0];
@@ -65,11 +63,9 @@ $InvNoD = $_POST['InvNoD'];
 $InvNoD = explode(",", $InvNoD);
 $InvNoD = $InvNoD[0];
 
-
 $InvNoE = $_POST['InvNoE'];
 $InvNoE = explode(",", $InvNoE);
 $InvNoE = $InvNoE[0];
-
 
 $InvNoF = $_POST['InvNoF'];
 $InvNoF = explode(",", $InvNoF);
@@ -85,9 +81,6 @@ $InvNoH = $InvNoH[0];
 
 //$Priority = $_POST['Priority'];
 $Priority = '.';
-
-
-
 
 $TransNo = $_POST['TransNo'];
 $CustNo = $_POST['CustNo'];
@@ -113,21 +106,21 @@ $AmtPaid = $_POST['AmtPaid'];
 $charset = mysqli_character_set_name($DBConnect);
 printf ("%s\n",$charset);
 $Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;  
+$EEmail = $Notes;
 $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF-8"   WORKS LIKE A CHARM 2014
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);  
-$CustSDR = str_replace($von, $zu, $CustSDR);  
-$CustSDR = str_replace('%20', ' ', $CustSDR);  
-$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
-$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR); 
+$Notes = str_replace($von, $zu, $Notes);
+$CustSDR = str_replace($von, $zu, $CustSDR);
+$CustSDR = str_replace('%20', ' ', $CustSDR);
+$Notes = mysqli_real_escape_string($DBConnect, $Notes);
+$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR);
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes); 
+//iconv("UTF-8", "ISO-8859-1", $Notes);
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -169,18 +162,18 @@ echo "</tr>\n";
 			<th><input type="text" size="2"  id="TransNo"  name="TransNo" value="<?php echo $TransNo;?>" />
 		</th>
 
-		<?php //$DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<?php //$DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		//$NewFormat = date("d/m/Y");
 		?>
-		
-		<th>	
+
+		<th>
 			<input  id="TransDate" size="10" name="TransDate"  value="<?php echo $TransDate; ?>"  >
 		</th>
 
 		<th>
 			<textarea id="CustSDR"  name="CustSDR"  ><?php echo $CustSDR; ?></textarea>
-			
-			
+
+
 		</th>
 
 		<th>
@@ -188,8 +181,8 @@ echo "</tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="5" id="AmtPaid"  name="AmtPaid" value="<?php echo $AmtPaid; ?>" />
 		</th>
-	
-	
+
+
 		<th>
 			<select name="TMethod"  id="TMethod"  >
                 <option value="<?php echo $TMethod ?>"><?php echo $TMethod ?></option><!-- the javascript function requires phrase Please Choose -->
@@ -200,11 +193,11 @@ echo "</tr>\n";
                 <option value="Cash Bank Deposit">Cash Bank Desposit</option>
                 <option value="Stop-order">Stop-order</option>
                 <option value="Debit">Debit</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Mixed">Mixed</option>	
-                <option value="-">-</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Mixed">Mixed</option>
+                <option value="-">-</option>
 </select>
-			
+
 		</th>
 		</tr>
 		</table>
@@ -212,7 +205,7 @@ echo "</tr>\n";
 
 
 
-	
+
 
 <?php
 $TS = '';
@@ -224,12 +217,10 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
-
 if ($InvNoA != '')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE InvNo = $InvNoA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -241,7 +232,6 @@ $InvD= $row["InvDate"];
 $Sumr = $row["Summary"];
 $SD = $row["SDR"];
 $ttttt = $ttttt+$TotA;
-
 
 }
 $result->free();
@@ -256,13 +246,6 @@ echo "<th align = 'left'> &nbsp;&nbsp;".$InvD;
 echo "</th>";
 echo "<th align = 'left'> &nbsp;&nbsp;Sumr: <input type='text' id='Sumr' size = '18' name='Sumr' value='$Sumr' >";
 echo "</th>";
-
-
-
-
-
-
-
 
 echo "</tr>";
 echo "<br>InvvNoA=".$InvNoA."<br>";
@@ -484,18 +467,16 @@ echo "<font color = green>NB The total does equal to AmtPaid";
 
 echo "</font><b>Notes: <br></b>";
 
-
 echo "<input type='text' id='Notes' size = '68' name='Notes' value='$TS' >";
-
 
 echo "<br>InvNoA=".$InvNoA."<br>";
 
 ?>
-<input type='submit' value="Create transaction"   style="width:300px;height:30px" /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<input type='submit' value="Create transaction"   style="width:300px;height:30px" />
+<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
+<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
 
 
 
@@ -512,7 +493,7 @@ echo "<br>InvNoA=".$InvNoA."<br>";
 
 
 	<br><br>
-	
+
 
 	<br><br>
 

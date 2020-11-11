@@ -1,20 +1,20 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
+	//require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+
 $pr = "20";
 $pr = @$_POST['pr']; //inv descriptions
 $indesc = "Y";
 $yo = 0;
 $loop = 0;
-?> 
-<?php //require_once "header.php"; ?>
+?>
+<?php //require_once 'header.php'; ?>
 
 <b><font size = "3" type="arial">Your Transactions History </font>
 <?php 			echo $row['CustFN'];
@@ -53,15 +53,11 @@ echo "<th>Priority</th></tr>\n";
 
 echo "<tr><th>";
 
-
-//if (@in_array(@$row[7], @$PaidInvs)) 
-if ($row[6]  != "0") 
+//if (@in_array(@$row[7], @$PaidInvs))
+if ($row[6]  != "0")
     echo "<font color = purple>";
-    else 
+    else
 	echo "<font color = red>";
-
-
-
 
 echo "{$row[0]}</font></th>"; //transNO
 //echo "<th>{$row[1]}</th>";
@@ -90,7 +86,7 @@ $yo = $yo+$row[3];
 echo "<th>{$row[4]}</th>\n";//notes
 echo "<th>{$row[23]}</th>";//CustSDR
 echo "<th>{$row[5]}</th>\n";//EFT TMethod
-//echo "<th>R{$row[29]}</th>"; 
+//echo "<th>R{$row[29]}</th>";
 $summm = $summm + $row[3];
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
@@ -99,7 +95,6 @@ echo "<th><font color = green>{$row[6]}</font></th>\n";//invNoA
 //echo "<th>{$loop}</th>\n";
 $loop++;
 $PaidInvs[$loop]="$row[6]";
-
 
 echo "<th>{$row[7]}</th>\n";//ex1
 echo "<th>{$row[8]}</th>";
@@ -131,11 +126,10 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
 echo "Transactions Paid totals to: R ".$summm."<br />";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -218,7 +212,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -261,5 +255,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//require_once 'footer.php';
 ?>

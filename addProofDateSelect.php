@@ -1,11 +1,10 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script>
 	var yd = '05'
-	document.write(yd);	
-	
-	
+	document.write(yd);
+
 	function formattedDate(date) {
     var d = new Date(date || Date.now()),
         month = '' + (d.getMonth() + 1),
@@ -18,18 +17,18 @@
     return [day, month, year].join('/');
 }
 
-	
-	
+
+
 			$(function() {
-		
-		
+
+
 var yd = (formattedDate());
 		var yd = '4;
 var currentDate = new Date()
   var day = currentDate.getDate()
   var month = currentDate.getMonth() + 1
   var year = currentDate.getFullYear()
-  if(day<10){day='0'+day} 
+  if(day<10){day='0'+day}
   if(month<10){month='0'+month}
   var todaydate = day + "/" + month + "/" + year
 var yd = '4'
@@ -44,11 +43,11 @@ var yyyy = '2012'
 var dd = '05'
 var mm = '05'
 
-if(dd<10){dd='0'+dd} 
-if(mm<10){mm='0'+mm} 
+if(dd<10){dd='0'+dd}
+if(mm<10){mm='0'+mm}
 var yd = dd+'/'+mm+'/'+yyyy
 
-	
+
 		var availableTags = [
 		todaydate,
 		yd
@@ -58,13 +57,13 @@ var yd = dd+'/'+mm+'/'+yyyy
 		minLength: 0
 			}).mouseover(function() {
 				$(this).autocomplete("search");
-				
+
 		});
 		});
-document.write(yd);	
+document.write(yd);
 </script>
 
-<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 		<!--	<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->

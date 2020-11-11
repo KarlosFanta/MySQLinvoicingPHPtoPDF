@@ -1,6 +1,6 @@
-<?php	
-	require_once('header.php');	
-		require_once("inc_OnlineStoreDB.php");
+<?php
+require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_trans_CustProcess" action="print_statement.php" method="post">
@@ -72,7 +72,6 @@ echo "<th>Notes</th>";
 echo "<th>Meth</th>";
 echo "</tr>\n";
 
-
     while ($row = mysqli_fetch_assoc($result)) {
   //      printf ("%s (%s)\n", $row["TransNo"], $row["TransDate"]);
 			  echo "<tr>";
@@ -84,8 +83,8 @@ $AP = number_format($AP, 2, '.', '');
 echo "<th align = right>".$AP."</th>\n";
 $yo = $yo + $AP;
 echo "<th align = right>".$yo."</th>\n";
-echo "<th >".$row['Notes']."</th>\n";
-echo "<th >".$row['TMethod']."</th>\n";
+echo "<th>".$row['Notes']."</th>\n";
+echo "<th>".$row['TMethod']."</th>\n";
 echo "</tr>\n";
 
     }
@@ -97,17 +96,10 @@ echo "</tr>\n";
 
 echo "</table><br><br>";
 
-
 //echo "All invoices total to: R".number_format($Invsummm, 2, '.', ' ')."";
-
 
 echo "All transactions for $TBLrow $cy total to: R<input type = 'text'  size = '8' value = '".number_format($yo, 2, '.', ' ')."'><br><br>";
 echo "All transactions for 1 month $cy is about: (divided by 2) R<input type = 'text'  size = '8' value = '".number_format($yo/2, 2, '.', ' ')."'><br><br>";
-
-
-
-
-
 
 /*
 if (($Invsummm - $yo) > 0.06)
@@ -186,26 +178,10 @@ echo "</tr>\n";
 
 echo "</table><br><br>";
 
-
 //echo "All invoices total to: R".number_format($Invsummm, 2, '.', ' ')."";
-
 
 echo "All expenses for $TBLrow $cy total to: R".number_format($Pad, 2, '.', ' ')."ex VAT  R<input type = 'text'  size = '8' value = '".number_format($Pad*1.14, 2, '.', ' ')."'> incl VAT<br><br>";
 echo "All expenses for 1 month $cy is about: R<input type = 'text'  size = '8' value = '".number_format($Pad/2*1.14, 2, '.', ' ')."'><br><br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 $SQLstring = "select * from expensesh where $TableDateName LIKE '$s' order by Category ";
 echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -238,10 +214,6 @@ echo "<th><font size = 1 color= grey>".$PEX."</th>";
 echo "<th>".number_format($PEX*1.14, 2, '.', '')."</th>";
 //echo "<th>".$row['Category']."</th>";
 
-
-
-
-
 $PadH = $PadH + $PEX;
 echo "<th align = right>".$PadH."</th>\n";
 
@@ -255,17 +227,6 @@ echo "</tr>\n";
     mysqli_free_result($result);
 }
 echo "</table><br><br>";
-
-
-
-
-
-
-
-
-
-
-
 
 $PEX = '';
 $SQLstring = "select * from expensesE where $TableDateName LIKE '$s' order by $TableDateName ";
@@ -300,8 +261,6 @@ $PEX = number_format($PEX, 2, '.', '');
 echo "<th><font size = 1 color= grey>".$PEX."</th>";
 echo "<th>".number_format($PEX*1.14, 2, '.', '')."</th>";
 
-
-
 $PadE = $PadE + $PEX;
 echo "<th align = right>".$PadE."</th>\n";
 
@@ -319,25 +278,6 @@ echo "</tr>\n";
 }
 echo "</table><br><br>";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //echo "All invoices total to: R".number_format($Invsummm, 2, '.', ' ')."";
 
 echo "All transactions for $TBLrow $cy total to: R<input type = 'text'  size = '8' value = '".number_format($yo, 2, '.', ' ')."'><br><br>";
@@ -346,27 +286,17 @@ echo "All transactions for 1 month $cy is about: R<input type = 'text'  size = '
 echo "All expenses for $TBLrow $cy total to: R<input type = 'text'  size = '8' value = '".number_format($Pad, 2, '.', ' ')."'><br><br>";
 echo "All expenses for 1 month $cy is about: R<input type = 'text'  size = '8' value = '".number_format($Pad/2, 2, '.', ' ')."'><br><br>";
 
-
 echo "All home expenses for $TBLrow $cy total to: R<input type = 'text'  size = '8' value = '".number_format($PadH, 2, '.', ' ')."'><br><br>";
 echo "All home expenses for 1 month $cy is about: R<input type = 'text'  size = '8' value = '".number_format($PadH/2, 2, '.', ' ')."'><br><br>";
 
-
 echo "All extra expenses for $TBLrow $cy total to: R<input type = 'text'  size = '8' value = '".number_format($PadE, 2, '.', ' ')."'><br><br>";
 echo "All extra expenses for 1 month $cy is about: R<input type = 'text'  size = '8' value = '".number_format($PadE/2, 2, '.', ' ')."'><br><br>";
-
-
 
 $R = $yo - $Pad - $PadH - PadE;
 echo "profit over 2 months: ".$R."<br><br>";
 echo "profit over 1 month about: ".($R/2)."<br><br>";
 
-
-
-
-
-
 ?>
- 
- 			
 
- 
+
+

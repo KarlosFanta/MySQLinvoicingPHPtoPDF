@@ -1,7 +1,7 @@
  <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -51,5 +51,5 @@ echo "1x $InvNoL <br>";
 echo "1x $InvNoM <br>";
 echo "1x $InvNoN <br>";
 echo '</br>';
-include "../1streetLights/import4HTMLtoExcel.php";
+include '../1streetLights/import4HTMLtoExcel.php';
 ?>

@@ -19,19 +19,19 @@
 </style>
 </head>
 <body>
-<?php require_once "header.php";?>
+<?php require_once 'header.php';?>
 
 <?php
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 $CustNo = 1; //for main events
-else 
+else
 {
 $CustNo = $_SESSION['CustNo'];
 }
 echo "<h3>event</h3> of CustNo".$CustNo." edit_eventCQb.php";
 echo "<a href = 'edit_eventCQM.php'> MyEdit: edit_eventCQM.php</a>";
- 
+
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -49,7 +49,7 @@ echo "<a href = 'edit_eventCQM.php'> MyEdit: edit_eventCQM.php</a>";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'events';
 
@@ -109,7 +109,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -180,14 +180,12 @@ $opts['fdd']['Priority'] = array(
   'sort'     => true
 );
 
-
 $opts['fdd']['Destination'] = array(
   'name'     => 'Destination',
   'select'   => 'T',
   'maxlen'   => 300,
   'sort'     => true
 );
-
 
 // Now important call to phpMyEdit
 //require_once 'view_trans_all.php';

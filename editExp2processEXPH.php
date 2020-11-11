@@ -1,7 +1,7 @@
 <?php	//this is "editCustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 
 
@@ -25,9 +25,9 @@ echo "<br>Category:".$Category."</br />";
 {
 	echo "GET SupCodeInt: ".$_GET["SupCodeInt"]."<br>";
 	$SupCodeInt= $_GET["SupCodeInt"];
-	
+
 }
-else{echo " no Getter";} 
+else{echo " no Getter";}
 */
 
 
@@ -79,7 +79,7 @@ $opts['filters'] = "Category = '$Category'";  // THIS IS FOR IF BY CUSTOMER NUMB
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'expensesH';
 
@@ -139,7 +139,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -240,8 +240,6 @@ $opts['fdd']['InvNo'] = array(
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 
-
-
 $TBLrow2 = @$_POST['mydropdownEC2'];
 
 echo "TBLrow2: " .$TBLrow2."</BR>";
@@ -253,14 +251,14 @@ $categoryInt = ($category[0]);
 echo "<br>categoryInt:".$categoryInt."</br />";
 
 echo "<br>G:\Desktop\Statements\COZADOMAINADMIN<br>";
-include "viewExpbyCategory.php";
+include 'viewExpbyCategory.php';
 ?>
 <br>
 G:\Desktop\Statements\COZADOMAINADMIN
 
 <br>
 Doublecheck this company code in other tables:<br>
-<?php 
+<?php
 echo "<br>SupCodeInt:".$SupCodeInt."</br />";
 echo "<a href = 'editExp2processEXPH.php?SupCodeInt=".$SupCodeInt."'>CLick</a><br>";
 echo "<a href = 'editExp2processEXPE.php?SupCodeInt=".$SupCodeInt."'>CLick</a><br>";

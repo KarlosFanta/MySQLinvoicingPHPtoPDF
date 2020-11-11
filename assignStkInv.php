@@ -7,14 +7,13 @@
 <form  action="assignExptoInvLast.php"   method="post">
 
 
-<?php	
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+<?php
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
 $Prof = @$_POST['Prof'];
-
 
 $TBLrow = @$_POST['mydropdownEC'];
 
@@ -80,8 +79,8 @@ Stock included as from march 2014<br>
 echo "<br>firstWhile:<br><br>";
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-			
-			
+
+
 	$ExpNo = $row["ExpNo"];//case sensitive!
 	$InvNo = $row["InvNo"];//case sensitive!
 	$Category =  $row["Category"];//case sensitive!
@@ -106,7 +105,7 @@ else
 	print "_".$PurchDate;
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
-	print " </option>"; 
+	print " </option>";
 	}
 	mysqli_free_result($result);
 }
@@ -115,11 +114,11 @@ else
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>" />
 
 <input type="submit" name="btn_submit" value="select stk" /> <br>
-<input type="submit" name="btn_submit" value="select stk" /> 
+<input type="submit" name="btn_submit" value="select stk" />
 
 
 
-	
+
 </form>
 
 
@@ -146,107 +145,101 @@ else
 
 <?php
 include ("view_inv_by_cust.php");
- 
+
 include ("viewExp.php");
  include ("view_proof_by_cust.php");
 include ("view_proof_by_cust2.php");
 include ("view_trans_by_cust.php");
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
 
 echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
-?> 
+?>
 </table>
-<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
-		
 
-include ("viewExp.php");		
-include ("view_proof_all.php");		
-		
+include ("viewExp.php");
+include ("view_proof_all.php");
+
 		?>
 <!--
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>    
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
-    
+
     //autocomplete
     $(".auto").autocomplete({
         source: "search.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});                
- 
+	});
 
      $(".clInvNo").autocomplete({
         source: "searchinvAdd.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});                
+	});
 
 //expenses or products
     $(".clExp").autocomplete({
         source: "searchExpb.php",
         minLength: 0
-		
+
 				}).focus(function() {
 				$(this).autocomplete("search");
-	});     
-	
+	});
+
 	//var delay = $( ".clExpC" ).autocomplete( "option", "delay" );
 
     $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	//});                
+	//});
 		//		}).mouseout(function() {
 		//		$(this).autocomplete("reset");
-	//});                
+	//});
 //$(".clExpC").autocomplete({
     //    source: "searchExpC.php",
    //     minLength: 0
-	});                
+	});
 /*
        $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
 
-   
+
 		}).mouseleave(function() {
 			$(this).autocomplete("close", "delay", 5000);
-	});                
+	});
 
 	*/
-	
-	
-	
-	
-	
+
+
+
+
+
 				//Solution: http://jsfiddle.net/ricardolohmann/SdLaP/
 //http://stackoverflow.com/questions/4604216/jquery-ui-autocomplete-minlength0-issue
-	
+
 /*	$("input#autocomplete").focus(function(e) {
     if(!e.isTrigger) {
         $(this).autocomplete("search", "");
     }
     return false;
 */
-	
- 
+
+
  });
 </script>
 -->

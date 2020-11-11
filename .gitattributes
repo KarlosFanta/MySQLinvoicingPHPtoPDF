@@ -1,0 +1,18 @@
+# Refer to:
+# https://help.github.com/articles/dealing-with-line-endings/
+
+* text eol=lf
+*.bmp binary
+*.ttf binary
+
+# Refer to:
+# https://github.com/github/linguist
+
+*.md linguist-documentation
+Installation.html linguist-documentation
+references.html linguist-documentation
+
+.github/* -linguist-detectable
+*.ttf -linguist-detectable
+
+*.inc linguist-language=PHP

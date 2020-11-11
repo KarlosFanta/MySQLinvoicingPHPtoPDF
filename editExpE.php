@@ -30,8 +30,6 @@ if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
 echo $_SESSION['CustNo'];
 
-
-
 $yo = $_SESSION['CustNo'];
 echo "CustNo:".$yo;
 //$opts['filters'] = "CustNo = '$yo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
@@ -54,7 +52,7 @@ echo "CustNo:".$yo;
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'expensesE';
 
@@ -114,7 +112,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
