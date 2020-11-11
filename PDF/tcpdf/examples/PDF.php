@@ -624,7 +624,7 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 
 
 
-	   //max lenght of totalSDR may be 30 chars long 
+	   //max length of totalSDR may be 30 chars long 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="1" border="1">
    <tr>
@@ -706,7 +706,7 @@ $pdf->Output($uniqueid,'D'); // you cannot add file location!
 
 //echo "<br>".$uniqueid;
 /*echo "uniqueid may  not have spaces: $uniqueid";
-ob_start(); // at the beggining of your script
+ob_start(); // at the beginning of your script
 $html = ob_get_clean();
 $html = 'your html content';
 */

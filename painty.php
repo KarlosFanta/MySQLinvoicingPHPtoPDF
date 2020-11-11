@@ -5,7 +5,7 @@ $html="yo";
 if(get_magic_quotes_gpc())
 	$html = stripslashes($html);
 if(!$html)
-	$html='<h1>No Text</h1><hr/><p>You did not give a html parameter to show:<br /><b>...painty.php?html=...</b></p><p><img src="http://static.php.net/www.php.net/images/php.gif" /></p>';
+	$html='<h1>No Text</h1><hr/><p>You did not give an HTML parameter to show:<br /><b>...painty.php?html=...</b></p><p><img src="http://static.php.net/www.php.net/images/php.gif" /></p>';
 $config = array
 (
 	'input' => $html,
