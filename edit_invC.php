@@ -10,7 +10,7 @@
     session_start();
 
 	$page_title = "Select a customer";
-	require_once 'header.php';
+require_once 'header.php';
 	//require_once 'db.php';
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 
@@ -18,16 +18,16 @@
 	{
 	//echo "no session<br />";
 	//$_SESSION['sel'] = "addInvC";
-	require_once 'selectCust.php';
+require_once 'selectCust.php';
 	}
 	else
 	{
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	require_once 'edit_inv_processC1.php';
+require_once 'edit_inv_processC1.php';
 	}
 
 
-//	require_once 'view_cust.php';
+//require_once 'view_cust.php';
 
 ?>
 
@@ -38,8 +38,8 @@
 
 
 <?php	/*$page_title = "Edit invoice";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 /*$conn = oci_connect('system', '1234', 'localhost/xe');
 //$queryA = "SELECT Q.PRODID, Q.CUSTNO FROM QUOTATION Q, ORDER1 O WHERE Q.QUOTENO = O.QUOTENO AND Q.QUOTENO = $CustInt";
@@ -53,7 +53,7 @@ echo "<b><font size = '4' type='arial'>Select customer to Edit his/her Invoice</
 </br>";
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice";
+$query = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

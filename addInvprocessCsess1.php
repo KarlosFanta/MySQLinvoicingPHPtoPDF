@@ -192,8 +192,8 @@ function calc()
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
 echo "<font size = 4>Add a new Invoice</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
@@ -204,7 +204,7 @@ echo "<font size = 4>Add a new Invoice</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
-$query = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
+$query = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
 
 /*while($row = mysqli_fetch_array($result)){

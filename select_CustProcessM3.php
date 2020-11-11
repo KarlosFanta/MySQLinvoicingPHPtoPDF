@@ -4,8 +4,8 @@
     session_start();
 //}
 
-	require_once 'header.php';
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 <!--<form name="Addcust" action="editCustProcess_last.php" method="post">-->
 

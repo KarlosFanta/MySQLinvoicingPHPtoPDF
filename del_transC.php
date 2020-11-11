@@ -2,9 +2,9 @@
 
 
 	$page_title = "Select a customer";
-	require_once 'header.php';
+require_once 'header.php';
 	//require_once 'db.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 $query = "select CustNo,  CustFN, CustLN from customer ORDER BY custLN";
 echo $query;
@@ -104,7 +104,7 @@ $result->free();
 
 
 <?php
-require_once ("view_trans_all.php");
+require_once 'view_trans_all.php';
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";

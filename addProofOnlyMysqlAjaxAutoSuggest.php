@@ -21,8 +21,8 @@
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 	Hover your mouse over the textboxes for multiple street selections:<br>
 	<?php include 'streetQuery.php' ?>

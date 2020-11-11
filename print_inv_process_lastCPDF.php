@@ -8,8 +8,8 @@
  $page_title = "You loadng an invoice";
 	//include_once 'header.php';
 require_once 'logprog.php';//mysql connection and database selection
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 $indesc = "9";
 if (@$_POST['indesc'] != "")
@@ -407,5 +407,5 @@ echo "</table>";
 
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

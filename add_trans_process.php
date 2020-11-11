@@ -1,10 +1,9 @@
-
 <?php
 require_once 'inc_OnlineStoreDB.php';
 
 //this is "add_CustProcess.php"
  $page_title = "a customer registered";
-	require_once 'header.php';
+require_once 'header.php';
 // Turn off all error reporting esp for fields that have been left blank.
 //error_reporting(0);
 $TransNo = $_POST['TransNo'];
@@ -64,8 +63,8 @@ if ($result = $DBConnect->query($query)) {
 
     while ($row = $result->fetch_assoc()) {
         printf ("%s (%s)\n", $row[0], $row[1]);
-		$TransNo_Check = $row[0];
-		}
+        $TransNo_Check = $row[0];
+        }
 
 
     $result->free();
@@ -79,8 +78,8 @@ $TransNo_Check = $row[0];
 //echo "TransNo_Check:".$TransNo_Check;
 if ($TransNo_Check == $InvNoA)
 {
-	echo "Sorry, this transaction number is already used.";
-	echo "<a href = 'view_trans_all.php'>view_trans_all.php</a><br>";
+    echo "Sorry, this transaction number is already used.";
+    echo "<a href = 'view_trans_all.php'>view_trans_all.php</a><br>";
 }
 else
 {
@@ -120,4 +119,3 @@ $DBConnect->query($query); //$mysqli gets replaced by $DBConnect
 //}
 ?>
 <!--<p><a href='<?php //echo "FinalOrder.php?PHPSESSID=" . session_id() . "&operation=checkout"?>'>Click here to Confirm Your Order.</a></p>-->
-

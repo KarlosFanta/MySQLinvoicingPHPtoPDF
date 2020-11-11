@@ -1,5 +1,5 @@
 <?php
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <style type="text/css">
@@ -123,5 +123,5 @@ echo "</table >";
 </html>
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

@@ -2,8 +2,8 @@
 
 
 	$page_title = "Select an event";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	//PROCEDURAL
 	//$DBConnect = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 

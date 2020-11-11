@@ -1,15 +1,15 @@
 
 <?php
-	require_once 'header.php';
+require_once 'header.php';
 ?>
 
-<HTML>
+<html>
 <TITLE></TITLE>
 <HEAD>
 </HEAD>
 
 <body>
-<BODY>
+<body>
 <BODY BGCOLOR="#FFFFFF">
 <FONT FACE="arial" SIZE=5>
 Welcome to the Customized Invoicing System<br /></font>

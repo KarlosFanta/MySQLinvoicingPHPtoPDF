@@ -51,7 +51,7 @@ insert into contacts(ContNo, Qty,Descr, Price) values({$strTmp}, '_')<br>
 
 <?php
 $daNextNo = 1; //default when table is empty.
-//$query = "SELECT  MAX(CustNo)  AS MAXNUM FROM customer";
+//$query = "SELECT MAX(CustNo)  AS MAXNUM FROM customer";
 $query = "SELECT MAX(ContNo), Descr FROM contacts";
 $result = $DBConnect->query($query);
 /* numeric array */

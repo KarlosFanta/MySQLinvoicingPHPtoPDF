@@ -3,8 +3,8 @@
 require_once 'inc_OnlineStoreDB.php';
 
 //this is "add_CustProcess.php"
- $page_title = "a customer registered";
-	require_once 'header.php';
+$page_title = "a customer registered";
+require_once 'header.php';
 // Turn off all error reporting esp for fields that have been left blank.
 //error_reporting(0);
 
@@ -38,8 +38,8 @@ if ($result = $DBConnect->query($query)) {
 
     while ($row = $result->fetch_assoc()) {
         printf ("%s (%s)\n", $row[0], $row[1]);
-		$Email_Check = $row[0];
-		}
+        $Email_Check = $row[0];
+        }
 
 
     $result->free();
@@ -53,10 +53,10 @@ $Email_Check = $row[0];
 //echo "Email_Check:".$Email_Check;
 /*if ($Email_Check == $Cust_Email)
 {
-	echo "Sorry, this email address is being used by another user, please try with another email address or click back twice to Log in.";
-	echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
-	echo "<a href = 'view_cust_all.php'>view_cust_all.php</a><br>";
-	include ("view_cust_all.php");
+    echo "Sorry, this email address is being used by another user, please try with another email address or click back twice to Log in.";
+    echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
+    echo "<a href = 'view_cust_all.php'>view_cust_all.php</a><br>";
+    include ("view_cust_all.php");
 }
 else
 {
@@ -103,11 +103,11 @@ echo "insert success! not sure though <br>";
 */
 echo "<br>".$query."";
 echo ";<br><br><font size = '3'>";
-	echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
+    echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
 echo "<br><br><font size = '3'>";
-	echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
-	echo "<font size = '2'><a href = 'view_cust_all.php'>view_cust_all.php</a><br>";
-	//include ("view_customers2.php");
+    echo "<a href = 'Register.php'>Add another customer Register.php</a><br>";
+    echo "<font size = '2'><a href = 'view_cust_all.php'>view_cust_all.php</a><br>";
+    //include ("view_customers2.php");
 
 //php to sql does not understand semicolon. remove the semicolon!!!
 

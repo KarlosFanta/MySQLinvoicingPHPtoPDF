@@ -1,7 +1,7 @@
 <?php
 
 
-	require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 
 	//VALIDATION SUMMARISED:
 /*
@@ -266,7 +266,7 @@ function emailValidator(elem, helperMsg){
 <body>
 
 <?php	$page_title = "Register";
-	require_once 'header.php';
+require_once 'header.php';
 ?>
 
 
@@ -276,7 +276,7 @@ function emailValidator(elem, helperMsg){
 <?php
 
 $daNextNo = 1; //default when table is empty.
-//$query = "SELECT  MAX(CustNo)  AS MAXNUM FROM customer";
+//$query = "SELECT MAX(CustNo)  AS MAXNUM FROM customer";
 
 $query = "SELECT MAX(CustNo), CustFN FROM customer where custno <> '300' and custno <> '301'";
 $result = $DBConnect->query($query);

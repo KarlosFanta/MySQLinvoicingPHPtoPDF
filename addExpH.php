@@ -256,14 +256,14 @@ function calc()
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	@$CustInt = @$_SESSION['CustNo'];
 //include 'monthtables.php';
 //echo "</th>";
-//echo "<table ><tr><th>";
+//echo "<table><tr><th>";
 include 'calculator/indexKL.php';
 //echo "</th></tr></table>";
 //include 'viewExpLatestC.php';
@@ -387,12 +387,12 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 <?php
 
-	//require_once ('inc_OnlineStoreDB.php');
+//require_once 'inc_OnlineStoreDB.php';
 
 $daNextNo = 1; //default when table is empty.
-$queryH = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expensesH";
+$queryH = "SELECT MAX(ExpNo)  AS MAXNUM FROM expensesH";
 $resultH = mysqli_query($DBConnect, $queryH);// or die(mysql_error());
-$query = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expenses";
+$query = "SELECT MAX(ExpNo)  AS MAXNUM FROM expenses";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 
 $daNextNo = 1; //forces a 1 if table is completely empty.

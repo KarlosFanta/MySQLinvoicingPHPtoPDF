@@ -219,7 +219,7 @@ function calc()
 <body>
 
 <?php	//this is "edit_inv_process.php"
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 
 <form name="EditInv" onsubmit="return formValidator();" action="edit_inv_process_last.php" method="post" >
@@ -428,17 +428,17 @@ echo"<TABLE WIDTH=100 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
 		<TH WIDTH=52%><label>Description<br> (replace spaces with _underscores)</label>
-		</TH>
+		</th>
 		<TH WIDTH=11%><label>Qty</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Unit Price in VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>TotExVAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>TotInclVAT</label>
-		</TH>
+		</th>
 	</TR>";
 
 $TotEx= 0;
@@ -446,7 +446,7 @@ $TotEx= 0;
 for( $i=1; $i<9; $i++ )
 {
 	echo "<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D".$i."' size='45'  value=";
 			$DDD= "D".$i;
 			//print $row[$DDD];
@@ -493,8 +493,8 @@ for( $i=1; $i<9; $i++ )
 
 
 
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q".$i."' id='Q".$i."' size='5' value=";
 			$QQQ =  "Q".$i;
 //			print $row[$QQQ];
@@ -502,8 +502,8 @@ for( $i=1; $i<9; $i++ )
 			if ($row[$QQQ] == "")
 			echo "0";
 			echo " onkeyup='calc()'>
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex".$i."'  id='ex".$i."'  size='5' value=";
 			$EEE =  "ex".$i;
@@ -512,29 +512,29 @@ for( $i=1; $i<9; $i++ )
 			if ($row[$EEE] == "")
 			echo "0";
 			echo " onkeyup='calc()'>
-		</TH>
+		</th>
 
 
 
-		<TH ><label>";
+		<th><label>";
 			$EEE =  "ex".$i;
 			echo $row[$EEE]*1.14;
 
-echo "		</TH>
+echo "		</th>
 
 
-		<TH ><label>";
+		<th><label>";
 			$EEE =  "ex".$i;
 			echo $row[$EEE] * $row[$QQQ];
 			$TotEx += $row[$EEE] * $row[$QQQ];
-echo "		</TH>
+echo "		</th>
 
-		<TH ><label>";
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$EEE =  "ex".$i;
 			echo $row[$EEE]*1.14*$row[$QQQ];
 
-	echo"	</TH>
+	echo"	</th>
 	</TR>
 	";
 }
@@ -545,178 +545,178 @@ echo "		</TH>
 
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D2' size='45'  value=";
 			print $row['D2'];
 			if ($row['D2'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q2'  size='5' value=";
 			print $row['Q2'];
 			if ($row['Q2'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex2'  size='5' value=";
 			echo $row["ex2"];
 			if ($row['ex2'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D3' size='45'  value=";
 			echo $row['D3'];
 			 if ($row['D3'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q3' size='5'  value=";
 			echo $row['Q3'];
 			 if ($row['Q3'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex3'  size='5' value=";
 			echo $row["ex3"];
 			 if ($row['ex3'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D4' size='45'  value=";
 			echo $row['D4'];
 			 if ($row['D4'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q4' size='5' value=";
 			echo $row['Q4'];
 			 if ($row['Q4'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex4'  size='5' value=";
 			echo $row["ex4"];
 			 if ($row['ex4'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D5' size='45'  value=";
 			echo $row['D5'];
 			 if ($row['D5'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q5'  size='5' value=";
 			echo $row['Q5'];
 			 if ($row['Q5'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex5'  size='5' value=";
 			echo $row["ex5"];
 			 if ($row['ex5'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D6' size='45'  value=";
 			echo $row['D6'];
 			 if ($row['D6'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q6'  size='5' value=";
 			echo $row['Q6'];
 			 if ($row['Q6'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex6'  size='5'   value=";
 			echo $row["ex6"];
 			 if ($row['ex6'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D7' size='45'  value=";
 			echo $row['D7'];
 			 if ($row['D7'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q7'  size='5' value=";
 			echo $row['Q7'];
 			 if ($row['Q7'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex7'  size='5' value=";
 			echo $row["ex7"];
 			 if ($row['ex7'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH>";
+		<th>";
 			echo "<input type='text' name='D8' size='45'  value=";
 			echo $row['D8'];
 			 if ($row['D8'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo "<input type='text' name='Q8'  size='5' value=";
 			echo $row['Q8'];
 			 if ($row['Q8'] == "")
 			echo "0";
 			echo ">
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='ex8' size='5'  value=";
 			echo $row["ex8"];
 			 if ($row['ex8'] == "")
 			echo "0";
 			echo ">
-		</TH>
+		</th>
 	</TR>
 */
 

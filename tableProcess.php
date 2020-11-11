@@ -5,8 +5,8 @@
 </head>
 <body>
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';
 ?>
 <form name="add_event" action="addEventprocess_lastMAIN.php" method="post">
 <font size = 3><b>Write Table to sql file<br></b></font>

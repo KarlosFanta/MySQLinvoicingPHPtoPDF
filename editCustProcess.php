@@ -1,6 +1,6 @@
 <?php
-	require_once 'header.php';
-	require_once ('inc_OnlineStoreDB.php');
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 <html>
 <meta charset="UTF-8">

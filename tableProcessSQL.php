@@ -1,7 +1,7 @@
 
 
 <?php
-//	require_once 'inc_OnlineStoreDB.php';//page567
+//require_once 'inc_OnlineStoreDB.php';//page567
 	//require_once 'header.php';
 
 $table = $_POST['mydropdownEC'];

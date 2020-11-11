@@ -1,12 +1,12 @@
 <?php
 
 
-	//	require_once 'login_check.php';
+	//require_once 'login_check.php';
 	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
 	//require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 $pr = "20";
 $pr = @$_POST['pr']; //inv descriptions
@@ -667,5 +667,5 @@ echo "</table>";
 
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

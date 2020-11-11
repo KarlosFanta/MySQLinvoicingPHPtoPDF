@@ -10,8 +10,8 @@
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
 $query = "SELECT * FROM events" ;
 

@@ -6,8 +6,8 @@
 
 <?php
 require_once 'logprog.php';
-	require_once 'inc_OnlineStoreDB.php';
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
 
 $clInv3 = $_POST['clInv3']; ///THIS IS NOW INV NUMBER
 $TBLrow = $_POST['mydropdownEC'];/// THIS IS THE EXPENSE NUMBER

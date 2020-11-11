@@ -550,7 +550,7 @@ echo "<br><font size = '3' > <b> <br><a href = 'addInvCsess.php'>Click here to c
 //include 'calculator/index.php'; //not working here
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
+$query = "SELECT MAX(TransNo)  AS MAXNUM FROM transaction";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 while($row = mysqli_fetch_array($result))
 {

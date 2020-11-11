@@ -26,16 +26,20 @@
     To have other PCs accessing your local server you do not need to modify httpd.conf anymore! And you only don;t need to put it "Online" anymore!
     instead it uses a virtual host option. <br />
     Right-click on green wampserver,  Allow VirtualHost Local IP saddresses other than 127*<br />
-    Then edit httpd-vhosts.conf to look like this: (Find it in C:\wamp64\<br />
-    <VirtualHost *:80>
-      ServerName localhost
-      DocumentRoot c:/wamp64/www
-      <Directory  "c:/wamp64/www/">
-      Options Indexes FollowSymLinks MultiViews
-      AllowOverride All
-      Require all granted
-      </Directory>
-    </VirtualHost>
+    Then edit httpd-vhosts.conf to look like this: (Find it in C:\wamp64\).<br />
+    <blockquote>
+      <code>
+        &lt;VirtualHost *:80&gt;<br />
+        &nbsp;&nbsp;ServerName localhost<br />
+        &nbsp;&nbsp;DocumentRoot c:/wamp64/www<br />
+        &nbsp;&nbsp;&lt;Directory "c:/wamp64/www/"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Options Indexes FollowSymLinks MultiViews<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;AllowOverride All<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Require all granted<br />
+        &nbsp;&nbsp;&lt;/Directory&gt;<br />
+        &lt;/VirtualHost&gt;
+      </code>
+    </blockquote>
     <br />
     <br />Installation Procedure for Apache webserver and PHP to make the PHP MySQL accounting software work:<br />
     <br />
@@ -65,7 +69,7 @@
     <br />Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br />
     (If you want to install Apache and PHP separately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>)
     <br />You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br />
-    dotNetFx40_Full_x86_x64.exe  for 64bit Windows (see above notes)
+    dotNetFx40_Full_x86_x64.exe for 64bit Windows (see above notes)
     <br />&nbsp;
     <br /><b>new</b> mysql password: Itsmeagain007#
     <br />&nbsp;
@@ -78,7 +82,7 @@
     ( Stop the MySQL server if it is running. <br />
     Services manager: Start , Control Panel, Administrative Tools,Services. <br />
     Find the MySQL service in the list and stop it.<br />
-    or use  Task Manager to force it to stop if it is not a service.)<br />
+    or use Task Manager to force it to stop if it is not a service.)<br />
     Wampserver: MySQL > MysQSL console<br />
     SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Itsmeagain007#');<br />
     <br />
@@ -108,7 +112,7 @@
     (Alternatively use a static IP address on the server, then \\192.168.0.5 )
     Also change Windows Firewall in Control panel to allow Apache to work on private and public networks<br />
     <br />
-    C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf   [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]<br />
+    C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]<br />
     <br />
     <Directory "c:/wamp/bin/apache/apache2.4.9/cgi-bin"><br />
     AllowOverride None<br />  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]

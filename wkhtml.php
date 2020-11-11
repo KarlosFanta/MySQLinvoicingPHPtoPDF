@@ -2,7 +2,7 @@
 <?php
 //PDF/tcpdf/examples/PDF.php
 echo "create JPG file";
-require_once ('inc_OnlineStoreDB.php');
+require_once 'inc_OnlineStoreDB.php';
 $InvNo2 = 0;
 $InvNo2 = $_POST['InvNo'];
 $InvNo = $_POST['InvNo'];
@@ -312,7 +312,7 @@ $XT2 = '';
 
 $tbl = <<<EOD
 <table  width="100%" cellpadding="2" cellspacing="0" border="1" >
- <tr >
+ <tr>
   <td width = "57%" align = "left"><font size="3" ><b>CompanyName</b></font><br /></td>
   <td width = "23%" align = "left"><font size="3" > DATE:</font></td>
   <td width = "*"  align = "left"><font size="3" >&nbsp; $TransDate</font></td>

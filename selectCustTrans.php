@@ -2,8 +2,8 @@
 
 
 	$page_title = "Add a transaction";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <html>

@@ -153,10 +153,10 @@ $pdf->BuildTable($header,$data);
 $pdf->Output();
 
 	//require_once 'db.php';//page567
-		require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
+<html>
 <HEAD>
 <?php
 
@@ -203,7 +203,7 @@ function printpage()
   }
 </script>
 </HEAD>
-<BODY >
+<body>
 <TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=0>
 	<COL WIDTH=30*>
 	<COL WIDTH=37*>
@@ -212,10 +212,10 @@ function printpage()
 		<TH WIDTH=57%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=4>CompanyName</FONT></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Print the invoice" onclick="printpage()">
 </P>
-		</TH>
+		</th>
 		<TH WIDTH=7%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif" size = "2">DATE:</FONT></P>
-		</TH>
+		</th>
 		<TH WIDTH=*>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "2">
 
@@ -233,7 +233,7 @@ $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
 echo $TransDate;	 ?>
 
-		</TH>
+		</th>
 	</TR>
 	<TR>
 		<TH WIDTH=16%>
@@ -244,13 +244,13 @@ CompanyAddress<br>
 Tel:  &nbsp;&nbsp;
 Cell:  <br>
 <A HREF="mailto:CompanyEmail@me.co.za">Email:  CompanyEmail@me.co.za</A></FONT></FONT></P>
-		</TH>
+		</th>
 		<TH WIDTH=21%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif" size = "3">TAX INVOICE
 			NO.
 
 			</FONT>
-		</TH>
+		</th>
 		<TH WIDTH=13%>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "4">
 			<?php
@@ -258,7 +258,7 @@ Cell:  <br>
 			?>
 			</FONT><BR>
 			</P>
-		</TH>
+		</th>
 	</TR>
 	<TR>
 		<TH WIDTH=16%>
@@ -339,13 +339,13 @@ $Abbr = $row[13];
 
 
 			</FONT></P>
-		</TH>
+		</th>
 		<TH WIDTH=22%>
 			<P LANG="en-GB" align = "left">
 			Account No:
 
 			</P>
-		</TH>
+		</th>
 		<TH WIDTH=17%>
 			<P LANG="en-GB" align = "left"><?php echo "{$row[0]}";
 		}
@@ -354,7 +354,7 @@ $Abbr = $row[13];
 
 			?><BR>
 			</P>
-		</TH>
+		</th>
 	</TR>
 
 </TABLE>
@@ -389,27 +389,27 @@ echo $SDR;
 echo"<TABLE WIDTH=100% BORDER=1 CELLPADDING=0 CELLSPACING=0>";
 echo "<COL WIDTH=*>		<COL WIDTH=10%>	<COL WIDTH=14%>		<COL WIDTH=10%>";
 echo"<TR>
-		<TH><label>Description</label>
-		</TH>
-		<TH ><label>Qty</label>
-		</TH>
-		<TH >Unit ex VAT
-		</TH>
-		<TH ><label>Total</label>
-		</TH>
+		<th><label>Description</label>
+		</th>
+		<th><label>Qty</label>
+		</th>
+		<th>Unit ex VAT
+		</th>
+		<th><label>Total</label>
+		</th>
 	</TR>
 	<TR>
-		<TH>";
+		<th>";
 					echo strtr($rowI['D1'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D1'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			print $rowI['Q1'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$Mex1 = $rowI["ex1"];
 
@@ -418,21 +418,21 @@ echo"<TR>
 			echo $Mex1;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT1 = 0;
 			$XT1 = $rowI["ex1"]*$rowI['Q1'];
 			$XT1 = number_format ($XT1, 2, ".", "");
 			echo $XT1;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 
 if (($rowI['D2']) != '0')
 {
 echo "<TR>
-		<TH>";
+		<th>";
 
 //		echo strtr($rowI['D2'], array('_' => '&nbsp;')) ;
 			$riD2 = $rowI['D2'];
@@ -482,12 +482,12 @@ echo @$arr2[11]."<br>";
 
 //			print $rowI['D2'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			print $rowI['Q2'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex2"];
 
@@ -498,32 +498,32 @@ echo @$arr2[11]."<br>";
 			echo $Mex2;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT2 = 0;
 			$XT2 = $rowI["ex2"]*$rowI['Q2'];
 			$XT2 = number_format ($XT2, 2, ".", "");
 			echo $XT2;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 //echo "<br>rowID3:".$rowI['D3']."<br>";
 if (($rowI['D3']) != '0')
 {
 echo "<TR>
-		<TH>";
+		<th>";
 			echo strtr($rowI['D3'], array('_' => '&nbsp;')) ;
 
 //			echo $rowI['D3'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q3'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex3"];
 
@@ -534,32 +534,32 @@ echo "<TR>
 			echo $Mex3;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT3 = 0;
 			$XT3 = $rowI["ex3"]*$rowI['Q3'];
 			$XT3 = number_format ($XT3, 2, ".", "");
 			echo $XT3;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 
 if ($rowI['D4'] != '0')
 {
 echo "<TR>
-		<TH>";
+		<th>";
 		echo strtr($rowI['D4'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D4'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q4'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex4"];
 
@@ -570,32 +570,32 @@ echo "<TR>
 			echo $Mex4;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT4 = 0;
 			$XT4 = $rowI["ex4"]*$rowI['Q4'];
 			$XT4 = number_format ($XT4, 2, ".", "");
 			echo $XT4;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 
 if ($rowI['D5'] != '0')
 {
 echo "<TR>
-		<TH>";
+		<th>";
 			echo strtr($rowI['D5'], array('_' => '&nbsp;')) ;
 
 //			echo $rowI['D5'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q5'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex5"];
 			$Mex5 = $rowI["ex5"];
@@ -605,15 +605,15 @@ echo "<TR>
 			echo $Mex5;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT5 = 0;
 			$XT5 =  $rowI["ex5"]*$rowI["Q5"];
 			$XT5 = number_format ($XT5, 2, ".", "");
 			echo $XT5;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 
@@ -621,17 +621,17 @@ if ($rowI['D6'] != '0')
 {
 
 echo "<TR>
-		<TH>";
+		<th>";
 							echo strtr($rowI['D6'], array('_' => '&nbsp;')) ;
 
 		//	echo $rowI['D6'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q6'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//echo $rowI["ex6"];
 						$Mex6 = $rowI["ex6"];
 
@@ -640,14 +640,14 @@ echo "<TR>
 			echo $Mex6;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			$XT6 = 0;
 			$XT6 = $rowI["ex6"]*$rowI['Q6'];
 			$XT6 = number_format ($XT6, 2, ".", "");
 			echo $XT6;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 
@@ -655,17 +655,17 @@ if ($rowI['D7'] != '0')
 {
 
 echo "<TR>
-		<TH>";
+		<th>";
 			echo strtr($rowI['D7'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D7'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q7'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex7"];
 						$Mex7 = $rowI["ex7"];
@@ -675,15 +675,15 @@ echo "<TR>
 			echo $Mex7;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT7 = 0;
 			$XT7 = $rowI["ex7"]*$rowI['Q7'];
 			$XT7 = number_format ($XT7, 2, ".", "");
 			echo $XT7;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 
@@ -691,17 +691,17 @@ if ($rowI['D8'] != '0')
 {
 
 echo "<TR>
-		<TH>";
+		<th>";
 			echo strtr($rowI['D8'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D8'];
 			echo "
-		</TH>
-		<TH >";
+		</th>
+		<th>";
 			echo $rowI['Q8'];
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex8"];
 			$Mex8 = $rowI["ex8"];
@@ -710,26 +710,26 @@ echo "<TR>
 			echo $Mex8;
 
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT8 = 0;
 			$XT8= $rowI["ex8"]*$rowI['Q8'];
 			$XT8 = number_format ($XT8, 2, ".", "");
 			echo $XT8;
 			echo "
-		</TH>
+		</th>
 	</TR>";
 }
 echo"</table>
 <TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=0>
 <COL WIDTH=90%>	<COL WIDTH=*>
 		<TR>
-		<TH>";
+		<th>";
 			echo "<p align = 'right'>Sub-Total";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
 			$rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
@@ -738,38 +738,38 @@ echo"</table>
 			echo $ST2;
 
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH> <p align = 'right'>";
+		<th> <p align = 'right'>";
 			echo "Plus 14% VAT";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$VT = $ST*0.14;
 			$VT2 = number_format ($VT, 2, ".", "");
 			echo $VT2;
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 		<TR>
-		<TH> <p align = 'right'>";
+		<th> <p align = 'right'>";
 		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 			echo "Invoice Total";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 
 			$IT= $ST*1.14;
 			$IT2 = number_format ($IT, 2, ".", "");
 			echo "R".$IT2;
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 

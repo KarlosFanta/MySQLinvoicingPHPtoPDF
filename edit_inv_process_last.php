@@ -2,8 +2,8 @@
 <?php	//this is "edit_inv_process_last.php"
  $page_title = "You added a invoice";
 
-	require_once 'inc_OnlineStoreDB.php';
-	require_once 'logprog.php';
+require_once 'inc_OnlineStoreDB.php';
+require_once 'logprog.php';
 
 ?>
 

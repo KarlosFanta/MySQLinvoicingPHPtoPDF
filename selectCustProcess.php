@@ -42,8 +42,8 @@ and editCust.php opens up editCustProcess.php
     session_start();
 //}
 
-	require_once 'header.php';
-	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
 
 
 // LOOK FOR include ("editCustProcess.php");

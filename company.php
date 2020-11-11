@@ -8,7 +8,7 @@
 <body>
 
 <?php	$page_title = "Company Details";
-	require_once 'header.php';
+require_once 'header.php';
 ?>
 
 

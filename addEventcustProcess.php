@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -119,8 +118,8 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "addEventCustProcess.php"
  $page_title = "You seleted a Customer";
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';
 
 ?>
 <form name="addEventCustProcess2" action="addEventprocess_last2.php" method="post">
@@ -202,7 +201,7 @@ echo "</table>";
 include ("view_event_by_cust.php");
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(EventNo)  AS MAXNUM FROM events";
+$query = "SELECT MAX(EventNo)  AS MAXNUM FROM events";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

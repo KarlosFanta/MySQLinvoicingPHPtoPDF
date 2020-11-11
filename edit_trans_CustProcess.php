@@ -1,8 +1,8 @@
 <?php	//this is "edit_trans_CustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once 'header.php';
-	//require_once ('db.php');//mysqli connection and databse selection
-		require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+	//require_once 'db.php';//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_trans_CustProcess" action="print_statement.php" method="post">

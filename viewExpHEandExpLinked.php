@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <b><br><font size = "4" type="arial">View Expenses, E, H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExpLinked.php

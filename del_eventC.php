@@ -2,9 +2,9 @@
 
 
 	$page_title = "Select a customer";
-	require_once 'header.php';
+require_once 'header.php';
 	//require_once 'db.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 	//PROCEDURAL
 
 
@@ -110,7 +110,7 @@ $result->free();
 
 
 <?php
-require_once ("view_event_all.php");
+require_once 'view_event_all.php';
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";

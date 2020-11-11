@@ -120,7 +120,7 @@ function emailValidator(elem, helperMsg){
 <?php	//this is "add_tranc_CustProcess2.php"
  $page_title = "You seleted a Customer";
 require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';//page567
+require_once 'header.php';//page567
  echo "addEventCustProcess_sessT.php<br>";
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -208,7 +208,7 @@ echo "&nbsp;&nbsp;{$row[9]} ";
 
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(EventNo)  AS MAXNUM FROM events";
+$query = "SELECT MAX(EventNo)  AS MAXNUM FROM events";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

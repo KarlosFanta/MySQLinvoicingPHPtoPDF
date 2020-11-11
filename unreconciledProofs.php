@@ -1,7 +1,7 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 <?php //require_once 'header.php'; ?>
@@ -439,5 +439,5 @@ echo "</table>";
 
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

@@ -272,8 +272,8 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
@@ -391,10 +391,10 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 
 
-	//require_once ('inc_OnlineStoreDB.php');
+//require_once 'inc_OnlineStoreDB.php';
 
 $Numb = "ProofNo1"; //default when table is empty.
-//$query = "SELECT  MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
+//$query = "SELECT MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
 //$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
 //$query = "select ProofNo from aproof asc limit 1";
 //$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead

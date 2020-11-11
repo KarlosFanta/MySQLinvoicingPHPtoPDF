@@ -119,9 +119,9 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "add_tranc_CustProcess2.php"
  $page_title = "You seleted a Customer";
-	require_once 'header.php';
-	//require_once ('db.php');//mysqli connection and databse selection
-		require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+	//require_once 'db.php';//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="addTransCustProcess2" action="addTransprocess_last2.php" method="post">
@@ -278,10 +278,10 @@ echo "</table>";
 
 <?php
 
-	require_once ('dbold.php');
+require_once 'dbold.php';
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
+$query = "SELECT MAX(TransNo)  AS MAXNUM FROM transaction";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

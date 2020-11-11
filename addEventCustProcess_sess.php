@@ -128,8 +128,8 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "addEventCustProcess_sess.php"
  $page_title = "Add event for a Customer";
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';
 
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -225,7 +225,7 @@ echo "</table>";
 
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(EventNo)  AS MAXNUM FROM events";
+$query = "SELECT MAX(EventNo)  AS MAXNUM FROM events";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

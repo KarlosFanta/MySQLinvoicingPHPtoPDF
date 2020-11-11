@@ -26,8 +26,8 @@ document.getElementById("AddTransCust").submit();
 
 
 	$page_title = "Select a customer";
-	require_once 'header.php';
-	require_once 'db.php';
+require_once 'header.php';
+require_once 'db.php';
 	//PROCEDURAL
 	//$DBConnect = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -134,8 +134,8 @@ $result->free();
 
 
 <?php
-require_once ("view_trans_all.php");
-require_once ("view_inv.php");
+require_once 'view_trans_all.php';
+require_once 'view_inv.php';
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";

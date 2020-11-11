@@ -15,8 +15,8 @@
 //	include 'dalogin/USerSession.php';
 	//include 'dalogin/CheckLogin.php';
 
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $item3b='';
 ?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

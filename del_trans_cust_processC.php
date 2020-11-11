@@ -1,8 +1,8 @@
 <?php	//this is "del_CustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once 'header.php';
-	//require_once ('db.php');//mysqli connection and databse selection
-		require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+	//require_once 'db.php';//mysqli connection and databse selection
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Del_trans_process" action="del_trans_cust_processC2.php" method="post">

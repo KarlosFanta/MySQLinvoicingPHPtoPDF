@@ -1,7 +1,7 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 $SQLstring = "select * from aproof where CustNo = '$CustInt' and  TransNo = '' ";
 
 ?>

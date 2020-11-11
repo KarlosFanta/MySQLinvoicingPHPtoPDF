@@ -1,7 +1,7 @@
 <?php	//this is "edit_trans_CustProcessC2.php"
  $page_title = "You seleted a Transomer";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 

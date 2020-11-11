@@ -1,6 +1,6 @@
 <?php	//this is "edit_inv_process.php"
-	require_once 'header.php';
-	require_once ('inc_OnlineStoreDB.php');
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 //!! This is an inbetween form which launches the process_last.php form!!!
 //!!here we view the details of the invoice before we change him on the last form.

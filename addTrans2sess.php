@@ -8,7 +8,7 @@ $_SESSION['sel'] = "add_trans2";
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 	{
 	//echo "no session<br />";
-	require_once 'selectCust.php';
+require_once 'selectCust.php';
 	}
 	else
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";

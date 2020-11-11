@@ -8,8 +8,8 @@
 
 
 <?php
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];

@@ -15,8 +15,8 @@
 //	include 'dalogin/USerSession.php';
 	//include 'dalogin/CheckLogin.php';
 
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 //include 'calculator/index.php';
 $item3b='';
 $item1b='';

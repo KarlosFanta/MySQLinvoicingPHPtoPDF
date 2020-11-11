@@ -182,8 +182,8 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
   //  @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 //	$CustInt = $_SESSION['CustNo'];
@@ -247,7 +247,7 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
+$query = "SELECT MAX(TransNo)  AS MAXNUM FROM transaction";
 
 //$result = mysqli_query($query);// or die(mysql_error());
 $result = mysqli_query($DBConnect, $query);
@@ -593,8 +593,6 @@ alert('$message');
 
 */
 ?>
-
-
 
 </body>
 </html>

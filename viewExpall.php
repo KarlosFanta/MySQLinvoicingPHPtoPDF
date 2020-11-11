@@ -1,10 +1,10 @@
 <?php
 
 
-	//	require_once 'login_check.php';
+	//require_once 'login_check.php';
 	// -- Nothing Below this line requires editing --
 	//require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <style type="text/css">
@@ -372,5 +372,5 @@ mysqli_free_result($result);
 </html>
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

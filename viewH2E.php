@@ -12,7 +12,7 @@ still comes out quite tiny, maybe shorten too long text. Do a Print Preview Edit
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 $query = "SELECT * FROM H2E" ;
 
 $result = mysqli_query($DBConnect, $query);

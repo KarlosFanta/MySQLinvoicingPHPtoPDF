@@ -134,8 +134,8 @@ $CustNo = '';
 $CustNo = @$_GET['CustNo'];
      echo "CustNo ". @$_GET['CustNo']. ".";
 
-	require_once 'header.php';
-	require_once ('inc_OnlineStoreDB.php');
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
     @session_start();
 
 	if ($CustNo == '')

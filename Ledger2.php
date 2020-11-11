@@ -1,6 +1,6 @@
 <?php
-	require_once 'header.php';
-		require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_trans_CustProcess" action="print_statement.php" method="post">
@@ -83,8 +83,8 @@ $AP = number_format($AP, 2, '.', '');
 echo "<th align = right>".$AP."</th>\n";
 $yo = $yo + $AP;
 echo "<th align = right>".$yo."</th>\n";
-echo "<th >".$row['Notes']."</th>\n";
-echo "<th >".$row['TMethod']."</th>\n";
+echo "<th>".$row['Notes']."</th>\n";
+echo "<th>".$row['TMethod']."</th>\n";
 echo "</tr>\n";
 
     }

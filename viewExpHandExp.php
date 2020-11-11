@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <b><br><font size = "4" type="arial">View Expenses H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHandExp.php
@@ -184,5 +184,5 @@ mysqli_free_result($result);
 </html>
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

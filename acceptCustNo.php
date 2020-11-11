@@ -1,8 +1,8 @@
 <?php
-    @session_start();
+@session_start();
 //$CustNo = 0;
-	//echo "GETTER  Getter: ". $_GET['link']."<br />";
-	$CustInt = 	$_POST['CustNo'];
+//echo "GETTER Getter: ". $_GET['link']."<br />";
+$CustInt = $_POST['CustNo'];
 $_SESSION['CustNo'] = $CustInt;
 echo $CustInt;
 echo "<br>";
@@ -11,7 +11,7 @@ echo fwrite($file,"$CustInt");
 fclose($file);
 ?>
 <script language="javascript" type="text/javascript">
-	function myFunction() {
+function myFunction() {
     setTimeout(function(){ close(); }, 3200);
 }
 myFunction();
@@ -21,7 +21,6 @@ function close_window() {
     close();
   }
 }
-
 </script>
 
 <!--<a href="javascript:close_window();">close</a>

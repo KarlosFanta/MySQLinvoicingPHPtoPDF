@@ -156,7 +156,7 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 
 <body>
 <?php	$page_title = "View a Quote";
-	require_once 'header.php';
+require_once 'header.php';
 ?>
 
 

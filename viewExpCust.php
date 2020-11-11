@@ -173,5 +173,5 @@ mysqli_free_result($result);
 </html>
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

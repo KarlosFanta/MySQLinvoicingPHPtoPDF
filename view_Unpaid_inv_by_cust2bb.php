@@ -11,7 +11,7 @@ $InvPdStatus = @$_POST['InvPdStatus'];
 //$TBLrow = $_POST['mydropdownEC'];
 
 	//$page_title = "Customer";
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 <br><font color='green'>view_Unpaid_inv_by_cust2b.php &nbsp;&nbsp;&nbsp;order by InvNo desc</font>
 </form><form  name="AddTrans2"  method='post' action = "addProofMultib.php">

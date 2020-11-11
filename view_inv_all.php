@@ -19,8 +19,7 @@
 </style>
 </head>
 <body>
-<?php require_once ("header.php");
-?>
+<?php require_once 'header.php'; ?>
 
 <h3>Invoices</h3>
 <?php

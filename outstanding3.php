@@ -1,7 +1,7 @@
 <?php	//this is "edit_trans_CustProcess.php"
  $page_title = "Outstanding payments of ALL customers";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $pr = "N";
 //$pr = $_POST['pr']; //inv descriptions
 $pm = "N";

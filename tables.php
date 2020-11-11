@@ -1,6 +1,7 @@
-<?php	$page_title = "All tables";
-	require_once 'header.php';
-require_once ('db.php')
+<?php
+$page_title = "All tables";
+require_once 'header.php';
+require_once 'db.php';
 
 /*$conn = oci_connect('system', '1234', 'localhost/xe');
 

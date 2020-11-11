@@ -366,10 +366,10 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 <?php
 
-	//require_once ('inc_OnlineStoreDB.php');
+//require_once 'inc_OnlineStoreDB.php';
 
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
+$query = "SELECT MAX(TransNo)  AS MAXNUM FROM transaction";
 
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 

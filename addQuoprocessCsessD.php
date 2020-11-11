@@ -208,8 +208,8 @@ function calc()
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';//page567
 
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -218,7 +218,7 @@ function calc()
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
-$query = "SELECT  MAX(QuoNo)  AS MAXNUM FROM quotes"; ///CORRECT!! DO NOT REMOVE!!!!
+$query = "SELECT MAX(QuoNo)  AS MAXNUM FROM quotes"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
 
 /*while($row = mysqli_fetch_array($result)){
@@ -337,7 +337,7 @@ $QuoSQLDateYY =  date("Y");
 //echo "<br>QuoSQLdate: ".$QuoSQLDate." ___<br>";
 
 $daNextNo = 1; //default when table is empty.
-$queryM = "SELECT  MAX(QuoNo)  AS MAXNUM FROM quotes ";
+$queryM = "SELECT MAX(QuoNo)  AS MAXNUM FROM quotes ";
 
 //$result=mysql_queryM($queryM);
 //echo "<br>".$result."<br>";
@@ -557,34 +557,34 @@ echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
 		<TH WIDTH=52%><label>Description1 </label>
-		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></TH>
+		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></th>
 		<TH WIDTH=11%><label>Qty1</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label></label>
-		</TH>
+		</th>
 		<!--<TH WIDTH=23%><label>Unit Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>-->";
+		</th>-->";
 
 		echo "</TR>	";
-		echo "<TR>		<TH>";
+		echo "<TR>		<th>";
 
 		echo "<input id='D1' type='text' name='D1' size='53'  value='{$row2['adslinv']}'><br/>";
 
-		echo "</TH>
-		<TH ><input type='text' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
+		echo "</th>
+		<th><input type='text' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			<input type='text' name='ex1' id='ex1' size='10' value='0' onkeyup='calc()'>{$row2['ae']}
-		</TH>
+		</th>
 
 
 
@@ -631,74 +631,74 @@ echo $row2['CustPW'];
  For discounts use a negative value. size 53 recommended for printing
 		</TR>
 	<TR>
-		<TH><input type='text' id='D2' name='D2' size='53'  value='0topup'>
-		</TH>
-		<TH ><input type='text' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
+		<th><input type='text' id='D2' name='D2' size='53'  value='0topup'>
+		</th>
+		<th><input type='text' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			<input type='text' name='ex2'  size='10' value='0' id='ex2'  onkeyup='calc()'>50> 43.86
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D3' name='D3' size='53'  value='0Travel <?php echo $Distance; ?> km'>
-		</TH>
-		<TH ><input type='text' name='Q3' size='5'  value='0' id='Q3'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D3' name='D3' size='53'  value='0Travel <?php echo $Distance; ?> km'>
+		</th>
+		<th><input type='text' name='Q3' size='5'  value='0' id='Q3'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex3'  size='10' value='0' id='ex3'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D4' name='D4' size='53'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q4' size='5' value='0' id='Q4'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D4' name='D4' size='53'  value='0'>
+		</th>
+		<th><input type='text' name='Q4' size='5' value='0' id='Q4'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex4'  size='10' value='0' id='ex4'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D5' name='D5' size='53'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q5'  size='5' value='0' id='Q5'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D5' name='D5' size='53'  value='0'>
+		</th>
+		<th><input type='text' name='Q5'  size='5' value='0' id='Q5'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex5'  size='10' value='0' id='ex5'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D6' name='D6' size='53'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q6'  size='5' value='0' id='Q6'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D6' name='D6' size='53'  value='0'>
+		</th>
+		<th><input type='text' name='Q6'  size='5' value='0' id='Q6'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex6'  size='10'   value='0' id='ex6'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D7' name='D7' size='53'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D7' name='D7' size='53'  value='0'>
+		</th>
+		<th><input type='text' name='Q7'  size='5' value='0' id='Q7'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex7'  size='10' value='0' id='ex7'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D8' name='D8' size='53'  value='0'>
-		</TH>
-		<TH ><input type='text' name='Q8'  size='5' value='0' id='Q8'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D8' name='D8' size='53'  value='0'>
+		</th>
+		<th><input type='text' name='Q8'  size='5' value='0' id='Q8'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex8' size='10'  value='0' id='ex8'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 

@@ -25,7 +25,7 @@
 echo "create JPG file";
 //$im = imagecreatetruecolor(120, 20);
 
-require_once ('inc_OnlineStoreDB.php');
+require_once 'inc_OnlineStoreDB.php';
 
 $InvNo2 = 0;
 $InvNo2 = $_POST['InvNo'];
@@ -116,7 +116,7 @@ $SetSubject = ''.$uniqueid.'';
 
 // set some language-dependent strings (optional)
 /*if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once dirname(__FILE__.'/lang/eng.php');
+require_once dirname(__FILE__.'/lang/eng.php');
 	$pdf->setLanguageArray($l);
 }
 
@@ -420,11 +420,11 @@ $XT2 = '';
 <TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=0>
 <COL WIDTH=90%>	<COL WIDTH=*>
 		<TR>
-		<TH>";
+		<th>";
 			echo "<p align = 'right'>Sub-Total";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
 			$rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
@@ -433,38 +433,38 @@ $XT2 = '';
 			echo $ST2;
 
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH> <p align = 'right'>";
+		<th> <p align = 'right'>";
 			echo "Plus 14% VAT";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$VT = $ST*0.14;
 			$VT2 = number_format ($VT, 2, ".", "");
 			echo $VT2;
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 		<TR>
-		<TH> <p align = 'right'>";
+		<th> <p align = 'right'>";
 		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 			echo "Invoice Total";
 			echo "
-		</TH>
-		<TH ><label>";
+		</th>
+		<th><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 
 			$IT= $ST*1.14;
 			$IT2 = number_format ($IT, 2, ".", "");
 			echo "R".$IT2;
 			echo "
-		</TH>
+		</th>
 	</TR>
 
 

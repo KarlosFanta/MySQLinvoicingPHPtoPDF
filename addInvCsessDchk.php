@@ -211,10 +211,10 @@ alert(elem.value);
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 
 
-	require_once 'header.php';//page567
+require_once 'header.php';//page567
 
  //   @session_start();
 //	@$_SESSION['sel'] = "addInvC";
@@ -466,7 +466,7 @@ $D8 = changeA($D8);
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
-$queryMax = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!! //2QUERIES HERE!!
+$queryMax = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!! //2QUERIES HERE!!
 $result = $DBConnect->query($queryMax);
 
 $row = $result->fetch_array(MYSQLI_NUM);
@@ -486,7 +486,7 @@ $InvSQLDateYY =  date("Y");
 
 /*$daNextNo = 1; //default when table is empty.
 
-$queryM = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice where invno < $sg";
+$queryM = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice where invno < $sg";
 
 $result = $DBConnect->query($queryM);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
@@ -855,36 +855,36 @@ echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
 		<TH WIDTH=52%><label>Description1 </label>
-		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></TH>
+		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></th>
 		<TH WIDTH=11%><label>Qty</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label></label>
-		</TH>
+		</th>
 		<!--<TH WIDTH=23%><label>Unit Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>-->";
+		</th>-->";
 
 		echo "</TR>	";
-		echo "<TR>		<TH>";
+		echo "<TR>		<th>";
 
 		echo "<input id='D1' type='text' name='D1' size='53'  value='";
 
 		echo $D1."'><br/>";
 
-		echo "</TH>
-		<TH ><input type='text' name='Q1' id='Q1' size='5' value='$Q1' >
+		echo "</th>
+		<th><input type='text' name='Q1' id='Q1' size='5' value='$Q1' >
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			  <input type='text' name='ex1' id='ex1' size='10' value='$ex1' class='exxx1'   >
-		</TH>
+		</th>
 
 
 
@@ -909,7 +909,7 @@ echo $row2['u2'];
 Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recommended for printing
 		</TR>
 	<TR>
-		<TH><input type='text' id='D2' name='D2' size='53'   value='<?php
+		<th><input type='text' id='D2' name='D2' size='53'   value='<?php
 		echo $D2;
 
 		 ?>'>
@@ -920,74 +920,74 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recom
 	echo $Topup;  echo "' >";
 
 ?>
-	 	</TH>
-		<TH ><input type='text' name='Q2'  size='5' value="<?php echo $Q2 ; ?>" id='Q2'  >
+	 	</th>
+		<th><input type='text' name='Q2'  size='5' value="<?php echo $Q2 ; ?>" id='Q2'  >
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			<input type='text' name='ex2'  size='10'
 			value="<?php echo $ex2 ; ?>" id='ex2'  >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D3' name='D3' size='53'  value='<?php echo $D3 ?>'>
-		</TH>
-		<TH ><input type='text' name='Q3' size='5'  value="<?php echo $Q3 ; ?>" id='Q3'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D3' name='D3' size='53'  value='<?php echo $D3 ?>'>
+		</th>
+		<th><input type='text' name='Q3' size='5'  value="<?php echo $Q3 ; ?>" id='Q3'  >
+		</th>
+		<th>
 			<input type='text' name='ex3'  size='10' id='ex3'   value='<?php echo $ex3 ?>'    >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D4' name='D4' size='53'  value='<?php echo $D4 ?>' >
-		</TH>
-		<TH ><input type='text' name='Q4' size='5' value="<?php echo $Q4 ; ?>" id='Q4'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D4' name='D4' size='53'  value='<?php echo $D4 ?>' >
+		</th>
+		<th><input type='text' name='Q4' size='5' value="<?php echo $Q4 ; ?>" id='Q4'  >
+		</th>
+		<th>
 			<input type='text' name='ex4'  size='10' id='ex4'   value='<?php echo $ex4; ?>'    >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D5' name='D5' size='53'  value='<?php echo $D5; ?>' >
-		</TH>
-		<TH ><input type='text' name='Q5'  size='5' value="<?php echo $Q5 ; ?>" id='Q5'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D5' name='D5' size='53'  value='<?php echo $D5; ?>' >
+		</th>
+		<th><input type='text' name='Q5'  size='5' value="<?php echo $Q5 ; ?>" id='Q5'  >
+		</th>
+		<th>
 		<input type='text' name='ex5' size='10' id='ex5'   value='<?php echo $ex5; ?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D6' name='D6' size='53'  value='<?php echo $D6; ?>' >
-		</TH>
-		<TH ><input type='text' name='Q6'  size='5' value="<?php echo $Q6 ; ?>" id='Q6'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D6' name='D6' size='53'  value='<?php echo $D6; ?>' >
+		</th>
+		<th><input type='text' name='Q6'  size='5' value="<?php echo $Q6 ; ?>" id='Q6'  >
+		</th>
+		<th>
 			<input type='text' name='ex6'  size='10' id='ex6'    value='<?php echo $ex6; ?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D7' name='D7' size='53'  value='<?php echo $D7; ?>' >
-		</TH>
-		<TH ><input type='text' name='Q7'  size='5' value="<?php echo $Q7 ; ?>" id='Q7'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D7' name='D7' size='53'  value='<?php echo $D7; ?>' >
+		</th>
+		<th><input type='text' name='Q7'  size='5' value="<?php echo $Q7 ; ?>" id='Q7'  >
+		</th>
+		<th>
 			<input type='text' name='ex7' size='10' id='ex7'    value='<?php echo $ex7; ?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D8' name='D8' size='53'  value='<?php echo $D8; ?>' >
-		</TH>
-		<TH ><input type='text' name='Q8'  size='5' value="<?php echo $Q8 ; ?>" id='Q8'  >
-		</TH>
-		<TH >
+		<th><input type='text'  id='D8' name='D8' size='53'  value='<?php echo $D8; ?>' >
+		</th>
+		<th><input type='text' name='Q8'  size='5' value="<?php echo $Q8 ; ?>" id='Q8'  >
+		</th>
+		<th>
 			<input type='text' name='ex8' size='10'  id='ex8'    value='<?php echo $ex8; ?>' >
-		</TH>
+		</th>
 	</TR>
 
 

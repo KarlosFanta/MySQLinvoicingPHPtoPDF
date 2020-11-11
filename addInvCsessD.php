@@ -259,10 +259,10 @@ alert(elem.value);
 
 
 <?php
-	require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 
 
-	require_once 'header.php';//page567
+require_once 'header.php';//page567
 
     @session_start();
 	@$_SESSION['sel'] = "addInvC";
@@ -306,7 +306,7 @@ alert(elem.value);
 
 
 $daNextNo = 1; //default if table is completely empty.
-$queryMax = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!! //2QUERIES HERE!!
+$queryMax = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!! //2QUERIES HERE!!
 $result = $DBConnect->query($queryMax);
 
 /*while($row = mysqli_fetch_array($result)){
@@ -330,7 +330,7 @@ $InvSQLDateYY =  date("Y");
 
 $daNextNo = 1; //default when table is empty.
 
-$queryM = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice ";
+$queryM = "SELECT MAX(InvNo)  AS MAXNUM FROM invoice ";
 
 $result = $DBConnect->query($queryM);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
@@ -675,36 +675,36 @@ echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
 		<TH WIDTH=52%><label>Description1 </label>
-		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></TH>
+		<FONT size = '1'></b>(no apostrophees, no kommas)(Zeroes in empty fields!)</font></th>
 		<TH WIDTH=11%><label>Qty</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label></label>
-		</TH>
+		</th>
 		<!--<TH WIDTH=23%><label>Unit Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price ex VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Total Price incl VAT</label>
-		</TH>
+		</th>
 		<TH WIDTH=23%><label>Price ex VAT</label>
-		</TH>-->";
+		</th>-->";
 
 		echo "</TR>	";
-		echo "<TR>		<TH>";
+		echo "<TR>		<th>";
 
 		echo "<input id='D1' type='text' name='D1' size='53'  value='";
 
 		echo " {$row2['adslinv']}'><br/>";
 
-		echo "</TH>
-		<TH ><input type='text' name='Q1' id='Q1' size='5' value='1' onkeyup='calc()'>
+		echo "</th>
+		<th><input type='text' name='Q1' id='Q1' size='5' value='1' onkeyup='calc()'>
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			  <input type='text' name='ex1' id='ex1' size='10' class='exxx1' onkeyup='calc()'  >{$row2['ae']}
-		</TH>
+		</th>
 
 
 
@@ -755,17 +755,17 @@ echo $row2['invD2'];
  For discounts use a negative value. size 53 recommended for printing
 		</TR>
 	<TR>
-		<TH><input type='text' id='D2' name='D2' size='53'   value='<?php
+		<th><input type='text' id='D2' name='D2' size='53'   value='<?php
 		echo $row2['invD2'];
 
 		 ?>'>
 		<br>
 
-		</TH>
-		<TH ><input type='text' name='Q2'  size='5' value='' id='Q2'  onkeyup='calc()'>
+		</th>
+		<th><input type='text' name='Q2'  size='5' value='' id='Q2'  onkeyup='calc()'>
 
-		</TH>
-		<TH >
+		</th>
+		<th>
 			<input type='text' name='ex2'  size='10'
 			value='<?php
 			$jng = $row2['ae2'];
@@ -773,67 +773,67 @@ echo $row2['invD2'];
 				$jng = ''; //was zero  here previously
 			echo $jng;
 			?>' id='ex2'  onkeyup='calc()'>
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D3' name='D3' size='53'  value='<?php echo $row2['invD3'] ?>'>Travel <?php echo $Distance; ?> km
-		</TH>
-		<TH ><input type='text' name='Q3' size='5'  value='' id='Q3'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D3' name='D3' size='53'  value='<?php echo $row2['invD3'] ?>'>Travel <?php echo $Distance; ?> km
+		</th>
+		<th><input type='text' name='Q3' size='5'  value='' id='Q3'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex3'  size='10' id='ex3'  onkeyup='calc()' value='<?php echo $row2['ae3']?>'    >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D4' name='D4' size='53'  value='<?php echo $row2['invD4']?>' >
-		</TH>
-		<TH ><input type='text' name='Q4' size='5' value='' id='Q4'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D4' name='D4' size='53'  value='<?php echo $row2['invD4']?>' >
+		</th>
+		<th><input type='text' name='Q4' size='5' value='' id='Q4'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex4'  size='10' id='ex4'  onkeyup='calc()' value='<?php echo $row2['ae4']?>'    >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D5' name='D5' size='53'  value='<?php echo $row2['invD5']?>' >
-		</TH>
-		<TH ><input type='text' name='Q5'  size='5' value='' id='Q5'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D5' name='D5' size='53'  value='<?php echo $row2['invD5']?>' >
+		</th>
+		<th><input type='text' name='Q5'  size='5' value='' id='Q5'  onkeyup='calc()'>
+		</th>
+		<th>
 		<input type='text' name='ex5' size='10' id='ex5' onkeyup='calc()'  value='<?php echo $row2['ae5']?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D6' name='D6' size='53'  value='<?php echo $row2['invD6']?>' >
-		</TH>
-		<TH ><input type='text' name='Q6'  size='5' value='' id='Q6'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D6' name='D6' size='53'  value='<?php echo $row2['invD6']?>' >
+		</th>
+		<th><input type='text' name='Q6'  size='5' value='' id='Q6'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex6'  size='10' id='ex6'  onkeyup='calc()'  value='<?php echo $row2['ae6']?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D7' name='D7' size='53'  value='<?php echo $row2['invD7']?>' >
-		</TH>
-		<TH ><input type='text' name='Q7'  size='5' value='' id='Q7'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D7' name='D7' size='53'  value='<?php echo $row2['invD7']?>' >
+		</th>
+		<th><input type='text' name='Q7'  size='5' value='' id='Q7'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex7' size='10' id='ex7'  onkeyup='calc()'  value='<?php echo $row2['ae7']?>' >
-		</TH>
+		</th>
 	</TR>
 
 	<TR>
-		<TH><input type='text'  id='D8' name='D8' size='53'  value='<?php echo $row2['invD8']?>' >
-		</TH>
-		<TH ><input type='text' name='Q8'  size='5' value='' id='Q8'  onkeyup='calc()'>
-		</TH>
-		<TH >
+		<th><input type='text'  id='D8' name='D8' size='53'  value='<?php echo $row2['invD8']?>' >
+		</th>
+		<th><input type='text' name='Q8'  size='5' value='' id='Q8'  onkeyup='calc()'>
+		</th>
+		<th>
 			<input type='text' name='ex8' size='10'  id='ex8'  onkeyup='calc()'  value='<?php echo $row2['ae8']?>' >
-		</TH>
+		</th>
 	</TR>
 
 

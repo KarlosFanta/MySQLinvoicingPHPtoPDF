@@ -1,5 +1,5 @@
 <?php
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 	$queryS = "SELECT * FROM comment ORDER BY id DESC LIMIT 1";
 
 	if ($result2 = mysqli_query($DBConnect, $queryS)) {

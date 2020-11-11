@@ -1,14 +1,14 @@
 <?php
 
 
-	//	require_once 'login_check.php';
+	//require_once 'login_check.php';
 	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
 	//require_once 'header.php';
 	//require_once 'db.php';
-	require_once 'inc_OnlineStoreDB.php';
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
 
 ?>
 <!DOCTYPE html>

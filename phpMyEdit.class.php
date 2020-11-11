@@ -1578,7 +1578,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	 * @param	readonly	bool for readonly/disabled selection
 	 * @param	strip_tags	bool for stripping tags from values
 	 * @param	escape		bool for HTML escaping values
-	 * @param	js		string to be in the <select >, ususally onchange='..';
+	 * @param	js		string to be in the <select>, ususally onchange='..';
 	 */
 	function htmlSelect($name, $css, $kv_array, $selected = null, /* ...) {{{ */
 			/* booleans: */ $multiple = false, $readonly = false, $strip_tags = false, $escape = true, $js = NULL)
@@ -1625,7 +1625,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	 * @param	readonly	bool for readonly/disabled selection
 	 * @param	strip_tags	bool for stripping tags from values
 	 * @param	escape		bool for HTML escaping values
-	 * @param	js		string to be in the <select >, ususally onchange='..';
+	 * @param	js		string to be in the <select>, ususally onchange='..';
 	 */
 	function htmlRadioCheck($name, $css, $kv_array, $selected = null, /* ...) {{{ */
 			/* booleans: */ $multiple = false, $readonly = false, $strip_tags = false, $escape = true, $js = NULL)

@@ -1,7 +1,7 @@
 <?php	//this is "edit_event_CustProcessC2.php"
  $page_title = "You seleted a eventomer";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_event_process" action="edit_event_process_last.php" method="post">

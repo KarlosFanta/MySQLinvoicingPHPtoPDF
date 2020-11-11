@@ -1,7 +1,7 @@
 <?php
 	$page_title = "Select a customer";
-	require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>	<html>
 <head>

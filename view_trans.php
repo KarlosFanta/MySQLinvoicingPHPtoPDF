@@ -2,13 +2,13 @@
 <?php
 
 
-	//	require_once 'login_check.php';
+	//require_once 'login_check.php';
 	// -- Nothing Below this line requires editing --
 
 	$page_title = "AllTransactions";
 	//require_once 'header.php';
 	//require_once 'db.php';
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <style type="text/css">
@@ -309,5 +309,5 @@ echo "</table>";
 
 
 <?php
-//	require_once 'footer.php';
+//require_once 'footer.php';
 ?>

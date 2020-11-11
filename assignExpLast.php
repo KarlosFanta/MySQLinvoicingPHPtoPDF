@@ -42,7 +42,7 @@ $CustEmail = str_replace(';', '; ', $CustEmail);
 //$ProofNo = $_POST['ProofNo'];
 
 $Numb = "ProofNo1"; //default when table is empty.
-//$query = "SELECT  MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
+//$query = "SELECT MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
 //$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
 //$query = "select ProofNo from aproof asc limit 1";
 //$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead

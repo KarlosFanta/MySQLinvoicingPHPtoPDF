@@ -101,13 +101,13 @@ if ($X8 != 0)
  }
 
 
- /*		<TH><input type='text' name='D8' size='45'  v='0'>
-		</TH>
-		<TH ><input type='text' name='Q8'  size='5' v='0'>
-		</TH>
-		<TH >
+ /*		<th><input type='text' name='D8' size='45'  v='0'>
+		</th>
+		<th><input type='text' name='Q8'  size='5' v='0'>
+		</th>
+		<th>
 			<input type='text' name='ex8' size='5'  v='0'>
-		</TH>
+		</th>
 */
 
  ?>

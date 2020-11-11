@@ -10,7 +10,7 @@ $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 
 	//$page_title = "Customer";
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
  &nbsp;&nbsp;&nbsp;&nbsp;</font> <font color=#F5F50C>view_Unpaid_inv_by_cust2.php &nbsp;&nbsp;&nbsp;order by InvNo desc</font>
 

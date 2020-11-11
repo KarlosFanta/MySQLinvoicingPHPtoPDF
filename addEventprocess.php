@@ -127,8 +127,8 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "addEventprocess.php"
  $page_title = "Add general event";
-	require_once 'inc_OnlineStoreDB.php';//page567
-	require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'header.php';
 	echo "addEventprocess.php   calls addEventprocess_last2.php<br>";
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -141,7 +141,7 @@ function emailValidator(elem, helperMsg){
 <form name="addEventCustProcess2" onsubmit="return formValidator()"  action="addEventprocess_last2b.php" method="post">
 <?php
 $daNextNo = 1; //default when table is empty.
-$query = "SELECT  MAX(EventNo)  AS MAXNUM FROM events";
+$query = "SELECT MAX(EventNo)  AS MAXNUM FROM events";
 
 //$result=mysql_query($query);
 //echo "<br>".$result."<br>";

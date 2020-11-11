@@ -191,7 +191,7 @@ $opts['fdd']['Destination'] = array(
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 
-	require_once 'inc_OnlineStoreDB.php';
+require_once 'inc_OnlineStoreDB.php';
 
 @session_start();
 //if (@$_SESSION['CustNo'] == "")  //works if session was destroyed

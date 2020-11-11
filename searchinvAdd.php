@@ -11,7 +11,7 @@ define('DB_NAME', 'kc');
 //$dotdot = 51;
 
 	$query = "SELECT dotdot FROM customer WHERE CustNo = $CustInt" ;
-	require_once 'inc_OnlineStoreDB.php';//page567
+require_once 'inc_OnlineStoreDB.php';//page567
 if ($result = mysqli_query($DBConnect, $query)) {      //I think this is all Cust Details
   while ($row2 = @mysqli_fetch_assoc($result)) {
 
@@ -48,10 +48,10 @@ if (isset($_GET['term'])){
 //$stmt = $conn->prepare('SELECT summary FROM ajaxsuggest WHERE summary LIKE :term');
 //SELECT inv.InvNo FROM invoice inv, transaction trn WHERE inv.InvNo = trn.InvNoA  and CustNo = $CustInt
 //$stmt = $conn->prepare("SELECT InvNo FROM invoice where CustNo = '$CustInt'");
-//$stmt = $conn->prepare("SELECT  MAX(InvNo)  AS MAXNUM FROM invoice where InvNo < $sg");	   //The $sg is the problem here.
-//$stmt = $conn->prepare("SELECT  MAX(InvNo)  AS MAXNUM FROM invoice");
-//$stmt = $conn->prepare("(SELECT  MAX(InvNo)+1  AS MAXNUM FROM invoice  where InvNo < 5898) UNION (SELECT  MAX(InvNo)+1  AS MAXNUM FROM invoice )");
+//$stmt = $conn->prepare("SELECT MAX(InvNo)  AS MAXNUM FROM invoice where InvNo < $sg");	   //The $sg is the problem here.
+//$stmt = $conn->prepare("SELECT MAX(InvNo)  AS MAXNUM FROM invoice");
+//$stmt = $conn->prepare("(SELECT MAX(InvNo)+1  AS MAXNUM FROM invoice  where InvNo < 5898) UNION (SELECT MAX(InvNo)+1  AS MAXNUM FROM invoice )");
 //$stmt = $conn->prepare("SELECT dotdot AS MAXNUM FROM customer  where CustNo = '$CustInt'");
-//$stmt = $conn->prepare("(SELECT  MAX(InvNo)+1  AS MAXNUM FROM invoice  where InvNo < 5898)");
+//$stmt = $conn->prepare("(SELECT MAX(InvNo)+1  AS MAXNUM FROM invoice  where InvNo < 5898)");
 
 ?>
