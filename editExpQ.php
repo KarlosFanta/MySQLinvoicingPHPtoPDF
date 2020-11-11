@@ -27,14 +27,12 @@ require_once 'header.php';
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 {
-include "viewExpmyedit.php";
+include 'viewExpmyedit.php';
 
 exit();
 }
 
 //echo $_SESSION['CustNo'];
-
-
 
 $yo = @$_SESSION['CustNo'];
 //echo "CustNo:".$yo."<br>";
@@ -60,7 +58,7 @@ echo "NB kaspersky/Norton  is also in ExpensesE !!!<br>";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'expenses';
 
@@ -120,7 +118,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -220,7 +218,6 @@ $opts['fdd']['InvNo'] = array(
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-
 
 ?>
 

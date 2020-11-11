@@ -1,16 +1,15 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 
-?> 
-<?php //require_once "header.php"; ?>
+?>
+<?php //require_once 'header.php'; ?>
 <b><font size = "4" type="arial">View Customers</b></font>
 </br>
 </br>
@@ -66,12 +65,9 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
 
 $query = "select * from customer ORDER BY custLN";
 echo $query;
@@ -142,53 +138,11 @@ echo "</tr>\n";
 		}
 			mysqli_close($DBConnect);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 $result = mysql_query($query);
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-    printf(" %s.  %s _ ", $row[0], $row[1]);  
+    printf(" %s.  %s _ ", $row[0], $row[1]);
 }
 
 mysql_free_result($result);
@@ -199,7 +153,6 @@ $num=mysql_numrows($result);//counts the rows
 mysql_close();
 
 echo "<br><br>";
-
 
 ?>
 <table border="1" cellspacing="2" cellpadding="2">
@@ -245,57 +198,6 @@ $i++;
 }
 echo "</table>";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 echo "<br>2-dimensional table example<br>";
 $myarray = array("key1"=>array(1,2,3,4),
                  "key2"=>array(2,3,"B",5),
@@ -313,7 +215,7 @@ foreach($myarray as $key => $element){
 
 
 
- 
+
 ?>
 </table>
 
@@ -477,11 +379,7 @@ $distance = array (
   "London" => $london
   );
 
-
-
-
-
 <?php
-	require_once('footer.php');		
+	require_once 'footer.php';
 	*/
 ?>

@@ -1,9 +1,9 @@
 <html>
 <head>
 <title>Add an H expenseQ</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-	
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -145,11 +145,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
- 
-        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
+
+        value = value.replace(/-/g, "/").replace(/\./g, "/");
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -165,17 +165,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
- 
+
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
-                    
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
+
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {  
+                        if (Month == 2) {
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        } 
+                        }
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -194,9 +194,9 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
-//JQUERY: LOOK AT : include 'invJQuery.php' 		
+//JQUERY: LOOK AT : include 'invJQuery.php'
 //	<input type="text"  size="3" id="ItemA"  name="ItemA"  class='clInvNoA' />
-/*	
+/*
 	$(function() {
 		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
 		var availableTags = ["yp","jj"];
@@ -212,7 +212,7 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 function calc()
 {
-		
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -241,10 +241,10 @@ function calc()
   val16 = document.getElementById("Q8").value;
   */
   mani = "multiply";
-  
+
   if (val1 != "" && val2 != "")
   {
-  	
+
   document.getElementById("resp").innerHTML="Calculating...";
 //    queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
     queryPath = "CalcServ3.php?ex1="+val1+"&Q1="+val2;
@@ -255,9 +255,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	
+
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-        
+
     }
   }
 
@@ -274,8 +274,8 @@ function calc()
 
 
 <?php
-require_once('header.php');	
-require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 $daNextNo = 1; //default when table is empty.
 $queryH = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expensesH";
 $resultH = mysqli_query($DBConnect, $queryH);// or die(mysql_error());
@@ -300,10 +300,6 @@ $daNextNoH = intval($row[0]);
 
 $daNextNo =  max (array($daNextNo, $daNextNoH, $daNextNoE));
 $daNextNo = $daNextNo+1;
-
-
-
-
 
 $CCCCC = '';
 
@@ -330,10 +326,9 @@ $arraySDR = str_replace("/", " ", $arraySDR);
 $arraySDR = str_replace("-", " ", $arraySDR);
 $arraySDR = str_replace("*", " ", $arraySDR);
 $Aex = $AA/1.14;
-$Aex = number_format((float)$Aex, 2, '.', ''); 
+$Aex = number_format((float)$Aex, 2, '.', '');
 
 $category = '';$SupCode = '';
-
 
 ?>
 
@@ -360,7 +355,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	//print "".mb_substr($CustFN, 0, 8);
 	print "&nbsp;&nbsp;". $CustFN;
 	print "&nbsp;&nbsp;&nbsp;". $CustLN;
-	
 
 	}
 	mysqli_free_result($result);
@@ -377,7 +371,6 @@ if ($array[1] == '')
 
 //$arraySDR = str_replace($arraySDR, '/');
 //$arraySDR = str_replace(array('/', ' '), array('-', ''),array('*', ''), $arraySDR);
-
 
 $TransDate = $array[0];
 $inin = $array[1]; //InvNo
@@ -396,21 +389,18 @@ $ininV = str_replace("*", " ", $ininV);
 
 $ininA = explode (' ', $inin);
 
-
-
 ?>
 
 
 <input type='text' name='PurchDate' id='PurchDate' value='<?php echo $TransDate; ?>'>
 CustNo: <input type='text' name='AC' id='AC' value='<?php echo $CustNo; ?>' required>Stock: 300 business: 301
-InvNo1: <input type='text' name='InvNo1' required > 
+InvNo1: <input type='text' name='InvNo1' required >
 		<select name="mydropdownINV" >
 <option value="_no_selection_">View Cust Invoices:</option>";
 <?php
 
 		$query = "select * from invoice where CustNo = $CustNo ORDER BY InvNo desc";
 //echo $query;
-
 
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
@@ -425,11 +415,10 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_". $row["D2"];
 	print "_". $row["D3"];
 	print "_". $row["D4"];
-	
-	
-	$SQLstring = "select * from expenses where InvNo = $InvNo order by ExpNo  desc";	
-	
-	//echo $SQLstring." "; 
+
+	$SQLstring = "select * from expenses where InvNo = $InvNo order by ExpNo  desc";
+
+	//echo $SQLstring." ";
 
 $NN = '';
 $NNN = '';
@@ -437,8 +426,7 @@ $NNN = '';
 if ($resultinner = mysqli_query($DBConnect, $SQLstring)) {
   //  printf("TheSelect returned %d rows.\n", mysqli_num_rows($resultinner));
 
-
-while ($row = mysqli_fetch_assoc($resultinner)) 
+while ($row = mysqli_fetch_assoc($resultinner))
 {
 echo $row['ExpNo']." ";
 echo $row['ExpDesc']." ";
@@ -457,12 +445,12 @@ echo "<br>";
 mysqli_free_result($resultinner);
 }
 
-	
-	
-	
-	
-	
-	print " </option>"; 
+
+
+
+
+
+	print " </option>";
 	}
 	mysqli_free_result($result);
 }
@@ -484,7 +472,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "<option value='$CustNo'>".mb_substr($CustLN, 0, 8);
 	print "_".$CustNo;
 	print "_". mb_substr($CustFN, 0, 8);
-	print " </option>"; 
+	print " </option>";
 	}
 	mysqli_free_result($result);
 }
@@ -516,11 +504,11 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	$Cat = $row["ExpDesc"];
 	if ($Cat != '')
 		echo "<br><font size = 3 color = red>WARNING These are on same date:</font><br>";
-	
+
 	print "<option value='$Cat'>".$Cat;
 	//print "<option value='$Cat'>".mb_substr($Cat, 0, 10);
 	//print "_".$Cat;
-	print " </option>"; 
+	print " </option>";
 	echo " ".$row["PurchDate"];
 	}
 	mysqli_free_result($result);
@@ -531,7 +519,6 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 //$time = strtotime('$TransDate -3 days');
 //$dateM = date("Y-m-d", $time);
   //  echo "<br>date minus 3 days: ".$dateM."<br>";
-	
 
    //echo "<br>TRANSDATE: ".$TransDate."<br>";
 
@@ -539,7 +526,6 @@ $date=date_create("$TransDate");
 date_modify($date,"-14 days");
 $dateM = date_format($date,"Y-m-d");
 //echo "<br>TRANSDATE minus3 days: ".$dateM;
-
 
 $date=date_create("$TransDate");
 $date = date_modify($date,"+12 days");
@@ -549,7 +535,7 @@ $dateP = date_format($date,"Y-m-d");
 
 $AexP = $Aex + 1.01;
 $AexM = $Aex - 1.01;
-	
+
 $queryCat = "SELECT * FROM expenses where (PurchDate between '$dateM' AND '$dateP') and ProdCostExVAT between $AexM and $AexP";
 echo "queryCat: $queryCat <br>";
 		//echo "<br><font size = 3 color = red>WARNING These are on same date:</font><br>";
@@ -594,7 +580,7 @@ echo "</tr>\n";
 	mysqli_free_result($result);
 echo "</table>";
 }
-	
+
 $queryCat = "SELECT * FROM expenses where (PurchDate between '$dateM' AND '$dateP') ";
 echo "queryCat: $queryCat <br>";
 if ($result = mysqli_query($DBConnect, $queryCat)) {
@@ -611,11 +597,11 @@ echo "<tr>";
 echo "<th>".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-	
+
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>"; 
+//	print " </option>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
 $ProdinVAT = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
@@ -655,7 +641,7 @@ echo "</tr>\n";
 	mysqli_free_result($result);
 echo "</table>";
 }
-	
+
 $queryCat = "SELECT * FROM expensesH where (PurchDate between '$dateM' AND '$dateP') ";
 echo "queryCat: $queryCat <br>";
 if ($result = mysqli_query($DBConnect, $queryCat)) {
@@ -673,11 +659,11 @@ echo "<tr>";
 echo "<th>".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-	
+
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>"; 
+//	print " </option>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
 $ProdinVAT = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
@@ -734,11 +720,11 @@ echo "<tr>";
 echo "<th>".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-	
+
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>"; 
+//	print " </option>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
 $ProdinVAT = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
@@ -777,7 +763,7 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	print "<option value='$ExpDesc'>".$ExpDesc;
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-	//print " </option>"; 
+	//print " </option>";
 	echo " ".$row["PurchDate"];
 	}
 	mysqli_free_result($result);
@@ -789,12 +775,11 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	$Cat = $row["Category"];
 	print "<option value='$Cat'>".mb_substr($Cat, 0, 10);
 	//print "_".$Cat;
-	print " </option>"; 
+	print " </option>";
 	}
 	mysqli_free_result($result);
 }
 echo "</select>";
-
 
 include ("viewExpCust.php");
 ?></body>

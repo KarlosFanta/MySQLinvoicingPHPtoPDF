@@ -1,6 +1,6 @@
 <?php
-	include('header.php');	
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 /*
 $delimiter = ',';
 $k = 0;
@@ -17,7 +17,7 @@ if (($handle = fopen("import.csv", "r")) !== FALSE) {
 		echo $data[$k];
 		$k++;
 		echo "<br>";
-		
+
 		echo $i;
 	}
 	fclose($handle);
@@ -26,7 +26,7 @@ if (($handle = fopen("import.csv", "r")) !== FALSE) {
 
 ?>
 
- //$DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control 
+ //$DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -64,13 +64,6 @@ $row = $result->fetch_array(MYSQLI_NUM);
 $daNextNo = 1; //forces a 1 if table is completely empty.
 $daNextNo = intval($row[0])+1;
 
-
-
-
-
-
-
-
 if (isset($_POST['submitBtn'])) { //read csv file
 //$DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 
@@ -95,7 +88,6 @@ $strTmp  = "'".$csv_line[0]."',";
 $strTmp .= "'".$csv_line[1]."',";//Add another one:
 $strTmp .= "'".$csv_line[2]."',";
 //$strTmp .= "'".$csv_line[3]."'";
-
 
 }
 $strTmp = substr($strTmp,0,strlen($strTmp)-1); //remove last character (,)

@@ -1,6 +1,6 @@
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
+	require_once 'inc_OnlineStoreDB.php';//page567
+	require_once 'header.php';//page567
 
 
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
@@ -8,7 +8,6 @@
 $daNextNo = 1; //default if table is completely empty.
 $query = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
-
 
 /*while($row = mysqli_fetch_array($result)){
 //	echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -21,7 +20,6 @@ $InvNo = $InvNo+1;
 
 //echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
 
-	
 	//$InvDate = $_POST['Date1'];
 	//$Summary = $_POST['Summary'];
 
@@ -32,7 +30,6 @@ $InvNo = $InvNo+1;
 	//echo " 0: ".$TBLrow[0]."<br>";
 	//$Custno = explode( "_", $TBLrow);
 	//echo "___:".$CustInt."   ";
-
 
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
@@ -58,8 +55,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
 
 			//echo "selected CustomerNo: ".$row2['CustNo']."<br>";
 			//echo "selected CustomerLN: ".$row2['CustLN']."<br>";
@@ -75,8 +70,6 @@ echo "<th>Distance</th>";
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
 
-
-
 echo "<tr><th>{$row2['CustNo']}</th>";
 echo "<th>{$row2['CustFN']}</th>";
 echo "<th>{$row2['CustLN']}</th>";
@@ -88,25 +81,24 @@ echo "<th>{$row2['Distance']} km</th>";
 //echo "<th>{$row2['LastLogin']}</th>";
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td></tr>\n";
-		
+
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	$OrdPd = "_";
 
+
+
+
+
+
+
+
+
+	$OrdPd = "_";
 
 //$D1 = explode("/", $InvDate);
 /*echo $D1[2]."____";
@@ -145,7 +137,7 @@ echo $D1[1]."____";
 //$sql = "DELETE FROM invoice WHERE InvNo = $InvNo" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -155,7 +147,6 @@ echo $D1[1]."____";
 //oci_execute($stid);
 ///echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Thank you for selecting ".$TBLrow." from your database. You may now change its details.</BR>"   ;
-
 
 //$objResult = mysql_query($sql) or die(mysql_error());
 
@@ -185,7 +176,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo $row['CustLN'];
 	//		echo "&nbsp;&nbsp;Account No: ";
 	//		echo $row['CustNo'];
-			
+
 			// DO NOT DISABLE!!! addInvprocess_lastC needs to know which customer got selected!!
 			//There is no inserting here yet!!!
 			echo " <input type='text' name='CustNo' value=";
@@ -200,7 +191,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo $InvDate;
 			echo "> </dd>";
 		echo "</dl>";
-
 
  		echo "<dl>Summary: &nbsp;</label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -223,7 +213,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl>";
 
- 		
 echo"<TABLE WIDTH=90% BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
@@ -315,19 +304,19 @@ echo"<TR>
 
 
 
-	
+
 	</table>";
 	}
 	}
 	?>
 
-	
+
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="return confirm('SURE ABOUT INVOICE NUMBER??? Did u copy the total amount to the invoice total?')" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="return confirm('SURE ABOUT INVOICE NUMBER??? Did u copy the total amount to the invoice total?')" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<!--<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -336,7 +325,7 @@ echo"<TR>
 <?php
 include ("view_inv_by_cust.php");
 
-//require_once "view_inv_one.php";
+//require_once 'view_inv_one.php';
 
 ?>
 

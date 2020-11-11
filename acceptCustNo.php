@@ -9,10 +9,8 @@ echo "<br>";
 $file = fopen("sessCustNo.txt","w");
 echo fwrite($file,"$CustInt");
 fclose($file);
-
-
-	?>
-<script language="javascript" type="text/javascript"> 
+?>
+<script language="javascript" type="text/javascript">
 	function myFunction() {
     setTimeout(function(){ close(); }, 3200);
 }

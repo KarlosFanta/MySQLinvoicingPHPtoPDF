@@ -1,8 +1,8 @@
 <?php	//this is "process_event.php"
  $page_title = "You added a event";
-	include('header.php');	
+	include 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 <!--<form name="t" action="del_event_process_lastNEXT.php" method="post">-->
 <form name="t" action="delEventCustProcessC.php" method="post">
@@ -28,14 +28,10 @@ $EDate = '';
 
 $ENotes ='';
 
-
 $event_No = $_POST['EventNo'];
 //$CustNo = $_POST['CustNo'];
 $EDate = $_POST['EDate'];
 $ENotes = $_POST['ENotes'];
-
-
-
 
 echo "Thank you for deleting the event: ".$event_No." ".$CustNo ." ".$EDate ."."  ;
 
@@ -49,7 +45,6 @@ printf("Affected rows (UPDATE): %d\n", mysqli_affected_rows($DBConnect));
 echo $query;
 
 echo ";<br>";
-
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -87,15 +82,14 @@ $result->free();
 
 <?php
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
 
 echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
-
 
 ?>
 

@@ -37,21 +37,21 @@
 
 
 
-  
-
-													
-																				 
-																			  
-						  
-					 
-							   
-																									   
 
 
 
-						 
 
-  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -361,7 +361,7 @@ class phpMyEdit
 			$this->dbh = null;
 		} // try/catch
 	} /* }}} */
-  
+
 
 
 	function sql_disconnect() /* {{{ */ // PDO
@@ -487,7 +487,7 @@ class phpMyEdit
 			$language = substr($language, 0, $pos);
 			$file = $this->dir['lang'].'PME.lang.'.$language.'.inc';
 		}
-		$ret = @include($file);
+		$ret = @include $file;
 		if (! is_array($ret)) {
 			return $ret;
 		}
@@ -627,7 +627,7 @@ class phpMyEdit
 	{
  		return $this->get_SQL_query($qparts);
  	} /* }}} */
- 
+
 
 
 
@@ -1148,7 +1148,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 				else echo $this->fdd[$k]['default'];
 				echo '</textarea>',"\n";
 			} elseif ($this->col_has_php($k)) {
-				echo include($this->fdd[$k]['php']);
+				echo include $this->fdd[$k]['php'];
 			} else {
 				// Simple edit box required
 				$len_props = '';
@@ -1296,7 +1296,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 			else echo $row["qf$k"];
 			echo '</textarea>',"\n";
 		} elseif ($this->col_has_php($k)) {
-			echo include($this->fdd[$k]['php']);
+			echo include $this->fdd[$k]['php'];
 		} else {
 			$len_props = '';
 			$maxlen = intval($this->fdd[$k]['maxlen']);
@@ -1531,7 +1531,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 			$value = sprintf($this->fdd[$k]['mask'], $value);
 		}
 		if ($this->col_has_php($k)) {
-			return include($this->fdd[$k]['php']);
+			return include $this->fdd[$k]['php'];
 		}
 		if ($this->col_has_URL($k)) {
 			return $this->urlDisplay($k, $original_value, $value, $css, $key_rec);
@@ -2976,10 +2976,10 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 		if (is_array($trig)) {
 			ksort($trig);
 			for ($t = reset($trig); $t !== false && $ret != false; $t = next($trig)) {
-				$ret = include($t);
+				$ret = include $t;
 			}
 		} else {
-			$ret = include($trig);
+			$ret = include $trig;
 		}
 		return $ret;
 	} /* }}} */
@@ -3140,7 +3140,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	function error($message, $additional_info = '') /* {{{ */
 	{
 		echo '<h1>phpMyEdit error: ',fhtmlspecialchars($message),'</h1>',"\n";
-						   
+
 		if ($additional_info != '') {
 			echo '<hr size="1" />',fhtmlspecialchars($additional_info);
 		}
@@ -3476,7 +3476,6 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 		$opts['execute'] && $this->execute();
 		// Restore original error reporting level
 		error_reporting($error_reporting);
-  
 
 	} /* }}} */
 

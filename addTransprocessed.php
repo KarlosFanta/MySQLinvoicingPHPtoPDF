@@ -1,7 +1,7 @@
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnLineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnLineStoreDB.php';
 ?>
 
 
@@ -27,7 +27,7 @@ $_SESSION['CustNo2nd']=$CustNo;
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $CustFN = $row2["CustFN"];
 $CustLN =  $row2["CustLN"];
@@ -40,9 +40,6 @@ print "_".$item3b;
 */
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
-
-
-
 
 	}
 $result2->free();
@@ -72,21 +69,8 @@ $InvNoGincl = 0;
 $InvNoH = 0;
 $InvNoHincl = 0;
 
-
-
-
-
 $Trans_No = $_POST['TransNo'];
 //$CustNo = $_POST['CustNo'];
-
-
-
-
-
-
-
-
-
 
 $D1 = $_POST['TransDate'];
 $D2 = explode("/", $D1);
@@ -98,14 +82,9 @@ echo $D2[1]."____";
 
 //$D3 = $_POST['Date1'];
 
-
-
-
-
-
 $TransDateCV = $D2[2]."-".$D2[1]."-".$D2[0];
 
-echo "convertedTransDate:".$TransDateCV."<br>";	 
+echo "convertedTransDate:".$TransDateCV."<br>";
 //2012-12-21
 $AmtPaid = $_POST['AmtPaid'];
 $Notes = $_POST['Notes'];
@@ -141,8 +120,6 @@ echo " <br>CustSSDR: ".$CustSDR ;
 echo "<br>TransferMethod: ".$TMethod." <br>";
 echo "<br>mydropdownEC: ".$TBLrow." <br>";
 
-
-
 echo "Thank you for adding the transaction's details: ".$Trans_No." ".$CustNo ." ".$TransDate ."."  ;
 
 $Trans_NoInt = intval($Trans_No);
@@ -154,7 +131,7 @@ echo "This also prevents the insert to be declared. causing a major FAIL!!";
 }
 else
 {
-$query="insert into transaction (TransNo, CustNo, TransDate, AmtPaid, Notes, CustSDR, TMethod,  
+$query="insert into transaction (TransNo, CustNo, TransDate, AmtPaid, Notes, CustSDR, TMethod,
 InvNoA,InvNoAincl,
 InvNoB, InvNoBincl ,
 InvNoC, InvNoCincl ,
@@ -165,7 +142,7 @@ InvNoG , InvNoGincl ,
 InvNoH , InvNoHincl,
 Priority )
 VALUES
-( $Trans_No,  $CustNo, '$TransDateCV', $AmtPaid, '$Notes', '$CustSDR', '$TMethod', 
+( $Trans_No,  $CustNo, '$TransDateCV', $AmtPaid, '$Notes', '$CustSDR', '$TMethod',
 '$InvNoA', $InvNoAincl ,
  '$InvNoB', $InvNoBincl ,
  '$InvNoC', $InvNoCincl ,
@@ -177,7 +154,7 @@ VALUES
 '$Priority') ";
 
 }
-/*(TransNo = $Trans_No, CustNo = $CustNo, TransDate ='$TransDate', AmtPaid = $AmtPaid, Notes = '$Notes', TMethod = '$TMethod', 
+/*(TransNo = $Trans_No, CustNo = $CustNo, TransDate ='$TransDate', AmtPaid = $AmtPaid, Notes = '$Notes', TMethod = '$TMethod',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -191,7 +168,7 @@ Priority = '$Priority') ";*/
 echo '</br>';
 
 mysqli_query($DBConnect, $query);
-//echo mysqli_error(); //error mysqli_error() expects exactly 1 parameter, 
+//echo mysqli_error(); //error mysqli_error() expects exactly 1 parameter,
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 echo "<br>";
 //printf("Affected rows (UPDATE): %d\n", mysqli_affected_rows($DBConnect));
@@ -201,16 +178,11 @@ echo "<br><font size = 5 color = red><b><b>insert or update NOT successfull!!!</
 else
 echo "<font size = 4>insert success! </font><br>";
 
-
 //echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
 
 //echo "<input type='text' id='CNN'  name='CNN' value=".$CustNo.">";
 
 //include ("addTransCustProcess3.php");
-
-
-
-
 
 //php to sql does not understand semicolon. remove the semicolon!!!
 $TransInt = intval($Trans_NoInt);
@@ -247,20 +219,20 @@ print " ".$item10;
 }
 $result->free();
 }
-	
+
 
 echo "</b></font>";
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
@@ -276,12 +248,12 @@ echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br
 <input type = "hidden" name="AmtPaid" value="<?php echo $AmtPaid ?>">
 
 <a href = "add_trans.php"> Click to add another transaction</a>	<br><br>
-	
+
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 	<br><br>
 
-	
-	
+
+
 <br><br><br><br><a href='http://localhost/ACS/add_trans2.php'>LINK_OnLY_Click to add transaction for new cust</a><br><br>
 
 <?php
@@ -295,12 +267,10 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >if table empty show this line.";
 echo "</th></tr>";
 
-
 if ($InvNoA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE InvNo = $InvNoA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -439,7 +409,6 @@ $result->free();
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
-
 $nL = "%0D%0A"; //new line
 
 $b5 = "For Payment of: ".$Notes. " Invoice No ".@$InvNoA." ";
@@ -458,7 +427,6 @@ $b1 =  "Date: ".$D1;
 $b2 = "Transaction Number: ". $Trans_No;
 $b3 = "Paid by: ". $CustLN.", ".$CustFN;
 $b4 = "Amount: R". $AmtPaid;
-
 
 $b5b = "Customer statement: ".$CustSDR;
 $b6 = "Received by: CompanyName ";
@@ -536,7 +504,7 @@ Click to EMail Receipt to customer</a><br>
 
 
 
-include "edit_trans_CustProcessC_2ndsession.php";
+include 'edit_trans_CustProcessC_2ndsession.php';
 ?>
 
 

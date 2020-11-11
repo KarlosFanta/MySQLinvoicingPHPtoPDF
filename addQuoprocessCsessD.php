@@ -1,4 +1,4 @@
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,7 +23,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -54,7 +54,7 @@ function formValidator(){
 	}//very important bracket part of isNumeric!!!!!
 	}}}}}}
 	return false;
-	
+
 }//very important end of formvalidator!!
 
 function notEmpty(elem, helperMsg){
@@ -143,7 +143,7 @@ function emailValidator(elem, helperMsg){
 
 function calc()
 {
-		
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -170,10 +170,10 @@ function calc()
   val15 = document.getElementById("ex8").value;
   val16 = document.getElementById("Q8").value;
   mani = "multiply";
-  
+
   if (val1 != "" && val2 != "")
   {
-  	
+
   document.getElementById("resp").innerHTML="Calculating...";
     queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
 //   queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+mani;
@@ -183,9 +183,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	
+
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-        
+
     }
   }
 
@@ -208,20 +208,18 @@ function calc()
 
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
-	
+	require_once 'inc_OnlineStoreDB.php';//page567
+	require_once 'header.php';//page567
+
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
-
 
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
 $query = "SELECT  MAX(QuoNo)  AS MAXNUM FROM quotes"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
-
 
 /*while($row = mysqli_fetch_array($result)){
 //	echo "The max no QuoNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -234,7 +232,7 @@ $QuoNo = $QuoNo+1;
 
 //echo "The max no QuoNo in customer table is:  ". $row[0] . "&nbsp;";
 
-/*	
+/*
 	$QuoDate = $_POST['Date1'];
 	//$Summary = $_POST['Summary'];
 
@@ -245,7 +243,6 @@ $QuoNo = $QuoNo+1;
 	//echo " 0: ".$TBLrow[0]."<br>";
 	//$Custno = explode( "_", $TBLrow);
 	//echo "___:".$CustInt."   ";
-
 
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
@@ -271,8 +268,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
 
 			//echo "selected CustomerNo: ".$row2['CustNo']."<br>";
 			//echo "selected CustomerLN: ".$row2['CustLN']."<br>";
@@ -288,7 +283,6 @@ echo "<th>Distance</th>";
 echo "<th>ABBR</th>";
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
-
 
 echo "{$row2['CustNo']}&nbsp;";
 echo "{$row2['CustFN']}&nbsp;";
@@ -315,27 +309,25 @@ $Abbr = $row2['ABBR'];
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td>";
 echo "</tr>\n";
-		
 
     $result->close();
-	
+
 }
 //echo "</table>";
 
 	}
-	
-	
-	
-*/	
-	
-	
-	
-	
-	
+
+
+
+*/
+
+
+
+
+
 	$OrdPd = "_";
 
-
-//$DateD = date("Y.m.d"); 
+//$DateD = date("Y.m.d");
 //$NewFormat = date("d/m/Y");
 //$QuoSQLDate = $D1[2]."-".$D1[1]."-".$D1[0];
 $QuoSQLDateDD = date("d");
@@ -343,11 +335,6 @@ $QuoSQLDateMM = date("m");
 $QuoSQLDateYY =  date("Y");
 
 //echo "<br>QuoSQLdate: ".$QuoSQLDate." ___<br>";
-
-
-
-
-
 
 $daNextNo = 1; //default when table is empty.
 $queryM = "SELECT  MAX(QuoNo)  AS MAXNUM FROM quotes ";
@@ -370,23 +357,12 @@ while($row = mysqli_fetch_array($result)){
 //	echo "The max no EventNo in customer table is:  ". $row[0] . "&nbsp;";
 $daNextNo = intval($row[0])+1;
 }
-include "monthtables.php";
+include 'monthtables.php';
 
-		
 echo "Suggested QuoNo: ";
 echo $daNextNo;
 
 echo " &nbsp; ".$queryM;
-
-
-
-
-
-
-
-
-
-
 
 ?>
 <!--<form name="AddQuo" onsubmit="return formValidator()" action="addQuoprocess_lastC.php" method="post">-->
@@ -416,7 +392,7 @@ echo " &nbsp; ".$queryM;
 //$sql = "DELETE FROM quotes WHERE QuoNo = $QuoNo" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -426,7 +402,6 @@ echo " &nbsp; ".$queryM;
 //oci_execute($stid);
 ///echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Thank you for selecting ".$TBLrow." from your database. You may now change its details.</BR>"   ;
-
 
 //$objResult = mysql_query($sql) or die(mysql_error());
 
@@ -454,14 +429,7 @@ if ($result = mysqli_query($DBConnect, $query)) {      //I think this is to dete
 
  		echo "<dl>";
 			echo "Customer: ";
-			
 
-			
-			
-			
-			
-			
-			
 			//echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
@@ -469,8 +437,6 @@ if ($result = mysqli_query($DBConnect, $query)) {      //I think this is to dete
 			//echo "<a href='addQuoprocessCsess.php'><font size = '3'>First Click here if you do not need to add descriptions</font>";
 //echo "addQuoprocessCsessD.php</a><br>";
 
-			
-			
 			echo "{$row2['CustNo']}&nbsp;";
 echo $row2['CustFN']."&nbsp;";
 echo "{$row2['CustLN']}&nbsp;&nbsp;&nbsp;";
@@ -486,8 +452,6 @@ echo "<input type='hidden' name='L1' value=";
 			echo $row2['L1'];
 			echo ">";
 
-			
-			
 echo "{$row2['CustAddr']}&nbsp;&nbsp;";
 echo "{$row2['Distance']} km&nbsp;&nbsp;";
 $Dist = $row2['Distance'];
@@ -500,29 +464,24 @@ echo "{$row2['ABBR']}&nbsp;"; //CASE SENSITIVE!!!
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 
 			   $result->close();
-	
-	
 
-			
 	//		echo "&nbsp;&nbsp;Account No: ";
 	//		echo $row['CustNo'];
-			
+
 			// DO NOT DISABLE!!! addQuoprocess_lastC needs to know which customer got selected!!
 			//There is no inserting here yet!!!
 			echo " <input type='hidden' name='CustNo' value=";
 			echo " ";
 			echo $row['CustNo'];
 			echo "> ";
-			
+
 			echo " Abbr: <input type='hidden' name='Abbr' value=";
 			echo " ";
 			echo $Abbr;
 			echo "> ";
-			
+
 			echo $Abbr;
-			
-			
-			
+
 		echo "</dl>";
 
  		echo "<dl><label>QDate:&nbsp;&nbsp;&nbsp;&nbsp;</label>";
@@ -530,45 +489,33 @@ $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 			echo "<input type='text' name='QuoSQLDateDD' size = '2' value=";
 			echo $QuoSQLDateDD;
 			echo "> ";
-			
+
 			echo "<input type='text' name='QuoSQLDateMM' size = '2' value=";
 			echo $QuoSQLDateMM;
 			echo "> ";
-			
+
 			echo "<input type='text' name='QuoSQLDateYY' size = '2' value=";
 			echo $QuoSQLDateYY;
 			//echo "201";
 			echo "> ";
-			
-				
+
 		echo"	DD/MM/YYYY ";
-		
-					
+
 			echo "Today: ".$QuoSQLDateDD;
 			echo "/";
-			
+
 			echo $QuoSQLDateMM;
 			echo "/";
-			
+
 			echo $QuoSQLDateYY;
 			echo " ";
 
 			echo "<b>Last topup invoiced:<input type='text' name='topup' size = '40' value=";
 			echo $row2['topup'];
 			echo "></b> ";
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		echo "</dd>";
 		echo "</dl>";
-
 
  		echo "<dl>Summary: &nbsp;</label>";
 			//     <!--<dd><input type="text" name="Quo_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -582,27 +529,21 @@ $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 			echo "<input type='text' name='InvPdStatus' size = 5 value=";
 			echo "_";
 			echo "> &nbsp;&nbsp;&nbsp;&nbsp;";
-			
-			
-			
+
   		echo "Travel:";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $Dist; q_mark>" /></dd>-->
 			echo $Dist;
-			echo "km		";	
+			echo "km		";
 			echo $u1;
 			echo $u2;
-		
-			
-			
-			
+
 			echo "</dd>";
-			
+
 			  		echo "<dl>Important</label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<font size = '5'><b><input type='text' name='Important' style='height:24px;font-size:14pt;' size = 100 value=";
 			echo $Important;
 			echo "> </font></b></dd></dl>";
-			
 
 			  		echo "<dl>Quote Notes</label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -610,11 +551,8 @@ $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 
 			echo " </font></b></dd></dl>";
 
-
-			
 		echo "</dl> Watch <b>AJAX</B> in action:<br>";
 
- 		
 echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
@@ -637,23 +575,20 @@ echo"<TR>
 
 		echo "</TR>	";
 		echo "<TR>		<TH>";
-		
+
 		echo "<input id='D1' type='text' name='D1' size='53'  value='{$row2['adslinv']}'><br/>";
-	
+
 		echo "</TH>
 		<TH ><input type='text' name='Q1' id='Q1' size='5' value='0' onkeyup='calc()'>
-	
+
 		</TH>
 		<TH >
 			<input type='text' name='ex1' id='ex1' size='10' value='0' onkeyup='calc()'>{$row2['ae']}
 		</TH>
 
 
-		
+
 	";
-
-
-
 
 if ($CustInt == 24)//auslese
 {
@@ -682,9 +617,6 @@ echo "<b><font size = '3'>1GIG FREE</font></b>&nbsp;&nbsp;";
 else
 echo "";
 
- 
-
-
 echo $row2['u1'];
 echo $row2['u2'];
 echo $row2['CustPW'];
@@ -695,14 +627,14 @@ echo $row2['CustPW'];
 	}
 
 	?>
- 
- For discounts use a negative value. size 53 recommended for printing 
+
+ For discounts use a negative value. size 53 recommended for printing
 		</TR>
 	<TR>
 		<TH><input type='text' id='D2' name='D2' size='53'  value='0topup'>
 		</TH>
 		<TH ><input type='text' name='Q2'  size='5' value='0' id='Q2'  onkeyup='calc()'>
-		
+
 		</TH>
 		<TH >
 			<input type='text' name='ex2'  size='10' value='0' id='ex2'  onkeyup='calc()'>50> 43.86
@@ -771,9 +703,9 @@ echo $row2['CustPW'];
 
 
 
-	
+
 	</table>
-	
+
 	<span id="resp"></span>
 	<?php
 		echo "<dl>Total Amount incl VAT R</label></dt>";
@@ -783,8 +715,6 @@ echo $row2['CustPW'];
 			echo "> <Do not put a 'R' here.</dd>";
 		echo "</dl>";
 
-
-
 	}
 	}
 	?>
@@ -792,13 +722,13 @@ echo $row2['CustPW'];
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit"  value="Submit/Save"   
-			onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the quotes total?')"/> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit"  value="Submit/Save"
+			onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the quotes total?')"/>
 			<!-- sequence might be important! first onsubmit then action!-->
 <!-- id in input name is used for javascript validation and name is used for POST I presume-->
 
-			
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<!--<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -819,11 +749,7 @@ include ("view_inv.php");
 //echo "test5<br>";
 //include ("view_inv_all.php");
 
-//require_once "view_inv_one.php";
-
-
-
-
+//require_once 'view_inv_one.php';
 
 /*
 if ($result = mysqli_query($DBConnect, $SQLstring)) {
@@ -836,9 +762,7 @@ echo "</tr>\n";
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["QuoNo"];
 	  echo "<tr><th>";
-  
- 
-	  
+
 	  if ($x >= 4400 && $x <= 4469)
 	  echo "<FONT color = 'red'>".$x." JAN2012";
 	  else if ($x >= 4500 && $x <= 4569)
@@ -893,7 +817,7 @@ echo "</tr>\n";
 		}
     //
     $result->close();
-	
+
 }
 echo "</table>";
 

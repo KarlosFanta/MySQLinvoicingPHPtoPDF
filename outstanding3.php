@@ -1,7 +1,7 @@
 <?php	//this is "edit_trans_CustProcess.php"
  $page_title = "Outstanding payments of ALL customers";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 $pr = "N";
 //$pr = $_POST['pr']; //inv descriptions
 $pm = "N";
@@ -32,7 +32,7 @@ $Invsummm = $Invsummm + $row[29];  >> TotAmt
 $queryS = "Select c.custno, tr.CustNo, tr.AmtPaid, i.TotAmt from customer c, transaction tr, invoice i where ( c.custno = tr.CustNo = i.CustNo)";
 if ($resultS = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($resultS)) {
- 
+
 $item1b = $row2["c.CustNo"];
 //$item2b =  $row2["tr.AmtPaid"];
 //$item3b = $row2["i.TotAmt"];
@@ -49,8 +49,7 @@ echo "'>";
 //echo "kjbjkbkjb";
 //print "_".$item3b;
 
-
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($resultS);
 }

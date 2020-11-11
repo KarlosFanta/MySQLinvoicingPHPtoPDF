@@ -5,31 +5,27 @@
 <body>
 <?php
     session_start();
- 
-
 
 	$page_title = "Select a customer";
-	require_once('header.php');	
-	//require_once('db.php');	
+	require_once 'header.php';
+	//require_once 'db.php';
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 
 	if (@$_SESSION['CustNo'] == "" or @$_SESSION['CustNo'] == "NotYet")  //works if session was destroyed
 	{
 	//echo "no session<br />";
 	//$_SESSION['sel'] = "addInvC";
-	require_once('selectCust.php');	
+	require_once 'selectCust.php';
 	}
 	else
 	{
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	require_once('edit_Quo_processC1.php');	
+	require_once 'edit_Quo_processC1.php';
 	}
-	
-	
-//	require_once('view_cust.php');	
 
-	
-	
+
+//	require_once 'view_cust.php';
+
 ?>
 
 
@@ -39,17 +35,15 @@
 
 
 <?php	/*$page_title = "Edit invoice";
-	require_once('header.php');	
-	require_once('inc_OnlineStoreDB.php');	
-	
-	
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
 /*$conn = oci_connect('system', '1234', 'localhost/xe');
 //$queryA = "SELECT Q.PRODID, Q.CUSTNO FROM QUOTATION Q, ORDER1 O WHERE Q.QUOTENO = O.QUOTENO AND Q.QUOTENO = $CustInt";
 
 $query_term = "select O.orderno ||'; '||Q.PRODID from QUOTATION Q, order1 O WHERE Q.QUOTENO = O.QUOTENO order by orderno";
-$stid_term = OCIParse($conn, $query_term); 
+$stid_term = OCIParse($conn, $query_term);
 OCIExecute($stid_term,OCI_DEFAULT);
-
 
 echo "<b><font size = '4' type='arial'>Select customer to Edit his/her Invoice</b></font>
 </br></br></br></br>
@@ -76,15 +70,9 @@ $daNextNo = intval($row[0])+1;
 }
 //	echo "Add 1 = ". $daNextNo;
 
-
-
-
-
 //echo "<form name='AddInv' action='addInvprocess.php' method='post' target='_blank'>";
 //echo "<select name='mydropdownDC' onclick='hi'>";
 //echo "<option value='_no_selection_'>Select Customer to be invoiced</option>";
-
-
 
 // If submitted, check the value of "select". If its not blank value, get the value and put it into $select.
 /*if(isset($select)&&$select!="")
@@ -118,7 +106,6 @@ $yo3 = "gggg";
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 ?>
 <!--<option>Please Choose Customer</option><!--if it does not say Please choose then javascript does nto work-->
 <?php
@@ -146,24 +133,24 @@ echo "#";
 /*echo $CustFN;
 
 echo "</option>";
-} 
+}
 
 ?>
-</select> 
+</select>
 <?php //echo $this->lang->line('cust_fn'); ?> </label></dt>
 			<!--<dd><input type="text" id="cust_name" id="cust_fn" value="<?php //echo $this->mdl_custs->form_value('cust_name'); ?>" /></dd>-->
 			</dd>
 		</dl>
 
-		
+
 <!--
 		<dl>
 			<dt><label>&nbsp; Summary:</label> (no spaces!)</dt>
 			<!--<dd><input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" /></dd>
 			<dd><input type="text" id="Summary"  name="Summary" value="." /></dd>
 		</dl>
-	
--->		
+
+-->
 
 <!--<input type="submit" value="Select customer for viewing his invoices" onclick="return confirm('Are you sure about the date?');" /> -->
 <br>
@@ -172,7 +159,7 @@ echo "</option>";
 <br><br>
 <font size = 4><input type="submit" value="CLICK THIS BUTTON TO CONTINUE" /> </font>
 
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 	<br>
 <br><br>
 <br><br>
@@ -181,14 +168,14 @@ echo "</option>";
 <br>
 </form>
 
-<?php 
+<?php
 $SQLstring = "select * from invoice order by invno desc";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
 
 //mysql_close($DBConnect);
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
-//require_once("inc_OnlineStoreDB.php");
+//require_once 'inc_OnlineStoreDB.php';
 if ($result = $DBConnect->query($SQLstring)) {
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>InvNo</th>";
@@ -198,7 +185,6 @@ echo "<th>InvDate</th>";
 echo "<th>InvPdStatus</th>";
 echo "<th>D1</th>";
 echo "<th>ex1</th></tr>\n";
-
 
     // fetch object array
     while ($row = $result->fetch_row()) {
@@ -219,9 +205,9 @@ echo "<th>{$row[3]}</th>";
 echo "<th>{$row[4]}</th>\n";
 echo "<th>{$row[5]}</th></tr>\n";
 		}
-    //free result set 
+    //free result set
     $result->close();
-	
+
 }
 echo "</table><br><br>";
 
@@ -231,7 +217,7 @@ $SQLstring = "select invoice.invno, customer.custNo, customer.custLN, invoice.in
 
 //mysql_close($conn);
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
-require_once("inc_OnlineStoreDB.php");
+require_once 'inc_OnlineStoreDB.php';
 if ($result = $DBConnect->query($SQLstring)) {
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>InvNo</th>";
@@ -242,8 +228,7 @@ echo "<th>InvPdStatus</th>";
 echo "<th>D1</th>";
 echo "<th>ex1</th></tr>\n";
 
-
-    //fetch object array 
+    //fetch object array
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
@@ -264,14 +249,11 @@ echo "<th>{$row[5]}</th></tr>\n";
 		}
     //free result set
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
 
 */
 
 ?>
-</p>  
+</p>

@@ -1,7 +1,7 @@
-<?php	
+<?php
 
-	include('header.php');	
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 
 
@@ -43,9 +43,6 @@ echo ";<br>";
 
 echo "<a href = 'view_expenses_all.php'>view_expenses_all.php</a></a><br>";
 
-
-
-
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
 //$eventInt = intval($event_NoInt);
@@ -84,7 +81,7 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <form name="sdd" action="selectInvAssignStk.php" method="post">
 
 
-<input type="submit" name="btn_submit" value="Update next expense" /> 
+<input type="submit" name="btn_submit" value="Update next expense" />
 </form>
 <!--
 //$query="insert into events values(5, 'Jn', 'VM', '65', '084', 'johnATv', 'USA', 55)";
@@ -95,9 +92,9 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <?php
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";

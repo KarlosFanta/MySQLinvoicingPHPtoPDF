@@ -78,7 +78,6 @@ $phone = isset($_POST['phone']) && validate($_POST['phone'], 'numeric', 20, arra
 $email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
 $msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
 
-
 ?>
 
 
@@ -105,19 +104,18 @@ var em=document.forms["Addcust"]["CustEm"].value;
 var pa=document.forms["Addcust"]["CustPA"].value;
 var di=document.forms["Addcust"]["CustDi"].value;
 
-
 if (x==null || x=="")
   {
   alert("First name must be filled out");
   return false;
   }
-  
+
   if (ln==null || ln=="")
   {
   alert("Surname must be filled out");
   return false;
   }
- 
+
 if ( tl == null ||  tl == "")
   {
   alert(" Telephone number must be filled out");
@@ -147,18 +145,18 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
   return false;
   }
 
-  
-  
-  
-  
-  
+
+
+
+
+
 }*/
 </script>
 </head>
 
 <body>
 <?php	$page_title = "View a Customer";
-	require_once('header.php');	
+	require_once 'header.php';
 ?>
 
 
@@ -198,9 +196,9 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>

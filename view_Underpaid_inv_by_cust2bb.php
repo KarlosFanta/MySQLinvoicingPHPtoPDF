@@ -5,14 +5,13 @@ $chkbx = "0";
 if (@$_POST['indesc'] != "")
 $indesc = @$_POST['indesc'];
 
-
 $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 
 //$TBLrow = $_POST['mydropdownEC'];
 
 	//$page_title = "Customer";
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 ?>
 <br><font color='green'>view_Underpaid_inv_by_cust2b.php &nbsp;&nbsp;&nbsp;order by InvNo desc</font>
 <form  name="AddTrans2"  method='post' action = "addProofMultib.php">
@@ -27,14 +26,14 @@ UNDERpaid invoices: <br>
 //$SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvNo desc";
 
 $SQLstring = "SELECT * FROM invoice wHERE invoice.InvNo NOT
-IN ( SELECT InvNoA  FROM transaction ) 
+IN ( SELECT InvNoA  FROM transaction )
 AND invoice.InvNo NOT IN  ( SELECT InvNoB  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction ) 
-AND  invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction ) 
-AND  invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction ) 
-AND  invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction ) 
-AND  invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction ) 
-AND  invoice.InvNo NOT IN  ( SELECT InvNoH  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoH  FROM transaction )
 AND invoice.CustNo = '$CustInt'";
 
 $SQLstring = "SELECT * FROM invoice wHERE (SELECT AmtPaid FROM TRANSACTION ) < (SELECT TotAmt FROM invoice)
@@ -43,8 +42,6 @@ $SQLstring = "SELECT i.InvNo as InvNo FROM invoice i wHERE (SELECT t.AmtPaid FRO
 $SQLstring = "SELECT * FROM transaction wHERE
  (AmtPaid) < (InvNoAincl)
 AND CustNo = '$CustInt'";
-
-
 
 //$SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvDate desc";
 echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -113,24 +110,17 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-    // fetch object array 
+    // fetch object array
 //    while ($row = $resultINV->fetch_row()) {
 	  while ($row = mysqli_fetch_assoc($resultINV)) {
 
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-	  
-	  
-	  
-	  
-	  
-//	echo "unnn:".$un;  
-	  
-	  
-	  
+//	echo "unnn:".$un;
+
 //echo "<tr><th>";  deosnt work here when making paid invoices dissappear.
 
-if (@in_array(@$row['InvNo'], @$PaidInvs)) 
+if (@in_array(@$row['InvNo'], @$PaidInvs))
 {
     if ($un == 'Y')
 			{
@@ -142,9 +132,9 @@ if (@in_array(@$row['InvNo'], @$PaidInvs))
 							$Invsummm = $Invsummm + $row['TotAmt'];
 							$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			}
-			
-			
-		}	
+
+
+		}
 	else
 		{
 			$InvNor = $row['InvNoA'];
@@ -167,18 +157,13 @@ $InvNor4 = $rowAP['CustSDR'];
 			//$InvNor3 = $rowAP['PMethod']; //sorry not in invoice table, but try aproof table.
 			echo "<tr><th><input type='checkbox' name='formDoor[]' value='$InvNor, R$InvNor1, $InvNor2, $InvNor3, @$InvNor4'><font color = '#CC350C'>$InvNor"; //0
 //			echo "</th>\n";
-			
-			
-
-
-
 
 	//			echo "<th>"; //0
-			
-			
-			
-			
-			
+
+
+
+
+
 echo "</th>\n"; //0
 
 
@@ -190,16 +175,16 @@ if ($ShowDraft == "Y")
 			echo "<th>{$row['Priority']}</th>"; // this was Draft
 
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
 						$date_array = explode("-",$row['TransDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -219,13 +204,12 @@ echo "<br>A year ago";
 if ($out > 1 )
 echo "<br><font color = orange>$out years ago</font>";
 
-
 echo "</th>";//invDate
 
 
-			
-			
-			
+
+
+
 			echo "<th>R{$row['AmtPaid']}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>R{$row['InvNoAincl']}</th>"; ///TOTAL AMOUNT TotAmt
 $Diff1 = $row['AmtPaid'] - $row['InvNoAincl'];
@@ -236,7 +220,6 @@ $Diff1 = (number_format($Diff1, 2, '.', ''));
 			echo "<th>{$row['InvPdStatus']}</th>\n"; //PDSTATUS
 			$Invsummm = $Invsummm + $row['AmtPaid'];
 			$UnpaidInvsummm = $UnpaidInvsummm + $row['AmtPaid'];
-
 
 			if ($indesc > "1")
 			{
@@ -290,7 +273,7 @@ $Diff1 = (number_format($Diff1, 2, '.', ''));
 		}
 	}
 	mysqli_free_result($resultINV);
-	
+
 }
 echo "</table>";
 echo "Underpaid Invoices total to: &nbsp;&nbsp; <b>R ".$UnpaidInvsummm;

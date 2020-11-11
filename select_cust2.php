@@ -2,10 +2,10 @@
 
 
 	$page_title = "Select a customer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
+?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -70,10 +70,9 @@ if (mysql_num_rows($result) == 0) {
 $queryS = "select CustNo, CustFN, CustLN from customer where CustNo = $CNN";
 //echo $queryS."<br>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -84,9 +83,6 @@ print "_".$item3b;
 */
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
-
-
-
 
 	}
 $result2->free();
@@ -132,17 +128,16 @@ $result2->free();
 <!--<select name="DD"   >-->
 
 <?php
-	
+
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Select Customer</option>";
 else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -161,16 +156,13 @@ print "_".$item3b;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 	}
 $result2->free();
 	}
 }
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -184,10 +176,7 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["CustNo"];//case sensitive!
     echo $row["CustFN"];//case sensitive!
@@ -201,16 +190,16 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 echo $item3b;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the customer" /> 
+<input type="submit" name="btn_submit" value="Select the customer" />
 	<br><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br>
 <br><br><br><br><br><br><br><br><br><br><br>
 
-</select></p>  
+</select></p>
 
 
 
@@ -252,17 +241,17 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
-*/	//require_once('view_cust.php');	
-//require_once('view_cust_all3.php');	
+*/	//require_once 'view_cust.php';
+//require_once 'view_cust_all3.php';
 ?>
 <font size = 4><b>
 </form>
@@ -402,4 +391,4 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 </body>
 
-</html> 
+</html>

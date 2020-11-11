@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,17 +12,14 @@ still comes out quite tiny, maybe shorten too long text. Do a Print Preview Edit
 
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
+	require_once 'inc_OnlineStoreDB.php';//page567
 $query = "SELECT * FROM H2E" ;
-
 
 $result = mysqli_query($DBConnect, $query);
 
 /* numeric array */
 $row = mysqli_fetch_array($result, MYSQLI_NUM);
 //printf ("%s (%s)\n", $row[0], $row[1]);
-
-
 
 echo "<table border='0'>
 <tr>
@@ -46,22 +43,8 @@ while($row = mysqli_fetch_array($result)) {
 
 echo "</table>";
 
-
 /* free result set */
 mysqli_free_result($result);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 echo "<table width='10' border='0'>\n";
 echo "<tr>";
@@ -97,27 +80,20 @@ echo "<th  align = left>{$row2['Priority']}</th>";
 //echo "<th>{$row2['EventNo']}</th>";
 echo "<th align = left>{$row2['ENotes']}</th>";
 echo "<th>{$row2['Destination']}</th>";
-echo "</tr>"; 
+echo "</tr>";
 
-
-
-	
     // free result set
  //   $result->close();
-	
+
 //}
 }
 echo "</table>";
 }
-	
-	
-echo "<a href = 'truncateH2E.php'>truncateH2E.php.php</a><br>"	
+
+
+echo "<a href = 'truncateH2E.php'>truncateH2E.php.php</a><br>"
 //	mysqli_query($DBConnect, 'TRUNCATE TABLE H2E;');
 //	echo "<br>table truncated";
-	
-	
-	
-	
 
 /*
 
@@ -143,11 +119,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
-
-
-
 
 echo "<tr><th>{$row2['CustNo']}</th>";
 echo "<th>{$row2['CustFN']}</th>";
@@ -163,14 +134,14 @@ $Abbr = $row2['ABBR'];
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td>";
 echo "</tr>\n";
-		
-    //free result set 
+
+    //free result set
    // $result->close();
-	
+
 }
 echo "</table>";
 }
-	
+
 
 
 

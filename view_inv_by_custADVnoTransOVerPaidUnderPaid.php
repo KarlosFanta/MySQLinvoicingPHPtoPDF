@@ -1,5 +1,5 @@
 <?php
-//require_once("inc_OnlineStoreDB.php");
+//require_once 'inc_OnlineStoreDB.php';
 
 //@session_start();
 //$_SESSION['sel'] = "editCust";
@@ -11,7 +11,7 @@ if (@$CustInt == '')
 $CustInt = $_GET['CustNo'];
 //echo "executed1";
 }
-require_once "inc_OnlineStoreDB.php";
+require_once 'inc_OnlineStoreDB.php';
 $indesc = 9;
 $ShowDraft = "Y";
 $InvPdStatus  = '';
@@ -27,7 +27,7 @@ function multiexplode ($delimiters,$string) {
     $launch = explode($delimiters[0], $ready);
     return  $launch;
 }
-			
+
 
 if ($resultINV = mysqli_query($DBConnect, $SQLstring)) {
 //echo "<table  border='1'>\n";
@@ -101,7 +101,7 @@ echo "<th>ex8</th>";
 echo "</tr>\n";
 
  	  while (@$row = mysqli_fetch_assoc($resultINV)) {
-			
+
 			$TrR ="";
 			echo "<tr><th>";
 			$IInv = $row['InvNo'];
@@ -114,20 +114,15 @@ $SS = "select AmtPaid, TransNo,InvNoA, InvNoB from transaction where InvNoA = '$
 			$TrR = $rowPrf['TransNo'];
 			//echo "rowPrfInvNoB".$rowPrf['InvNoB'];
 			//echo "#".$TrR."#";
-			
-			
-			
-			
+
 				$diff = floatval($row['TotAmt']) - floatval($rowPrf['AmtPaid']);
-			
-			
-			
+
 			if ($rowPrf['InvNoB'] != "" AND $rowPrf['InvNoB'] != "0")
 				echo "{$row['InvNo']}<br><font size= '1'>multiple invoices<br>in 1 transaction<br></font>";
 			else
 			{
 				//echo "overpaid underpaid";
-			
+
 			if ($rowPrf['AmtPaid'] == $row['TotAmt'])
 			echo "<font color = green>{$row['InvNo']}";
 			else
@@ -137,27 +132,24 @@ $SS = "select AmtPaid, TransNo,InvNoA, InvNoB from transaction where InvNoA = '$
 			}
 			else
 			echo " <font color = 'orange'>{$row['InvNo']}<br>underpaid by R".number_format((float)$diff, 2, '.', '');;
-			
+
 			//number_format((float)$number, 2, '.', '');
-			
+
 			}
-			
+
 						}
     $resultSS->close();
-				}	
-			
+				}
+
 		if ( $TrR == '')
 			echo "<font color = red>{$row['InvNo']}<br>not paid";
 		//	else
 			//echo "<font color = green>{$row['InvNo']}";
-			
 
-				
 			$TrR ="";//reset
 			$rowPrf['TransNo'] ="";//reset
 echo "</font></th>\n";
-			
-			
+
 			$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -169,7 +161,7 @@ $day = $date_array[2];
 
 echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 			echo "<th>{$row['Summary']}</th>"; //summary 3
-			
+
 
 echo "<th>R{$row['TotAmt']}"; ///TOTAL AMOUNT TotAmt
 $TACol = $row['TotAmt'];
@@ -192,7 +184,7 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			//echo " ".$Pday."/".$Pmonth."/".$Pyear."";//ProofDate
 			}
     $resultP->close();
-}		
+}
 
 if ($daPrfekse == "")
 echo "-";
@@ -200,7 +192,7 @@ echo "<br>";  //ProofNo
 
 
 
-			
+
 		echo "";  //forst part ProofNo
 if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 	  while (@$rowP = mysqli_fetch_assoc($resultP)) {
@@ -214,14 +206,14 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			echo " ".$Pday."/".$Pmonth."/".$Pyear."";//ProofDate
 			}
     $resultP->close();
-}	
+}
 if ($daPrfekse == "")
 echo ".";
-	
+
 echo "<br>";  //ProofNo
-			
-			
-			
+
+
+
 		echo " ";  //forst part ProofNo
 if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 	  while (@$rowP = mysqli_fetch_assoc($resultP)) {
@@ -234,21 +226,21 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			$Pday = $Pdate_array[2];
 			echo $Notes;			}
     $resultP->close();
-}	
+}
 if ($daPrfekse == "")
 echo ".";
-	
+
 echo "</th>";  //ProofNo
-			
-			
-			
-			
+
+
+
+
 			$Tdate= "";
 			$transss = 0;
 			$InvNoo = $row['InvNo'];
 			$trsql = "select * from transaction where InvNoA  = '$InvNoo' || InvNoB = '$InvNoo'  || InvNoC = '$InvNoo'  || InvNoD = '$InvNoo'  || InvNoE = '$InvNoo'  || InvNoF = '$InvNoo'  || InvNoG = '$InvNoo'  || InvNoH = '$InvNoo'   ";
 			echo "<th>";
-			
+
 			echo "<font size= 2>";
 			//echo $trsql;
 			//echo "</th>";
@@ -257,20 +249,20 @@ echo "</th>";  //ProofNo
 				while ($rowT = mysqli_fetch_assoc($resultT)) {
 				//echo "<th>";
 				$APCol = $rowT['AmtPaid'];
-				
+
 				//if ($rowT['TransNo'] == $rowT['AmtPaid'])
 				//echo "APCol:".$APCol;
 				//echo "TACol:".$TACol;
 				if ($APCol == $TACol)
 				echo "<font color = green>";
-								
+
 				echo "Trans ".$rowT['TransNo'];
-				
+
 				echo "<br>(r".$rowT['AmtPaid'].")";
 				echo "<br>on ";
 				//.$rowT['TransDate']."";
 			$Tdate = $rowT['TransDate'];
-				
+
 			$Tdate_array = explode("-",$Tdate);
 			$Tyear = $Tdate_array[0];
 			@$Tmonth = $Tdate_array[1];
@@ -278,33 +270,23 @@ echo "</th>";  //ProofNo
 			echo " ".$Tday."/".$Tmonth."/".$Tyear."";//ProofDate
 			echo "<br>";
 					echo "".$rowT['CustSDR'];
-			
+
 				}
-			}	  
-			
+			}
+
 			echo "</font>";
 			echo "</th>";
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			//echo "<th></th>"; ///TOTAL AMOUNT TotAmt
 			if ($InvPdStatus == "Y")
 			echo "<th>{$row['InvPdStatus']}</th>\n"; //PDSTATUS 4
-			
+
 			$Invsummm = $Invsummm + $row['TotAmt'];
 			$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			//echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//D1
 			$iubh = $row['ex1']*1.15; //iubh is used a few lines below: newVAT
 			@$iubh2 = $row['ex2']*1.15; //Warning: A non-numeric value encountered
-			
+
 			if ($indesc > "1")
 			{
 			$dd1 = '';
@@ -325,8 +307,8 @@ echo "</th>";  //ProofNo
 			echo "<th>{$row['Q1']}</th>\n";//Q1   6
 			echo "<th>{$row['ex1']}<br>exVAT</th>\n";  ///     7
 			echo "<th>".number_format($iubh, 2, '.', '')."</th>\n";  ///     7
-			
-			
+
+
 			}
 			if ($indesc > "2")
 			{
@@ -470,36 +452,34 @@ $exploded = multiexplode(array("_",".","|",":"),$dd8);
 
 //print_r($exploded);
 
-
 /*
 
-$arr = array_filter(explode(' ',str_replace('_',' ',$dd8)));  
+$arr = array_filter(explode(' ',str_replace('_',' ',$dd8)));
 
 $result = array();
 for($i=0;$i<count($arr)-1;$i++) {
         $result[] =  $arr[$i].' '.$arr[$i+1];
 }
-$result[] =  $arr[$i];		
+$result[] =  $arr[$i];
 
 $comma_separated = implode("<br>", $result);
 
-	
 			echo "<th>arr0: ".$arr[0]."end</th>\n";   //17
 			echo "<th>".$comma_separated."</th>\n";   //17
 */
 			//echo "<th>arr0: ".$exploded[0]." arr1:".$exploded[0]."</th>\n";   //17
 			//echo "<th>arr0: ".$exploded[0]."</th>\n";   //17
-			
-/*			
+
+/*
 $result = '';
 for ($i = 0; $i < count($exploded); $i++) {
 $result .= ($i % 2) ? '_' . $exploded[$i] . '<br>' : $exploded[$i]. ' ';
 }
-	*/		
-			
-			
+	*/
+
+
 //			$comma_separated = implode("<br>", $exploded);
-			
+
 			echo "<th> ";
 //echo $result;
 //echo "<br><br>";
@@ -511,7 +491,7 @@ for ($i = 0; $i < count($exploded); $i++) {
 	//echo "-$i-";
 	echo @$exploded[$i];
 	echo "<br>";
-	
+
 }
 
 
@@ -531,10 +511,10 @@ echo "<br>3:<br>";
 echo "<br>8:<br>";
 
 			echo @($exploded[8]);
-	*/		
-			
+	*/
+
 //			echo $comma_separated;
-			
+
 			echo "</th>\n";
 
 			//echo($exploded[1]);
@@ -555,27 +535,22 @@ echo "<th>{$row['D3']}</th>\n";
 				//else do not display paid invoices
 
 			//}
-			
-			
-		//}	
-	
-	
+
+
+		//}
+
+
 
 
 
 	}
     // free result set
     $resultINV->close();
-	
+
 }
 echo "</table>";
-//echo "Paid invoice total to: 
+//echo "Paid invoice total to:
 echo "Invoices total to: R ".$Invsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
-
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -585,5 +560,4 @@ echo "<b>_Total Amount oustanding: R".number_format(($Invsummm - $yo), 2, '.', '
 else
 echo "<b>Total Amount owing to you: R".-($Invsummm - $yo)."</b><BR />";
 
-	
-?>			
+?>

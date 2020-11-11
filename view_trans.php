@@ -1,17 +1,16 @@
 <title>AllTransactions</title>
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "AllTransactions";
-	//require_once('header.php');	
-	//require_once('db.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+	//require_once 'db.php';
+	require_once 'inc_OnlineStoreDB.php';
 
-?> 
+?>
 <style type="text/css">
     table.form{width:100%}
     td.label{width:7px;white-space:nowrap;}
@@ -24,7 +23,7 @@
         <td>yello</td>
     </tr>
 </table>
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">View Transactions</b></font>view_trans.php
 </br>
 
@@ -59,24 +58,15 @@ echo "<th>Notes</th>\n";
 echo "<th>Notes</th>\n";
 echo "</tr>\n";
 
-
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-
 	  $x = $row[0];
-	  
-
 
 	  echo "<tr><th>";
-	  
+
  echo "Tr".$x;
-
-
-
-
-
 
 	  echo "</th>";
 //echo "<th>{$row[1]}</th>";
@@ -84,8 +74,6 @@ $CN = $row[1];
 $SQLstringLN = "select CustFN, CustLN from customer where CustNo = $CN";
 //echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 $result2 = $DBConnect->query($SQLstringLN);
-
-
 
 $D1 = explode("-", $row[2]);
 //echo $D1[2]."____";
@@ -99,7 +87,7 @@ $D1 = explode("-", $row[2]);
 $EDate = $D1[2]."/".$D1[1]."/".$D1[0];
 $DDD =  $D1[2];
 $arr2 = str_split($DDD, 1);
-//echo $EDate;	 
+//echo $EDate;
 
 echo "<th>";
 if ($EDate == "03/01/2012")
@@ -124,9 +112,7 @@ echo "<font  color = orange><b>";
 if ($arr2[1]== '0')
 echo "<font  color = brown><b>";
 
-
-
-echo "{$EDate}</b></th>";//TransDate 
+echo "{$EDate}</b></th>";//TransDate
 
 
 
@@ -136,11 +122,10 @@ echo "{$EDate}</b></th>";//TransDate
   $unshortenedLN = $row2[0];
 
    $shortened = substr($row2[0], 0, 7);
-   
+
       $unshortenedFN = $row2[1];
-   
+
       $shortenedFN = substr($row2[1], 0, 6);
-   
 
   // echo "<th>{$row2[0]}</th>";//CustLN
    echo "<th align = left>{$CN}{$shortenedFN}{$shortened}</th>";//CustLN
@@ -154,8 +139,6 @@ echo "<th align = left>&nbsp;{$shortenedSDR}</th>\n";//SDR
 echo "<th align = right>R{$row[3]}</th>";//TotAmt
 
    $shortenedNotes = substr($row[4], 0, 18);
-
-
 
 echo "<th align = left class='label'>&nbsp;&nbsp;&nbsp;{$shortenedNotes}</th>\n";//Notes
 echo "<th>{$row[6]}</th>\n";
@@ -173,8 +156,6 @@ echo "<th>{$row[17]}</th>\n";
 echo "<th>{$row[19]}</th>\n";
 echo "<th>{$unshortenedLN} {$unshortenedFN}</th>\n";
 
-
-
 echo "</tr>\n";
 echo "<tr><th></th></tr>";
 echo "<tr><th></th></tr>";
@@ -184,11 +165,9 @@ echo "<tr><th></th></tr></font>";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -281,7 +260,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 </table>
 
@@ -330,5 +309,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>

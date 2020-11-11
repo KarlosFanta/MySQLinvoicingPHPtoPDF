@@ -19,7 +19,7 @@
 	td.pme-stats   { text-align: right;  }
 </style>
 <?php
-require_once "header.php";
+require_once 'header.php';
 ?>
 </head>
 <body>
@@ -42,7 +42,7 @@ require_once "header.php";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'events';
 
@@ -102,7 +102,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -189,7 +189,7 @@ $opts['fdd']['CustNo'] = array(
       'description'=> 'CustFN',
       'orderby' => 'CustNo'
   )
-); 
+);
 $opts['fdd']['CustFN'] = array(
   'default'  => 'default',
   'maxlen'   => 10,
@@ -202,7 +202,7 @@ $opts['fdd']['CustFN'] = array(
       'description'=> 'CustFN',
       'orderby' => 'CustNo'
   )
-); 
+);
 //www.php-form-generator.com/php-form-generator.php?s=56
 */
 $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 'on clause'
@@ -220,10 +220,7 @@ $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 
      ),
      'orderby'=>'CustLN'
    )
-); 
-
-
-
+);
 
 $opts['fdd']['ENotes'] = array(
   'name'     => 'ENotes',

@@ -44,13 +44,11 @@ $ininB = $array[1]; //InvNo
 $cred = $array[2];
 $paid = $array[3];
 
-
 $words = str_replace("ABSA BANK","",$words);
 $words = str_replace("ABSABANK","",$words);
 $words = trim($words); //removes whitespace at beginning and end
-//$M0cut = trim($M0cut); 
-$ininV = trim($ininV); 
-
+//$M0cut = trim($M0cut);
+$ininV = trim($ininV);
 
 	$queryC = "select CustNo from invoice where InvNo = $M0  UNION ALL  select CustNo from invoice where InvNo = $M1  UNION ALL select CustNo from invoice where InvNo = $M2 ";
 //echo $queryC;
@@ -74,8 +72,6 @@ mysqli_free_result($resultC);
 }
 echo "CCCCC: ".$CCCCC."<br>";
 
-
 if (@$row_cnt > 1)
-	echo "<br><font size = 4><b>ERROR MORE THAN 1 USER FOUND:$row_cnt rows. CustNO:$CCCCC!!<br></font></b><br>"; 
-
+	echo "<br><font size = 4><b>ERROR MORE THAN 1 USER FOUND:$row_cnt rows. CustNO:$CCCCC!!<br></font></b><br>";
 

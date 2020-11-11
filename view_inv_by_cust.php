@@ -1,26 +1,23 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 
 $indesc = "9";
 if (@$_POST['indesc'] != "")
 $indesc = @$_POST['indesc'];
 
-
 $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 
-	
-
-?> 
+?>
 
 
 
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><!--<font size = "2" type="arial">-->
 
-<?php 
+<?php
 $SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvNo desc";
 if (@$un == 'N')
 echo "Error - please try view_inv_by_custUNRECONCILED.php";
@@ -108,7 +105,7 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-    // fetch object array 
+    // fetch object array
 //    while ($row = $resultINV->fetch_row()) {
 	  while (@$row = mysqli_fetch_assoc($resultINV)) {
 
@@ -130,7 +127,7 @@ $TrRDday = $TrRDdate_array[2];
 			$TrRD = $TrRDday.'/'.$TrRDmonth;
 					}
     $resultSS->close();
-				}		
+				}
 
 
 			if ( $TrR == '')
@@ -141,9 +138,9 @@ $TrRDday = $TrRDdate_array[2];
 			$TrR ="";//reset
 			$rowPrf['TransNo'] ="";//reset
 
-			
-			
-			
+
+
+
 			$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -155,10 +152,10 @@ $day = $date_array[2];
 
 echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 
-			
+
 //			echo "<th>R{$row[29]}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>R{$row['TotAmt']}</th>"; ///TOTAL AMOUNT TotAmt
-			
+
 						$IIII = $row['InvNo'];
 		$SQLP = "select * from aproof where InvNoA = '$IIII' or  InvNoB = '$IIII'  or  InvNoC = '$IIII'  or  InvNoD = '$IIII'  or  InvNoE = '$IIII'  or  InvNoF = '$IIII'  or  InvNoG = '$IIII'  ";
 echo "<th>";  // No Proof received
@@ -168,20 +165,20 @@ if ($resultP = mysqli_query($DBConnect, $SQLP)) {
 			echo "<font color= 'green'>{$rowP['ProofNo']}</font>";  //ProofNo
 	}
     $resultP->close();
-}		
+}
 
 echo "&nbsp;</th>";  // No Proof received
 
-			
-			
-			
-			
-			
+
+
+
+
+
 			$transss = 0;
 			$InvNoo = $row['InvNo'];
 			$trsql = "select * from transaction where InvNoA  = '$InvNoo' || InvNoB = '$InvNoo'  || InvNoC = '$InvNoo'  || InvNoD = '$InvNoo'  || InvNoE = '$InvNoo'  || InvNoF = '$InvNoo'  || InvNoG = '$InvNoo'  || InvNoH = '$InvNoo'   ";
 			echo "<th>";
-			
+
 			echo "<font size= 1>";
 			//echo $trsql;
 			//echo "</th>";
@@ -192,22 +189,11 @@ echo "&nbsp;</th>";  // No Proof received
 				echo " ".$rowT['TransNo'];
 				echo " (r".$rowT['AmtPaid'].")";
 				}
-			}	  
-			
+			}
+
 			echo "</font>";
 			echo "</th>";
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			//echo "<th></th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>{$row['Summary']}</th>"; //summary 3
 			if ($InvPdStatus == "Y")
@@ -217,7 +203,7 @@ echo "&nbsp;</th>";  // No Proof received
 			//echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//D1
 			$iubh = round(($row['ex1']*1.14),2);
 			$iubh2 = round(($row['ex2']*1.14),2);
-			
+
 			if ($indesc > "1")
 			{
 			echo "<th>{$row['D1']}</th>\n";//D1  5
@@ -278,9 +264,9 @@ echo "&nbsp;</th>";  // No Proof received
 			echo "</tr></font>\n";
 				//else do not display paid invoices
 
-			
-			
-	
+
+
+
 
 
 
@@ -288,15 +274,14 @@ echo "&nbsp;</th>";  // No Proof received
 	}
     // free result set
     $resultINV->close();
-	
+
 }
 echo "</table>";
-//echo "Paid invoice total to: 
+//echo "Paid invoice total to:
 echo "(All invoices total to: R ".$Invsummm;
 //echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm;
 //echo "&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm;
 echo ")<br />";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -379,7 +364,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -422,5 +407,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>

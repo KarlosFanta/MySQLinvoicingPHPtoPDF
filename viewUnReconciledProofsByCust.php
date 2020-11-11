@@ -1,14 +1,14 @@
 <?php
 
 	//$page_title = "Customer";
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 $SQLstring = "select * from aproof where CustNo = '$CustInt' and  TransNo = '' ";
 
 ?>
 <b><br>
 
 
- 
+
 
 <?php 		//echo @$row['CustFN'];
 		//	echo " ";
@@ -85,11 +85,11 @@ echo "<th>ex8</th>";
 */
 echo "</tr>\n";
 
-    // fetch object array 
+    // fetch object array
 //    while ($row = $resultprf->fetch_row()) {
 	  while ($row = mysqli_fetch_assoc($resultprf)) {
 
-      /*	
+      /*
 			$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -116,10 +116,10 @@ echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 	}
     // free result set
     mysqli_free_result($resultprf);
-	
+
 }
 echo "</table>";
-//echo "Paid aproof total to: 
+//echo "Paid aproof total to:
 //if ($un == 'Y')
 //echo "aproofs total to: R ".$Prfsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid aproofs: R ".$PaidPrfsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid aproofs: R ".$UnpaidPrfsummm.")<br />";
 //else

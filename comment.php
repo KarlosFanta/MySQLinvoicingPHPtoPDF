@@ -1,5 +1,5 @@
 <?php
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 	$queryS = "SELECT * FROM comment ORDER BY id DESC LIMIT 1";
 
 	if ($result2 = mysqli_query($DBConnect, $queryS)) {
@@ -13,17 +13,17 @@
 
 <html>
    <head>
- 
+
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 <script src="jquery-1.10.1.min.js"></script>
-        
+
        <script type="text/javascript">
                $(document).ready(function(){
                     $("#button").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -31,16 +31,15 @@
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
                });
-			   
-				   
+
        </script>
    </head>
- 
+
  <body>
    <form name="daBigNote">
 	<?php $rowsE = substr_count( $item1b, "\n" )+2;  ?>

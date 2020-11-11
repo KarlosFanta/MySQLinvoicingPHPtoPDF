@@ -4,16 +4,15 @@
 
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	//require_once('db.php');	
-	require_once("inc_OnlineStoreDB.php");
-	require_once("header.php");
-			
+	//require_once 'header.php';
+	//require_once 'db.php';
+	require_once 'inc_OnlineStoreDB.php';
+	require_once 'header.php';
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
     <meta charset="utf-8">
     <title>Customers</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-	
+
 <style type="text/css">
     body{
         font-family: Arail, sans-serif;
@@ -41,7 +40,7 @@
         font-size: 14px;
     }
     .result{
-        position: absolute;        
+        position: absolute;
         z-index: 999;
         top: 100%;
         left: 0;
@@ -78,7 +77,7 @@ $(document).ready(function(){
             resultDropdown.empty();
         }
     });
-    
+
     // Set search input value on click of result item
     $(document).on("click", ".result p", function(){
         $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
@@ -92,9 +91,9 @@ $(document).ready(function(){
         <input type="text" autocomplete="off" placeholder="Search Customer First Name..."  autofocus />
         <div class="result"></div>
     </div>
-	
-	
-<?php //require_once "header.php"; ?>
+
+
+<?php //require_once 'header.php'; ?>
 <b><font size = "4" type="arial">View Customers</b></font>
 </br><br><br><br><br><br>
 <?php
@@ -148,9 +147,9 @@ $(document).ready(function(){
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>

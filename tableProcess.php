@@ -4,9 +4,9 @@
 <title>Backup selected table</title>
 </head>
 <body>
-<?php	
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once('header.php');
+<?php
+	require_once 'inc_OnlineStoreDB.php';//page567
+	require_once 'header.php';
 ?>
 <form name="add_event" action="addEventprocess_lastMAIN.php" method="post">
 <font size = 3><b>Write Table to sql file<br></b></font>
@@ -19,10 +19,7 @@
 //echo "TBLrow: " .$TBLrow."</BR>";
 //$TableName = explode(';', $TBLrow );
 
-
 $table = $_POST['mydropdownEC'];
-
-
 
 /*while ($TBLrow !=NULL) {
 echo "$EventNo</br />";
@@ -54,10 +51,9 @@ echo "&nbsp;&nbsp;{$row[13]} ";
 echo "&nbsp;&nbsp;<br>Important: {$row[12]} ";
 echo "</tr>\n";
 
-
 		}
     $result->close();
-	
+
 }
 echo "</table>";
 */
@@ -65,13 +61,11 @@ echo "</table>";
 error_reporting(E_ALL);
 echo "<pre>";
 
-
 // DEMONSTRATE HOW TO EXPORT A TABLE IN CSV FORMAT
 
 
 // SET YOUR TABLE NAME HERE - OR MAYBE USE THE URL "GET" ARGUMENT?
 $table_name = $table;
-
 
 // DATABASE CONNECTION AND SELECTION VARIABLES - GET THESE FROM YOUR HOSTING COMPANY
 $db_host = "localhost"; // PROBABLY THIS IS OK
@@ -99,7 +93,6 @@ if ($mysqli->connect_errno)
 $csv = 'EXPORT_' . date('Ymdhis') . "_$table_name" . '.csv';
 $fp  = fopen($csv, 'w');
 if (!$fp) trigger_error("UNABLE TO OPEN $csv", E_USER_ERROR);
-
 
 // GET THE COLUMN NAMES
 $sql = "SHOW COLUMNS FROM $table_name";
@@ -132,7 +125,6 @@ else
 // WRITE THE COLUMN NAMES TO THE CSV
 if (!fputcsv($fp, $my_columns)) trigger_error("FAILURE IN WRITING COLUMN NAMES TO $csv", E_USER_ERROR);
 
-
 // GET THE ROWS OF DATA
 $sql = "SELECT * FROM $table_name";
 if (!$res = $mysqli->query($sql))
@@ -159,24 +151,18 @@ while ($row = $res->fetch_row())
 // ALL DONE
 fclose($fp);
 
-
 // SHOW THE CLIENT A LINK
 echo "<p><a href=\"$csv\">$csv</a></p>" . PHP_EOL;
 
-
-
-
-
-
 /*
 backup_tables('localhost','root','Itsmeagain007#','kc');
-// backup the db OR just a table 
+// backup the db OR just a table
 function backup_tables($host,$user,$pass,$name,$tables = '*')
 {
-	
+
 	$link = mysql_connect($host,$user,$pass);
 	mysql_select_db($name,$link);
-	
+
 	//get all of the tables
 	if($tables == '*')
 	{
@@ -191,23 +177,23 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 	{
 		$tables = is_array($tables) ? $tables : explode(',',$tables);
 	}
-	
+
 	//cycle through
 	foreach($tables as $table)
 	{
 		$result = mysql_query('SELECT * FROM '.$table);
 		$num_fields = mysql_num_fields($result);
-		
+
 		@$return.= '- TABLE '.$table.';';
 		$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
 		$return.= "\n\n".$row2[1].";\n\n";
-		
-		for ($i = 0; $i < $num_fields; $i++) 
+
+		for ($i = 0; $i < $num_fields; $i++)
 		{
 			while($row = mysql_fetch_row($result))
 			{
 				$return.= '  INTO '.$table.' VALUES(';
-				for($j=0; $j<$num_fields; $j++) 
+				for($j=0; $j<$num_fields; $j++)
 				{
 					$row[$j] = addslashes($row[$j]);
 					$row[$j] = ereg_replace("\n","\\n",$row[$j]);
@@ -219,7 +205,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 		}
 		$return.="\n\n\n";
 	}
-	
+
 	//save file
 	$handle = fopen('db-backup-'.time().'-'.(md5(implode(',',$tables))).'.sql','w+');
 	fwrite($handle,$return);
@@ -249,7 +235,6 @@ if(! $retval )
 }
 echo "Backedup  data successfully\n";
 mysql_close($conn);
-
 
 */
 

@@ -31,7 +31,7 @@
                 return true;
             }
 
-        }); 
+        });
 */
   window.onbeforeunload = function() {
     return "You have attempted to leave this page. "
@@ -65,7 +65,7 @@ document.getElementById("id1")
     <div>
 	<h3 id="id1"><a href="#">Please, don't leave me !</a></h3>
 <div class="footnote">
-    (If you open the console, you will get feedback 
+    (If you open the console, you will get feedback
      on when the AJAX request is actually sent.)
 </div>
 

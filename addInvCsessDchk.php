@@ -15,8 +15,8 @@
     $(".auto").autocomplete({
         source: "search2.php",
         minLength: 0
-    });                
- 
+    });
+
 }*/
 function formValidator(){
 	// Make quick references to our fields
@@ -27,7 +27,6 @@ function formValidator(){
 	var TotAmt = document.getElementById('TotAmt');
 	var TTTT = document.getElementById('TTTT');
 	var ex1 = document.getElementById('ex1');
-
 
 	var D1 = document.getElementById('D1');
 	var D2 = document.getElementById('D2');
@@ -41,7 +40,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -60,7 +59,6 @@ function formValidator(){
 					if(isBiggerThanZero(ex1, "Price is first product is zero")){
 							return true;
 
-
 						}
 			//		}
 
@@ -72,7 +70,7 @@ function formValidator(){
 
 	}//very important bracket part of isNumeric!!!!!
 	return false;
-	
+
 }//very important end of formvalidator!!
 
 function notEmpty(elem, helperMsg){
@@ -177,7 +175,7 @@ function Compare(elem, elem2, elem3, helperMsg){
 alert(elem2.value);
 alert("ywllo");
 alert(elem2.value);
-alert(elem3.value); //unfortunately it crashes here becasue this is an AJAC 
+alert(elem3.value); //unfortunately it crashes here becasue this is an AJAC
 alert(elem.value);
 
 	//	return elem;
@@ -193,7 +191,6 @@ alert(elem.value);
 			//return elem;
 	//	return elem2;
 
-	
 	}
 	return true;
 }
@@ -217,11 +214,11 @@ alert(elem.value);
 
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
+	require_once 'inc_OnlineStoreDB.php';//page567
 
 
-	require_once("header.php");//page567
-	
+	require_once 'header.php';//page567
+
  //   @session_start();
 //	@$_SESSION['sel'] = "addInvC";
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -283,7 +280,6 @@ $CustNo = $_POST['CustNo']; //DO NOT REMOVE! DO NOT REMOVE!!!
 $CustInt = $CustNo;
 if ($CustNo == "")
 echo "<b><font size = 4 color = red>error, no Customer Number!!!</font>";
-
 
 //$InvDate = $_POST['InvDate'];
 $InvSQLDateDD = $_POST['InvSQLDateDD'];
@@ -365,7 +361,6 @@ $IT= (($Q1*$ex1+$Q2*$ex2+$Q3*$ex3+
 			//echo " R".$IT;
 //echo "<br>";echo "<br>";
 
-
 $ITN = number_format($IT,1); //I removed the last cent here
 $TAmtN = number_format($TAmt,1);  //I removed the last cent here
 //echo "<br>TAmtN: ".$TAmtN;
@@ -400,7 +395,6 @@ $v1 = str_replace(' ', '_', $v1);
 
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
-
 
 //$v1 = strtr($v1, array_flip(get_html_translation_table(HTML_ENTITIES, ENT_QUOTES))); //this baby does the trick!!!
 
@@ -443,7 +437,6 @@ $D6 = changeA($D6);
 $D7 = changeA($D7);
 $D8 = changeA($D8);
 
-
 	?>
 
 
@@ -458,27 +451,26 @@ $D8 = changeA($D8);
 
 <!--<input type='hidden' name='CustNo' value="<?php //echo $CustInt; ?>">-->
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<?php	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+	<?php
+
+
+
+
 /*
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
 $queryMax = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!! //2QUERIES HERE!!
 $result = $DBConnect->query($queryMax);
-
 
 $row = $result->fetch_array(MYSQLI_NUM);
 //printf ("%s (%s)\n", $row[0], $row[0]);
@@ -487,7 +479,6 @@ $InvNo = $InvNo+1;
 
 //echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
 
-
 $OrdPd = "_";
 
 $InvSQLDateDD = date("d");
@@ -495,7 +486,6 @@ $InvSQLDateMM = date("m");
 $InvSQLDateYY =  date("Y");
 */
 //echo "<br>InvSQLdate: ".$InvSQLDate." ___<br>";
-
 
 /*$daNextNo = 1; //default when table is empty.
 
@@ -534,7 +524,7 @@ if ($trimdaNextNoLL > '97')
 echo "<b>error ! change program for new suggestion.\$sg</b><br><br><br>";
 }
 
-		
+
 echo "Suggested InvNo: ";
 
 //if $daNextNo;
@@ -542,7 +532,6 @@ echo $daNextNo;
 
 echo " &nbsp; ".$queryM;
 echo " &nbsp; (PremierShoes ..61)";
-
 
 */
 
@@ -572,96 +561,60 @@ if ($resultLastInv = mysqli_query($DBConnect, $queryLastInv)) {      //to determ
   $LIV = $rowLastInv['LIVV'];
 }
 mysqli_free_result($resultLastInv);
-}			
+}
 $First = substr($LIV, 0, 2);
 
-			
-
-
-	
 //echo "F: ".$First."<br>";
-		
-$Y = $First+1;		
+
+$Y = $First+1;
 //	echo "Y: ".$Y."<br>";
 */
-		
-		
+
+
 /*	$queryID1 = "UPDATE jqinv SET invsugg = '$daNextNo' WHERE id = '1'";
 //echo "<br>".$querySDR;
-if (mysqli_query($DBConnect, $queryID1) === TRUE) {   
+if (mysqli_query($DBConnect, $queryID1) === TRUE) {
 	//echo '<br>queryID1 Success: '.$queryID1;
 	echo "";
 }
-else 
+else
 {
 	//echo '<script type="text/javascript">alert("ERROR id1 NOT updated .$querySDR.")</script>';
 	echo '<br><font size = 5 color = red><b>queryID1 NO success! </b></font><br>'.$queryID1;
-}		
-	*/	
+}
+	*/
 /*	$queryID2 = "UPDATE jqinv SET invsugg = '$Y$dotstr' WHERE id = '2'";
 //echo "<br>".$querySDR;
-if (mysqli_query($DBConnect, $queryID2) === TRUE) {   
+if (mysqli_query($DBConnect, $queryID2) === TRUE) {
 echo "";
 	//echo '<br>queryID2 Success: '.$queryID2."<br>";
 }
-else 
+else
 {
 	//echo '<script type="text/javascript">alert("ERROR id1 NOT updated .$querySDR.")</script>';
 	echo '<br><font size = 5 color = red><b>queryID1 NO success! </b></font><br>'.$queryID2;
-	
-}		
-*/		
-		
+
+}
+*/
+
 		 		echo "<br>InvoiceNo: ";
 			echo "<input type='text' name='InvNo' id='InvNo' size  = '5' value='$InvNo' >";
-	
-		
-		
-		
-		
-		
-				
-//echo "<option  value='select'>select.. </option>"; 
+
+//echo "<option  value='select'>select.. </option>";
 
 				echo "{$row2['dotdot']}</dt></dd>";
 		//echo "open folder:	";
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 //echo " ".$LIV." was Last inv created&nbsp;&nbsp;"; //filelocation
 
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
 $queryFL = "SELECT L1 FROM customer WHERE CustNo = $CustInt" ;
 //echo "queryFL:".$queryFL."<br>";
 
@@ -680,13 +633,12 @@ $FL= "F:/_work/Customers";
 //			echo ">";
 			//echo "<br>";
 			$newfldr = $FL;
-			
+
 //strtr($newfldr, array('/' => '\\')) ;
 strtr($newfldr, array('\\' => '/')) ;
 
-			
 			//echo "<br><br> newfldr: ".." <br>";
-			
+
 			echo "<a href= 'file:///".$newfldr."'  >$newfldr</a>&nbsp; &nbsp;    ";
 //   file:///F:/_work/Customers/A/Abel_Jutta
 			echo "<a href='addInvprocessCsess.php'>Inv No descriptions</a> </font>";
@@ -696,23 +648,14 @@ echo "addInvprocessCsessD.php opens addInvprocess_lastC.php<br>";
 
  	//	echo "<!--<dl>-->";
 			echo "Customer: <b>";
-			
 
-			
-			
-			
-			
-			
-			
 			echo " ";
 
-			
 			echo "<input type = 'text' value='$CustNo' id='CustNo' name= 'CustNo'>&nbsp;";
 echo $row2['CustFN']."&nbsp;";
 echo "{$row2['CustLN']}&nbsp;&nbsp;&nbsp;";
 $FNLN = $row2['CustFN'].$row2['CustLN'];
 echo "</b><input type = 'hidden' name = 'FNLN' value = $FNLN >";
-
 
 echo "{$row2['CustTel']}&nbsp;&nbsp;";
 echo "{$row2['CustCell']}&nbsp;&nbsp;";
@@ -727,7 +670,7 @@ echo "<input type='hidden' name='L1' value=";
 			echo ">";
 
 	//$ae = $row2['ae'];
-			
+
 echo "{$row2['CustAddr']}&nbsp;&nbsp;";
 echo "{$row2['Distance']} km&nbsp;&nbsp;";
 $Dist = $row2['Distance'];
@@ -741,52 +684,44 @@ $Distance = $row2['Distance'];
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 
 			   mysqli_free_result($result);
-	
-	
 
-					
 			// DO NOT DISABLE!!! addInvprocess_lastC needs to know which customer got selected!!
 			//There is no inserting here yet!!!
-		
+
 
 			echo " Abbr: <input type='hidden' name='Abbr' value=";
 			echo " ";
 			echo $Abbr;
 			echo "> ";
-			
+
 			echo $Abbr;
-			
-			
-			
+
 		//echo "</dl>";
 echo "<br>";
  		echo "<!--<dl>--><label>InvDate:&nbsp;&nbsp;&nbsp;&nbsp;</label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<input type='text' name='InvSQLDateDD' size = '2' value=";
 
-
 			echo $InvSQLDateDD;
 			echo "> ";
-			
+
 			echo "<input type='text' name='InvSQLDateMM' size = '2' value=";
 			echo $InvSQLDateMM;
 			echo "> ";
-			
+
 			echo "<input type='text' name='InvSQLDateYY' size = '2' value=";
 			echo $InvSQLDateYY;
 			//echo "201";
 			echo "> ";
-			
-				
+
 		//echo"	DD/MM/YYYY ";
-		
-					
+
 			//echo "Today: ".$InvSQLDateDD;
 		//	echo "/";
-			
+
 		//	echo $InvSQLDateMM;
 		//	echo "/";
-			
+
 		//	echo $InvSQLDateYY;
 		//	echo " ";
 						$RU1 = "_";
@@ -794,51 +729,39 @@ echo "<br>";
 			$RU1 = $row2["u1"];
 			$RU2 = $row2["u2"];
 
-		
 			echo "</dd>";
-		/*	
+		/*
 			echo "<b>Last topup invoiced:";
 			//<input type='text' size = '5' value=";echo $row2['topup'];	echo "></b> ";  textboxes don;t show spaces
 		echo "<textarea id='topup' style='white-space:pre-wrap; height:18px;font-family:arial;width:200px;font-size: 10pt'  name='topup'  >";
 	echo $row2['topup'];  echo "</textarea>";
-	*/		
+	*/
 			echo "</font></b></dd></dl>";
-			//echo $row2['topup']; 
-			
-		
-		
-		
-		
-		
-		
-		
-		
+			//echo $row2['topup'];
+
 		echo "</dd>";
 		echo "</dl>";
-
 
 		?>
         <br><label>SumMary:</label><input type='text' name='Summary' id='Summary' value='<?php echo $Summary; ?>' size='36'  >
 		<!-- class auto check mysql table autosuggest from search.php or search2.php-->
 		<!-- onmouseover='mouseOver(this)'-->
-       <input type="submit"  value="Submit"   /> 
+       <input type="submit"  value="Submit"   />
   	<?php
 		/*	echo "&nbsp;adslinv:";
-			
+
 echo "<textarea name='adslinv' id='adslinv'  style='white-space:pre-wrap;height:18px;font-family:arial;width:250px;font-size:10pt' >";
 		$adslinv = $_POST['adslinv'];
 		echo $adslinv;
 			//echo "{$row2['adslinv']}";
-			echo "</textarea> &nbsp;&nbsp;&nbsp;&nbsp;";	
+			echo "</textarea> &nbsp;&nbsp;&nbsp;&nbsp;";
 			*/
   		echo "Travel:";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $Dist; q_mark>" /></dd>-->
 			echo $Dist;
-			echo "km ";	
+			echo "km ";
 			echo $u1;
 			echo $u2;
-			
-			
 
 			  		echo "<br><!--<dl>-->Important</label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -846,8 +769,6 @@ echo "<textarea name='adslinv' id='adslinv'  style='white-space:pre-wrap;height:
 
 			echo $Important;
 			echo "</textarea> </font></b></dd></dl>";
-
-			
 
 			  		echo "<dl>Extra</label></dt>";
 
@@ -858,18 +779,18 @@ echo "<textarea name='adslinv' id='adslinv'  style='white-space:pre-wrap;height:
 
 
 
-			
+
 			echo "<textarea id='Extra' style='white-space:pre-wrap; height:100px;font-family:arial;width:550px;font-size: 10pt'  name='Extra'  >";
 
 	echo $Extra;  echo "</textarea>";
-	
+
 			  		//echo "<dl></label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 
 
 
 ?>
-	
+
 <style>
 label.button {
     padding: 0.2em 0.4em;
@@ -892,54 +813,47 @@ label.button {
 	 <label class="button" for="customize">Confid</label><br>
 
     <input type="checkbox" id="customize" />
-<?php		
+<?php
 
 
 
 			echo "<textarea id='Confid' style='white-space:pre-wrap; height:100px;font-family:arial;width:700px;font-size: 10pt'  name='Confid'  >";
 	echo $Confid;  echo "</textarea>";
-	
-/*	echo $ae; 
+
+/*	echo $ae;
 	echo "> R";
-	echo ($ae*1.14); 
+	echo ($ae*1.14);
 	echo "inex";
-	*/		
+	*/
 			echo "</font></b></dd></dl>";
-			//echo $Extra; 
+			//echo $Extra;
 			/*
 			echo "<b>Last topup invoiced:<textarea id='topup' style='white-space:pre-wrap; height:20px;width:350px;font-size: 10pt'  name='topup'  >";
 	//echo $row["CustDetails"];
-	
+
 	echo $row['topup'];echo "</textarea>";
 			*/
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 		echo "<br> Watch <b>AJAX</B> in action: &nbsp;&nbsp;&nbsp;Latest adsl invoicing events:<br>";//chk CalcServ.php-->
 	$date = date('Y-m-d',time()-(1*86400)); // 1 days ago
 $queryE = "SELECT * FROM events WHERE CustNo = $CustInt and   EDate >= '$date' order by EDate desc" ;
 //echo " ".$queryE." <br>";
 //$queryE = "SELECT * FROM events WHERE CustNo = $CNNo order by EDate desc" ;
 
-	
 	if ($resultE = mysqli_query($DBConnect, $queryE)) {
   while ($rowE = mysqli_fetch_assoc($resultE)) {
 //echo "&nbsp;{$rowE['ENotes']}&nbsp;&nbsp;</th><th>";
 
 echo "&nbsp;{$rowE['ENotes']}&nbsp;&nbsp;<br>";
 
-	
-	
-	
-	
-	
-	
 }$resultE->free();
 }
- 		
+
 echo"<TABLE WIDTH=10 BORDER=1 CELLPADDING=2 CELLSPACING=0>";
 echo "<COL WIDTH=40*>		<COL WIDTH=57*>		<COL WIDTH=30*>";
 echo"<TR>
@@ -962,27 +876,22 @@ echo"<TR>
 
 		echo "</TR>	";
 		echo "<TR>		<TH>";
-	
-		
+
 		echo "<input id='D1' type='text' name='D1' size='53'  value='";
 
-		
 		echo $D1."'><br/>";
-	
+
 		echo "</TH>
 		<TH ><input type='text' name='Q1' id='Q1' size='5' value='$Q1' >
-	
+
 		</TH>
 		<TH >
 			  <input type='text' name='ex1' id='ex1' size='10' value='$ex1' class='exxx1'   >
 		</TH>
 
 
-		
+
 	";
-
-
-
 
 if ($CustInt == 76)//hildebrand
 {
@@ -994,41 +903,32 @@ echo $row2['u2'];
 //echo $row2['CustPW'];
 //echo $row2['D2'];
 
-
-
-
-
-
-
-
 //echo "</table>";
-
 
 	?>
 
 
- 
-Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recommended for printing 
+
+Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recommended for printing
 		</TR>
 	<TR>
-		<TH><input type='text' id='D2' name='D2' size='53'   value='<?php 
+		<TH><input type='text' id='D2' name='D2' size='53'   value='<?php
 		echo $D2;
-		
-		
+
 		 ?>'>
 		<br>
 	<?php
  //HIDDEN:
 	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' id='topup' name='topup'  value=' ";
 	echo $Topup;  echo "' >";
-	
+
 ?>
 	 	</TH>
 		<TH ><input type='text' name='Q2'  size='5' value="<?php echo $Q2 ; ?>" id='Q2'  >
-		
+
 		</TH>
 		<TH >
-			<input type='text' name='ex2'  size='10' 
+			<input type='text' name='ex2'  size='10'
 			value="<?php echo $ex2 ; ?>" id='ex2'  >
 		</TH>
 	</TR>
@@ -1095,7 +995,7 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recom
 
 
 
-	
+
 	</table>
 <font color=red size = 3>	NB Did you add or change amounts? Then change the Total Amount as well:<br>
 	<span id="resp"></span><!-- in here possibly AJAX invoice total CalcServ.php-->
@@ -1111,7 +1011,6 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recom
 //			echo $ITN;
 //			echo ">";
 
-
 	}
 	}
 	?>
@@ -1119,15 +1018,15 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recom
 <div>
 		<!--<dl>-->
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
 			<!--<dl>-->
-			
-			<!--<input type="submit"  value="Submit/Save"   
+
+			<!--<input type="submit"  value="Submit/Save"
 			onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
-			<input type="submit"  value="Submit/Save"   /> 
-			
-			
-			
+			<input type="submit"  value="Submit/Save"   />
+
+
+
 		<select name='Draft' id= 'Draft' >
 <option  value='<?php echo $Draft; ?>'>Draft selected: <?php echo $Draft; ?></option>
 <option  value='Y'>Draft Yes</option>
@@ -1136,11 +1035,11 @@ Don't forget TOPUP checkup!!!  For discounts use a negative value. size 53 recom
 <option  value='Now'>This invoice has been paid JUST NOW</option>
 
 </select>
-			
+
 			<!-- sequence might be important! first onsubmit then action!-->
 <!-- id in input name is used for javascript validation and name is used for POST I presume-->
 
-			
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<!--<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -1163,21 +1062,14 @@ echo $CustInt;
 
 
 //echo "test<br>";
-include "view_trans_by_custUNDERorOVERPAID.php";
+include 'view_trans_by_custUNDERorOVERPAID.php';
 echo "<br>edit_trans_CustProcessCinvFirst.php<br>";
 include ("edit_trans_CustProcessCinvFirst.php");
 //echo "test<br>";
 include ("view_event_by_cust.php");
 
-
-
-
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -1189,12 +1081,6 @@ echo "<b>Total Amount owing to you: R".-($Invsummm - $yo)."</b><BR />";
 echo "<br>";echo "<br>";
 include ("view_inv_prev_by_cust.php");
 
-
-
-
-
-
-
 //echo "test2<br>";
 //include ("view_trans_by_cust.php");
 //echo "test3<br>";
@@ -1205,13 +1091,7 @@ include ("view_inv.php");
 //echo "test5<br>";
 //include ("view_inv_all.php");
 
-//require_once "view_inv_one.php";
-
-
-
-
-
-
+//require_once 'view_inv_one.php';
 
 /*
 if ($result = mysqli_query($DBConnect, $SQLstring)) {
@@ -1220,15 +1100,12 @@ if ($result = mysqli_query($DBConnect, $SQLstring)) {
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>InvNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 
-
 echo "</tr>\n";
 
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
 	  echo "<tr><th>";
-  
- 
-	  
+
 	  if ($x >= 4400 && $x <= 4469)
 	  echo "<FONT color = 'red'>".$x." JAN2012";
 	  else if ($x >= 4500 && $x <= 4569)
@@ -1283,7 +1160,7 @@ echo "</tr>\n";
 		}
     //
     $result->close();mysqli_free_result($result);
-	
+
 }
 echo "</table>";
 
@@ -1298,88 +1175,86 @@ echo "SELECT * FROM expenses WHERE CustNo = '$CustInt'";
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>    
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
-    
+
     //autocomplete
     $(".autoS").autocomplete({
         source: "search.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});                
- 
+	});
 
      $(".clInvNo").autocomplete({
         source: "searchinvAdd.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});                
+	});
 
     $(".exxx1").autocomplete({
         source: "searchexxx1.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});                
+	});
 
-	
 	//var delay = $( ".clExpC" ).autocomplete( "option", "delay" );
 
     $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
-		
+
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	//});                
+	//});
 		//		}).mouseout(function() {
 		//		$(this).autocomplete("reset");
-	//});                
+	//});
 //$(".clExpC").autocomplete({
     //    source: "searchExpC.php",
    //     minLength: 0
-	});                
+	});
 /*
        $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
 
-   
+
 		}).mouseleave(function() {
 			$(this).autocomplete("close", "delay", 5000);
-	});                
+	});
 
 	*/
-	
-	
-	
-	
+
+
+
+
 //expenses or products
     $(".clExp").autocomplete({
         source: "searchExp.php",
         minLength: 0
-		
+
 				}).focus(function() {
 				$(this).autocomplete("search");
-	});     
-	
+	});
+
 				//Solution: http://jsfiddle.net/ricardolohmann/SdLaP/
 //http://stackoverflow.com/questions/4604216/jquery-ui-autocomplete-minlength0-issue
-	
+
 /*	$("input#autocomplete").focus(function(e) {
     if(!e.isTrigger) {
         $(this).autocomplete("search", "");
     }
     return false;
 */
-	
- 
+
+
  });
 </script>
 </body>

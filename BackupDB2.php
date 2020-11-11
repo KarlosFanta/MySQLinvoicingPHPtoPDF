@@ -2,7 +2,7 @@
 
   $dadb =  "";
   $dadb = $_GET["dadb"];
-  
+
   echo "DADB:". $dadb;
 
  try {
@@ -11,7 +11,6 @@
 
        // $mysqli = new mysqli($host, $user, $password, $database);
 $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
-
 
         // did it work?
 /*
@@ -39,8 +38,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
         header('Content-Transfer-Encoding: binary');
 
-
-
         // start buffering output
 
         // it is not clear to me whether this needs to be done since the headers have already been set.
@@ -52,8 +49,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
         ob_start();
 
         $f_output = fopen("php://output", 'w');
-
-
 
         // put a few comments into the SQL file
 
@@ -69,8 +64,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
      //   print('-- Database:'.$database."\n");
 
-
-
         //get a list of all the tables
 
         $aTables = array();
@@ -80,8 +73,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
         if (!$res_tables = $DBConnect->query($strSQL))
 
             throw new Exception("MySQL Error: " . $DBConnect->error . 'SQL: '.$strSQL);
-
-
 
         while($row = $res_tables->fetch_array()) {
 
@@ -97,8 +88,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
         $res_tables->free();
 
-
-
         //now go through all the tables in the database
 
         foreach($aTables as $table)
@@ -111,13 +100,9 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
             print("--\n\n");
 
-
-
             // remove the table if it exists
 
             print('DROP TABLE IF EXISTS '.$table.';');
-
-
 
             // ask MySQL how to create the table
 
@@ -129,13 +114,7 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
             $row_create = $res_create->fetch_assoc();
 
-
-
             print("\n".$row_create['Create Table'].";\n");
-
-
-
-
 
             print("-- --------------------------------------------------------\n");
 
@@ -145,8 +124,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
             $res_create->free();
 
-
-
             // get the data from the table
 
             $strSQL = 'SELECT * FROM '.$table;
@@ -155,13 +132,9 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
                 throw new Exception("MySQL Error: " . $DBConnect->error . 'SQL: '.$strSQL);
 
-
-
             // get information about the fields
 
             $fields_info = $res_select->fetch_fields();
-
-
 
             // now we can go through every field/value pair.
 
@@ -181,8 +154,6 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
                     $strFields .= "`".$field->name."`";
 
-
-
                     // put quotes round everything - MYSQL will do type convertion (I hope) - also strip out any nasty characters
 
                     if ($strValues != '') $strValues .= ',';
@@ -201,11 +172,7 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
 
             print("\n\n\n");
 
-
-
             $res_select->free();
-
-
 
         }
 
@@ -228,5 +195,5 @@ $DBConnect = mysqli_connect("localhost", "root", "Itsmeagain007#", "$dadb");
     print(ob_get_clean());
 
     $DBConnect->close();
-	
+
 	?>

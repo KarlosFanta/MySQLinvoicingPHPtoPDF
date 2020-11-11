@@ -1,9 +1,9 @@
 
 
 <?php	//this is "process_Inv.php"
-require_once('logprog.php');//mysql connection and database selection
-	require_once("inc_OnlineStoreDB.php");//page567
-//	require_once("header.php");//page567
+require_once 'logprog.php';//mysql connection and database selection
+	require_once 'inc_OnlineStoreDB.php';//page567
+//	require_once 'header.php';//page567
 
 ?>
 
@@ -71,7 +71,6 @@ $Inv_NoInt = intval($InvNo); //required for insert statement
 $InvSQLDateDD = $_POST['InvSQLDateDD'];
 $InvSQLDateMM = $_POST['InvSQLDateMM'];
 $InvSQLDateYY = $_POST['InvSQLDateYY'];
-
 
 $Da1 = explode("/", $InvDate);
 /*echo $Da1[2]."____";
@@ -155,7 +154,6 @@ $TAmt = $_POST['TotAmt'];
 //$D1 = str_replace(' ', '_', $D1);
 //$D1 = str_replace('  ', '__', $D1);
 
-
 function changeA($v1)
 {
 //WARNING! DO NOT USE FOR EMAILS ! Function removes the @ sign and the fullstop!
@@ -177,7 +175,6 @@ $v1 = str_replace(' ', '_', $v1);
 
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
-
 
 //$v1 = strtr($v1, array_flip(get_html_translation_table(HTML_ENTITIES, ENT_QUOTES))); //this baby does the trick!!!
 
@@ -223,7 +220,7 @@ $D8 = changeA($D8);
 $earlySDR = "_";
 //$earlySDR = $Abbr.',acc'.$CustNo.',inv'.$InvNo.','.$Summary;
 $earlySDR = $Abbr.',inv'.$InvNo.','.$Summary;
-include "monthtables.php";
+include 'monthtables.php';
 
 //truncated error: http://stackoverflow.com/questions/1704304/what-is-this-error-database-query-failed-data-truncated-for-column-column-na
 if($Q2=='')
@@ -242,16 +239,16 @@ if($Q8=='')
   $Q8=0;
 
 //truncated error: http://stackoverflow.com/questions/1704304/what-is-this-error-database-query-failed-data-truncated-for-column-column-na
-$isql = "INSERT INTO invoice (InvNo, CustNo, InvDate, InvPdStatus, Summary, D1, Q1, ex1, 
+$isql = "INSERT INTO invoice (InvNo, CustNo, InvDate, InvPdStatus, Summary, D1, Q1, ex1,
 D2 , Q2 , ex2,
 D3, Q3, ex3,
 D4 , Q4 , ex4 ,
 D5 , Q5 , ex5,
 D6, Q6, ex6,
 D7, Q7, ex7,
-D8, Q8 , ex8, TotAmt, SDR, Draft) 
+D8, Q8 , ex8, TotAmt, SDR, Draft)
 VALUES(" . $Inv_NoInt. ", ".$CustNo.", '". $InvSQLDate."', '". $InvPdStatus."', '". $Summary."',
-'$D1', '$Q1', '$ex1', 
+'$D1', '$Q1', '$ex1',
  '$D2',  '$Q2', '$ex2',
  '$D3', '$Q3', '$ex3',
  '$D4',  '$Q4', '$ex4',
@@ -263,7 +260,7 @@ VALUES(" . $Inv_NoInt. ", ".$CustNo.", '". $InvSQLDate."', '". $InvPdStatus."', 
 
 )";
 //VALUES(" . $InvNo. ", ".$CustNo", '". $InvDate."', '". $OrdPd."')";
-echo "<font size = 5 face= arial><b>InvNo ".$InvNo. " &nbsp; ".$Summary. "</b></font> &nbsp; "; 
+echo "<font size = 5 face= arial><b>InvNo ".$InvNo. " &nbsp; ".$Summary. "</b></font> &nbsp; ";
 echo "<a href='mailto:".$CustEmail."?Subject=Invoice'>".$CustEmail."</a>&nbsp;&nbsp;";
 echo "<font size = 5 face= arial><b>InvNo ".$InvNo. " &nbsp; ".$Summary. "</b></font><br> ";
 echo "<br>".$isql.";<br>"; // WARNING!  THIS QUERY ONLY TO BE EXECUTED WHEN TamT has been compared with Total
@@ -273,23 +270,23 @@ echo "<br>".$isql.";<br>"; // WARNING!  THIS QUERY ONLY TO BE EXECUTED WHEN TamT
 
 //mysqli_query($DBConnect, $isql);// WARNING!  THIS QUERY ONLY TO BE EXECUTED WHEN TamT has been compared with Total
 
- 
 
 
- 
- 
-  
+
+
+
+
 
 
 
 $queryST = "UPDATE customer SET  Confid = '$Confid', Topup = '$Topup', Extra = '$Extra', Important = '$Important' WHERE CustNo = $CustNo";
 //echo "<br>".$queryST;
-if (mysqli_query($DBConnect, $queryST) === TRUE) {   
+if (mysqli_query($DBConnect, $queryST) === TRUE) {
 
 	//echo '<script //type="text/javascript">alert("ST, last invoiced topup successfully updated  $queryST ")</script>';
 	echo '</font>queryST Success:  '.$queryST;
 }
-else 
+else
 {
 	//echo '<script type="text/javascript">alert("ERROR adslinv, ST,Topup NOT updated .$queryST.")</script>';
 	//echo $queryST;
@@ -301,8 +298,8 @@ else
 if (mysqli_affected_rows($DBConnect) == -1)
 {
 echo "<br><font size = 4 color = red><b>insert or update NOT successfull!!!</b></font><br>
-<font size = 3 color = red>if the error message says Duplicate entry for PRIMARY, 
-then the invoice number already exists with another customer <a href = view_inv.php><b>Click here to check </a></b> 
+<font size = 3 color = red>if the error message says Duplicate entry for PRIMARY,
+then the invoice number already exists with another customer <a href = view_inv.php><b>Click here to check </a></b>
 <br>or you have already written the invoice into the sytem. <a href = view_inv.php><b>Click here to check </a></b> <br>
 If it says something about syntax then u used an apostophee or komma</font>";
 echo " <a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&table=invoice&where_clause=%60invoice%60.%60InvNo%60+=+532&sql_query=SELECT+*+FROM+%60invoice%60&target=tbl_change.php&token=fa26c9c2a497c1b738f45aa45d71025b#PMAURL:db=kc&table=invoice&target=tbl_sql.php&token=fa26c9c2a497c1b738f45aa45d71025b' target = _blank>open PHPAdmin</a>";
@@ -310,29 +307,24 @@ echo " <a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&tabl
 else
 echo "insert into MySQL database table success! <br></font>";
 
-
-
-
 $file = "FileWriting/bkp.php";
-//include("FileWriting/FileWriting.php");
+//include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file'><br />";
-	
+
 //$file = "logaddtrans.php";
 $open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add invoice:</b> <br>" .$isql. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add invoice:</b> <br>" .$isql. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /></font><a href = '$file'><b>FILE WRITTEN </B>Check log file:</a> ";
 
-
-
 /*
-$isql="update invoice set CustNo = $CustNo, InvDate ='$InvDate', InvPdStatus = '$InvPdStatus', Summary= '$Summary', 
-D1 = '$D1', Q1 = '$Q1', ex1 = '$ex1', 
+$isql="update invoice set CustNo = $CustNo, InvDate ='$InvDate', InvPdStatus = '$InvPdStatus', Summary= '$Summary',
+D1 = '$D1', Q1 = '$Q1', ex1 = '$ex1',
 D2 = '$D2', Q2 = '$Q2', ex2 = '$ex2',
 D3 = '$D3', Q3 = '$Q3', ex3 = '$ex3',
 D4 = '$D4', Q4 = '$Q4', ex4 = '$ex4',
@@ -348,9 +340,8 @@ mysqli_query($DBConnect, $isql);
 printf("###Affected rows (UPDATE): %d\n", mysqli_affected_rows($DBConnect));
 echo "<br>".$isql;
 
-
 $open = fopen($file, "a+"); //open the file, (log.htm).
-fwrite($open, "<br><br><b>editaddInvprocess_last:</b> " .$isql . "<br/>"); 
+fwrite($open, "<br><br><b>editaddInvprocess_last:</b> " .$isql . "<br/>");
 fwrite($open, "<b>Date & Time:</b>". $date. "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 
@@ -397,7 +388,6 @@ $IT= (($Q1*$ex1+$Q2*$ex2+$Q3*$ex3+
 			//echo " R".$IT;
 //echo "<br>";echo "<br>";
 
-
 $ITN = number_format($IT,1); //I removed the last cent here
 $TAmtN = number_format($TAmt,1);  //I removed the last cent here
 //echo "<br>TAmtN: ".$TAmtN;
@@ -420,13 +410,12 @@ if (!mysqli_query($DBConnect,"$isql")) // WARNING!  THIS QUERY ONLY TO BE EXECUT
   }
   else "<font color= green>insert success, invoice created.</font>";
 
-
-printf("Affected rows (INSERT): %d\n", mysqli_affected_rows($DBConnect));	
+printf("Affected rows (INSERT): %d\n", mysqli_affected_rows($DBConnect));
 
 if (mysqli_affected_rows($DBConnect)==1)
 	    echo "<br>success<br>";
-else 
-    echo "<br>failed";    
+else
+    echo "<br>failed";
 }
 
 
@@ -445,7 +434,6 @@ else
 <?php
 
 //$L1 = @$_POST['L1'];
-
 
 $queryC = "SELECT L1 FROM customer WHERE CustNo = $CustNo" ;
 echo "queryC:".$queryC;
@@ -466,20 +454,19 @@ echo "<input type='hidden' name='L1' size = 35 value=";
 			echo ">";
 			echo "<br>";
 
-
 //echo "<br>InvNo:".$InvNo."</br />";
 //echo "<label>* invoice AutoNumber:</label>";
 echo "<input type='hidden' name='InvNo' size = 5 value=";
 			echo "'$Inv_NoInt'";
-			
+
 		$Summary = $_POST['Summary'];
 		$SDR = $Abbr.',inv'. $InvNo.','. $Summary;
 	//	$SDR = $Abbr.',acc'.$CustNo.',inv'. $InvNo.','. $Summary;
 		?>
 
-		
+
 <div>
- 
+
 		<?php //http://www.webstutorial.com/insert-record-into-database-using-ajax-how-to-insert-data-into-database-using-ajax/ajax ?>
 
 <!--<div id="wrapper">
@@ -489,40 +476,40 @@ echo "<input type='hidden' name='InvNo' size = 5 value=";
 <div id="propspectDiv"></div>
 <table id="data" border="1" cellspacing="0" cellpadding="0" width="75" style="display:none;"></table>
 </div>-->
- 
+
 		<br />
 			<dd>SDR: <input type="text" name="SDR" id="SDR" size = "50" value="<?php echo $earlySDR; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 	<dl>
 			<dt></dt>
 			<dd>TAmt: <input type="text" name="TAmt" id="TAmt" size = "10" value="<?php echo $TotAmt; ?>" /> Summary: <input type="text" name="Summary" id="Summary" size = "30" value="<?php echo $Summary; ?>" /></dd>
 		</dd>
 	</dl>
-	
+
 		<dl>
-			
+
 			<dd>Swap Surname with First Name:<input type="text" name="Swap" id="Swap" size = "2" value="N" /></dd>
 		</dd>
 	</dl>
 
-	
-	
+
+
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
 			<dd><input type="submit" name="btn_submit" width = 300 value="Display Invoice" style="height:50px; width:700px" /><br>
 if you get "TCPDF ERROR: Some data has already been output, can't send PDF file" then you will find the PDF file in the customer folder.			action="PDF/tcpdf/examples/PDF.php
-			
-			
+
+
 		Invoice_No_<?php echo $InvNo; echo "_".$Summary?>.pdf
-		
-		
-		
-		
+
+
+
+
 </div>
-<?php 
+<?php
 			$newfldr = $FL;
 $uniqueid = "Invoice_No_{$InvNo}_{$Summary}.pdf";
 //echo "<br> <a href= 'file:///".$newfldr.'/'.$uniqueid."' target = '_blank'>Click here to check if invoice exists inside customer folder  ";
@@ -539,21 +526,21 @@ Abbr: <input type='text' name='Abbr'  value="<?php echo $Abbr; ?>">
 <?php
 $querySDR = "UPDATE invoice SET SDR = '$SDR', Summary = '$Summary', TotAmt = $TAmt WHERE InvNo = $InvNo";
 //echo "<br>".$querySDR;
-if (mysqli_query($DBConnect, $querySDR) === TRUE) {   
+if (mysqli_query($DBConnect, $querySDR) === TRUE) {
 
 	//echo '<script //type="text/javascript">alert("SDR,TAmt successfully updated  $querySDR ")</script>';
 	echo 'querySDR Success: '.$querySDR;
 }
-else 
+else
 {
 	echo '<script type="text/javascript">alert("ERROR SDR,TAmt NOT updated .$querySDR.")</script>';
 	echo '<br><font size = 5 color = red><b>querySDR NO success! </b></font><br>'.$querySDR;
-}	
+}
 		if ($TAmtN != $ITN)
 echo "<font face = 'arial' size = 5 color= red><b>WARNING TAmt does not equal Total</FONT></b><br>";
 
-include "invEmail.php"; //mailto
-?> 
+include 'invEmail.php'; //mailto
+?>
 <a href = "signaturePaid.php">signaturePaid.php</a> also edit invEmail.php<br>
 
 
@@ -562,27 +549,20 @@ echo "<br>";
 echo "Customer's Email Address:  <a href='mailto:".$CustEmail."?Subject=Invoice'>".$CustEmail."</a>";
 //echo "&nbsp;&nbsp;" .$CustEmail."<br><br>";
 
-
-
-			
 //strtr($newfldr, array('/' => '\\')) ;
 strtr($newfldr, array('\\' => '/')) ;
 
-			
-			
 			echo "<br> <a href= 'file:///".$newfldr."'>OPen newfolder</a>  &nbsp; &nbsp; &nbsp;";
 echo " ".$newfldr." <br>";
 			//   file:///F:/_work/Customers/A/Abel_Jutta
 
-			
+
 echo "<br> <a href= 'file:///F:/_work/Customers'>Open all customers folder</a>  &nbsp; &nbsp; &nbsp;";
 //echo " ".$newfldr." <br>";
 
 echo "<br> <a href= 'file:///C:\Documents and Settings\Me_37\Local Settings\Temp'>Open temp folder</a>  &nbsp; &nbsp; &nbsp;";
 //echo " ".$newfldr." <br>";
 
-			
-			
 			?>
 <SCRIPT>
 strdestination1 = 'mailto:CompanyEmail?subject=Software&body=see attachment&attachment="C:/test.pdf"'
@@ -606,7 +586,6 @@ Click to zap customer</a><br>
 //<a href='mailto:".$CustEmail."?Subject=Invoice&Attachment=http://localhost/ACS/test.pdf' >".$CustEmail."</a>&nbsp;&nbsp;" .$CustEmail.">"."<br>";
 //echo "LOCATION<br>TEST ATTACHMENT3: <a href='mailto:".$CustEmail."?Subject=Invoice&Attachment=test.pdf '>".$CustEmail."</a>&nbsp;&nbsp;" .$CustEmail.">"."<br>";
 
-
 /*
 <a href="mailto:<?php echo $CustEmail ?>?subject=Invoice No <?php echo $InvNo; echo " ".$Summary?>&body=<?php echo $body.
 $nl.$aa.$nl.$a0.$nl.$a1.$nl.$a2.$nl.$a2b.$nl.$nl.$a3.$nl.$a4.$nl.$a5.$nl.$a6.$nl.$a7.$nl.$nl.$a8.
@@ -629,9 +608,9 @@ $un= 'N';
 $indesc = '1';
 $in = '1';
 //echo "indesc:".$indesc;
-//include "edit_trans_CustProcess.php";
+//include 'edit_trans_CustProcess.php';
 echo "<br><br>";
-//include "view_event_by_cust.php";
+//include 'view_event_by_cust.php';
 
 $un= 'Y';
 
@@ -660,5 +639,5 @@ $nl.$b9.$nl.$nl.$ba.$nl.$bb.$nl.$bc.$nl.$nl.$bd.$nl.$bf.$nl.$nl.$bg.$nl.$nl.$bh;
 </script>
 <body onload="javascript: redirect();">
 <?php
-include "edit_trans_CustProcess.php"; //including this in the middle causes havoc with variables.
+include 'edit_trans_CustProcess.php'; //including this in the middle causes havoc with variables.
 ?>

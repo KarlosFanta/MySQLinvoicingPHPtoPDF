@@ -40,9 +40,9 @@ and editCust.php opens up editCustProcess.php
  $page_title = "You seleted a customer";
 //if( ! @$_SESSION){
     session_start();
-//} 
+//}
 
-	require_once('header.php');	
+	require_once 'header.php';
 	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
 
 
@@ -64,7 +64,6 @@ $Custno = explode(';', $TBLrow );
 $CustInt = intval($Custno[0]);
 
 //echo "<br>Custint:".$CustInt."<br />";
-
 
 $_SESSION['CustNo'] = $CustInt;
 
@@ -96,7 +95,6 @@ echo "selectCust.php</a><br>";
 
 echo "<a href='addQuoCsess.php'><font size = '3'>Click here to add <b>quotes</b>:</font>";
 echo "addQuoCsess.php</a><br>";
-
 
 echo "<a href='addInvCsess.php'><font size = '3'>Click here to add <b>invoices</b>:</font>";
 echo "addInvCsess.php</a><br>";
@@ -142,7 +140,7 @@ echo "<br><br>";
 //include ("view_inv_by_custPD.php");
 //include (".php");
 */
-?> 
+?>
 
 
 

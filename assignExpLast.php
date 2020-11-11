@@ -1,7 +1,7 @@
  <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -12,18 +12,15 @@ $ProofDate = '';
 $Amt = '';
 $Notes ='';
 
-//$CustNo" 
+//$CustNo"
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
-
 
 $CustNo = $_POST['CustNo'];
 
 if ($CustNo == 0)
 echo "<font size = '5'>ERROR CUSTNo is zero</FONT>";
-
-
 
 $clExp = $_POST['clExp'];
 echo "clExp:";
@@ -42,20 +39,18 @@ $CustEmail = $_POST['CustEmail'];
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
 
-
 //$ProofNo = $_POST['ProofNo'];
 
 $Numb = "ProofNo1"; //default when table is empty.
 //$query = "SELECT  MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
 //$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
 //$query = "select ProofNo from aproof asc limit 1";
-//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead 
+//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead
 //$query = "select ProofNo from aproof order by ProofDate desc limit 1";
 $query = "SELECT ProofNo,CONVERT(SUBSTRING_INDEX(ProofNo,'ProofNo',-1),UNSIGNED INTEGER) AS num
 FROM aproof ORDER BY num desc limit 1;  ";
  //http://stackoverflow.com/questions/5960620/convert-text-into-number-in-mysql-query
 //$result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
 
 /*while($row = mysqli_fetch_array($result)){
 	echo "<br>The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -78,21 +73,19 @@ echo " notes:".$Notes ;
 $charset = mysqli_character_set_name($DBConnect);
 printf ("Current character set is %s\n",$charset);
 $Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;  
+$EEmail = $Notes;
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;");
-$Notes = str_replace($von, $zu, $Notes);  
+$Notes = str_replace($von, $zu, $Notes);
 echo " specNotes:".$Notes."<br>" ;
 $Notes = mysqli_real_escape_string($DBConnect, $Notes); //Note, that if no connection is open, mysqli_real_escape_string() will return an empty string!
 $CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
 */
 echo "Thank you for details: ".$CustNo ." ".$clExp ."."  ;
 
-
 $query="update expenses set CustNo = '$CustNo'  where ExpNo = $clExp3";
 
-
-/*(TransNo = $ProofNo, CustNo = $CustNo, ProofDate ='$ProofDate', Amt = $Amt, Notes = '$Notes', PMethod = '$PMethod', 
+/*(TransNo = $ProofNo, CustNo = $CustNo, ProofDate ='$ProofDate', Amt = $Amt, Notes = '$Notes', PMethod = '$PMethod',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -116,20 +109,14 @@ echo "<font size = 3  color = red><b><b>insert or update NOT successfull!!!<br> 
 else
 echo "<font size = 4>insert success! </font><br>$query<br>";
 
-
 //echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
 
 //echo "<input type='text' id='CNN'  name='CNN' value=".$CustNo.">";
 
 //include ("addTransCustProcess3.php");
 
-
-
-
-
 //php to sql does not understand semicolon. remove the semicolon!!!
 //$ProofInt = intval($ProofNoInt);
-
 
 $SQLString = "SELECT * FROM expenses WHERE CustNo = $CustNo";
 //$SQLString = "SELECT * FROM transaction WHERE WHERE CustNo = $item2;
@@ -162,24 +149,24 @@ print "_".$item9;
 }
 $result->free();
 }
-	
+
 
 
 //$file = "FileWriting/bkp.php";
-//include("FileWriting/FileWriting.php");
+//include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/	
+*/
 ?>
 
 
@@ -203,19 +190,17 @@ echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br
 
 <a href = "add_proof.php"> Click to add another proof</a>	<br><br>
 <a href = "add_trans.php"> Click to add another transaction</a>	<br><br>
-	
+
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 
 
-	
+
 
 <?php
 //echo $query;
 $ttttt = 0;
 
 echo "<br><br>";
-
-
 
 ?>
 <a href='selectCustProof.php'>Click to add email proof for another customer</a> or <input type = "submit" value = "Click to add email proof for the same customer">
@@ -226,12 +211,12 @@ echo "<br><br>";
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <?php

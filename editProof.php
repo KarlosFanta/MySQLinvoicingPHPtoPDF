@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,9 +18,9 @@ function formValidator(){
 	var Amt = document.getElementById('Amt');
 	var Notes = document.getElementById('Notes');
 	//var Proof = document.getElementById('TMethod');//Proof method
-	
 
-	
+
+
 	// Check each input in the order that it appears in the form!
 						if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
 				if(lengthRestriction(TransDate, 10,10)){
@@ -28,17 +28,17 @@ function formValidator(){
 			if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
 //				if(isDate(TransDate, "Please put in Date")){
 					//if(madeSelection(TMethod, "Please Choose Proof Method")){
-				
-						
-						
-						
+
+
+
+
 							return true;
 						}
 }
 }}}
 
 	//					return false;
-	
+
 //}
 
 function notEmpty(elem, helperMsg){
@@ -132,11 +132,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
- 
-        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
+
+        value = value.replace(/-/g, "/").replace(/\./g, "/");
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -152,17 +152,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
- 
+
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
-                    
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
+
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {  
+                        if (Month == 2) {
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        } 
+                        }
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -190,68 +190,68 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 	if(mm<10){mm='0'+mm};
     var yyyy = currentDt.getFullYear();
     var todaydate = mm + '/' + dd + '/' + yyyy;
-    
+
 	currentDt.setDate(currentDt.getDate()-1);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var yesterday = dd + '/' + mm + '/' + yyyy;
-	// alert(yesterday); 
+	// alert(yesterday);
 	//document.write(todaydate); //required for input or span
 	//document.write(yesterday);
 
 	currentDt.setDate(currentDt.getDate()-2);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var twodaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 	currentDt.setDate(currentDt.getDate()-3);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var threedaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 	currentDt.setDate(currentDt.getDate()-4);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var fourdaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 	currentDt.setDate(currentDt.getDate()-5);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var fivedaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 	currentDt.setDate(currentDt.getDate()-6);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var sixdaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 		currentDt.setDate(currentDt.getDate()-2);
 	var dd = currentDt.getDate();
 	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();	
+	var yyyy = currentDt.getFullYear();
 	if(dd<10){dd='0'+dd};
 	if(mm<10){mm='0'+mm};
 	var sevendaysago = dd + '/' + mm + '/' + yyyy;
-	
+
 */
-	
+
 	$(function() {
 		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
 		var availableTags = ["yp","jj"];
@@ -263,8 +263,6 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 		});
 		});
 
-
-
 </script>
 </head>
 <body>
@@ -274,20 +272,19 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 //	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 //	$CustInt = $_SESSION['CustNo'];
-include "monthtables.php";
-//include "view_transLatest.php";
+include 'monthtables.php';
+//include 'view_transLatest.php';
 $Prof = @$_POST['Prof'];
 
 $TBLrow ="";
 $TBLrow = @$_POST['mydropdownEC'];
 if ($TBLrow == "")
-$TBLrow = $_POST['CustNo']; 
-
+$TBLrow = $_POST['CustNo'];
 
 //echo "TBLrow: " .$TBLrow."</BR>";
 $CustNoPartArray = explode(';', $TBLrow );
@@ -325,7 +322,6 @@ $CustNo = explode(';', $TBLrow );
 //echo "TransNozERO: ";
 //echo $TransNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
-
 
 //echo "<br>Transint:".$CustInt."</br />";
 */
@@ -369,7 +365,6 @@ print "_".$item10;*/
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-
 echo "{$row[0]}&nbsp;&nbsp;";
 echo "<font size = '3'><b>";
 echo "{$row[1]}&nbsp;&nbsp;";
@@ -392,7 +387,7 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 
 
-<?php	
+<?php
 
 
 
@@ -402,10 +397,9 @@ $Numb = "ProofNo1"; //default when table is empty.
 //$query = "SELECT  MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
 //$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
 //$query = "select ProofNo from aproof asc limit 1";
-//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead 
+//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead
 $query = "select ProofNo from aproof order by ProofDate desc limit 1";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
 
 while($row = mysqli_fetch_array($result)){
 	echo "<br>The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -446,8 +440,6 @@ $item1 = $row["CustNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustFN"];
 
-
-
 $item3 = $row["CustLN"];
 $item4 = $row["Important"];
 
@@ -465,7 +457,7 @@ print "<br>IMPORTANT: &nbsp;&nbsp;&nbsp;&nbsp;".$item4.""; //$b;
 //$sql = "DELETE FROM Transomer WHERE TransNo = $TransInt" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -475,8 +467,6 @@ print "<br>IMPORTANT: &nbsp;&nbsp;&nbsp;&nbsp;".$item4.""; //$b;
 //oci_execute($stid);
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Account No ".$TBLrow."</BR>"   ;
-
-
 
 ?>
 
@@ -499,7 +489,6 @@ $item1 = $row["ProofNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["TransNo"];
 
-
 $item3 = $row["ProofDate"];
 $item4 = $row["Amt"];
 $item5 = $row["Notes"];
@@ -518,15 +507,10 @@ print " ".$item3;
 print " Notes: ".$item5;
 print " CustSDR: ".$item6;
 
-
-
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -541,33 +525,33 @@ $result->free();
 // close connection
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Update selected proof" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Update selected proof" />
+
+</select></p>
 <a href= "edit_trans_CustProcessCunresolved.php">Only Show unresolved transacions</a>
 
 
-	
+
 	<br>
 <!--<input type="submit" value="Create Proofaction" onclick="return confirm('Are you sure about the date?');" /> -->
-<input type='submit' value="Edit proof"   style="width:300px;height:30px" /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<input type='submit' value="Edit proof"   style="width:300px;height:30px" />
+<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
+<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
-			
+
 <!--
 <input type="submit" name="btn_submit" value="Create proof" onclick="formValidator()" /> -->
 
 
-	
+
 </form>
 
 
 
 <?php //mysql_close($conn);?>
-</p>  
+</p>
 
 
 
@@ -595,10 +579,6 @@ include ("view_proof_by_cust2.php");
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
-
-
-
-
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
 
@@ -606,22 +586,19 @@ echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 //include ("view_event_by_cust.php");
 
-
-
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
 alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 </table>
-<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
-		
-		
-include ("view_proof_all.php");		
-		
+
+include ("view_proof_all.php");
+
 		?>
 		<!--	<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
 

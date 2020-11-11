@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a transaction</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -13,8 +13,8 @@
 <body>
 
 <?php
-require_once('header.php');	
-require_once("inc_OnlineStoreDB.php");
+require_once 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 
 $txtArea = $_POST['csv'];
 /*echo "<br>";echo json_encode($txtArea);
@@ -61,7 +61,7 @@ print_r($matches);
 //implode("|",$matches);
 //echo "<br>MA0: ".@$matches; //date
 //echo "<br>MA0: ".$matches[n]; //date
-echo "<br>MA00: ".@$matches[0][0]; //sdr  chk 
+echo "<br>MA00: ".@$matches[0][0]; //sdr  chk
 //echo "<br>MA10: ".$matches[1][0]; //date
 echo "<br>MA01: ".@$matches[0][1]; //date
 //echo "<br>MA11: ".$matches[1][1]; //sdr  chk echo "<br>MA12: ".$matches[0][2]; //date
@@ -70,16 +70,15 @@ $M0 = @$matches[0][0];
 $M1 = @$matches[0][1];
 $M2 = @$matches[0][2];
 
-include "chkInv.php";
+include 'chkInv.php';
 if ($CCCCC == '')
-include "chkSDR.php";
-
+include 'chkSDR.php';
 
 	$CustInt = $CCCCC;
-	
+
 	if ($ininV == '1878')
 		$CustInt = 9; //mielck
-	
+
 
 
 
@@ -106,16 +105,16 @@ mysqli_free_result($resultC);
 }
 
 
-	
-	
+
+
 		if ($_POST['inv1'] == '1878')
 		$CustInt = 9; //mielck
-	
+
 }
 
 
-	
-	
+
+
 
 
 
@@ -213,16 +212,13 @@ mysqli_free_result($resultUP);
 }
 echo "</table>";
 
-
-
-
 if ($row_cnt > 0)
 {
 echo "<form   method='post'   action='addTransProof.php'  >";
 echo "<br><b>Proof No.";
 echo "<select onclick='enable1()' name='ProofToPay' id='ProofToPay' onchange='this.form.submit()'>";
 echo "Before entering anything first select the proof if there is one.<br>";
-echo "<option value='Select a Proof'>Select a Proof</option>"; 	
+echo "<option value='Select a Proof'>Select a Proof</option>";
 if ($resultCP = mysqli_query($DBConnect, $queryCP)) {
   while ($row2 = mysqli_fetch_assoc($resultCP)) {
 $ProofNo = $row2["ProofNo"];
@@ -240,7 +236,7 @@ echo $ProofNo;
 
 //to determine whether the proof has been paid we got to look at the aproof table
 //which has a TransNo column.
-//in addTransprocessLast2 it will say update aproof set TransNo = '1015' where ProofNo = 'ProofNo34' 
+//in addTransprocessLast2 it will say update aproof set TransNo = '1015' where ProofNo = 'ProofNo34'
 
 //NOPE:
 //to determine whether the invoice(s) have been paid we got to look at the transaction table
@@ -249,7 +245,7 @@ echo $ProofNo;
 print "_TR:".$TransNo1;
 if ($TransNo1 == '')
 echo "not paid yet";
-else 
+else
 echo "ALREADY ASSIGNED TO TR:".$TransNo1;
 
 print "_R".$Amt;
@@ -273,7 +269,6 @@ print "_InvNoF:".$row2["InvNoF"];
 if ($row2["InvNoG"] > 0)
 print "_InvNoG:".$row2["InvNoG"];
 
-
 print "_PrfDate:".$item4b;
 print "_CustNo:".$row2["TransNo"];
 
@@ -285,7 +280,7 @@ if ($resultII = mysqli_query($DBConnect, $queryII)) {
   }
  }
 
-print " </option>"; 
+print " </option>";
 
 	}
 $resultCP->free();
@@ -308,19 +303,19 @@ echo "<br><br>";
 else "no new proof of payments received";
 echo "</form>";
 
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 
-include "view_inv_by_custADV3.php"; //gives only totals
+include 'view_inv_by_custADV3.php'; //gives only totals
 
 $indesc = 0;
 $ShowDraft = "N";
-include "view_Underpaid_inv_by_cust2b.php"; //2b is the one with checkboxes and has form action
+include 'view_Underpaid_inv_by_cust2b.php'; //2b is the one with checkboxes and has form action
 echo "<b>WARNING! CHECK FOR SIMILARITIES: 88p04 above and 8804 below is the same invoice:</b>";
-include "view_Unpaid_inv_by_cust2bAT.php"; //2b is the one with checkboxes
+include 'view_Unpaid_inv_by_cust2bAT.php'; //2b is the one with checkboxes
 
 echo "<br><br>";
 
-//include "calculator/indexKL.php"; // works here
+//include 'calculator/indexKL.php'; // works here
 
 if ($UnpaidInvsummm < 4)
 echo "<br><font size = '6' > <b>No unpaid invoices. <br><font size = '4' > <a href = 'addInvCsess.php'>Click here to create new invoice</a></b><br><br>
@@ -330,10 +325,10 @@ else
 echo "<br><font size = '3' > <b> <br><a href = 'addInvCsess.php'>Click here to create new invoice</a></b><br><br>
 <a href = 'addInvCsessDadsl.php'>Click here to create new ADSL invoice</a></b><br>
 <br><br></font><br><br>";
-	
-//	include "calculator/indexKL.php"; //not working here
-//include "calculator/index.php"; //not working here
-	
+
+//	include 'calculator/indexKL.php'; //not working here
+//include 'calculator/index.php'; //not working here
+
 $daNextNo = 1; //default when table is empty.
 $query = "SELECT  MAX(TransNo)  AS MAXNUM FROM transaction";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
@@ -344,17 +339,17 @@ $daNextNo = intval($row[0])+1;
 }
 
 
-include "view_transLatestC.php"; //
+include 'view_transLatestC.php'; //
 
 echo "Add new transactions:<br>";
-include "calculator/indexKL.php"; // works here
+include 'calculator/indexKL.php'; // works here
 
 
-//include "calculator/indexKL.php"; // may not be placed inside another form calculation screwd up
+//include 'calculator/indexKL.php'; // may not be placed inside another form calculation screwd up
 ?>
 <form  action="addTMchk.php"   method="post">
 <br>
-<?php //include "calculator/indexKL.php"; ?>
+<?php //include 'calculator/indexKL.php'; ?>
 <br>
 <br>
 <br>
@@ -392,7 +387,7 @@ here we can select multiple invoices for the transaction using jQuery:
 <br>First select related invoices:<br>
 Payment Notes: <input type="text" id="PayNotes" size = '30' name="PayNotes" value="<?php echo $PayNotes;?>" > <br>
 <?php
-include "viewExpCust2.php";
+include 'viewExpCust2.php';
 echo "<table>";
 echo "<tr><th>TransNo</th>";
 echo "<th>TransDate<br>Hover and wait";
@@ -404,10 +399,10 @@ echo "</tr>\n<tr>";
 ?>
 <th><input type="text" size="2"  id="TransNo"  name="TransNo" value="<?php echo $daNextNo;?>" />
 </th>
-<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
-			<?php include("yesterday.php"); ?>
+			<?php include 'yesterday.php'; ?>
 			<input id="TransDate" size="10" name="TransDate" value = "<?php echo $TransDate; ?>" >
 		</th>
 
@@ -432,9 +427,9 @@ i only chose the existing proof from the other dropdown which autosubmitted-->
                 <option value="Cash Bank Deposit">Cash Bank Desposit</option>
                 <option value="Stop-order">Stop-order</option>
                 <option value="Debit">Debit</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Mixed">Mixed</option>	
-                <option value="-">-</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Mixed">Mixed</option>
+                <option value="-">-</option>
 </select>
 		</th>
 		<th>
@@ -447,14 +442,14 @@ i only chose the existing proof from the other dropdown which autosubmitted-->
 				<option value="AddAProofSAMEDATE">AddAProofSAMEDATE</option>
 </select>
 		</th>
-		
+
 		</tr></table>
 		<table>
 		<tr>
 		<?php
 		echo "<th>Invoices details incl VAT &nbsp;&nbsp;eg 7313, 209, Jun2014adsl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-		
-	?>	
+
+	?>
 		</tr></tr>	</table>
 
 <?php include 'invJQuery2.php' ?>
@@ -468,28 +463,27 @@ i only chose the existing proof from the other dropdown which autosubmitted-->
 			<input type="text" size="1"  id="InvNoH"  name="InvNoH"  class='clInvNoA' />
 			<input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $item1;?>">
 
-<input type='submit' value="Create transaction"   style="width:300px;height:30px" /> 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
+<input type='submit' value="Create transaction"   style="width:300px;height:30px" />
+<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
 
 </form>
 
 <?php
-include "view_trans_by_custUNDERorOVERPAID.php";
+include 'view_trans_by_custUNDERorOVERPAID.php';
 
 $ShowDraft = "Y";
-include "view_Unpaid_inv_by_cust2.php";
+include 'view_Unpaid_inv_by_cust2.php';
 echo "<br><br>";
 $indesc = '0';
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
 echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 include ("view_event_by_cust.php");
-?> 
+?>
 </body>
 </html>

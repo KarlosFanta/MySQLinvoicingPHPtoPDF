@@ -1,6 +1,6 @@
 
 <?php
-	require_once('header.php');	
+	require_once 'header.php';
 ?>
 
 <HTML>
@@ -17,10 +17,10 @@ Welcome to the Customized Invoicing System</br></font>
 </br>
 Here you can manage invoices.</br>
 </br>
-<?php 
-	//require_once('header.php');	
+<?php
+	//require_once 'header.php';
 	echo "Today's date: ";
-	echo date("l F d, Y"); 
+	echo date("l F d, Y");
 
 ?>
 <br /><br />
@@ -36,22 +36,22 @@ main Advantage: Fully customizable to suit your needs.
 <br />no MVC
 <br />
 <br />
-<br />Advantages: 
+<br />Advantages:
 <br />Fully customizable code and layout
 <br />Non-proprietory.
 <br />PHP5.3 or PHP5.5 or later : Compatible on all operating systems and browsers and mobile browsers.
 <br />PHP: started in 1994.
 <br />PHP licensing: FREE. OPENSOURCE.
 <br />MySql: using the improved php PDO or MySQLi extension for secure connection to the database.
-<br />Security: Best practice programming rules and input validation need to be added to the code. 
+<br />Security: Best practice programming rules and input validation need to be added to the code.
 
 <br />The community can provide code or suggestions to improve the system.
 <br />
 <br />
 <br />What needs to be done for the LPRS System:
-<br />Multiple users with different priveleges. 
-<br />Can import CSV data from: Milestone, Visec, Vtrack, NUUO, etc 
-<br />Verification and Cleaning: Following up on recovered vehicles 
+<br />Multiple users with different priveleges.
+<br />Can import CSV data from: Milestone, Visec, Vtrack, NUUO, etc
+<br />Verification and Cleaning: Following up on recovered vehicles
 <br />
 <br />
 
@@ -136,18 +136,17 @@ main Advantage: Fully customizable to suit your needs.
 </br>
 </br>
 </br><?php	print "</br></br>PHP</br></br>";
-	
+
 	echo "intval(4.8): ";
-	echo intval(-4.8); 
+	echo intval(-4.8);
 	print "</br></br></br></br>";
 
 	echo "round(4.8): ";
-	echo -(round(-4.8)); 
+	echo -(round(-4.8));
 	print "</br></br></br></br>";
 
-
 	echo "round(4.8, 0, PHP_ROUND_HALF_UP): ";
-	echo round(-4.8, 0, PHP_ROUND_HALF_UP);   
+	echo round(-4.8, 0, PHP_ROUND_HALF_UP);
 	print "</br></br>";
 
 ?>

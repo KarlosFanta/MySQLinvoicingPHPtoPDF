@@ -1,8 +1,8 @@
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
+	include 'header.php';
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 
 
@@ -90,7 +90,6 @@ $v1 = str_replace("&nbsp;","_",$v1);
 
 //echo "<br>afterstreplacec:".$v1."<br><br><br>";
 
-
 $old_pattern = array("/[^a-zA-Z0-9]/", "/_+/", "/_$/");
 $new_pattern = array("_", "_", "");
 $v2 = preg_replace($old_pattern, $new_pattern , $v1);
@@ -111,13 +110,12 @@ $InvNoG = changeV($InvNoG);
 $InvNoH = changeV($InvNoH);
 $Priority = changeV($Priority);
 
-
 echo "Thank you for changing the transaction's details: ".$Trans_No." ".$CustNo ." ".$TransDate ."."  ;
 
 $Trans_NoInt = intval($Trans_No);
-$query="update transaction set CustNo = '$CustNo', TransDate ='$TransDate', AmtPaid = '$AmtPaid', 
-Notes = '$Notes', TMethod = '$TMethod', 
-CustSDR = '$CustSDR', 
+$query="update transaction set CustNo = '$CustNo', TransDate ='$TransDate', AmtPaid = '$AmtPaid',
+Notes = '$Notes', TMethod = '$TMethod',
+CustSDR = '$CustSDR',
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -126,7 +124,7 @@ InvNoE = '$InvNoE', InvNoEincl = '$InvNoEincl' ,
 InvNoF = '$InvNoF', InvNoFincl = '$InvNoFincl' ,
 InvNoG = '$InvNoG', InvNoGincl = '$InvNoGincl' ,
 InvNoH = '$InvNoH', InvNoHincl = '$InvNoHincl' ,
-Priority = '$Priority' 
+Priority = '$Priority'
 where TransNo = $Trans_NoInt";
 //oracle: $query="update transaction set Transfn = '$CustNo', Transln ='$TransDate', Transtel = '$AmtPaid', Transcell= '$Notes', Transemail = '$TMethod', Transaddr = '$InvNoA', distance = '$InvNoAincl' where Transno = :Trans_NoInt";
 //echo '</br></br></br></br></br></br></br>';
@@ -146,9 +144,6 @@ echo " <a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&tabl
 echo ";<br>";
 
 echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
-
-
-
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -191,7 +186,7 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <form name="sdd" action="edit_trans_CustProcessC_2nd.php" method="post">
 
 
-<input type="submit" name="btn_submit" value="Update next transaction" /> 
+<input type="submit" name="btn_submit" value="Update next transaction" />
 </form>
 <!--
 //$query="insert into transaction values(5, 'Jn', 'VM', '65', '084', 'johnATv', 'USA', 55)";
@@ -201,9 +196,9 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 //$rc=oci_execute($stmt);-->
 <?php
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";

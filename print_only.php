@@ -1,16 +1,15 @@
 <?php
-	//require_once("db.php");//page567
+	//require_once 'db.php';//page567
 		require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<?php 
+<?php
 
 
 
 $TBLrow = $_POST['mydropdownEC'];
-
 
 //echo "TBLrow: " .$TBLrow."</BR>";
 $Invno = explode(';', $TBLrow );
@@ -30,7 +29,6 @@ $to .= 'wez@example.com';
 
 // subject
 $subject = 'Birthday Reminders for August';
-
 
 // message
 $message ='';
@@ -71,7 +69,7 @@ function printpage()
 		<TH WIDTH=*>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "2">
 
-			<?php //echo date("d.n.Y"); 
+			<?php //echo date("d.n.Y");
 			$Dt1 = explode("-", $rowI['InvDate']);
 //echo $Dt1[2]."____";
 
@@ -91,7 +89,7 @@ echo $TransDate;	 ?>
 		<TH WIDTH=16%>
 			<P LANG="en-GB" ALIGN=LEFT ><FONT SIZE=2><FONT FACE="Arial, sans-serif">
 			VAT NO<br>
-			
+
 CompanyAddr<br>
 Tel: <br>
 Cell:  <br>
@@ -100,13 +98,13 @@ Cell:  <br>
 		<TH WIDTH=21%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif" size = "3">TAX INVOICE
 			NO.
-	
+
 			</FONT>
 		</TH>
 		<TH WIDTH=13%>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "4">
 			<?php
-			echo $InvNo2; 
+			echo $InvNo2;
 			?>
 			</FONT><BR>
 			</P>
@@ -114,9 +112,9 @@ Cell:  <br>
 	</TR>
 	<TR>
 		<TH WIDTH=16%>
-			<P LANG="en-GB" ALIGN=LEFT STYLE="font-weight: normal"><FONT SIZE=3>Customer: 
-			
-	<?php	
+			<P LANG="en-GB" ALIGN=LEFT STYLE="font-weight: normal"><FONT SIZE=3>Customer:
+
+	<?php
 //$InvNo = 0;
 //$InvNo = $_POST['InvNo']; //WARNIGN THIS IS CUSTOMER TABLE ONLY!  NOT THE INVOICE TABLE!!
 			$SQLstring = "select * from customer where CustNo = (select CustNo from invoice where InvNo = '$InvNo2')";
@@ -137,7 +135,6 @@ if ($result = $DBConnect->query($SQLstring)) {
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
 
-
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -147,7 +144,7 @@ echo "{$row[1]}"; ///Cust FName
 echo " ";
 echo $row[2]; //CustLName
 echo "<br>Email: ";
-//echo "{$row[3]}"; 
+//echo "{$row[3]}";
 //echo "<th>{$row[3]}</th>";
 //echo "{$row[4]}";
 echo "{$row[5]}";// Cust Email FROM CUSTOMER TABLE!!!
@@ -169,35 +166,35 @@ echo "row13: {$row[13]}";
 */
 $Abbr = $row[13];
 ?>
-	
-			
-			
+
+
+
 			</FONT></P>
 		</TH>
 		<TH WIDTH=22%>
 			<P LANG="en-GB" align = "left">
-			Account No: 
-			
+			Account No:
+
 			</P>
 		</TH>
 		<TH WIDTH=17%>
-			<P LANG="en-GB" align = "left"><?php echo "{$row[0]}"; 
+			<P LANG="en-GB" align = "left"><?php echo "{$row[0]}";
 		}
     /* free result set */
     $result->close();
-	
+
 			?><BR>
 			</P>
 		</TH>
 	</TR>
-	
+
 </TABLE>
 <BR />
-Summary: <?php 
-//echo $rowI['Summary']; 
+Summary: <?php
+//echo $rowI['Summary'];
 //$earlySDR = 'acc'.$CustNo.' inv'.$InvNo.' '.$Summary;
 //echo "{$row[0]}";
-//echo "inv".{$rowI[InvNo]}; 
+//echo "inv".{$rowI[InvNo]};
 
 /*echo $Abbr;
 echo ',acc';
@@ -216,7 +213,7 @@ echo $rowI['SDR'];
  //$TAmt = number_format ($TAmt, 2, ".", "");
  echo $TAmt; ?>
 
- 
+
  <?php
 //echo "<br>InvNo:".$InvNo2."</br />";
 
@@ -464,7 +461,7 @@ echo"</table>
 			echo "
 		</TH>
 	</TR>
-	
+
 	<TR>
 		<TH> <p align = 'right'>";
 			echo "Plus 14% VAT";
@@ -478,7 +475,7 @@ echo"</table>
 			echo "
 		</TH>
 	</TR>
-	
+
 		<TR>
 		<TH> <p align = 'right'>";
 		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -488,18 +485,18 @@ echo"</table>
 		</TH>
 		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			
+
 			$IT= $ST*1.14;
 			$IT2 = number_format ($IT, 2, ".", "");
 			echo "R".$IT2;
 			echo "
 		</TH>
-	</TR>	
-	
-	
-	
+	</TR>
+
+
+
 </table>
-	
+
 	";
 
 ?>
@@ -530,7 +527,7 @@ Account Number: <br />
 <br /><FONT FACE="Arial, sans-serif" size = "2">
 Please send proof of payment to: CompanyEmail@me.co.za<br />
  </th>
- 
+
  </tr>
  <tr>
  <th>
@@ -561,13 +558,13 @@ Please send proof of payment to: CompanyEmail@me.co.za<br />
 
 
 
- 
+
  $url1 = "yo.htm";
  //$url1 = $_GET["url"];
 //  header("content-disposition: attachment;
 //  filename=" . baseName($url1);
  // header("content-type: application/force-download");
- 
+
 ?>
 
 </body>

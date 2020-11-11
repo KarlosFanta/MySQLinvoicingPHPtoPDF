@@ -1,20 +1,18 @@
 <?php
 
 	$page_title = "Customer";
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 
 $indesc = "20";
 $indesc = @$_POST['indesc']; //inv descriptions
 $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 
-	
-
-?> 
+?>
 
 
 
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">Your Invoices History &nbsp;&nbsp;&nbsp;&nbsp;</font> </b>view_inv_by_custPD.php
 <?php 			echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
@@ -75,8 +73,6 @@ echo "<th>D8</th>";
 echo "<th>Q8</th>\n";
 echo "<th>ex8</th></tr>\n";
 
-
-
 //}
 
     /* fetch object array */
@@ -126,16 +122,14 @@ echo "<th>{$row[26]}</th>\n";
 echo "<th>{$row[27]}</th>\n";
 echo "<th>{$row[28]}</th>\n";
 
-
 echo "</tr>\n";
 		}}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table><br><br>";
 echo "Invoices total to: R ".$summm."<br /><br />";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -218,7 +212,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 ?>
 
 
@@ -261,5 +255,5 @@ echo "</table>";
 
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>

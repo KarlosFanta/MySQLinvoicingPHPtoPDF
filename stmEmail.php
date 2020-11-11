@@ -1,5 +1,5 @@
-<?php	
-	
+<?php
+
 
 
 
@@ -20,7 +20,6 @@ $a6 = "(EFT) Banking details:";
 $a7 = "Account holder: CompanyName";
 $a8 = "Bank: BankName";
 $a9 = "Account Number: BankAccNo";
-
 
 $b1 =  "Branch No: BranchNo(universal)";
 $b2 = "( BranchName: ";

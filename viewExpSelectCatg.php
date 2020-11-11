@@ -1,8 +1,8 @@
 <?php
 	$page_title = "Select a customer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
 ?>	<html>
 <head>
 <title></title>
@@ -13,7 +13,7 @@
 </head>
 <form name="Pro" action="viewExpmyeditbasicCat.php" method="post">
 <?php
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 
 /*
 if (isset($_POST['btnSubmit'][0])) {
@@ -29,8 +29,6 @@ if (isset($_POST['btnSubmit'][0])) {
 */
 
 //$btnSubmit = $_POST['btnSubmit'];
-
-
 
 $query = "select * from expenses ORDER BY Category";
 $query = "select DISTINCT Category, ExpNo, ExpDesc from expenses";
@@ -49,8 +47,6 @@ echo $query;
 
 	@session_start();
 
-
-
 ?>
 <b><font size = "4" type="arial">Select A Category </b></font>
 
@@ -61,8 +57,8 @@ echo $query;
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-	
-	
+
+
 
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -73,7 +69,7 @@ print "<option value='$item1'>$item1"; //all customers
 //print "_".$item2;
 //print "_".$item3;
 
-print " </option>"; 
+print " </option>";
 
 	}
 $result->free();
@@ -83,14 +79,14 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 //echo $item2;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
-</select></p>  
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
+</select></p>
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
 
 
 <b>
@@ -121,7 +117,7 @@ print " </option><br>";
 
 <form name="Pro" action="viewExpmyeditbasicCatH.php" method="post">
 <?php
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 
 /*
 if (isset($_POST['btnSubmit'][0])) {
@@ -137,8 +133,6 @@ if (isset($_POST['btnSubmit'][0])) {
 */
 
 //$btnSubmit = $_POST['btnSubmit'];
-
-
 
 $query = "select * from expensesH ORDER BY Category";
 $query = "select DISTINCT Category, ExpNo, ExpDesc from expensesH";
@@ -157,8 +151,6 @@ echo $query;
 
 	@session_start();
 
-
-
 ?>
 <b><font size = "4" type="arial">Select A Category </b></font>
 
@@ -169,8 +161,8 @@ echo $query;
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-	
-	
+
+
 
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -181,7 +173,7 @@ print "<option value='$item1'>$item1"; //all customers
 //print "_".$item2;
 //print "_".$item3;
 
-print " </option>"; 
+print " </option>";
 
 	}
 $result->free();
@@ -191,14 +183,14 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 //echo $item2;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
-</select></p>  
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
+</select></p>
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
 
 
 <b>
@@ -212,7 +204,7 @@ print " </option><br>";
 
 <form name="Pro" action="viewExpmyeditbasicCatE.php" method="post">
 <?php
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 
 /*
 if (isset($_POST['btnSubmit'][0])) {
@@ -228,8 +220,6 @@ if (isset($_POST['btnSubmit'][0])) {
 */
 
 //$btnSubmit = $_POST['btnSubmit'];
-
-
 
 $query = "select * from expensesE ORDER BY Category";
 $query = "select DISTINCT Category, ExpNo, ExpDesc from expensesE";
@@ -248,8 +238,6 @@ echo $query;
 
 	@session_start();
 
-
-
 ?>
 <b><font size = "4" type="arial">Select A Category </b></font>
 
@@ -260,8 +248,8 @@ echo $query;
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-	
-	
+
+
 
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -272,7 +260,7 @@ print "<option value='$item1'>$item1"; //all customers
 //print "_".$item2;
 //print "_".$item3;
 
-print " </option>"; 
+print " </option>";
 
 	}
 $result->free();
@@ -282,14 +270,14 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 //echo $item2;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
-</select></p>  
-<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
+</select></p>
+<input type="submit" name="btn_submit" value="Select the Category" style="width:300px;height:30px" />
 
 
 <b>
@@ -308,4 +296,4 @@ print " </option><br>";
 
 </body>
 
-</html> 
+</html>

@@ -1,7 +1,7 @@
 <?php	//this is "process_event.php"
  $page_title = "You added a event";
-	include('header.php');	
-require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
 ?>
 
 
@@ -20,7 +20,6 @@ $EDate = $_POST['EDate'];
 $ENotes = $_POST['ENotes'];
 $Destination = $_POST['Destination'];
 echo "D:".$Destination." ";
-
 
 $Priority = $_POST['Priority'];
 
@@ -54,7 +53,6 @@ $v1 = str_replace("&nbsp;","_",$v1);
 
 //echo "<br>afterstreplacec:".$v1."<br><br><br>";
 
-
 $old_pattern = array("/[^a-zA-Z0-9]/", "/_+/", "/_$/");
 $new_pattern = array("_", "_", "");
 $v2 = preg_replace($old_pattern, $new_pattern , $v1);
@@ -67,14 +65,13 @@ $ENotes = changeV($ENotes);
 $Priority = changeV($Priority);
 echo "D:".$Destination." ";
 
-
 echo "Thank you for changing the event's details: ".$event_No." ".$CustNo ." ".$EDate ."."  ;
 
 $event_NoInt = intval($event_No);
-$query="update events set CustNo = '$CustNo', EDate ='$EDate',  
-ENotes = '$ENotes', 
-Destination = '$Destination', 
-Priority = '$Priority' 
+$query="update events set CustNo = '$CustNo', EDate ='$EDate',
+ENotes = '$ENotes',
+Destination = '$Destination',
+Priority = '$Priority'
 where EventNo = $event_NoInt";
 
 mysqli_query($DBConnect, $query);
@@ -92,9 +89,6 @@ echo " <a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&tabl
 echo ";<br>";
 
 echo "<a href = 'view_event_all.php'>view_event_all.php</a></a><br>";
-
-
-
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -134,7 +128,7 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <form name="sdd" action="edit_eventCQ.php" method="post">
 
 
-<input type="submit" name="btn_submit" value="Update next event" /> 
+<input type="submit" name="btn_submit" value="Update next event" />
 </form>
 <!--
 //$query="insert into events values(5, 'Jn', 'VM', '65', '084', 'johnATv', 'USA', 55)";
@@ -145,9 +139,9 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <?php
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";

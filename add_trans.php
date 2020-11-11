@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,9 +14,7 @@ function formValidator(){
 	var Notes = document.getElementById('Notes');
 	var TMethod = document.getElementById('TMethod');
 	var mydropdownEC = document.getElementById('mydropdownEC');
-	
 
-	
 	// Check each input in the order that it appears in the form!
 	if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
 		if(lengthRestriction(TransDate, 10,10)){
@@ -33,7 +31,7 @@ function formValidator(){
 	}
 
 	return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -127,11 +125,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
- 
-        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
+
+        value = value.replace(/-/g, "/").replace(/\./g, "/");
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -147,17 +145,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
- 
+
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
-                    
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
+
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {  
+                        if (Month == 2) {
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        } 
+                        }
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -184,8 +182,8 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 
 <?php	//this is "addTransCustProcess2.php"
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
   //  @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 //	$CustInt = $_SESSION['CustNo'];
@@ -213,7 +211,6 @@ $CustNo = explode(';', $TBLrow );
 //echo $TransNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
 
-
 //echo "<br>Transint:".$CustInt."</br />";
 */
 /*$SQLstring = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
@@ -221,7 +218,6 @@ $CustInt = intval($CustNo[0]);
 if ($result = $DBConnect->query($SQLstring)) {
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
-
 
 echo "{$row[0]}&nbsp;&nbsp;";
 echo "<font size = '3'><b>";
@@ -246,7 +242,7 @@ echo "{$row[9]}&nbsp;&nbsp;";
 <form onsubmit='return formValidator()'  action="addTransprocess_last2.php"   method="post">
 
 
-<?php	
+<?php
 
 
 
@@ -310,15 +306,15 @@ echo "<th>Priority</th></tr>\n";
 		</th>
 
 <!--<input type="hidden" id="CustNo"  name="CustNo" value="<?php //echo $CustInt;?>";-->
-		
+
 
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 			<!--<label>TransDate:</label></dt>-->
 			<!--<input type="text" size="10" id="TransDate"  name="TransDate" value="<?php //echo $TransDate; ?>" /> -->
-			<?php include("yesterday.php"); ?>
+			<?php include 'yesterday.php'; ?>
 			<input id="lst" id="TransDate" size="10" name="TransDate"  >
 		</th>
 
@@ -326,38 +322,38 @@ echo "<th>Priority</th></tr>\n";
 			<!--<label>&nbsp; CustSDR:</label></dt>-->
 			<input type="text"  size="8" id="CustSDR"  name="CustSDR" size = '20' value="" />
 		</th>
-		
+
 		<th>
 			<!--<label>&nbsp; AmtPaid:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="AmtPaid"  name="AmtPaid" value="<?php //echo $AmtPaid; ?>" />
 		</th>
-	
+
 
 		<th>
 			<!--<label>&nbsp; Notes:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="8" id="Notes"  name="Notes" size = '35' value="." />
 		</th>
-	
+
 		<th>
 			<!--<label>&nbsp; Payment Method:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<!--<input type="text" id="TMethod"  name="TMethod" value="." />-->
-			
-			
+
+
 			<select name="TMethod"  id="TMethod" >
-			
+
                 <option value="Please Choose">Please Choose</option><!--VERY IMPORTANT THAT value must equla to please choose as well!!!-->
                 <option value="EFT">EFT</option>
                 <option value="Cash">Cash</option>
                 <option value="Stop-order">Stop-order</option>
                 <option value="Debit">Debit</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Mixed">Mixed</option>	
-                <option value="-">-</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Mixed">Mixed</option>
+                <option value="-">-</option>
 </select>
-<!--<input type='button' 
+<!--<input type='button'
 	onclick="madeSelection(document.getElementById('selection'), 'Please Choose Something')"
 	value='Check Field' />
 -->
@@ -374,8 +370,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="3"  id="InvNoAincl"  name="InvNoAincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoB:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -386,8 +382,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoBincl"  name="InvNoBincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoC:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -398,8 +394,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="1"  id="InvNoCincl"  name="InvNoCincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoD:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -410,8 +406,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoDincl"  name="InvNoDincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoE:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -422,8 +418,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoEincl"  name="InvNoEincl" value="0" />
 		</th>
-	
-	
+
+
 <!--		<th>
 			<!--<label>&nbsp; InvNoF:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -434,8 +430,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="hidden"  size="1" id="InvNoFincl"  name="InvNoFincl" value="0" />
 <!--		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoG:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -446,8 +442,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="hidden"  size="1" id="InvNoGincl"  name="InvNoGincl" value="0" />
 <!--		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoH:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -458,45 +454,42 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="hidden" size="1"  id="InvNoHincl"  name="InvNoHincl" value="0" />
 <!--		</th>
--->	
-	
-	
+-->
+
+
 		<th>
 			<!--<label>&nbsp; Priority:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			
-			
+
+
 			<!--<input type="text" id="Priority"  name="Priority" value="." />-->
-			
-			
+
+
 			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
 			</select>
-			
+
 </th>
 		</tr>
 		</table>
-				
+
 <!--<select name="mydropdownEC" onchange='this.form.submit()'>-->
 <?php
 
 /*
 echo "<select name="mydropdownEC" id="mydropdownEC">";
 
-
 $query = "select CustNo, CustFN, CustLN from customer order by CustLN";
 //echo $queryS."<br>";
 
-
-
 echo "<option value='Please Choose'>Please Choose</option>";//VERY IMPORTANT THAT value must equla to please choose as well!!!-->
 
-            
+
 
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -510,10 +503,7 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 	}
 	mysqli_free_result($result);
@@ -524,41 +514,35 @@ print " </option>";
 // close connection
 //$mysqli->close();
 mysqli_close($DBConnect);
-//print " </option>"; 
+//print " </option>";
 echo "</select>";
 */
 include ("add_transs.php");
 echo "<br>";
 
+?>
 
 
-
-
-
-
-?>			
-
-		
 <br><br>
 <!--<input type="submit" value="Create transaction" onclick="return confirm('Are you sure about the date?');" /> -->
-<input type='submit' value="Create transaction"   /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<input type='submit' value="Create transaction"   />
+<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  /> 
+<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
-			
+
 <!--
 <input type="submit" name="btn_submit" value="Create transaction" onclick="formValidator()" /> -->
 
 
-	
+
 </form>
 
 
 
 <?php //mysqli_close($DBConnect);?>
-</p>  
+</p>
 
 
 
@@ -588,17 +572,12 @@ echo "SO/BV GOOD NEWS TO SEAMAN is SCHONHOFF";
 //echo "</table>";
 echo "<br><br>";
 echo "<a href='view_trans_all.php'>view_trans_all.php</a>";
-//	include("view_inv.php");
-	//include("view_cust_just_names.php");
-	
-	
+//	include 'view_inv.php';
+	//include 'view_cust_just_names.php';
+
 //include ("view_trans_by_cust.php");
 //include ("view_cust.php");
 //include ("view_inv_by_cust.php");
-
-
-
-
 
 //echo "<BR />Invoices total to: R".$Invsummm."<br />";
 //echo "All transactions total to: R".$yo."<br>";
@@ -607,15 +586,13 @@ echo "<a href='view_trans_all.php'>view_trans_all.php</a>";
 
 //include ("view_event_by_cust.php");
 
-
-
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
 alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

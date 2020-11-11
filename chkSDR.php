@@ -48,13 +48,11 @@ $ininB = $array[1]; //SDR
 $cred = $array[2];
 $paid = $array[3];
 
-
 $words = str_replace("ABSA BANK","",$words);
 $words = str_replace("ABSABANK","",$words);
 $words = trim($words); //removes whitespace at beginning and end
-$arraySDRcut = trim($arraySDRcut); 
-$ininV = trim($ininV); 
-
+$arraySDRcut = trim($arraySDRcut);
+$ininV = trim($ininV);
 
 	$queryC = "select CustNo from invoice where SDR LIKE '%$arraySDRcut2%'  UNION ALL  select CustNo from customer where CommonSDR LIKE '%$words%'  UNION ALL select CustNo from invoice where SDR LIKE '%$words%'  UNION ALL  select CustNo from customer where CommonSDR LIKE '%$words%'  UNION ALL  select CustNo from invoice where SDR LIKE '%$ininV%'  UNION ALL  select CustNo from customer where CommonSDR LIKE '%$arraySDRcut%'   ";
 //echo $queryC;
@@ -72,13 +70,11 @@ $row_cnt = mysqli_num_rows($resultC);
 //echo " <br><br>rows: $row_cnt"; //not ttested yet
 $CCCCC = $row["CustNo"];
 
-
-
 }
 mysqli_free_result($resultC);
 }
 if (@$row_cnt > 1)
-	echo "<br><font size = 4><b>ERROR MORE THAN 1 USER FOUND:$row_cnt rows. CustNO:$CCCCC!!<br></font></b><br>"; 
+	echo "<br><font size = 4><b>ERROR MORE THAN 1 USER FOUND:$row_cnt rows. CustNO:$CCCCC!!<br></font></b><br>";
 
 if ($CCCCC == '')
 {
@@ -97,9 +93,7 @@ $row_cnt = mysqli_num_rows($res2);
 echo " <br><br>rows: $row_cnt"; //not ttested yet
 $CCCCC = $row["CustNo"];
 if ($row_cnt > 1)
-	echo "<font size = 4><b>ERROR MORE THAN 1 USER FOUND QUERY2: $CCCCC!!!!!</font></b><br>"; 
-
-
+	echo "<font size = 4><b>ERROR MORE THAN 1 USER FOUND QUERY2: $CCCCC!!!!!</font></b><br>";
 
 }
 mysqli_free_result($res2);

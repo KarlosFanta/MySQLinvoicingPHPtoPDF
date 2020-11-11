@@ -25,6 +25,6 @@
  */
 
 // Include the main TCPDF library (search for installation path).
-include('PDF/tcpdf/examples/PDF.php');
+include 'PDF/tcpdf/examples/PDF.php';
 
 ?>

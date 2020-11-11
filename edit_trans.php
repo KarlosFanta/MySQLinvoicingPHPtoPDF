@@ -2,11 +2,11 @@
 
 
 	$page_title = "Select a transaction";
-	require_once('header.php');	
-//	require_once('db.php');	
-	
-	require_once('inc_OnlineStoreDB.php');	
-	
+	require_once 'header.php';
+//	require_once 'db.php';
+
+	require_once 'inc_OnlineStoreDB.php';
+
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -32,11 +32,8 @@ if (mysql_num_rows($result) == 0) {
 
 
 //$query="insert into transaction (TransNo, CustNo, TransDate, Amtpaid, Notes, TMethod, InvNoA, InvNoAincl, InvNoB, InvNoBincl, InvNoC, InvNoCincl, InvNoD, InvNoDincl, InvNoE, InvNoEincl, InvNoF, InvNoFincl, InvNoG, InvNoGincl, InvNoH, InvNoHincl, Priority)
-//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA, 
+//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA,
 //$InvNoAincl, $InvNoB, $InvNoBincl, $InvNoC, $InvNoCincl, $InvNoD, $InvNoDincl, $InvNoE, $InvNoEincl, $InvNoF, $InvNoFincl, $InvNoG, $InvNoGincl, $InvNoH, $InvNoHincl, '$Priority')";
-
-
-
 
 ?>
 <b><font size = "4" type="arial">Edit a transaction's Details</b></font>
@@ -52,7 +49,7 @@ if (mysql_num_rows($result) == 0) {
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -74,10 +71,7 @@ print "_".$item7;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -91,9 +85,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Update selected transaction" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Update selected transaction" />
+
+</select></p>
 
 
 
@@ -150,13 +144,13 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
 */

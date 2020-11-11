@@ -33,12 +33,10 @@ $CustNo = 1;
 
 //echo $_SESSION['CustNo'];
 
-
 	if (isset($_SESSION['CustNo']))
 $CustNo = $_SESSION['CustNo'];
 echo "CustNo:".$CustNo;
 $opts['filters'] = "CustNo = '$CustNo'";
-
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -57,7 +55,7 @@ $opts['filters'] = "CustNo = '$CustNo'";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
+require_once 'phpmyEditdb.php';
 
 $opts['tb'] = 'transaction';
 
@@ -117,7 +115,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-   
+
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -167,11 +165,11 @@ $opts['fdd']['TransDate'] = array(
   'maxlen'   => 10,
 //  'default'  => '0000-00-00',
   'sort'     => true,
-  
+
 //'datemask' => date('d-m-Y')
 'datemask' => 'd/m/Y'
 //'datemask' => 'r'
-  
+
 );
 
 $opts['fdd']['TransNo'] = array(
@@ -180,7 +178,6 @@ $opts['fdd']['TransNo'] = array(
   'maxlen'   => 11,
   'sort'     => true
 );
-
 
 $opts['fdd']['AmtPaid'] = array(
   'name'     => 'AmtPaid',

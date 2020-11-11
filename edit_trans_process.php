@@ -1,6 +1,6 @@
 <?php	//this is "editCustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
+	require_once 'header.php';
 	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
 ?>
 <form name="Edit_trans_process" action="edit_trans_process_last.php" method="post">
@@ -30,7 +30,7 @@ $query = "SELECT * FROM transaction WHERE TransNo = $TransInt" ;
 //$sql = "DELETE FROM Transomer WHERE TransNo = $TransInt" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -40,7 +40,6 @@ $query = "SELECT * FROM transaction WHERE TransNo = $TransInt" ;
 //oci_execute($stid);
 echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 echo "Thank you for selecting transaction ".$TBLrow." from your database. You may now change the details:</BR>"   ;
-
 
 //$objResult = mysql_query($sql) or die(mysql_error());
 
@@ -92,7 +91,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl>";
 
-
  		echo "<dl>";
 			echo "<dt><label>Amount Paid</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -132,7 +130,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -147,7 +144,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo $row["InvNoBincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -164,7 +160,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -179,7 +174,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo $row["InvNoDincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -196,7 +190,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -211,7 +204,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo $row["InvNoFincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -228,7 +220,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoH</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -244,8 +235,6 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
-		
  		echo "<dl>";
 			echo "<dt><label>Priority</label></dt>";
 			//     <!--<dd><input type="text" name="InvNoincl" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -261,20 +250,14 @@ if ($result = mysqli_query($DBConnect, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-		
-		
 		//$objResult;
  }
- 
+
 }
 
 //oracle: oci_free_statement($objParse);
 //oci_free_statement($stid);
 //oracle: oci_close($conn);
-
-
-
-
 
 		/*<dl>
 			<dt><label>* First Name<?php //echo $this->lang->line('Trans_fn'); ?>: </label></dt>
@@ -286,9 +269,9 @@ if ($result = mysqli_query($DBConnect, $query)) {
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
@@ -307,7 +290,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

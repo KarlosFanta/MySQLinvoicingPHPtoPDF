@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>PayNotes</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script  type="text/javascript">
 function formValidator(){
 	// Make quick references to our fields
@@ -27,7 +27,7 @@ function formValidator(){
 
 
 						return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -133,9 +133,8 @@ function emailValidator(elem, helperMsg){
 $CustNo = '';
 $CustNo = @$_GET['CustNo'];
      echo "CustNo ". @$_GET['CustNo']. ".";
-	 
 
-	require_once('header.php');	
+	require_once 'header.php';
 	require_once ('inc_OnlineStoreDB.php');
     @session_start();
 
@@ -153,14 +152,13 @@ echo "<input type = 'submit' value = 'Accept CustNo into session' >";
 
 echo "</form>";
 
-
 if ($result = mysqli_query($DBConnect, $SQLstring)) {
   while ($row = mysqli_fetch_assoc($result)) { //assoc cannot handle spaces!!
 
 echo "<form name='Addcust' action='PayNotesLast.php' method='post'>";
 $PayNotes = $row['PayNotes'];
 echo "<br>Payment Notes: <input type='text' id='PayNotes' size = '90' name='PayNotes' value='$PayNotes' ><br>";
-  
+
  $FL = $row['L1'];
  if ($FL == "")
 {
@@ -169,9 +167,9 @@ echo "<br><font size = 3><b>NO CUSTOMER FOLDER FOUND (Maybe another account is b
 $FL= "F:/_work/Customers";
 }
 
- 
 
- 
+
+
 
 echo "Customer AutoNumber:";
 echo "<input type='text' size = 4 name='CustNo' value='";
@@ -191,9 +189,6 @@ echo "<input type='text' size = 14 name='CommonSDR' value='";
 echo $row['CommonSDR'];
 echo "'>";
 
-
-
-
 echo "<br>";
 
 echo "";
@@ -206,8 +201,6 @@ echo "<head><title>";
 echo $row['ABBR'];
 echo "</title></head>";
 
-
-
 	$RU1 = "_";
 $RU2 = "_";
 $RU1 = $row["u1"];
@@ -216,9 +209,6 @@ $CLN = "_";
 $CLN = $row['CustLN'];
 
 echo "<a href = 'http://www.karl.co.za/karllo0/combo.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Combo</b></a> ";
-
-
-
 
 echo " <a href = 'http://www.karl.co.za/karllo0/reseller_resetport.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Reset+Port' target=_blank>Reset port</a>";
 echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_resetport.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Reset+Port' target=_blank>RPC</a>";
@@ -229,7 +219,6 @@ $ADSLTel = $row["ADSLTel"];
 echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_unlock_template.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Temporarily+Unlock' target=_blank>UnC</a>";
 $ADSLTel = $row["ADSLTel"];
 
-
 echo " <a href = 'http://www.karl.co.za/karllo0/reseller_interrogate.php?tel_number=$ADSLTel'  target=_blank>KIntrrogate</a> ";
 echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_interrogate.php?tel_number=$ADSLTel'  target=_blank>CIntrgt</a> ";
 	echo " <a href = 'interrogate.php' target=_blank>Old</a>";
@@ -239,28 +228,23 @@ $II = str_replace( "&nbsp;&nbsp;", "&nbsp;", $II );
 	$II = preg_replace( "/&nbsp;/", " ", $II );
 
 	$II = preg_replace( "/\s+/", " ", $II );
-	
+
 //$II = preg_replace( "&nbsp;&nbsp;", " ", $II );
 
 preg_replace("/[[:blank:]]+/"," ",$II);
-	
 
 $Abbr = $row['ABBR'];
 $ABBB = strtr($row['ABBR'], array(' ' => '_')) ;
-
 
 //echo "decode important: ".html_entity_decode($II)."<br>";
 echo "<label>Important for ".$ABBB.": </b></label></font></dt>";	echo "<textarea id='Important' style='white-space:pre-wrap; height:20px;color:red;font-family:Times New Roman;width:500px;font-size: 10pt'  name='Important'  >";
 
 	echo $II; echo "</textarea><br>";
-	
+
 echo "<a href = 'http://www.karl.co.za/karllo0/reseller_account_status_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Check status</b></a> ";
-
-
 
 echo " <a href = 'https://www.cybersmart.co.za/login/?destination=&credential_0=".$RU1."%40".$RU2."&credential_1=adsl&Submit=' target=_blank><b>Usage</b></a> ";
 echo " <a href = '../START/Q/superuser.php' target=_blank><b>Usage</b></a> ";
-
 
 echo " <a href = 'http://www.k-connect.co.za/usage2/index.php?account_username=$RU1&cmb_company_realm=$RU2' target=_blank>Usage2</a>";
 echo " <a href = 'http://www.k-connect.co.za/usage/index.php' target=_blank>Usage3</a> ";
@@ -277,13 +261,12 @@ echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_connection_logs_te
 echo " <a href = 'http://www.karl.co.za/karllo0/reseller_connection_logs_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>KCLogs</b></a>";
 echo "<br>";
 
-
 echo "";
 echo "Telephone Number:";
 
 $CTT = '';
 $CTT = $row['CustTel'];
-if (is_numeric ($CTT)) 
+if (is_numeric ($CTT))
 	 {
 	// echo "Yes numeric";
 	 //check if the zero is missing
@@ -326,11 +309,6 @@ echo "<label><a href = 'mailto:$CEd'>Email Address:</a></label></dt>";
 echo "<input type='text' size = 40 name='CustEm' value='";
 //echo $row['CustEmail'];
 
-
-
-
-
-
 echo $CE ; //or should this be $CEd ???
 
 echo "'> <a href = 'mailto:";
@@ -344,13 +322,8 @@ echo $CEd."'>Usage.php</a>";
 echo " <a href = 'mailto:";
 echo "$CEd?subject=Usage&body=Hi%0D%0AYou used Gigs%0D%0AYou have Gigs left%0D%0AThank you%0D%0AKL'>emailUsage</a>";
 
-
 echo " <a href = 'mailto:";
 echo $CEd."?subject=Usage&body=Hi%0D%0AYou used Gigs%0D%0AYou have Gigs left%0D%0AThank you%0D%0AKL'>email</a>";
-
-
-
-
 
 echo "";
 echo "<br><label>Postal Address:</label></dt>";
@@ -368,8 +341,6 @@ $ad2 = '';
 $ad2 = $row['CustAddr'];
 $ad2=preg_replace("/ /","+",$ad2);
 echo " <a href='https://www.google.co.za/maps/place/".$ad2."+Cape+Town' target='_blank'>GMap</a>";
-
-
 
 echo "<br>";
 
@@ -390,14 +361,9 @@ $DDD = str_replace("YenCurrency", "¥", $DDD);
 $DDD = str_replace("PoundCurrency", "£", $DDD);
 $DDD = str_replace("centT", "¢", $DDD);
 
-
 echo "<br> ";echo "<textarea id='CustDetails' style='white-space:pre-wrap; font-family:arial;width:500px;font-size: 7pt' rows = '7' size = '100' name='CustDetails' >";
-	
-	echo $DDD;echo "</textarea>";
 
-	
-	
-	
+	echo $DDD;echo "</textarea>";
 
 $EEE= $row["Extra"];
 $FF = urlencode($EEE);
@@ -411,18 +377,10 @@ $EEE = str_replace("YenCurrency", "¥", $EEE);
 $EEE = str_replace("PoundCurrency", "£", $EEE);
 $EEE = str_replace("centT", "¢", $EEE);
 
-
-
-
 echo "<br> ";echo "<textarea id='Extra' style='white-space:pre-wrap; font-family:arial;width:500px;font-size: 7pt' rows= '6' size = '90' name='Extra' >";
-	
+
 	echo $EEE;echo "</textarea>";
-	
-	
-	
-	
-	
-	
+
 ?>
 <br>
 <style>
@@ -452,9 +410,9 @@ label.button {
 	 <label class="button" for="customize">Confid</label><br>
 
     <input type="checkbox" id="customize" />
-     
+
 <?php
-	
+
 
 $EEE= $row["Confid"];
 $FF = urlencode($EEE);
@@ -468,23 +426,11 @@ $EEE = str_replace("YenCurrency", "¥", $EEE);
 $EEE = str_replace("PoundCurrency", "£", $EEE);
 $EEE = str_replace("centT", "¢", $EEE);
 
-
 // "<textarea id='Confid' style='white-space:pre-wrap; font-family:arial;width:800px;font-size: 7pt' rows= '1' size = '80' name='Confid' >";
 echo "<textarea id='Confid'  style='white-space:pre-wrap; font-family:arial;width:500px;font-size: 7pt' rows= '5' size = '80' name='Confid'>";
-	
-	echo $EEE;echo "</textarea>";
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
+	echo $EEE;echo "</textarea>";
+
 ?>
 
 <br>
@@ -493,17 +439,12 @@ downloadRes: below 6dB is bad. (K:17)&nbsp;&nbsp;&nbsp;uploadRes: above 55dB is 
 <?php
 echo "";
 
-
 echo "<label>Abbr</label></dt>";
 echo "<input type='text' size = '10' name='Abbr' value='";
 
 echo $ABBB;
 echo "'> ";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-
-
-
 
 echo "";
 echo "<label>ADSL Password:</label></dt>";
@@ -513,14 +454,12 @@ echo strtr($row['CustPW'], array(' ' => '&nbsp;')) ;
 echo "'> <a href=http://www.karl.co.za/karllo0/reseller_account_status_template.php target=_blank>MyAPI</a>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
 
-
 echo "";
 echo "<label>Distance:</label></dt>";
 echo "<input type='text' name='CustDi' value='";
 echo $row["Distance"];
 echo "'> ";
 echo "<br> ";
-
 
 echo "";
 echo "<label>ADSL Tel No:</label></dt>";
@@ -529,12 +468,9 @@ $ADT = '';
 $ADT = $row['ADSLTel'];
 echo "<input type='text' size = '20' name='ADSLTel' value='";
 
-
 echo $ADT;
 echo "'> ";
 echo "<br> ";
-
-
 
 echo "";
 echo "<label>ADSL Username:</label></dt>";
@@ -547,7 +483,6 @@ echo $row["u2"];
 
 echo "'> &nbsp;&nbsp;";
 
-
 echo $row["u1"];
 echo "@";
 echo $row["u2"];
@@ -555,24 +490,15 @@ echo "&nbsp;&nbsp;";
 
 echo $row['CustPW'];
 
-
-
 echo "<br> ";
 
-
-
-
-	
 echo " ";
-
 
 $newfldr = "1";
 $newfldr = "file:///".$row['L1'] ;
 strtr($newfldr, array('\\' => '/')) ;
 
-
 	echo "<br> <a href= '".$newfldr."' alt= 'Right-click in Ext App'>Open customer folder: ".$newfldr." </a> &nbsp;&nbsp; ";
-
 
 echo "<label>Folder Location L1:</label></dt>";
 echo "<input type='text' size = 43  name='L1' value='";
@@ -580,13 +506,12 @@ echo strtr($row['L1'], array('/' => '\\')) ;
 
 echo "'> ";
 echo "<br> ";
-	 
+
 echo "<label>invD1:</label></dt>";
 echo "<input type='text' size = 35  name='adslinv' value='";
 echo strtr($row['adslinv'], array(' ' => '&nbsp;')) ;
 echo "'> ";
 echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
-
 
 $ae1 = "j";
 $ae1 = $row['ae'];
@@ -594,12 +519,11 @@ $ae1 = $row['ae'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae1))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae1 = strtr($row['ae'], array(' ' => '_')) ;
 $ae1 = strtr($ae1, array('_' => '&nbsp;')) ;
 htmlspecialchars($ae1);
 htmlentities($ae1);
-
 
 if ($ae1 > 0.2)
 {
@@ -609,14 +533,11 @@ $ae1 =  $ae1 * 1.15;
  $ae1 = number_format ($ae1, 2, ".", "");
  echo "<b>R ".$ae1." inin VAT</b>&nbsp;&nbsp;&nbsp;&nbsp;";
 
-
 }
 
 echo "ae:R<input type='text'  size = 13  id='ae' name='ae' value = '";
 	echo $row['ae'];echo "'>";
 
-
- 
 echo "<br><label>invD2:</label></dt>";
 echo "<input type='text' size = 35  name='invD2' value='";
 echo strtr($row['invD2'], array(' ' => '&nbsp;')) ;
@@ -630,7 +551,7 @@ $ae2 = $row['ae2'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae2))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae2 = strtr($row['ae2'], array(' ' => '_')) ;
 $ae2 = strtr($ae2, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -680,7 +601,7 @@ $ae3 = $row['ae3'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae3))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae3 = strtr($row['ae3'], array(' ' => '_')) ;
 $ae3 = strtr($ae3, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -717,7 +638,7 @@ $ae4 = $row['ae4'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae4))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae4 = strtr($row['ae4'], array(' ' => '_')) ;
 $ae4 = strtr($ae4, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -742,7 +663,7 @@ echo "<b>R ".$ae4." inin VAT</b><br>";
 
 
 
- 
+
 echo "<br><label>invD5:</label></dt>";
 echo "<input type='text' size = 35  name='invD5' value='";
 //echo strtr($row['invD5'], array(' ' => '&nbsp;')) ;
@@ -757,7 +678,7 @@ $ae5 = $row['ae5'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae5))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae5 = strtr($row['ae5'], array(' ' => '_')) ;
 $ae5 = strtr($ae5, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -780,8 +701,8 @@ echo "<b>R ".$ae5." inin VAT</b><br>";
 
 
 
-//Incorrect string value: '\xA0dude\xA0...' for column 'invD6' at row 1    
- 
+//Incorrect string value: '\xA0dude\xA0...' for column 'invD6' at row 1
+
 echo "<br><label>invD6:</label></dt>";
 echo "<input type='text' size = 35  name='invD6' value='";
 echo $row['invD6'];
@@ -795,7 +716,7 @@ $ae6 = $row['ae6'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae6))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae6 = strtr($row['ae6'], array(' ' => '_')) ;
 $ae6 = strtr($ae6, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -820,7 +741,7 @@ echo "<b>R ".$ae6." inin VAT</b><br>";
 
 
 
- 
+
 echo "<br><label>invD7:</label></dt>";
 echo "<input type='text' size = 35  name='invD7' value='";
 echo strtr($row['invD7'], array(' ' => '&nbsp;')) ;
@@ -834,7 +755,7 @@ $ae7 = $row['ae7'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae7))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae7 = strtr($row['ae7'], array(' ' => '_')) ;
 $ae7 = strtr($ae7, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -858,7 +779,7 @@ echo "<b>R ".$ae7." inin VAT</b><br>";
 
 
 
- 
+
 echo "<br><label>invD8:</label></dt>";
 echo "<input type='text' size = 35  name='invD8' value='";
 echo strtr($row['invD8'], array(' ' => '&nbsp;')) ;
@@ -872,7 +793,7 @@ $ae8 = $row['ae8'];
 if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\\?\\\]/', $ae8))
 {
     echo " one or more of the 'special characters' found ";
-}	
+}
 $ae8 = strtr($row['ae8'], array(' ' => '_')) ;
 $ae8 = strtr($ae8, array('_' => '&nbsp;')) ;
 //echo " ____spec: ";
@@ -910,25 +831,11 @@ echo strtr($row['dotdot'], array(' ' => '&nbsp;')) ;
 echo "'> ";
 echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
 
-
-
-
 echo "<b>Last topup invoiced:<textarea id='topup' style='white-space:pre-wrap; height:20px;width:350px;font-size: 10pt'  name='topup'  >";
 	//echo $row["CustDetails"];
-	
+
 	echo $row['topup'];echo "</textarea>";
 
-
-
-
-
-
-
-
-
-
-
-	
 ?>
 <br />
 <script>
@@ -947,10 +854,10 @@ function openfolder()
 <div>
 
 </dt>
-<input type="submit" name="btn_submit" value="SubmitSave"  style="height:50px; width:550px; background-color: #FFFF70;"/> 
+<input type="submit" name="btn_submit" value="SubmitSave"  style="height:50px; width:550px; background-color: #FFFF70;"/>
 
 <br>
-</div> 
+</div>
 </form>
 
 </b>
@@ -965,7 +872,6 @@ $queryE = "SELECT ENotes FROM events WHERE CustNo = $CustNo and   EDate >= '$dat
 //echo " ".$queryE." <br>";
 //$queryE = "SELECT * FROM events WHERE CustNo = $CNNo order by EDate desc" ;
 
-	
 	if ($resultE = mysqli_query($DBConnect, $queryE)) {
   while ($rowE = mysqli_fetch_assoc($resultE)) {
 echo "&nbsp;{$rowE['ENotes']}&nbsp;&nbsp;<br>";
@@ -973,40 +879,33 @@ echo "&nbsp;{$rowE['ENotes']}&nbsp;&nbsp;<br>";
 mysqli_free_result($resultE);
 }
 
-include "calculator/index.php"; 
+include 'calculator/index.php';
 ?>
 <a href = "edit_trans_CustProcess.php" target= "_blank">All transactions and invoices edit_trans_CustProcess</a><br>
 <?php
-include "unreconciledProofs.php";
+include 'unreconciledProofs.php';
 $indesc = 0;
 $ShowDraft = "N";
-include "view_Unpaid_inv_by_cust2.php";
+include 'view_Unpaid_inv_by_cust2.php';
 echo "<br><br>";
 
-
-include "view_Underpaid_inv_by_cust2b.php"; //2b is the one with checkboxes
-//include "view_Unpaid_inv_by_cust2b.php"; //2b is the one with checkboxes
+include 'view_Underpaid_inv_by_cust2b.php'; //2b is the one with checkboxes
+//include 'view_Unpaid_inv_by_cust2b.php'; //2b is the one with checkboxes
 
 echo "<br><br>";
 
-
-include "invEmailstatement.php";
+include 'invEmailstatement.php';
 echo "<br><a href= 'view_inv_by_custADVtopup.php'>Right-Click here to view topup invoices</a><br>";
-
 
 $indesc = 9;
 $ShowDraft = "Y";
-include "view_Unpaid_inv_by_cust2.php";
+include 'view_Unpaid_inv_by_cust2.php';
 echo "<br><br>";
 
-
-
-
-
-//include "view_trans_by_custUNDERorOVERPAID.php";
-//include "view_inv_by_custADV2.php";
-//include "view_inv_by_custADVnoTrans.php";
-include "view_inv_by_custADVnoTransOVerPaidUnderPaid.php";
+//include 'view_trans_by_custUNDERorOVERPAID.php';
+//include 'view_inv_by_custADV2.php';
+//include 'view_inv_by_custADVnoTrans.php';
+include 'view_inv_by_custADVnoTransOVerPaidUnderPaid.php';
 
  echo "<br>";
 echo "<a href = 'view_inv_PAIDinvoicesBOTH.php'>Click here to view only PAID invoices </a>";
@@ -1016,26 +915,12 @@ echo "<br><br>";
 echo "<a href = 'view_inv_by_cust2.php'>Click here to view customer's invoices </a>";
 echo "<br><br>";
 
-
 $indesc = 'd1';
-include "edit_trans_CustProcess.php";
+include 'edit_trans_CustProcess.php';
 echo "<br><br>";
 
 $un= 'Y';
 mysqli_close($DBConnect);
-?> 
-</body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
+?>
 </body>
 </html>

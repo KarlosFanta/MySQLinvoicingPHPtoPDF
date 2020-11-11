@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,9 +13,9 @@ function formValidator(){
 	var AmtPaid = document.getElementById('AmtPaid');
 	var Notes = document.getElementById('Notes');
 	var TMethod = document.getElementById('TMethod');//Payment method
-	
 
-	
+
+
 	// Check each input in the order that it appears in the form!
 						if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
 				if(lengthRestriction(TransDate, 10,10)){
@@ -23,17 +23,17 @@ function formValidator(){
 			if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
 //				if(isDate(TransDate, "Please put in Date")){
 					if(madeSelection(TMethod, "Please Choose Payment Method")){
-				
-						
-						
-						
+
+
+
+
 							return true;
 						}
 }
 }}}
 
 						return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -127,11 +127,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
- 
-        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
+
+        value = value.replace(/-/g, "/").replace(/\./g, "/");
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -147,17 +147,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
- 
+
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
-                    
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
+
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {  
+                        if (Month == 2) {
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        } 
+                        }
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -183,8 +183,8 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -213,14 +213,10 @@ $InvNoGincl = 0;
 $InvNoH = 0;
 $InvNoHincl = 0;
 
-
-//$CustNo" 
+//$CustNo"
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
-
-
-
 
 $ProofNo = '';
 $ProofToPay ='_';
@@ -231,7 +227,6 @@ $PTP = explode("_", $ProofToPay);
 //echo $PTP[2]."____";
 //echo $PTP[1]."____";
 $ProofNo = $PTP[0];
-
 
 $SQLINV = "SELECT * FROM aproof WHERE ProofNo = '$ProofNo'";
 //echo $SQLINV;
@@ -278,16 +273,11 @@ $result->free();
 echo "</tr>";
 echo "</table>";
 
-
-
-
-
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
-include "monthtables.php";
-include "view_transLatest.php";
-
+include 'monthtables.php';
+include 'view_transLatest.php';
 
 ?>
 <!--<form name="addTransCustProcess2"  action="addTransprocess_last2.php" onsubmit='return formValidator()'   method="post">-->
@@ -309,7 +299,6 @@ $CustNo = explode(';', $TBLrow );
 //echo "TransNozERO: ";
 //echo $TransNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
-
 
 //echo "<br>Transint:".$CustInt."</br />";
 */
@@ -353,7 +342,6 @@ $result->free();
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-
 echo "{$row[0]}&nbsp;&nbsp;";
 echo "<font size = '3'><b>";
 echo "{$row[1]}&nbsp;&nbsp;";
@@ -376,7 +364,7 @@ echo "{$row[9]}&nbsp;&nbsp;";
 
 
 
-<?php	
+<?php
 
 	//require_once ('inc_OnlineStoreDB.php');
 
@@ -414,22 +402,15 @@ $select = $_GET['select'];
 <?php
 echo "Add new transactions:<br>";
 
-
-
-
-
-
 echo "<tr><th>Trans No<br>inv". $InvNoA."</th>";
 echo "<th>ProofNo</th>";
 echo "<th>TransDate<br>NB new transaction<br>for old proof: ";
 echo $ProofDate;
 
-
 //echo date("d/m/Y");
 echo "</th>";
 echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CustSDR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>".$CustSDR."</th>";
 echo "<th>AmtPaid</th>";
-
 
 ?>
 </form>
@@ -451,7 +432,7 @@ echo "<th>AmtPaid</th>";
 <input type="text" id="ProofNo"  name="ProofNo" size = "9" value="<?php echo $ProofNo;?>">
 
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 			<!--<label>TransDate:</label></dt>-->
@@ -462,7 +443,7 @@ echo "<th>AmtPaid</th>";
 <!--			<input type="hidden" size="10"  id="TransDateOrig"  name="TransDateOrig" value="<?php //echo $daNextNo; ?>" />
 -->
 		</th>
-		
+
 
 		<th>
 			<!--<label>&nbsp; CustSDR:</label></dt>-->
@@ -475,7 +456,7 @@ echo "<th>AmtPaid</th>";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="5" id="AmtPaid"  name="AmtPaid" value="<?php echo $Amt; ?>" />
 		</th>
-	
+
 	</tr>
 </table>
 <table>
@@ -500,7 +481,7 @@ echo "<th>InvNoG incl VAT</th>\n";
 echo "<th>InvNoH detail</th>";
 echo "<th>InvNoH incl VAT</th>\n";
 echo "<th>Priority</th></tr>\n";
-	
+
 	?>
 	</tr>
 	<tr>
@@ -509,9 +490,9 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<!--<input type="text"  size="10" id="Notes"  name="Notes" size = '35' value="" />-->
 			<textarea id="Notes"  name="Notes" ><?php echo $Notes; ?></textarea>
-			
+
 		</th>
-	
+
 		<th>
 			<select name="TMethod"  id="TMethod"  >
                 <option value="Please Choose">Please Choose</option><!-- the javascript function requires phrase Please Choose -->
@@ -522,11 +503,11 @@ echo "<th>Priority</th></tr>\n";
                 <option value="Cash Bank Deposit">Cash Bank Desposit</option>
                 <option value="Stop-order">Stop-order</option>
                 <option value="Debit">Debit</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Mixed">Mixed</option>	
-                <option value="-">-</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Mixed">Mixed</option>
+                <option value="-">-</option>
 </select>
-			
+
 		</th>
 		<th>
 			<!--<label>&nbsp; InvNoA:</label></dt>-->
@@ -538,8 +519,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="3"  id="InvNoAincl"  name="InvNoAincl" value="<?php echo $InvNoAin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoB:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -550,8 +531,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoBincl"  name="InvNoBincl" value="<?php echo $InvNoBin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoC:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -562,8 +543,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="1"  id="InvNoCincl"  name="InvNoCincl" value="<?php echo $InvNoCin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoD:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -574,8 +555,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoDincl"  name="InvNoDincl" value="<?php echo $InvNoDin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoE:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -586,8 +567,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoEincl"  name="InvNoEincl" value="<?php echo $InvNoEin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoF:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -598,8 +579,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoFincl"  name="InvNoFincl" value="<?php echo $InvNoFin; ?>"  />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoG:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -610,8 +591,8 @@ echo "<th>Priority</th></tr>\n";
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="1" id="InvNoGincl"  name="InvNoGincl" value="<?php echo $InvNoGin; ?>"  />
 	</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoH:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -623,27 +604,27 @@ echo "<th>Priority</th></tr>\n";
 			<input type="text" size="1"  id="InvNoHincl"  name="InvNoHincl" value="<?php echo $InvNoHin; ?>"  />
 		</th>
 
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; Priority:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			
-			
+
+
 			<!--<input type="text" id="Priority"  name="Priority" value="." />-->
-			
-			
+
+
 			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
 			</select>
-			
+
 </th>
 		</tr>
 		</table>
-	
-	
+
+
 
 
 
@@ -653,20 +634,20 @@ echo "<th>Priority</th></tr>\n";
 <!--	<br><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br>
 <br><br><br><br><br><br><br><br><br><br><br>
 -->
-</select></p>  
+</select></p>
 <!--<input type="submit" value="Create transaction" onclick="return confirm('Are you sure about the date?');" /> -->
-<input type='submit' value="Create transaction"   style="width:300px;height:30px" /> 
-<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>  
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<input type='submit' value="Create transaction"   style="width:300px;height:30px" />
+<!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
-<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" /> 
+<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />
 <!-- onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/> -->
-			
+
 <!--
 <input type="submit" name="btn_submit" value="Create transaction" onclick="formValidator()" /> -->
 
 
-	
+
 <!--/form>-->
 
 
@@ -677,10 +658,6 @@ include ("view_proof_by_cust.php");
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
-
-
-
-
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
 
@@ -688,15 +665,13 @@ echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 include ("view_event_by_cust.php");
 
-
-
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
 alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 </form>
 
 

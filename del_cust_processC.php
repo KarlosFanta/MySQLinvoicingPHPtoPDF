@@ -1,8 +1,8 @@
 <?php	//this is "del_CustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
+	require_once 'header.php';
 	//require_once ('db.php');//mysqli connection and databse selection
-		require_once("inc_OnlineStoreDB.php");
+		require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="delInv_process" action="del_CustProcessC2.php" method="post">
@@ -49,7 +49,6 @@ $item1 = $row["CustNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustFN"];
 
-
 $item3 = $row["CustLN"];
 $item4 = $row["Important"];
 
@@ -63,7 +62,7 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //$sql = "DELETE FROM Invomer WHERE InvNo = $InvInt" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -73,7 +72,6 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //oci_execute($stid);
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Account No ".$TBLrow."</BR>"   ;
-
 
 ?>
 
@@ -93,7 +91,6 @@ $item1 = $row["CustNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustNo"];
 
-
 //$item3 = $row["InvDate"];
 //$item4 = $row["TotAmt"];
 //$item5 = $row["Summary"];
@@ -106,10 +103,7 @@ print "_".$item2;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -124,9 +118,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Delete selected customer" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Delete selected customer" />
+
+</select></p>
 
 
 
@@ -218,9 +212,6 @@ echo "<th>{$row[2]}</th>";  //InvDate from invoice table
 echo "<th>{$row[3]}</th>";  //AmtPaid from invoice table
 $yo = $yo+$row[3];
 
-
-
-
 echo "<th>{$row[4]}</th>\n";  //Notesfrom invoice table
 echo "<th>{$row[5]}</th>\n";  //TMethfrom invoice table
 echo "<th>{$row[6]}</th>\n";  //Afrom invoice table
@@ -252,17 +243,15 @@ echo "</tr>\n";  //Priority from invoice table
 		}
     /* free result set */
     $result->close();
-	
+
 //}
 echo "</table>";
 echo "R".$yo."<br>";
-?> 
+?>
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 include ("view_inv_by_cust.php");
-
-
 
 $SQLString = "select * from invoice where CustNo = $CustInt";
 //echo $SQLString."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -315,37 +304,9 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -433,7 +394,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl>";
 
-
  		echo "<dl>";
 			echo "<dt><label>Amount Paid</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -473,7 +433,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -488,7 +447,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoBincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -505,7 +463,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -520,7 +477,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoDincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -537,7 +493,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -552,7 +507,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoFincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -569,7 +523,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoH</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -585,23 +538,14 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
-		
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 
 //oracle: oci_free_statement($objParse);
 //oci_free_statement($stid);
 //oracle: oci_close($conn);
-
-
-
-
 
 		/*<dl>
 			<dt><label>* First Name<?php //echo $this->lang->line('Trans_fn'); ?>: </label></dt>
@@ -614,9 +558,9 @@ if ($result = mysqli_query($link, $query)) {
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-<!--			<dd><input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+<!--			<dd><input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
@@ -636,7 +580,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

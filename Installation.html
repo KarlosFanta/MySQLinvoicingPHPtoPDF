@@ -1,252 +1,186 @@
-
-<head>
-</head>
-<body>
-
-
-<br> March 2019 : I tested my code on Wampserver3 (apache 2.4.37+php7.2.14) and came with these tips:
-
-I chose 64bit edition (becasue I have 64bit Windows) 
-What a mission to install it on Windows10:
-I had to google and download and isntall about:<br>
- 3 different versions of vc_redist.x64
- 3 different versions of vc_redist.x86
- vcredist_2008_sp1_atl_x64
- vcredist_2008_sp1_atl_x86
-vcredist_2008_sp1_mfc_x64
-vcredist_2008_sp1_mfc_x86
-vcredist_2008_sp1_x64
- 2 different versions ofvcredist_2013_upd5_x64
- 2 different versions of vcredist_2013_upd5_x86
- 2 different versions of vcredist_arm
-vcredist_ia64
-
-9x different versions of vcredist_x64
-9x different versions of vcredist_x86
-<br>
-to get wampserver3.1.7_x64 to work!!!<br>
-And you download check_vcredist.exe to test it for you.<br>
-<br>
-<br>
-To have other PCs accessing your local server you do not need to modify httpd.conf anymore! And you only don;t need to put it "Online" anymore! 
-instead it uses a virtual host option. <br>
-Right-click on green wampserver,  Allow VirtualHost Local IP saddresses other than 127*<br>
-Then edit httpd-vhosts.conf to look like this: (Find it in C:\wamp64\<br>
-<VirtualHost *:80>
- ServerName localhost
- DocumentRoot c:/wamp64/www
-  <Directory  "c:/wamp64/www/">
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride All
-        Require all granted
-  </Directory>
-</VirtualHost>
-
-
-
-<br>
-<br>Installation Procedure for <b>Apache(</b>webserver) and PHP to make the PHP MySQL accounting software work:<br>
-											 
-<br>
-(One can choose install WAMP or XAMPP or Apache+PHP+MySQL or IISExpress+PHP+MySQL:<br>
-<br>
-Download and install the following software: 
-
-<br>1. An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox
-
-
-<br>2. Disable IISExpress if you have a Professional edition (eg Win8Pro or Win7pro)
-<br>3. Disable or uninstall Skype temporarily to prevent a port conflict
-
-<br>4. Download & install Wamp (www.wampserver.com) or Xampp (or LAMP for Linux)
-
-<br>5. Download wkhtmltoimage program from http://wkhtmltopdf.org/, rename it to wkhtmltoimage.exe and copy it into your project.(To make a jpg copy out of your invoice).
-
-<br>6. Setup an email program such as Mozilla Thunderbird or Outlook.
-<br>The next step is to set up php.ini.
-
-<br>Enable al this lovely stuff inside php.ini: (by default already enabled)
-
-<br><b>extension=</b>php_mysql.dll (this one is not required anymore- outdated)
-
-<br><b>extension=</b>php_mysqli.dll
-
-<br><b>extension=</b>php_pdo.dll
-
-
-<br>Download & install NotepadPlusPlus:  www.notepad-plus-plus.org (or Netbeans for PHP) You will need this for editing PHP files.  </b>
-
-
-
-<br>Take the faster 64 bit version if you have 64bit version of Windows.<br>
-Copy all our PHP files into C:\wamp\www   (or C:\wamp64\www )<br>
-(Find your browser under C:\Program Files(x86)\Mozilla Firefox\firefox.exe)<br><br>
-<br>Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br>
-(If you want to install Apache and PHP seperately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>)
-
-
-<br>You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br>
-dotNetFx40_Full_x86_x64.exe  for 64bit Windows (see above notes)
-
-
-<br>&nbsp;
-
-<br><b>new</b> mysql password: Itsmeagain007#
-
-<br>&nbsp;
-Open up phpmyadmin, create a database and call it kc<br>
-then select the database.<br>
-then click on SQL and run the script inside (6)STRUCTUREONLYYY.sql to create the structure<br>
-</p>
-
-<p></p>
- On Windows: to change or add the password for the MySQL 'root'@'localhost' account. <br>
-  ( Stop the MySQL server if it is running. <br>
-Services manager: Start , Control Panel, Administrative Tools,Services. <br>
-Find the MySQL service in the list and stop it.<br>
-or use  Task Manager to force it to stop if it is not a service.)<br>
- Wampserver: MySQL > MysQSL console<br>
-    SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Itsmeagain007#');<br>
-<br>
-Query OK, 0 rows affected<br>
-<br>
-Restart MySQl server: Wampserver: restart all services<br>
-<br>
-<br>
-<br>
-(Otherwise: <br>
-    Open a console window to get to the command prompt: <br>
-Wampserver: MySQL > MysQSL console<br>
-(or: Start> Run >  enter cmd as the command to be run.<br>
-    C:\> cd "C:\Program Files\MySQL\MySQL Server 5.0\bin"<br>
-    C:\> mysqld-nt --init-file=C:\\mysql-init.txt ))<br>
-
-<p></p>
-
-<p></p>
-
-<br>
-Now we want wampserver to be 'online' > available on the whole network<br>
->>> SEE COMMENTS ABOVE <<<<
-To do that launch the pink Wampserver icon on your desktop, then click "Online" (check notes above)<br>
-If the network name of your server is Alpha-PC, then open Explorer in any other PC on the network and type in \\Alpha-PC into the address bar.
-(Alternatively use a static IP address on the server, then \\192.168.0.5 )
-Also change Windows Firewall in Control panel to allow Apache to work on private and public networks<br>
-<br>
-C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf   [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]<br>
-<br>
-
-<Directory "c:/wamp/bin/apache/apache2.4.9/cgi-bin"><br>
-
-    AllowOverride None<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
-
-    Options None<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
-
-    Order allow,deny<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
-
-	Allow from all<br>  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
-
-</Directory>
-
-<br>
-<br><br><br>
-Now we need to change the password inside phpmyadmin as well:<br><br>
-
-Solved :: Wampserver : #1045 – Access denied for user ‘root’@’localhost’ (using password: NO)<br>
-<br>
-Here is a simple way to solve #1045 – Access denied for user ‘root’@’localhost’ (using password: NO) error…<br>
-<br>
-Just follow the steps:<br>
-
-Note: [WAMP_PATH] is the path to the wampserver directory in your computer so it can be anything. Default (C:\wamp).<br>
-<br>
-    First, go to [WAMP_PATH] > apps > phpmyadmin3.5.1.<br>
-    Then find and open config.inc.php in your text editor<br>
-    Now find $cfg['Servers'][$i]['password'] = ”; and change it with $cfg['Servers'][$i]['password'] = ‘admin’; (You can put anything in place of admin as your password, this is only a test password).<br>
-    Now find $cfg['Servers'][$i]['AllowNoPassword'] = true; and replace it by $cfg['Servers'][$i]['AllowNoPassword'] = false;.<br>
-    Thats it now save that file.<br>
-    Now restart the wampserver. To do this left-click the wamp icon in the windows taskbar (Notification one), a box will pop up then just click on Restart all Services.<br>
-<br>
-<br>
-$cfg['Servers'][$i]['password'] = 'Itsmeagain007#';<br>
-<br><br><br>
-
-
-<br>To be able to save invoices using Firefox you need to
-install this add-on for Firefox:
-
-
-
-<br>https://addons.mozilla.org/en-US/firefox/user/gm/?src=api
-
-
-<br>
-
-
-<br>TitleSave 0.3 by gm
-
-
-<br>&nbsp;
-
-
-<br>https://addons.mozilla.org/en-US/firefox/addon/title-save
-
-<br>&nbsp;
-Also get this add-on: https://addons.mozilla.org/firefox/addon/ie-tab/
-
-
-
-
-
-
-<br>&nbsp;
-
-<br>&nbsp;MySQL password: <br> http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html
-<br><br>
-http://developer.nokia.com/community/wiki/Setup_MySQL_in_WAMP_-_password_setting,_service_shutdown_%26_startup
-<br>
-<br>&nbsp;
-Using Windows 7, I went into Control Panel -> Services
-
-I changed the settings for "wampapache" and "wampmysql" to start: "Automatic" or "Delayed".
-
-After that, when I restart my Win7 machine, both services start automatically before I even log into the machine
-
-
-
-<br>
-To Disable the Backspace key (Go back one page) in Firefox:<br>
-    Open Mozilla Firefox<br>
-    In the Address bar –> Type “about:config” and press enter<br>
-    Press “I’ll be careful, I promise” button and press enter<br>
-    In the filter box type “browser.backspace_action”<br>
-    You will see a configuration in the display window below, with a value of “0”<br>
-    Change this to “1” in order to disable backspace in firefox.<br>
-<br><br><br>
-How to set View Source to open in editor of choice?<br>
-You can do this by changing 2 hidden preferences.<br>
-<br>
-    Type about:config into the location bar and press enter<br>
-    Accept the warning message that appears, you will be taken to a list of preferences<br>
-    In the filter box type view_source<br>
-    Double-click on view_source.editor.external to change its value to true<br>
-    Double-click on view_source.editor.path and set it to C:\Program Files\Notepad++\notepad++.exe (if Notepad++ is stored elsewhere change that to where it is stored) <br>
-<br><br><br><br>
-For Firefox to prevent the backspace button from going back to previous page (then yuo lose entered data)<br>
-To modify a preference in a browser application such as Firefox or SeaMonkey, type about:config<br>
-To change an existing preference, double click on it. <br>
-browser.backspace_action<br>
-0<br>
-Pressing [Backspace] will go back a page in the session history and [Shift]+[Backspace] will go forward. (Default in Windows)<br>
-1<br>
-Pressing [Backspace] will scroll up a page in the current document and [Shift]+[Backspace] will scroll down. (Default in Linux builds before 2006-12-07)<br><br>
-
-<br><br><br>
-
-<br><br><br>(to run frameworks, get: Win32OpenSSL-1_0_1h.exe, Composer-Setup.exe)
-
-
-
-</body>
-
+<html>
+  <head></head>
+  <body>
+    March 2019 : I tested my code on Wampserver3 (apache 2.4.37+php7.2.14) and came with these tips:
+    I chose 64bit edition (because I have 64bit Windows)
+    What a mission to install it on Windows10:
+    I had to google and download and isntall about:<br />
+    3 different versions of vc_redist.x64
+    3 different versions of vc_redist.x86
+    vcredist_2008_sp1_atl_x64
+    vcredist_2008_sp1_atl_x86
+    vcredist_2008_sp1_mfc_x64
+    vcredist_2008_sp1_mfc_x86
+    vcredist_2008_sp1_x64
+    2 different versions ofvcredist_2013_upd5_x64
+    2 different versions of vcredist_2013_upd5_x86
+    2 different versions of vcredist_arm
+    vcredist_ia64
+    9x different versions of vcredist_x64
+    9x different versions of vcredist_x86
+    <br />
+    to get wampserver3.1.7_x64 to work!!!<br />
+    And you download check_vcredist.exe to test it for you.<br />
+    <br />
+    <br />
+    To have other PCs accessing your local server you do not need to modify httpd.conf anymore! And you only don;t need to put it "Online" anymore!
+    instead it uses a virtual host option. <br />
+    Right-click on green wampserver,  Allow VirtualHost Local IP saddresses other than 127*<br />
+    Then edit httpd-vhosts.conf to look like this: (Find it in C:\wamp64\<br />
+    <VirtualHost *:80>
+      ServerName localhost
+      DocumentRoot c:/wamp64/www
+      <Directory  "c:/wamp64/www/">
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Require all granted
+      </Directory>
+    </VirtualHost>
+    <br />
+    <br />Installation Procedure for Apache webserver and PHP to make the PHP MySQL accounting software work:<br />
+    <br />
+    (One can choose install WAMP or XAMPP or Apache+PHP+MySQL or IISExpress+PHP+MySQL:<br />
+    <br />
+    Download and install the following software:
+    <ol>
+      <li>An internet browser called Mozilla Firefox: https://www.mozilla.org/firefox</li>
+      <li>Disable IISExpress if you have a Professional edition (eg Win8Pro or Win7pro)</li>
+      <li>Disable or uninstall Skype temporarily to prevent a port conflict</li>
+      <li>Download &amp; install Wamp (www.wampserver.com) or Xampp (or LAMP for Linux)</li>
+      <li>Download wkhtmltoimage program from http://wkhtmltopdf.org/, rename it to wkhtmltoimage.exe and copy it into your project.(To make a jpg copy out of your invoice).</li>
+      <li>Setup an email program such as Mozilla Thunderbird or Outlook.</li>
+    </ol>
+    <br />The next step is to set up php.ini.
+    <br />Enable all this lovely stuff inside php.ini: (by default already enabled)
+    <blockquote>
+      <code>
+        extension=php_mysqli.dll<br />
+        extension=php_pdo.dll
+      </code>
+    </blockquote>
+    <br />Download &amp; install NotepadPlusPlus:  www.notepad-plus-plus.org (or Netbeans for PHP) You will need this for editing PHP files.  </b>
+    <br />Take the faster 64 bit version if you have 64bit version of Windows.<br />
+    Copy all our PHP files into C:\wamp\www (or C:\wamp64\www )<br />
+    (Find your browser under C:\Program Files(x86)\Mozilla Firefox\firefox.exe)<br /><br />
+    <br />Test your webserver in Firefox: <a href="http://localhost">http://localhost</a><br />
+    (If you want to install Apache and PHP separately click here: <a href= 'InstallationOld.html'>Apache/IIS</a>)
+    <br />You might need .NETFrameworkV4 for wampserver: vcredist_x64.exe or vcredist_x86.exe<br />
+    dotNetFx40_Full_x86_x64.exe  for 64bit Windows (see above notes)
+    <br />&nbsp;
+    <br /><b>new</b> mysql password: Itsmeagain007#
+    <br />&nbsp;
+    Open up phpmyadmin, create a database and call it kc<br />
+    then select the database.<br />
+    then click on SQL and run the script inside (6)STRUCTUREONLYYY.sql to create the structure<br />
+    </p>
+    <p></p>
+    On Windows: to change or add the password for the MySQL 'root'@'localhost' account. <br />
+    ( Stop the MySQL server if it is running. <br />
+    Services manager: Start , Control Panel, Administrative Tools,Services. <br />
+    Find the MySQL service in the list and stop it.<br />
+    or use  Task Manager to force it to stop if it is not a service.)<br />
+    Wampserver: MySQL > MysQSL console<br />
+    SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Itsmeagain007#');<br />
+    <br />
+    Query OK, 0 rows affected<br />
+    <br />
+    Restart MySQl server: Wampserver: restart all services<br />
+    <br />
+    <br />
+    <br />
+    (Otherwise: <br />
+    Open a console window to get to the command prompt: <br />
+    Wampserver: MySQL > MysQSL console<br />
+    (or: Start> Run >  enter cmd as the command to be run).<br />
+    <blockquote>
+      <code>
+        C:\> cd "C:\Program Files\MySQL\MySQL Server 5.0\bin"<br />
+        C:\> mysqld-nt --init-file=C:\\mysql-init.txt<br />
+      </code>
+    </blockquote>
+    <p></p>
+    <p></p>
+    <br />
+    Now we want wampserver to be 'online' > available on the whole network<br />
+    >>> SEE COMMENTS ABOVE <<<<
+    To do that launch the pink Wampserver icon on your desktop, then click "Online" (check notes above)<br />
+    If the network name of your server is Alpha-PC, then open Explorer in any other PC on the network and type in \\Alpha-PC into the address bar.
+    (Alternatively use a static IP address on the server, then \\192.168.0.5 )
+    Also change Windows Firewall in Control panel to allow Apache to work on private and public networks<br />
+    <br />
+    C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf   [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]<br />
+    <br />
+    <Directory "c:/wamp/bin/apache/apache2.4.9/cgi-bin"><br />
+    AllowOverride None<br />  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
+    Options None<br />  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
+    Order allow,deny<br />  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
+    Allow from all<br />  [NO NEED TO CHANGE PLEASE USE VIRTUAL HOST INSTEAD FOR LATEST WAMPSERVER]
+    </Directory>
+    <br />
+    <br /><br /><br />
+    Now we need to change the password inside phpmyadmin as well:<br /><br />
+    Solved :: Wampserver : #1045 – Access denied for user ‘root’@’localhost’ (using password: NO)<br />
+    <br />
+    Here is a simple way to solve #1045 – Access denied for user ‘root’@’localhost’ (using password: NO) error…<br />
+    <br />
+    Just follow the steps:<br />
+    Note: [WAMP_PATH] is the path to the wampserver directory in your computer so it can be anything. Default (C:\wamp).<br />
+    <br />
+    First, go to [WAMP_PATH] > apps > phpmyadmin3.5.1.<br />
+    Then find and open config.inc.php in your text editor<br />
+    Now find $cfg['Servers'][$i]['password'] = ”; and change it with $cfg['Servers'][$i]['password'] = ‘admin’; (You can put anything in place of admin as your password, this is only a test password).<br />
+    Now find $cfg['Servers'][$i]['AllowNoPassword'] = true; and replace it by $cfg['Servers'][$i]['AllowNoPassword'] = false;.<br />
+    That's it now save that file.<br />
+    Now restart the wampserver. To do this left-click the wamp icon in the windows taskbar (Notification one), a box will pop up then just click on Restart all Services.<br />
+    <br />
+    <br />
+    $cfg['Servers'][$i]['password'] = 'Itsmeagain007#';<br />
+    <br /><br /><br />
+    <br />To be able to save invoices using Firefox you need to
+    install this add-on for Firefox:
+    <br />https://addons.mozilla.org/en-US/firefox/user/gm/?src=api
+    <br />
+    <br />TitleSave 0.3 by gm
+    <br />&nbsp;
+    <br />https://addons.mozilla.org/en-US/firefox/addon/title-save
+    <br />&nbsp;
+    Also get this add-on: https://addons.mozilla.org/firefox/addon/ie-tab/
+    <br />&nbsp;
+    <br />&nbsp;MySQL password: <br /> http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html
+    <br /><br />
+    http://developer.nokia.com/community/wiki/Setup_MySQL_in_WAMP_-_password_setting,_service_shutdown_%26_startup
+    <br />
+    <br />&nbsp;
+    Using Windows 7, I went into Control Panel -> Services
+    I changed the settings for "wampapache" and "wampmysql" to start: "Automatic" or "Delayed".
+    After that, when I restart my Win7 machine, both services start automatically before I even log into the machine
+    <br />
+    To Disable the Backspace key (Go back one page) in Firefox:<br />
+    Open Mozilla Firefox<br />
+    In the Address bar –> Type “about:config” and press enter<br />
+    Press “I’ll be careful, I promise” button and press enter<br />
+    In the filter box type “browser.backspace_action”<br />
+    You will see a configuration in the display window below, with a value of “0”<br />
+    Change this to “1” in order to disable backspace in firefox.<br />
+    <br /><br /><br />
+    How to set View Source to open in editor of choice?<br />
+    You can do this by changing 2 hidden preferences.<br />
+    <br />
+    Type about:config into the location bar and press enter<br />
+    Accept the warning message that appears, you will be taken to a list of preferences<br />
+    In the filter box type view_source<br />
+    Double-click on view_source.editor.external to change its value to true<br />
+    Double-click on view_source.editor.path and set it to C:\Program Files\Notepad++\notepad++.exe (if Notepad++ is stored elsewhere change that to where it is stored) <br />
+    <br /><br /><br /><br />
+    For Firefox to prevent the backspace button from going back to previous page (then you lose entered data)<br />
+    To modify a preference in a browser application such as Firefox or SeaMonkey, type about:config<br />
+    To change an existing preference, double click on it. <br />
+    browser.backspace_action<br />
+    0<br />
+    Pressing [Backspace] will go back a page in the session history and [Shift]+[Backspace] will go forward. (Default in Windows)<br />
+    1<br />
+    Pressing [Backspace] will scroll up a page in the current document and [Shift]+[Backspace] will scroll down. (Default in Linux builds before 2006-12-07)<br /><br />
+    <br /><br /><br />
+    <br /><br /><br />(to run frameworks, get: Win32OpenSSL-1_0_1h.exe, Composer-Setup.exe)
+  </body>
 </html>

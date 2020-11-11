@@ -12,7 +12,7 @@
  */
 
 // Include the main TCPDF library (search for installation path).
-//require_once('tcpdf_include.php');
+//require_once 'tcpdf_include.php';
 
 // create new PDF document
 
@@ -78,7 +78,6 @@ $XT8 = '';
 $XT5 = '';
 $XT6 = '';
 
-
 $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
 
 //echo $query."</BR>";
@@ -117,7 +116,7 @@ $SetSubject = ''.$uniqueid.'';
 
 // set some language-dependent strings (optional)
 /*if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
+	require_once dirname(__FILE__.'/lang/eng.php');
 	$pdf->setLanguageArray($l);
 }
 
@@ -144,8 +143,6 @@ EOD;
 
 //$pdf->Button('print', 30, 10, 'Print', 'Print()', array('lineWidth'=>2, 'borderStyle'=>'beveled', 'fillColor'=>array(128, 196, 255), 'strokeColor'=>array(64, 64, 64)));
 
-
-
 //$pdf->Write(0, 'no heading ', '', 0, 'L', true, 0, false, false, 0);
 
 //$pdf->SetFont('helvetica', '', 8);
@@ -154,9 +151,6 @@ EOD;
 $Dt1 = explode("-", $rowI['InvDate']);
 $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
-
-
-		
 $SQLstring = "select * from customer where CustNo = (select CustNo from invoice where InvNo = '$InvNo2')";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
@@ -170,21 +164,21 @@ if ($result = $DBConnect->query($SQLstring)) {   //Object oriented style
 
 if ($Swap == "N")
 {
-$strrepFN = Str_replace("_"," ", $row[1])." "; 
+$strrepFN = Str_replace("_"," ", $row[1])." ";
 //echo $row[1]; ///Cust FName
 //echo " ";
-$strrepLN =  Str_replace("_"," ", $row[2]); 
+$strrepLN =  Str_replace("_"," ", $row[2]);
 
 //echo $row[2]; //CustLName
 }
 else
 {
 //swap around firstname with lastname:
-$strrepFN =  Str_replace("_"," ", $row[2]). " "; 
+$strrepFN =  Str_replace("_"," ", $row[2]). " ";
 
 //echo $row[2]; ///Cust FName
 //echo " ";
-$strrepLN = Str_replace("_"," ", $row[1]); 
+$strrepLN = Str_replace("_"," ", $row[1]);
 //echo $row[1]; //CustLName
 
 }
@@ -194,7 +188,7 @@ $Email = $row[5];// Cust Email FROM CUSTOMER TABLE!!!
 $E = $row[5];
 $Abbr = $row[13];
 $rowNULL = $row[0];
-}    // free result set 
+}    // free result set
    $result->close();
 }
 
@@ -214,7 +208,6 @@ $XT1 = 0;
 $XT1 = $rowI["ex1"]*$rowI['Q1'];
 $XT1 = number_format ($XT1, 2, ".", "");
 
-
 if (($rowI['D2']) != '0')
 {
 $riD2 = $rowI['D2'];
@@ -229,11 +222,11 @@ $strD2= strtr($value, array('_' => ' ')) ;
 
 
 $strQ2 = $rowI['Q2'];
-				
+
 			$Mex2 = $rowI["ex2"];
-			
+
 			$Mex2 = number_format ($Mex2, 2, ".", "");
-			
+
 	//		echo $Mex2;
 			$XT2 = 0;
 			$XT2 = $rowI["ex2"]*$rowI['Q2'];
@@ -245,9 +238,9 @@ if (($rowI['D3']) != '0')
 {
 $strD3=  strtr($rowI['D3'], array('_' => ' ')) ;
 $strQ3 = $rowI['Q3'];
-		
+
 			$Mex3 = $rowI["ex3"];
-			
+
 			$Mex3 = number_format ($Mex3, 2, ".", "");
 			$XT3 = 0;
 			$XT3 = $rowI["ex3"]*$rowI['Q3'];
@@ -263,7 +256,7 @@ $strD4 = strtr($rowI['D4'], array('_' => ' ')) ;
 $strQ4 = $rowI['Q4'];
 			$Mex4 = $rowI["ex4"];
 			$Mex4 = number_format ($Mex4, 2, ".", "");
-			
+
 //			echo $Mex4;
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT4 = 0;
@@ -286,11 +279,9 @@ $strD5 =  strtr($rowI['D5'], array('_' => ' ')) ;
 			//echo $rowI["ex5"];
 			$Mex5 = $rowI["ex5"];
 			$Mex5 = number_format ($Mex5, 2, ".", "");
-			
-		//	echo $Mex5;
-			
 
-			
+		//	echo $Mex5;
+
 			$XT5 = 0;
 			$XT5 =  $rowI["ex5"]*$rowI["Q5"];
 			$XT5 = number_format ($XT5, 2, ".", "");
@@ -305,9 +296,9 @@ $strD6 =  strtr($rowI['D6'], array('_' => ' ')) ;
 
 $strQ6= $rowI['Q6'];
 			$Mex6 = $rowI["ex6"];
-			
+
 			$Mex6 = number_format ($Mex6, 2, ".", "");
-			
+
 			$XT6 = 0;
 			$XT6 = $rowI["ex6"]*$rowI['Q6'];
 			$XT6 = number_format ($XT6, 2, ".", "");
@@ -321,9 +312,9 @@ $strD7 = strtr($rowI['D7'], array('_' => ' ')) ;
 
 $strQ7 = $rowI['Q7'];
 			$Mex7 = $rowI["ex7"];
-			
+
 			$Mex7 = number_format ($Mex7, 2, ".", "");
-			
+
 //			echo $Mex7;
 			$XT7 = 0;
 			$XT7 = $rowI["ex7"]*$rowI['Q7'];
@@ -336,20 +327,15 @@ if ($rowI['D8'] != '0')
 {
 $strD8 =  strtr($rowI['D8'], array('_' => ' ')) ;
 $strQ8 = $rowI['Q8'];
-			$Mex8 = $rowI["ex8"];			
+			$Mex8 = $rowI["ex8"];
 			$Mex8 = number_format ($Mex8, 2, ".", "");
-			
+
 			$XT8 = 0;
 			$XT8= $rowI["ex8"]*$rowI['Q8'];
 			$XT8 = number_format ($XT8, 2, ".", "");
 }
 else
 $strD8= ' ';
-
-
-
-
-
 
 $ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
 $rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
@@ -363,13 +349,9 @@ $ST2 = number_format ($ST, 2, ".", "");
 			$IT2 = $TAmt;
 			$IT2 = number_format ($TAmt, 2, ".", "");
 
-
-			
-			
-			
 if ($strD8 == '0&nbsp;')
 $strD8 = '';
-			
+
 if ($strQ8 == '0')
 $strQ8 = '';
 if ($strQ7 == '0')
@@ -384,15 +366,12 @@ if ($strQ3 == '0')
 $strQ3 = '';
 if ($strQ2 == '0')
 $strQ2 = '';
-	
 
 if ($Mex8 == 0)
     $Mex8 = '';
 if ($XT8  == 0)
 $XT8 = '';
-			
-			
-			
+
 if ($strD7 == '0&nbsp;')
 $strD7 = '';
 
@@ -400,17 +379,14 @@ if ($Mex7 == 0)
     $Mex7 = '';
 if ($XT7  == 0)
 $XT7 = '';
-						
-			
-			
+
 if ($strD6 == '0&nbsp;')
 $strD6 = ' ';
 if ($Mex6 == 0)
     $Mex6 = '';
 if ($XT6  == 0)
 $XT6 = '';
-						
-						
+
 if ($strD5 == '0&nbsp;')
 $strD5 = '';
 
@@ -418,39 +394,27 @@ if ($Mex5 == 0)
     $Mex5 = '';
 if ($XT5  == 0)
 $XT5 = '';
-						
-				
+
 if ($strD4 == '0&nbsp;')
 $strD4 = '';
 if ($Mex4 == 0)
     $Mex4 = '';
 if ($XT4  == 0)
 $XT4 = '';
-						
-					
-			
-				
+
 if ($strD3 == '0&nbsp;')
 $strD3 = '';
 if ($Mex3 == 0)
     $Mex3 = '';
 if ($XT3  == 0)
 $XT3 = '';
-						
-					
-				
+
 if ($strD2 == '0&nbsp;')
 $strD2 = ' ';
 if ($Mex2 == 0)
     $Mex2 = '';
 if ($XT2  == 0)
 $XT2 = '';
-						
-					
-			
-			
-			
-			
 
 /*echo"</table>
 <TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=0>
@@ -471,7 +435,7 @@ $XT2 = '';
 			echo "
 		</TH>
 	</TR>
-	
+
 	<TR>
 		<TH> <p align = 'right'>";
 			echo "Plus 14% VAT";
@@ -485,7 +449,7 @@ $XT2 = '';
 			echo "
 		</TH>
 	</TR>
-	
+
 		<TR>
 		<TH> <p align = 'right'>";
 		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -495,14 +459,14 @@ $XT2 = '';
 		</TH>
 		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			
+
 			$IT= $ST*1.14;
 			$IT2 = number_format ($IT, 2, ".", "");
 			echo "R".$IT2;
 			echo "
 		</TH>
 	</TR>
-	
+
 
 
 
@@ -523,19 +487,17 @@ $L6 = "";
 $L7 = "";
 $L8 = "";
 
-
-
 // -----------------------------------------------------------------------------
 
 // NON-BREAKING ROWS (nobr="true")
 //$pdf->SetFont('times', 'BI', 20, '', 'false');
 //  $pdf->SetFont('times', 'BI', 10, '', 'false');
 $tbl = <<<EOD
-CompanyName                                              TAX INVOICE NO. $InvNo2          
+CompanyName                                              TAX INVOICE NO. $InvNo2
 VAT NO VATNo                                          DATE: $TransDate
 CompAddress
 Tel: CompanyTel
-Cell: CompanyCell 
+Cell: CompanyCell
 Email:  CompanyEmail@me.co.za
 
 Customer: $strrepFN $strrepLN
@@ -558,7 +520,7 @@ $html = 'Summary: '.$Summary1.' ';
 
 
 
- 
+
 
 $L1 = "R$XT1 ex VAT is: [$strQ1 x $strD1]";
 /*$L3 = "R$XT3 ex VAT is: [$strQ3 x $strD3]";
@@ -585,9 +547,7 @@ $L7 = "R$XT7 ex VAT is: [$strQ7 x $strD7]";
 if ($strD8 != '')
 $L8 = "R$XT8 ex VAT is: [$strQ8 x $strD8]";
 
-
-
-//$LALL = $L1." 
+//$LALL = $L1."
 /*".$L2;
 if ($strD3 != '')
 $LALL = $L1.$L2.$L3;
@@ -616,35 +576,11 @@ EOD;
 
 //$pdf->writeHTML($tbl, true, false, false, false, '');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	   //max lenght of totalSDR may be 30 chars long 
+	   //max lenght of totalSDR may be 30 chars long
 $tblR = <<<EOD
 
-   
-Recommended payment reference:  $SDR 
+
+Recommended payment reference:  $SDR
 
 NB: For cash payments please make sure you have a receipt with my signature.
 (EFT) Banking details:
@@ -653,12 +589,12 @@ Account holder: AccName
 Bank:
 Branch Code: (Universal branch number)
 (Other branch codes:  )
-Account Number: 
+Account Number:
 (Branch:)
 Type of Account: <BR />
 
-Please send proof of payment to: 
-TERMS: 
+Please send proof of payment to:
+TERMS:
 EOD;
 
 //$pdf->writeHTML($tbl, true, false, false, false, '');
@@ -688,7 +624,6 @@ $uniqueidFL = $filelocation."\\".$uniqueid;
 echo "<br>u:  ".$uniqueidFL."<br>";
 //echo $uniqueid2;
 //$pdf->Output($uniqueidFL,'F');
-
 
 //$uniqueid3 = "http://localhost/".$uniqueid;
 //echo "<br>".$uniqueid3;
@@ -731,17 +666,15 @@ imagejpeg($im, $uniqueid, 75);
 
 imagejpeg($im, $uniqueidFL, 75);
 
-
 // Output the image
 //imagejpeg($im);
-
 
 // Free up memory
 imagedestroy($im);
 $filelocation = "file:///".$filelocation ;
 strtr($filelocation, array('\\' => '/')) ;
 echo "<br> <a href= '".$filelocation."' alt= 'Right-click in Ext App'>Open customer folder: ".$filelocation." </a> &nbsp;&nbsp;&nbsp; <br>";
-//include "invEmail.php";
+//include 'invEmail.php';
 ?>
 <font size = 4><b>
 <a href="mailto:<?php echo $CustEmail ?>?subject=<?php if (@$Draft == 'Paid')

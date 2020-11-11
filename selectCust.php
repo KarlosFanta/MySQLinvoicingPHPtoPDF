@@ -11,27 +11,27 @@
     Change this to “1” in order to disable backspace in firefox.
 */
 	$page_title = "Select a customer";
-//	include('dalogin/index.php');
-//	include('dalogin/USerSession.php');
-	//include('dalogin/CheckLogin.php');
+//	include 'dalogin/index.php';
+//	include 'dalogin/USerSession.php';
+	//include 'dalogin/CheckLogin.php';
 
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 $item3b='';
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a customer</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script src="jquery-1.10.1.min.js"></script>
 	       <script type="text/javascript">
                $(document).ready(function(){
                     $("#button").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -39,15 +39,15 @@ $item3b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
                    $("#button2").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -55,15 +55,15 @@ $item3b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
+
                           });
- 
+
                     });
                    $("#button3").click(function(){
- 
+
                           var name=$("#name").val();
                           var message=$("#message").val();
- 
+
                           $.ajax({
                               type:"post",
                               url:"process2.php",
@@ -71,22 +71,20 @@ $item3b='';
                               success:function(data){
                                  $("#info").html(data);
                               }
- 
-                          });
- 
-                    });
 
+                          });
+
+                    });
 
 				});
 //now the stuff to make things fancy:
 //function changeTest ( form ) { form.echoText.value = form.origText.value; }
-function changeTest ( form ) { 
+function changeTest ( form ) {
 //document.getElementById("button").style.background='#055300';
 	document.getElementById("button").value="Save Note";
 	document.getElementById("button2").value="Save Note";
 	document.getElementById("button").disabled=false;
 	document.getElementById("button2").disabled=false;
-
 
 	window.onbeforeunload = function() {
     return "You have attempted to leave this page. "
@@ -102,13 +100,12 @@ function reply_click(clicked_id)
 	//document.getElementById("button").style.background='#00ff00';
 	//document.getElementById("button").disabled=false;
 	//document.getElementById("button").enabled=true;
-	document.getElementById('message').focus(); 
+	document.getElementById('message').focus();
 document.getElementById("button").disabled=true;
 document.getElementById("button2").disabled=true;
 
-
 	//document.getElementById("button").style.background='#F0FFFF';
-}	
+}
 	function disable()
 {
 //document.getElementById("message").focus();
@@ -119,9 +116,9 @@ document.getElementById("button2").disabled=true;
 //don;t forget body onload below:
        </script>
    </head>
- 
+
  <body onload="javascript:disable();">
-	
+
 <?php
 
 
@@ -133,10 +130,9 @@ $query = "select CustNo, CustFN, CustLN, u1 from customer ORDER BY custLN";
 $queryS = "select CustNo, CustFN, CustLN, u1 from customer where CustNo = $CNN";
 //echo $queryS."<br>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -156,8 +152,8 @@ mysqli_free_result($result2);
 ?>
 <b><font size = "4" type="arial">Select A Customer into the session</b></font><font color = dark yellow> selectCust.php</font>
 
-<?php 
-if 
+<?php
+if
 (@$_SESSION['CustNo'] != "")
 echo "SESSION['CustNo'] is: ".@$_SESSION['CustNo'];
 ?>
@@ -210,17 +206,16 @@ echo "SESSION['CustNo'] is: ".@$_SESSION['CustNo'];
 Surname: <select name="mydropdownEC" onload="this.size=70;" >
 
 <?php
-//dropdownbox:	
+//dropdownbox:
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Select Customer</option>";
 else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -243,16 +238,13 @@ echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($result2);
 	}
 }
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -270,11 +262,9 @@ echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
 }
 
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["CustNo"];//case sensitive!
     echo $row["CustFN"];//case sensitive!
@@ -288,12 +278,12 @@ mysqli_free_result($result);
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 echo $item3b;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the customer" /> 
+<input type="submit" name="btn_submit" value="Select the customer" />
 	<br><br>
 
 
@@ -307,7 +297,7 @@ $CNN = @$_SESSION['CustNo'];
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -323,10 +313,9 @@ else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -340,7 +329,7 @@ echo $item1b;
  print "_".$item2b;
 print "_".$item3b;
 
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($result2);
 	}
@@ -357,16 +346,16 @@ print "_".$item3;
 //print "_".$adsl;
 if ($adsl != "")
 echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($result);
 }
-print " </option><br>"; 
+print " </option><br>";
 
 echo $item3b;
 ?>
 
-</select></p>  
+</select></p>
 
 
 
@@ -391,7 +380,7 @@ $CNN = @$_SESSION['CustNo'];
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -407,10 +396,9 @@ else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -424,7 +412,7 @@ echo $item3b;
  print "_".$item2b;
 print "_".$item1b;
 
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($result2);
 	}
@@ -441,16 +429,16 @@ print "_".$item1;
 //print "_".$adsl;
 if ($adsl != "")
 echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
-print " </option>"; 
+print " </option>";
 	}
 mysqli_free_result($result);
 }
-print " </option><br>"; 
+print " </option><br>";
 
 echo $item3b;
 ?>
 
-</select></p>  
+</select></p>
 
 
 </form>
@@ -508,7 +496,6 @@ else
 {
 echo "<b>You have $row_cnt invoices that require editing and sending:</b><br><br>";
 
-
 echo "<select name='mydropdownEC' onchange='this.form.submit()'>";
 echo "<option value='_no_selection_'>Select draft invoice to be updated</option>";
 
@@ -544,10 +531,7 @@ print "_R".$item5;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -568,13 +552,13 @@ mysqli_free_result($resultC);
 echo "<input type='submit' name='btn_submit' value='Update selected invoice' /> ";
 }
 //echo "<br><br>Notes: <br>";
-//include "notes/index.php"; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
+//include 'notes/index.php'; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
 //echo "<br>";
 
 ?>
-	
-</select></p>  
-	
+
+</select></p>
+
 	</form>
 
 
@@ -620,17 +604,17 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))  
-{  
+while ($row = mysql_fetch_array($result))
+{
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>"; 
+  print " </option>";
  }
 }
-*/	//require_once('view_cust.php');	
-//require_once('view_cust_all3.php');	
+*/	//require_once 'view_cust.php';
+//require_once 'view_cust_all3.php';
 ?>
 </form><!--<font size = 4><b>-->
 
@@ -776,18 +760,18 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <?php
-	
+
 ?>
 
 <!-- style='white-space:pre-wrap;font-family:arial;height:22px;width:300px;font-size: 10pt' -->
-        
+
 <!-- fanciness added:  onClick="reply_click(this.id); and  onkeypress="changeTest(this.form)"-->
    <form name="daBigNote">
 	<input type="button" value="Update iNotes" id="button"  onClick="reply_click(this.id);">
-	
-	<?php //include "compareQ.php"; ?>
-	<?php include "compare2.php"; //THIS INLCUDE STAEMENT WAS CAUSING ISSUES in my next code!
-	
+
+	<?php //include 'compareQ.php'; ?>
+	<?php include 'compare2.php'; //THIS INLCUDE STAEMENT WAS CAUSING ISSUES in my next code!
+
 	$queryS = "SELECT * FROM comment ORDER BY id DESC LIMIT 1";
 
 	if ($result2 = mysqli_query($DBConnect, $queryS)) {
@@ -797,23 +781,17 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 		}
 mysqli_free_result($result2);
 	}
-$rowsE = substr_count( $item1b, "\n" )+2; 	
+$rowsE = substr_count( $item1b, "\n" )+2;
 	//echo "<textarea name='message' id='message'  style='white-space:pre-wrap;font-family:arial;font-size: 10pt'  rows='4' cols='110'  > $item1b </textarea>";
-	
-	
-	
-	
-	
-	
+
 	?>
 	&nbsp;&nbsp;&nbsp;
-	
 
-	<a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&table=comment' target = '_blank'>phpMyadmin</a> 
-	
+	<a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&table=comment' target = '_blank'>phpMyadmin</a>
 
 
-	
+
+
 	<br>
 	<textarea name="message" id="message"  style='white-space:pre-wrap;font-family:arial;font-size: 10pt'  rows="<?php echo $rowsE; ?>" cols="110"  onkeypress="changeTest(this.form)"><?php echo $item1b; ?></textarea><input type="button" value="_Update Notes" id="button2">
 	<br/>
@@ -826,26 +804,26 @@ $rowsE = substr_count( $item1b, "\n" )+2;
 <?php
  /*  if(isset($_POST['BtnSubmit']))
    {
-   
+
    //   echo "</br>Your Name :{$_POST['Fullname']}";
 	$message = $_POST['Fullname'] ; //unadulterad text we got via Post
-  
-	  
+
+
 //  $newLineCode = "<br/>";
   $newLineCode = "BrR";
 $modifiedTextAreaText = ereg_replace( "\n", $newLineCode, $message);
-//echo "modifiedTextAreaText:" . $modifiedTextAreaText ;   
+//echo "modifiedTextAreaText:" . $modifiedTextAreaText ;
   //    echo "<br>";
 	  $modifiedTextAreaText = chop($modifiedTextAreaText,'BrR');
 
 //	  $var_str = var_export($text, true);
 //$var = "<?php\n\n\$$text = $var_str;\n\n?>";
 //file_put_contents('filename.php', $var);
-	
-$file = "daNote.html";	
+
+$file = "daNote.html";
 $open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><tr><th><b>Register:</b></th><th>" .$_POST['Fullname'] . ";</th><br/>"); 
-fwrite($open, "" .$modifiedTextAreaText. "\n"); 
+//fwrite($open, "<br><tr><th><b>Register:</b></th><th>" .$_POST['Fullname'] . ";</th><br/>");
+fwrite($open, "" .$modifiedTextAreaText. "\n");
 //fwrite($open, "<th><b>Date & Time:</b>". date("d/m/Y"). "</th>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br /><a href = '$file'>Check log file: [Add table and end /table HTML keywords to the file to view the table contents.]</a><br />";
@@ -853,7 +831,7 @@ fclose($open); // you must ALWAYS close the opened file once you have finished.
 
 
 $file = file("daNote.html");
-$lastline = $file[count($file) - 1]; 
+$lastline = $file[count($file) - 1];
 
 $rows = "2";
 $rows = substr_count($lastline, 'BrR');
@@ -878,9 +856,6 @@ $adsl = $row["u1"];
 //print "_".$adsl;
 //if ($adsl != "")
 //echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
-
-
-
 
 $queryChk2 = "select Summary from invoice where CustNo = $item1 AND (Summary LIKE '%Dec%' AND summary LIKE '%adsl%' AND summary LIKE '%2013%')";
 echo " ";
@@ -911,8 +886,6 @@ echo "<br>";
 
 //$su = "_";
 
-
-
 	}
 mysqli_free_result($resultChk);
 	}
@@ -924,10 +897,7 @@ mysqli_free_result($resultChk);
 	}
 mysqli_free_result($result);
 }
-print " <br>"; 
-
-
-
+print " <br>";
 
 ?>
 
@@ -937,7 +907,7 @@ print " <br>";
 
 
 <!--
-<form name="UserInformationForm" method="POST"> </font><br>   
+<form name="UserInformationForm" method="POST"> </font><br>
 	    <textarea name="Fullname"rows="<?php //echo $rowsE; ?>" cols="100" ><?php //echo $lastline; ?></textarea><br/><br/>
       <input name="BtnSubmit" type="submit" value="Update">
 

@@ -1,14 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Add a transaction</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include('header.php');	
-require_once("inc_OnlineStoreDB.php");
+	include 'header.php';
+require_once 'inc_OnlineStoreDB.php';
 ?>
 
 
@@ -38,12 +38,10 @@ $InvNoH = 0;
 $InvNoHincl = 0;
 $ProofNo = '_';
 
-//$CustNo" 
+//$CustNo"
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
-
-
 
 $ProofToPay ='_';
 $ProofToPay = @$_POST['ProofNo'];
@@ -71,9 +69,6 @@ $InvNoH = $_POST['InvNoH'];
 $InvNoHincl = $_POST['InvNoHincl'];
 $Priority = $_POST['Priority'];
 
-
-
-
 $Trans_No = $_POST['TransNo'];
 $CustNo = $_POST['CustNo'];
 if ($CustNo == 0)
@@ -90,7 +85,7 @@ $resultC->free();
 }
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
-	
+
 $D1 = $_POST['TransDate'];
 $D2 = explode("/", $D1);
 //echo $D1[2]."____";
@@ -103,12 +98,9 @@ $D2 = explode("/", $D1);
 
 $TransDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $TransDate;	 
-
+//echo $TransDate;
 
 $CustSDR = $_POST['CustSDR'];
-
-
 
 $AmtPaid = $_POST['AmtPaid'];
 $Notes = $_POST['Notes'];
@@ -132,7 +124,7 @@ htmlXentities($Notes);
 htmlX_entity_decode($Notes);
 */
 $Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;  
+$EEmail = $Notes;
 
 $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF-8"   WORKS LIKE A CHARM 2014
 
@@ -140,16 +132,16 @@ $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);  
-$CustSDR = str_replace($von, $zu, $CustSDR);  
+$Notes = str_replace($von, $zu, $Notes);
+$CustSDR = str_replace($von, $zu, $CustSDR);
 //echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
-$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR); 
+$Notes = mysqli_real_escape_string($DBConnect, $Notes);
+$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR);
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes); 
+//iconv("UTF-8", "ISO-8859-1", $Notes);
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -165,33 +157,23 @@ $Notes = str_replace(' ', '_', $Notes);
 $AmtPaid = preg_replace("/,/","",$AmtPaid);
 $CustSDR = preg_replace("/,/","",$CustSDR);
 
-
 $Notes = mysqli_real_escape_string($DBConnect, $Notes);
 //echo " notes:".$Notes ;
 //echo " CustSSDR:".$CustSDR ;
 //echo "TransferMethod:".$TMethod." ";
 
-
-
-
 //echo "Thank you for adding the transaction's details: ".$Trans_No." ".$CustNo ." ".$D1 ."."  ;
 
 $Trans_NoInt = intval($Trans_No);
 
-
-
 echo "pppProofNo:".$ProofNo;
 
-
-
-
-
-$query="insert into transaction (TransNo, CustNo, TransDate, AmtPaid, Notes, CustSDR, TMethod,  
+$query="insert into transaction (TransNo, CustNo, TransDate, AmtPaid, Notes, CustSDR, TMethod,
 InvNoA,InvNoAincl, InvNoB, InvNoBincl , InvNoC, InvNoCincl ,
 InvNoD, InvNoDincl , InvNoE, InvNoEincl , InvNoF, InvNoFincl,
 InvNoG , InvNoGincl , InvNoH , InvNoHincl, Priority )
 VALUES
-( $Trans_No,  $CustNo, '$TransDate', $AmtPaid, '$Notes', '$CustSDR', '$TMethod', 
+( $Trans_No,  $CustNo, '$TransDate', $AmtPaid, '$Notes', '$CustSDR', '$TMethod',
 '$InvNoA', $InvNoAincl ,  '$InvNoB', $InvNoBincl ,  '$InvNoC', $InvNoCincl ,
 '$InvNoD',  $InvNoDincl ,  '$InvNoE', $InvNoEincl ,  '$InvNoF', $InvNoFincl ,
 '$InvNoG',  $InvNoGincl , '$InvNoH',  $InvNoHincl , '$Priority') ";
@@ -209,12 +191,6 @@ echo "<font size = 5  color = red><b><b>insert into transaction NOT successfull!
 else
 echo "<font size = 4>insert success! </font><br>";
 
-
-
-
-
-
-
 $queryPPR="update aproof set TransNo = '$Trans_No' where ProofNo = '$ProofNo'";
 echo '</br>';
 
@@ -228,19 +204,6 @@ if (mysqli_affected_rows($DBConnect) == -1)
 echo "<font size = 5  color = red><b><b>update aproof NOT successfull!!!</b>!!</b></font><br>$queryPPR<br>";
 else
 echo "<font size = 4>update aproof success!$queryPPR </font><br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //php to sql does not understand semicolon. remove the semicolon!!!
 $TransInt = intval($Trans_NoInt);
@@ -277,24 +240,24 @@ print "_".$item10;
 }
 $result->free();
 }
-	
+
 
 
 $file = "FileWriting/bkp.php";
-include("FileWriting/FileWriting.php");
+include 'FileWriting/FileWriting.php';
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-	
+
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/	
+*/
 ?>
 
 
@@ -308,11 +271,11 @@ echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br
 <input type = "hidden" name="AmtPaid" value="<?php echo $AmtPaid ?>">
 
 <a href = "add_trans.php"> Click to add another transaction</a>	<br><br>
-	
+
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 
 
-	
+
 
 <?php
 echo $query;
@@ -325,12 +288,10 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
-
 if ($InvNoA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE InvNo = $InvNoA";
-
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -550,8 +511,6 @@ $result->free();
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
-
-
 $ProofInvA= "";
 $ProofDate= "";
 $ProofAmt = "";
@@ -628,7 +587,6 @@ $b2 = "Transaction Number: ". $Trans_No;
 $b3 = "Paid by: ". $CustLN.", ".$CustFN;
 $b4 = "Amount: R". $AmtPaid;
 
-
 $b5b = "Customer reference: ".$CustSDR;
 $b6 = "Received by: CompanyName ";
 $b7 = "Payment method: ". $TMethod ;
@@ -670,7 +628,7 @@ Click to EMail Receipt to customer <?php echo $CustFN." ".$CustLN; ?></a><br>
 <br>
 
 
- 
+
 <font size= 2><b>
 <a href='selectCustTrans.php'>Click to add transaction for another customer</a> or <input type = "submit" value = "Click to add transaction for the same customer">
 </font></b>
@@ -680,12 +638,12 @@ Click to EMail Receipt to customer <?php echo $CustFN." ".$CustLN; ?></a><br>
 
 
 	<br><br>
-	
+
 
 	<br><br>
 
-	
-	
+
+
 
 <br><br><br><br>
 <?php
@@ -714,7 +672,7 @@ Click to EMail Receipt to customer <?php echo $CustFN." ".$CustLN; ?></a><br>
 
 
 
-include "view_trans_by_cust.php";
+include 'view_trans_by_cust.php';
 
 echo "<font zize = 4><b>";
 echo $TMethod.' ';
@@ -740,9 +698,7 @@ echo "<br><br>Method: ";
 echo $TMethod;
 echo "<br><br>";
 
-
 echo "<br><br><br>".$query;
-
 
 echo ";<br><br>";
 ?>

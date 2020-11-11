@@ -5,28 +5,20 @@ try {
 
     // prepare query
     $query = "select
-                InvNo, Summary, TotAmt 
-            from 
-                invoice 
-            where 
+                InvNo, Summary, TotAmt
+            from
+                invoice
+            where
                 CustNo = ?";
-            
+
     $stmt = $con->prepare( $query );
 
-	
-	
-	
-	
-	
-	
     // this is the first question mark above
     $stmt->bindParam(1, $_REQUEST['id']);
 
     // execute our query
     $stmt->execute();
-	
-	
-	
+
 //	print("Fetch all of the remaining rows in the result set:\n");
 //$result = $stmt->fetchAll();
 //print_r($result);
@@ -34,7 +26,6 @@ try {
     // store retrieved row to a variable
  //   $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	
 /*	$sth->execute(array(150, 'red'));
 $red = $sth->fetchAll();
 $sth->execute(array(175, 'yellow'));
@@ -53,9 +44,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   echo "<br>";
   echo $TotAmt ;
   echo "<br>";
-  
-
- 
 
  // values to fill up our table
     $InvNo = $row['InvNo'];
@@ -75,11 +63,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 //            echo "<td>Summary: </td>";
             echo "<td>{$Summary}</td>";
         echo "</tr>";
-}		
-		
-		
+}
+
+
     echo "</table>";
-   
+
 }catch(PDOException $exception){
 
     // to handle error

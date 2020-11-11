@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -36,9 +36,9 @@ function formValidator(){
 	//		}
 	//	}
 	}//very important bracket part of isNumeric!!!!!
-	
+
 	return false;
-	
+
 }//very important end of formvalidator!!
 
 function notEmpty(elem, helperMsg){
@@ -127,7 +127,7 @@ function emailValidator(elem, helperMsg){
 
 function calc()
 {
-		
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -154,10 +154,10 @@ function calc()
   val15 = document.getElementById("ex8").value;
   val16 = document.getElementById("Q8").value;
   mani = "multiply";
-  
+
   if (val1 != "" && val2 != "")
   {
-  	
+
   document.getElementById("resp").innerHTML="Calculating...";
     queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
 //   queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+mani;
@@ -167,9 +167,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	
+
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-        
+
     }
   }
 
@@ -192,22 +192,20 @@ function calc()
 
 
 <?php
-	require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
+	require_once 'inc_OnlineStoreDB.php';//page567
+	require_once 'header.php';//page567
 
 echo "<font size = 4>Add a new Invoice</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	
+
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	$CustInt = $_SESSION['CustNo'];
-
 
 // $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 //$result = mysql_query($query) or die(mysql_error());
 $daNextNo = 1; //default if table is completely empty.
 $query = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice"; ///CORRECT!! DO NOT REMOVE!!!!
 $result = $DBConnect->query($query);
-
 
 /*while($row = mysqli_fetch_array($result)){
 //	echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
@@ -220,7 +218,7 @@ $InvNo = $InvNo+1;
 
 //echo "The max no InvNo in customer table is:  ". $row[0] . "&nbsp;";
 
-/*	
+/*
 	$InvDate = $_POST['Date1'];
 	//$Summary = $_POST['Summary'];
 
@@ -231,7 +229,6 @@ $InvNo = $InvNo+1;
 	//echo " 0: ".$TBLrow[0]."<br>";
 	//$Custno = explode( "_", $TBLrow);
 	//echo "___:".$CustInt."   ";
-
 
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
@@ -257,8 +254,6 @@ if ($result2 = $DBConnect->query($query)) {
     while ($row2 = $result2->fetch_assoc()) {
        // printf ("%s (%s)\n", $row2['CustNo'], $row2['CustFN']);
 	///	$TransNo_Check = $row[0];
-		
-
 
 			//echo "selected CustomerNo: ".$row2['CustNo']."<br>";
 			//echo "selected CustomerLN: ".$row2['CustLN']."<br>";
@@ -274,7 +269,6 @@ echo "<th>Distance</th>";
 echo "<th>ABBR</th>";
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
-
 
 echo "{$row2['CustNo']}&nbsp;";
 echo "{$row2['CustFN']}&nbsp;";
@@ -301,27 +295,25 @@ $Abbr = $row2['ABBR'];
 //echo "<th>{$row2['CustPW']}</th></tr>\n";
 //echo "<td>{$row[5]}</td>";
 echo "</tr>\n";
-		
 
     $result->close();
-	
+
 }
 //echo "</table>";
 
 	}
-	
-	
-	
-*/	
-	
-	
-	
-	
-	
+
+
+
+*/
+
+
+
+
+
 	$OrdPd = "_";
 
-
-//$DateD = date("Y.m.d"); 
+//$DateD = date("Y.m.d");
 //$NewFormat = date("d/m/Y");
 //$InvSQLDate = $D1[2]."-".$D1[1]."-".$D1[0];
 $InvSQLDateDD = date("d");
@@ -358,7 +350,7 @@ $InvSQLDateYY =  date("Y");
 //$sql = "DELETE FROM invoice WHERE InvNo = $InvNo" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -368,7 +360,6 @@ $InvSQLDateYY =  date("Y");
 //oci_execute($stid);
 ///echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Thank you for selecting ".$TBLrow." from your database. You may now change its details.</BR>"   ;
-
 
 //$objResult = mysql_query($sql) or die(mysql_error());
 
@@ -385,32 +376,28 @@ $InvSQLDateYY =  date("Y");
 //echo "<a href='addInvprocessCsessD.php'><font size = '3'>First Click here to if you need to add descriptions</font>";
 //echo "addInvprocessCsessD.php</a><br>";
 
-
-
 if ($result = mysqli_query($DBConnect, $query)) {      //I think this is to determine the MAX invoice number
   while ($row = @mysqli_fetch_assoc($result)) {
 
 
  		echo "<dl>";
 			echo "for: ";
-			
+
 			if ($result2 = $DBConnect->query($query)) {
 
     while ($row2 = $result2->fetch_assoc()) {
 
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 			//echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
 	//		echo $row['CustLN'];
-			
-			
-			
+
 			echo "{$row2['CustNo']}&nbsp;";
 			echo "<b><FONT size = 3 face = arial>&nbsp;&nbsp;";
 echo $row2['CustFN']."&nbsp;";
@@ -428,27 +415,23 @@ $Important = $row2['Important'];
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 
 			   $result->close();
-	
-	
 
-			
 	//		echo "&nbsp;&nbsp;Account No: ";
 	//		echo $row['CustNo'];
-			
+
 			// DO NOT DISABLE!!! addInvprocess_lastC needs to know which customer got selected!!
 			//There is no inserting here yet!!!
 			echo " <input type='hidden' name='CustNo' value=";
 			echo " ";
 			echo $row['CustNo'];
 			echo "> ";
-			
-			
+
 }
 //echo "</table>";
 
 	}
-			
-			
+
+
 		echo "</dl>";
 echo "<b><a href='addInvprocessCsessD.php'><font face= arial size = '3'>New invoice with descriptions</a></font></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "addInvprocessCsessD.php<br>";
@@ -457,18 +440,11 @@ echo "<br><br>";
 echo "<b><a href='addInvprocessCsess.php'><font face= arial  size = '1'>New ADSL invoice without descriptions</a></b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "addInvprocessCsessD.php<br>";
 
-
- 
-
 }}
 include ("view_event_by_cust.php");
 
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -489,7 +465,7 @@ include ("view_inv_prev_by_cust.php");
 //include ("view_trans_by_cust.php");
 include ("view_inv.php");
 
-//require_once "view_inv_one.php";
+//require_once 'view_inv_one.php';
 
 ?>
 

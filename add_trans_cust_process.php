@@ -1,5 +1,5 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -34,11 +34,11 @@ function formValidator(){
 				}
 			}
 	//	}
-	
+
 	}//very important bracket!!!!!
-	
+
 	return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -119,9 +119,9 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "add_tranc_CustProcess2.php"
  $page_title = "You seleted a Customer";
-	require_once('header.php');	
+	require_once 'header.php';
 	//require_once ('db.php');//mysqli connection and databse selection
-		require_once("inc_OnlineStoreDB.php");
+		require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="addTransCustProcess2" action="addTransprocess_last2.php" method="post">
@@ -161,7 +161,6 @@ echo "<th>Distance</th>";
 echo "<th>LastLogin</th>";
 echo "<th>CustPW</th></tr>\n";
 
-
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -180,20 +179,15 @@ echo "<th>{$row[9]}</th></tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
-
 
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 echo "Account No ".$TBLrow."</BR>"   ;
 //echo "Account No ".$CustNo[0]."</BR>"   ;
 //echo "Account No ".$CustNo[1]."</BR>"   ;
 //echo "Account No ".$CustNo[2]."</BR>"   ;
-
 
 $SQLstring = "SELECT * FROM transaction WHERE CustNo = $CustInt";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -216,7 +210,6 @@ echo "<th>InvNoC detail</th>";
 echo "<th>InvNoC incl VAT</th>\n";
 echo "<th>InvNoD detail</th>";
 echo "<th>InvNoD incl VAT</th></tr>\n";
-
 
     /* fetch object array */
     while ($row = $result->fetch_row()) {  //from transaction table
@@ -249,17 +242,16 @@ echo "<th>{$row[13]}</th></tr>\n";  //InvDincl from transaction table
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
 
 ?>
 
 
 
 
-<?php	
+<?php
 
 	require_once ('dbold.php');
 
@@ -282,8 +274,6 @@ while($row = mysql_fetch_array($result)){
 $daNextNo = intval($row[0])+1;
 }
 //	echo "Add 1 = ". $daNextNo;
-
-
 
 ?>
 
@@ -331,7 +321,6 @@ echo "<input type = 'text' value='$CustInt' >";
 // if($CustNo == $select){
 //echo "selected";
 
-
 //echo $CustNo;
 //echo "_ ";
 echo $CustFN;
@@ -339,7 +328,7 @@ echo " ";
 echo $CustLN;
 
 //echo "</option>";
-} 
+}
 */
 
 
@@ -349,15 +338,13 @@ echo $CustLN;
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
-
-
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 			<!--<label>TransDate:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
-			<input type="text" size="10" id="TransDate"  name="TransDate" value="<?php echo $NewFormat;?>" /> 
+			<input type="text" size="10" id="TransDate"  name="TransDate" value="<?php echo $NewFormat;?>" />
 		</th>
 
 		<th>
@@ -365,29 +352,29 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="AmtPaid"  name="AmtPaid" value="" />
 		</th>
-	
+
 		<th>
 			<!--<label>&nbsp; Payment Method:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<!--<input type="text" id="TMethod"  name="TMethod" value="." />-->
-			
-			
+
+
 			<select name="TMethod"  id="TMethod" value="<?php $oldstatus = "."; echo $oldstatus; ?>" >-->
                 <option value="EFT">EFT</option>
                 <option value="Debit">Debit</option>
                 <option value="Cash">Cash</option>
-                <option value="Cheque">Cheque</option>	
-                <option value="Cheque">Mixed</option>	
+                <option value="Cheque">Cheque</option>
+                <option value="Cheque">Mixed</option>
 </select>
 			<!----->
 		</th>
-	
+
 		<th>
 			<!--<label>&nbsp; Notes:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="Notes"  name="Notes" value="." />
 		</th>
-	
+
 		<th>
 			<!--<label>&nbsp; InvNoA:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -398,8 +385,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="3"  id="InvNoAincl"  name="InvNoAincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoB:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -410,8 +397,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="InvNoBincl"  name="InvNoBincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoC:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -422,8 +409,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="3"  id="InvNoCincl"  name="InvNoCincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoD:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -434,8 +421,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="InvNoDincl"  name="InvNoDincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoE:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -446,8 +433,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="InvNoEincl"  name="InvNoEincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoF:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -458,8 +445,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="InvNoFincl"  name="InvNoFincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoG:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -470,8 +457,8 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="3" id="InvNoGincl"  name="InvNoGincl" value="0" />
 		</th>
-	
-	
+
+
 		<th>
 			<!--<label>&nbsp; InvNoH:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
@@ -482,36 +469,36 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text" size="3"  id="InvNoHincl"  name="InvNoHincl" value="0" />
 		</th>
-	
-	
-	
+
+
+
 		<th>
 			<!--<label>&nbsp; Priority:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			
-			
+
+
 			<!--<input type="text" id="Priority"  name="Priority" value="." />-->
-			
-			
+
+
 			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
 			</select>
-			
+
 </th>
 		</tr>
 		</table>
-	
-		
+
+
 <br><br>
-<input type="submit" value="Create transaction" onclick="return confirm('Are you sure about the date and Invoice Number?');" /> 
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
-	
+<input type="submit" value="Create transaction" onclick="return confirm('Are you sure about the date and Invoice Number?');" />
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
+
 </form>
 
 <?php mysql_close($conn);?>
-</p>  
+</p>
 
 
 
@@ -530,7 +517,6 @@ echo $CustLN;
     echo $row[6] . $row['TransADDR']"</br>";
     echo $row[7] . $row['DISTANCE']"</br>";
 
-	
 	if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
 
@@ -561,7 +547,6 @@ echo $CustLN;
 			echo $row['TransDate'];
 			echo "> ";
 		echo "</dl>";
-
 
  		echo "<dl>";
 			echo "<dt><label>Amount Paid</label></dt>";
@@ -602,7 +587,6 @@ echo $CustLN;
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -617,7 +601,6 @@ echo $CustLN;
 			echo $row["InvNoBincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -634,7 +617,6 @@ echo $CustLN;
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -649,7 +631,6 @@ echo $CustLN;
 			echo $row["InvNoDincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -666,7 +647,6 @@ echo $CustLN;
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -681,7 +661,6 @@ echo $CustLN;
 			echo $row["InvNoFincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -698,7 +677,6 @@ echo $CustLN;
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoH</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -714,23 +692,14 @@ echo $CustLN;
 			echo "> ";
 		echo "</dl> ";
 
-
-		
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 
 //oracle: oci_free_statement($objParse);
 //oci_free_statement($stid);
 //oracle: oci_close($conn);
-
-
-
-
 
 		/*<dl>
 			<dt><label>* First Name<?php //echo $this->lang->line('Trans_fn'); ?>: </label></dt>
@@ -742,9 +711,9 @@ echo $CustLN;
 <div>
 		<dl>
 			<dt></dt>
-			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" />-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" />
 		</dl>
@@ -764,7 +733,4 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
-
-
-
+?>

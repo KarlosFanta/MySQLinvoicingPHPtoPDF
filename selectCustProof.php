@@ -1,9 +1,9 @@
 <?php
 	$page_title = "Select a customer";
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
+?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,7 +24,7 @@ $ACTIONN = "editProof";
 else
 {
 $ACTIONN = "addProof";
-//include "view_transLatest.php";
+//include 'view_transLatest.php';
 }
 ?>
 
@@ -49,11 +49,8 @@ if (isset($_POST['btnSubmit'][0])) {
 
 //$btnSubmit = $_POST['btnSubmit'];
 
-
 echo "You selected: " .$Prof."</BR>";
 echo " <input type='text' size = 4  name='Prof'  id='Prof' value = '$Prof'>";
-
-
 
 $query = "select CustNo, CustFN, CustLN from customer ORDER BY custLN";
 //echo $query;
@@ -75,7 +72,7 @@ $queryS = "select CustNo, CustFN, CustLN from customer where CustNo = $CNN";
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -96,7 +93,7 @@ $result2->free();
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-	
+
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Select Customer</option>";
 else
@@ -105,7 +102,7 @@ else
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -120,8 +117,7 @@ echo $item2b;
  print "_".$item1b;
 print "_".$item3b;
 
-
-print " </option>"; 
+print " </option>";
 	}
 $result2->free();
 	}
@@ -135,7 +131,7 @@ print "<option value='$item1'>$item2"; //all customers
 print "_".$item1;
 print "_".$item3;
 
-print " </option>"; 
+print " </option>";
 
 	}
 $result->free();
@@ -145,14 +141,14 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>"; 
+print " </option><br>";
 
 echo $item3b;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" /> 
-</select></p>  
-<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" /> 
+<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" />
+</select></p>
+<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" />
 
 
 <b>
@@ -160,18 +156,16 @@ echo $item3b;
 
 <?php
 //if ($Prof != 'EDIT_Proofs')
-//include "view_transLatest.php";
-
-
+//include 'view_transLatest.php';
 
 ?>
 <a href="view_cust_all3.php" >view_cust_all3.php</a></b><br />
 <a href="view_inv_all.php" >view_inv_all.php</a></b><br />
 <?php
-include "view_transLatest.php";
+include 'view_transLatest.php';
 ?>
 
 
 </body>
 
-</html> 
+</html>

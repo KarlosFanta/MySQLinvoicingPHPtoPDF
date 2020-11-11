@@ -1,5 +1,5 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	//var CustEm = document.getElementById('CustEm');
 	//var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	//if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		//if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -34,11 +34,11 @@ function formValidator(){
 				}
 			}
 	//	}
-	
+
 	}//very important bracket!!!!!
-	
+
 	return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -119,8 +119,8 @@ function emailValidator(elem, helperMsg){
 <body>
 <?php	//this is "add_tranc_CustProcess2.php"
  $page_title = "You seleted a Customer";
-require_once("inc_OnlineStoreDB.php");//page567
-	require_once("header.php");//page567
+require_once 'inc_OnlineStoreDB.php';//page567
+	require_once 'header.php';//page567
  echo "addEventCustProcess_sessT.php<br>";
     @session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
@@ -193,20 +193,12 @@ echo "&nbsp;&nbsp;{$row[7]} ";
 echo "&nbsp;&nbsp;{$row[8]} ";
 echo "&nbsp;&nbsp;{$row[9]} ";
 
-
-
-
-
 		}
-    // free result set 
+    // free result set
     $result->close();
-	
+
 }
 //echo "</table>";
-
-
-
-
 
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 
@@ -230,7 +222,6 @@ if (mysqli_affected_rows($DBConnect) == -1)
 echo "<br><br><font size = 5 color = red><b><b>insert or update NOT successfull!!!</b></b></font><br><br>";
 //else
 //echo "select success! <br>";
-
 
 $daNextNo = 1; //forces a 1 if table is completely empty.
 while($row = mysqli_fetch_array($result)){
@@ -296,7 +287,6 @@ echo "<input type = 'text' value='$CustInt' >";
 // if($CustNo == $select){
 //echo "selected";
 
-
 //echo $CustNo;
 //echo "_ ";
 echo $CustFN;
@@ -304,7 +294,7 @@ echo " ";
 echo $CustLN;
 
 //echo "</option>";
-} 
+}
 */
 
 
@@ -314,18 +304,16 @@ echo $CustLN;
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
-
-
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
+		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
 		$NewFormat = date("d/m/Y");
 		?>
 			<!--<label>EDate:</label></dt>-->
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
-			<input type="text" size="10" id="EDate"  name="EDate" value="<?php //echo $NewFormat;?>" /> 
+			<input type="text" size="10" id="EDate"  name="EDate" value="<?php //echo $NewFormat;?>" />
 		</th>
-		
-		
+
+
 		<th>	<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
@@ -343,36 +331,36 @@ echo $CustLN;
 			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 			<input type="text"  size="40" id="ENotes"  name="ENotes" value="__1GB_topup" />
 		</th>
-	
-	
-			
-		
+
+
+
+
 </th>
 		</tr>
 		</table>
-	
-	
+
+
 <br><br>
-<input type="submit" value="Create event" /> 
+<input type="submit" value="Create event" />
 <!--<input type="submit" value="Create event" onclick="return confirm('Are you sure about the date?');" /> -->
-<!--<input type="button" value="Submit" onclick="formValidator()" />--> 
+<!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
 </form>
 
 
 
-<?php 
+<?php
 include ("view_event_by_cust.php");
 
 //mysqli_close($DBConnect);
 ?>
-</p>  
+</p>
 
 
 <?php
 /*echo "<form action='somewhere.php' method='post'>";
 //get class into the page
-require_once('calendar/tc_calendar.php');
+require_once 'calendar/tc_calendar.php';
 
 //instantiate class and set properties
 $myCalendar = new tc_calendar("date1", true);
@@ -380,10 +368,9 @@ $myCalendar->setIcon("images/iconCalendar.gif");
 $myCalendar->setDate(1, 1, 2000);
 
 //output the calendar
-$myCalendar->writeScript();	  
+$myCalendar->writeScript();
 
 echo "</form>";
-
 
 $myCalendar = new tc_calendar("date2");
 	  $myCalendar->setIcon("calendar/images/iconCalendar.gif");
@@ -408,7 +395,6 @@ $myCalendar = new tc_calendar("date2");
     echo $row[6] . $row['eventADDR']"</br>";
     echo $row[7] . $row['DISTANCE']"</br>";
 
-	
 	if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
 
@@ -439,7 +425,6 @@ $myCalendar = new tc_calendar("date2");
 			echo $row['EDate'];
 			echo "> ";
 		echo "</dl>";
-
 
  		echo "<dl>";
 			echo "<dt><label>Amount Paid</label></dt>";
@@ -480,7 +465,6 @@ $myCalendar = new tc_calendar("date2");
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -495,7 +479,6 @@ $myCalendar = new tc_calendar("date2");
 			echo $row["InvNoBincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -512,7 +495,6 @@ $myCalendar = new tc_calendar("date2");
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -527,7 +509,6 @@ $myCalendar = new tc_calendar("date2");
 			echo $row["InvNoDincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -544,7 +525,6 @@ $myCalendar = new tc_calendar("date2");
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -559,7 +539,6 @@ $myCalendar = new tc_calendar("date2");
 			echo $row["InvNoFincl"];
 			echo "> ";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -576,7 +555,6 @@ $myCalendar = new tc_calendar("date2");
 			echo "> ";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoH</label></dt>";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" />-->
@@ -592,23 +570,14 @@ $myCalendar = new tc_calendar("date2");
 			echo "> ";
 		echo "</dl> ";
 
-
-		
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 
 //oracle: oci_free_statement($objParse);
 //oci_free_statement($stid);
 //oracle: oci_close($conn);
-
-
-
-
 
 		/*<dl>
 			<dt><label>* First Name<?php //echo $this->lang->line('event_fn'); ?>: </label></dt>
@@ -620,9 +589,9 @@ $myCalendar = new tc_calendar("date2");
 <!--<div>
 		<dl>
 			<dt></dt>
-			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-<!--			<input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+<!--			<input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" />-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" />
 		</dl>
@@ -644,7 +613,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?> 
+?>
 
 
 

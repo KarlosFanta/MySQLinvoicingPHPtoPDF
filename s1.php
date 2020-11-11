@@ -4,7 +4,7 @@
 <script type="text/javascript">
 /* This script and many more are available free online at
 The JavaScript Source!! http://javascript.internet.com
-Created by: Kiran Pai | http://www.codecoffee.com/ 
+Created by: Kiran Pai | http://www.codecoffee.com/
 
 Modified From: http://javascript.internet.com/forms/multi-value-drop-down-list-2.html
 Modified for : http://www.webdeveloper.com/forum/showthread.php?t=190015
@@ -43,7 +43,7 @@ function Initialize() {
   set_Selections('selPlayer',bluesplayers);
 }
 
-function set_Options(p,c) {	// p=parent, c=child 
+function set_Options(p,c) {	// p=parent, c=child
   var select_parent = document.getElementById(p);
   var selected_parent = select_parent.options[select_parent.selectedIndex].value;
   var select_child  = document.getElementById(c);
@@ -97,7 +97,7 @@ function ShowSelection() {
     <td>Month:<select name="selMon" id='selMon'><option>------</select></td>
 
     <td>Genre:<select name="selGenre" id="selGenre"
-        onchange="set_Options('selGenre','selPlayer')"> <option>-----</select> </td> 
+        onchange="set_Options('selGenre','selPlayer')"> <option>-----</select> </td>
     <td>Guitarist:<select name="selPlayer" id="selPlayer"> <option>------ </select> </td>
 
     <td><button onclick="ShowSelection()">Show Selection</button></td>

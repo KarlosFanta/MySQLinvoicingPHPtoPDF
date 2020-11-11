@@ -1,8 +1,8 @@
 <?php	//this is "editCustProcess.php"
  $page_title = "You seleted a Transomer";
-	require_once('header.php');	
+	require_once 'header.php';
 	//require_once ('db.php');//mysqli connection and databse selection
-		require_once("inc_OnlineStoreDB.php");
+		require_once 'inc_OnlineStoreDB.php';
 
 ?>
 <form name="Edit_trans_process" action="edit_trans_CustProcessC2.php" method="post">
@@ -20,8 +20,6 @@ else
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
 //$CustInt = $_SESSION['CustNo'];
-
-
 
 //$TBLrow = $_POST['mydropdownEC'];
 //$in = $_POST['in'];
@@ -60,8 +58,6 @@ $item1 = $row["CustNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustFN"];
 
-
-
 $item3 = $row["CustLN"];
 $item4 = $row["Important"];
 
@@ -75,7 +71,7 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //$sql = "DELETE FROM Transomer WHERE TransNo = $TransInt" ;
 //$sql = "TRUNCATE TABLE ' . $TBLname . '";   >>> THIS WAS MY PROBLEM!!!
 //$stmt = OCIParse($conn, $sql);
-//OCIExecute($stmt); 
+//OCIExecute($stmt);
 //oci_fetch_all($stmt, $res); multi-dimensional array
 //echo "<pre>\n";
 //var_dump($res);
@@ -86,8 +82,6 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 //echo $query."</BR>";   //THIS SOLVED MY PROBLEM, I HAD TO LOOK AT THE QUERY STRING ITSELF
 //echo "Account No ".$TBLrow."</BR>"   ;
 
-
-
 ?>
 
 
@@ -95,7 +89,7 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;".$item4;
 <b><font size = "4" type="arial">Edit <?php echo $item3 ?>'s transactions</b></font>
 </br>
 <?php
-include "monthtables.php";
+include 'monthtables.php';
 ?>
 
 
@@ -112,7 +106,6 @@ $item1 = $row["TransNo"];
 print "<option value='$item1'>$item1";
 $item2 =  $row["CustNo"];
 
-
 $item3 = $row["TransDate"];
 $item4 = $row["AmtPaid"];
 $item5 = $row["Notes"];
@@ -125,15 +118,10 @@ print "_".$item3;
 print "_R".$item4;
 print "_".$item5;
 
-
-
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -148,9 +136,9 @@ $result->free();
 // close connection
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Update selected transaction" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Update selected transaction" />
+
+</select></p>
 
 
 
@@ -189,10 +177,6 @@ $result->free();
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
-
-
-
-
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
 
@@ -201,62 +185,10 @@ echo "<b>Total Amount oustanding: R".($Invsummm - $yo)."</b><BR />";
 else
 echo "<b>Total Amount owing to you: R".-($Invsummm - $yo)."</b><BR />";
 
-
 include ("view_event_by_cust.php");
 include ("view_trans_by_custM.php");
 
 echo "<br><br><br><br><br><br><br><br><br><br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 $yo = 0;
 echo "sqlstr:".$SQLString;
@@ -302,7 +234,6 @@ echo "<th>InvNoH incl VAT</th>\n";
 */
 echo "<th>Priority</th></tr>\n";
 
-
     /* fetch object array */
     while ($row = $result->fetch_row()) {  //from transaction table
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -322,9 +253,6 @@ $CN = $row[1];                  //CustNO from transaction table
 echo "<th>{$row[2]}</th>";  //TransDate from transaction table
 echo "<th>{$row[3]}</th>";  //AmtPaid from transaction table
 $yo = $yo+$row[3];
-
-
-
 
 echo "<th>{$row[4]}</th>\n";  //Notesfrom transaction table
 echo "<th>{$row[5]}</th>\n";  //TMethfrom transaction table
@@ -356,19 +284,15 @@ echo "<th>{$row[22]}</th></tr>\n";  //Priority from transaction table
 		}
     /* free result set */
     $result->close();
-	
+
 //}
 echo "</table>";
 echo "R".$yo."<br>";
-?> 
+?>
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 include ("view_inv_by_cust.php");
-
-
-
-
 
 $SQLString = "select * from invoice where CustNo = $CustInt";
 //echo $SQLString."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -421,40 +345,9 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -542,7 +435,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl>";
 
-
  		echo "<dl>";
 			echo "<dt><label>Amount Paid</label></dt>";
 			//     <!--<dd><input type="text" name="Trans_name" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -582,7 +474,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoB</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -597,7 +488,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoBincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoC</label></dt>";
@@ -614,7 +504,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoD</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -629,7 +518,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoDincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoE</label></dt>";
@@ -646,7 +534,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoF</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -661,7 +548,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo $row["InvNoFincl"];
 			echo "> </dd>";
 		echo "</dl> ";
-
 
  		echo "<dl>";
 			echo "<dt><label>InvNoG</label></dt>";
@@ -678,7 +564,6 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
  		echo "<dl>";
 			echo "<dt><label>InvNoH</label></dt>";
 			//     <!--<dd><input type="text" name="InvNo" id="Trans_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -694,23 +579,14 @@ if ($result = mysqli_query($link, $query)) {
 			echo "> </dd>";
 		echo "</dl> ";
 
-
-		
-
-		
-		
 		//$objResult;
  }
- 
+
 }
 
 //oracle: oci_free_statement($objParse);
 //oci_free_statement($stid);
 //oracle: oci_close($conn);
-
-
-
-
 
 		/*<dl>
 			<dt><label>* First Name<?php //echo $this->lang->line('Trans_fn'); ?>: </label></dt>
@@ -723,9 +599,9 @@ if ($result = mysqli_query($link, $query)) {
 <div>
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-<!--			<dd><input type="submit" name="btn_submit" value="Submit/Save" /> 
-			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+<!--			<dd><input type="submit" name="btn_submit" value="Submit/Save" />
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
@@ -746,7 +622,7 @@ alert('$message');
 
 */
 }
-?> 
+?>
 
 
 

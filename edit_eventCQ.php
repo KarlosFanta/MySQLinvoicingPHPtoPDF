@@ -2,20 +2,19 @@
 
 
 	$page_title = "Select an event";
-	require_once('header.php');	
-	require_once('inc_OnlineStoreDB.php');	
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 	//PROCEDURAL
 	//$DBConnect = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
-	
+
 		/*$TBLrow = $_POST['mydropdownDC'];
-		
+
 		if ($TBLrow != "")
-		
+
 	//echo $TBLrow;
 	//echo " 0: ".$TBLrow[0]."<br>";
 	//$Custno = explode( "_", $TBLrow);
 	//echo "___:".$CustInt."   ";
-
 
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
@@ -43,7 +42,6 @@ echo "Custint:".$CustInt;
 //$CustInt = "*";  //Select all events of all customers.
 //echo "Custint:".$CustInt;
 
-
 //$CustInt = intval($Custno[0]);
 
 //echo "<br>Custint:".$CustInt."</br />";
@@ -52,10 +50,6 @@ echo "Custint:".$CustInt;
 //$query = "SELECT CustNo, CustFN, CustLN, CustTel, CustCell, CustEmail, CustAddr, Distance FROM customer WHERE CustNo = $CustInt" ;
 //$query = "SELECT CustNO, CustLN FROM customer WHERE CustNo = $CustInt" ;
 //$query = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
-
-	
-	
-	
 
 /*$result = mysql_query($query) or die(mysql_error());
 
@@ -100,10 +94,9 @@ $query = "select EventNo, CustNo, EDate, ENotes, Priority FROM events ORDER BY P
 echo $query;
 echo " ddvfv";
 
-
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -134,10 +127,7 @@ print "___".$item5;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -152,9 +142,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Update selected event" /> 
-	
-</select></p>  
+<input type="submit" name="btn_submit" value="Update selected event" />
+
+</select></p>
 
 
 <?php

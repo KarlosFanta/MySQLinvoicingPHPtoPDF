@@ -1,11 +1,11 @@
 <?php	$page_title = "All tables";
-	require_once('header.php');
-require_once ('db.php')	
-	
+	require_once 'header.php';
+require_once ('db.php')
+
 /*$conn = oci_connect('system', '1234', 'localhost/xe');
 
 $query_term = "select custno||'; '||custfn||' '||custln from customer order by custno";
-$stid_term = OCIParse($conn, $query_term); 
+$stid_term = OCIParse($conn, $query_term);
 OCIExecute($stid_term,OCI_DEFAULT);
 */
 ?>
@@ -16,7 +16,6 @@ OCIExecute($stid_term,OCI_DEFAULT);
 
 <?php
 $dbname = 'kc';
-
 
 $sql = "SHOW TABLES FROM $dbname";
 $result = mysql_query($sql);

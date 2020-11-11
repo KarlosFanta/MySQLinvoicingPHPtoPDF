@@ -1,4 +1,4 @@
-<?php	
+<?php
 $AmtPd = 0;
 //now we got to check the transactions table whehter this invoice was paid or not.
 $InvNoA = '';
@@ -35,7 +35,6 @@ $IT= (($rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"
 			$IT = number_format ($IT, 2, ".", "");
 			//echo " R".$IT;
 //echo "<br>";echo "<br>";
-
 
 $ITN = number_format($IT,1); //I removed the last cent here
 $TAmtN = number_format($TAmt,1);  //I removed the last cent here
@@ -90,8 +89,6 @@ $b4 = "(Branch: BrName)";
 $b5 = "Type of Account: AccType";
 $b6 = "NB: For cash payments please make sure you have a receipt with my signature.";
 
-
-
 $b7 = "VAT no VatNo";
 $b8 = "Thank you";
 $b9 = "CompanyName";
@@ -106,7 +103,6 @@ $bg = "Sales terms: SalesWebpage";
 $bh = "Support: SupportWebpage";
 $nl = "<br>";
 //echo $body.$nl.$b1.$nl.$b2.$nl.$b3.$nl.$b4.$nl.$b5.$nl.$b6.$nl.$b7.$nl.$nl.$b8.$nl.$nl.$b9.$nl.$nl.$ba.$nl.$nl.$bb.$nl.$nl.$bc.$nl.$nl.$bd.$nl.$nl.$be.$nl.$nl.$bf.$nl.$nl.$bg.$nl.$nl.$bh;
-
 
 if (@$Draft == 'Paid')
 {

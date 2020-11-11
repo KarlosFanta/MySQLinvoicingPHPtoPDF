@@ -1,15 +1,14 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 
-?> 
+?>
 <style type="text/css">
    <!-- table.form{width:100%}
     td.label{width:7px;white-space:nowrap;}
@@ -22,7 +21,7 @@
         <td>yello</td>
     </tr>
 </table>-->
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">View Invoices</b></font>&nbsp;&nbsp;&nbsp;&nbsp;view_invLatest.php
 </br>
 
@@ -40,9 +39,9 @@ print_r($ttt);
 //$SQLstringAp = "select * from invoice  where InvDate > '2013-01-24' ";
 //$SQLstringAp = "select * from invoice  where InvDate = '2013-01-01' ";
 //$SQLstringAp = "SELECT * FROM invoice WHERE date >= CURRENT_DATE() ORDER BY score DESC ";
-//SELECT * FROM invoice WHERE date >= CURRENT_DATE() ORDER BY score DESC;  
+//SELECT * FROM invoice WHERE date >= CURRENT_DATE() ORDER BY score DESC;
 //echo "____".WEEKOFYEAR(date);
-//echo "______".WEEKOFYEAR(NOW())-1; 
+//echo "______".WEEKOFYEAR(NOW())-1;
 $date = date('Y-m-d',time()-(14*86400)); // 14 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
@@ -95,7 +94,7 @@ $D1 = explode("-", $rowInvv['InvDate']);
 $EDate = $D1[2]."/".$D1[1]."/".$D1[0];
 $DDD =  $D1[2];
 $arr2 = str_split($DDD, 1);
-//echo $EDate;	 
+//echo $EDate;
 
 echo "<th>";
 if ($EDate == "03/01/2012")
@@ -127,7 +126,6 @@ $CN = $rowInvv['CustNo'];
 $SQLstringApLN = "select CustFN, CustLN from customer where CustNo = $CN";
 //echo $SQLstringApLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryresultInn.
 $resultInn2 = $DBConnect->query($SQLstringApLN);
-
 
    while ($rowInvv2 = $resultInn2->fetch_row()) {
    $shortened = substr($rowInvv2[0], 0, 6);
@@ -174,7 +172,6 @@ echo "<th>".$rowInvv['ex4']."</th>";
 echo "<th>".$rowInvv['Summary']."</th>";
 echo "<th>".$rowInvv['Draft']."</th>";
 
-
 }
 echo "</tr></table >";
 
@@ -184,10 +181,6 @@ $resultInn->close();
 /* close connection */
 //$mysqli->close();
 
-
-
-
- 
 ?>
 
 
@@ -195,5 +188,5 @@ $resultInn->close();
 </html>
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>

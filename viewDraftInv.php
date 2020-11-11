@@ -2,14 +2,14 @@
 
 
 	$page_title = "Select a customer";
-//	include('dalogin/index.php');
-//	include('dalogin/USerSession.php');
-	//include('dalogin/CheckLogin.php');
+//	include 'dalogin/index.php';
+//	include 'dalogin/USerSession.php';
+	//include 'dalogin/CheckLogin.php';
 
-	require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
+?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,7 +27,6 @@ These are uncompleted unsent draft invoices:
 $CNN = @$_SESSION['CustNo'];
 $queryS = "select InvNo, InvDate, Summary,TotAmt,SDR  from invoice where Draft = 'Y'";
 echo $queryS."<br>";
-
 
 if ($resultInv = mysqli_query($DBConnect, $queryS)) {
 echo "<table width='10' border='1'>\n";
@@ -55,11 +54,9 @@ echo "<th>{$rowInv['TotAmt']}</th>";
 echo "<th>{$rowInv['SDR']}</th>";
 echo "</tr>\n";
 
-
 	}
 mysqli_free_result($resultInv);
 	}
 mysqli_close($DBConnect);
-
 
 ?>

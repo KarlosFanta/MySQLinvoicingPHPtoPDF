@@ -9,9 +9,9 @@
 
 <option value="_no_selection_">Select Table</option>";-->
 <?php
- 
- /*require_once("inc_OnlineStoreDB.php");
- 
+
+ /*require_once 'inc_OnlineStoreDB.php';
+
  $query1 = "SHOW TABLES";
 echo $query1;
 
@@ -29,10 +29,7 @@ print "<option value='$table'>$table";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print "</option>"; 
+print "</option>";
 
 			}
 		// mysqli_free_result($result);
@@ -40,28 +37,28 @@ print "</option>";
 //	mysqli_close($link);
 */
 ?>
-<!--<input type="submit" name="btn_submit" value="select table" /> 
-	
-</select></p>  
+<!--<input type="submit" name="btn_submit" value="select table" />
+
+</select></p>
 -->
 <a href = BackupTablesSQL.php >BackupTables2 to SQL.php</a><br>
 <a href = BackupTablesCSV.php >BackupTables2 to CSV.php</a>
 
- 
- 
- 
- 
+
+
+
+
 <?php
   /*
 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
 	$result = $DBConnect->query("SHOW TABLES");
     while ( $row = $result->fetch_row() ){
     $table = $row[0];

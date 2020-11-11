@@ -1,18 +1,17 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-			
+	//require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
 
-?> 
-<?php //require_once "header.php"; ?>
+?>
+<?php //require_once 'header.php'; ?>
 <!--<b><br><font size = "3" type="arial">Your events History -->
-<?php 			
+<?php
 /*echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
@@ -63,22 +62,13 @@ $result2 = $DBConnect->query($SQLstringLN);
 
 echo "<th align = left>".substr($row2[0], 0, 7)."</th>";
 
-
-
-
-
-
-
-
-
-
 }
 
 echo "<th align = left>{$row[2]}</th>";
 echo "<th align = left>{$row[4]}</th>\n";//priority
 echo "<th align = left>{$row[3]}</th>";///Enotes
 //echo "<th>{$row[5]}</th>\n";
-//echo "<th>R{$row[29]}</th>"; 
+//echo "<th>R{$row[29]}</th>";
 //$summm = $summm + $row[3];
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
@@ -92,11 +82,10 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-	
+
 }
 echo "</table><br>";
 //echo "events Paid totals to: R ".$summm."<br /><br />";
-
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -160,7 +149,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
- 
+
 
 
 
@@ -173,7 +162,7 @@ echo "<b>Important: ";
 echo $Important;
 
 echo "</b> &nbsp;&nbsp;&nbsp;";
-	
+
 echo $row2['CustFN']."&nbsp;";
 echo "{$row2['CustLN']}&nbsp;&nbsp;&nbsp;";
 			echo "{$row2['CustNo']}&nbsp;";
@@ -185,12 +174,9 @@ echo "{$row2['CustAddr']}&nbsp;&nbsp;";
 //echo "{$row2['ABBR']}&nbsp;"; //CASE SENSITIVE!!!
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 			  // $result->close();
-	
-}}	
+
+}}
 echo "<br>";
-
-
-
 
 /*echo "<br><br><br/><br><br><br><br/><br><br><br><br/><br><br><br><br/><br>2-dimensional table example<br>";
 $myarray = array("key1"=>array(1,2,3,4),
@@ -209,13 +195,7 @@ foreach($myarray as $key => $element){
 echo "</table>";
 */
 
-//	require_once('footer.php');		
-
-
-
-
-
-
+//	require_once 'footer.php';
 
 /*
 
@@ -227,7 +207,7 @@ $query = "SELECT * FROM events WHERE CustNo = $CustInt" ;
 //echo $query;
  if ($result3 = $DBConnect->query($query)) {//to determine the Important part of the customer
     while ($row3 = $result3->fetch_assoc()) {
-echo "<tr><th>";	
+echo "<tr><th>";
 
 echo $row3['EventNo']."</th><th>";
 echo "{$row3['CustNo']}</th><th>";
@@ -237,28 +217,8 @@ echo "{$row3['Priority']}</th><th>";
 echo "{$row3['Destination']}</th>";
 echo "</tr>";			  // $result->close();
 
-}}	
+}}
 echo "</table><br><br><p></p>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 */
 ?>

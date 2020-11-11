@@ -1,15 +1,14 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	//require_once('db.php');	
-	require_once("inc_OnlineStoreDB.php");
-	require_once("header.php");
-			
+	//require_once 'header.php';
+	//require_once 'db.php';
+	require_once 'inc_OnlineStoreDB.php';
+	require_once 'header.php';
 
 ?>
 <!DOCTYPE html>
@@ -18,8 +17,8 @@
     <meta charset="utf-8">
     <title>Unassigned Expenses</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-  </head> 
-<?php //require_once "header.php"; ?>
+  </head>
+<?php //require_once 'header.php'; ?>
 <b><font size = "4" type="arial">These expenses are not invoiced yet</b></font>
 </br>
 <?php
@@ -30,7 +29,7 @@
 
 <form name="selField" action="selectVC.php" method="post">
     <input type="submit" name="formSubmit" value="Submit" /><br>
-	
+
 
 <?php
 
@@ -58,7 +57,6 @@ echo "<th>".$row["CustLN"]."";
 $row_cnt = mysqli_num_rows($resultC);
 //echo " rows: $row_cnt</th>";
 echo "</tr>\n";
-
 
 /*echo "<tr>";
 echo "<th>";
@@ -91,14 +89,6 @@ $row_cnt = mysqli_num_rows($resultA);
 //echo " rows: $row_cnt</th>";
 //echo "</tr>\n";
 
-
-
-
-
-
-
-
-
 echo "</tr>\n";
 
 }
@@ -114,7 +104,6 @@ mysqli_free_result($resultC);
 
 
 echo "</table>";
-
 
 ?>
 

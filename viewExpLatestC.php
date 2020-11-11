@@ -1,23 +1,21 @@
 <?php
 
-	
-	//	require_once('login_check.php');
-	// -- Nothing Below this line requires editing -- 
+
+	//	require_once 'login_check.php';
+	// -- Nothing Below this line requires editing --
 
 	$page_title = "Customer";
-	//require_once('header.php');	
-	require_once("inc_OnlineStoreDB.php");
-	
-	
+	//require_once 'header.php';
+	require_once 'inc_OnlineStoreDB.php';
+
 	@session_start();
 	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 	//$CustNo = "";
 	if (@$CustNo == '')
 	@$CustNo = $_SESSION['CustNo'];
 
-
 //$CustNo = $CustInt; //this is for addExp.php
-?> 
+?>
 <style type="text/css">
    <!-- table.form{width:100%}
     td.label{width:7px;white-space:nowrap;}
@@ -30,7 +28,7 @@
         <td>yello</td>
     </tr>
 </table>-->
-<?php //require_once "header.php"; ?>
+<?php //require_once 'header.php'; ?>
 <b><br><font size = "4" type="arial">View Expenses OF CUSTOMER</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpLatestC.php
 </br><a href = "editExpCQ.php?CustNo=<?php echo $CustInt; ?>">edit Customer's expenses</a>
 
@@ -48,9 +46,9 @@ print_r($ttt);
 //$SQLstring = "select * from transaction  where TransDate > '2013-01-24' ";
 //$SQLstring = "select * from transaction  where TransDate = '2013-01-01' ";
 //$SQLstring = "SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC ";
-//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;  
+//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;
 //echo "____".WEEKOFYEAR(date);
-//echo "______".WEEKOFYEAR(NOW())-1; 
+//echo "______".WEEKOFYEAR(NOW())-1;
 $date = date('Y-m-d',time()-(88*86400)); // 88 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
@@ -84,8 +82,7 @@ echo "<th>Serial</th>\n";
 echo "<th>InvNo</th>\n";
 echo "</tr>\n";
 
-
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 //while($row = $result->fetch_array())
 {
 
@@ -105,7 +102,7 @@ $D1 = explode("-", $row['PurchDate']);
 $EDate = $D1[2]."/".$D1[1]."/".$D1[0];
 $DDD =  $D1[2];
 $arr2 = str_split($DDD, 1);
-//echo $EDate;	 
+//echo $EDate;
 
 echo "<th>";
 if ($EDate == "03/01/2012")
@@ -137,7 +134,6 @@ $CN = $row['CustNo'];
 $SQLstringLN = "select CustFN, CustLN from customer where CustNo = $CN";
 //echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 $result2 = $DBConnect->query($SQLstringLN);
-
 
    while ($row2 = $result2->fetch_row()) {
    $shortened = substr($row2[0], 0, 6);
@@ -178,8 +174,8 @@ echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
-{ 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
+{
 
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
@@ -196,12 +192,11 @@ echo "</table >";
 
 mysqli_free_result($result);
 
-
 }
 
 //mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
 
- 
+
 ?>
 
 
@@ -209,5 +204,5 @@ mysqli_free_result($result);
 </html>
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>

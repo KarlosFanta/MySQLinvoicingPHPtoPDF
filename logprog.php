@@ -6,7 +6,7 @@ require_once ("header.php");
 	echo $date;
 	$file = "log.php"; //Where the log will be saved.
 
-	
+
 ?>
 <body>
 </html>

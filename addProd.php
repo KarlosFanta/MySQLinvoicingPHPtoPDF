@@ -12,7 +12,7 @@ function formValidator(){
 	//var username = document.getElementById('username');
 	var CustEm = document.getElementById('CustEm');
 	var CustDI = document.getElementById('CustDi');
-	
+
 	// Check each input in the order that it appears in the form!
 	if(isAlphabet(CustFName, "Please enter only letters for your first name")){
 		if(isAlphabet(CustLName, "Please enter only letters for your surname")){
@@ -30,11 +30,11 @@ function formValidator(){
 				}
 			}
 		}
-	
+
 	}//very important bracket!!!!!
-	
+
 	return false;
-	
+
 }
 
 function notEmpty(elem, helperMsg){
@@ -117,7 +117,7 @@ function emailValidator(elem, helperMsg){
 <body>
 
 <?php	$page_title = "New Product";
-	include('header.php');	
+	include 'header.php';
 	include ('inc_OnlineStoreDB.php')
 ?>
 
@@ -134,10 +134,9 @@ $query = "select CustNo, CustFN, CustLN from customer ORDER BY custLN";
 $queryS = "select CustNo, CustFN, CustLN from customer where CustNo = $CNN";
 echo $queryS."<br>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -148,9 +147,6 @@ print "_".$item3b;
 */
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
-
-
-
 
 	}
 $result2->free();
@@ -182,24 +178,23 @@ $result2->free();
 
 		<dl>
 			<dt><label>Potential customer<?php //echo $this->lang->line('cust_ln'); ?>: </label></dt>
-<dd>	
+<dd>
 
 <select name="mydropdownEC" onchange='this.form.submit()'>
 
 <!--<option value="_no_selection_">Select Customer</option>";-->
 
 <?php
-	
+
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Select Customer</option>";
 else
 {
 //echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
 
-
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
- 
+
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -218,16 +213,13 @@ print "_".$item3b;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 	}
 $result2->free();
 	}
 }
 //print "<option value='$item'>$item";
-  //print " </option>"; 
+  //print " </option>";
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -241,10 +233,7 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-
-
-
-print " </option>"; 
+print " </option>";
 
 /*    echo $row["CustNo"];//case sensitive!
     echo $row["CustFN"];//case sensitive!
@@ -258,14 +247,14 @@ $result->free();
 // close connection */
 //$mysqli->close();
 
-print " </option>"; 
+print " </option>";
 echo $item3b;
 ?>
-		</select>	
-			
-			
+		</select>
+
+
 			<!--<dd><input type="text" id="CustNo" name="CustNo" />-->
-			
+
 			</dd>
 		</dl>
 
@@ -288,10 +277,10 @@ echo $item3b;
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" id="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<!--<dd><input type="submit" id="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
 			<!--<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> -->
 			<dd><input type='submit' value='Add/Sumbit' />
-			
+
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>

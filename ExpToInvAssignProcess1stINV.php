@@ -4,11 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>updated</title>
 
-<?php	
-require_once('logprog.php');
-	require_once("inc_OnlineStoreDB.php");
-	require_once("header.php");
-
+<?php
+require_once 'logprog.php';
+	require_once 'inc_OnlineStoreDB.php';
+	require_once 'header.php';
 
 $clInv3 = $_POST['clInv3']; ///THIS IS NOW INV NUMBER
 $TBLrow = $_POST['mydropdownEC'];/// THIS IS THE EXPENSE NUMBER
@@ -18,19 +17,18 @@ $TBLrow = $_POST['mydropdownEC'];/// THIS IS THE EXPENSE NUMBER
 $Expno = explode('_', $TBLrow );
 $ExpNo2 = $Expno[0];
 
-
 $queryET = "select * from expenses where InvNo = $clInv3";
 //echo $queryET;
 $cnt= 0;
 if ($resultET = mysqli_query($DBConnect, $queryET)) {
 	while ($row = mysqli_fetch_assoc($resultET)) {
 	$InvNoCHK = $row["InvNo"];//case sensitive!
-	
+
 	if ($InvNoCHK != '')
 	{
 		if ($cnt == 0)
 			echo "<b>NB InvNo $InvNoCHK ALREADY HAS THESE EXPENSE(S):</b>";
-		
+
 	echo $row["ExpNo"].' ';//case sensitive!
 	echo $row["Category"].' ';//case sensitive!
 	echo $row["ExpDesc"].' ';//case sensitive!
@@ -41,14 +39,12 @@ if ($resultET = mysqli_query($DBConnect, $queryET)) {
 	echo $row["Notes"].' ';//case sensitive!
 	echo 'CustNo: '.$row["CustNo"].' ';//case sensitive!
 	echo 'InvNo: '.$row["InvNo"].' ';//case sensitive!
-echo "<br>";	
+echo "<br>";
 	$cnt++;
 	++$cnt;
 	}
 	else
 		echo "confirmed not yet assigned";
-
-
 
 	}
 	mysqli_free_result($resultET);
@@ -78,9 +74,8 @@ echo "<th>CustFn</th>";
 echo "<th>Surname</th>";
 echo "</tr>\n";
 
-
     while ($row = mysqli_fetch_assoc($result)) {
- 
+
 echo "<tr>";
 echo "<th>{$row['CustNo']}</th>";
 echo "<th>{$row['CustLN']}</th>";
@@ -89,14 +84,13 @@ echo "</tr>\n";
 }
 
     $result->close();
-	
+
 }
 echo "</table>";
 
-
 echo "The Invoice in question: <br>";
 echo "InvNo: ";
-echo $clInv3; 
+echo $clInv3;
 echo "&nbsp;";
 echo " ".$rowI['Summary'];
 $Summary = $rowI['Summary'];
@@ -105,18 +99,17 @@ $Dt1 = explode("-", $rowI['InvDate']);
 
 $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
-echo $TransDate;	
+echo $TransDate;
 echo "&nbsp;";
 
 $SDR = $rowI['SDR'];
 echo "&nbsp;";
 $TAmt = $rowI['TotAmt'];
  //$TAmt = number_format ($TAmt, 2, ".", "");
- echo $TAmt; 
+ echo $TAmt;
 
 $Inv_NoInt = intval($clInv3);
 $InvNo = $clInv3;
-
 
 echo " d1:".$rowI['D1'];
 if ($rowI['Q1'] != '0')
@@ -151,14 +144,11 @@ if ($rowI['Q8'] != '0')
 echo "q".$rowI['Q8'];
 echo "".$rowI['ex8'];
 
-
-
   }
    $resultI->close();
 }
 
 	//	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
 
 ?>
 <!--<form name="PL" action="print_invoicePDF.php" method="post">-->
@@ -167,26 +157,20 @@ echo "".$rowI['ex8'];
 //$queryFL = "SELECT L1, ABBR FROM customer WHERE CustNo = $CustInt" ;
 //echo "queryFL:".$queryFL."<br>";
 
-
-
-
-
 $querySDR = "UPDATE expenses SET InvNo = '$clInv3' WHERE ExpNo = $ExpNo2";
 //echo "<br>".$querySDR;
 echo "<b><font size= 2>";
-if (mysqli_query($DBConnect, $querySDR) === TRUE) {   
+if (mysqli_query($DBConnect, $querySDR) === TRUE) {
 
 	echo '<br>successfully assigned: '.$querySDR;
 }
-else 
+else
 {
 	echo '<br>ERROR NOT updated '.$querySDR;
-}	
+}
 echo "</b></font>";
 
-
 echo "<br>";
-
 
 $query = "select * from expenses where ExpNo = $ExpNo2";
 
@@ -228,15 +212,10 @@ if ($result = mysqli_query($DBConnect, $SQLstring)) {
 /////////if ($result = $DBConnect->query($SQLstring)) {
 echo "<br><br>InvNo ";
 
-
-
-
-
-    // fetch object array 
+    // fetch object array
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
 
-	  
 	   echo $x;
 echo "</FONT><br>";
 
@@ -287,15 +266,10 @@ echo "</tr>\n";
 		}
     //
     $result->close();
-	
+
 }
 echo "</table>";
 echo "<br><br>";
-
-
-
-
-
 
 ?>
 <font size = 5>
@@ -304,5 +278,5 @@ echo "<br><br>";
 
 <?php
 
-//include "viewExpHEandExpBReakDown.php";
+//include 'viewExpHEandExpBReakDown.php';
 ?>

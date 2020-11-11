@@ -1,7 +1,7 @@
 <?php
-	require_once("inc_OnlineStoreDB.php");
+	require_once 'inc_OnlineStoreDB.php';
 
-?> 
+?>
 <style type="text/css">
    <!-- table.form{width:100%}
     td.label{width:7px;white-space:nowrap;}
@@ -25,9 +25,9 @@ print_r($ttt);
 //$SQLstring = "select * from transaction  where TransDate > '2013-01-24' ";
 //$SQLstring = "select * from transaction  where TransDate = '2013-01-01' ";
 //$SQLstring = "SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC ";
-//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;  
+//SELECT * FROM transaction WHERE date >= CURRENT_DATE() ORDER BY score DESC;
 //echo "____".WEEKOFYEAR(date);
-//echo "______".WEEKOFYEAR(NOW())-1; 
+//echo "______".WEEKOFYEAR(NOW())-1;
 $date = date('Y-m-d',time()-(70*86400)); // 88 days ago
 //$date = date('Y-m-d',time()-(24*86400)); // 24 days ago
 //86400 seconds per day
@@ -35,12 +35,10 @@ echo "ddd".$date;
 //$SQLstring = "select * from transaction  where TransDate WHERE date <='$date'";
 $SQLstring = "select * from expenses  where PurchDate >= '$date' order by PurchDate";
 
-
-
-$SQLstring = "SELECT a.ExpNo, a.Category, a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo 
+$SQLstring = "SELECT a.ExpNo, a.Category, a.ExpDesc, a.SerialNo, a.SupCode, a.PurchDate,a.ProdCostExVAT, a.Notes,	a.CustNo
   FROM expenses a
 UNION ALL
-SELECT b.ExpNo, b.Category, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate,b.ProdCostExVAT, b.Notes, b.CustNo 
+SELECT b.ExpNo, b.Category, b.ExpDesc, b.SerialNo, b.SupCode, b.PurchDate,b.ProdCostExVAT, b.Notes, b.CustNo
   FROM expensesH b     order by PurchDate desc limit 25"; //limit does not work without desc
 
 
@@ -78,8 +76,7 @@ echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
 echo "</tr>";
 
-
-while ($row = mysqli_fetch_assoc($result)) 
+while ($row = mysqli_fetch_assoc($result))
 {
 $ProdCostExVAT = $row['ProdCostExVAT'];
 $MM = $ProdCostExVAT*1.14;
@@ -95,8 +92,8 @@ echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC)) 
-{ 
+while ($rowCC = mysqli_fetch_assoc($resultCC))
+{
 
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
@@ -113,13 +110,12 @@ echo "</tr>";
 
 mysqli_free_result($result);
 
-
 }
 echo "</table >";
 
 //mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
 
- 
+
 ?>
 
 
@@ -127,5 +123,5 @@ echo "</table >";
 </html>
 
 <?php
-//	require_once('footer.php');		
+//	require_once 'footer.php';
 ?>
