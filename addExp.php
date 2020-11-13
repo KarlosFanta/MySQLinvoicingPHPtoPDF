@@ -4,121 +4,121 @@
 <head>
 <title>Add a expense</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script  type="text/javascript">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script  type="text/javascript">
 
 
 
 function formValidator(){
-	// Make quick references to our fields
-	var ExpNo = document.getElementById('ExpNo');
-	var PurchDate = document.getElementById('PurchDate');  //it must be in the correct sequence!!!
-	var SupCode = document.getElementById('SupCode');
-	//var Notes = document.getElementById('Notes');
-	//var TMethod = document.getElementById('TMethod');//Payment method
+    // Make quick references to our fields
+    var ExpNo = document.getElementById('ExpNo');
+    var PurchDate = document.getElementById('PurchDate');  //it must be in the correct sequence!!!
+    var SupCode = document.getElementById('SupCode');
+    //var Notes = document.getElementById('Notes');
+    //var TMethod = document.getElementById('TMethod');//Payment method
 
 
 
-	// Check each input in the order that it appears in the form!
-						if(isNumeric(ExpNo, "Please enter a valid numeric expense number")){
-				if(lengthRestriction(PurchDate, 10,10)){
-				if(notEmpty(SupCode, "Please enter a supplier code")){
-			//if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
+    // Check each input in the order that it appears in the form!
+                        if(isNumeric(ExpNo, "Please enter a valid numeric expense number")){
+                if(lengthRestriction(PurchDate, 10,10)){
+                if(notEmpty(SupCode, "Please enter a supplier code")){
+            //if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
 //				if(isDate(PurchDate, "Please put in Da 	te")){
-			//		if(madeSelection(TMethod, "Please Choose Payment Method")){
-				return true;
-				}
-				}
-				}
-				return false;
+            //		if(madeSelection(TMethod, "Please Choose Payment Method")){
+                return true;
+                }
+                }
+                }
+                return false;
 }
 
 function notEmpty(elem, helperMsg){
-	if(elem.value.length == 0){
-		alert(helperMsg);
-		elem.focus(); // set the focus to this input
-		return false;
-	}
-	return true;
+    if(elem.value.length == 0){
+        alert(helperMsg);
+        elem.focus(); // set the focus to this input
+        return false;
+    }
+    return true;
 }
 
 function isNumeric(elem, helperMsg){
-	var numericExpression = /^[0-9]+$/;
-	if(elem.value.match(numericExpression)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var numericExpression = /^[0-9]+$/;
+    if(elem.value.match(numericExpression)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 /* CAUSES NOTHING TO FUNCTION
 function isFloat(elem, helperMsg){
-	var numericExpression = /^[0-9\.]+$/;
-	if(elem.value.match(numericExpression)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var numericExpression = /^[0-9\.]+$/;
+    if(elem.value.match(numericExpression)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 */
 function isAlphabet(elem, helperMsg){
-	var alphaExp = /^[a-zA-Z]+$/;
-	if(elem.value.match(alphaExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var alphaExp = /^[a-zA-Z]+$/;
+    if(elem.value.match(alphaExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 function isAlphanumeric(elem, helperMsg){
-	var alphaExp = /^[0-9a-zA-Z]+$/;
-	if(elem.value.match(alphaExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var alphaExp = /^[0-9a-zA-Z]+$/;
+    if(elem.value.match(alphaExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 function lengthRestriction(elem, min, max){
-	var uInput = elem.value;
-	if(uInput.length >= min && uInput.length <= max){
-		return true;
-	}else{
-		alert("Please enter between " +min+ " and " +max+ " characters");
-		elem.focus();
-		return false;
-	}
+    var uInput = elem.value;
+    if(uInput.length >= min && uInput.length <= max){
+        return true;
+    }else{
+        alert("Please enter between " +min+ " and " +max+ " characters");
+        elem.focus();
+        return false;
+    }
 }
 
 function madeSelection(elem, helperMsg){
-	if(elem.value == "Please Choose"){
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}else{
-		return true;
-	}
+    if(elem.value == "Please Choose"){
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }else{
+        return true;
+    }
 }
 
 function emailValidator(elem, helperMsg){
-	var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-	if(elem.value.match(emailExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+    if(elem.value.match(emailExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 
@@ -175,19 +175,19 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
-//JQUERY: LOOK AT : include 'invJQuery.php'
+//JQUERY: LOOK AT : echo file_get_contents('invJQuery.js');
 //	<input type="text"  size="3" id="ItemA"  name="ItemA"  class='clInvNoA' />
 /*
-	$(function() {
-		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
-		var availableTags = ["yp","jj"];
-		$( "#lst" ).autocomplete({
-		source: availableTags,
-		minLength: 0
-			}).mouseover(function() {
-				$(this).autocomplete("search");
-		});
-		});
+    $(function() {
+        //var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
+        var availableTags = ["yp","jj"];
+        $( "#lst" ).autocomplete({
+        source: availableTags,
+        minLength: 0
+            }).mouseover(function() {
+                $(this).autocomplete("search");
+        });
+        });
 */
 function calc()
 {
@@ -249,15 +249,12 @@ function calc()
 </head>
 <body>
 
-
-
-
 <?php	//this is "addTransCustProcess2.php"
 require_once 'header.php';
 require_once 'inc_OnlineStoreDB.php';
-	@session_start();
-	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	$CustInt = $_SESSION['CustNo'];
+    @session_start();
+    //echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
+    $CustInt = $_SESSION['CustNo'];
 //include 'monthtables.php';
 include 'viewExpLatest.php';
 include 'viewExpLatestC.php';
@@ -265,8 +262,8 @@ include 'viewExpLatestC.php';
 $TBLrow = @$_POST['mydropdownEC'];
 $addstk = @$_POST['btnSubmit'];
 
-echo "<br>addstk:<br><BR> " .$addstk."</BR>";
-//echo "TBLrow: " .$TBLrow."</BR>";
+echo "<br />addstk:<br /><br /> " .$addstk."<br />";
+//echo "TBLrow: " .$TBLrow."<br />";
 $Custno = explode(';', $TBLrow );
 
 $CustFN = '';
@@ -281,7 +278,7 @@ $CustEmail = '';
 //echo $Custno[0]."</br />";
 $CustInt = intval($Custno[0]);
 
-//echo "<br>Custint:".$CustInt."<br />";
+//echo "<br />Custint:".$CustInt."<br />";
 
 $_SESSION['CustNo'] = $CustInt;
 $CustNo = $CustInt;
@@ -300,14 +297,14 @@ else echo "custno declared as ".$Custno;
 <!--<form name="addTransCustProcess2"  action="addTransprocess_last2.php" onsubmit='return formValidator()'   method="post">-->
 
 <!--before we can add a expense, we check what expenses the customer has done:
-<br><br>-->
+<br /><br />-->
 <?php
 
 //$TBLrow = $_POST['mydropdownEC'];
 $AmtPaid = "";
 //$AmtPaid = @$_POST['AmtPaid'];
 
-/*echo "TBLrow: " .$TBLrow."</BR>";
+/*echo "TBLrow: " .$TBLrow."<br />";
 $CustNo = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
 //echo "$ExpNo</br />";
@@ -317,10 +314,10 @@ $CustNo = explode(';', $TBLrow );
 //echo $ExpNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
 
-//echo "<br>Transint:".$CustInt."</br />";
+//echo "<br />Transint:".$CustInt."</br />";
 */
 $SQLString = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
-//echo $SQLstring."<br>";
+//echo $SQLstring."<br />";
 
 if ($result = mysqli_query($DBConnect, $SQLString)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -337,7 +334,7 @@ $item9 = $row["InvNoAincl"];
 $item10 = $row["Priority"];*/
 print "$CustNo";
 print " ".$CustFN;
-print " <b><Font size = 4>".$CustLN;
+print " <b><font size=4>".$CustLN;
 print "</font></b> ".$CustEmail." ".$Important;
 echo "..{$row['dotdot']}";
 /*print "_".$item5;
@@ -363,7 +360,7 @@ if ($CustEmail == '') echo "Please add CustEmailAddress";
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
 echo "{$row[0]}&nbsp;&nbsp;";
-echo "<font size = '3'><b>";
+echo "<font size='3'><b>";
 echo "{$row[1]}&nbsp;&nbsp;";
 echo "{$row[2]}&nbsp;&nbsp;</font></b>";
 echo "{$row[3]}&nbsp;&nbsp;";
@@ -374,15 +371,12 @@ echo "{$row[7]}&nbsp;&nbsp;";
 echo "{$row[8]}&nbsp;&nbsp;";
 echo "{$row[9]}&nbsp;&nbsp;";
 
-		}
+        }
     $result->close();
 }*/
 
 
 ?>
-
-
-
 
 <?php
 //require_once 'inc_OnlineStoreDB.php';
@@ -408,11 +402,11 @@ $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 
 $daNextNo = 1; //forces a 1 if table is completely empty.
 while($row = mysqli_fetch_array($resultH)){
-	echo "The max no ExpNo in expenses table is:  ". $row[0] . "&nbsp;";
+    echo "The max no ExpNo in expenses table is:  ". $row[0] . "&nbsp;";
 $daNextNoH = intval($row[0]);
 }
 while($row = mysqli_fetch_array($result)){
-	echo "The max no ExpNo in expenses table is:  ". $row[0] . "&nbsp;";
+    echo "The max no ExpNo in expenses table is:  ". $row[0] . "&nbsp;";
 $daNextNo = intval($row[0]);
 }
 
@@ -441,7 +435,7 @@ $select = $_GET['select'];
 <!--<form  onsubmit='return formValidator()' action="addTransprocess.php" method="post">-->
 
 <?php
-echo "Add new expenses:<br>";
+echo "Add new expenses:<br />";
 ?>
 
 
@@ -464,11 +458,11 @@ if ($resultCP1 = mysqli_query($DBConnect, $queryCP)) {
 if ($row_cnt > 0)
 {
 
-	echo "<form   method='post'   action='addTransProof.php'  >";
-echo "<br><br><br><br><b>Proof No.";
+    echo "<form   method='post'   action='addTransProof.php'  >";
+echo "<br /><br /><br /><br /><b>Proof No.";
 echo "<select name='ProofToPay' id='ProofToPay' onchange='this.form.submit()'>";
 
-echo "Before entering anything first select the proof if there is one.<br>";
+echo "Before entering anything first select the proof if there is one.<br />";
 
 echo "<option value='Select a Proof'>Select a Proof</option>";
 
@@ -505,16 +499,16 @@ print "__".$item4b;
 
 print " </option>";
 
-	}
+    }
 $resultCP->free();
 }
 
-echo "</select> <br>(in addTransprocessLast2 it will say update aproof set ExpNo = '1015' where ProofNo = 'ProofNo34' )<br><a href = 'http://localhost/phpMyAdmin-3.5.2-english/sql.php?db=kc&goto=db_structure.php&table=aproof&pos=0' target= '_blank'>phpMyadmin</a> &nbsp; &nbsp; &nbsp;
-<a href = 'http://localhost/ACS/view_inv_by_custADV.php' target= '_blank'>view_inv_by_custADV.php</a><br>
+echo "</select> <br />(in addTransprocessLast2 it will say update aproof set ExpNo = '1015' where ProofNo = 'ProofNo34' )<br /><a href='http://localhost/phpMyAdmin-3.5.2-english/sql.php?db=kc&goto=db_structure.php&table=aproof&pos=0' target= '_blank'>phpMyadmin</a> &nbsp; &nbsp; &nbsp;
+<a href='http://localhost/ACS/view_inv_by_custADV.php' target= '_blank'>view_inv_by_custADV.php</a><br />
 
 
 
-<br><br><b><br><br><br><br><br><br>";
+<br /><br /><b><br /><br /><br /><br /><br /><br />";
 
 }
 else "no new proof of payments received";
@@ -523,23 +517,20 @@ echo "</form>";
 
 */
 
-
-
-
 ?>
 
 
 
 <form name= "yoo">
-		<input type='text'  style="width:26px"  name='Q1' id='Q1' size='5' value='1' onkeyup='calc()'> * R
-	  <input type='text'  style="width:66px" name='ex1' id='ex1' size='10' class='exxx1' onkeyup='calc()'  >incl VAT =
-	  <span id="resp"></span><!-- in here possibly AJAX invoice total CalcServ.php-->
+        <input type='text'  style="width:26px"  name='Q1' id='Q1' size='5' value='1' onkeyup='calc()'> * R
+      <input type='text'  style="width:66px" name='ex1' id='ex1' size='10' class='exxx1' onkeyup='calc()'  >incl VAT =
+      <span id="resp"></span><!-- in here possibly AJAX invoice total CalcServ.php-->
 
 </form>
 <form name="AddExp" onsubmit="return formValidator()"  action="addExpMulti.php"   method="post">
 <!--<form onsubmit='return formValidator()'  action="addTransprocessLast2.php"   method="post">-->
 
-<br><br>
+<br /><br />
 Please put in products or expenses of 1 invoice:
 
 <table>
@@ -555,45 +546,43 @@ echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;SupCode&nbsp;&nbsp;</th>";
 //echo "<th>Payment Method</th>";
 echo "</tr>\n";
 ?>
-		<tr>
-			<!--<th><label>* expense AutoNumber: (!! Different for internet expenses!)</label>
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<th><input type="text" size="2"  id="ExpNo"  name="ExpNo" value="<?php echo $daNextNo;?>" />
-		</th>
+        <tr>
+            <!--<th><label>* expense AutoNumber: (!! Different for internet expenses!)</label>
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <th><input type="text" size="2"  id="ExpNo"  name="ExpNo" value="<?php echo $daNextNo;?>" />
+        </th>
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
-		$NewFormat = date("d/m/Y");
-		?>
-			<!--<label>PurchDate:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
-			<!--<label>PurchDate:</label></dt>-->
-			<!--<input type="text" size="10" id="PurchDate"  name="PurchDate" value="<?php //echo $PurchDate; ?>" /> -->
-			<?php include 'yesterday.php'; ?>
-			<input id='lst' id="PurchDate" size="10" name="PurchDate"  >
-		</th>
+        <th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
+        $NewFormat = date("d/m/Y");
+        ?>
+            <!--<label>PurchDate:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php echo $daNextNo; ?>" />-->
+            <!--<label>PurchDate:</label></dt>-->
+            <!--<input type="text" size="10" id="PurchDate"  name="PurchDate" value="<?php //echo $PurchDate; ?>" /> -->
+            <?php include 'yesterday.php'; ?>
+            <input id='lst' id="PurchDate" size="10" name="PurchDate"  >
+        </th>
 
-		<th>
-			<!--<label>&nbsp; SupCode:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<!--<input type="text"  size="19" id="SupCode"  name="SupCode" size = '20' value="" />-->
-<?php include 'invJQueryExp.php';
-
- ?>
-		<input id="SupCode"  name="SupCode" size="6" class='clSC' >
+        <th>
+            <!--<label>&nbsp; SupCode:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <!--<input type="text"  size="19" id="SupCode"  name="SupCode" size = '20' value="" />-->
+<?php echo file_get_contents('invJQueryExp.js'); ?>
+        <input id="SupCode"  name="SupCode" size="6" class='clSC' >
 
 
-		</th>
-		<th></b>Parking can sometimes relate to a customer otherwise add it to Business Expense
+        </th>
+        <th></b>Parking can sometimes relate to a customer otherwise add it to Business Expense
 </th>
 
 
-		<!--<th>
-			<select name="TMethod"  id="TMethod"  >
+        <!--<th>
+            <select name="TMethod"  id="TMethod"  >
                 <option value="Please Choose">Please Choose</option><!-- the javascript function requires phrase Please Choose
-			//VERY IMPORTANT THAT value must equal to please choose as well!!!
+            //VERY IMPORTANT THAT value must equal to please choose as well!!!
 
                 <option value="EFT">EFT</option>
                 <option value="Cash">Cash</option>
@@ -605,252 +594,240 @@ echo "</tr>\n";
                 <option value="-">-</option>
 </select>
 
-		</th>-->
-		</tr>
-		</table>
-		<table>
-		<tr>
+        </th>-->
+        </tr>
+        </table>
+        <table>
+        <tr>
 
 
 
-		<?php
+        <?php
 
-		echo "<th>Item Description: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-		//echo "<th>HOVER and wait InvB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+        echo "<th>Item Description: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+        //echo "<th>HOVER and wait InvB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 
-	?>
+    ?>
 
-	<th>
-	Ex VAT
-	</th>
-	<th>
-	Serial Number
-	</th>
+    <th>
+    Ex VAT
+    </th>
+    <th>
+    Serial Number
+    </th>
 
-	<th>
-	Notes
-	</th>
-	<th>
-	Category
-	</th>
-	<th>
-	<?php $CCC= $CustNo.",".$CustLN.$CustFN;
+    <th>
+    Notes
+    </th>
+    <th>
+    Category
+    </th>
+    <th>
+    <?php $CCC= $CustNo.",".$CustLN.$CustFN;
 
-	if ($addstk == 'Add Stock')
-	$CCC = '300';
+    if ($addstk == 'Add Stock')
+    $CCC = '300';
 
-	?>
-	Click to select Customer: <?php echo $CCC; ?>&nbsp;&nbsp;&nbsp;(business301)(300stock)<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-	</th>
-
-
-			<tr></tr>
-		<th>
-
-			<input type="text"  size="3" id="ItemA"  name="ItemA"  /> <!--item Description-->
-		</th>
+    ?>
+    Click to select Customer: <?php echo $CCC; ?>&nbsp;&nbsp;&nbsp;(business301)(300stock)<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+    </th>
 
 
-			<th>
-			<input type="text"  size="5" id="Aex"  name="Aex"   /><!--ex VAT-->
-		</th>
+            <tr></tr>
+        <th>
 
-			<th>
-			<input type="text"  size="5" id="AS"  name="AS"   style="text-transform:uppercase;" /><!--SN-->
-		</th>
-			<th>
-			<input type="text"  size="2" id="AN"  name="AN"   /><!--ProdnotesPN-->
-		</th>
-		<th>
-			<input type="text"  size="2" id="AK"  name="AK"   /><!--Category-->
-		</th>
-
-		</th>
-			<th>
-			<input type="text"  size="5" id="AC"  name="AC" class='clCN'  value='<?php echo $CCC; ?>' /><!--Select a Customer-->
-		</th>
+            <input type="text"  size="3" id="ItemA"  name="ItemA"  /> <!--item Description-->
+        </th>
 
 
-		</tr>
-		<tr><th> </th></tr>	<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
+            <th>
+            <input type="text"  size="5" id="Aex"  name="Aex"   /><!--ex VAT-->
+        </th>
+
+            <th>
+            <input type="text"  size="5" id="AS"  name="AS"   style="text-transform:uppercase;" /><!--SN-->
+        </th>
+            <th>
+            <input type="text"  size="2" id="AN"  name="AN"   /><!--ProdnotesPN-->
+        </th>
+        <th>
+            <input type="text"  size="2" id="AK"  name="AK"   /><!--Category-->
+        </th>
+
+        </th>
+            <th>
+            <input type="text"  size="5" id="AC"  name="AC" class='clCN'  value='<?php echo $CCC; ?>' /><!--Select a Customer-->
+        </th>
 
 
+        </tr>
+        <tr><th> </th></tr>	<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
 
+        <th>
+            <input type="text"  size="1" id="ItemB"  name="ItemB"  />
+        </th>
+        <th>
+            <input type="text"  size="1" id="Bex"  name="Bex"  />
+        </th>
+        <th>
+            <input type="text"  size="1" id="BS"  name="BS"   style="text-transform:uppercase;" />
+        </th>
+            <th>
+            <input type="text"  id="BN"  name="BN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="BK"  name="BK"   /><!--Category-->
+        </th>
 
-		<th>
-			<input type="text"  size="1" id="ItemB"  name="ItemB"  />
-		</th>
-		<th>
-			<input type="text"  size="1" id="Bex"  name="Bex"  />
-		</th>
-		<th>
-			<input type="text"  size="1" id="BS"  name="BS"   style="text-transform:uppercase;" />
-		</th>
-			<th>
-			<input type="text"  id="BN"  name="BN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="BK"  name="BK"   /><!--Category-->
-		</th>
-
-			<th>
-			<input type="text"  size="5" id="BC"  name="BC" class='clCN'  />
-		</th>
+            <th>
+            <input type="text"  size="5" id="BC"  name="BC" class='clCN'  />
+        </th>
 
 
 
-	<tr></tr>
-		<th>
-			<input type="text" id="ItemC"    size="1" name="ItemC" />
-		</th>
-				<th>
-			<input type="text"  size="5" id="Cex"  name="Cex"   />
-		</th>
-		<th>
-			<input type="text"  size="1" id="CS"  name="CS"   style="text-transform:uppercase;"  />
-		</th>
+    <tr></tr>
+        <th>
+            <input type="text" id="ItemC"    size="1" name="ItemC" />
+        </th>
+                <th>
+            <input type="text"  size="5" id="Cex"  name="Cex"   />
+        </th>
+        <th>
+            <input type="text"  size="1" id="CS"  name="CS"   style="text-transform:uppercase;"  />
+        </th>
 
-		<th>
-			<input type="text"  size="1" id="CN"  name="CN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="CK"  name="CK"   /><!--Category-->
-		</th>
-		<th>
-			<input type="text"  size="5" id="CC"  name="CC" class='clCN'  />
-		</th>
+        <th>
+            <input type="text"  size="1" id="CN"  name="CN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="CK"  name="CK"   /><!--Category-->
+        </th>
+        <th>
+            <input type="text"  size="5" id="CC"  name="CC" class='clCN'  />
+        </th>
 
+        <tr></tr>
+        <th>
+                <input type="text" size="1"  id="ItemD"  name="ItemD"  />
+        </th>
+                    <th>
+            <input type="text"  size="5" id="Dex"  name="Dex"   />
+        </th>
 
+            <th>
+            <input type="text"  size="1" id="DS"  name="DS"   style="text-transform:uppercase;"  />
+        </th>
+            <th>
+            <input type="text"  size="1" id="DN"  name="DN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="DK"  name="DK"   /><!--Category-->
+        </th>
+            <th>
+            <input type="text"  size="5" id="DC"  name="DC" class='clCN'  />
+        </th>
 
+    <tr></tr>
+        <th>
+            <input type="text" id="ItemE"   size="1" name="ItemE"   />
+        </th>
+                <th>
+            <input type="text"  size="5" id="Eex"  name="Eex"   />
+        </th>
+            <th>
+            <input type="text"  size="5" id="ES"  name="ES"   style="text-transform:uppercase;"  />
+        </th>
 
-		<tr></tr>
-		<th>
-				<input type="text" size="1"  id="ItemD"  name="ItemD"  />
-		</th>
-					<th>
-			<input type="text"  size="5" id="Dex"  name="Dex"   />
-		</th>
+                <th>
+            <input type="text"  size="1" id="EN"  name="EN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="EK"  name="EK"   /><!--Category-->
+        </th>
+            <th>
+            <input type="text"  size="5" id="EC"  name="EC" class='clCN'  />
+        </th>
 
-			<th>
-			<input type="text"  size="1" id="DS"  name="DS"   style="text-transform:uppercase;"  />
-		</th>
-			<th>
-			<input type="text"  size="1" id="DN"  name="DN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="DK"  name="DK"   /><!--Category-->
-		</th>
-			<th>
-			<input type="text"  size="5" id="DC"  name="DC" class='clCN'  />
-		</th>
-
-	<tr></tr>
-		<th>
-			<input type="text" id="ItemE"   size="1" name="ItemE"   />
-		</th>
-				<th>
-			<input type="text"  size="5" id="Eex"  name="Eex"   />
-		</th>
-			<th>
-			<input type="text"  size="5" id="ES"  name="ES"   style="text-transform:uppercase;"  />
-		</th>
-
-				<th>
-			<input type="text"  size="1" id="EN"  name="EN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="EK"  name="EK"   /><!--Category-->
-		</th>
-			<th>
-			<input type="text"  size="5" id="EC"  name="EC" class='clCN'  />
-		</th>
-
-		<tr></tr>
+        <tr></tr>
 
 
-		<th>
-			<input type="text" size="1"  id="ItemF"  name="ItemF"  />
-		</th>
-					<th>
-			<input type="text"  size="5" id="Fex"  name="Fex"   />
-		</th>
-		<th>
-			<input type="text"  size="1" id="FS"  name="FS"   style="text-transform:uppercase;"  />
-		</th>
-			<th>
-			<input type="text"  size="1" id="FN"  name="FN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="FK"  name="FK"   /><!--Category-->
-		</th>
-			<th>
-			<input type="text"  size="5" id="FC"  name="FC" class='clCN'  />
-		</th>
+        <th>
+            <input type="text" size="1"  id="ItemF"  name="ItemF"  />
+        </th>
+                    <th>
+            <input type="text"  size="5" id="Fex"  name="Fex"   />
+        </th>
+        <th>
+            <input type="text"  size="1" id="FS"  name="FS"   style="text-transform:uppercase;"  />
+        </th>
+            <th>
+            <input type="text"  size="1" id="FN"  name="FN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="FK"  name="FK"   /><!--Category-->
+        </th>
+            <th>
+            <input type="text"  size="5" id="FC"  name="FC" class='clCN'  />
+        </th>
 
-	<tr></tr>
+    <tr></tr>
 
-		<th>
-				<input type="text"  size="1" id="ItemG"  name="ItemG" />
-		</th>
-		<th>
-			<input type="text"  size="5" id="Gex"  name="Gex"   />
-		</th>
-	<th>
-			<input type="text"  size="5" id="GS"  name="GS"   style="text-transform:uppercase;"   />
-		</th>
+        <th>
+                <input type="text"  size="1" id="ItemG"  name="ItemG" />
+        </th>
+        <th>
+            <input type="text"  size="5" id="Gex"  name="Gex"   />
+        </th>
+    <th>
+            <input type="text"  size="5" id="GS"  name="GS"   style="text-transform:uppercase;"   />
+        </th>
 
-			<th>
-			<input type="text"  size="1" id="GN"  name="GN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="GK"  name="GK"   /><!--Category-->
-		</th>
-			<th>
-			<input type="text"  size="5" id="GC"  name="GC" class='clCN'  />
-		</th>
+            <th>
+            <input type="text"  size="1" id="GN"  name="GN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="GK"  name="GK"   /><!--Category-->
+        </th>
+            <th>
+            <input type="text"  size="5" id="GC"  name="GC" class='clCN'  />
+        </th>
 
-	<tr></tr>
-		<th>
-			<input type="text" size="1"  id="ItemH"  name="ItemH"  />
-	</th>
-			<th>
-			<input type="text"  size="5" id="Hex"  name="Hex"   />
-		</th>
-	<th>
-			<input type="text"  size="5" id="HS"  name="HS"    style="text-transform:uppercase;"  />
-		</th>
-			<th>
-			<input type="text" size="1"  id="HN"  name="HN"   />
-		</th>
-		<th>
-			<input type="text"  size="2" id="HK"  name="HK"   /><!--Category-->
-		</th>
-			<th>
-			<input type="text"  size="5" id="HC"  name="HC" class='clCN'  />
-		</th>
+    <tr></tr>
+        <th>
+            <input type="text" size="1"  id="ItemH"  name="ItemH"  />
+    </th>
+            <th>
+            <input type="text"  size="5" id="Hex"  name="Hex"   />
+        </th>
+    <th>
+            <input type="text"  size="5" id="HS"  name="HS"    style="text-transform:uppercase;"  />
+        </th>
+            <th>
+            <input type="text" size="1"  id="HN"  name="HN"   />
+        </th>
+        <th>
+            <input type="text"  size="2" id="HK"  name="HK"   /><!--Category-->
+        </th>
+            <th>
+            <input type="text"  size="5" id="HC"  name="HC" class='clCN'  />
+        </th>
 
-	<tr></tr>
+    <tr></tr>
 
 <!--		<th>
-			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
+            <select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
-			</select>
+            </select>
 
 </th>-->
-		</tr>
-		</table>
-
-
-
-
-
-
+        </tr>
+        </table>
 
 <!--<input type="submit" name="btn_submit" value="Select the proof" style="width:300px;height:30px" /> -->
-<!--	<br><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br>
-<br><br><br><br><br><br><br><br><br><br><br>
+<!--	<br /><input type="submit" name="btn_submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" /> <br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 -->
 
 <!--<input type="submit" value="Create expense" onclick="return confirm('Are you sure about the date?');" /> -->
@@ -859,50 +836,19 @@ echo "</tr>\n";
 <!--<input type="button" value="Submit" onclick="formValidator()" />-->
 
 <input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </form>
 
 
 <?php
-include ("view_trans_by_cust.php");
-include ("view_inv_by_cust.php");
+include 'view_trans_by_cust.php';
+include 'view_inv_by_cust.php';
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
-echo "All expenses total to: R".$yo."<br>";
+echo "All expenses total to: R".$yo."<br />";
 
 echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
-include ("view_event_by_cust.php");
+include 'view_event_by_cust.php';
 
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
@@ -911,8 +857,6 @@ alert('$message');
 
 */
 ?>
-
-
 
 </body>
 </html>

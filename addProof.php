@@ -4,127 +4,124 @@
 <head>
 <title>Add proof</title>
 <!--<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />-->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script  type="text/javascript">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script  type="text/javascript">
 
 <!--<script type='text/javascript'>-->
 
 function formValidator(){
-	// Make quick references to our fields
-	var TransNo = document.getElementById('TransNo');
-	var TransDate = document.getElementById('TransDate');  //it must be in the correct sequence!!!
-	var Amt = document.getElementById('Amt');
-	var Notes = document.getElementById('Notes');
-	//var Proof = document.getElementById('TMethod');//Proof method
+    // Make quick references to our fields
+    var TransNo = document.getElementById('TransNo');
+    var TransDate = document.getElementById('TransDate');  //it must be in the correct sequence!!!
+    var Amt = document.getElementById('Amt');
+    var Notes = document.getElementById('Notes');
+    //var Proof = document.getElementById('TMethod');//Proof method
 
 
 
-	// Check each input in the order that it appears in the form!
-						if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
-				if(lengthRestriction(TransDate, 10,10)){
-				if(notEmpty(Amt, "Please enter a valid FLOAT amoutn Paid isFloat")){
-			if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
+    // Check each input in the order that it appears in the form!
+                        if(isNumeric(TransNo, "Please enter a valid numeric transaction number")){
+                if(lengthRestriction(TransDate, 10,10)){
+                if(notEmpty(Amt, "Please enter a valid FLOAT amoutn Paid isFloat")){
+            if(notEmpty(Notes, "Please create a Note or put in a dot if not sure")){
 //				if(isDate(TransDate, "Please put in Date")){
-					//if(madeSelection(TMethod, "Please Choose Proof Method")){
+                    //if(madeSelection(TMethod, "Please Choose Proof Method")){
 
-
-
-
-							return true;
-						}
+                            return true;
+                        }
 }
 }}}
 
-	//					return false;
+    //					return false;
 
 //}
 
 function notEmpty(elem, helperMsg){
-	if(elem.value.length == 0){
-		alert(helperMsg);
-		elem.focus(); // set the focus to this input
-		return false;
-	}
-	return true;
+    if(elem.value.length == 0){
+        alert(helperMsg);
+        elem.focus(); // set the focus to this input
+        return false;
+    }
+    return true;
 }
 
 function isNumeric(elem, helperMsg){
-	var numericExpression = /^[0-9]+$/;
-	if(elem.value.match(numericExpression)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var numericExpression = /^[0-9]+$/;
+    if(elem.value.match(numericExpression)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 /* CAUSES NOTHING TO FUNCTION
 function isFloat(elem, helperMsg){
-	var numericExpression = /^[0-9\.]+$/;
-	if(elem.value.match(numericExpression)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var numericExpression = /^[0-9\.]+$/;
+    if(elem.value.match(numericExpression)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 */
 function isAlphabet(elem, helperMsg){
-	var alphaExp = /^[a-zA-Z]+$/;
-	if(elem.value.match(alphaExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var alphaExp = /^[a-zA-Z]+$/;
+    if(elem.value.match(alphaExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 function isAlphanumeric(elem, helperMsg){
-	var alphaExp = /^[0-9a-zA-Z]+$/;
-	if(elem.value.match(alphaExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var alphaExp = /^[0-9a-zA-Z]+$/;
+    if(elem.value.match(alphaExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 function lengthRestriction(elem, min, max){
-	var uInput = elem.value;
-	if(uInput.length >= min && uInput.length <= max){
-		return true;
-	}else{
-		alert("Please enter between " +min+ " and " +max+ " characters");
-		elem.focus();
-		return false;
-	}
+    var uInput = elem.value;
+    if(uInput.length >= min && uInput.length <= max){
+        return true;
+    }else{
+        alert("Please enter between " +min+ " and " +max+ " characters");
+        elem.focus();
+        return false;
+    }
 }
 
 function madeSelection(elem, helperMsg){
-	if(elem.value == "Please Choose"){
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}else{
-		return true;
-	}
+    if(elem.value == "Please Choose"){
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }else{
+        return true;
+    }
 }
 
 function emailValidator(elem, helperMsg){
-	var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-	if(elem.value.match(emailExp)){
-		return true;
-	}else{
-		alert(helperMsg);
-		elem.focus();
-		return false;
-	}
+    var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+    if(elem.value.match(emailExp)){
+        return true;
+    }else{
+        alert(helperMsg);
+        elem.focus();
+        return false;
+    }
 }
 
 
@@ -183,85 +180,85 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 }
 /*
 
-	var currentDt = new Date();
+    var currentDt = new Date();
     var mm = currentDt.getMonth() + 1;
     var dd = currentDt.getDate();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
     var yyyy = currentDt.getFullYear();
     var todaydate = mm + '/' + dd + '/' + yyyy;
 
-	currentDt.setDate(currentDt.getDate()-1);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var yesterday = dd + '/' + mm + '/' + yyyy;
-	// alert(yesterday);
-	//document.write(todaydate); //required for input or span
-	//document.write(yesterday);
+    currentDt.setDate(currentDt.getDate()-1);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var yesterday = dd + '/' + mm + '/' + yyyy;
+    // alert(yesterday);
+    //document.write(todaydate); //required for input or span
+    //document.write(yesterday);
 
-	currentDt.setDate(currentDt.getDate()-2);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var twodaysago = dd + '/' + mm + '/' + yyyy;
+    currentDt.setDate(currentDt.getDate()-2);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var twodaysago = dd + '/' + mm + '/' + yyyy;
 
-	currentDt.setDate(currentDt.getDate()-3);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var threedaysago = dd + '/' + mm + '/' + yyyy;
+    currentDt.setDate(currentDt.getDate()-3);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var threedaysago = dd + '/' + mm + '/' + yyyy;
 
-	currentDt.setDate(currentDt.getDate()-4);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var fourdaysago = dd + '/' + mm + '/' + yyyy;
+    currentDt.setDate(currentDt.getDate()-4);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var fourdaysago = dd + '/' + mm + '/' + yyyy;
 
-	currentDt.setDate(currentDt.getDate()-5);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var fivedaysago = dd + '/' + mm + '/' + yyyy;
+    currentDt.setDate(currentDt.getDate()-5);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var fivedaysago = dd + '/' + mm + '/' + yyyy;
 
-	currentDt.setDate(currentDt.getDate()-6);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var sixdaysago = dd + '/' + mm + '/' + yyyy;
+    currentDt.setDate(currentDt.getDate()-6);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var sixdaysago = dd + '/' + mm + '/' + yyyy;
 
-		currentDt.setDate(currentDt.getDate()-2);
-	var dd = currentDt.getDate();
-	var mm = currentDt.getMonth()+1;
-	var yyyy = currentDt.getFullYear();
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-	var sevendaysago = dd + '/' + mm + '/' + yyyy;
+        currentDt.setDate(currentDt.getDate()-2);
+    var dd = currentDt.getDate();
+    var mm = currentDt.getMonth()+1;
+    var yyyy = currentDt.getFullYear();
+    if(dd<10){dd='0'+dd};
+    if(mm<10){mm='0'+mm};
+    var sevendaysago = dd + '/' + mm + '/' + yyyy;
 
 */
 
-	$(function() {
-		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
-		var availableTags = ["yp","jj"];
-		$( "#lst" ).autocomplete({
-		source: availableTags,
-		minLength: 0
-			}).mouseover(function() {
-				$(this).autocomplete("search");
-		});
-		});
+    $(function() {
+        //var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
+        var availableTags = ["yp","jj"];
+        $( "#lst" ).autocomplete({
+        source: availableTags,
+        minLength: 0
+            }).mouseover(function() {
+                $(this).autocomplete("search");
+        });
+        });
 
 </script>
 </head>
@@ -274,15 +271,15 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 <?php	//this is "addTransCustProcess2.php"
 require_once 'header.php';
 require_once 'inc_OnlineStoreDB.php';
-	@session_start();
-	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	$CustInt = $_SESSION['CustNo'];
+    @session_start();
+    //echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
+    $CustInt = $_SESSION['CustNo'];
 //include 'monthtables.php';
 $Prof = @$_POST['Prof'];
 
 $TBLrow = $_POST['mydropdownEC'];
 
-//echo "TBLrow: " .$TBLrow."</BR>";
+//echo "TBLrow: " .$TBLrow."<br />";
 $Custno = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
 //echo "$Custno</br />";
@@ -292,7 +289,7 @@ $Custno = explode(';', $TBLrow );
 //echo $Custno[0]."</br />";
 $CustInt = intval($Custno[0]);
 
-//echo "<br>Custint:".$CustInt."<br />";
+//echo "<br />Custint:".$CustInt."<br />";
 
 if ($CustInt == '0')
 $CustInt = @$_POST['CustNo'];
@@ -306,14 +303,14 @@ echo "SESSION sel: ". @$_SESSION['sel'] ."<br />";
 <!--<form name="addTransCustProcess2"  action="addTransprocess_last2.php" onsubmit='return formValidator()'   method="post">-->
 
 <!--before we can add a transaction, we check what transactions the customer has done:
-<br><br>-->
+<br /><br />-->
 <?php
 
 //$TBLrow = $_POST['mydropdownEC'];
 $Amt = "";
 //$Amt = @$_POST['Amt'];
 
-/*echo "TBLrow: " .$TBLrow."</BR>";
+/*echo "TBLrow: " .$TBLrow."<br />";
 $CustNo = explode(';', $TBLrow );
 //while ($TBLrow !=NULL) {
 //echo "$TransNo</br />";
@@ -323,10 +320,10 @@ $CustNo = explode(';', $TBLrow );
 //echo $TransNo[0]."</br />";
 $CustInt = intval($CustNo[0]);
 
-//echo "<br>Transint:".$CustInt."</br />";
+//echo "<br />Transint:".$CustInt."</br />";
 */
 $SQLString = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
-//echo $SQLstring."<br>";
+//echo $SQLstring."<br />";
 
 if ($result = mysqli_query($DBConnect, $SQLString)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -343,7 +340,7 @@ $item9 = $row["InvNoAincl"];
 $item10 = $row["Priority"];*/
 print "$item1";
 print " ".$item2;
-print " <b><Font size = 4>".$item3;
+print " <b><font size=4>".$item3;
 print "</font></b> ".$item4." ".$Important;
 echo "..{$row['dotdot']}";
 /*print "_".$item5;
@@ -366,7 +363,7 @@ $result->free();
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
 echo "{$row[0]}&nbsp;&nbsp;";
-echo "<font size = '3'><b>";
+echo "<font size='3'><b>";
 echo "{$row[1]}&nbsp;&nbsp;";
 echo "{$row[2]}&nbsp;&nbsp;</font></b>";
 echo "{$row[3]}&nbsp;&nbsp;";
@@ -377,15 +374,12 @@ echo "{$row[7]}&nbsp;&nbsp;";
 echo "{$row[8]}&nbsp;&nbsp;";
 echo "{$row[9]}&nbsp;&nbsp;";
 
-		}
+        }
     $result->close();
 }*/
 
 
 ?>
-
-
-
 
 <?php
 
@@ -402,12 +396,12 @@ $query = "select ProofNo from aproof order by ProofDate desc limit 1";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
 
 while($row = mysqli_fetch_array($result)){
-	echo "<br>The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
+    echo "<br />The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
 $daNextNo = $row[0];
 $Numb = substr($daNextNo, 7);
 $Numb++;
 }
-echo "<br><br>";
+echo "<br /><br />";
 $daNewProofNo = "ProofNo".$Numb;
 
 ?>
@@ -431,78 +425,78 @@ $select = $_GET['select'];
 <!--<form  onsubmit='return formValidator()' action="addProofprocess.php" method="post">-->
 <table border='0'>
 <?php
-echo "Add new proofs:<br>";
+echo "Add new proofs:<br />";
 
 echo "<tr>";
 //echo "<th>Proof No &nbsp;</th>"; //left out becasue mysql statement will get MaxNumber before writing to DB.
 //echo "<th>CustNo</th>";
-echo "<th>ProofDate<br>";
+echo "<th>ProofDate<br />";
 //echo date("d/m/Y");
 echo "</th>";
 echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;CustSDR or Bank Ref&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 echo "<th>Amt</th>";
 
-echo "<th>&nbsp;&nbsp;&nbsp;Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>HOVER and wait</th>";
+echo "<th>&nbsp;&nbsp;&nbsp;Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />HOVER and wait</th>";
 echo "</tr><tr>";
 
 echo "</tr>\n";
 ?>
 
 <!--
-	<tr>
-			<th><input type="text" size="2"  id="ProofNo"  name="ProofNo" value="<?php echo $daNewProofNo;?>" />
-		</th>
+    <tr>
+            <th><input type="text" size="2"  id="ProofNo"  name="ProofNo" value="<?php echo $daNewProofNo;?>" />
+        </th>
 -->
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
 </th>
-		<th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
-		$NewFormat = date("d/m/Y");
-		?>
-			<!--<label>ProofDate:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<!--<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
-			<?php include 'yesterday.php' ?>
-			<input id="lst"   name="ProofDate"  >
+        <th><?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
+        $NewFormat = date("d/m/Y");
+        ?>
+            <!--<label>ProofDate:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <!--<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
+            <?php include 'yesterday.php' ?>
+            <input id="lst"   name="ProofDate"  >
 
 <!--			<input type="hidden" size="10"  id="ProofDateOrig"  name="ProofDateOrig" value="<?php //echo $daNextNo; ?>" />
 -->
-		</th>
+        </th>
 
-		<th>
-			<!--<label>&nbsp; CustSDR:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<textarea size="19" id="CustSDR"  name="CustSDR" size = '20' ><?php if ($Prof == 'ChequeToBeDeposited') echo 'Received a Cheque'; ?></textarea>
-		</th>
+        <th>
+            <!--<label>&nbsp; CustSDR:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <textarea size="19" id="CustSDR"  name="CustSDR" size = '20' ><?php if ($Prof == 'ChequeToBeDeposited') echo 'Received a Cheque'; ?></textarea>
+        </th>
 
-		<th>
-			<!--<label>&nbsp; Amt:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="5" id="Amt"  name="Amt" value="<?php echo $Amt; ?>"   class='clAmt' />
-		</th>
+        <th>
+            <!--<label>&nbsp; Amt:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="5" id="Amt"  name="Amt" value="<?php echo $Amt; ?>"   class='clAmt' />
+        </th>
 
-		<th>
-			<!--<label>&nbsp; Notes:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<!--<input type="text"  size="10" id="Notes"  name="Notes" size = '35' value="" />-->
-			<textarea id="Notes"  name="Notes"   class='clNotes'></textarea>
-			<textarea id="Notes2"  name="Notes2"   class='clNotes'></textarea>
-			<textarea id="Notes3"  name="Notes3"   class='clNotes'></textarea>
-			<textarea id="Notes4"  name="Notes4"   class='clNotes'></textarea>
-			<textarea id="Notes5"  name="Notes5"   class='clNotes'></textarea>
-			<textarea id="Notes6"  name="Notes6"   class='clNotes'></textarea>
-			<textarea id="Notes7"  name="Notes7"   class='clNotes'></textarea>
-			<textarea id="Notes8"  name="Notes8"   class='clNotes'></textarea>
+        <th>
+            <!--<label>&nbsp; Notes:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <!--<input type="text"  size="10" id="Notes"  name="Notes" size = '35' value="" />-->
+            <textarea id="Notes"  name="Notes"   class='clNotes'></textarea>
+            <textarea id="Notes2"  name="Notes2"   class='clNotes'></textarea>
+            <textarea id="Notes3"  name="Notes3"   class='clNotes'></textarea>
+            <textarea id="Notes4"  name="Notes4"   class='clNotes'></textarea>
+            <textarea id="Notes5"  name="Notes5"   class='clNotes'></textarea>
+            <textarea id="Notes6"  name="Notes6"   class='clNotes'></textarea>
+            <textarea id="Notes7"  name="Notes7"   class='clNotes'></textarea>
+            <textarea id="Notes8"  name="Notes8"   class='clNotes'></textarea>
 
-		</th>
-	</tr>
-	</table>
-	<table>
+        </th>
+    </tr>
+    </table>
+    <table>
 
-	<tr>
+    <tr>
 
-	<?php
-echo "<th>InvNoA No<br>
+    <?php
+echo "<th>InvNoA No<br />
 HOVER OVER ME!</th>";
 echo "<th>InvNoA incl VAT</th>\n";
 echo "<th>InvNoB No</th>";
@@ -512,44 +506,44 @@ echo "<th>InvNoC incl VAT</th>\n";
 echo "</tr>";
 ?>
 
-	<tr>
-		<th>
-			<!--<label>&nbsp; InvNoA:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+    <tr>
+        <th>
+            <!--<label>&nbsp; InvNoA:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 
-	<?php include 'invJQuery.php' ?>
-	<input type="text"  size="3" id="InvNoA"  name="InvNoA"  class='clInvNoA' />
+    <?php echo file_get_contents('invJQuery.js'); ?>
+    <input type="text"  size="3" id="InvNoA"  name="InvNoA"  class='clInvNoA' />
 
-	</th>
-		<th>
-			<!--<label>&nbsp; InvNoAincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" size="3"  id="InvNoAincl"  name="InvNoAincl"   class='clAmt'/>
-		</th>
-
-
-		<th>
-			<!--<label>&nbsp; InvNoB:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoB"  name="InvNoB" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoBincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoBincl"  name="InvNoBincl"   class='clAmt'  />
-		</th>
+    </th>
+        <th>
+            <!--<label>&nbsp; InvNoAincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" size="3"  id="InvNoAincl"  name="InvNoAincl"   class='clAmt'/>
+        </th>
 
 
-		<th>
-			<!--<label>&nbsp; InvNoC:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" id="InvNoC"    size="1" name="InvNoC" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoCincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" size="1"  id="InvNoCincl"  name="InvNoCincl" value="0"  class='clAmt'  />
-		</th>
+        <th>
+            <!--<label>&nbsp; InvNoB:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoB"  name="InvNoB" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoBincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoBincl"  name="InvNoBincl"   class='clAmt'  />
+        </th>
+
+
+        <th>
+            <!--<label>&nbsp; InvNoC:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" id="InvNoC"    size="1" name="InvNoC" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoCincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" size="1"  id="InvNoCincl"  name="InvNoCincl" value="0"  class='clAmt'  />
+        </th>
 
 
 </tr>
@@ -564,40 +558,40 @@ echo "</tr>";
 
 <tr>
 
-	<th>
-			<!--<label>&nbsp; InvNoD:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" size="1"  id="InvNoD"  name="InvNoD" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoDincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoDincl"  name="InvNoDincl" value="0"  class='clAmt'  />
-		</th>
+    <th>
+            <!--<label>&nbsp; InvNoD:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" size="1"  id="InvNoD"  name="InvNoD" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoDincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoDincl"  name="InvNoDincl" value="0"  class='clAmt'  />
+        </th>
 
 
-		<th>
-			<!--<label>&nbsp; InvNoE:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" id="InvNoE"   size="1" name="InvNoE" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoEincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoEincl"  name="InvNoEincl" value="0"  class='clAmt'  />
-		</th>
+        <th>
+            <!--<label>&nbsp; InvNoE:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" id="InvNoE"   size="1" name="InvNoE" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoEincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoEincl"  name="InvNoEincl" value="0"  class='clAmt'  />
+        </th>
 
 
-		<th>
-			<!--<label>&nbsp; InvNoF:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text" size="1"  id="InvNoF"  name="InvNoF" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoFincl:</label></dt>
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoFincl"  name="InvNoFincl" value="0"  class='clAmt'  />
-		</th>
+        <th>
+            <!--<label>&nbsp; InvNoF:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text" size="1"  id="InvNoF"  name="InvNoF" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoFincl:</label></dt>
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoFincl"  name="InvNoFincl" value="0"  class='clAmt'  />
+        </th>
 
 </tr>
 <tr>
@@ -608,53 +602,50 @@ echo "</tr>";
 <th>Priority</th>
 <th>Proof Method &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 
-	</tr>
+    </tr>
 
-		<th>
-			<!--<label>&nbsp; InvNoG:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoG"  name="InvNoG" value="0"  class='clInvNoA' />
-		</th>
-		<th>
-			<!--<label>&nbsp; InvNoGincl:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
-			<input type="text"  size="1" id="InvNoGincl"  name="InvNoGincl" value="0"  class='clAmt'  />
-			</th><th>
-			<input type="text" size="1"  id="InvNoH"  name="InvNoH" value="0"  class='clInvNoA' />
-			</th><th>
-			<input type="text" size="1"  id="InvNoHincl"  name="InvNoHincl" value="0"  class='clAmt'  />
-			</th>
-
-
-		<th>
-			<!--<label>&nbsp; Priority:</label></dt>-->
-			<!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+        <th>
+            <!--<label>&nbsp; InvNoG:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoG"  name="InvNoG" value="0"  class='clInvNoA' />
+        </th>
+        <th>
+            <!--<label>&nbsp; InvNoGincl:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
+            <input type="text"  size="1" id="InvNoGincl"  name="InvNoGincl" value="0"  class='clAmt'  />
+            </th><th>
+            <input type="text" size="1"  id="InvNoH"  name="InvNoH" value="0"  class='clInvNoA' />
+            </th><th>
+            <input type="text" size="1"  id="InvNoHincl"  name="InvNoHincl" value="0"  class='clAmt'  />
+            </th>
 
 
-			<!--<input type="text" id="Priority"  name="Priority" value="." />-->
+        <th>
+            <!--<label>&nbsp; Priority:</label></dt>-->
+            <!--<input type="text" name="cust_name" id="cust_fn" value="<?php //echo $daNextNo; ?>" />-->
 
 
-			<select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
+            <!--<input type="text" id="Priority"  name="Priority" value="." />-->
+
+
+            <select name="Priority" value="<?php $oldpri = "."; echo $oldpri; ?>" >
                 <option value=".">.</option>
                 <option value="Low">Low</option>
                 <option value="High">High</option>
-			</select>
+            </select>
 
 </th>
 
-		<th>
+        <th>
 
-			<input type="text"  size="15" id="PMethod"  name="PMethod" value="<?php echo $Prof; ?>" />
+            <input type="text"  size="15" id="PMethod"  name="PMethod" value="<?php echo $Prof; ?>" />
 
+        </th>
 
+        </tr>
+        </table>
 
-
-		</th>
-
-		</tr>
-		</table>
-
-	<br>
+    <br />
 <!--<input type="submit" value="Create Proofaction" onclick="return confirm('Are you sure about the date?');" /> -->
 <input type='submit' value="Create proof"   style="width:300px;height:30px" />
 <!--onclick="return confirm('Is the Invoice number AND Date correct? Did you copy the total amount from AJAX to the invoice total?')"/>
@@ -674,27 +665,6 @@ echo "</tr>";
 
 <?php //mysql_close($conn);?>
 </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
 include ("view_inv_by_custADV2.php");
 include ("view_proof_by_cust.php");
@@ -704,11 +674,11 @@ include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
-echo "All transactions total to: R".$yo."<br>";
+echo "All transactions total to: R".$yo."<br />";
 
 echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
-//include ("view_event_by_cust.php");
+//include 'view_event_by_cust.php';
 
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
@@ -719,17 +689,15 @@ alert('$message');
 ?>
 </table>
 <?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
-		$NewFormat = date("d/m/Y");
+        $NewFormat = date("d/m/Y");
 
-include ("view_proof_all.php");
+include 'view_proof_all.php';
 
-		?>
-		<!--	<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
+        ?>
+        <!--	<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
 
-	<!-- selecting too many files above can casue conflicts-->
+    <!-- selecting too many files above can casue conflicts-->
 <!--	<link rel="stylesheet" href="/resources/demos/style.css">-->
-
-
 
 </form>
 </body>
