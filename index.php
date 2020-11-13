@@ -1,4 +1,3 @@
-
 <?php
 require_once 'header.php';
 ?>
@@ -23,7 +22,7 @@ echo "Today's date: " . date("l F d, Y") . '<br />';
 ?>
 <br />Main Advantage: Fully customizable to suit your needs.
 <br />
-<br />Requirements: A localhost webserver with PHP, MySQL
+<br />Requirements: A localhost webserver with PHP (at least 5.4 or later) and MySQL installed.
 <br />
 <br />Automatic backup
 <br />It's fun to edit the code!
@@ -32,11 +31,10 @@ echo "Today's date: " . date("l F d, Y") . '<br />';
 <br />No framework
 <br />No MVC
 <br />
-<br />
-<br />Advantages:
+<br /><h3>Advantages:</h3>
 <br />Fully customizable code and layout
 <br />Non-proprietary.
-<br />PHP5.3 or PHP5.5 or later : Compatible on all operating systems and browsers and mobile browsers.
+<br />Compatible on all operating systems and browsers and mobile browsers.
 <br />PHP: started in 1994.
 <br />PHP licensing: FREE. OPENSOURCE.
 <br />MySql: Using the improved php PDO or MySQLi extension for secure connection to the database.
@@ -48,32 +46,28 @@ echo "Today's date: " . date("l F d, Y") . '<br />';
 <br />Can import CSV data from: Milestone, Visec, Vtrack, NUUO, etc
 <br />Verification and Cleaning: Following up on recovered vehicles
 <br />
+<br /><h3>Credits:</h3>
+<br /><a href="http://www.triconsole.com/php/calendar_datepicker.php">http://www.triconsole.com/php/calendar_datepicker.php</a>
 <br />
+<br /><a href="https://www.phpmyedit.org/">phpMyEdit</a>
 <br />
-<br />CREDITS:
-<br />http://www.triconsole.com/php/calendar_datepicker.php
+<br /><a href="https://tcpdf.org/">TCPDF</a>
 <br />
-<br />phpMyEdit
+<br /><a href="https://www.php-calendar.org/">PHP-Calendar</a> (php-calendar-2.0-rc6)
 <br />
-<br />tcpdf  TCPDF
+<br /><a href="https://www.php.net/">php.net</a>
 <br />
-<br />PHP-Calendar php-calendar-2.0-rc6
+<br /><a href="https://www.phpmyadmin.net/"phpMyAdmin</a>
 <br />
-<br />php.net
-<br />
-<br />phpMyAdmin
-<br />
-<br />Recommended browser: Mozilla Firefox.
+<br />Recommended browser: <a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla Firefox</a>.
 <br />Please change its setting for saving PDF invoices to your computer:
-<br />Mozilla Firefox: Tools> options: General tab: Select "Always ask me where to save files"
-<br />
-<br />www.tizag.com/javascript   Javascript Tutorial
+<br />Mozilla Firefox: Tools &gt; options: General tab: Select "Always ask me where to save files"
 <br />
 <br />tc_calendar
 <br />
-<br />html-form-guide.com
+<br /><a href="https://html.form.guide/">https://html.form.guide/</a>
 <br />
-<br />JQuery
+<br /><a href="https://jquery.com/">jQuery</a>
 <br />
 <br />
 <br />
@@ -128,16 +122,16 @@ echo "Today's date: " . date("l F d, Y") . '<br />';
 <br />
 <br /><?php	print "<br /><br />PHP<br /><br />";
 
-	echo "intval(4.8): ";
-	echo intval(-4.8);
-	print "<br /><br /><br /><br />";
+    echo "intval(4.8): ";
+    echo intval(-4.8);
+    print "<br /><br /><br /><br />";
 
-	echo "round(4.8): ";
-	echo -(round(-4.8));
-	print "<br /><br /><br /><br />";
+    echo "round(4.8): ";
+    echo -(round(-4.8));
+    print "<br /><br /><br /><br />";
 
-	echo "round(4.8, 0, PHP_ROUND_HALF_UP): ";
-	echo round(-4.8, 0, PHP_ROUND_HALF_UP);
-	print "<br /><br />";
+    echo "round(4.8, 0, PHP_ROUND_HALF_UP): ";
+    echo round(-4.8, 0, PHP_ROUND_HALF_UP);
+    print "<br /><br />";
 
 ?>
