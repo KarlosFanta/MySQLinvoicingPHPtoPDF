@@ -2,8 +2,19 @@
 # https://help.github.com/articles/dealing-with-line-endings/
 
 * text eol=lf
+*.ai binary
 *.bmp binary
+*.crt binary
+*.fdf binary
+*.gif binary
+*.icc binary
+*.jpg binary
+*.p12 binary
+*.pdf binary
+*.png binary
+*.svg binary
 *.ttf binary
+*.z binary
 
 # Refer to:
 # https://github.com/github/linguist
@@ -13,6 +24,7 @@ Installation.html linguist-documentation
 references.html linguist-documentation
 
 .github/* -linguist-detectable
+vendor/* -linguist-detectable
 *.ttf -linguist-detectable
 
 *.inc linguist-language=PHP

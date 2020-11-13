@@ -1,1 +1,0 @@
- To change the layout of your invoice headers and footers, just change the PDF.php file.

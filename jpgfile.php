@@ -1,19 +1,5 @@
 <body bgcolor="#E6E6FA">
 <?php
-// File name   : example_048.php  HTML tables and table headers
-// Author: Nicola Asuni
-// (c) Copyright: Nicola Asuni   Tecnick.com LTD    www.tecnick.com   info@tecnick.com
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: HTML tables and table headers
- * @author Nla Asuni
- */
-
-// Include the main TCPDF library (search for installation path).
-//require_once 'tcpdf_include.php';
-
 // create new PDF document
 
 //$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -39,7 +25,7 @@ $TAmt = "0";
 @$Swap = $_POST['Swap'];
 $L1F = "F:/_work/Customers";
 $L1F = $_POST['L1'];
-echo "<br>L1F:  ".$L1F."<<br>";
+echo "<br />L1F:  ".$L1F."<<br />";
 
 $strD1 = '*';
 $strD2 = '';
@@ -80,7 +66,7 @@ $XT6 = '';
 
 $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
 
-//echo $query."</BR>";
+//echo $query."<br />";
 if ($resultI = mysqli_query($DBConnect, $queryI)) {
   while ($rowI = mysqli_fetch_assoc($resultI)) {
 
@@ -117,7 +103,7 @@ $SetSubject = ''.$uniqueid.'';
 // set some language-dependent strings (optional)
 /*if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 require_once dirname(__FILE__.'/lang/eng.php');
-	$pdf->setLanguageArray($l);
+    $pdf->setLanguageArray($l);
 }
 
 // ---------------------------------------------------------
@@ -152,7 +138,7 @@ $Dt1 = explode("-", $rowI['InvDate']);
 $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
 $SQLstring = "select * from customer where CustNo = (select CustNo from invoice where InvNo = '$InvNo2')";
-//echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+//echo $SQLstring."<br /><br />"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
 
@@ -192,12 +178,6 @@ $rowNULL = $row[0];
    $result->close();
 }
 
-
-
-
-
-
-
 $TAmt = $rowI['TotAmt'];
  //$TAmt = number_format ($TAmt, 2, ".", "");
 $strD1 = strtr($rowI['D1'], array('_' => ' ')) ;
@@ -215,37 +195,34 @@ $riD2 = $rowI['D2'];
 $arr2 = str_split($riD2, 52);
 foreach($arr2 as $value) {
 $strD2= strtr($value, array('_' => ' ')) ;
- // echo "<br>";
+ // echo "<br />";
 }
-
-
-
 
 $strQ2 = $rowI['Q2'];
 
-			$Mex2 = $rowI["ex2"];
+            $Mex2 = $rowI["ex2"];
 
-			$Mex2 = number_format ($Mex2, 2, ".", "");
+            $Mex2 = number_format ($Mex2, 2, ".", "");
 
-	//		echo $Mex2;
-			$XT2 = 0;
-			$XT2 = $rowI["ex2"]*$rowI['Q2'];
-			$XT2 = number_format ($XT2, 2, ".", "");
-		//	echo $XT2;
+    //		echo $Mex2;
+            $XT2 = 0;
+            $XT2 = $rowI["ex2"]*$rowI['Q2'];
+            $XT2 = number_format ($XT2, 2, ".", "");
+        //	echo $XT2;
 }
-//echo "<br>rowID3:".$rowI['D3']."<br>";
+//echo "<br />rowID3:".$rowI['D3']."<br />";
 if (($rowI['D3']) != '0')
 {
 $strD3=  strtr($rowI['D3'], array('_' => ' ')) ;
 $strQ3 = $rowI['Q3'];
 
-			$Mex3 = $rowI["ex3"];
+            $Mex3 = $rowI["ex3"];
 
-			$Mex3 = number_format ($Mex3, 2, ".", "");
-			$XT3 = 0;
-			$XT3 = $rowI["ex3"]*$rowI['Q3'];
-			$XT3 = number_format ($XT3, 2, ".", "");
-	//		echo $XT3;
+            $Mex3 = number_format ($Mex3, 2, ".", "");
+            $XT3 = 0;
+            $XT3 = $rowI["ex3"]*$rowI['Q3'];
+            $XT3 = number_format ($XT3, 2, ".", "");
+    //		echo $XT3;
 }
 else
 $strD3= ' ';
@@ -254,37 +231,37 @@ if ($rowI['D4'] != '0')
 {
 $strD4 = strtr($rowI['D4'], array('_' => ' ')) ;
 $strQ4 = $rowI['Q4'];
-			$Mex4 = $rowI["ex4"];
-			$Mex4 = number_format ($Mex4, 2, ".", "");
+            $Mex4 = $rowI["ex4"];
+            $Mex4 = number_format ($Mex4, 2, ".", "");
 
 //			echo $Mex4;
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			$XT4 = 0;
-			$XT4 = $rowI["ex4"]*$rowI['Q4'];
-			$XT4 = number_format ($XT4, 2, ".", "");
-	//		echo $XT4;
+            //     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+            $XT4 = 0;
+            $XT4 = $rowI["ex4"]*$rowI['Q4'];
+            $XT4 = number_format ($XT4, 2, ".", "");
+    //		echo $XT4;
 }
 else
 $strD4= ' ';
 
-	if ($rowI['D5'] != '0')
+    if ($rowI['D5'] != '0')
 {
 $strD5 =  strtr($rowI['D5'], array('_' => ' ')) ;
 
 //			echo $rowI['D5'];
 
-	$strQ5 =  $rowI['Q5'];
+    $strQ5 =  $rowI['Q5'];
 
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			//echo $rowI["ex5"];
-			$Mex5 = $rowI["ex5"];
-			$Mex5 = number_format ($Mex5, 2, ".", "");
+            //     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+            //echo $rowI["ex5"];
+            $Mex5 = $rowI["ex5"];
+            $Mex5 = number_format ($Mex5, 2, ".", "");
 
-		//	echo $Mex5;
+        //	echo $Mex5;
 
-			$XT5 = 0;
-			$XT5 =  $rowI["ex5"]*$rowI["Q5"];
-			$XT5 = number_format ($XT5, 2, ".", "");
+            $XT5 = 0;
+            $XT5 =  $rowI["ex5"]*$rowI["Q5"];
+            $XT5 = number_format ($XT5, 2, ".", "");
 //			echo $XT5;
 }
 else
@@ -295,13 +272,13 @@ if ($rowI['D6'] != '0')
 $strD6 =  strtr($rowI['D6'], array('_' => ' ')) ;
 
 $strQ6= $rowI['Q6'];
-			$Mex6 = $rowI["ex6"];
+            $Mex6 = $rowI["ex6"];
 
-			$Mex6 = number_format ($Mex6, 2, ".", "");
+            $Mex6 = number_format ($Mex6, 2, ".", "");
 
-			$XT6 = 0;
-			$XT6 = $rowI["ex6"]*$rowI['Q6'];
-			$XT6 = number_format ($XT6, 2, ".", "");
+            $XT6 = 0;
+            $XT6 = $rowI["ex6"]*$rowI['Q6'];
+            $XT6 = number_format ($XT6, 2, ".", "");
 }
 else
 $strD6= ' ';
@@ -311,14 +288,14 @@ if ($rowI['D7'] != '0')
 $strD7 = strtr($rowI['D7'], array('_' => ' ')) ;
 
 $strQ7 = $rowI['Q7'];
-			$Mex7 = $rowI["ex7"];
+            $Mex7 = $rowI["ex7"];
 
-			$Mex7 = number_format ($Mex7, 2, ".", "");
+            $Mex7 = number_format ($Mex7, 2, ".", "");
 
 //			echo $Mex7;
-			$XT7 = 0;
-			$XT7 = $rowI["ex7"]*$rowI['Q7'];
-			$XT7 = number_format ($XT7, 2, ".", "");
+            $XT7 = 0;
+            $XT7 = $rowI["ex7"]*$rowI['Q7'];
+            $XT7 = number_format ($XT7, 2, ".", "");
 }
 else
 $strD7= ' ';
@@ -327,12 +304,12 @@ if ($rowI['D8'] != '0')
 {
 $strD8 =  strtr($rowI['D8'], array('_' => ' ')) ;
 $strQ8 = $rowI['Q8'];
-			$Mex8 = $rowI["ex8"];
-			$Mex8 = number_format ($Mex8, 2, ".", "");
+            $Mex8 = $rowI["ex8"];
+            $Mex8 = number_format ($Mex8, 2, ".", "");
 
-			$XT8 = 0;
-			$XT8= $rowI["ex8"]*$rowI['Q8'];
-			$XT8 = number_format ($XT8, 2, ".", "");
+            $XT8 = 0;
+            $XT8= $rowI["ex8"]*$rowI['Q8'];
+            $XT8 = number_format ($XT8, 2, ".", "");
 }
 else
 $strD8= ' ';
@@ -341,13 +318,13 @@ $ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]
 $rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
 $rowI["Q7"]*$rowI["ex7"]+$rowI["Q8"]*$rowI["ex8"];
 $ST2 = number_format ($ST, 2, ".", "");
-		$VT = $ST*0.14;
-		$VT2 = number_format ($VT, 2, ".", "");
+        $VT = $ST*0.14;
+        $VT2 = number_format ($VT, 2, ".", "");
 //		echo "<input type='button' value='Print the invoice' //onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			//$IT= $ST*1.14;
-			$IT2 = $TAmt;
-			$IT2 = number_format ($TAmt, 2, ".", "");
+            //$IT= $ST*1.14;
+            $IT2 = $TAmt;
+            $IT2 = number_format ($TAmt, 2, ".", "");
 
 if ($strD8 == '0&nbsp;')
 $strD8 = '';
@@ -419,65 +396,58 @@ $XT2 = '';
 /*echo"</table>
 <TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=0>
 <COL WIDTH=90%>	<COL WIDTH=*>
-		<TR>
-		<th>";
-			echo "<p align = 'right'>Sub-Total";
-			echo "
-		</th>
-		<th><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			$ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
-			$rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
-			$rowI["Q7"]*$rowI["ex7"]+$rowI["Q8"]*$rowI["ex8"];
-			$ST2 = number_format ($ST, 2, ".", "");
-			echo $ST2;
+        <TR>
+        <th>";
+            echo "<p align = 'right'>Sub-Total";
+            echo "
+        </th>
+        <th><label>";
+            //     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+            $ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
+            $rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
+            $rowI["Q7"]*$rowI["ex7"]+$rowI["Q8"]*$rowI["ex8"];
+            $ST2 = number_format ($ST, 2, ".", "");
+            echo $ST2;
 
-			echo "
-		</th>
-	</TR>
+            echo "
+        </th>
+    </TR>
 
-	<TR>
-		<th> <p align = 'right'>";
-			echo "Plus 14% VAT";
-			echo "
-		</th>
-		<th><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			$VT = $ST*0.14;
-			$VT2 = number_format ($VT, 2, ".", "");
-			echo $VT2;
-			echo "
-		</th>
-	</TR>
+    <TR>
+        <th> <p align = 'right'>";
+            echo "Plus 14% VAT";
+            echo "
+        </th>
+        <th><label>";
+            //     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+            $VT = $ST*0.14;
+            $VT2 = number_format ($VT, 2, ".", "");
+            echo $VT2;
+            echo "
+        </th>
+    </TR>
 
-		<TR>
-		<th> <p align = 'right'>";
-		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        <TR>
+        <th> <p align = 'right'>";
+        echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-			echo "Invoice Total";
-			echo "
-		</th>
-		<th><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+            echo "Invoice Total";
+            echo "
+        </th>
+        <th><label>";
+            //     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 
-			$IT= $ST*1.14;
-			$IT2 = number_format ($IT, 2, ".", "");
-			echo "R".$IT2;
-			echo "
-		</th>
-	</TR>
-
-
-
-
+            $IT= $ST*1.14;
+            $IT2 = number_format ($IT, 2, ".", "");
+            echo "R".$IT2;
+            echo "
+        </th>
+    </TR>
 
 /*
 
 */
 // -----------------------------------------------------------------------------
-
-
-
 
 $L2 = "";
 $L3 = "";
@@ -516,11 +486,6 @@ $html = 'Summary: '.$Summary1.' ';
 //$pdf->writeHTML($html, true, false, true, false, '');
 
 // -----------------------------------------------------------------------------
-
-
-
-
-
 
 $L1 = "R$XT1 ex VAT is: [$strQ1 x $strD1]";
 /*$L3 = "R$XT3 ex VAT is: [$strQ3 x $strD3]";
@@ -576,7 +541,7 @@ EOD;
 
 //$pdf->writeHTML($tbl, true, false, false, false, '');
 
-	   //max lenght of totalSDR may be 30 chars long
+       //max lenght of totalSDR may be 30 chars long
 $tblR = <<<EOD
 
 
@@ -613,7 +578,7 @@ echo "called:<b> ".$uniqueid."</b>";
 //$pdf->Output('','S'); //string
 //$uniqueid = "C:/".$uniqueid;
 $filelocation = str_replace('/', '\\', $L1F);
-echo "<br>f:  ".$filelocation."<<br>";
+echo "<br />f:  ".$filelocation."<<br />";
 //$pdf->Output($uniqueid,'F');
 
 //$uniqueid2 = "C:\\".$uniqueid;
@@ -621,15 +586,15 @@ echo "<br>f:  ".$filelocation."<<br>";
 //$pdf->Output($uniqueid2,'F');
 
 $uniqueidFL = $filelocation."\\".$uniqueid;
-echo "<br>u:  ".$uniqueidFL."<br>";
+echo "<br />u:  ".$uniqueidFL."<br />";
 //echo $uniqueid2;
 //$pdf->Output($uniqueidFL,'F');
 
 //$uniqueid3 = "http://localhost/".$uniqueid;
-//echo "<br>".$uniqueid3;
+//echo "<br />".$uniqueid3;
 //$pdf->Output($uniqueid3,'F'); // did not work
 
-//echo "<br>".$uniqueid;
+//echo "<br />".$uniqueid;
 //$pdf->Output($uniqueid,'D'); // you cannot add file location!
 
 }
@@ -673,19 +638,16 @@ imagejpeg($im, $uniqueidFL, 75);
 imagedestroy($im);
 $filelocation = "file:///".$filelocation ;
 strtr($filelocation, array('\\' => '/')) ;
-echo "<br> <a href= '".$filelocation."' alt= 'Right-click in Ext App'>Open customer folder: ".$filelocation." </a> &nbsp;&nbsp;&nbsp; <br>";
+echo "<br /> <a href= '".$filelocation."' alt= 'Right-click in Ext App'>Open customer folder: ".$filelocation." </a> &nbsp;&nbsp;&nbsp; <br />";
 //include 'invEmail.php';
 ?>
-<font size = 4><b>
+<font size=4><b>
 <a href="mailto:<?php echo $CustEmail ?>?subject=<?php if (@$Draft == 'Paid')
 echo "PAID ";  ?>Invoice No <?php echo $InvNo; echo " ".$Summary?>&body="">  <!-- unfrotunately the body cannot handle HTML commands!!! -->
-Click to EMail customer</a><br>
+Click to EMail customer</a><br />
 </font>
-<br>
+<br />
 
-
-
-
-<br><br>preview the image:<br>
+<br /><br />preview the image:<br />
 <img src =  <?php echo $uniqueid; ?> >
 

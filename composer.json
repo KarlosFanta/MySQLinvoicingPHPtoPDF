@@ -1,0 +1,20 @@
+{
+    "name": "karlosfanta/mysqlinvoicingphptopdf",
+    "description": "Create PDF invoices and manage transactions with a MySQL database using PDO or MySQLi.",
+    "keywords": ["pdf","tcpdf","invoice","invoices","invoicing","finance","management","mysql","mysqli","pdo"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF/issues",
+        "wiki": "https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF/wiki",
+        "source": "https://github.com/KarlosFanta/MySQLinvoicingPHPtoPDF"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "tecnickcom/tcpdf": "^6.3",
+        "ext-pcre": "*"
+    },
+    "suggest": {
+        "ext-mysqli": "*",
+        "ext-pdo": "*"
+    }
+}

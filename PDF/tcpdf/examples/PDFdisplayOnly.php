@@ -1,25 +1,13 @@
 <?php
-// File name   : example_048.php  HTML tables and table headers
-// Author: Nicola Asuni
-// (c) Copyright: Nicola Asuni   Tecnick.com LTD    www.tecnick.com   info@tecnick.com
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: HTML tables and table headers
- * @author Nla Asuni
- */
-
 // Include the main TCPDF library (search for installation path).
-//require_once('tcpdf_include.php');
+//require_once 'config.php';
+//require_once '../../../vendor/tecnickcom/tcpdf/tcpdf.php';
 
 // create new PDF document
 
 //$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
-
-
 
 //require_once ('../../../inc_OnlineStoreDB.php');
 
@@ -111,8 +99,8 @@ $Summary1 = $rowI['Summary'];
 //$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
-/*if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
+/*if (@file_exists('../../../vendor/tecnickcom/tcpdf/examples/lang/eng.php')) {
+	require_once '../../../vendor/tecnickcom/tcpdf/examples/lang/eng.php';
 	$pdf->setLanguageArray($l);
 }
 */
