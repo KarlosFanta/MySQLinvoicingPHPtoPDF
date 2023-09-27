@@ -1,110 +1,66 @@
 <?php
 
 
-	$page_title = "Select a customer";
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
-	//PROCEDURAL
-	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
-
-$query = "select CustNo, CustFN, CustLN from customer ORDER BY custln";
-//echo $query;
-/*$result = mysql_query($query) or die(mysql_error());
-
-if (!$result) {
-    echo "Could not successfully run query ($query) from DB: " . mysql_error();
-    exit;
-}
-//echo "<br>result:<br>".$result."<br><br>";
-echo "<br><br>";
-if (mysql_num_rows($result) == 0) {
-    echo "No rows found, nothing to print so am exiting";
-    exit;
-}
-*/
-// While a row of data exists, put that row in $row as an associative array
-// Note: If you're expecting just one row, no need to use a loop
-// Note: If you put extract($row); inside the following loop, you'll
-//       then create $userid, $fullname, and $userstatus
-
-
-
-
+	$page_title = "Ledger";
+	require_once('header.php');	
 
 
 ?>
 <b><br><font size = "3" type="arial">Ledger</b></font>
 </br>
 </br>
-
+<a href = 'LedgerApr2018s.php'><b>Click here to continue for the new VAT 1.15 single months</a></b><br>
+(or double months: <a href = 'LedgerApr2018s.php'>Click here to continue for the new VAT 1.15</a>)</b><br>
 
 <?php
-/*echo "<form name='Editcust' action='view_trans_CustProcessALL.php' method='post'>";
-echo "<select name='mydropdownEC' onchange='this.form.submit()'>";
-@session_start();
-if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 
-echo "<option value='_no_selection_'>Select Customer</option>";
-else
-echo "<option value='".$_SESSION['CustNo']."'>".$_SESSION['CustNo']."</option>";
-
-echo "<br>firstWhile:<br><br>";
-//print "<option value='$item'>$item";
-  //print " </option>";
-//while ($row = mysql_fetch_assoc($result)) {
-if ($result = mysqli_query($DBConnect, $query)) {
-  while ($row = mysqli_fetch_assoc($result)) {
-$item1 = $row["CustNo"];
-$item2 =  $row["CustLN"];
-$item3 = $row["CustFN"];
-print "<option value='$item1'>$item2";
-print "_".$item1;
-print "_".$item3;
-
-//print "<option value='$item2'>$item2";
-//print "<option value='$item3'>$item3";
-
-print " </option>";
-
-	}
-$result->free();
-//mysql_free_result($result);
-
-}
-
-echo "<input type='submit' name='btn_submit' value='select customer' /> </select>";
-*/
 ?>
-<form name='Ledger2' action='Ledger2.php' method='post'>
+<form name='Ledger2' action='Ledger2.php' method='get'>
 <br>
 <?php
-$cy = date('Y')-1;
+$cy = date('Y')-1; 
 ?>
 Type in year:
-<input type="text" name="cy" size = '4' value= "<?php echo $cy; ?>" >
+<input  type="number" step="any" min="2010" max="2018"  name="cy" size = '5' value= "201" >
 <br>
+<a href = 'LedgerApr2018.php'><b>Click here to continue for the new VAT 1.15 and Financial Years above 2018</a></b>
+
 <br>
 Select months:
-<select name='mydropdownEC'>
-<option value='_no_selection_'>Select Months</option>
+<select name='mydropdownEC' required>
+<option value='FinYear'>FinYear</option>
+<option value=''>Select Months</option>
 <option value="JanFeb">JanFeb</option>
 <option value='MarApr'>MarApr</option>
 <option value='MayJun'>MayJun</option>
 <option value='JulAug'>JulAug</option>
 <option value='SepOct'>SepOct</option>
 <option value='NovDec'>NovDec</option>
+<option value='FinYear'>FinYear</option>
 </select>
 
-<br><br>
+<br><br> <br>ACS Database info: <br>
+transactions i started filling up in 2012 <br>
+expenses I started filling up  in 2014 <br>
+ExpensesE (extrea) in 2015 <br>
+ExpensesH (Home/Private) in 2014 <br>
+<br>
+
 <!--How many invoices descriptions to display on the right:
 <input type="text" name="indesc" value= "0" >(indesc)-->
 <br>
 <br>
+ The tax rate was 14% until 31 March 2018<br>15% on 1st April 2018. <br>
+ The problem is that my fin year ends end of Feb,  so be careful with 2018 finyear. 
+ <br>
+ <Br>
+ Tax Rate: (14 or 15)<br>
+<input type='taxrate' name='btn_submit' value='14' /><br>
 
-<input type='submit' name='btn_submit' value='Submit' /><br>
+<input type='submit' name='btn_submit' value='OLD VAT Submit' /><br>
 <br><br><br><br>
 
-Submitted:
+Submitted: 
 2011 02<br>
 2011 04<br>
 2011 06<br>
@@ -122,7 +78,7 @@ Request MarApr2014: TAXPERIOD request 2014-04  for 2105 financial year<br>
 Output incl VAT (confirmed payments received): goes into (1)<br><br>
 <br>
 Stock purchases 2months, CellC 2months, Teklom, NAVNIS, COZA, CAR Outsurance, Car, Bank fees, Cybersm 2months, Electricity <br><br>
-Divide by 1.14 multiply by 0.14. The answer goes into (15)
+Divide by 1.14 multiply by 0.14. (or 1.15 by 1April2018) The answer goes into (15)
 
 not VAT: Petrol, RentR1500x2, medical, Private<br>
 <br>
@@ -155,7 +111,7 @@ Save, VAT profile UserNmber assume no1<br>
 
 
 <?php
-include 'LedgerNotes.php';
+include "LedgerNotes.php";
 /*
 echo "<br>2ndWhile:<br><br>";
 echo "<br>";
@@ -193,13 +149,13 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))
-{
+while ($row = mysql_fetch_array($result))  
+{  
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>";
+  print " </option>"; 
  }
 }
 */

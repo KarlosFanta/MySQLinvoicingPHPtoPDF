@@ -1,12 +1,12 @@
 <html>
 <head>
-<title>Add an H expenseQ</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Add an expenseQ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script  type="text/javascript">
 
 
@@ -145,11 +145,11 @@ function emailValidator(elem, helperMsg){
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
     try {
         //Change the below values to determine which format of date you wish to check. It is set to dd/mm/yyyy by default.
-        var DayIndex = dayIdx !== undefined ? dayIdx : 0;
+        var DayIndex = dayIdx !== undefined ? dayIdx : 0; 
         var MonthIndex = monthIdx !== undefined ? monthIdx : 0;
         var YearIndex = yearIdx !== undefined ? yearIdx : 0;
-
-        value = value.replace(/-/g, "/").replace(/\./g, "/");
+ 
+        value = value.replace(/-/g, "/").replace(/\./g, "/"); 
         var SplitValue = value.split(sepVal || "/");
         var OK = true;
         if (!(SplitValue[DayIndex].length == 1 || SplitValue[DayIndex].length == 2)) {
@@ -165,17 +165,17 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
             var Day = parseInt(SplitValue[DayIndex], 10);
             var Month = parseInt(SplitValue[MonthIndex], 10);
             var Year = parseInt(SplitValue[YearIndex], 10);
-
+ 
             if (OK = ((Year > 1900) && (Year < new Date().getFullYear()))) {
                 if (OK = (Month <= 12 && Month > 0)) {
 
-                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));
-
+                    var LeapYear = (((Year % 4) == 0) && ((Year % 100) != 0) || ((Year % 400) == 0));   
+                    
                     if(OK = Day > 0)
                     {
-                        if (Month == 2) {
+                        if (Month == 2) {  
                             OK = LeapYear ? Day <= 29 : Day <= 28;
-                        }
+                        } 
                         else {
                             if ((Month == 4) || (Month == 6) || (Month == 9) || (Month == 11)) {
                                 OK = Day <= 30;
@@ -194,9 +194,9 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
-//JQUERY: LOOK AT : include 'invJQuery.php'
+//JQUERY: LOOK AT : include 'invJQuery.php' 		
 //	<input type="text"  size="3" id="ItemA"  name="ItemA"  class='clInvNoA' />
-/*
+/*	
 	$(function() {
 		//var availableTags = [todaydate,	yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago, sevendaysago];
 		var availableTags = ["yp","jj"];
@@ -212,7 +212,7 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
 
 function calc()
 {
-
+		
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -241,10 +241,10 @@ function calc()
   val16 = document.getElementById("Q8").value;
   */
   mani = "multiply";
-
+  
   if (val1 != "" && val2 != "")
   {
-
+  	
   document.getElementById("resp").innerHTML="Calculating...";
 //    queryPath = "CalcServ.php?ex1="+val1+"&Q1="+val2+"&ex2="+val3+"&Q2="+val4+"&ex3="+val5+"&Q3="+val6+"&ex4="+val7+"&Q4="+val8+"&ex5="+val9+"&Q5="+val10+"&ex6="+val11+"&Q6="+val12+"&ex7="+val13+"&Q7="+val14+"&ex8="+val15+"&Q8="+val16+mani;
     queryPath = "CalcServ3.php?ex1="+val1+"&Q1="+val2;
@@ -255,9 +255,9 @@ function calc()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-
+    	
       document.getElementById("resp").innerHTML=xmlhttp.responseText;
-
+        
     }
   }
 
@@ -274,14 +274,14 @@ function calc()
 
 
 <?php
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+require_once('header.php');	
+require_once("inc_OnlineStoreDB.php");
 $daNextNo = 1; //default when table is empty.
-$queryH = "SELECT MAX(ExpNo)  AS MAXNUM FROM expensesH";
+$queryH = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expensesH";
 $resultH = mysqli_query($DBConnect, $queryH);// or die(mysql_error());
-$query = "SELECT MAX(ExpNo)  AS MAXNUM FROM expenses";
+$query = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expenses";
 $result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-$queryE = "SELECT MAX(ExpNo)  AS MAXNUM FROM expensesE";
+$queryE = "SELECT  MAX(ExpNo)  AS MAXNUM FROM expensesE";
 $resultE = mysqli_query($DBConnect, $queryE);// or die(mysql_error());
 $daNextNo = 1; //forces a 1 if table is completely empty.
 $daNextNoH = 1;
@@ -300,6 +300,10 @@ $daNextNoH = intval($row[0]);
 
 $daNextNo =  max (array($daNextNo, $daNextNoH, $daNextNoE));
 $daNextNo = $daNextNo+1;
+
+
+
+
 
 $CCCCC = '';
 
@@ -325,26 +329,90 @@ $arraySearch = $arraySDR;
 $arraySDR = str_replace("/", " ", $arraySDR);
 $arraySDR = str_replace("-", " ", $arraySDR);
 $arraySDR = str_replace("*", " ", $arraySDR);
-$Aex = $AA/1.14;
-$Aex = number_format((float)$Aex, 2, '.', '');
+$Aex = $AA/1.15;
+$Aex = number_format((float)$Aex, 2, '.', ''); 
 
 $category = '';$SupCode = '';
 
+
 ?>
 
-<form  action="addExpMulti.php" onsubmit="return formValidator()"   method="post">
+<form  action="addExpMulti.php"  onsubmit="return formValidator()"   method="post">
 ExpNo: <input type="text" size="6"  id="ExpNo"  name="ExpNo" value="<?php echo $daNextNo;?>" /><br>
 SDR: <input type="text" id="ItemA" size = 34 name="ItemA" value="<?php echo $arraySDR;?>">
-AmtPaid: <input type="text" id="AmtPaid" size = 7 name="AmtPaid" value="<?php echo $AA;?>">
 Ex VAT: <input type="text" id="Aex" size = 7 name="Aex" value="<?php echo $Aex;?>">
+AmtPaid: <input type="text" id="AmtPaid" size = 7 name="Ain" value="<?php echo $AA;?>">
 <br>
+<?php
+$CustNo = $_POST['CustNo'];
+
+
+if (mb_substr($arraySDR, -3) == 'CTV')
+{
+	$category = 'TV';
+	$SupCode = 'SS';
+}
+if (mb_substr($arraySDR, -3) == 'STV')
+{
+	$category = 'TV';
+	$SupCode = 'SS';
+}
+if (mb_substr($arraySDR, -3) == 'nto')
+{
+	//$category = '';
+	$SupCode = 'FT';
+}
+if (mb_substr($arraySDR, -3) == 'iTV')
+{
+	$category = 'TV';
+	$SupCode = 'SS';
+}
+/*if (str_containsPHP8($arraySDR, 'iTV')) {
+	$category = 'TV';
+	$SupCode = 'SS';
+}
+*/
+if (strpos($arraySDR, 'iTV') !== false) {
+    echo 'true';
+	$category = 'TV';
+	$SupCode = 'SS';
+}
+
+
+if (stripos(strtolower($arraySDR), 'RSM') !== false) {
+	$category = 'internet';
+	$SupCode = 'CS';
+	$CustNo = 0;
+}
+if (stripos(strtolower($arraySDR), 'CYBERS') !== false) {
+	$category = 'internet';
+	$SupCode = 'CS';
+	$CustNo = 0;
+
+}
+if (stripos(strtolower($arraySDR), 'karllo0') !== false) {
+	$category = 'internet';
+	$SupCode = 'CS';
+	$CustNo = 0;
+
+}
+if (stripos(strtolower($arraySDR), 'W8996') !== false) {
+	$category = 'internet';
+	$SupCode = 'CS';
+	$CustNo = 0;
+}
+
+?>
+
+
+
+
 Category: <input type="text"  size="6" id="AK"  name="AK"  value="<?php echo $category;?>"  required/>
 <!--<input type="text"  size="5" id="AC"  name="AC" class='clCN'   value='0'  />(/300/301)<br>DUPLICATION-->
 SupCode: <input type="text"  id="SupCode"  name="SupCode" size="6"   value='<?php echo $SupCode;?>' required><br>
 Notes: <input type="text"  id="AN"  name="AN" size="20"   value='' ><br>
 Serial: <input type="text"  id="AS"  name="AS" size="12"   value='' >
 <?php
-$CustNo = $_POST['CustNo'];
 
 $query = "select * from customer where CustNo = $CustNo";
 //echo $query;
@@ -355,6 +423,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	//print "".mb_substr($CustFN, 0, 8);
 	print "&nbsp;&nbsp;". $CustFN;
 	print "&nbsp;&nbsp;&nbsp;". $CustLN;
+	
 
 	}
 	mysqli_free_result($result);
@@ -372,7 +441,127 @@ if ($array[1] == '')
 //$arraySDR = str_replace($arraySDR, '/');
 //$arraySDR = str_replace(array('/', ' '), array('-', ''),array('*', ''), $arraySDR);
 
+
 $TransDate = $array[0];
+/*
+$rest = substr($TransDate, -5, 1);
+//echo "reest: >>".$rest."<<<br><br><br>";
+if ($rest == ' ')
+{
+$DD = explode(" ", $TransDate);
+$TransDate = $DD[0]."/".$DD[1]."/".$DD[2];
+}
+echo "TransDate is now: >>".$TransDate."<<<br><br><br>";
+
+$rest2 = substr($TransDate, -6, 3); // returns "d"
+echo "reeest2: >>".$rest2."<<<br>";
+
+echo "TransDate is now: >>".$TransDate."<<<br><br><br>";
+
+//$rest2 = substr($TransDate, -6, 3); // returns "d"
+$rest2 = $DD[1]; // eg Jan
+
+echo "rest2: >>".$rest2."<<<br>";
+*/
+
+if(strstr($TransDate, '/')){
+   echo "<br>Transdate contains forward slash<br>";
+   
+ $DD = explode("/", $TransDate);
+ $flag = "slash";
+
+}
+else 
+if(strstr($TransDate, ' ')){
+   echo "<br>Transdate contains  space<br>";
+   $DD = explode(" ", $TransDate);
+  $flag = "space";
+  
+//$TransDate = $DD[0]."/".$DD[1]."/".$DD[2];
+   
+}
+else 
+if(strstr($TransDate, '-')){
+   echo "<br>Transdate contains  minus/dash<br>";
+   $DD = explode("-", $TransDate);
+//$TransDate = $DD[0]."/".$DD[1]."/".$DD[2];
+ $flag = "minusdash";
+
+}
+
+$DA = $DD[0];
+$DB = $DD[1];
+$DC = $DD[2];
+
+
+echo "now search for US year:  	2023-08-31";
+if ($DA == '2023')
+{
+	echo "<br>US year: just swap around year with day<br>";// 2023-08-31
+
+$DA = $tmpA;
+$DC = $tmpC;
+$DA = $tmpC;
+$DC = $tmpA;
+echo "<br>now is swapped to RSA: $DA $DB $DC<br>";
+}
+	
+if ($DB == 'Jan')
+{
+$DB = "01";
+}
+if ($DB == 'Feb')
+{
+$DB = "02";
+}
+if ($DB == 'Mar')
+{
+$DB = "03";
+}
+if ($DB == 'Apr')
+{
+$DB = "04";
+}
+if ($DB == 'May')
+{
+$DB = "05";
+}
+if ($DB == 'Jun')
+{
+$DB = "06";
+}
+if ($DB == 'Jul')
+{
+$DB = "07";
+}
+if ($DB == 'Aug')
+{
+$DB = "08";
+}
+if ($DB == 'Sep')
+{
+$DB = "09";
+}
+if ($DB == 'Oct')
+{
+$DB = "10";
+}
+if ($DB == 'Nov')
+{
+$DB = "11";
+}
+if ($DB == 'Dec')
+{
+$DB = "12";
+}
+
+	$TransDate = $DA."/".$DB."/".$DC;
+
+
+
+echo "TransDate is now: >>".$TransDate."<<<br>eg.: Endresult below must be: 31/08/23 or 31/08/2023<br>";
+												
+
 $inin = $array[1]; //InvNo
 $ininV = str_replace(' ', '', $inin);
 //$ininV = preg_replace('/\s+/', '', $ininV);//remove whitespace
@@ -389,18 +578,22 @@ $ininV = str_replace("*", " ", $ininV);
 
 $ininA = explode (' ', $inin);
 
+
+
 ?>
 
 
 <input type='text' name='PurchDate' id='PurchDate' value='<?php echo $TransDate; ?>'>
-CustNo: <input type='text' name='AC' id='AC' value='<?php echo $CustNo; ?>' required>Stock: 300 business: 301
-InvNo1: <input type='text' name='InvNo1' required >
+CustNo: <input type='text' name='AC' id='AC' value='<?php echo $CustNo; ?>' required>Stock: 300 business: 301<br>
+InvNo1: <input type='text' name='InvNo1' required > 
 		<select name="mydropdownINV" >
-<option value="_no_selection_">View Cust Invoices:</option>";
+<option value="_no_selection_">View Cust Invoices: 	<?php echo "&nbsp;&nbsp;". $CustFN."&nbsp;&nbsp;&nbsp;". $CustLN; ?>
+</option>";
 <?php
 
 		$query = "select * from invoice where CustNo = $CustNo ORDER BY InvNo desc";
 //echo $query;
+
 
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
@@ -415,10 +608,11 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_". $row["D2"];
 	print "_". $row["D3"];
 	print "_". $row["D4"];
-
-	$SQLstring = "select * from expenses where InvNo = $InvNo order by ExpNo  desc";
-
-	//echo $SQLstring." ";
+	
+	
+	$SQLstring = "select * from expenses where InvNo = $InvNo order by ExpNo  desc";	
+	
+	//echo $SQLstring." "; 
 
 $NN = '';
 $NNN = '';
@@ -426,7 +620,8 @@ $NNN = '';
 if ($resultinner = mysqli_query($DBConnect, $SQLstring)) {
   //  printf("TheSelect returned %d rows.\n", mysqli_num_rows($resultinner));
 
-while ($row = mysqli_fetch_assoc($resultinner))
+
+while ($row = mysqli_fetch_assoc($resultinner)) 
 {
 echo $row['ExpNo']." ";
 echo $row['ExpDesc']." ";
@@ -434,7 +629,7 @@ echo $row['SupCode']." ";
 echo $row['PurchDate']." ";
 echo $row['ProdCostExVAT']." ";
 $PEX= $row['ProdCostExVAT'];
-$PIV = number_format($PEX*1.14 , 2, '.', '');
+$PIV = number_format($PEX*1.15 , 2, '.', '');
 echo $PIV." ";
 
 //echo $row['InvNo']." ";
@@ -445,12 +640,12 @@ echo "<br>";
 mysqli_free_result($resultinner);
 }
 
-
-
-
-
-
-	print " </option>";
+	
+	
+	
+	
+	
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
@@ -459,43 +654,51 @@ mysqli_free_result($resultinner);
 </select>
 
 
-	<select name="mydropdownEC">
+	<select name="mydropdownEC" >
 <option value="_no_selection_">View Customersss</option>";
 <?php
 		$query = "select CustNo,  CustFN, CustLN from customer ORDER BY custLN";
 //echo $query;
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-	$CustNo = $row["CustNo"];//case sensitive!
-	$CustLN = mb_substr($row["CustLN"], 0, 8);//case sensitive!
-	$CustFN = mb_substr($row["CustFN"], 0, 8);//case sensitive!
-	print "<option value='$CustNo'>".mb_substr($CustLN, 0, 8);
-	print "_".$CustNo;
-	print "_". mb_substr($CustFN, 0, 8);
-	print " </option>";
+	$CustNoS = $row["CustNo"];//case sensitive!
+	$CustLNA = mb_substr($row["CustLN"], 0, 8);//case sensitive!
+	$CustFNA = mb_substr($row["CustFN"], 0, 8);//case sensitive!
+	print "<option value='$CustNo'>".mb_substr($CustLNA, 0, 8);
+	print "_".$CustNoS;
+	print "_". mb_substr($CustFNA, 0, 8);
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 ?>
-</select>
+</select><br>
 
 
 
-<input type="submit" value="Submit/Save" onsubmit='return formValidator()'  style="width:300px;height:30px" />  <button type="or Skip validation"   onsubmit='return formValidator()'  style="width:300px;height:30px"  formnovalidate>or: submit without validation</button>
+<input type="submit" value="Submit/Save"  onsubmit='return formValidator()'  style="width:300px;height:30px" />  <button type="or Skip validation"   onsubmit='return formValidator()'  style="width:300px;height:30px"  formnovalidate>or: submit without validation</button>
 
 </form>
 
-<a href = 'edit_invCQ.php' target='_blank'>view Customer's invoices</a>
+<a href = 'edit_invCQ.php?CustNo=<?php echo $CustNo; ?>' target='_blank'>view Customer's invoices</a>
 <a href = 'editExpCQ.php' target='_blank'>view Customer's expenses</a>
 
 
 <!--<option value="_no_selection_">View Categories</option>-->
 <?php
 
-$TransDate;
+$rest = substr($TransDate, -5, 1); // returns "d"
+echo "reestt: >>".$rest."<<<br>";
+if ($rest == ' ')
+{
+$DD = explode(" ", $TransDate);
+$TransDate = $DD[0]."/".$DD[1]."/".$DD[2];
+}
+//echo "TransDate is now: DD/MM/YY: >>".$TransDate."<<<br>";
+
 $D = explode('/',$TransDate );
 $TransDate = $D[2].'-'.$D[1].'-'.$D[0];
-echo "td:".$TransDate."<br>";
+//echo "td:".$TransDate."<br>";
 /*$queryCat = "SELECT * FROM expensesH where PurchDate = '$TransDate'";
 echo "queryCat: $queryCat <br>";
 if ($result = mysqli_query($DBConnect, $queryCat)) {
@@ -504,11 +707,11 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	$Cat = $row["ExpDesc"];
 	if ($Cat != '')
 		echo "<br><font size = 3 color = red>WARNING These are on same date:</font><br>";
-
+	
 	print "<option value='$Cat'>".$Cat;
 	//print "<option value='$Cat'>".mb_substr($Cat, 0, 10);
 	//print "_".$Cat;
-	print " </option>";
+	print " </option>"; 
 	echo " ".$row["PurchDate"];
 	}
 	mysqli_free_result($result);
@@ -519,6 +722,7 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 //$time = strtotime('$TransDate -3 days');
 //$dateM = date("Y-m-d", $time);
   //  echo "<br>date minus 3 days: ".$dateM."<br>";
+	
 
    //echo "<br>TRANSDATE: ".$TransDate."<br>";
 
@@ -526,6 +730,7 @@ $date=date_create("$TransDate");
 date_modify($date,"-14 days");
 $dateM = date_format($date,"Y-m-d");
 //echo "<br>TRANSDATE minus3 days: ".$dateM;
+
 
 $date=date_create("$TransDate");
 $date = date_modify($date,"+12 days");
@@ -535,7 +740,7 @@ $dateP = date_format($date,"Y-m-d");
 
 $AexP = $Aex + 1.01;
 $AexM = $Aex - 1.01;
-
+	
 $queryCat = "SELECT * FROM expenses where (PurchDate between '$dateM' AND '$dateP') and ProdCostExVAT between $AexM and $AexP";
 echo "queryCat: $queryCat <br>";
 		//echo "<br><font size = 3 color = red>WARNING These are on same date:</font><br>";
@@ -547,19 +752,26 @@ echo "<th>ExpDesc</th>";
 echo "<th>ProdexVAT</th>";
 echo "<th>ProdinVAT</th>";
 echo "<th>PurchDate</th>";
-echo "<th>CustNo</th>";
 echo "<th>InvNo</th>";
+echo "<th>SerialNo</th>";
+echo "<th>SupCode</th>";
+echo "<th>Notes</th>";
+echo "<th>CustNo</th>";
 echo "</tr>\n";
 	while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
-echo "<th>".$row["ExpNo"]."</th>";
+echo "<th>Exp".$row["ExpNo"]."</th>";
 	$ExpDesc = '';
 	$ExpDesc = $row["ExpDesc"];
 echo "<th>".$row["ExpDesc"]."</th>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
 echo "<th>".$ProdinVAT."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
+echo "<th>".$row["InvNo"]."</th>";
+echo "<th>".$row["SerialNo"]."</th>";
+echo "<th>".$row["SupCode"]."</th>";
+echo "<th>".$row["Notes"]."</th>";
 echo "<th>".$row["CustNo"];
 $CustNo = $row["CustNo"];
 
@@ -574,14 +786,13 @@ mysqli_free_result($resultC);
 }
 echo "</th>";
 
-echo "<th>".$row["InvNo"]."</th>";
 echo "</tr>\n";
 	}
 	mysqli_free_result($result);
 echo "</table>";
 }
-
-$queryCat = "SELECT * FROM expenses where (PurchDate between '$dateM' AND '$dateP') ";
+	
+$queryCat = "SELECT * FROM expenses where (PurchDate between '$dateM' AND '$dateP') order by PurchDate ";
 echo "queryCat: $queryCat <br>";
 if ($result = mysqli_query($DBConnect, $queryCat)) {
 		echo "<br><font size = 3 color = red>WARNING These are on similar date:</font><br>";
@@ -590,22 +801,29 @@ echo "<tr><th>ExpNo</th>";
 echo "<th>ExpDesc</th>";
 echo "<th>ProdexVAT</th>";
 echo "<th>ProdinVAT</th>";
+echo "<th>ProdinVAT</th>";
 echo "<th>PurchDate</th>";
+echo "<th>SupCode</th>";
+echo "<th>SerialNo</th>";
 echo "</tr>\n";
 	while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
-echo "<th>".$row["ExpNo"]."</th>";
+echo "<th>Exp".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-
+	
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>";
+//	print " </option>"; 
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
+$ProdinVAT14 = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
+echo "<th>".$ProdinVAT14."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
+echo "<th>".$row["SupCode"]."</th>";
+echo "<th>".$row["SerialNo"]."</th>";
 echo "</tr>\n";
 	}
 	mysqli_free_result($result);
@@ -624,25 +842,28 @@ echo "<tr><th>ExpNo</th>";
 echo "<th>ExpDesc</th>";
 echo "<th>ProdexVAT</th>";
 echo "<th>ProdinVAT</th>";
+echo "<th>ProdinVAT</th>";
 echo "<th>PurchDate</th>";
 echo "</tr>\n";
 	while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
-echo "<th>".$row["ExpNo"]."</th>";
+echo "<th>Exp".$row["ExpNo"]."</th>";
 	$ExpDesc = '';
 	$ExpDesc = $row["ExpDesc"];
 echo "<th>".$row["ExpDesc"]."</th>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
+$ProdinVAT14 = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
+echo "<th>".$ProdinVAT14."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
 echo "</tr>\n";
 	}
 	mysqli_free_result($result);
 echo "</table>";
 }
-
-$queryCat = "SELECT * FROM expensesH where (PurchDate between '$dateM' AND '$dateP') ";
+	
+$queryCat = "SELECT * FROM expensesH where (PurchDate between '$dateM' AND '$dateP') order by PurchDate";
 echo "queryCat: $queryCat <br>";
 if ($result = mysqli_query($DBConnect, $queryCat)) {
 		echo "<br><font size = 3 color = red>WARNING These are on similar dateH:</font><br>";
@@ -651,21 +872,22 @@ echo "<tr><th>ExpNo</th>";
 echo "<th>ExpDesc</th>";
 echo "<th>ProdexVAT</th>";
 echo "<th>ProdinVAT</th>";
+echo "<th>ProdinVAT</th>";
 echo "<th>PurchDate</th>";
 echo "<th>SupCode</th>";
 echo "</tr>\n";
 	while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
-echo "<th>".$row["ExpNo"]."</th>";
+echo "<th>Exp".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-
+	
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>";
+//	print " </option>"; 
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
 echo "<th>".$ProdinVAT."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
 echo "<th>".$row["SupCode"]."</th>";
@@ -691,13 +913,15 @@ echo "<th>PurchDate</th>";
 echo "</tr>\n";
 	while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
-echo "<th>".$row["ExpNo"]."</th>";
+echo "<th>Exp".$row["ExpNo"]."</th>";
 	$ExpDesc = '';
 	$ExpDesc = $row["ExpDesc"];
 echo "<th>".$row["ExpDesc"]."</th>";
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
+$ProdinVAT14 = $row["ProdCostExVAT"]*1.14;
 echo "<th>".$ProdinVAT."</th>";
+echo "<th>".$ProdinVAT14."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
 echo "</tr>\n";
 	}
@@ -720,13 +944,13 @@ echo "<tr>";
 echo "<th>".$row["ExpNo"]."</th>";
 //	$ExpDesc = '';
 //	$ExpDesc = $row["ExpDesc"];
-
+	
 echo "<th>".$row["ExpDesc"]."</th>";
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-//	print " </option>";
+//	print " </option>"; 
 echo "<th>".$row["ProdCostExVAT"]."</th>";
-$ProdinVAT = $row["ProdCostExVAT"]*1.14;
+$ProdinVAT = $row["ProdCostExVAT"]*1.15;
 echo "<th>".$ProdinVAT."</th>";
 echo "<th>".$row["PurchDate"]."</th>";
 echo "</tr>\n";
@@ -763,7 +987,7 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	print "<option value='$ExpDesc'>".$ExpDesc;
 	//print "<option value='$ExpDesc'>".mb_substr($ExpDesc, 0, 10);
 	//print "_".$ExpDesc;
-	//print " </option>";
+	//print " </option>"; 
 	echo " ".$row["PurchDate"];
 	}
 	mysqli_free_result($result);
@@ -775,11 +999,12 @@ if ($result = mysqli_query($DBConnect, $queryCat)) {
 	$Cat = $row["Category"];
 	print "<option value='$Cat'>".mb_substr($Cat, 0, 10);
 	//print "_".$Cat;
-	print " </option>";
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 echo "</select>";
+
 
 include ("viewExpCust.php");
 ?></body>
