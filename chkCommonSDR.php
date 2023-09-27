@@ -1,7 +1,29 @@
 <?php
+//How to find words in no-space string with PHP
+//first, we need to delete all the spaces from the string
+$SDRnospaces = str_replace(" ", "", $arraySDR);; //sdr  chk view_Unpaid_inv_by_cust2bAT.php
+$SDRnospaces = strtolower($SDRnospaces);
 
 
 
+//load all CommonSDRs into an array:
+$query = "Select CustNo, CustLN, CustFN, CommonSDR from customer where CommonSDR LIKE '%$SDRnospaces%'";
+if ($result = mysqli_query($DBConnect, $query)) {
+	while ($row = mysqli_fetch_assoc($result)) {
+	$CustNo = $row["CustNo"];//case sensitive!
+	$CustLN =  $row["CustLN"];//case sensitive!
+	$CustFN = $row["CustFN"];//case sensitive!
+	print "<option value='$CustNo'>$CustLN";
+	print "_".$CustNo;
+	print "_".$CustFN;
+	print " </option>"; 
+	}
+	mysqli_free_result($result);
+}
+
+
+
+/*
 //echo "<br><br>";
 //$arraySDR = str_replace("//", " ", $arraySDR);
 //$arraySDR = str_replace("\/", " ", $arraySDR);
@@ -87,21 +109,14 @@ $arraySDRcut = mb_substr($arraySDR, 0, 7);
 //echo "<br>";
 if ($res2 = mysqli_query($DBConnect, $query2)) {
 
-
+while ($row = mysqli_fetch_assoc($res2)) {
+echo "".$row["CustNo"]."";//CustNo is case senSitiVe
+//echo "".$row["InvNo"]."";//CustFN is case senSitiVe
 $row_cnt = mysqli_num_rows($res2);
+echo " <br>rowschkSDR: $row_cnt"; //not ttested yet
+$CCCCC = $row["CustNo"];
 if ($row_cnt > 1)
 {
-	echo "<font size = 2><b>MORE THAN 1 CustNo FOUND chkSDR.php:
-<br></font></b>";
-}
-
-while ($row = mysqli_fetch_assoc($res2)) {
-//echo "".$row["CustNo"]."";//CustNo is case senSitiVe
-//echo "".$row["InvNo"]."";//CustFN is case senSitiVe
-//echo " <br>rowschkSDR: $row_cnt"; //not ttested yet
-$CCCCC = $row["CustNo"];
-//if ($row_cnt > 1)
-//{
 
 $queryCC = "select CustFN, CustLN from customer where CustNo = $CCCCC ";
 if ($resultCC = mysqli_query($DBConnect, $queryCC)) {
@@ -115,10 +130,12 @@ mysqli_free_result($resultCC);
 
 
 
-	echo "<a href= 'addTrans.php?CustNo=$CCCCC&AmtPaid=$AA&TransDate=$TransDate&SDR=$arraySDR' target = '_blank'>CustNo $CCCCC $CNLN	$CNFN</a><br>";
+	echo "<font size = 4><b>ERROR MORE THAN 1 CustNo FOUND QUERY2 chkSDR.php:
+<br>
+ <a href= 'addTrans.php?CustNo=$CCCCC&AmtPaid=$AA&TransDate=$TransDate' target = '_blank'>CustNo $CCCCC $CNLN	$CNFN</a> ".$CCCCC."<br>
 
- 
-//}
+!!!!!</font></b><br>"; 
+}
 
 
 }
@@ -126,4 +143,5 @@ mysqli_free_result($res2);
 }
 
 }
+*/
 ?>

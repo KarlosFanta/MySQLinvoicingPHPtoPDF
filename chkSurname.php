@@ -1,14 +1,149 @@
 <?php
 
+//echo "<br>chkSurnmame3: ".$array[1]."<br>"; //sdr  
+
+preg_match_all('/(\d{1,})/', $arraySDR, $matches); //extract exact 0 digit numbers or greater from a given string
+$M1 = $array[1];
+$M1 = strtr($M1, array(' ' => ' ', ',' => ' ')); //replace kommas with spaces
+$M1 = trim(preg_replace('/\t+/', ' ', $M1));  //replace tabs
+
+$array_2 = explode(' ', $M1);
+$array_2 = array_map('strtolower', $array_2);
+echo "<br>";
+/*print_r($array_2);
+foreach($array_2 as $my){
+    echo $my.'<br>';  
+}
+echo "<br>";
+
+echo ">".$M1."<";
+
+$data   = preg_split('/\s+/', $M1);
+echo "<br><br>";
+echo ">".$data[0]."<";
+echo ">".$data[1]."<";
+echo ">".$data[2]."<";
+*/
+	$queryC = "select CustNo, CustLN, CustFN from customer";
+//echo $queryC."<br>";
 
 
-//echo "<br><br>";
-//$arraySDR = str_replace("//", " ", $arraySDR);
-//$arraySDR = str_replace("\/", " ", $arraySDR);
-//$arraySDR = str_replace("\\", " ", $arraySDR);
-//$arraySDR = str_replace("/\//", " ", $arraySDR);
-//$arraySDR = str_replace("\/", " ", $arraySDR);
-//$arraySDR = str_replace("/\//", " ", $arraySDR);
+
+
+/*
+
+if($res = $DBConnect->query($queryC)) {
+    $ret = [];
+    while($row = $res->fetch_assoc()) {
+       $ret[] = $row;
+    }
+
+    print_r($ret);
+
+ } else {
+      echo $DBConnect->error;
+ }
+
+echo "end<br>";
+foreach ($ret as $row) {
+    echo "Id: {$row[id]}<br />"
+       . "Name: {$row[name]}<br />"
+       . "Code: {$row[code]}<br /><br />";
+}
+print_r($myArray);
+echo "end<br>";
+*/
+
+
+
+
+
+
+
+
+//echo "<br>";
+
+$CustNo = '';
+$CustLN = '';
+$CustLN2 = '';
+$CustLNsearch = '';
+if ($resultC = mysqli_query($DBConnect, $queryC)) {
+
+while ($row = mysqli_fetch_assoc($resultC)) {
+//echo "".$row["CustNo"]."";//CustNo is case senSitiVe
+//echo "".$row["InvNo"]."";//CustFN is case senSitiVe
+$row_cnt = mysqli_num_rows($resultC);
+//echo " <br><br>rows: $row_cnt"; //not ttested yet
+$CustNo = $row["CustNo"];
+$CustFN = $row["CustFN"];
+$CustLN = $row["CustLN"];
+$CustLN = strtolower($CustLN);
+$CustLN = strtr($CustLN, array('.' => '', ',' => ''));
+
+$CustLNarray =  explode("_", $CustLN);
+//put all surnames into one long string for searching
+//$COUNTresult = count($CustLNarray);
+foreach ($CustLNarray as $item) {
+    //echo "<li>$item</li>";
+//$CustLNsearch .= ' '.$item;
+	//compare item to 
+
+
+foreach ($array_2 as $item2) {
+
+
+if ($item2 == $item)
+{
+	//echo "we have a match: $item";
+	$CCCCC = $row["CustNo"];
+	
+}
+//else
+//	echo " no match: $item vs $item2<br>";
+
+}
+	
+	
+}
+	
+}
+mysqli_free_result($resultC);
+}
+
+
+
+
+	echo "<b>Maybe: </b><a href= 'addTrans.php?CustNo=$CCCCC&AmtPaid=$AA&TransDate=$TransDate&SDR=$arraySDR' target = '_blank'>CustNo $CCCCC $CustLN	$CustFN</a> ".$CCCCC."<br></font></b><br>"; 
+
+
+
+
+
+
+
+
+
+
+//echo "<br>CustLNsearch:";
+//echo $CustLNsearch;
+//$array_1 = explode(" ", $CustLNsearch);
+//$array_2 = explode(" ", $str2);
+//$differenceCount = count(array_diff($array_1, $array_2));
+//echo "<br>".$differenceCount."<br>";
+//$differentPercent = $differenceCount / ($totalWords / 100);
+/*foreach ($userinfo as $user) {
+    echo "Id: {$user[id]}<br />"
+       . "Name: {$user[name]}<br />"
+       . "Code: {$user[code]}<br /><br />";
+}
+print_r($myArray);
+echo "end<br>";
+
+echo implode(',',$array);
+echo "end<br>";
+
+
+
 $arraySDR = ltrim($arraySDR, "/\s+/"); //sdr  chk view_Unpaid_inv_by_cust2bAT.php
 $arraySDRcut = mb_substr($arraySDR, 0, 15); //eg INVESTECPBS Bra
 //  \s matches any whitespace character.
@@ -87,21 +222,14 @@ $arraySDRcut = mb_substr($arraySDR, 0, 7);
 //echo "<br>";
 if ($res2 = mysqli_query($DBConnect, $query2)) {
 
-
+while ($row = mysqli_fetch_assoc($res2)) {
+echo "".$row["CustNo"]."";//CustNo is case senSitiVe
+//echo "".$row["InvNo"]."";//CustFN is case senSitiVe
 $row_cnt = mysqli_num_rows($res2);
+echo " <br>rowschkSDR: $row_cnt"; //not ttested yet
+$CCCCC = $row["CustNo"];
 if ($row_cnt > 1)
 {
-	echo "<font size = 2><b>MORE THAN 1 CustNo FOUND chkSDR.php:
-<br></font></b>";
-}
-
-while ($row = mysqli_fetch_assoc($res2)) {
-//echo "".$row["CustNo"]."";//CustNo is case senSitiVe
-//echo "".$row["InvNo"]."";//CustFN is case senSitiVe
-//echo " <br>rowschkSDR: $row_cnt"; //not ttested yet
-$CCCCC = $row["CustNo"];
-//if ($row_cnt > 1)
-//{
 
 $queryCC = "select CustFN, CustLN from customer where CustNo = $CCCCC ";
 if ($resultCC = mysqli_query($DBConnect, $queryCC)) {
@@ -115,10 +243,10 @@ mysqli_free_result($resultCC);
 
 
 
-	echo "<a href= 'addTrans.php?CustNo=$CCCCC&AmtPaid=$AA&TransDate=$TransDate&SDR=$arraySDR' target = '_blank'>CustNo $CCCCC $CNLN	$CNFN</a><br>";
-
- 
-//}
+	echo "<font size = 4><b>ERROR MORE THAN 1 CustNo FOUND QUERY2 chkSDR.php:
+<br><a href= 'addTrans.php?CustNo=$CCCCC' target = '_blank'> $CCCCC $CNFN $CNLN </a>
+!!!!!</font></b><br>"; 
+}
 
 
 }
@@ -126,4 +254,6 @@ mysqli_free_result($res2);
 }
 
 }
+
+*/
 ?>
