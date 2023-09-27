@@ -3,7 +3,7 @@ Or save directly to an external drive or backup server.
 
 <br>
 <br>
-<a href = 'backupDb2.php?dadb=kc'>Backup now: KC database</a><br>
+<a href = 'BackupDB2.php?dadb=kc'>Backup now: KC database</a><br>
 C:\Users\Alpha\Documents<br>
 <br>
 <br>
@@ -15,7 +15,7 @@ Don;t forget to backup your online databases!<br>
 
 <br>
 to backup online databases in CPAnel:
-phpmyAdmin> Export > SQL/CSV
+phpmyAdmin> Export > SQL/CSV<br>
 
 <?php
 $dbhost = "localhost";
@@ -31,7 +31,7 @@ $row_getRS = mysqli_fetch_assoc($result);
 
 while( $row = mysqli_fetch_row( $result ) ):
         if (($row[0]!="information_schema") && ($row[0]!="mysql")) {
-            echo "<a href = 'BackupDB2get.php?dadb=".$row[0]."'>".$row[0].".</a>\r\n<br>";
+            echo "<a href = 'backupDb2get.php?dadb=".$row[0]."'>".$row[0].".</a>\r\n<br>";
 
         }
 endwhile;
