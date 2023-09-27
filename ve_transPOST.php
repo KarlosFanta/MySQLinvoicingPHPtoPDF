@@ -159,21 +159,27 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
 <body>
 <?php	$page_title = "View a Customer";
 	require_once('header.php');	
-	@session_start();
+//	@session_start();
 	$CustNo = "";
-	if (isset($_SESSION['CustNo']))
-		{
-	echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	$CustNo = $_SESSION['CustNo'];
-		}
+//	if (isset($_SESSION['CustNo']))
+//		{
+//	echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
+//	$CustNo = $_SESSION['CustNo'];
+//		}
+
+$CustNo = $_POST['other'];
+$_SESSION['CustNo'] = $_POST['other'];
+
+
+
 	if ($CustNo == '')
 		$CustNo = 1;
 //$Prof = @$_POST['Prof'];
 
 	?>
-<form   method='post' action = 've_transPOST.php'>
+<form   method='post' action = 'otherCust.php'>
 
-Select other customer number: <input type="text" id="other" size = '10' name="other"  >
+Select other customer number: <input type="text" id="ve_transPOST" size = '10' name="other" value="<?php echo $CustNo; ?>" >
 <input type='submit' value='otherCust' style="height:20px; width:160px">
 </form>
 <!--<form name="Addcust" action="add_CustProcess.php" onsubmit="return validateForm()" method="post">
@@ -183,14 +189,13 @@ Select other customer number: <input type="text" id="other" size = '10' name="ot
 
 <h1> QuickEdit TransactionC</h1>
 
-<a href = "edit_transCQ.php">QuickEdit TransactionC of selected customer</a></br></br></br>
-<a href = "edit_proofsCQ.php">QuickEdit proofsC of selected customer</a></br></br></br>
-<a href = "view_proof_all.php">QuickEdit proofs of ALL customers</a></br></br></br>
+<a href = "edit_transCQ.php?CustNo=<?php echo $CustNo; ?>">QuickEdit TransactionC of selected customer</a></br></br></br>
+<a href = "edit_proofsCQ.php?CustNo=<?php echo $CustNo; ?>">QuickEdit proofsC of selected customer</a></br></br></br>
+<a href = "view_proof_all.php?CustNo=<?php echo $CustNo; ?>">QuickEdit proofs of ALL customers</a></br></br></br>
 
 
 <h1> Edit Transaction</h1>
 <a href = "edit_trans.php">Edit Any Transaction </a></br></br></br>
-<a href = "view_trans_all.php">QuickEdit Any Transaction of ALL customers</a></br></br></br>
 
 <h1> View Transactions of Selected Customer</h1>
 
@@ -215,9 +220,10 @@ Select other customer number: <input type="text" id="other" size = '10' name="ot
 <h1> View All Transactions of ALL Customers</h1>
 <a href="./view_trans.php">View All Transactions</a></br></br></br>
 
+<a href="./view_trans.php">View All Transactions </a></br></br></br>
 
 <h1> Edit All Transactions of ALL Customers</h1>
-<a href="./view_trans_all.php">QuickEdit All Transactions</a></br></br></br>
+<a href="./view_trans_all.php">Edit All Transactions</a></br></br></br>
 
 <h2> Edit All UNASSIGNED Transactions ALL Customers</h2>
 <a href="./view_trans_allNoInvNoA.php">Edit All UNASSIGNED Transactions Missing InvNoA</a></br></br></br>

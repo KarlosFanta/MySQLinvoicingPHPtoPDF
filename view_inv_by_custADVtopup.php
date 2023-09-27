@@ -6,20 +6,15 @@ $InvPdStatus = @$_POST['InvPdStatus'];
 @session_start();
 $_SESSION['sel'] = "editCust";
 $CustInt = intval($_SESSION['CustNo'] );
-echo "<a href = view_inv_by_custADV2.php>view_inv_by_custADV2.php</a><br>";
-//include "monthtables.php";
-echo "<a href = view_inv_by_cust_no_proof.php>view_inv_by_cust_no_proof.php</a><br>";
-include ("view_trans_by_cust.php");
-echo "<br><br><br>";
-//include "monthtables.php";
-echo "<br>Your Invoices History";
+$indesc = 10;
+$yo = 10;
+echo "<br>Your Topup History";
 ?>
 
- &nbsp;&nbsp;&nbsp;&nbsp;</font> </b><font color=#F5F5DC>view_inv_by_custADV.php &nbsp;&nbsp;&nbsp;order by InvNo desc</b></font></br>
-  <a href = view_inv_by_custADV2.php>view_inv_by_custADV2.php</a><br>
-<?php
-$SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvNo desc";
 
+<?php
+$SQLstring = "select * from invoice where CustNo = '$CustInt' and D1 LIKE '%top%'  or D2 LIKE '%top%'   or D3 LIKE '%top%'   or D4 LIKE '%top%'  order by InvNo desc limit 6";
+echo $SQLstring;
 if ($resultINV = mysqli_query($DBConnect, $SQLstring)) {
 //echo "<table  border='1'>\n";
 echo "<table  border='1'>";
@@ -35,60 +30,60 @@ echo "<th>TotalAmt</th>";
 echo "<th>ProofNo</th>";
 echo "<th>ProofDate</th>";
 echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reference&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-echo "<th>Payment&nbsp;Received</th>";
+
 if ($InvPdStatus == "Y")
 echo "<th>Inv Paid Status</th>";
 
-/*if ($indesc == "d1")
+if ($indesc == "d1")
 {
 echo "<th>D1</th>";
 echo "<th>D2</th>\n";
 echo "<th>D3</th>";
 }
-*/
+
 
 
 if ($indesc > "1")
 {echo "<th>D1</th>";
-echo "<th>Q1</th>\n";
-echo "<th>ex1</th>";
-echo "<th>in1</th>";
+//echo "<th>Q1</th>\n";
+//echo "<th>ex1</th>";
+//echo "<th>in1</th>";
 }
 if ($indesc > "2")
 {echo "<th>D2</th>";
-echo "<th>Q2</th>\n";
-echo "<th>ex2</th>";
-echo "<th>in2</th>";
+//echo "<th>Q2</th>\n";
+//echo "<th>ex2</th>";
+//echo "<th>in2</th>";
 }
 if ($indesc > "3")
 {echo "<th>D3</th>";
-echo "<th>Q3</th>\n";
-echo "<th>ex3</th>";
+//echo "<th>Q3</th>\n";
+//echo "<th>ex3</th>";
 }
 if ($indesc > "4")
 {echo "<th>D4</th>";
-echo "<th>Q4</th>\n";
-echo "<th>ex4</th>";
+//echo "<th>Q4</th>\n";
+//echo "<th>ex4</th>";
 }
 if ($indesc > "5")
 {echo "<th>D5</th>";
-echo "<th>Q5</th>\n";
-echo "<th>ex5</th>";
+//echo "<th>Q5</th>\n";
+//echo "<th>ex5</th>";
 }
 if ($indesc > "6")
 {echo "<th>D6</th>";
-echo "<th>Q6</th>\n";
-echo "<th>ex6</th>";
+//echo "<th>Q6</th>\n";
+//echo "<th>ex6</th>";
 }
 if ($indesc > "7")
 {echo "<th>D7</th>";
-echo "<th>Q7</th>\n";
-echo "<th>ex7</th>";
+//echo "<th>Q7</th>\n";
+//echo "<th>ex7</th>";
 }
 if ($indesc > "8")
 {echo "<th>D8</th>";
-echo "<th>Q8</th>\n";
-echo "<th>ex8</th>";
+//echo "<th>Q8</th>\n";
+//echo "<th>ex8</th>";
 }
 
 echo "</tr>\n";
@@ -136,7 +131,7 @@ echo "<th>R{$row['TotAmt']}"; ///TOTAL AMOUNT TotAmt
 $TACol = $row['TotAmt'];
 //echo "tacol: ".$TACol;
 echo "</th>";
-
+/*
 $daPrfekse = "";
 		$SQLP = "select * from aproof where InvNoA = '$IIII' or  InvNoB = '$IIII'  or  InvNoC = '$IIII'  or  InvNoD = '$IIII'  or  InvNoE = '$IIII'  or  InvNoF = '$IIII'  or  InvNoG = '$IIII'  ";
 
@@ -203,7 +198,7 @@ echo "</th>";  //ProofNo
 			
 			
 			
-			
+		/*	
 			$Tdate= "";
 			$transss = 0;
 			$InvNoo = $row['InvNo'];
@@ -249,7 +244,7 @@ echo "</th>";  //ProofNo
 			
 			echo "</font>";
 			echo "</th>";
-
+*/
 			
 			
 			
@@ -269,57 +264,57 @@ echo "</th>";  //ProofNo
 			$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			//echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//D1
 			$iubh = $row['ex1']*1.14;
-			@$iubh2 = $row['ex2']*1.14;//Warning: A non-numeric value encountered
+			$iubh2 = $row['ex2']*1.14;
 			
 			if ($indesc > "1")
 			{
 			echo "<th>{$row['D1']}</th>\n";//D1  5
-			echo "<th>{$row['Q1']}</th>\n";//Q1   6
-			echo "<th>{$row['ex1']} exVAT</th>\n";  ///     7
+			//echo "<th>{$row['Q1']}</th>\n";//Q1   6
+			//echo "<th>{$row['ex1']} exVAT</th>\n";  ///     7
 			echo "<th>".$iubh."</th>\n";  ///     7
 			}
 			if ($indesc > "2")
 			{
 			echo "<th>{$row['D2']}</th>\n";   //8
-			echo "<th>{$row['Q2']}</th>\n";   //9
-			echo "<th>{$row['ex2']} exVAT</th>\n";   //10
+			//echo "<th>{$row['Q2']}</th>\n";   //9
+			//echo "<th>{$row['ex2']} exVAT</th>\n";   //10
 			echo "<th>{$iubh2}</th>\n";  ///     7
 			}
 			if ($indesc > "3")
 			{
 			echo "<th>{$row['D3']}</th>\n";   //11
-			echo "<th>{$row['Q3']}</th>\n";   //12
-			echo "<th>{$row['ex3']} exVAT</th>\n";  //13
+			//echo "<th>{$row['Q3']}</th>\n";   //12
+			//echo "<th>{$row['ex3']} exVAT</th>\n";  //13
 			}
 			if ($indesc > "4")
 			{
 			echo "<th>{$row['D4']}</th>\n";  //14
-			echo "<th>{$row['Q4']}</th>\n";
-			echo "<th>{$row['ex4']} exVAT</th>\n";
+			//echo "<th>{$row['Q4']}</th>\n";
+			//echo "<th>{$row['ex4']} exVAT</th>\n";
 			}
 			if ($indesc > "5")
 			{
 			echo "<th>{$row['D5']}</th>\n";   //17
-			echo "<th>{$row['Q5']}</th>\n";
-			echo "<th>{$row['ex5']} exVAT</th>\n";
+			//echo "<th>{$row['Q5']}</th>\n";
+			//echo "<th>{$row['ex5']} exVAT</th>\n";
 			}
 			if ($indesc > "6")
 			{
 			echo "<th>{$row['D6']}</th>\n";   //17
-			echo "<th>{$row['Q6']}</th>\n";
-			echo "<th>{$row['ex6']}exVAT</th>\n";
+			//echo "<th>{$row['Q6']}</th>\n";
+			//echo "<th>{$row['ex6']}exVAT</th>\n";
 			}
 			if ($indesc > "7")
 			{
 			echo "<th>{$row['D7']}</th>\n";   //17
-			echo "<th>{$row['Q7']}</th>\n";
-			echo "<th>{$row['ex7']}exVAT</th>\n";
+			//echo "<th>{$row['Q7']}</th>\n";
+			//echo "<th>{$row['ex7']}exVAT</th>\n";
 			}
 			if ($indesc > "8")
 			{
 			echo "<th>{$row['D8']}</th>\n";   //17
-			echo "<th>{$row['Q8']}</th>\n";
-			echo "<th>{$row['ex8']}exVAT</th>\n";
+			//echo "<th>{$row['Q8']}</th>\n";
+			//echo "<th>{$row['ex8']}exVAT</th>\n";
 			}
 if ($indesc == "d1")
 {
@@ -347,22 +342,5 @@ echo "<th>{$row['D3']}</th>\n";
 	
 }
 echo "</table>";
-//echo "Paid invoice total to: 
-echo "Invoices total to: R ".$Invsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
 
-
-
-
-
-
-echo "<BR />Invoices total to: R".$Invsummm."<br />";
-echo "All transactions total to: R".$yo."<br>";
-
-if (($Invsummm - $yo) > 0)
-echo "<b>_Total Amount oustanding: R".number_format(($Invsummm - $yo), 2, '.', ' ')."</b><BR />";
-else
-echo "<b>Total Amount owing to you: R".-($Invsummm - $yo)."</b><BR />";
-echo "<br /><br />";
-
-
-
+?>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>veExp</title>
 </head>
 
 <body>
 <?php
-require_once 'header.php';
+	require_once('header.php');	
 ?>
 
 
@@ -29,8 +29,10 @@ require_once 'header.php';
 
 
 <h1> Edit Expenses</h1>
-<a href = "editExpA.php">Edit Any Expenses</a> </br></br>
+<a href = "editExpA.php">Edit Any Expenses</a> <a href = "selectCustExp.php">Add Any Expenses</a> </br></br>
 <!--<a href = 'selectCustAssignStk.php'>Assign Stock to any Customer</a></br>-->
+<a href = 'assignCustStktoInv.php'>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
+assignCustStktoInv</br></br>
 <a href = 'selectCustAssignStkInv.php'>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
 assignStkInv</br></br>
 <a href = 'selectCustAssignStk.php'>Assign any Stock to a Customer and then invoice</a></br></br>
@@ -46,7 +48,8 @@ assignStkInv</br></br>
 <h1> View and Edit Expenses of a supplier or category</h1>
 <a href = "editExp2.php">View and Edit Any Expenses of certain supplier </a></br></br></br>
 
-
+Copy or Move expenses from one table to another.
+<a href = "moveExp.php">View and Edit Any Expenses of certain supplier </a></br></br></br>
 
 	</div>
  </form>

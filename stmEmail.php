@@ -1,5 +1,5 @@
-<?php
-
+<?php	
+	
 
 
 
@@ -17,28 +17,32 @@ $a3 = "Recommended statement payment description (DR): ".$Abbr. " stm";
 $a4 = "Benficiary statement payment description (DR): ".$Abbr. " stm";
 $a5 = "NB: For cash payments please make sure you have a receipt with my signature.";
 $a6 = "(EFT) Banking details:";
-$a7 = "Account holder: CompanyName";
-$a8 = "Bank: BankName";
-$a9 = "Account Number: BankAccNo";
+$a7 = "Account holder: KARL";
+$a8 = "Bank: Nedbank Limited(/Nedcor)";
+$a9 = "Account Number: 1230583114";
 
-$b1 =  "Branch No: BranchNo(universal)";
-$b2 = "( BranchName: ";
-$b3 = "Type of Account: AccountType";
+
+$b1 =  "Branch No: 198765(universal)";
+$b2 = "( Branch: Go Banking CT Gardens Centre(South Western Cape) )";
+$b3 = "Type of Account: Current cheque account";
 //$b4 = "Amount: R". $AmtPaid;
-$b5 = "Proof of payment can be sent to: ProofEmail";
-$b6 = "(other branch codes: OtherBranchCodes )";
-$b7 = "VAT no VATNo";
+$b5 = "Proof of payment can be sent to: cyberkarl3@gmail.com ";
+$b6 = "(other branch codes: 19876500,123009, 12300900 )";
+$b7 = "VAT no 4390243923 as from 1.3.2008";
 $b8 = "Thank you";
-$b9 = "CompanyName";
-$ba = "CompanyLogo1";
-$ba = "CompanyLogo2";
-$bb = "CompanyLogo3";
-$bc = "CompanyWebsite";
-$bd = "CompanyContact";
-$be = "FaxNo";
-$bf = "SkypeName";
-$bg = "Sales terms: TermsWebpage";
-$bh = "Support: SupportWebpage";
+$b9 = "Karl";
+$ba = "PC and Notebook Sales & Advanced I.T. Support";
+$ba = "PC and Notebook Sales and Advanced I.T. Support";
+$bb = "Karl's Fast Internet and Webhosting Solutions";
+$bc = "www.kconnect.co.za";
+$bd = "Email: cyberkarl3@gmail.com";
+
+$be = "Fax: 0865492415";
+$bf = "Skype: cyberkarl3";
+$bg = "Sales terms: www.k-connect.co.za/terms";
+//$bg = "Sales terms: www.k-connect.co.zaterms";
+$bh = "Internet & Email Support: www.karl.co.za/support";
+//$bh = "Internet and Email Support www.karl.co.zasupport";
 $nl = "<br>";
 //echo $body.$nl.$b1.$nl.$b2.$nl.$b3.$nl.$b4.$nl.$b5.$nl.$b6.$nl.$b7.$nl.$nl.$b8.$nl.$nl.$b9.$nl.$nl.$ba.$nl.$nl.$bb.$nl.$nl.$bc.$nl.$nl.$bd.$nl.$nl.$be.$nl.$nl.$bf.$nl.$nl.$bg.$nl.$nl.$bh;
 
@@ -50,7 +54,7 @@ echo "<br><br>";
 <?php echo $body.$nl.$a1.$nl.$a2.$nl.$a3.$nl.$a4.$nl.$a5.$nl.$a6.$nl.$a7.$nl.$nl.$a8.
 $nl.$a9.$nl.$b1.$nl.$b2.$nl.$b3.$nl.$b5.$nl.$b6.$nl.$b7.$nl.$nl.$b8.
 $nl.$b9.$nl.$nl.$ba.$nl.$bb.$nl.$bc.$nl.$nl.$bd.$nl.$bf.$nl.$nl.$bg.$nl.$nl.$bh ?>">
-Click to EMail customer</a><br>
+Click to EMail  customer</a><br>
 </font>
 <br>
 

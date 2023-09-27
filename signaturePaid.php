@@ -9,18 +9,19 @@ You have already paid for this invoice.<br>
 <BR />
 <BR />
 Thank you<BR />
-CompanyName<BR />
-CompanyLogo<BR />
-CompanyLogo<BR />
-CompanyWebsite<BR />
-CompanyContact<BR />
-Fax: CompanyFax<BR />
-Skype: SkypeName<BR />
+Karl<BR />
+PC and Notebook Sales  & Advanced I.T. Support<BR />
+Karl's Fast Internet and Webhosting Solutions<BR />
+www.kconnect.co.za<BR />
+
+Fax: 0865492415<BR />
+Skype: cyberkarl3<BR />
 <BR />
-Sales terms: <a href= "http://CompanyTermsSite">CompanyTermsSite</a><BR />
+Sales terms: <a href= "http://www.k-connect.co.za/terms">www.k-connect.co.za/terms</a><BR />
 
 <BR />
 <BR />
-Support: <a href ="http://CompanySupportSite">CompanyTermsSite</a><BR />
+Internet & Email Support: <a href ="http://www.karl.co.za/support">www.karl.co.za/support</a><BR />
 <BR />
-
+Please download and install Networx:<BR />
+www.karl.co.za/networx/<BR />

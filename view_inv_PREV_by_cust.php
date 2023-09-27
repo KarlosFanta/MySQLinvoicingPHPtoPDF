@@ -1,23 +1,24 @@
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+			
 
-?>
-<?php //require_once 'header.php'; ?>
-<b><br><font size = "4" type="arial">Your Invoices History
+?> 
+<?php //require_once "header.php"; ?>
+<b><br><font size = "4" type="arial">Your Invoices History 
 <?php 			echo $row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
 			echo $row['CustLN'];
 ?>
-			</b></font> <font color = yellow>view_inv_prev_by_cust.php if nothing shows maybe customer has another account</font>
+			</b></font> <font size = 1>view_inv_prev_by_cust.php if nothing shows maybe customer has another account</font>
 </br>
 <?php
 $SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvNo desc   ";
@@ -58,6 +59,7 @@ echo "<th>ex6</th>\n";
 echo "<th>D7</th>";
 echo "<th>Q7</th>\n";
 echo "<th>ex7</th></tr>\n";
+
 
     /* fetch object array */
     while ($row = $result->fetch_row()) {
@@ -108,10 +110,11 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-
+	
 }
 echo "</table><br><br>";
 echo "Invoices total to: R ".$Invsummm."<br /><br />";
+
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -194,7 +197,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 ?>
 
 
@@ -237,5 +240,5 @@ echo "</table>";
 
 
 <?php
-//require_once 'footer.php';
+//	require_once('footer.php');		
 ?>

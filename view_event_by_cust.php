@@ -1,19 +1,20 @@
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+			
 
-?>
-<?php //require_once 'header.php'; ?>
+?> 
+<?php //require_once "header.php"; ?>
 <!--<b><br><font size = "3" type="arial">Your events History -->
-<font color=yellow>view_event_by_cust.php &nbsp;&nbsp;&nbsp;</font><a href = "view_event_all.php">edit events</a>
-<?php
+<font color=blue>view_event_by_cust.php &nbsp;&nbsp;&nbsp;</font><a href = "view_event_all.php">edit events</a>
+<?php 			
 echo @$row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
@@ -30,10 +31,12 @@ echo @$row['CustFN'];
 
 	if ($CustInt == "")
 	{
-	$CustInt = $_POST['CustNo'];
-	$CustNo = $_POST['CustNo'];
+	$CustInt = $CustNo = 0;
+	$CustInt = $CustNo = @$_POST['CustNo'];
+	
+	
 	}
-//	echo "<br>CustNo: ".$CustNo."<br>";
+	echo "<br>CustNo: ".$CustNo."<br>";
 //	echo "<br>CustNo: ".$CustInt."<br>";
 
 //$SQLstring = "select * FROM events where CustNo = '$CustInt' order by priority desc, EDate desc";
@@ -79,7 +82,7 @@ echo "<th>{$row2[0]}</th>";
 echo "<th align = left>{$row[4]}</th>\n";//priority
 echo "<th align = left>{$row[3]}</th>";///Enotes
 //echo "<th>{$row[5]}</th>\n";
-//echo "<th>R{$row[29]}</th>";
+//echo "<th>R{$row[29]}</th>"; 
 //$summm = $summm + $row[3];
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
@@ -93,7 +96,7 @@ echo "<th>{$row[11]}</th>";*/
 		}
     // free result set
     $result->close();
-
+	
 }
 echo "</table><br>";
 //echo "events Paid totals to: R ".$summm."<br /><br />";
@@ -161,7 +164,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 
 
 
@@ -174,7 +177,7 @@ echo "<b>Important: ";
 echo $Important;
 /*
 echo "</b> &nbsp;&nbsp;&nbsp;";
-
+	
 echo $row2['CustFN']."&nbsp;";
 echo "{$row2['CustLN']}&nbsp;&nbsp;&nbsp;";
 			echo "{$row2['CustNo']}&nbsp;";
@@ -188,8 +191,14 @@ echo "{$row2['CustEmail']}&nbsp;&nbsp;";
 $Abbr = $row2['ABBR']; //CASE SENSITIVE!!!
 			  // $result->close();
 	*/
-}}
-echo "<br>Events:<br>";
+}}	
+echo "<br>Customer's Events:<br>";
+
+
+
+
+
+
 
 echo "<table border='1' >";  //if you align left on the table u will get problems!!
 echo "<tr>";
@@ -199,7 +208,7 @@ $query = "SELECT * FROM events WHERE CustNo = $CustInt order by EDate desc" ;
 //echo $query;
  if ($result3 = $DBConnect->query($query)) {//to determine the Important part of the customer
     while ($row3 = $result3->fetch_assoc()) {
-echo "<tr><th>";
+echo "<tr><th>";	
 
 echo $row3['EventNo']."</th><th>";
 echo "{$row3['CustNo']}</th><th>";
@@ -213,5 +222,10 @@ echo "</tr>";			  // $result->close();
 else "<tr><th>no event found for this customer</th></tr>";
 
 echo "</table>";
+
+
+
+
+
 
 ?>

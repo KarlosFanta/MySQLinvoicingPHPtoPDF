@@ -1,17 +1,24 @@
+	<title>Invs all customers</title>
 <?php
 
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	$page_title = "All invoices all customers";
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+			
 
-	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
-
-?>
-<?php //require_once 'header.php'; ?>
-<b><br><font size = "4" type="arial">View Invoices</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view_inv.php
+?> 
+<?php //require_once "header.php"; ?>
+<b><br><font size = "4" type="arial">View All Invoices of all customers</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view_inv.php
+<br>
+<a href= view_invD.php>view_invD.php by Date</a><br>
+<a href= view_inv2.php>view_inv2.php</a>
+<br><a href= view_invonlysummary.php>view_invonlysummary.php</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font size = 3>All Invoices of all customers</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font size = 3>All Invoices of all customers</b></font>
+<br><a href= view_invCost.php>view_invCost.php</a> 
 </br>
 
 
@@ -43,70 +50,79 @@ echo "<th>D2</th>";
 echo "<th>InvPdStatus</th>";
 echo "</tr>\n";
 
-    // fetch object array
+
+    // fetch object array 
 	  while ($row = mysqli_fetch_assoc($result)) {
     //////////while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
+
 
 	  ////$x = $row[0];
 	  $x = $row["InvNo"];
 //	  echo "<th>".$row["CustNo"]."</th>";
 //echo "<th>".$row["CustFN"]."</th>";
 
-	  echo "<tr><th>";
 
+
+	  echo "<tr><th>";
+	  
 	  if ($x >= 4400 && $x <= 4469)
-	  echo "<FONT color = 'red'>".$x." JAN2012";
+	  echo "<FONT color = 'purple'>".$x." JAN2012";
 	  else if ($x >= 4500 && $x <= 4569)
-	  echo "<FONT color = 'red'>".$x. " FEB2012 ";
+	  echo "<FONT color = 'purple'>".$x. " FEB2012 ";
 	  else if ($x >= 4600 && $x <= 4669)
-	  echo "<FONT color = 'red'>".$x. " MAR2012 ";
+	  echo "<FONT color = 'purple'>".$x. " MAR2012 ";
 	  else if ($x >= 4700 && $x <= 4769)
-	  echo "<FONT color = 'red'>".$x. " APR2012 ";
+	  echo "<FONT color = 'purple'>".$x. " APR2012 ";
 	  else if ($x >= 4800 && $x <= 4869)
-	  echo "<FONT color = 'red'>".$x. " MAY2012 ";
+	  echo "<FONT color = 'purple'>".$x. " MAY2012 ";
 	  else if ($x >= 4900 && $x <= 4962)
-	  echo "<FONT color = 'red'>".$x. " JUN2012 ";
+	  echo "<FONT color = 'purple'>".$x. " JUN2012 ";
 	  else if ($x >= 5000 && $x <= 5069)
-	  echo "<FONT color = 'red'>".$x. " JUL2012 ";
+	  echo "<FONT color = 'purple'>".$x. " JUL2012 ";
 	  else if ($x >= 5100 && $x <= 5169)
-	  echo "<FONT color = 'red'>".$x. " AUG2012 ";
+	  echo "<FONT color = 'purple'>".$x. " AUG2012 ";
 	  else if ($x >= 5200 && $x <= 5269)
-	  echo "<FONT color = 'red'>".$x. " SEP2012 ";
+	  echo "<FONT color = 'purple'>".$x. " SEP2012 ";
 	  else if ($x >= 5300 && $x <= 5369)
-	  echo "<FONT color = 'red'>".$x. " OCT2012 ";
+	  echo "<FONT color = 'purple'>".$x. " OCT2012 ";
 	  else if ($x >= 5400 && $x <= 5469)
-	  echo "<FONT color = 'red'>".$x. " NOV2012 ";
+	  echo "<FONT color = 'purple'>".$x. " NOV2012 ";
 	  else if ($x >= 5500 && $x <= 5569)
-	  echo "<FONT color = 'red'>".$x. " DEC2012 ";
+	  echo "<FONT color = 'purple'>".$x. " DEC2012 ";
 	  else if ($x >= 5600 && $x <= 5669)
-	  echo "<FONT color = 'red'>".$x. " JAN2012 ";
+	  echo "<FONT color = 'purple'>".$x. " JAN2012 ";
 	  else if ($x >= 5700 && $x <= 5769)
-	  echo "<FONT color = 'red'>".$x. " FEB2013 ";
+	  echo "<FONT color = 'purple'>".$x. " FEB2013 ";
 	  else if ($x >= 5800 && $x <= 5869)
-	  echo "<FONT color = 'red'>".$x. " MAR2013 ";
+	  echo "<FONT color = 'purple'>".$x. " MAR2013 ";
 	  else if ($x >= 5900 && $x <= 5969)
-	  echo "<FONT color = 'red'>".$x. " APR2013 ";
+	  echo "<FONT color = 'purple'>".$x. " APR2013 ";
 	  else if ($x >= 6000 && $x <= 6069)
-	  echo "<FONT color = 'red'>".$x. " MAY2013 ";
+	  echo "<FONT color = 'purple'>".$x. " MAY2013 ";
 	  else if ($x >= 6100 && $x <= 6169)
-	  echo "<FONT color = 'red'>".$x. " JUN2013 ";
+	  echo "<FONT color = 'purple'>".$x. " JUN2013 ";
 	  else if ($x >= 6200 && $x <= 6269)
-	  echo "<FONT color = 'red'>".$x. " JUL2013 ";
+	  echo "<FONT color = 'purple'>".$x. " JUL2013 ";
 	  else if ($x >= 6300 && $x <= 6369)
-	  echo "<FONT color = 'red'>".$x. " AUG2013 ";
+	  echo "<FONT color = 'purple'>".$x. " AUG2013 ";
 	  else if ($x >= 6400 && $x <= 6469)
-	  echo "<FONT color = 'red'>".$x. " SEP2013 ";
+	  echo "<FONT color = 'purple'>".$x. " SEP2013 ";
 	  else if ($x >= 6500 && $x <= 6569)
-	  echo "<FONT color = 'red'>".$x. " OCT2013 ";
+	  echo "<FONT color = 'purple'>".$x. " OCT2013 ";
 	  else if ($x >= 6600 && $x <= 6669)
-	  echo "<FONT color = 'red'>".$x. " NOV2013 ";
+	  echo "<FONT color = 'purple'>".$x. " NOV2013 ";
 	  else if ($x >= 6700 && $x <= 6769)
-	  echo "<FONT color = 'red'>".$x. " DEC2013 ";
+	  echo "<FONT color = 'purple'>".$x. " DEC2013 ";
 	  else echo $x;
 
+
+
+
+
+
 	  echo "</th></FONT>";
-echo "<th>".$row['CustNo'];
+echo "<th><a href = 'AcceptSessionCustNo.php?link=".$row['CustNo']."' target= '_blank'>".$row['CustNo']."</a>";
 $CN = $row["CustNo"];
 $SQLstringLN = "select CustLN from customer where CustNo = $CN";
 //echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -122,15 +138,26 @@ echo substr($row2[0], 0, 7)."</th>";
 echo "<th>".$row["InvDate"]."</th>";
 echo "<th>".substr($row["Summary"], 0, 15)."</th>";
 echo "<th>".$row["TotAmt"]."</th>\n";
-echo "<th>".$row["D1"]."</th>\n";
-echo "<th>".$row["InvPdStatus"]."</th>\n";
+
+$str = chunk_split($row["D1"], 37, "\n\r");
+echo "<th>".$str."</th>\n";
+echo "<th>".chunk_split($row["D2"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D3"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D4"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D5"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D6"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D7"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D8"], 37, "\n\r")."</th>\n";
+//echo "<th>".$row["InvPdStatus"]."</th>\n";
 echo "</tr>\n";
 		}
     //
     $result->close();
-
+	
 }
 echo "</table>";
+
+
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -223,7 +250,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 ?>
 </table>
 
@@ -272,5 +299,5 @@ echo "</table>";
 
 
 <?php
-//require_once 'footer.php';
+//	require_once('footer.php');		
 ?>

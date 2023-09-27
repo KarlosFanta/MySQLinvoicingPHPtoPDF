@@ -19,8 +19,9 @@
 </style>
 </head>
 <body>
-<?php require_once 'header.php'; ?>
-
+<?php require_once ("header.php");
+?>
+<a href = 'view_inv3.php'>select columns for viewing</a><br>
 <h3>Invoices</h3>
 <?php
 
@@ -42,7 +43,7 @@
  */
 
 // MySQL host name, user name, password, database, and table
-require_once 'phpmyEditdb.php';
+require_once "phpmyEditdb.php";
 
 $opts['tb'] = 'invoice';
 
@@ -53,7 +54,7 @@ $opts['key'] = 'InvNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('InvNo');
+$opts['sort_field'] = array('-InvNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
@@ -102,7 +103,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-
+   
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -160,8 +161,8 @@ $opts['fdd']['SDR'] = array(
   'select'   => 'T',
   'maxlen'   => 32,
   'sort'     => true
-
-
+  
+  
 );
 $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 'on clause'
   'default'  => 'default',
@@ -178,7 +179,9 @@ $opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 
      ),
      'orderby'=>'CustLN'
    )
-);
+); 
+
+
 
 $opts['fdd']['InvDate'] = array(
   'name'     => 'InvDate',
@@ -204,6 +207,7 @@ $opts['fdd']['InvPdStatus'] = array(
   'maxlen'   => 300,
   'sort'     => true
 );
+
 
 $opts['fdd']['D1'] = array(
   'name'     => 'D1',
@@ -349,6 +353,7 @@ $opts['fdd']['ex8'] = array(
   'maxlen'   => 12,
   'sort'     => true
 );
+
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';

@@ -1,17 +1,16 @@
 <BR />
 Hi.<BR />
 <BR />
-Please note that there is a possiblty in a price increase in adsl costs in February or March 2014.<BR /><BR />
-Thank you for your order.<BR />
-Please view attached invoice and kindly arrange for payment.<BR />
-(More invoices following)<br>
-A statement can be requested.<br>
+<BR />
+Thank you for your quote request.<BR />
+Please view attached quotation.<BR />
+<BR />
 <BR />
 Recommended payment reference: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo  $SDR;  ?><BR />
 Recommended statement description (DR): <?php echo  $SDR;  ?><BR />
 Beneficiary statement description (CR): &nbsp;&nbsp;<?php echo  $SDR;  ?><BR />
 <BR />
-Please send proof of payments to cyberkarl3@gmail.com <BR />
+Please send proof of payments to cyberkarl3@gmail.com<BR />
 <BR />
 <BR />
 Banking details:<BR /><BR />
@@ -35,17 +34,15 @@ Karl<BR />
 PC and Notebook Sales  & Advanced I.T. Support<BR />
 Karl's Fast Internet and Webhosting Solutions<BR />
 www.kconnect.co.za<BR />
-
+084 448 5289  (/021 4244419)<BR />
 Fax: 0865492415<BR />
 Skype: cyberkarl3<BR />
 <BR />
 Sales terms: <a href= "http://www.k-connect.co.za/terms">www.k-connect.co.za/terms</a><BR />
 
 <BR />
-Payment options:  EFT, Cheque to KARL or direct deposit or cash by hand.<BR />
+<!--Payment options:  EFT, Cheque to KARL or direct deposit or cash by hand.<BR />-->
 <!--NB: For cash payments please make sure you have a receipt with my signature.<BR />-->
 <BR />
 Internet & Email Support: <a href ="http://www.karl.co.za/support">www.karl.co.za/support</a><BR />
 <BR />
-Please download and install Networx:<BR />
-www.karl.co.za/networx/<BR />

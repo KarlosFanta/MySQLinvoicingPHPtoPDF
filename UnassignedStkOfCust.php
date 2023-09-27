@@ -1,6 +1,6 @@
 <?php
 $row_cnt = 0;
-$CustInt= $CustNo;
+$CustInt = @$CustNo;
 $SQLstringEP = "select * from expenses where InvNo = '' and CustNo = $CustInt order by ExpNo desc";
 if ($resultEP = mysqli_query($DBConnect, $SQLstringEP)) {
 while ($row = mysqli_fetch_assoc($resultEP)) {
@@ -12,8 +12,8 @@ mysqli_free_result($resultEP);
 
 if ($row_cnt > 0)
 {
-echo "<b><br><font size = '3'>Unassigned customer's expenses:</b></font>
-</a>";
+echo "<b><br><font size = '3'>Unassigned customer's expenses:</b></font> 
+</a>UnassignedStkOfCust.php";
 echo "<a href='assignStk.php?CustNo=".$CustInt."' target=_blank> Add Expense for customer</a> <a href='editExpCQ.php?CustNo=".$CustInt."' target=_blank> Edit Customer's </a>";
 $NN = '';
 $NNN = '';
@@ -34,7 +34,7 @@ echo "<th>Notes</th>\n";
 echo "<th>Serial</th>\n";
 echo "</tr>\n";
 
-while ($row = mysqli_fetch_assoc($result))
+while ($row = mysqli_fetch_assoc($result)) 
 {
 $ExpNo = $row['ExpNo'];
 echo "<th> <a href = 'assignStkInvGET.php?CustNo=$CustInt&ExpNo=$ExpNo' target=_blank> ".$row['ExpNo']."</a></th>";
@@ -51,8 +51,8 @@ echo "<th>".$row['Notes']."</th>";
 //$CCCC = $row['CustNo'];
 //$s = "SELECT * from customer where CustNo = '$CCCC'";
 //if ($resultCC = mysqli_query($DBConnect, $s)) {
-//while ($rowCC = mysqli_fetch_assoc($resultCC))
-//{
+//while ($rowCC = mysqli_fetch_assoc($resultCC)) 
+//{ 
 //$NN = $rowCC['CustLN'];
 //$NNN = $rowCC['CustFN'];
 //}}
@@ -66,6 +66,6 @@ echo "</table >";
 
 mysqli_free_result($result);
 }
-
+ 
 }
 ?>

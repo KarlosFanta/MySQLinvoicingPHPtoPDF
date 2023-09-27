@@ -1,14 +1,15 @@
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
-require_once 'header.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+	require_once("header.php");
+			
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ require_once 'header.php';
     <meta charset="utf-8">
     <title>Customers</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-
+	
 <style type="text/css">
     body{
         font-family: Arail, sans-serif;
@@ -36,7 +37,7 @@ require_once 'header.php';
         font-size: 14px;
     }
     .result{
-        position: absolute;
+        position: absolute;        
         z-index: 999;
         top: 100%;
         left: 0;
@@ -57,7 +58,7 @@ require_once 'header.php';
         background: #f2f2f2;
     }
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('.search-box input[type="text"]').on("keyup input", function(){
@@ -73,7 +74,7 @@ $(document).ready(function(){
             resultDropdown.empty();
         }
     });
-
+    
     // Set search input value on click of result item
     $(document).on("click", ".result p", function(){
         $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
@@ -87,9 +88,9 @@ $(document).ready(function(){
         <input type="text" autocomplete="off" placeholder="Search Customer First Name..."  autofocus />
         <div class="result"></div>
     </div>
-
-
-<?php //require_once 'header.php'; ?>
+	
+	
+<?php //require_once "header.php"; ?>
 <b><font size = "4" type="arial">View Customers</b></font>
 </br><br><br><br><br><br>
 <?php
@@ -101,7 +102,10 @@ $(document).ready(function(){
 
 <form name="selField" action="selectVC.php" method="post">
     <input type="submit" name="formSubmit" value="Submit" /><br>
-
+<blockquote>	
+<blockquote>	
+<blockquote>	
+<br><br>
 	<select name="mydropdownEC">
 	<option value='all'>all</option>
 <?php
@@ -116,6 +120,7 @@ else
 
 $query = "select CustNo, CustFN, CustLN from customer ORDER BY custNo";
 
+
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
 $item1 = $row["CustNo"];
@@ -128,7 +133,10 @@ print "_".$item3;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["CustNo"];//case sensitive!
     echo $row["CustFN"];//case sensitive!
@@ -142,14 +150,14 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option>";
+print " </option>"; 
 echo @$item3b;
 ?>
 
 <br><br>
-<input type="submit" name="btn_submit" value="Select the customer" />
-
-</select></p>
+<input type="submit" name="btn_submit" value="Select the customer" /> 
+	
+</select></p>  
 
 
 
@@ -168,9 +176,9 @@ if ($result=mysqli_query($DBConnect,$query))
     {
 	$TableName = $fieldinfo->name;
 	echo "<input type='checkbox' name='formDoor[]' value='$TableName' ";
-
+	
 	//echo "<br>input type = checkbox name= formDoor[] value='$TableName' ";
-
+	
     if ($TableName == 'CustNo')
 	echo "checked";
    if ($TableName == 'CustFN')
@@ -187,8 +195,9 @@ if ($result=mysqli_query($DBConnect,$query))
 	echo "checked";
    if ($TableName == 'Extra')
 	echo "checked";
-
-	echo " />";
+ 
+	
+	echo " />";	
 	echo $TableName;
 	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	if ($Cnt == 6)
@@ -197,7 +206,7 @@ if ($result=mysqli_query($DBConnect,$query))
 	$Cnt = 0;
 	}
 	$Cnt++;
-
+	
     //printf("Table: %s\n",$fieldinfo->table);
     //printf("max. Len: %d\n",$fieldinfo->max_length);
     }
@@ -205,7 +214,7 @@ if ($result=mysqli_query($DBConnect,$query))
   mysqli_free_result($result);
 }
 ?>
-<input type="submit" name="btn_submit" value="Select the table columns to view" />
+<input type="submit" name="btn_submit" value="Select the table columns to view" /> 
 </form>
 
 
@@ -265,6 +274,7 @@ echo "<th>LastLogin</th>";
 echo "<th>CustPW</th>";
 echo "</tr>\n";
 
+
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -285,9 +295,11 @@ echo "</tr>\n";
 		}
     /* free result set */
     $result->close();
-
+	
 }
 echo "</table>";
+
+
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -380,7 +392,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 ?>
 </table>
 
@@ -416,9 +428,13 @@ foreach($myarray as $key => $element){
 }
 echo "</table>";
 
+
 */
 
 ?>
+</blockquote>	
+</blockquote>	
+</blockquote>	
 
 </body>
 </html>
@@ -428,5 +444,5 @@ echo "</table>";
 
 
 <?php
-//require_once 'footer.php';
+//	require_once('footer.php');		
 ?>

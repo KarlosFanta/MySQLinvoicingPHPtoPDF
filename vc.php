@@ -4,15 +4,16 @@
 
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
-require_once 'header.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+	require_once("header.php");
+			
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ require_once 'header.php';
     <meta charset="utf-8">
     <title>Customers</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-
+	
 <style type="text/css">
     body{
         font-family: Arail, sans-serif;
@@ -40,7 +41,7 @@ require_once 'header.php';
         font-size: 14px;
     }
     .result{
-        position: absolute;
+        position: absolute;        
         z-index: 999;
         top: 100%;
         left: 0;
@@ -61,7 +62,7 @@ require_once 'header.php';
         background: #f2f2f2;
     }
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('.search-box input[type="text"]').on("keyup input", function(){
@@ -77,7 +78,7 @@ $(document).ready(function(){
             resultDropdown.empty();
         }
     });
-
+    
     // Set search input value on click of result item
     $(document).on("click", ".result p", function(){
         $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
@@ -87,19 +88,87 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp; <div class="search-box">
+<b><font size = "4" type="arial">View Customers</b></font> &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;   &nbsp;   &nbsp;   &nbsp; <div class="search-box">
         <input type="text" autocomplete="off" placeholder="Search Customer First Name..."  autofocus />
         <div class="result"></div>
     </div>
-
-
-<?php //require_once 'header.php'; ?>
-<b><font size = "4" type="arial">View Customers</b></font>
-</br><br><br><br><br><br>
+	
+	
+<?php //require_once "header.php"; ?>
+<br><br>
 <?php
 ?>
 <!--<b><font size = "4" type="arial" color = "grey">Select A Customer into the session</b></font><font color = dark yellow> view_customers2.php</font>
 -->
+
+
+Recently used:<br>
+<table>
+<?php
+
+// open the file
+
+   $myfile="recent.txt";
+    $linecount = 0;
+    $handleFile = fopen($myfile, "r");
+    while(!feof($handleFile)){
+      $line = fgets($handleFile);
+      $linecount++;
+    }
+  
+    fclose($handleFile);
+  
+    //echo "Lines count: ".$linecount."<br>";
+//check editCust.php for select statemnent that loads recent file
+
+if (($handle = @fopen("recent.txt", "r")) !== false) {
+
+    // TODO: use fgets() to find the row..
+
+
+    // loop through each row
+    while (($data = fgetcsv($handle, 0, "\t")) !== false) {
+
+        echo "<tr>";
+
+        for ($c = 0; $c < $linecount; $c++) 
+        {
+            //echo "<td>".@$data[$c]."</td>";
+			$strtt = @$data[$c];
+			 $query = "Select CustFN, CustLN from customer where CustNo = $strtt";
+			if ($result = mysqli_query($DBConnect, $query)) {
+	while ($row = mysqli_fetch_assoc($result)) {
+	//$CustNo = $row["CustNo"];
+	$CustLN =  $row["CustLN"];
+	$CustLN = substr($CustLN, 0, 20);
+	$CustFN = $row["CustFN"];
+	$CustFN = substr($CustFN, 0, 10);
+	print "<a href = 'editCust.php?mydropdownEC=$strtt'>".$CustFN." ".$CustLN;
+	//print "_".$CustNo;
+	//print " ".$CustLN;
+	print "</a><br>";
+	}
+	mysqli_free_result($result);
+}
+//	mysqli_close($DBConnect);
+			
+			
+			
+        }
+
+        echo "</tr>";
+
+    }
+
+    // close file
+	/*echo"<br>r:<br>";
+	print_r ($data);
+	echo"<br>r:<br>";
+	print_r ($data);*/
+    fclose($handle);
+}
+?>
+</table>
 </br>
 </br>
 
@@ -147,9 +216,9 @@ $(document).ready(function(){
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" />
-
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> 
+			
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>

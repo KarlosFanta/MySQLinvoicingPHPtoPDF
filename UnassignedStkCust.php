@@ -1,10 +1,9 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>events</title>
+	<title>unassigned Cust expenses</title>
 <style type="text/css">
 	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
 	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
@@ -18,13 +17,76 @@
 	td.pme-message { text-align: center; }
 	td.pme-stats   { text-align: right;  }
 </style>
-<?php
-require_once "header.php";
-?>
+
 </head>
 <body>
-<h3>Edit All events</h3>Find event, then click here to edit:<a href = view_event_all2.php>view_event_all2.php</a>
+
 <?php
+require_once 'header.php';
+?>
+<a href = 'selectCustAssignStkInv.php'>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
+assignStkInv</br></br>
+<a href = 'selectCustAssignStk.php'>Assign any Stock to a Customer and then invoice</a></br></br>
+
+<a href = 'UnassignedStkCust.php'>Unassigned Stock of Customer</a></br></br>
+
+<a href = 'AssignedStkCust.php'>Assigned Stock of Customer</a></br></br>
+
+<?php
+@session_start();
+if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
+
+echo @$_SESSION['CustNo'];
+
+
+
+$CustNo = @$_SESSION['CustNo'];
+//echo "CustNo:".$CustNo;
+
+if(isset($_GET["CustNo"])) 
+	echo "GET CustNo: ".$CustNo."<br>";
+	if (!empty($_POST["CustNo"])) {
+   // echo "Yes, CustNo is set";    
+}else{  
+    //echo "No, CustNo is not set";
+} 
+
+
+	 //eg. URL: editExpCQ.php?CustNo=3
+	 
+/*	 function url() {
+ return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+}
+
+echo "The current page name is ".url();
+$url = url();
+$url = $_SERVER["SCRIPT_NAME"];
+$url = $_SERVER["REQUEST_URI"];
+$url = $_SERVER["QUERY_STRING"];
+echo "request uri is ".$url."]]";
+
+$path = parse_url($url, PHP_URL_PATH);
+$pathPart = explode('?CustNo=', $path);
+$end = end($pathPart);	 
+echo "End: ". $end. ".";
+	 
+*/	 
+ //editExpCQ.php?CustNo=3&name=eddie
+//	echo "<h1>Hello " . $_GET["name"] . "</h1>";
+if(isset($_GET["CustNo"]))
+{
+	//echo "GET CustNo: ".$_GET["CustNo"]."<br>";
+	$CustNo= $_GET["CustNo"];
+	//force session:
+	$_SESSION['CustNo'] = $_GET["CustNo"];
+	
+}
+else{echo " no Getter";}
+
+
+$opts['filters'] = "InvNo like '' AND CustNo = '$CustNo'";  // THIS IS FOR IF BY CUSTOMER NUMBER
+
+	 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -44,20 +106,20 @@ require_once "header.php";
 // MySQL host name, user name, password, database, and table
 require_once "phpmyEditdb.php";
 
-$opts['tb'] = 'events';
+$opts['tb'] = 'expenses';
 
 // Name of field which is the unique key
-$opts['key'] = 'EventNo';
+$opts['key'] = 'ExpNo';
 
 // Type of key field (int/real/string/date etc.)
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('Priority');  //CHANGE THIS VALUE!!
+$opts['sort_field'] = array('ExpNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 1355;
+$opts['inc'] = 1500000;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -138,111 +200,89 @@ appear in generated list. Here are some most used field options documented.
   This is useful for giving more meaning to column values. Multiple
   descriptions fields are also possible. Check documentation for this.
 */
-
-$opts['fdd']['EventNo'] = array(
-  'name'     => 'EventNo',
-  'select'   => 'T',
-  'maxlen'   => 3,
-  'sort'     => true
-);
-$opts['fdd']['EDate'] = array(
-  'name'     => 'EDate',
-  'select'   => 'T',
-  'maxlen'   => 10,
-  'default'  => '0000-00-00',
-  'sort'     => true
-);
-$opts['fdd']['Priority'] = array(
-  'name'     => 'Priority',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-
-/*$opts['fdd']['CustNo'] = array(
-  'name'     => 'CustNo',
+$opts['fdd']['ExpNo'] = array(
+  'name'     => 'ExpNo',
   'select'   => 'T',
   'maxlen'   => 11,
   'sort'     => true
 );
-/*
-$opts['fdd']['virt'] = array(
-  'name'     => 'English Name',
+$opts['fdd']['InvNo'] = array(
+  'name'     => 'InvNo',
   'select'   => 'T',
-  'input'   => 'V', // virtual
-  'options'  => 'L', // list only
-  'size|F' => 50,
-  'values'   => Array('table' => 'customer', 'column' => 'CustNo', 'description' => 'CustFN','join' => '$main_table.main_id = $join_table.main_id'),
-  'sql'      => 'PMEjoin2.CustNo',
+  'maxlen'   => 30,
+  'sort'     => true
+);$opts['fdd']['ExpDesc'] = array(
+  'name'     => 'ExpDesc',
+  'select'   => 'T',
+  'maxlen'   => 1500,
   'sort'     => true
 );
-
+$opts['fdd']['PurchDate'] = array(
+  'name'     => 'PurchDate',
+  'select'   => 'T',
+  'maxlen'   => 10,
+  'sort'     => true
+);
+$opts['fdd']['ProdCostExVAT'] = array(
+  'name'     => 'ProdCostExVAT',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+$opts['fdd']['Notes'] = array(
+  'name'     => 'Notes',
+  'select'   => 'T',
+  'maxlen'   => 1500,
+  'sort'     => true
+);
 $opts['fdd']['CustNo'] = array(
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'Titley',
+  'name'     => 'CustNo',
   'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-      'table' => 'customer',
-      'column' => 'CustFN',
-      'description'=> 'CustFN',
-      'orderby' => 'CustNo'
-  )
-); 
-$opts['fdd']['CustFN'] = array(
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'Titley',
-  'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-      'table' => 'customer',
-      'column' => 'CustFN',
-      'description'=> 'CustFN',
-      'orderby' => 'CustNo'
-  )
-); 
-//www.php-form-generator.com/php-form-generator.php?s=56
-*/
-$opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 'on clause'
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'CustomerDetails',
-  'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-    'table' => 'customer', //Table 'kc.other_table' doesn't exist
-    'column' => 'CustNo',   //Unknown column 'PMEtable0.col_name' in 'on clause'
-    'description'=> array(
-       'columns' => array('0' => 'CustNo', '1' => 'CustLN'),
-       'divs'    => array('0' => '  ', '1' => '  '),
-     ),
-     'orderby'=>'CustLN'
-   )
-); 
-
-
-
-
-$opts['fdd']['ENotes'] = array(
-  'name'     => 'ENotes',
-  'select'   => 'T',
-  'maxlen'   => 3000,
+  'maxlen'   => 30,
   'sort'     => true
 );
-$opts['fdd']['Destination'] = array(
-  'name'     => 'Destination',
+$opts['fdd']['Category'] = array(
+  'name'     => 'Category',
   'select'   => 'T',
-  'maxlen'   => 300,
+  'maxlen'   => 90,
   'sort'     => true
 );
+$opts['fdd']['SupCode'] = array(
+  'name'     => 'SupCode',
+  'select'   => 'T',
+  'maxlen'   => 90,
+  'sort'     => true
+);
+$opts['fdd']['SerialNo'] = array(
+  'name'     => 'SerialNo',
+  'select'   => 'T',
+  'maxlen'   => 120,
+  'sort'     => true
+);
+
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-//require_once 'view_cust.php';
+include 'viewExpCustSelect.php';
+//include 'viewExpCustSelect.php?mydropdownEC=$yo';
 
 ?>
+<b><br><font size = "4" type="arial">View Expenses H & Exp</b></font>&nbsp;&nbsp;&nbsp;&nbsp;viewExpHEandExp.php
+</br>
+<a href = 'viewExpHEandExpCust.php'>viewExpHEandExpCust</a> all expenses of Customer</br>
+<a href = 'viewExpHEandExpD.php'>viewExpHEandExpD by Date</a></br>
+<a href = 'viewExp.php'>viewExp only</a></br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpEmyedit.php'>viewExpEmyedit</a></br>
+<a href = 'viewExpHmyedit.php'>viewExpHmyedit</a></br>
+<a href = 'UnassignedCustStk.php'>UnassignedCustStk</a></br>
+<a href = 'viewExpSelectCatg.php'>viewExpSelectCatg</a></br>
 
+<a href = '../phpmyadmin/#PMAURL-3:sql.php?db=kc&table=expensese&server=1&target='>phpMyadmin</a></br>
+
+
+</body>
+</html>
 

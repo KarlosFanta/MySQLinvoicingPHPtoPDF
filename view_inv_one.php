@@ -1,25 +1,10 @@
 <?php
-
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
-
-	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
-
-?>
-<?php //require_once 'header.php'; ?>
-<!--<b><br><font size = "4" type="arial">View Invoices</b></font>
-</br>-->
-<?php
+	require_once("inc_OnlineStoreDB.php");
+			
 $SQLstring = "select * from invoice where InvNo = $InvNo";
-//echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
-
-//$QueryResult = @mysql_query($SQLstring, $DBConnect);
+//echo $SQLstring;
 echo "view_inv_one: ";
-if ($result = $DBConnect->query($SQLstring)) {
+if ($result = mysqli_query($DBConnect, $SQLstring)) {
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>InvNo</th>";
 echo "<th>CustNo</th>";
@@ -33,37 +18,41 @@ echo "<th>InvPdStatus</th>";
 echo "<th>D1</th>";
 echo "<th>ex1</th></tr>\n";
 
-    /* fetch object array */
-    while ($row = $result->fetch_row()) {
-      //  printf ("%s (%s)\n", $row[0], $row[1]);
-
-echo "<tr><th>{$row[0]}</th>";
-echo "<th>{$row[1]}</th>";
-$CN = $row[1];
+   while ($row = mysqli_fetch_assoc($result)) {
+ 
+echo "<tr><th>{$row['InvNo']}</th>";
+echo "<th>{$row['CustNo']}</th>";
+$CN = $row['CustNo'];
 $SQLstringLN = "select * from customer where CustNo = $CN";
-//echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
-$result2 = $DBConnect->query($SQLstringLN);
-    while ($row2 = $result2->fetch_row()) {
 
-//echo "<th>{$row2[0]}</th>";
-$CustLN = $row2[1];
-$CustEmail = $row2[5];
-$Abbr = $row2[13];
+//echo "<th>{$SQLstringLN}</th>";
+
+
+//echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+if ($result2 = mysqli_query($DBConnect, $SQLstringLN)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
+
+$CustLN = $row2['CustLN'];
+$CustEmail = $row2['CustEmail'];
+$Abbr = $row2['ABBR'];
 
 echo "<th>".$Abbr."</th>";
 echo "<th>".$CustLN."</th>";
 //echo "<th>".$CustEmail."</th>";
-}
-echo "<th>{$row[2]}</th>";
-echo "<th>{$row[3]}</th>";
-echo "<th>{$row[4]}</th>\n";
-echo "<th>{$row[5]}</th></tr>\n";
 		}
-    /* free result set */
-    $result->close();
-
+mysqli_free_result($result2);
+}
+echo "<th>{$row['InvDate']}</th>";
+echo "<th>{$row['Summary']}</th>";
+echo "<th>{$row['InvPdStatus']}</th>";
+echo "<th>{$row['D1']}</th>\n";
+echo "<th>{$row['ex1']}</th></tr>\n";
+		}
+mysqli_free_result($result);
+	
 }
 echo "</table>";
+
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -156,7 +145,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 ?>
 
 
@@ -205,5 +194,5 @@ echo "</table>";
 
 
 <?php
-//require_once 'footer.php';
+//	require_once('footer.php');		
 ?>

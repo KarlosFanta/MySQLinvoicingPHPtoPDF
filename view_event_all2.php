@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 		"http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,13 +17,11 @@
 	td.pme-message { text-align: center; }
 	td.pme-stats   { text-align: right;  }
 </style>
-<?php
-require_once "header.php";
-?>
 </head>
 <body>
-<h3>Edit All events</h3>Find event, then click here to edit:<a href = view_event_all2.php>view_event_all2.php</a>
+<h3>events</h3>
 <?php
+
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -42,8 +39,10 @@ require_once "header.php";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once "phpmyEditdb.php";
-
+$opts['hn'] = 'localhost';
+$opts['un'] = 'root';
+$opts['pw'] = 'Itsmeagain007#';
+$opts['db'] = 'kc';
 $opts['tb'] = 'events';
 
 // Name of field which is the unique key
@@ -53,11 +52,11 @@ $opts['key'] = 'EventNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('Priority');  //CHANGE THIS VALUE!!
+$opts['sort_field'] = array('-EventNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 1355;
+$opts['inc'] = 605;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -142,7 +141,13 @@ appear in generated list. Here are some most used field options documented.
 $opts['fdd']['EventNo'] = array(
   'name'     => 'EventNo',
   'select'   => 'T',
-  'maxlen'   => 3,
+  'maxlen'   => 11,
+  'sort'     => true
+);
+$opts['fdd']['CustNo'] = array(
+  'name'     => 'CustNo',
+  'select'   => 'T',
+  'maxlen'   => 11,
   'sort'     => true
 );
 $opts['fdd']['EDate'] = array(
@@ -152,97 +157,32 @@ $opts['fdd']['EDate'] = array(
   'default'  => '0000-00-00',
   'sort'     => true
 );
-$opts['fdd']['Priority'] = array(
-  'name'     => 'Priority',
-  'select'   => 'T',
-  'maxlen'   => 300,
-  'sort'     => true
-);
-
-/*$opts['fdd']['CustNo'] = array(
-  'name'     => 'CustNo',
-  'select'   => 'T',
-  'maxlen'   => 11,
-  'sort'     => true
-);
-/*
-$opts['fdd']['virt'] = array(
-  'name'     => 'English Name',
-  'select'   => 'T',
-  'input'   => 'V', // virtual
-  'options'  => 'L', // list only
-  'size|F' => 50,
-  'values'   => Array('table' => 'customer', 'column' => 'CustNo', 'description' => 'CustFN','join' => '$main_table.main_id = $join_table.main_id'),
-  'sql'      => 'PMEjoin2.CustNo',
-  'sort'     => true
-);
-
-$opts['fdd']['CustNo'] = array(
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'Titley',
-  'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-      'table' => 'customer',
-      'column' => 'CustFN',
-      'description'=> 'CustFN',
-      'orderby' => 'CustNo'
-  )
-); 
-$opts['fdd']['CustFN'] = array(
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'Titley',
-  'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-      'table' => 'customer',
-      'column' => 'CustFN',
-      'description'=> 'CustFN',
-      'orderby' => 'CustNo'
-  )
-); 
-//www.php-form-generator.com/php-form-generator.php?s=56
-*/
-$opts['fdd']['CustNo'] = array(        //Unknown column 'PMEtable0.col_name' in 'on clause'
-  'default'  => 'default',
-  'maxlen'   => 10,
-  'name'     => 'CustomerDetails',
-  'select'   => 'T',
-  'sort'     => true,
-  'values'   => array(
-    'table' => 'customer', //Table 'kc.other_table' doesn't exist
-    'column' => 'CustNo',   //Unknown column 'PMEtable0.col_name' in 'on clause'
-    'description'=> array(
-       'columns' => array('0' => 'CustNo', '1' => 'CustLN'),
-       'divs'    => array('0' => '  ', '1' => '  '),
-     ),
-     'orderby'=>'CustLN'
-   )
-); 
-
-
-
-
 $opts['fdd']['ENotes'] = array(
   'name'     => 'ENotes',
   'select'   => 'T',
   'maxlen'   => 3000,
   'sort'     => true
 );
+$opts['fdd']['Priority'] = array(
+  'name'     => 'Priority',
+  'select'   => 'T',
+  'maxlen'   => 300,
+  'sort'     => true
+);
 $opts['fdd']['Destination'] = array(
   'name'     => 'Destination',
   'select'   => 'T',
-  'maxlen'   => 300,
+  'maxlen'   => 360,
   'sort'     => true
 );
 
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
-//require_once 'view_cust.php';
 
 ?>
 
+
+</body>
+</html>
 

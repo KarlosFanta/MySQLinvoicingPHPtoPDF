@@ -78,6 +78,7 @@ $phone = isset($_POST['phone']) && validate($_POST['phone'], 'numeric', 20, arra
 $email_addr = isset($_POST['email_addr']) && validate($_POST['email_addr'], 'email', 255) ? $_POST['email_addr'] : null;
 $msg = isset($_POST['msg']) && validate($_POST['msg'], 'nofilter') ? $_POST['msg'] : null;
 
+
 ?>
 
 
@@ -104,18 +105,19 @@ var em=document.forms["Addcust"]["CustEm"].value;
 var pa=document.forms["Addcust"]["CustPA"].value;
 var di=document.forms["Addcust"]["CustDi"].value;
 
+
 if (x==null || x=="")
   {
   alert("First name must be filled out");
   return false;
   }
-
+  
   if (ln==null || ln=="")
   {
   alert("Surname must be filled out");
   return false;
   }
-
+ 
 if ( tl == null ||  tl == "")
   {
   alert(" Telephone number must be filled out");
@@ -145,18 +147,21 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length)
   return false;
   }
 
-
-
-
-
-
+  
+  
+  
+  
+  
 }*/
 </script>
 </head>
 
 <body>
 <?php	$page_title = "View a Customer";
-require_once 'header.php';
+	require_once('header.php');	
+	   @session_start();
+$CustNo='';
+$CustNo = @$_SESSION['CustNo'] ;
 ?>
 
 
@@ -165,26 +170,34 @@ require_once 'header.php';
 <h1> QuickEdit Invoice</h1>
 
 <a href = "edit_invCQ.php">QuickEdit Invoice of selected customer</a></br></br></br>
+<a href = "view_inv_by_custBasic.php?CustNo=<?php echo $CustNo; ?>">view_inv_by_custBasic.php CHOOSE WHICH FIELDS TO DISPLAY</a></br></br></br>
+<a href = "view_inv_by_custWords.php?CustNo=<?php echo $CustNo; ?>">Looking for a word in all invoices of Customer</a></br></br></br>
+<a href = "view_inv_by_cust_no_proof.php">view_inv_by_cust_no_proof.php</a></br></br></br>
 
 
 <h1> PHPmyEdit All Customers</h1>
 <a href = "view_inv_all.php">Edit All Invoices ALL CUSTOMERS</a></br></br></br>
 
-<h1> View All Customers</h1>
-<a href = "view_inv.php">View All Invoices ALL CUSTOMERS</a></br></br></br>
+<h1> View Customer's Invoices</h1>
+<a href = "view_inv.php">View All Invoices </a></br></br></br>
+<a href = "view_invD.php">View by Date </a></br></br></br>
+<a href = "view_invDunpaid.php">View unpaid invoices</a></br></br></br>
 
-<h1> View All Customers</h1>
+<!--<h1> View All Customer's Invoices by Date</h1>
 <a href = "view_invD.php">View All Invoices ALL CUSTOMERS by Date</a></br></br></br>
 
+<h1> View All UNPAID INVOICES of all Customers b</h1>
+<a href = "view_invDunpaid.php">View All unpaid Invoices ALL CUSTOMERS by Date</a></br></br></br>
+->
 
 <h1> Print Only</h1>
 <a href = "select_inv.php">Print Only </a></br></br></br>
 
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" />
-
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> 
+			
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>
 		</dl>
