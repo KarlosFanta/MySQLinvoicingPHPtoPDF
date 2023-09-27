@@ -2,7 +2,7 @@
 
 /*
  * phpMyEdit - instant MySQL table editor and code generator
- * PDO
+ *
  * phpMyEdit.class.php - main table editor class definition file
  * ____________________________________________________________
  *
@@ -35,17 +35,44 @@
 	  original table view (Pass 1).
 */
 
+
+
+  
+
+			 
+					 
+					 
+		
+	  
+		  
+							
+
+
+
+	   
+
+  
+
+//echo "error_reporting switched off<br>";
+ error_reporting(0);
+@ini_set('display_errors', 0);
+
+
 function fhtmlspecialchars($myString) {
   // in PHP 5.4 the default encoding used by htmlspecialchars() was changed.
   return htmlspecialchars($myString, ENT_COMPAT, 'ISO-8859-1', true);
 }
+
+
+
+
 
 class phpMyEdit_timer /* {{{ */
 {
 	var $startTime;
 	var $started;
 
-	function __construct($start = true)
+	function phpMyEdit_timerB($start = true)
 	{
 		$this->started = false;
 		if ($start) {
@@ -71,12 +98,12 @@ class phpMyEdit_timer /* {{{ */
 			$avg = round(1000 * $avg) / 1000;
 			return $avg;
 		} else {
-			return 'phpMyEdit_timer ERROR: timer not started';
+			return 'phpMyEdit_timerB ERROR: timer not started';
 		}
 	}
 } /* }}} */
 
-if (!function_exists('array_search')) { /* {{{ */
+if (! function_exists('array_search')) { /* {{{ */
 	function array_search($needle, $haystack)
 	{
 		foreach ($haystack as $key => $value) {
@@ -87,13 +114,15 @@ if (!function_exists('array_search')) { /* {{{ */
 	}
 } /* }}} */
 
-if (!function_exists('realpath')) { /* {{{ */
+if (! function_exists('realpath')) { /* {{{ */
 	function realpath($path)
 	{
 		return $path;
 	}
 } /* }}} */
 
+
+ error_reporting(0);
 class phpMyEdit
 {
 	// Class variables {{{
@@ -154,7 +183,7 @@ class phpMyEdit
 	var $logtable;		// name of optional logtable
 	var $navigation;	// navigation style
 	var $tabs;			// TAB names
-	var $timer = null;	// phpMyEdit_timer object
+	var $timer = null;	// phpMyEdit_timerB object
 	var $sd; var $ed;	// sql start and end delimiters '`' in case of MySQL
 
 	// Predefined variables
@@ -335,7 +364,7 @@ class phpMyEdit
 			$this->dbh = null;
 		} // try/catch
 	} /* }}} */
-
+  
 
 
 	function sql_disconnect() /* {{{ */ // PDO
@@ -461,7 +490,7 @@ class phpMyEdit
 			$language = substr($language, 0, $pos);
 			$file = $this->dir['lang'].'PME.lang.'.$language.'.inc';
 		}
-		$ret = @include $file;
+		$ret = @include($file);
 		if (! is_array($ret)) {
 			return $ret;
 		}
@@ -514,15 +543,15 @@ class phpMyEdit
 						$qparts['select'] .= ',';
 					}
 				}
-				$qparts['select'] = substr($qparts['select'], 0, -1) . ')';
+				$qparts['select']{strlen($qparts['select']) - 1} = ')';
 				$qparts['select'] .= ' AS '.$this->sd.'PMEalias'.$field_num.$this->ed;
 				$qparts['orderby'] = $this->sd.'PMEalias'.$field_num.$this->ed;
-			} elseif ($desc && is_array($desc)) {
+			} else if ($desc && is_array($desc)) {
 				// TODO
-			} elseif ($desc) {
+			} else if ($desc) {
 				$qparts['select'] .= ','.$table.'.'.$this->sd.$desc.$this->ed;
 				$qparts['orderby'] = $this->sd.$desc.$this->ed;
-			} elseif ($key) {
+			} else if ($key) {
 				$qparts['orderby'] = $this->sd.$key.$this->ed;
 			}
 			$qparts['from'] = $dbp.$table;
@@ -578,8 +607,8 @@ class phpMyEdit
 							$ret .= ',';
 						}
 					}
-                    $ret = substr($ret, 0, -1) . ')';
-				} elseif (is_array($desc)) {
+					$ret{strlen($ret) - 1} = ')';
+				} else if (is_array($desc)) {
 					// TODO
 				} else {
 					$ret = $this->sd.'PMEjoin'.$field.$this->ed.'.'.$this->sd.$this->fdd[$this->fds[$field]]['values']['description'].$this->ed;
@@ -601,6 +630,9 @@ class phpMyEdit
 	{
  		return $this->get_SQL_query($qparts);
  	} /* }}} */
+ 
+
+
 
 	function get_SQL_query($parts) /* {{{ */
 	{
@@ -793,7 +825,7 @@ class phpMyEdit
 					$qo[$this->fqn($k, $dont_desc, $dont_cols)] =
 						array('oper'  => $qf_op, 'value' => "($qf_val)"); // )
 				}
-			} elseif (isset($mi)) {
+			} else if (isset($mi)) {
 				if ($mi == '*') {
 					continue;
 				}
@@ -803,7 +835,7 @@ class phpMyEdit
 				$afilter = addslashes($mi);
 				$qo[$this->fqn($k, true, true)] = array('oper'  => '=', 'value' => "'$afilter'");
 				$this->qfn .= '&'.$this->cgi['prefix']['sys'].$li.'='.rawurlencode($mi);
-			} elseif (isset($m)) {
+			} else if (isset($m)) {
 				if ($m == '*') {
 					continue;
 				}
@@ -1119,7 +1151,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 				else echo $this->fdd[$k]['default'];
 				echo '</textarea>',"\n";
 			} elseif ($this->col_has_php($k)) {
-				echo include $this->fdd[$k]['php'];
+				echo include($this->fdd[$k]['php']);
 			} else {
 				// Simple edit box required
 				$len_props = '';
@@ -1267,7 +1299,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 			else echo $row["qf$k"];
 			echo '</textarea>',"\n";
 		} elseif ($this->col_has_php($k)) {
-			echo include $this->fdd[$k]['php'];
+			echo include($this->fdd[$k]['php']);
 		} else {
 			$len_props = '';
 			$maxlen = intval($this->fdd[$k]['maxlen']);
@@ -1451,10 +1483,10 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 		if (@$this->fdd[$k]['datemask']) {
 			$value = intval($row["qf$k".'_timestamp']);
 			$value = $value ? @date($this->fdd[$k]['datemask'], $value) : '';
-		} elseif (@$this->fdd[$k]['strftimemask']) {
+		} else if (@$this->fdd[$k]['strftimemask']) {
 			$value = intval($row["qf$k".'_timestamp']);
 			$value = $value ? @strftime($this->fdd[$k]['strftimemask'], $value) : '';
-		} elseif ($this->is_values2($k, $row["qf$k"])) {
+		} else if ($this->is_values2($k, $row["qf$k"])) {
 			$value = $row['qf'.$k.'_idx'];
 			if ($this->fdd[$k]['select'] == 'M') {
 				$value_ar  = explode(',', $value);
@@ -1488,7 +1520,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 			if (count($num_ar) == 1) {
 				list($nbDec) = $num_ar;
 				$value = number_format($value, $nbDec);
-			} elseif (count($num_ar) == 3) {
+			} else if (count($num_ar) == 3) {
 				list($nbDec, $decPoint, $thSep) = $num_ar;
 				$value = number_format($value, $nbDec, $decPoint, $thSep);
 			}
@@ -1502,7 +1534,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 			$value = sprintf($this->fdd[$k]['mask'], $value);
 		}
 		if ($this->col_has_php($k)) {
-			return include $this->fdd[$k]['php'];
+			return include($this->fdd[$k]['php']);
 		}
 		if ($this->col_has_URL($k)) {
 			return $this->urlDisplay($k, $original_value, $value, $css, $key_rec);
@@ -1578,7 +1610,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	 * @param	readonly	bool for readonly/disabled selection
 	 * @param	strip_tags	bool for stripping tags from values
 	 * @param	escape		bool for HTML escaping values
-	 * @param	js		string to be in the <select>, ususally onchange='..';
+	 * @param	js		string to be in the <select >, ususally onchange='..';
 	 */
 	function htmlSelect($name, $css, $kv_array, $selected = null, /* ...) {{{ */
 			/* booleans: */ $multiple = false, $readonly = false, $strip_tags = false, $escape = true, $js = NULL)
@@ -1625,7 +1657,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	 * @param	readonly	bool for readonly/disabled selection
 	 * @param	strip_tags	bool for stripping tags from values
 	 * @param	escape		bool for HTML escaping values
-	 * @param	js		string to be in the <select>, ususally onchange='..';
+	 * @param	js		string to be in the <select >, ususally onchange='..';
 	 */
 	function htmlRadioCheck($name, $css, $kv_array, $selected = null, /* ...) {{{ */
 			/* booleans: */ $multiple = false, $readonly = false, $strip_tags = false, $escape = true, $js = NULL)
@@ -1694,7 +1726,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
                 $val = rawurldecode($val);
                 $ret .= $this->htmlHidden($key, $val);
             }
-        } elseif (! strncmp('GET', $method, 3)) {
+        } else if (! strncmp('GET', $method, 3)) {
             if (! is_array($origvars)) {
                 $ret .= $origvars;
             } else {
@@ -2312,7 +2344,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 					echo '<td class="',$css_class_name,'">';
 					if ($this->password($k)) {
 						echo '&nbsp;';
-					} elseif ($this->fdd[$fd]['select'] == 'D' || $this->fdd[$fd]['select'] == 'M') {
+					} else if ($this->fdd[$fd]['select'] == 'D' || $this->fdd[$fd]['select'] == 'M') {
 						// Multiple fields processing
 						// Default size is 2 and array required for values.
 						$from_table = ! $this->col_has_values($k) || isset($this->fdd[$k]['values']['table']);
@@ -2868,7 +2900,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 
 	function email_notify($old_vals, $new_vals) /* {{{ */
 	{
-		if (!function_exists('mail')) {
+		if (! function_exists('mail')) {
 			return false;
 		}
 		if ($old_vals != false && $new_vals != false) {
@@ -2947,10 +2979,10 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 		if (is_array($trig)) {
 			ksort($trig);
 			for ($t = reset($trig); $t !== false && $ret != false; $t = next($trig)) {
-				$ret = include $t;
+				$ret = include($t);
 			}
 		} else {
-			$ret = include $trig;
+			$ret = include($trig);
 		}
 		return $ret;
 	} /* }}} */
@@ -3111,7 +3143,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	function error($message, $additional_info = '') /* {{{ */
 	{
 		echo '<h1>phpMyEdit error: ',fhtmlspecialchars($message),'</h1>',"\n";
-
+		 
 		if ($additional_info != '') {
 			echo '<hr size="1" />',fhtmlspecialchars($additional_info);
 		}
@@ -3268,10 +3300,10 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 	/*
 	 * Class constructor
 	 */
-	function __construct($opts) /* {{{ */
+	function phpMyEdit($opts) /* {{{ */
 	{
 		// Set desirable error reporting level
-		$error_reporting = error_reporting(E_ALL & ~E_NOTICE);
+		//$error_reporting = error_reporting(E_ALL & ~E_NOTICE);
 
 		// Database handle variables
 		$this->sql_delimiter();
@@ -3447,6 +3479,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 		$opts['execute'] && $this->execute();
 		// Restore original error reporting level
 		error_reporting($error_reporting);
+  
 
 	} /* }}} */
 
@@ -3456,3 +3489,5 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
  * vim:set ts=4:
  * vim600:fdm=marker fdl=0 fdc=0:
  * }}} */
+
+?>

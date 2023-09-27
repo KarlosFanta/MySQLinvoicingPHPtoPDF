@@ -1,0 +1,1 @@
+[23-Nov-2019 17:18:35] Invalid SQL: [UPDATE `expensesH` SET `ExpNo`='2533',`Category`='',`ExpDesc`='',`SerialNo`='',`SupCode`='',`PurchDate`='',`ProdCostExVAT`='',`Notes`='',`CustNo`='' WHERE (`ExpNo`=2533)] SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: '' for column 'PurchDate' at row 1

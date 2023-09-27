@@ -1,11 +1,13 @@
 <?php
 	$page_title = "Select a customer";
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+	require_once('header.php');	
+	require_once("inc_OnlineStoreDB.php");
+	@session_start();
+		$CNN = '';
+	$CNN = @$_SESSION['CustNo'];
 
-?>	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+	
+?>	<html>
 <head>
 <title></title>
 	<script type="text/javascript">
@@ -13,9 +15,9 @@ require_once 'inc_OnlineStoreDB.php';
 
 </script>
 </head>
-<form name="Pro" action="assignStk.php" method="post">
+<form name="Pro" action="assignStk.php?<?php echo $CNN; ?>" method="post">
 <?php
-include 'view_transLatest.php';
+
 
 /*
 if (isset($_POST['btnSubmit'][0])) {
@@ -31,10 +33,15 @@ if (isset($_POST['btnSubmit'][0])) {
 */
 
 //$btnSubmit = $_POST['btnSubmit'];
-$Prof = $_POST['btnSubmit'];
+$Prof = "Assign Stock to a Customer";
+if (@$_POST['btnSubmit'] != '')
+$Prof = @$_POST['btnSubmit'];
+
 
 echo "You selected: " .$Prof."</BR>";
 echo " <input type='text' size = 4  name='Prof'  id='Prof' value = '$Prof'>";
+
+
 
 $query = "select CustNo, CustFN, CustLN from customer ORDER BY custLN";
 //echo $query;
@@ -44,26 +51,13 @@ $query = "select CustNo, CustFN, CustLN from customer ORDER BY custLN";
 //       then create $userid, $fullname, and $userstatus
 
 
-@session_start();
 
 //	$_SESSION['sel'] = "select_C";
 //	$_SESSION['CustNo'] = "NotYet";
 
-	@session_start();
-	$CNN = @$_SESSION['CustNo'];
 $queryS = "select CustNo, CustFN, CustLN from customer where CustNo = $CNN";
 //echo $queryS."<br>";
 
-if ($result2 = mysqli_query($DBConnect, $queryS)) {
-  while ($row2 = mysqli_fetch_assoc($result2)) {
-
-$item1b = $row2["CustNo"];
-$item2b =  $row2["CustLN"];
-$item3b = $row2["CustFN"];
-
-	}
-$result2->free();
-	}
 
 
 
@@ -77,7 +71,7 @@ $result2->free();
 <select name="mydropdownEC"  onchange='this.form.submit()'>
 
 <?php
-
+	
 	if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 echo "<option value='_no_selection_'>Select Customer</option>";
 else
@@ -86,7 +80,7 @@ else
 
 if ($result2 = mysqli_query($DBConnect, $queryS)) {
   while ($row2 = mysqli_fetch_assoc($result2)) {
-
+ 
 $item1b = $row2["CustNo"];
 $item2b =  $row2["CustLN"];
 $item3b = $row2["CustFN"];
@@ -101,7 +95,8 @@ echo $item2b;
  print "_".$item1b;
 print "_".$item3b;
 
-print " </option>";
+
+print " </option>"; 
 	}
 $result2->free();
 	}
@@ -115,7 +110,7 @@ print "<option value='$item1'>$item2"; //all customers
 print "_".$item1;
 print "_".$item3;
 
-print " </option>";
+print " </option>"; 
 
 	}
 $result->free();
@@ -125,20 +120,22 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 
-print " </option><br>";
+print " </option><br>"; 
 
 echo $item3b;
 ?>
 
-<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" />
-</select></p>
-<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" />
+<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" /> 
+</select></p>  
+<input type="submit" name="btn_submit" value="Select the customer" style="width:300px;height:30px" /> 
 
 
 <b>
 </form>
 
-
+<?php
+include "view_transLatest.php";
+?>
 <a href="view_cust_all3.php" >view_cust_all3.php</a></b><br />
 <a href="view_inv_all.php" >view_inv_all.php</a></b><br />
 
@@ -147,4 +144,4 @@ echo $item3b;
 
 </body>
 
-</html>
+</html> 

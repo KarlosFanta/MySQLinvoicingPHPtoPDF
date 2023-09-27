@@ -1,5 +1,17 @@
+
+
+
+
+
+
+
+
+
+
 <?php
-require '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'fpdf' . DIRECTORY_SEPARATOR . 'fpdf.php';
+require("&#46;&#46;/&#46;&#46;/fpdf/fpdf.php");
+
+
 
 $pdf = new FPDF( );
 
@@ -10,13 +22,38 @@ $pdf->SetFont('Arial','B',16);
 $pdf->Cell(0,10,'PHP - The Good Parts!');
 
 $pdf->Output();
-	//require_once 'db.php';//page567
-	require_once 'inc_OnlineStoreDB.php';//mysqli connection and databse selection
+	//require_once("db.php");//page567
+		require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
+<HTML>
 <HEAD>
-<?php
+<?php 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $InvNo2 = 0;
 $InvNo2 = $_POST['InvNo'];
 $SDR = "0";
@@ -25,6 +62,10 @@ $TAmt = "0";
 @$TAmt = $_POST['TAmt'];
 @$Swap = $_POST['Swap'];
 
+
+
+
+
 $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
 
 //echo $query."</BR>";
@@ -32,8 +73,8 @@ $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
 if ($resultI = mysqli_query($DBConnect, $queryI)) {
   while ($rowI = mysqli_fetch_assoc($resultI)) {
 ?>
-	<TITLE>CompanyName's Computers TAX Invoice No <?php echo $InvNo2; echo " ".$rowI['Summary']?></TITLE>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<TITLE>Karl's Computers TAX Invoice No <?php echo $InvNo2; echo " ".$rowI['Summary']?></TITLE>
+	<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="invoice.css" />
 
 <script>
@@ -43,23 +84,23 @@ function printpage()
   }
 </script>
 </HEAD>
-<body>
+<BODY >
 <TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=0>
 	<COL WIDTH=30*>
 	<COL WIDTH=37*>
 	<COL WIDTH=30*>
 	<TR>
 		<TH WIDTH=57%>
-			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=4>CompanyName</FONT></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Print the invoice" onclick="printpage()">
+			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=4>KARL</FONT></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Print the invoice" onclick="printpage()">
 </P>
-		</th>
+		</TH>
 		<TH WIDTH=7%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif" size = "2">DATE:</FONT></P>
-		</th>
+		</TH>
 		<TH WIDTH=*>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "2">
 
-			<?php //echo date("d.n.Y");
+			<?php //echo date("d.n.Y"); 		
 			$Dt1 = explode("-", $rowI['InvDate']);
 //echo $Dt1[2]."____";
 
@@ -73,38 +114,37 @@ $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
 echo $TransDate;	 ?>
 
-		</th>
+		</TH>
 	</TR>
 	<TR>
 		<TH WIDTH=16%>
 			<P LANG="en-GB" ALIGN=LEFT ><FONT SIZE=2><FONT FACE="Arial, sans-serif">
-			VAT NO <br>
+			VAT NO 4390243923  as from 1 March 2008<br>
+			
+28 Buxton Avenue, Gardens, 8001<br>
 
-CompanyAddress<br>
-Tel: &nbsp;&nbsp;
-Cell:  <br>
-<A HREF="mailto:CompanyEmail@me.co.za">Email:  CompanyEmail@me.co.za</A></FONT></FONT></P>
-		</th>
+<A HREF="mailto:cyberkarl3@gmail.com">Email:  cyberkarl3@gmail.com</A></FONT></FONT></P>
+		</TH>
 		<TH WIDTH=21%>
 			<P LANG="en-GB" ALIGN=LEFT><FONT FACE="Arial, sans-serif" size = "3">TAX INVOICE
 			NO.
-
+	
 			</FONT>
-		</th>
+		</TH>
 		<TH WIDTH=13%>
 			<P LANG="en-GB" align = "left"><FONT FACE="Arial, sans-serif" size = "4">
 			<?php
-			echo $InvNo2;
+			echo $InvNo2; 
 			?>
 			</FONT><BR>
 			</P>
-		</th>
+		</TH>
 	</TR>
 	<TR>
 		<TH WIDTH=16%>
-			<P LANG="en-GB" ALIGN=LEFT STYLE="font-weight: normal"><FONT SIZE=3>Customer:
-
-	<?php
+			<P LANG="en-GB" ALIGN=LEFT STYLE="font-weight: normal"><FONT SIZE=3>Customer: 
+			
+	<?php	
 //$InvNo = 0;
 //$InvNo = $_POST['InvNo'];	//WARNIGN THIS IS CUSTOMER TABLE ONLY!  NOT THE INVOICE TABLE!!
 			$SQLstring = "select * from customer where CustNo = (select CustNo from invoice where InvNo = '$InvNo2')";
@@ -125,6 +165,7 @@ if ($result = $DBConnect->query($SQLstring)) {
 //echo "<th>LastLogin</th>";
 //echo "<th>CustPW</th></tr>\n";
 
+
     /* fetch object array */
     while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
@@ -133,27 +174,27 @@ if ($result = $DBConnect->query($SQLstring)) {
 
 if ($Swap == "N")
 {
-echo Str_replace("_"," ", $row[1]);
+echo Str_replace("_"," ", $row[1]); 
 //echo $row[1]; ///Cust FName
 echo " ";
-echo Str_replace("_"," ", $row[2]);
+echo Str_replace("_"," ", $row[2]); 
 
 //echo $row[2]; //CustLName
 }
 else
 {
-echo Str_replace("_"," ", $row[2]);
+echo Str_replace("_"," ", $row[2]); 
 
 //echo $row[2]; ///Cust FName
 echo " ";
-echo Str_replace("_"," ", $row[1]);
+echo Str_replace("_"," ", $row[1]); 
 
 //echo $row[1]; //CustLName
 
 }
 
 echo "<br>Email: ";
-//echo "{$row[3]}";
+//echo "{$row[3]}"; 
 //echo "<th>{$row[3]}</th>";
 //echo "{$row[4]}";
 echo "{$row[5]}";// Cust Email FROM CUSTOMER TABLE!!!
@@ -175,35 +216,35 @@ echo "row13: {$row[13]}";
 */
 $Abbr = $row[13];
 ?>
-
-
-
+	
+			
+			
 			</FONT></P>
-		</th>
+		</TH>
 		<TH WIDTH=22%>
 			<P LANG="en-GB" align = "left">
-			Account No:
-
+			Account No: 
+			
 			</P>
-		</th>
+		</TH>
 		<TH WIDTH=17%>
-			<P LANG="en-GB" align = "left"><?php echo "{$row[0]}";
+			<P LANG="en-GB" align = "left"><?php echo "{$row[0]}"; 
 		}
     /* free result set */
     $result->close();
-
+	
 			?><BR>
 			</P>
-		</th>
+		</TH>
 	</TR>
-
+	
 </TABLE>
 <BR />
-Summary: <?php
-//echo $rowI['Summary'];
+Summary: <?php 
+//echo $rowI['Summary']; 
 //$earlySDR = 'acc'.$CustNo.' inv'.$InvNo.' '.$Summary;
 //echo "{$row[0]}";
-//echo "inv".{$rowI[InvNo]};
+//echo "inv".{$rowI[InvNo]}; 
 
 /*echo $Abbr;
 echo ',acc';
@@ -222,61 +263,64 @@ echo $SDR;
  //$TAmt = number_format ($TAmt, 2, ".", "");
  echo $TAmt; ?>
 
-
+ 
  <?php
 //echo "<br>InvNo:".$InvNo2."</br />";
 
 echo"<TABLE WIDTH=100% BORDER=1 CELLPADDING=0 CELLSPACING=0>";
 echo "<COL WIDTH=*>		<COL WIDTH=10%>	<COL WIDTH=14%>		<COL WIDTH=10%>";
 echo"<TR>
-		<th><label>Description</label>
-		</th>
-		<th><label>Qty</label>
-		</th>
-		<th>Unit ex VAT
-		</th>
-		<th><label>Total</label>
-		</th>
+		<TH><label>Description</label>
+		</TH>
+		<TH ><label>Qty</label>
+		</TH>
+		<TH >Unit ex VAT
+		</TH>
+		<TH ><label>Total</label>
+		</TH>
 	</TR>
 	<TR>
-		<th>";
+		<TH>";
 					echo strtr($rowI['D1'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D1'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			print $rowI['Q1'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$Mex1 = $rowI["ex1"];
-
+			
 			$Mex1 = number_format ($Mex1, 2, ".", "");
-
+			
 			echo $Mex1;
-
+			
+			
+			
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT1 = 0;
 			$XT1 = $rowI["ex1"]*$rowI['Q1'];
 			$XT1 = number_format ($XT1, 2, ".", "");
 			echo $XT1;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 
 if (($rowI['D2']) != '0')
 {
 echo "<TR>
-		<th>";
-
+		<TH>";
+		
 //		echo strtr($rowI['D2'], array('_' => '&nbsp;')) ;
 			$riD2 = $rowI['D2'];
-
+			
 			//$arr1 = str_split($riD2);
 $arr2 = str_split($riD2, 52);
 
@@ -314,146 +358,170 @@ echo @$arr2[9]."<br>";
 echo @$arr2[10]."<br>";
 
 echo @$arr2[11]."<br>";
-
-	*/
-
-
+			
+	*/		
+			
+			
 			//echo strtr($rowI['D2'], array('_' => '&nbsp;')) ;
 
+			
+			
+			
+			
+			
+			
+			
 //			print $rowI['D2'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			print $rowI['Q2'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex2"];
-
+			
 			$Mex2 = $rowI["ex2"];
-
+			
 			$Mex2 = number_format ($Mex2, 2, ".", "");
-
+			
 			echo $Mex2;
+			
 
+			
+			
+			
+			
+			
+			
+			
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT2 = 0;
 			$XT2 = $rowI["ex2"]*$rowI['Q2'];
 			$XT2 = number_format ($XT2, 2, ".", "");
 			echo $XT2;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 //echo "<br>rowID3:".$rowI['D3']."<br>";
 if (($rowI['D3']) != '0')
 {
 echo "<TR>
-		<th>";
+		<TH>";
 			echo strtr($rowI['D3'], array('_' => '&nbsp;')) ;
 
 //			echo $rowI['D3'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q3'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex3"];
-
+			
 			$Mex3 = $rowI["ex3"];
-
+			
 			$Mex3 = number_format ($Mex3, 2, ".", "");
-
+			
 			echo $Mex3;
+			
 
+			
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT3 = 0;
 			$XT3 = $rowI["ex3"]*$rowI['Q3'];
 			$XT3 = number_format ($XT3, 2, ".", "");
 			echo $XT3;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 
 if ($rowI['D4'] != '0')
 {
 echo "<TR>
-		<th>";
+		<TH>";
 		echo strtr($rowI['D4'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D4'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q4'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex4"];
-
+			
 			$Mex4 = $rowI["ex4"];
-
+			
 			$Mex4 = number_format ($Mex4, 2, ".", "");
-
+			
 			echo $Mex4;
+			
 
+			
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT4 = 0;
 			$XT4 = $rowI["ex4"]*$rowI['Q4'];
 			$XT4 = number_format ($XT4, 2, ".", "");
 			echo $XT4;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 
 if ($rowI['D5'] != '0')
 {
 echo "<TR>
-		<th>";
+		<TH>";
 			echo strtr($rowI['D5'], array('_' => '&nbsp;')) ;
 
 //			echo $rowI['D5'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q5'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex5"];
 			$Mex5 = $rowI["ex5"];
-
+			
 			$Mex5 = number_format ($Mex5, 2, ".", "");
-
+			
 			echo $Mex5;
+			
 
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT5 = 0;
 			$XT5 =  $rowI["ex5"]*$rowI["Q5"];
 			$XT5 = number_format ($XT5, 2, ".", "");
 			echo $XT5;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 
@@ -461,33 +529,36 @@ if ($rowI['D6'] != '0')
 {
 
 echo "<TR>
-		<th>";
+		<TH>";
 							echo strtr($rowI['D6'], array('_' => '&nbsp;')) ;
 
 		//	echo $rowI['D6'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q6'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//echo $rowI["ex6"];
 						$Mex6 = $rowI["ex6"];
-
+			
 			$Mex6 = number_format ($Mex6, 2, ".", "");
-
+			
 			echo $Mex6;
+			
 
+			
+			
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			$XT6 = 0;
 			$XT6 = $rowI["ex6"]*$rowI['Q6'];
 			$XT6 = number_format ($XT6, 2, ".", "");
 			echo $XT6;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 
@@ -495,35 +566,36 @@ if ($rowI['D7'] != '0')
 {
 
 echo "<TR>
-		<th>";
+		<TH>";
 			echo strtr($rowI['D7'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D7'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q7'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex7"];
 						$Mex7 = $rowI["ex7"];
-
+			
 			$Mex7 = number_format ($Mex7, 2, ".", "");
-
+			
 			echo $Mex7;
+			
 
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT7 = 0;
 			$XT7 = $rowI["ex7"]*$rowI['Q7'];
 			$XT7 = number_format ($XT7, 2, ".", "");
 			echo $XT7;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 
@@ -531,45 +603,46 @@ if ($rowI['D8'] != '0')
 {
 
 echo "<TR>
-		<th>";
+		<TH>";
 			echo strtr($rowI['D8'], array('_' => '&nbsp;')) ;
 
 			//echo $rowI['D8'];
 			echo "
-		</th>
-		<th>";
+		</TH>
+		<TH >";
 			echo $rowI['Q8'];
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex8"];
-			$Mex8 = $rowI["ex8"];
+			$Mex8 = $rowI["ex8"];			
 			$Mex8 = number_format ($Mex8, 2, ".", "");
-
+			
 			echo $Mex8;
+			
 
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT8 = 0;
 			$XT8= $rowI["ex8"]*$rowI['Q8'];
 			$XT8 = number_format ($XT8, 2, ".", "");
 			echo $XT8;
 			echo "
-		</th>
+		</TH>
 	</TR>";
 }
 echo"</table>
 <TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=0>
 <COL WIDTH=90%>	<COL WIDTH=*>
 		<TR>
-		<th>";
+		<TH>";
 			echo "<p align = 'right'>Sub-Total";
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
 			$rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
@@ -578,44 +651,44 @@ echo"</table>
 			echo $ST2;
 
 			echo "
-		</th>
+		</TH>
 	</TR>
-
+	
 	<TR>
-		<th> <p align = 'right'>";
+		<TH> <p align = 'right'>";
 			echo "Plus 14% VAT";
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$VT = $ST*0.14;
 			$VT2 = number_format ($VT, 2, ".", "");
 			echo $VT2;
 			echo "
-		</th>
+		</TH>
 	</TR>
-
+	
 		<TR>
-		<th> <p align = 'right'>";
+		<TH> <p align = 'right'>";
 		echo "<input type='button' value='Print the invoice' onclick='printpage()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 			echo "Invoice Total";
 			echo "
-		</th>
-		<th><label>";
+		</TH>
+		<TH ><label>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-
-			$IT= $ST*1.14;
+			
+			$IT= $ST*1.15;
 			$IT2 = number_format ($IT, 2, ".", "");
 			echo "R".$IT2;
 			echo "
-		</th>
+		</TH>
 	</TR>
-
-
-
+	
+	
+	
 </table>
-
+	
 	";
 
 ?>
@@ -643,29 +716,29 @@ NB: For cash payments please make sure you have a receipt with my signature.<br 
 
 
 <BR /></font><FONT FACE="Arial, sans-serif" size = "2">
-Account holder: <br />
-Bank: <br />
-Branch Code:  (Universal branch number)<br />
-(Other branch codes:   )<br />
-Account Number: <br />
-(Branch: )<br />
- Type of Account: <font size = 1><BR />
+Account holder: KARL<br />
+Bank: Nedbank Limited /Nedcor<br />
+Branch Code: 198765 (Universal branch number)<br />
+(Other branch codes:  19876500,123009, 12300900 )<br />
+Account Number: 1230583114<br />
+(Branch: Go Banking CT Gardens Centre, South Western Cape)<br />
+ Type of Account: Current cheque account<font size = 1><BR />
 
 
 <BR /></font><FONT FACE="Arial, sans-serif" size = "2">
-Please send proof of payment to: CompanyEmail@me.co.za<br />
+Please send proof of payment to: cyberkarl3@gmail.com<br />
  </th>
-
+ 
  </tr>
  <tr>
  <th>
-<a href = "http://TermsWebpage" target="_blank">TERMS: TermsWebpage</a>
+<a href = "http://www.k-connect.co.za/terms" target="_blank">TERMS: www.k-connect.co.za/terms</a>
 
 
-
+ 
  </th>
 
-<th>Support: <a href = "http://SupportPage" target="_blank">SupportPage</a>
+<th>Internet & Email Support: <a href = "http://www.karl.co.za/support" target="_blank">www.karl.co.za/support</a>
 </th>
  </tr>
 <!--<input type="button" value="Print the invoice" onclick="printpage()">-->
@@ -686,13 +759,13 @@ Please send proof of payment to: CompanyEmail@me.co.za<br />
 
 
 
-
+ 
  $url1 = "yo.htm";
  //$url1 = $_GET["url"];
 //  header("content-disposition: attachment;
 //  filename=" . baseName($url1);
  // header("content-type: application/force-download");
-
+ 
 ?>
 
 </body>

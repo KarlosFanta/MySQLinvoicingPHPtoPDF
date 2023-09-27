@@ -12,6 +12,7 @@ $opts['db'] = 'kc'; //chenge to kc or progress_kc
 //NOT THE TABLE HERE!!!
 //$opts['tb'] = 'customer';
 
+
 //  $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 // $DBConnect = new mysqli("localhost", "progress_root","Itsmeagain007#", "progress_kc");//error control operator @ suppresses the error messages TEST Q
 

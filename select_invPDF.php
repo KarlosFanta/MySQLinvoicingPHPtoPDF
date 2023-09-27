@@ -1,8 +1,8 @@
 <?php
 
 	$page_title = "Select an invoice";
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+	require_once('header.php');	
+	require_once('inc_OnlineStoreDB.php');	
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -44,7 +44,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 }
 echo "<br>";
 ?>
-<b><font size = "4" type="arial">Print the invoice</b></font>
+<b><font size = "4" type="arial">Print the invoice</b>  </font>(<a href = 'edit_invC.php'>To create a Quote, got to edit invoice</a>)
 </br>
 </br>
 
@@ -58,7 +58,7 @@ echo "<br>";
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -93,9 +93,10 @@ print "_".$item4;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+print " </option>"; 
 
-print " <option>";
+
+print " <option>"; 
 if ($result = mysqli_query($link, $query2)) {
   while ($row = mysqli_fetch_assoc($result)) {
 $item1 = $row["InvNo"];
@@ -126,7 +127,7 @@ print "_".$item3C." ";
 }
 
 
-print " </option>";
+print " </option>"; 
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -145,9 +146,9 @@ else
 //$mysqli->close();
 echo "item2: ".$item2 ."<br>";?>
 <br>
-	fnghn<input type="submit" name="btn_submit" value="Print selected invoice" />
+	fnghn<input type="submit" name="btn_submit" value="Print selected invoice" /> 
 
-</select></p>
+</select></p>  
 
 
 
@@ -176,6 +177,9 @@ include ("view_trans_by_cust.php");
 //echo "All transactions total to: R".$yo."<br>";
 
 //echo "<b>Total Amount oustanding: R".($Invsummm - $yo)."</b><BR />";
+
+
+
 
 //echo "<br />view_inv_by_cust2.php<br />";
 //include ("view_inv_by_cust2.php");
@@ -222,13 +226,13 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))
-{
+while ($row = mysql_fetch_array($result))  
+{  
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>";
+  print " </option>"; 
  }
 }
 */

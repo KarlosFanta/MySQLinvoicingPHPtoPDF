@@ -1,7 +1,7 @@
 <?php
 
-
-require_once 'inc_OnlineStoreDB.php';//page567
+	
+	require_once("inc_OnlineStoreDB.php");//page567
 
 	//VALIDATION SUMMARISED:
 /*
@@ -16,7 +16,7 @@ function formValidator(){
 	var CustEm = document.getElementById('CustEm');
 	var CustDI = document.getElementById('CustDi');
 	var CustPW = document.getElementById('CustPW');
-
+	
 	// Checks inputs
 	// WARNING isEmpty does not exist! it is notEmpty
 		//KEEP THE SEQUENCE CORRECT     KEEP THE SEQUENCE CORRECT                 KEEP THE SEQUENCE CORRECT
@@ -119,23 +119,23 @@ function emailValidator(elem, helperMsg){
 <form name="Addcust" onsubmit="return formValidator()" action="add_CustProcess.php" method="post">
 <!-- sequence might be important! first onsubmit then action!-->
 <!-- id in input name is used for javascript validation and name is used for POST I presume-->
-<input type="text" id="CustNo"   name="CustNo" value="<?php echo $daNextNo;?>" />
-<input type="text"  id="CustFName"  name="CustFName" />
+<input type="text" id="CustNo"   name="CustNo" value="<?php echo $daNextNo;?>" /> 
+<input type="text"  id="CustFName"  name="CustFName" /> 
 <input type="text" id="CustLName" name="CustLName" />
 <input type="text" id="Abbr" name="Abbr" />
 <input type="text" id="CustEm" name="CustEm" />
 <input type='submit' value='Register Now'/>
-</form>
+</form>						
 //end of validation summary
 */
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
 
 	//$date = date("H:i dS F"); //Get the date and time.
 	//echo $date;
@@ -143,7 +143,7 @@ function emailValidator(elem, helperMsg){
 
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -161,7 +161,7 @@ function formValidator(){
 	var CustEm = document.getElementById('CustEm');
 	var CustDI = document.getElementById('CustDi');
 	var CustPW = document.getElementById('CustPW');
-
+	
 	// Checks inputs
 	// WARNING isEmpty does not exist! it is notEmpty
 		//KEEP THE SEQUENCE CORRECT     KEEP THE SEQUENCE CORRECT                 KEEP THE SEQUENCE CORRECT
@@ -182,9 +182,9 @@ function formValidator(){
 		}
 	}
 	}//very important bracket!!!!!
-
+	
 	return false;
-
+	
 }
 
 
@@ -266,19 +266,22 @@ function emailValidator(elem, helperMsg){
 <body>
 
 <?php	$page_title = "Register";
-require_once 'header.php';
+	require_once('header.php');	
 ?>
-
+	<!--<h1><?php //echo htmlentities($storeInfo['name']); ?></h1>-->
+	<!--<p><a href="HomePage.php">Home</a></p>-->
+	<!--<p><h2>Register</h2></p>-->
+		
 
 
 
 
 <?php
 
-$daNextNo = 1; //default when table is empty.
-//$query = "SELECT MAX(CustNo)  AS MAXNUM FROM customer";
+$daNextNo = 10; //default when table is empty.
+//$query = "SELECT  MAX(CustNo)  AS MAXNUM FROM customer";
 
-$query = "SELECT MAX(CustNo), CustFN FROM customer where custno <> '300' and custno <> '301'";
+$query = "SELECT MAX(CustNo) FROM customer where custno <> '300' and custno <> '301'";
 $result = $DBConnect->query($query);
 /* numeric array */
 $row = $result->fetch_array(MYSQLI_NUM);
@@ -287,11 +290,12 @@ $row = $result->fetch_array(MYSQLI_NUM);
 //echo $row[1];
 //$CN = $row[1];
 
-$daNextNo = 1; //forces a 1 if table is completely empty.
+$daNextNo = 10; //forces a 10 if table is completely empty. The first Customers we leave for priority customers eg Stock etc
 $daNextNo = intval($row[0])+1;
 
 if ($daNextNo == 300)
 $daNextNo = $daNextNo + 10;
+
 
 ?>
 
@@ -311,55 +315,55 @@ $daNextNo = $daNextNo + 10;
 			<!--<input type="hidden" id="CustNo"   name="CustNo" value="<?php //echo $daNextNo;?>" /> -->
 			<a href="javascript:document.location.reload();"
 ONMOUSEOVER="window.status='Refresh'; return true">
-<img src="refresh.jpg"
+<img src="refresh.jpg" 
 border="0" /></a></dd>
 		</dl>
 
 		<dl>
 			<dt><label>* Name & VAT No<?php //echo $this->lang->line('cust_fn'); ?>: </label></dt>
 			<!--<dd><input type="text" id="cust_name" id="cust_fn" value="<?php //echo $this->mdl_custs->form_value('cust_name'); ?>" /></dd>-->
-			<dd><input type="text"  id="CustFName"  name="CustFName" /> no ', no: Umlaute(special vowels)  </dd>
+			<dd><input type="text"  id="CustFName"  name="CustFName"  size="44" required /> no ', no: Umlaute(special vowels)  </dd>
 		</dl>
 
 		<dl>
 			<dt><label>*&nbsp;Surname &/or Company Name<?php //echo $this->lang->line('cust_ln'); ?>: </label></dt>
-			<dd><input type="text" id="CustLName" name="CustLName" /></dd>
+			<dd><input type="text" id="CustLName" name="CustLName"  size="44" required /></dd>
 		</dl>
 
 		<dl>
 			<dt><label>*&nbsp;Banking Code Abbreviation Name<?php //echo $this->lang->line('cust_ln'); ?>: </label></dt>
-			<dd><input type="text" id="Abbr" name="Abbr" /> e.g. for Stephan Brandt it is SBr beneficiary payment: <br>SBrMarchADSL R220  preferably less than 4 characters.</dd>
+			<dd><input type="text" id="Abbr" name="Abbr" required /> e.g. for Stephan Brandt it is SBr beneficiary payment: <br>SBrMarchADSL R220  preferably less than 4 characters.</dd>
 		</dl>
 
 
 		<dl>
 			<dt><label>* Email Address<?php //echo $this->lang->line('cust_ln'); ?>: </label>(no spaces inbetween emails)</dt>
-			<dd><input type="text" id="CustEm" name="CustEm" /></dd>
+			<dd><input type="text" id="CustEm" name="CustEm" size="44"/></dd>
 		</dl>
 
 		<dl>
 			<dt><label>&nbsp; Distance <?php //echo $this->lang->line('cust_ln'); ?>: </label></dt>
-			<dd><input type="text" id="CustDi" name="CustDi" value="0"/> km >Indicates how far customer is from your business. </dd>
-			<dd>
+			<dd><input type="text" id="CustDi" name="CustDi" value="0"  size="4"/> km >Indicates how far customer is from your business. </dd>
+			<dd> 
 			</dl>
 Check distance: <a href = "https://maps.google.com/maps?a&q=28+buxton+avenue+cape+town" target=_blank>MAPS</a>
 		<dl>
 
-
+	
 		<dl>
 			<dt></dt>
-			<!--<dd><input type="submit" id="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
+			<!--<dd><input type="submit" id="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
 			<!--<dd><input type="submit" name="btn_submit" value="Submit/Save" onclick="validate('Addcust');return false;" /> -->
 		<!--	<dd><input type='submit' value='Register Now' name='submitR' id='submitR'/>-->
 			<dd><input type='submit' value='Register Now'/>
-
+			
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 			<!--<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
 
 	</div>
- </form>
-
+ </form>						
+			
 <?php
 $SQLstring = "select * from customer order by custNo desc";
 if ($result = $DBConnect->query($SQLstring)) {
@@ -401,7 +405,7 @@ echo "<th>{$row[11]}</th></tr>\n";
 		}
     /* free result set */
     $result->close();
-
+	
 }
 echo "</table>";
 echo "<br><br><br>";
@@ -445,9 +449,10 @@ echo "<th>{$row[11]}</th></tr>\n";
 		}
     /* free result set */
     $result->close();
-
+	
 }
 echo "</table>";
+
 
 ?>
 
