@@ -5,11 +5,11 @@
 
 
 	$page_title = "Select a transaction";
-require_once 'header.php';
-//require_once 'db.php';
-
-require_once 'inc_OnlineStoreDB.php';
-
+	require_once('header.php');	
+//	require_once('db.php');	
+	
+	require_once('inc_OnlineStoreDB.php');	
+	
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -35,8 +35,11 @@ if (mysql_num_rows($result) == 0) {
 
 
 //$query="insert into transaction (TransNo, CustNo, TransDate, Amtpaid, Notes, TMethod, InvNoA, InvNoAincl, InvNoB, InvNoBincl, InvNoC, InvNoCincl, InvNoD, InvNoDincl, InvNoE, InvNoEincl, InvNoF, InvNoFincl, InvNoG, InvNoGincl, InvNoH, InvNoHincl, Priority)
-//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA,
+//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA, 
 //$InvNoAincl, $InvNoB, $InvNoBincl, $InvNoC, $InvNoCincl, $InvNoD, $InvNoDincl, $InvNoE, $InvNoEincl, $InvNoF, $InvNoFincl, $InvNoG, $InvNoGincl, $InvNoH, $InvNoHincl, '$Priority')";
+
+
+
 
 ?>
 <b><font size = "4" type="arial">Edit expenses of a supplier EXPENSES TABLE</b></font>
@@ -45,14 +48,14 @@ if (mysql_num_rows($result) == 0) {
 
 <form name="EditTrans" action="editExp2process.php" method="post">
 loads editExp2process.php
-<select name="mydropdownEC">
+<select name="mydropdownEC" >
 
 <option value="_no_selection_">Select supplier</option>";
 
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -74,7 +77,10 @@ print "<option value='$item1'>$item1";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -88,8 +94,8 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-
-</select></p>
+	
+</select></p>  
 
 Optionally select a category:
 <?php
@@ -115,8 +121,11 @@ if (mysql_num_rows($result) == 0) {
 
 
 //$query="insert into transaction (TransNo, CustNo, TransDate, Amtpaid, Notes, TMethod, InvNoA, InvNoAincl, InvNoB, InvNoBincl, InvNoC, InvNoCincl, InvNoD, InvNoDincl, InvNoE, InvNoEincl, InvNoF, InvNoFincl, InvNoG, InvNoGincl, InvNoH, InvNoHincl, Priority)
-//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA,
+//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA, 
 //$InvNoAincl, $InvNoB, $InvNoBincl, $InvNoC, $InvNoCincl, $InvNoD, $InvNoDincl, $InvNoE, $InvNoEincl, $InvNoF, $InvNoFincl, $InvNoG, $InvNoGincl, $InvNoH, $InvNoHincl, '$Priority')";
+
+
+
 
 ?>
 
@@ -133,7 +142,7 @@ if (mysql_num_rows($result) == 0) {
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -155,7 +164,10 @@ print "<option value='$item1'>$item1";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -169,9 +181,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<br><input type="submit" name="btn_submit" value="Submit selections" />
-
-</select></p>
+<br><input type="submit" name="btn_submit" value="Submit selections" /> 
+	
+</select></p>  
 
 
 </form> end of form<br><br>
@@ -230,7 +242,7 @@ $query = "select distinct category  from expenses order by category";
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -252,7 +264,10 @@ print "<option value='$item1'>$item1";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -266,9 +281,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<br><input type="submit" name="btn_submit" value="Submit selections" />
-
-</select></p>
+<br><input type="submit" name="btn_submit" value="Submit selections" /> 
+	
+</select></p>  
 </form>
 
 
@@ -299,7 +314,7 @@ $query = "select distinct category  from expensesE order by category";
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -321,7 +336,10 @@ print "<option value='$item1'>$item1";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -335,9 +353,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<br><input type="submit" name="btn_submit" value="Submit selections" />
-
-</select></p>
+<br><input type="submit" name="btn_submit" value="Submit selections" /> 
+	
+</select></p>  
 </form>
 
 
@@ -351,7 +369,7 @@ $result->free();
 </br>
 </br>
 
-<form name="EditTrans" action="editExp2processEXPE.php" method="post">
+<form name="EditTrans" action="editExp2processEXPH.php" method="post">
 loads editExp2processEXPH.php
 
 <br>select a category:
@@ -373,7 +391,7 @@ echo $query."<br>";
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -395,7 +413,10 @@ print "<option value='$item1'>$item1";
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
 
 /*    echo $row["TransNo"];//case sensitive!
     echo $row["TransFN"];//case sensitive!
@@ -409,9 +430,9 @@ $result->free();
 /* close connection */
 //$mysqli->close();
 ?>
-<br><input type="submit" name="btn_submit" value="Submit selections" />
-
-</select></p>
+<br><input type="submit" name="btn_submit" value="Submit selections" /> 
+	
+</select></p>  
 </form>
 
 
@@ -460,13 +481,13 @@ while($row = mysql_fetch_array($result)){
 
 <?php
 /*echo "<br>4thWhile:<br><br>";
-while ($row = mysql_fetch_array($result))
-{
+while ($row = mysql_fetch_array($result))  
+{  
 //$var_term;
  foreach($row as $item)
    {
       print "<option value='$item'>$item";
-  print " </option>";
+  print " </option>"; 
  }
 }
 */

@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>event</title>
+	<title>events of selected customer</title>
 <style type="text/css">
 	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
 	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 1300; }
@@ -19,18 +19,18 @@
 </style>
 </head>
 <body>
-<?php require_once 'header.php';?>
+<?php require_once "header.php";?>
 
 <?php
 @session_start();
 if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
 $CustNo = 1; //for main events
-else
+else 
 {
 $CustNo = $_SESSION['CustNo'];
 }
-echo "<h3>event</h3> of CustNo".$CustNo;
-
+echo "<h3>events of selected customer CustNo".$CustNo."</h3>";
+ 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
  * of options that can be used with phpMyEdit. To get information about all
@@ -48,7 +48,7 @@ echo "<h3>event</h3> of CustNo".$CustNo;
  */
 
 // MySQL host name, user name, password, database, and table
-require_once 'phpmyEditdb.php';
+require_once "phpmyEditdb.php";
 
 $opts['tb'] = 'events';
 
@@ -59,11 +59,11 @@ $opts['key'] = 'EventNo';
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('EventNo');
+$opts['sort_field'] = array('-EventNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 225;
+$opts['inc'] = -1;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -108,7 +108,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-
+   
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -179,6 +179,7 @@ $opts['fdd']['Priority'] = array(
   'sort'     => true
 );
 
+
 $opts['fdd']['Destination'] = array(
   'name'     => 'Destination',
   'select'   => 'T',
@@ -186,12 +187,16 @@ $opts['fdd']['Destination'] = array(
   'sort'     => true
 );
 
+
 // Now important call to phpMyEdit
 //require_once 'view_trans_all.php';
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 
-require_once 'inc_OnlineStoreDB.php';
+
+
+
+	require_once('inc_OnlineStoreDB.php');	
 
 @session_start();
 //if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
@@ -213,6 +218,8 @@ if ($resultC = mysqli_query($DBConnect, $queryC)) {
 $item1C = $row["CustNo"];
 $item2C =  $row["CustFN"];
 $item3C = $row["CustLN"];
+
+
 
 print "_".$item1C;
 //print "_CNo: ".$item2C;

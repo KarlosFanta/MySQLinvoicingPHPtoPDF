@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Invoice</title>
+	<title>Profit</title>
 <style type="text/css">
 	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
 	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100%; }
@@ -24,9 +24,9 @@ require_once 'header.php';
 echo "<a href = 'edit_invCQ.php'>edit_invCQ.php</a><br>";
 echo "<a href = 'edit_invCQmin.php'>edit_invCQmin.php</a><br>";
 
-@session_start();
-if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
-echo "<h3>Invoice</h3> of CustNo".$_SESSION['CustNo'];
+//@session_start();
+//if (@$_SESSION['CustNo'] == "")  //works if session was destroyed
+//echo "<h3>Invoice</h3> of CustNo".$_SESSION['CustNo'];
 
 
 /*
@@ -48,16 +48,16 @@ echo "<h3>Invoice</h3> of CustNo".$_SESSION['CustNo'];
 // MySQL host name, user name, password, database, and table
 require_once "phpmyEditdb.php";
 
-$opts['tb'] = 'invoice';
+$opts['tb'] = 'hprofits';
 
 // Name of field which is the unique key
-$opts['key'] = 'InvNo';
+$opts['key'] = 'ProfitNo';
 
 // Type of key field (int/real/string/date etc.)
 $opts['key_type'] = 'int';
 
 // Sorting field(s)
-$opts['sort_field'] = array('-InvNo');
+$opts['sort_field'] = array('-ProfitNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
@@ -142,50 +142,48 @@ appear in generated list. Here are some most used field options documented.
   This is useful for giving more meaning to column values. Multiple
   descriptions fields are also possible. Check documentation for this.
 */
-$yo = $_SESSION['CustNo'];
-echo "CustNo:".$yo." session <br>or GET: ";
+//$yo = $_SESSION['CustNo'];
+//echo "CustNo:".$yo." session <br>or GET: ";
 
-if ($yo == "")
-$yo = @$_GET['CustNo'];
-if(isset($_GET["CustNo"]))
-$yo = @$_GET['CustNo'];
-echo "CustNo:".$yo;
+//if ($yo == "")
+//$yo = @$_GET['CustNo'];
+//echo "CustNo:".$yo;
 
-$opts['filters'] = "CustNo = '$yo'";
+//$opts['filters'] = "CustNo = '$yo'";
 
-$opts['fdd']['InvNo'] = array(
-  'name'     => 'InvNo',
+$opts['fdd']['ProfitNo'] = array(
+  'name'     => 'ProfitNo',
   'select'   => 'T',
   'maxlen'   => 11,
   'sort'     => true
 );
 
-$opts['fdd']['InvDate'] = array(
-  'name'     => 'InvDate',
+$opts['fdd']['RecvdDate'] = array(
+  'name'     => 'RecvdDate',
   'select'   => 'T',
   'maxlen'   => 10,
   'sort'     => true
 );
-$opts['fdd']['Summary'] = array(
-  'name'     => 'Summary',
+$opts['fdd']['ProfitDesc'] = array(
+  'name'     => 'ProfitDesc',
   'select'   => 'T',
   'maxlen'   => 450,
   'sort'     => true
 );
-$opts['fdd']['Draft'] = array(
-  'name'     => 'Draft',
+$opts['fdd']['AccNo'] = array(
+  'name'     => 'AccNo',
   'select'   => 'T',
   'maxlen'   => 6,
   'sort'     => true
 );
-$opts['fdd']['TotAmt'] = array(
-  'name'     => 'TotAmt',
+$opts['fdd']['Amt'] = array(
+  'name'     => 'Amt',
   'select'   => 'T',
   'maxlen'   => 12,
   'sort'     => true
 );
-$opts['fdd']['SDR'] = array(
-  'name'     => 'SDR',
+$opts['fdd']['Notes'] = array(
+  'name'     => 'Notes',
   'select'   => 'T',
   'maxlen'   => 196605,
   'textarea' => array(
@@ -194,25 +192,25 @@ $opts['fdd']['SDR'] = array(
   'sort'     => true
 );
 
-$opts['fdd']['InvPdStatus'] = array(
-  'name'     => 'InvPdStatus',
+$opts['fdd']['CustNo'] = array(
+  'name'     => 'CustNo',
   'select'   => 'T',
   'maxlen'   => 300,
   'sort'     => true
 );
-$opts['fdd']['D1'] = array(
-  'name'     => 'D1',
+$opts['fdd']['SupCode'] = array(
+  'name'     => 'SupCode',
   'select'   => 'T',
   'maxlen'   => 300,
   'sort'     => true
 );
-$opts['fdd']['Q1'] = array(
-  'name'     => 'Q1',
+$opts['fdd']['Category'] = array(
+  'name'     => 'Category',
   'select'   => 'T',
   'maxlen'   => 12,
   'sort'     => true
 );
-$opts['fdd']['ex1'] = array(
+/*$opts['fdd']['ex1'] = array(
   'name'     => 'Ex1',
   'select'   => 'T',
   'maxlen'   => 12,
@@ -344,12 +342,12 @@ $opts['fdd']['ex8'] = array(
   'maxlen'   => 12,
   'sort'     => true
 );
-
+*/
 // Now important call to phpMyEdit
 require_once 'phpMyEdit.class.php';
 new phpMyEdit($opts);
 echo"<br><br>";
-include "view_inv_by_cust.php";
+//include "view_inv_by_cust.php";
 ?>
 
 

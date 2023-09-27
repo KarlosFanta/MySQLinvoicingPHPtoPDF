@@ -1,8 +1,8 @@
 <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include 'header.php';
+	include('header.php');	
 //oracle: $conn = oci_connect("system", "1234", "localhost/XE");
-require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
+require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
 ?>
 
 
@@ -71,11 +71,11 @@ function changeV($v1)
 //$v1 = htmlentities( preg_replace( $html_reg, '', $v1 ) );
 //echo "<br>after htmlent:".$v1."<br><br><br>";
 $v1 = preg_replace("/'/","_",$v1);
-$v1 = preg_replace("/â€˜/","_",$v1);
-$v1 = preg_replace("/â€™/","_",$v1);
+$v1 = preg_replace("/‘/","_",$v1);
+$v1 = preg_replace("/’/","_",$v1);
 $v1 = preg_replace("/&/","and",$v1);
 $v1 = preg_replace("/,/","+",$v1);
-$v1 = preg_replace("/â€¦/",".",$v1);
+$v1 = preg_replace("/…/",".",$v1);
 
 $v1 = preg_replace("/&nbsp;/","_",$v1);
 $v1 = preg_replace("/ /","_",$v1);
@@ -89,6 +89,7 @@ $v1 = str_replace(" ","_",$v1);
 $v1 = str_replace("&nbsp;","_",$v1);
 
 //echo "<br>afterstreplacec:".$v1."<br><br><br>";
+
 
 $old_pattern = array("/[^a-zA-Z0-9]/", "/_+/", "/_$/");
 $new_pattern = array("_", "_", "");
@@ -110,12 +111,13 @@ $InvNoG = changeV($InvNoG);
 $InvNoH = changeV($InvNoH);
 $Priority = changeV($Priority);
 
+
 echo "Thank you for changing the transaction's details: ".$Trans_No." ".$CustNo ." ".$TransDate .".<br>"  ;
 
 $Trans_NoInt = intval($Trans_No);
-$query="update transaction set CustNo = '$CustNo', TransDate ='$TransDate', AmtPaid = '$AmtPaid',
-Notes = '$Notes', TMethod = '$TMethod',
-CustSDR = '$CustSDR',
+$query="update transaction set CustNo = '$CustNo', TransDate ='$TransDate', AmtPaid = '$AmtPaid', 
+Notes = '$Notes', TMethod = '$TMethod', 
+CustSDR = '$CustSDR', 
 InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
 InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
 InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
@@ -124,7 +126,7 @@ InvNoE = '$InvNoE', InvNoEincl = '$InvNoEincl' ,
 InvNoF = '$InvNoF', InvNoFincl = '$InvNoFincl' ,
 InvNoG = '$InvNoG', InvNoGincl = '$InvNoGincl' ,
 InvNoH = '$InvNoH', InvNoHincl = '$InvNoHincl' ,
-Priority = '$Priority'
+Priority = '$Priority' 
 where TransNo = $Trans_NoInt";
 //oracle: $query="update transaction set Transfn = '$CustNo', Transln ='$TransDate', Transtel = '$AmtPaid', Transcell= '$Notes', Transemail = '$TMethod', Transaddr = '$InvNoA', distance = '$InvNoAincl' where Transno = :Trans_NoInt";
 //echo '</br></br></br></br></br></br></br>';
@@ -144,6 +146,9 @@ echo " <a href = 'http://localhost/phpMyAdmin-3.5.2-english/index.php?db=kc&tabl
 echo ";<br>";
 
 echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
+
+
+
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -186,7 +191,7 @@ echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 <form name="sdd" action="edit_trans_CustProcessC.php" method="post">
 
 
-<input type="submit" name="btn_submit" value="Update next transaction" />
+<input type="submit" name="btn_submit" value="Update next transaction" /> 
 </form>
 <!--
 //$query="insert into transaction values(5, 'Jn', 'VM', '65', '084', 'johnATv', 'USA', 55)";
@@ -256,10 +261,11 @@ $InvNoH = 0;
 $InvNoHincl = 0;
 $ProofNo = '_';
 
-//$CustNo"
+//$CustNo" 
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
+
 
 */
 $ProofToPay ='_';
@@ -289,6 +295,9 @@ $InvNoH = $_POST['InvNoH'];
 $InvNoHincl = $_POST['InvNoHincl'];
 $Priority = $_POST['Priority'];
 
+
+
+
 //$Trans_No = $_POST['TransNo'];
 //$CustNo = $_POST['CustNo'];
 if ($CustNo == 0)
@@ -305,7 +314,7 @@ $resultC->free();
 }
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
-
+	
 $D1 = $_POST['TransDate'];
 $D2 = explode("/", $D1);
 //echo $D1[2]."____";
@@ -318,9 +327,12 @@ $D2 = explode("/", $D1);
 
 //$TransDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $TransDate;
+//echo $TransDate;	 
+
 
 $CustSDR = $_POST['CustSDR'];
+
+
 
 $AmtPaid = $_POST['AmtPaid'];
 $Notes = $_POST['Notes'];
@@ -333,7 +345,7 @@ printf ("%s\n",$charset);
 //$Notes = htmlspecialchars("$Notes", ENT_QUOTES);
 
 //header( "Content-Type: text/html; charset=utf-8" );
-/*$body = "begrÃ¼ÃŸen zu dÃ¼rfen";
+/*$body = "begrüßen zu dürfen";
 $g = "ben zu fen";
 echo htmlentities( $body );
 echo htmlentities( $g );
@@ -344,24 +356,24 @@ htmlXentities($Notes);
 htmlX_entity_decode($Notes);
 */
 $Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;
+$EEmail = $Notes;  
 
 $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF-8"   WORKS LIKE A CHARM 2014
 
 
 
-$von = array("Ã¤","Ã¶","Ã¼","ÃŸ","Ã„","Ã–","Ãœ"," ","Ã©","\xA0");
+$von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);
-$CustSDR = str_replace($von, $zu, $CustSDR);
+$Notes = str_replace($von, $zu, $Notes);  
+$CustSDR = str_replace($von, $zu, $CustSDR);  
 //echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes);
-$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR);
-//dbl  backsl\and&hash# space (){}[]?//\\$%Ã¶
-//$Notes = preg_replace("/Ã¶/","\xF6",$Notes); not working
-//$Notes = preg_replace("/Ã¶/","oe",$Notes); //WORKS!
-$CustSDR = preg_replace("/Ã¶/","oe",$CustSDR); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes);
+$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
+$CustSDR = mysqli_real_escape_string($DBConnect, $CustSDR); 
+//dbl  backsl\and&hash# space (){}[]?//\\$%ö
+//$Notes = preg_replace("/ö/","\xF6",$Notes); not working
+//$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
+$CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
+//iconv("UTF-8", "ISO-8859-1", $Notes); 
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -377,16 +389,25 @@ $Notes = str_replace(' ', '_', $Notes);
 $AmtPaid = preg_replace("/,/","",$AmtPaid);
 $CustSDR = preg_replace("/,/","",$CustSDR);
 
+
 $Notes = mysqli_real_escape_string($DBConnect, $Notes);
 //echo " notes:".$Notes ;
 //echo " CustSSDR:".$CustSDR ;
 //echo "TransferMethod:".$TMethod." ";
 
+
+
+
 //echo "Thank you for adding the transaction's details: ".$Trans_No." ".$CustNo ." ".$D1 ."."  ;
 
 $Trans_NoInt = intval($Trans_No);
 
+
+
 echo "pppProofNo:".$ProofNo;
+
+
+
 
 /*
 
@@ -452,7 +473,7 @@ print "_".$item10;
 }
 $result->free();
 }
-
+	
 
 
 
@@ -469,10 +490,12 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
+
 if ($InvNoA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE InvNo = $InvNoA";
+
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -691,6 +714,8 @@ $result->free();
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
+
+
 $ProofInvA= "";
 $ProofDate= "";
 $ProofAmt = "";
@@ -763,8 +788,9 @@ $b2 = "Transaction Number: ". $Trans_No;
 $b3 = "Paid by: ". $CustLN.", ".$CustFN;
 $b4 = "Amount: R". $AmtPaid;
 
+
 $b5b = "Customer reference: ".$CustSDR;
-$b6 = "Received by: CompanyName ";
+$b6 = "Received by: Karl ";
 $b7 = "Payment method: ". $TMethod ;
 echo "proofnno: >".$ProofNo. "< ";
 if ($ProofNo == '')
@@ -785,15 +811,15 @@ $b77 = "Related Proof Of Payment: ". $ProofToPay . " &nbsp;&nbsp;[ ".$ProofInvA 
 else
 $b77 = "";
 $b8 = "Thank you";
-$b9 = "CompanyName";
-$ba = "CompanyLogo1";
-$bb = "CompanyLogo2";
-$bc = "CompanyWebsite";
-$bd = "CompanyContactNos)";
-$be = "Fax: FaxNo";
-$bf = "Skype: SkypeName";
-$bg = "Sales terms: TermsWebpage";
-$bh = "Support: SupportWebpage";
+$b9 = "Karl";
+$ba = "PC and Notebook Sales and Advanced I.T. Support";
+$bb = "Karl's Fast Internet and Webhosting Solutions";
+$bc = "www.kconnect.co.za";
+$bd = "Email: cyberkarl3@gmail.com";
+$be = "Fax: 0865492415";
+$bf = "Skype: cyberkarl3";
+$bg = "Sales terms: www.k-connect.co.za/terms";
+$bh = "Internet and Email Support: www.karl.co.za/support";
 echo "<br><br>";
 ?><font size = 4><b>
 <a href="mailto:<?php echo $CustEmail ?>?subject=<?php echo $TMethod ?> Receipt&body=
@@ -814,9 +840,9 @@ Click to EMail Receipt to customer <?php echo $CustFN." ".$CustLN; ?></a><br>
 <?php
 
 $file = "FileWriting/bkp.php";
-include 'FileWriting/FileWriting.php';
+include("FileWriting/FileWriting.php");
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";

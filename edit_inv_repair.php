@@ -1,10 +1,8 @@
 <html>
 
-
 <head>
 
-<title>Edit Invoice ProcessECHANGE</title>
-<meta charset="UTF-8">
+<title>Edit Invoice Process</title>
 
 <script type="text/javascript">
 
@@ -226,11 +224,11 @@ function calc()
 </head>
 <body>
 
-<?php	//this is "edit_inv_processECHANGE.php"
+<?php	//this is "edit_inv_process.php"
 	require_once ('inc_OnlineStoreDB.php');//mysqli connection and databse selection
 ?>
 
-<form name="EditInv" onsubmit="return formValidator();" action="edit_inv_process_lastCHANGE.php" method="post" >
+<form name="EditInv" onsubmit="return formValidator();" action="edit_inv_process_lastR.php" method="post" >
 
 
 <?php
@@ -296,18 +294,24 @@ if ($result = mysqli_query($DBConnect, $query)) {
 
 
  		echo "<dl>";
-			echo "<dt><label>Old InvoiceNumber: <input type='text' name='InvNo'  value=";
+			echo "<dt><label>* invoice AutoNumber:</label>Invoice Number can only be changed using phpMyAdmin</dt>";
+			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+			echo "<dd><input type='text' name='InvNo'  value=";
+			//echo $row[0];
 			echo $row['InvNo'];
 			//echo $objResult[0];
 			//echo 'kkk'.$objResult['InvNo'];
-			echo "> ";
+			echo ">
+
+
+
+Type: (Quote/order/Draft invoice/performa Invoice:)
+<input type='text' name='Type'  value='".$row['Type']."'>
+						</dd>";
 			
-			echo "<br> change to new InvoiceNumber:<input type='text' name='InvNoNEW'  value=";
-			echo "> </dd>";
 			
-echo "	<br>		<input type='submit' name='btn_submit' value='Submit/Save' > ";
 			
-					echo "<br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 //			<?php
 			
 			$CustInt = $row['CustNo'];
@@ -352,7 +356,7 @@ strtr($newfldr, array('\\' => '/')) ;
 		echo "</dl>";
 
  		echo "<dl>";
-			echo "<dt><label>* CustNo:</label></dt>";
+			echo "<dt><label>* CustNo:</label><b>  NB Change the SDRs below as well!!!!</b></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<dd><input type='text' name='CustNo' value=";
 			echo $row['CustNo'];
@@ -384,20 +388,12 @@ strtr($newfldr, array('\\' => '/')) ;
 
 
  		echo "<dl>";
-			echo "<dt><label>Summary</label></dt>";
+			echo "<dt><label>Summary<b>  NB Change the SDRs below as well!!!!</b></label></dt>";
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			echo "<dd><input type='text' name='Summary' size='45'  value=";
 			echo strtr($row['Summary'], array(' ' => '&nbsp;')) ;
 
 		//	echo $row['Summary'];
-			echo "> </dd>";
-		echo "</dl>";
-		echo "<dl>";
-			echo "<dt><label><b>Total incl VAT</b></label> TotAmt</dt>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<dd>R<input type='text' name='TotAmt' size='45'  value=";
-			echo strtr($row['TotAmt'], array(' ' => '&nbsp;')) ;
-//			echo $row['TotAmt'];
 			echo "> </dd>";
 		echo "</dl>";
 
@@ -432,6 +428,15 @@ strtr($newfldr, array('\\' => '/')) ;
 			echo ">  maxtotlengthForSDR is30chars</dd>";
 		echo "</dl>";
 
+		echo "<dl>";
+		$mm = number_format($row['TotAmt']/1.15, 3, '.', ' ');
+			echo "<dt><label><b>Total incl VAT</b></label> TotAmt  (R $mm ex VAT)</dt>";
+			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
+			echo "<dd>R<input type='text' name='TotAmt' size='45'  value=";
+			echo strtr($row['TotAmt'], array(' ' => '&nbsp;')) ;
+//			echo $row['TotAmt'];
+			echo "> </dd>";
+		echo "</dl>";
 
 			
 			
@@ -575,186 +580,7 @@ echo "		</TH>
 	";
 }	
 	
-/*	echo "<br>yo
-	
-	
-	
-	
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D2' size='45'  value=";
-			print $row['D2'];
-			if ($row['D2'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q2'  size='5' value=";
-			print $row['Q2'];
-			if ($row['Q2'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex2'  size='5' value=";
-			echo $row["ex2"];
-			if ($row['ex2'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
 
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D3' size='45'  value=";
-			echo $row['D3'];
-			 if ($row['D3'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q3' size='5'  value=";
-			echo $row['Q3'];
-			 if ($row['Q3'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex3'  size='5' value=";
-			echo $row["ex3"];
-			 if ($row['ex3'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D4' size='45'  value=";
-			echo $row['D4'];
-			 if ($row['D4'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q4' size='5' value=";
-			echo $row['Q4'];
-			 if ($row['Q4'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex4'  size='5' value=";
-			echo $row["ex4"];
-			 if ($row['ex4'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D5' size='45'  value=";
-			echo $row['D5'];
-			 if ($row['D5'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q5'  size='5' value=";
-			echo $row['Q5'];
-			 if ($row['Q5'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex5'  size='5' value=";
-			echo $row["ex5"];
-			 if ($row['ex5'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D6' size='45'  value=";
-			echo $row['D6'];
-			 if ($row['D6'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q6'  size='5' value=";
-			echo $row['Q6'];
-			 if ($row['Q6'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex6'  size='5'   value=";
-			echo $row["ex6"];
-			 if ($row['ex6'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D7' size='45'  value=";
-			echo $row['D7'];
-			 if ($row['D7'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q7'  size='5' value=";
-			echo $row['Q7'];
-			 if ($row['Q7'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex7'  size='5' value=";
-			echo $row["ex7"];
-			 if ($row['ex7'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-
-	<TR>
-		<TH>";
-			echo "<input type='text' name='D8' size='45'  value=";
-			echo $row['D8'];
-			 if ($row['D8'] == "")
-			echo "0";
-			echo ">
-		</TH>
-		<TH >";
-			echo "<input type='text' name='Q8'  size='5' value=";
-			echo $row['Q8'];
-			 if ($row['Q8'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-		<TH ><label>";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='ex8' size='5'  value=";
-			echo $row["ex8"];
-			 if ($row['ex8'] == "")
-			echo "0";
-			echo "> 
-		</TH>
-	</TR>
-*/
 
 
 	
@@ -771,28 +597,19 @@ echo "</table>";
 	
 	
 	
-	//echo "CustEmail: ".$CustEmail;
-echo "<input type='hidden' name='CustEmail' value=";
-			echo $CustEmail;
-			echo ">";
-	
-	
-	
-	
-	
+//echo "<input type='hidden' CustEmail; NB If CustNo changes, then CustEmail also changes."
+
 	
 	?>
 
-	
-	
-	
+
 	
 	
 <div>
 		<dl>
 			<dt></dt>
 			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
-			<dd><input type="submit" name="btn_submit" value="Submit/Save" > 
+			<dd><input type="submit" name="btn_submit" value="Submit/Save (After submitting you may change it to a quote)" > 
 			
 			
 		</dl>

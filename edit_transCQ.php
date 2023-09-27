@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>transaction</title>
+	<title>Customer's Transactions</title>
 <style type="text/css">
 	hr.pme-hr		     { border: 0px solid; padding: 0px; margin: 0px; border-top-width: 1px; height: 1px; }
 	table.pme-main 	     { border: #004d9c 1px solid; border-collapse: collapse; border-spacing: 0px; width: 100; }
@@ -22,7 +22,7 @@
 NB Click on sort by InvNoA and check if numbers ascend or descend correctly<br>
 <?php
 require_once 'header.php';
-require_once 'monthtables.php';
+//require_once 'monthtables.php';
 //echo "<h3>transaction</h3>";
 echo "<a href = 'edit_transCQ.php'>edit_transCQ.php</a><br>";
 echo "<a href = 'edit_transCQmin.php'>edit_transCQmin.php</a><br>";
@@ -33,10 +33,23 @@ $CustNo = 1;
 
 //echo $_SESSION['CustNo'];
 
+
 	if (isset($_SESSION['CustNo']))
 $CustNo = $_SESSION['CustNo'];
-echo "CustNo:".$CustNo;
+
+if(isset($_GET["CustNo"]))
+{
+	$CustNo  = $_GET['CustNo'];
+//	echo "YES GETTING <a href = 'acceptCustNo.php?CustNo=$CustInt' target='_blank'>Accept CustNo into session_</a>";
+//	$_SESSION['CustNo'] = $CustInt ; // force into session
+}
+
+
+
+
+echo "<b><font size = 3 face = arial>Customer's Transactions CustNo:".$CustNo."</b></font>";
 $opts['filters'] = "CustNo = '$CustNo'";
+
 
 /*
  * IMPORTANT NOTE: This generated file contains only a subset of huge amount
@@ -55,7 +68,7 @@ $opts['filters'] = "CustNo = '$CustNo'";
  */
 
 // MySQL host name, user name, password, database, and table
-require_once 'phpmyEditdb.php';
+require_once "phpmyEditdb.php";
 
 $opts['tb'] = 'transaction';
 
@@ -70,7 +83,7 @@ $opts['sort_field'] = array('TransNo');
 
 // Number of records to display on the screen
 // Value of -1 lists all records in a table
-$opts['inc'] = 105;
+$opts['inc'] = 1005;
 
 // Options you wish to give the users
 // A - add,  C - change, P - copy, V - view, D - delete,
@@ -115,7 +128,7 @@ $opts['filters'] = "PMEtable0.sessions_count > 200";
 */
 
 /* Field definitions
-
+   
 Fields will be displayed left to right on the screen in the order in which they
 appear in generated list. Here are some most used field options documented.
 
@@ -165,11 +178,11 @@ $opts['fdd']['TransDate'] = array(
   'maxlen'   => 10,
 //  'default'  => '0000-00-00',
   'sort'     => true,
-
+  
 //'datemask' => date('d-m-Y')
 'datemask' => 'd/m/Y'
 //'datemask' => 'r'
-
+  
 );
 
 $opts['fdd']['TransNo'] = array(
@@ -178,6 +191,7 @@ $opts['fdd']['TransNo'] = array(
   'maxlen'   => 11,
   'sort'     => true
 );
+
 
 $opts['fdd']['AmtPaid'] = array(
   'name'     => 'AmtPaid',

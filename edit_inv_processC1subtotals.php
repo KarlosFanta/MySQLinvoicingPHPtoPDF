@@ -60,7 +60,7 @@ $item3C = $rowC["CustLN"];
 
 
 
-<form name="EditInv" action="edit_inv_process.php" method="post">
+<form name="EditInv" action="edit_inv_processsubtotals.php" method="post">
 
 <select name="mydropdownEC" onchange='this.form.submit()'>
 
@@ -121,7 +121,7 @@ $resultI->free();
 </form>
 <br>
 or:<br>
-<form name="in2" action="edit_inv_process.php" method="post">
+<form name="in2" action="edit_inv_processsubtotals.php" method="post">
 <input type="text" name="mydropdownEC" value="" /> 
 <input type="submit" name="btnIO" value="Type in invoice number" /> 
 </form>

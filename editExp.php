@@ -3,11 +3,11 @@
 
 
 	$page_title = "Select a transaction";
-require_once 'header.php';
-//require_once 'db.php';
-
-require_once 'inc_OnlineStoreDB.php';
-
+	require_once('header.php');	
+//	require_once('db.php');	
+	
+	require_once('inc_OnlineStoreDB.php');	
+	
 	//PROCEDURAL
 	//$link = @mysqli_connect('localhost', 'root', 'Itsmeagain007#', 'kc');
 
@@ -33,9 +33,10 @@ if (mysql_num_rows($result) == 0) {
 
 
 //$query="insert into transaction (TransNo, CustNo, TransDate, Amtpaid, Notes, TMethod, InvNoA, InvNoAincl, InvNoB, InvNoBincl, InvNoC, InvNoCincl, InvNoD, InvNoDincl, InvNoE, InvNoEincl, InvNoF, InvNoFincl, InvNoG, InvNoGincl, InvNoH, InvNoHincl, Priority)
-//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA,
+//values('$TransNo', '$CustNo', '$TransDate', '$AmtPaid', '$Notes', '$TMethod', $InvNoA, 
 //$InvNoAincl, $InvNoB, $InvNoBincl, $InvNoC, $InvNoCincl, $InvNoD, $InvNoDincl, $InvNoE, $InvNoEincl, $InvNoF, $InvNoFincl, $InvNoG, $InvNoGincl, $InvNoH, $InvNoHincl, '$Priority')";
 echo "<form name='EditExp' action='editExpProcess.php' method='post'>";
+
 
 $ExpNo = '';
 $ExpNo = $_GET['ExpNo'];
@@ -89,8 +90,9 @@ echo " rows: $row_cnt"; //counter
 //echo "<input type='text' name='TN' value='".$TN."' >";
 echo "<input type='hidden' name='TN' value='".$TN."' >";
 
+
 ?>
-<input type="submit" name="btn_submit" value="Update this expense" />
+<input type="submit" name="btn_submit" value="Update this expense" /> 
 </form>
 
 <br><br>
@@ -116,7 +118,7 @@ echo "<input type='hidden' name='TN' value='".$TN."' >";
 <?php
 echo "<br>firstWhile:<br><br>";
 //print "<option value='$item'>$item";
-  //print " </option>";
+  //print " </option>"; 
 //while ($row = mysql_fetch_assoc($result)) {
 /*if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
@@ -138,7 +140,11 @@ print "_".$item7;
 //print "<option value='$item2'>$item2";
 //print "<option value='$item3'>$item3";
 
-print " </option>";
+
+
+
+print " </option>"; 
+
 
 	}
 $result->free();
@@ -148,9 +154,9 @@ $result->free();
  */
 //$mysqli->close();
 ?>
-<input type="submit" name="btn_submit" value="Edit selected expense" />
-
-</select></p>
+<input type="submit" name="btn_submit" value="Edit selected expense" /> 
+	
+</select></p>  
 
 
 

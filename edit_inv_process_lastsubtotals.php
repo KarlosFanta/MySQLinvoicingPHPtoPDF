@@ -611,7 +611,8 @@ echo "<br>TAmt: without useless cent".$TAmt;
 
 ?>
 
-<form name="PL" action="PDF/tcpdf/examples/PDFeditInv.php" method="post">
+<form name="PL" action="PDF/tcpdf/examples/PDF.php" method="post">
+<!--PDF/tcpdf/examples/PDF.php-->
 
 <?php
 $queryC = "SELECT L1, CustEmail FROM customer WHERE CustNo = $CustNo" ;

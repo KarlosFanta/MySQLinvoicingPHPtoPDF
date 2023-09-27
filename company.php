@@ -8,31 +8,37 @@
 <body>
 
 <?php	$page_title = "Company Details";
-require_once 'header.php';
+	require_once('header.php');	
 ?>
 
 
-My BBM: 3333333<br />
+My BBM: 28485E65<br />
 <br />
-NB: For cash payments please make sure you receive a signed receipt.<br />
+(For laptop repairs or virus removal, please bring power supply and CDs and Windows/Mac password.)<br />
+(The customer is responsible for backing up all data.<br />
+NB: Liquid in your laptop can cause serious damage! Shutdown & remove battery immediately and have the laptop serviced.)<br />
+NB: For cash payments please make sure you have a receipt with my signature.<br />
 <br />
-
+Important message to all Outlook Express users:<br />
+http://karl.co.za/outlookexpress/<br />
+<br />
+Backup devices info:<br />
+www.karl.co.za/safelyremove/v
 <br />
 Thank you<br />
-CompanyName<br />
-CompanyLogo<br />
-CompanyLogo2<br />
+Karl<br />
+PC and Notebook Sales, Repairs  & Advanced I.T. Support<br />
+Karl's Fast Internet and Webhosting Solutions<br />
 <br />
-VAT no CopmanyVATnumber <br />
-CompanyWebsite<br />
-Skype: CompanySkype<br />
-Email:CompanyEMail<br />
-Cell: CompanyCell<br />
-Tel: CompanyTel<br />
-Fax: CompanyFax<br />
+VAT no  4390243923<br />
+www.karl.co.za<br />
+www.kconnect.net<br />
+Skype: cyberkarl3<br />
+Email: cyberkarl3@gmail.com<br />
+Fax: 086 549 2415<br />
 <br />
-TermsWebPage<br />
-SupportWebpage<br />
+ADSL & Internet Terms: www.k-connect.co.za/terms<br />
+Internet & Email Support: www.karl.co.za/support<br />
 <br />
 <br />
 

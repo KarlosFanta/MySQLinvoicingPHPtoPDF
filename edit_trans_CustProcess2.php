@@ -179,7 +179,7 @@ echo "<BR />Account No ".$TBLrow."</BR>"   ;
 
 include ("viewUnReconciledProofsByCust.php");
 echo "<br>";
-include ("view_trans_by_custUNDERorOVERPAID.php");
+include ("view_trans_by_custUNDERorOVERPAID2.php");
 echo "<br>";
 include ("view_trans_by_custUNRECONCILED.php");
 
@@ -342,13 +342,13 @@ include ("view_inv_by_custADV.php");
 
 
 
-/*   this one has issues with addTransMulti2.php
+
 echo "<br><table border = 0><tr><th>";
 if ($un == 'Y')
 echo "All invoices total to: </th><th align=left>R".number_format($Invsummm, 2, '.', ' ')."</th></tr>";
 
-//else   -- does not work woth addTransMulti2.php
-//echo "All unpaid invoices total to: </th><th align=left>R".number_format($UnpaidInvsummm, 2, '.', ' ')."</th></tr>";
+else
+echo "All unpaid invoices total to: </th><th align=left>R".number_format($UnpaidInvsummm, 2, '.', ' ')."</th></tr>";
 
 
 
@@ -357,9 +357,9 @@ echo "All invoices total to: </th><th align=left>R".number_format($Invsummm, 2, 
 
 if ($un == 'Y')
 echo "<tr><th>All transactions total to: </th><th align=right>R".number_format($yo, 2, '.', ' ')."</th></tr>";
-//else
-//echo "<tr><th>All Unreconciled transactions Paid totals to: </th><th align=right>R".number_format($summm, 2, '.', ' ')."</th></tr>";
-
+else
+echo "<tr><th>All Unreconciled transactions Paid totals to: </th><th align=right>R".number_format($summm, 2, '.', ' ')."</th></tr>";
+//echo "<tr><th>All transactions total to: </th><th align=right>R".number_format($yo, 2, '.', ' ')."</th></tr>";
 
 
 
@@ -385,7 +385,7 @@ else
 echo "<tr><th><b>Total Amount owing to you: </th><th align=right>R".number_format(-($UnpaidInvsummm - $summm), 2, '.', ' ')."</b><BR />";
 echo "</th></tr></table>";
 }
-*/
+
 
 echo "stmEmail";
 include "stmEmail.php";
@@ -411,7 +411,7 @@ NB: For cash payments please make sure you have a receipt with my signature.<BR 
  <BR />
 <BR />
 (EFT) Banking details:<BR />
- Account holder: KARL<BR />
+ Account holder: KARl<BR />
  Bank: Nedbank Limited(/Nedcor)<BR />
  Account Number: 1230583114<BR />
  Branch No: 198765(universal)<BR />

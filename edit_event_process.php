@@ -1,7 +1,7 @@
 <?php	//this is "edit_event_CustProcessC2.php"
  $page_title = "You seleted a eventomer";
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+	require_once('header.php');	
+	require_once("inc_OnlineStoreDB.php");
 
 ?>
 <form name="Edit_event_process" action="edit_event_process_last.php" method="post">
@@ -80,6 +80,10 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo "> </dd>";
 		echo "</th>";
 
+
+
+
+
  	//	echo "<th>";
 	//		echo "<label>CustNo<br></label>";
 			//     <!--<input type="text" name="event_name" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -89,6 +93,10 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 //			echo "</dd>";
 //		echo "</th>";
 
+
+
+
+
  		echo "<th>";
 			echo "<label>event Date</label>:";
 			//     <!--<input type="text" name="event_name" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -97,6 +105,15 @@ if ($result = mysqli_query($DBConnect, $SQLString)) {
 			echo "> ";
 		//echo "</th>";
 
+
+
+ 
+
+
+
+		
+		
+		
  		//echo "<th>";
 			echo "<label>Priority</label>:";
 			//     <!--<input type="text" name="Priority" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -105,6 +122,7 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 					//	echo $row["Priority"];
 			echo "> </dd>";
 		//echo "</th> ";
+
 
 /*
  		echo "<th>";
@@ -122,6 +140,10 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
+
+
+
+
  		echo "<th>";
 			echo "<label>InvNoD</label>:";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -136,6 +158,8 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo $row["InvNoDincl"];
 			echo "> </dd>";
 		echo "</th> ";
+
+
 
  		echo "<th>";
 			echo "<label>InvNoE</label>:";
@@ -152,6 +176,8 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
+
+
  		echo "<th>";
 			echo "<label>InvNoF</label>:";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -167,6 +193,7 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
+
  		echo "<th>";
 			echo "<label>InvNoG</label>:";
 			//     <!--<input type="text" name="InvNo" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -181,6 +208,8 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo $row["InvNoGincl"];
 			echo "> </dd>";
 		echo "</th> ";
+
+
 
  		echo "<th>";
 			echo "<label>InvNoH</label>:";
@@ -214,6 +243,8 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th> ";
 
+
+
 		echo "<th>";
 			echo "<label>ENotes</label>:";
 			//     <!--<input type="text" name="event_name" id="event_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
@@ -223,9 +254,15 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 			echo "> </dd>";
 		echo "</th>";
 
+
+		
+
+
+		
+		
 		//$objResult;
  }
-
+ 
 }
 		echo "</tr> ";
 		echo "</table> ";
@@ -235,9 +272,9 @@ echo strtr($row['Priority'], array(' ' => '&nbsp;')) ;
 <div>
 		<dl>
 			</dt>
-			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
-			<input type="submit" name="btn_submit" value="Submit/Save" />
-
+			<!--<input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<input type="submit" name="btn_submit" value="Submit/Save" /> 
+			
 			<!--<input type="submit" name="btn_cancel" value="<?php //echo $this->lang->line('cancel'); ?>" /></dd>-->
 <!--			<input type="reset" name="btn_reset" value="Cancel/Reset" /></dd>-->
 		</dl>
@@ -298,14 +335,16 @@ echo "<th>InvNoH incl VAT</th>\n";
 
 echo "<th>Priority</th></tr>\n";
 
+
 echo "</table>";
 //echo "R".$yo."<br>";
 */
-?>
+?> 
 <!--<b><br><font size = "4" type="arial">Customer's Invoices</b></font>
 </br>-->
 <?php
 //include ("view_inv_by_cust.php");
+
 
 /*
 $SQLStringI = "select * from invoice where CustNo = $CustInt";
@@ -358,9 +397,10 @@ echo "<th>{$row[9]}</th>\n";
 echo "</tr>\n";
 		}
     $result->close();
-
+	
 }
 echo "</table>";
+
 
 */
 
@@ -371,6 +411,10 @@ include ("view_event_by_cust.php");
 $indesc = 1;
 $yo = 1;
 include ("view_inv_by_cust.php");
+
+
+
+
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All events total to: R".$yo."<br>";
@@ -384,7 +428,7 @@ alert('$message');
 </SCRIPT>";
 
 */
-?>
+?> 
 
 
 

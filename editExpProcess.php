@@ -1,7 +1,7 @@
-<?php
+<?php	
 
-	include 'header.php';
-require_once 'inc_OnlineStoreDB.php';//mysql connection and database selection
+	include('header.php');	
+require_once('inc_OnlineStoreDB.php');//mysql connection and database selection
 
 
 echo "Doublecheck what the expense was:<br>";
@@ -18,6 +18,9 @@ $PurchDate ='';
 $ProdCostExVAT ='';
 $TN = 'expenses';
 
+
+
+
 $ExpNo = $_POST['ExpNo'];
 $CustNo = $_POST['CustNo'];
 $InvNo = $_POST['InvNo'];
@@ -29,6 +32,8 @@ $PurchDate = $_POST['PurchDate'];
 $Notes = $_POST['Notes'];
 $ProdCostExVAT = $_POST['ProdCostExVAT'];
 $TN = @$_POST['TN'];
+
+
 
 $Equery = "select * from $TN where ExpNo = $ExpNo";
 echo $Equery;
@@ -68,6 +73,8 @@ mysqli_free_result($resultE);
 
 echo "</table>";
 
+
+
 $query="update $TN set InvNo = '$InvNo', CustNo = '$CustNo',Category = '$Category',ExpDesc = '$ExpDesc',SupCode = '$SupCode',SerialNo = '$SerialNo',Notes = '$Notes',PurchDate = '$PurchDate' , ProdCostExVAT = '$ProdCostExVAT' where ExpNo = $ExpNo";
 
 mysqli_query($DBConnect, $query);
@@ -81,9 +88,13 @@ echo " <a href = 'http://localhost/phpmyadmin/index.php?db=kc&table=expenses&whe
  }else
  echo "<font size = 4>Update SUCCESS!</font>";
 
+
 echo ";<br>";
 
 echo "<a href = 'view_expenses_all.php'>view_expenses_all.php</a></a><br>";
+
+
+
 
 echo '</br>';echo '</br>';
 //php to sql does not understand semicolon. remove the semicolon!!!
@@ -119,6 +130,14 @@ $result->free();
 }	echo "<br>";
 //$mysqli->close();
 
+
+
+
+
+
+
+
+
 $Equery = "select * from $TN where ExpNo = $ExpNo";
 echo $Equery;
 
@@ -157,11 +176,13 @@ mysqli_free_result($resultE);
 
 echo "</table>";
 
+
+
 ?>
 <form name="sdd" action="selectInvAssignStk.php" method="post">
 
 
-<input type="submit" name="btn_submit" value="Update next expense" />
+<input type="submit" name="btn_submit" value="Update next expense" /> 
 </form>
 <!--
 //$query="insert into events values(5, 'Jn', 'VM', '65', '084', 'johnATv', 'USA', 55)";
@@ -172,9 +193,9 @@ echo "</table>";
 <?php
 
 $file = "FileWriting/bkp.php";
-include 'FileWriting/FileWriting.php';
+include("FileWriting/FileWriting.php");
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
