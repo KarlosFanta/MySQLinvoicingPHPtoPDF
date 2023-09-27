@@ -1,7 +1,7 @@
-<?php
+<?php	
  $page_title = "You seleted a Transomer";
-require_once 'header.php';
-	require_once 'inc_OnlineStoreDB.php';
+	require_once('header.php');	
+		require_once("inc_OnlineStoreDB.php");
 
 ?>
 <form name="Edit_trans_CustProcess" action="print_statement.php" method="post">
@@ -59,6 +59,8 @@ echo "<input type='hidden' name='indesc' value='".$indesc."'>";
 $DisplayInvPdStatus = @$_POST['DisplayInvPdStatus'];
 echo "<input type='hidden' name='DisplayInvPdStatus' value='".$DisplayInvPdStatus."'>";
 
+
+
 echo "<b>DRAFT STATEMENT </b>&nbsp;&nbsp;This statement may be incomplete  &nbsp;&nbsp;&nbsp;  Date: ".date("j M Y G:i")." <BR />";
 //echo "TBLrow: " .$TBLrow."</BR>";
 //echo "TBLrow0: " .$TBLrow[0]."</BR>";
@@ -83,8 +85,10 @@ if ($CustInt == 0)
  $CustInt = intval($_SESSION['CustNo'] );
 if ($CustInt == '')
  $CustInt = intval($_SESSION['CustNo'] );
-
+ 
+ 
 //echo "<br>CustInt:".$CustInt."</br />";
+
 
 //  $DBConnect = new mysqli("localhost", "root","Itsmeagain007#", "kc");//error control operator @ suppresses the error messages TEST Q
 
@@ -109,6 +113,12 @@ $Important =  $row['Important'];
 
 $Abbr =  $row['ABBR'];
 
+
+
+
+
+
+
 		}
 
     /* free result set */
@@ -128,9 +138,15 @@ echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
 echo $CustCell;
 echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
 echo $CustTel;
-$Important = str_replace('Ã‚', '', $Important);
+$Important = str_replace('Â', '', $Important);
 echo "<br>Important:";
 echo $Important;
+
+
+
+
+
+
 
 echo "<BR />Account No ".$TBLrow."</BR>"   ;
 
@@ -142,7 +158,10 @@ include  "view_inv_by_cust.php";
 echo "<br><table border = 0><tr><th>";
 echo "All invoices total to: </th><th align=left>R".number_format($Invsummm, 2, '.', ' ')."</th></tr>";
 
+
 echo "<tr><th>All transactions total to: </th><th align=right>R".number_format($yo, 2, '.', ' ')."</th></tr>";
+
+
 
 if (($Invsummm - $yo) > 0.06)
 echo "<tr><th><b>Total Amount outstanding: </th><th align=right>R".number_format(($Invsummm - $yo), 2, '.', ' ')."</b><BR />";
@@ -152,20 +171,57 @@ echo "<tr><th><b>Balance: </th><th align=right>R".number_format(($Invsummm - $yo
 else
 echo "<tr><th><b>Total Amount owing to you: </th><th align=right>R".number_format(-($Invsummm - $yo), 2, '.', ' ')."</b><BR />";
 echo "</th></tr></table>";
-
+echo "vtrCProcALL-";
 include ("view_Unpaid_inv_by_cust.php");
 //include ("view_inv_by_custPD.php");
 echo "<br><b>Click here for more details: <a href= 'view_inv_by_custADV.php'>view_inv_by_custADV.php</a></b>";
-include 'stmEmail.php';
+include "stmEmail.php";
 ?>
+ 
+ 			
+			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />--> 
+			<input type="submit" name="btn_submit" value="Display statement for printing"  /> 
 
+ 
+ 
+ <!--
+ 
+ 
+<BR />Please view the above draft statement and kindly arrange for payment.<BR />
+ <BR />
+Recommended statement description (DR): <?php //echo  "acc ".$TBLrow.","; 
+//echo $Abbr ?> stm<BR />
+Beneficiary statement description (CR): <?php //echo  "acc ".$TBLrow.","; 
+//echo $Abbr  ?> stm<BR />
+ <BR />
+NB: For cash payments please make sure you have a receipt with my signature.<BR />
+ <BR />
+<BR />
+(EFT) Banking details:<BR />
+ Account holder: KARL<BR />
+ Bank: Nedbank Limited(/Nedcor)<BR />
+ Account Number: 1230583114<BR />
+ Branch No: 198765(universal)<BR />
+( Branch: Go Banking CT Gardens Centre(South Western Cape) )<BR />
+ Type of Account: Current cheque account<BR />
+ <BR />
+Proof of payment can be sent to: cyberkarl3@gmail.com<BR />
+ <BR />
 
-			<!--<dd><input type="submit" name="btn_submit" value="<?php //echo $this->lang->line('submit'); ?>" />-->
-			<input type="submit" name="btn_submit" value="Display statement for printing"  />
+(other branch codes:  19876500,123009, 12300900 )<BR />
+<BR />
+VAT no  4390243923  as from 1.3.2008<BR />
+ <BR />
+Thank you<BR />
+Karl<BR />
+PC and Notebook Sales  & Advanced I.T. Support<BR />
+Karl's Fast Internet and Webhosting Solutions<BR />
+www.kconnect.co.za<BR />
 
-
-
-
+Fax: 0865492415<BR />
+Skype: cyberkarl3 <BR />
+ <BR />
+-->
 </form>
 
 

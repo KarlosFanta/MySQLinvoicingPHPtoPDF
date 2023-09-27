@@ -1,16 +1,17 @@
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+			
 
-?>
-<?php //require_once 'header.php'; ?>
+?> 
+<?php //require_once "header.php"; ?>
 <b><br><font size = "4" type="arial">View Invoices</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view_inv.php
 </br>
 
@@ -37,24 +38,31 @@ echo "CustLN</th>";
 echo "<th>InvDate</th>";
 echo "<th>Summary</th>";
 echo "<th>TotAmt</th>";
+
+echo "<th>TransNo</th>";
+echo "<th>ExpNo</th>";
 echo "<th>D1</th>";
 echo "<th>ex1</th>";
 echo "<th>D2</th>";
 echo "<th>InvPdStatus</th>";
 echo "</tr>\n";
 
-    // fetch object array
+
+    // fetch object array 
 	  while ($row = mysqli_fetch_assoc($result)) {
     //////////while ($row = $result->fetch_row()) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
+
 
 	  ////$x = $row[0];
 	  $x = $row["InvNo"];
 //	  echo "<th>".$row["CustNo"]."</th>";
 //echo "<th>".$row["CustFN"]."</th>";
 
-	  echo "<tr><th>";
 
+
+	  echo "<tr><th>Inv";
+	  
 	  if ($x >= 4400 && $x <= 4469)
 	  echo "<FONT color = 'red'>".$x." JAN2012";
 	  else if ($x >= 4500 && $x <= 4569)
@@ -105,12 +113,17 @@ echo "</tr>\n";
 	  echo "<FONT color = 'red'>".$x. " DEC2013 ";
 	  else echo $x;
 
+
+
+
+
+
 	  echo "</th></FONT>";
 echo "<th>".$row['CustNo'];
 $CN = $row["CustNo"];
-$SQLstringLN = "select CustLN from customer where CustNo = $CN";
-//echo $SQLstringLN.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
-$result2 = $DBConnect->query($SQLstringLN);
+$queryC = "select CustLN from customer where CustNo = $CN";
+//echo $queryC.""; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+/*$result2 = $DBConnect->query($queryC);
     while ($row2 = $result2->fetch_row()) {
 
 //echo " {$row2[0]."</th>";
@@ -119,18 +132,65 @@ echo substr($row2[0], 0, 7)."</th>";
 
 //substr('abcdef', 0, 4);
 }
+
+*/
+
+
+if ($resultC = mysqli_query($DBConnect, $queryC)) {
+while ($rowC = mysqli_fetch_assoc($resultC)) {
+echo "<a href = '{$rowC["CustLN"]}?='{$rowC["CustLN"]}'>".substr($rowC["CustLN"], 0, 7)."</a></th>";//CustFN is case senSitiVe
+}
+mysqli_free_result($resultC);
+}
+
+
+
+
+
+
+
+
+
+
 echo "<th>".$row["InvDate"]."</th>";
 echo "<th>".substr($row["Summary"], 0, 15)."</th>";
-echo "<th>".$row["TotAmt"]."</th>\n";
+echo "<th>R".$row["TotAmt"]."</th>\n";
+echo "<th>TransNo";
+$qT = "select TransNo from transaction where InvNoA = $x or  InvNoB = $x or  InvNoC = $x or  InvNoD = $x or  InvNoE = $x or  InvNoF = $x or  InvNoG = $x or  InvNoH = $x ";
+//$qT = "select TransNo from transaction where  InvNoB = $x ";
+//echo $qT;
+if ($resultT = mysqli_query($DBConnect, $qT)) {
+while ($rowT = mysqli_fetch_assoc($resultT)) {
+echo "<a href = '{$rowT["TransNo"]}?='{$rowT["TransNo"]}'>".$rowT["TransNo"]."</a>";//CustFN is case senSitiVe
+}
+mysqli_free_result($resultT);
+}
+echo "</th>";
+
+echo "<th>ExpNo";
+$qT = "select ExpNo from expenses where InvNo = $x ";
+//$qT = "select TransNo from transaction where  InvNoB = $x ";
+//echo $qT;
+if ($resultT = mysqli_query($DBConnect, $qT)) {
+while ($rowT = mysqli_fetch_assoc($resultT)) {
+echo "<a href = '{$rowT["ExpNo"]}?='{$rowT["ExpNo"]}'>".$rowT["ExpNo"]."</a>,";//CustFN is case senSitiVe
+}
+mysqli_free_result($resultT);
+}
+echo "</th>";
+
+
 echo "<th>".$row["D1"]."</th>\n";
 echo "<th>".$row["InvPdStatus"]."</th>\n";
 echo "</tr>\n";
 		}
     //
     $result->close();
-
+	
 }
 echo "</table>";
+
+
 
 /*$result=mysql_query($query);
 //echo "<br><br>result: ".$result; //the whole content of the table is now require_onced in a PHP array with the name $result.
@@ -223,7 +283,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 }
 print '</table>';
 */
-
+ 
 ?>
 </table>
 
@@ -272,5 +332,5 @@ echo "</table>";
 
 
 <?php
-//require_once 'footer.php';
+//	require_once('footer.php');		
 ?>

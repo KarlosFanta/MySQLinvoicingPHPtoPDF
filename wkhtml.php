@@ -2,7 +2,7 @@
 <?php
 //PDF/tcpdf/examples/PDF.php
 echo "create JPG file";
-require_once 'inc_OnlineStoreDB.php';
+require_once ('inc_OnlineStoreDB.php');
 $InvNo2 = 0;
 $InvNo2 = $_POST['InvNo'];
 $InvNo = $_POST['InvNo'];
@@ -25,7 +25,12 @@ $Mex3 = '';$Mex4 = '';$Mex5 = '';$Mex6 = '';$Mex7 = '';
 $Mex8 = '';$XT1 = '';$XT2 = '';$XT3 = '';$XT4 = '';
 $XT5 = '';$XT6 = '';$XT7 = '';$XT8 = '';
 
+
+
+
 echo "Now we need to create an HTML file which gets converted to JPG";
+
+
 
 $queryI = "SELECT * FROM invoice WHERE InvNo = $InvNo2" ;
 
@@ -35,6 +40,9 @@ if ($resultI = mysqli_query($DBConnect, $queryI)) {
 
 
 //$pdf->SetCreator(PDF_CREATOR);//makes no diff
+//$pdf->SetAuthor('Karl Lompa');
+//<TITLE>Karl5 's Computers TAX Invoice No echo $InvNo2; echo " ".$rowI['Summary']</TITLE>
+//$uniqueid = 'Karl6 Lompas Computers TAX Invoice No'.$InvNo2.' '.$rowI['Summary'];
 
 //$pdf->SetTitle(''.$uniqueid.'');
 $Summary1 = $rowI['Summary'];
@@ -53,6 +61,7 @@ EOD;
 $Dt1 = explode("-", $rowI['InvDate']);
 $TransDate = $Dt1[2]."/".$Dt1[1]."/".$Dt1[0];
 
+	
 $SQLstring = "select * from customer where CustNo = (select CustNo from invoice where InvNo = '$InvNo2')";
 
 if ($result = $DBConnect->query($SQLstring)) {   //Object oriented style
@@ -60,21 +69,21 @@ if ($result = $DBConnect->query($SQLstring)) {   //Object oriented style
 
 if ($Swap == "N")
 {
-$strrepFN = Str_replace("_"," ", $row[1])." ";
+$strrepFN = Str_replace("_"," ", $row[1])." "; 
 //echo $row[1]; ///Cust FName
 //echo " ";
-$strrepLN =  Str_replace("_"," ", $row[2]);
+$strrepLN =  Str_replace("_"," ", $row[2]); 
 
 //echo $row[2]; //CustLName
 }
 else
 {
 //swap around firstname with lastname:
-$strrepFN =  Str_replace("_"," ", $row[2]). " ";
+$strrepFN =  Str_replace("_"," ", $row[2]). " "; 
 
 //echo $row[2]; ///Cust FName
 //echo " ";
-$strrepLN = Str_replace("_"," ", $row[1]);
+$strrepLN = Str_replace("_"," ", $row[1]); 
 //echo $row[1]; //CustLName
 
 }
@@ -84,7 +93,7 @@ $Email = $row[5];// Cust Email FROM CUSTOMER TABLE!!!
 $E = $row[5];
 $Abbr = $row[13];
 $rowNULL = $row[0];
-}    // free result set
+}    // free result set 
    $result->close();
 }
 
@@ -100,6 +109,7 @@ $XT1 = 0;
 $XT1 = $rowI["ex1"]*$rowI['Q1'];
 $XT1 = number_format ($XT1, 2, ".", "");
 
+
 if (($rowI['D2']) != '0')
 {
 $riD2 = $rowI['D2'];
@@ -114,11 +124,11 @@ $strD2= strtr($value, array('_' => '&nbsp;')) ;
 
 
 $strQ2 = $rowI['Q2'];
-
+				
 			$Mex2 = $rowI["ex2"];
-
+			
 			$Mex2 = number_format ($Mex2, 2, ".", "");
-
+			
 	//		echo $Mex2;
 			$XT2 = 0;
 			$XT2 = $rowI["ex2"]*$rowI['Q2'];
@@ -130,9 +140,8 @@ if (($rowI['D3']) != '0')
 {
 $strD3=  strtr($rowI['D3'], array('_' => '&nbsp;')) ;
 $strQ3 = $rowI['Q3'];
-
+		
 			$Mex3 = $rowI["ex3"];
-
 			$Mex3 = number_format ($Mex3, 2, ".", "");
 			$XT3 = 0;
 			$XT3 = $rowI["ex3"]*$rowI['Q3'];
@@ -147,8 +156,10 @@ if ($rowI['D4'] != '0')
 $strD4 = strtr($rowI['D4'], array('_' => '&nbsp;')) ;
 $strQ4 = $rowI['Q4'];
 			$Mex4 = $rowI["ex4"];
+			$Mex4 = floatval($Mex4);
 			$Mex4 = number_format ($Mex4, 2, ".", "");
-
+			//Warning: number_format() expects parameter 1 to be double, string given in C:\wamp\www\ACS\wkhtml.php on line 160
+			
 //			echo $Mex4;
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			$XT4 = 0;
@@ -170,10 +181,15 @@ $strD5 =  strtr($rowI['D5'], array('_' => '&nbsp;')) ;
 			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
 			//echo $rowI["ex5"];
 			$Mex5 = $rowI["ex5"];
+						$Mex5 = floatval($Mex5);
+
 			$Mex5 = number_format ($Mex5, 2, ".", "");
+						$Mex5 = floatval($Mex5);
 
 		//	echo $Mex5;
+			
 
+			
 			$XT5 = 0;
 			$XT5 =  $rowI["ex5"]*$rowI["Q5"];
 			$XT5 = number_format ($XT5, 2, ".", "");
@@ -188,9 +204,10 @@ $strD6 =  strtr($rowI['D6'], array('_' => '&nbsp;')) ;
 
 $strQ6= $rowI['Q6'];
 			$Mex6 = $rowI["ex6"];
-
+			$Mex6 = floatval($Mex6);
+			
 			$Mex6 = number_format ($Mex6, 2, ".", "");
-
+			
 			$XT6 = 0;
 			$XT6 = $rowI["ex6"]*$rowI['Q6'];
 			$XT6 = number_format ($XT6, 2, ".", "");
@@ -204,9 +221,10 @@ $strD7 = strtr($rowI['D7'], array('_' => '&nbsp;')) ;
 
 $strQ7 = $rowI['Q7'];
 			$Mex7 = $rowI["ex7"];
-
+				$Mex7 = floatval($Mex7);
+		
 			$Mex7 = number_format ($Mex7, 2, ".", "");
-
+			
 //			echo $Mex7;
 			$XT7 = 0;
 			$XT7 = $rowI["ex7"]*$rowI['Q7'];
@@ -219,15 +237,21 @@ if ($rowI['D8'] != '0')
 {
 $strD8 =  strtr($rowI['D8'], array('_' => '&nbsp;')) ;
 $strQ8 = $rowI['Q8'];
-			$Mex8 = $rowI["ex8"];
+			$Mex8 = $rowI["ex8"];			
+			$Mex8 = floatval($Mex8);
 			$Mex8 = number_format ($Mex8, 2, ".", "");
-
+			
 			$XT8 = 0;
 			$XT8= $rowI["ex8"]*$rowI['Q8'];
 			$XT8 = number_format ($XT8, 2, ".", "");
 }
 else
 $strD8= ' ';
+
+
+
+
+
 
 $ST = $rowI["Q1"]*$rowI["ex1"]+$rowI["Q2"]*$rowI["ex2"]+$rowI["Q3"]*$rowI["ex3"]+
 $rowI["Q4"]*$rowI["ex4"]+$rowI["Q5"]*$rowI["ex5"]+$rowI["Q6"]*$rowI["ex6"]+
@@ -241,9 +265,13 @@ $ST2 = number_format ($ST, 2, ".", "");
 			$IT2 = $TAmt;
 			$IT2 = number_format ($TAmt, 2, ".", "");
 
+
+			
+			
+			
 if ($strD8 == '0&nbsp;')
 $strD8 = '';
-
+			
 if ($strQ8 == '0')
 $strQ8 = '';
 if ($strQ7 == '0')
@@ -258,12 +286,15 @@ if ($strQ3 == '0')
 $strQ3 = '';
 if ($strQ2 == '0')
 $strQ2 = '';
+	
 
 if ($Mex8 == 0)
     $Mex8 = '';
 if ($XT8  == 0)
 $XT8 = '';
-
+			
+			
+			
 if ($strD7 == '0&nbsp;')
 $strD7 = '';
 
@@ -271,14 +302,17 @@ if ($Mex7 == 0)
     $Mex7 = '';
 if ($XT7  == 0)
 $XT7 = '';
-
+						
+			
+			
 if ($strD6 == '0&nbsp;')
 $strD6 = ' ';
 if ($Mex6 == 0)
     $Mex6 = '';
 if ($XT6  == 0)
 $XT6 = '';
-
+						
+						
 if ($strD5 == '0&nbsp;')
 $strD5 = '';
 
@@ -286,41 +320,52 @@ if ($Mex5 == 0)
     $Mex5 = '';
 if ($XT5  == 0)
 $XT5 = '';
-
+						
+				
 if ($strD4 == '0&nbsp;')
 $strD4 = '';
 if ($Mex4 == 0)
     $Mex4 = '';
 if ($XT4  == 0)
 $XT4 = '';
-
+						
+					
+			
+				
 if ($strD3 == '0&nbsp;')
 $strD3 = '';
 if ($Mex3 == 0)
     $Mex3 = '';
 if ($XT3  == 0)
 $XT3 = '';
-
+						
+					
+				
 if ($strD2 == '0&nbsp;')
 $strD2 = ' ';
 if ($Mex2 == 0)
     $Mex2 = '';
 if ($XT2  == 0)
 $XT2 = '';
+						
+					
+			
+			
+		
 
 // -----------------------------------------------------------------------------
 
 $tbl = <<<EOD
 <table  width="100%" cellpadding="2" cellspacing="0" border="1" >
- <tr>
-  <td width = "57%" align = "left"><font size="3" ><b>CompanyName</b></font><br /></td>
+ <tr >
+  <td width = "57%" align = "left"><font size="3" ><b>KARL</b></font><br /></td>
   <td width = "23%" align = "left"><font size="3" > DATE:</font></td>
   <td width = "*"  align = "left"><font size="3" >&nbsp; $TransDate</font></td>
  </tr>
 
  <tr>
-<td align = "left"><FONT SIZE=2>VAT NO VATNo<br>Addresss<br>
-Tel:  &nbsp;&nbsp;Cell: <br>Email: </A></FONT></td>
+<td align = "left"><FONT SIZE=2>VAT NO 4390243923<br>28 Buxton Avenue, Gardens, 8001<br>
+<br>Email:  cyberkarl3@gmail.com</A></FONT></td>
 <td align = "left"> <b><FONT FACE="Arial, sans-serif" size = "2">TAX INVOICE NO.</b>	</FONT></td>
 <td align = "left"><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT FACE="Arial, sans-serif" size = "2">$InvNo2</b></FONT></td>
 </tr>
@@ -334,6 +379,7 @@ Tel:  &nbsp;&nbsp;Cell: <br>Email: </A></FONT></td>
 EOD;
 
 $html = 'Summary: '.$Summary1.' ';
+
 
 // -----------------------------------------------------------------------------
 
@@ -405,8 +451,8 @@ $tba = <<<EOD
    <td width="22%" align="right">Sub-Total &nbsp;</td>
       <td width="*" align="right">$ST2&nbsp; </td>
  </tr>
-
-
+ 
+ 
  <tr nobr="true" width = "66%">
 	<td width="66%" colspan = "2" align="right"></td>
    <td width="22%" align="right">Plus 14% VAT&nbsp; </td>
@@ -422,64 +468,74 @@ $tba = <<<EOD
 </table>
 EOD;
 
-	   //max lenght of totalSDR may be 30 chars long
+
+
+
+
+
+	   //max lenght of totalSDR may be 30 chars long 
 $tbb = <<<EOD
 <table cellspacing="0" cellpadding="1" border="1">
    <tr>
        <td align = "center" width="57%" >
-
-
-
-
+ 
+	      
+	   
+	   
 	   <font size="3" >
 	   Banking details:<BR />
-Account holder: <br />
-Bank: <br />
-Universal branch code:  <br />
+Account holder: KARL<br />
+Bank: Nedbank Limited /Nedcor<br />
+Universal branch code: 198765 <br />
 	   <font size="2" >
-(Other branch codes:  )<br /></font>
- <font size="3" >Account Number: <br /></font>
- <font size="2" >(Branch:)<br />
- Type of Account: <BR />
+(Other branch codes: 19876500,123009, 12300900 )<br /></font>
+ <font size="3" >Account Number: 1230583114<br /></font>
+ <font size="2" >(Branch: Go Banking CT Gardens Centre, South Western Cape)<br />
+ Type of Account: Current cheque account<BR />
 
 
 <BR />
-Please send proof of payment to: <a href mailto: "me@me.co.za">me@me.co.za</a>
-
+Please send proof of payment to: <A HREF="mailto:cyberkarl3@gmail.com">cyberkarl3@gmail.com</A> or <A HREF="mailto:cyberkarl3@gmail.com"> cyberkarl3@gmail.com</A>
+	      
 	   </font>
-
+	   
 	   </td>
        <td align = "center" width = "*">
-
-
+	   
+	   
 	     <FONT size = "3">
 <b>Recommended payment reference: <br /> $SDR <BR /><BR /></b>
 
 Payments may be by cash, cheque or EFT.<br />
 NB: For cash payments please make sure you have a receipt with my signature.<br />
-
+   
 	   </FONT>
-
-
-
-
+	   
+	   
+	   
+	   
 	</td>
     </tr>
    <tr>
-    <td align = "center">TERMS: <a href = http://></a></td>
-       <td  align = "center">Support: <br />
-	   <a href = http://></a></td>
+    <td align = "center">TERMS: <a href = http://www.k-connect.co.za/terms>www.k-connect.co.za/terms</a></td>
+       <td  align = "center">Internet and Email Support: <br />
+	   <a href = http://www.karl.co.za/support>www.karl.co.za/support</a></td>
     </tr>
-
+ 
 </table>
 EOD;
+
 
 // -----------------------------------------------------------------------------
 
 
 //Close and output PDF document
+//<TITLE>Karlos1  Computers TAX Invoice No echo $InvNo2; echo " ".$rowI['Summary']</TITLE>
+//$pdf->Output('Karl2 Computers TAX Invoice No {$InvNo2} {$rowI["Summary"]}.pdf', 'I');
+//$uniqueid = 'Karl3ComputersTAXInvoiceNo'.$InvNo2.$rowI["Summary"];
 
-$uniqueid = "Invoice_No_{$InvNo2}_{$rowI['Summary']}.jpg";
+//$uniqueid = "Invoice No {$InvNo2} {$rowI["Summary"]} from Karl Lompa'.pdf''";
+$uniqueid = "Invoice_No_{$InvNo2}_{$rowI['Summary']}__from_Karl.jpg";
 //$pdf->Output('$uniqueid.pdf','F');
 //$pdf->Output('$uniqueid.pdf','D');
 //$pdf->Output('$uniqueid.pdf','I');
@@ -497,6 +553,7 @@ $uniqueidFL = $filelocation."\\".$uniqueid;
 //echo $uniqueid2;
 //$pdf->Output($uniqueidFL,'F');
 
+
 //$uniqueid3 = "http://localhost/".$uniqueid;
 //echo "<br>".$uniqueid3;
 //$pdf->Output($uniqueid3,'F'); // did not work
@@ -505,6 +562,9 @@ $uniqueidFL = $filelocation."\\".$uniqueid;
 //$pdf->Output($uniqueid,'D'); // you cannot add file location!
 
 }} //my goodies!!
+
+
+
 
 $myFile = "1.html";
 $fh = fopen($myFile, 'w') or die("can't open file");
@@ -517,6 +577,9 @@ fwrite($fh, $stringData);
 
 fclose($fh);
 
+
+
+
 function passthru_enabled() {
     $disabled = explode(', ', ini_get('disable_functions'));
     return !in_array('exec', $disabled);
@@ -528,6 +591,8 @@ if (passthru_enabled()) {
 }
 echo "&nbsp;&nbsp;";
 
+
+
 //add php to your pATH variable.
 error_reporting(-1);
 ini_set('display_errors', 'On');
@@ -536,13 +601,13 @@ ini_set('display_errors', 'On');
 /*
 cd\
 cd c:\program files\wkhtmltopdf\bin
-wkhtmltoimage 1.html C:\howzit.jpg
+wkhtmltoimage http://localhost/ACS/1.html C:\howzit.jpg
 rem i could not write to htdocs folder.
 */
 
 echo "<br>";echo "&nbsp;&nbsp;";
 echo "filelocation:".$filelocation;
-$command = 'wkhtmltoimage --width 574 --height 775 --quality 96 --zoom 1 1.html '.$filelocation.'\\'.$uniqueid;
+$command = 'wkhtmltoimage --width 574 --height 775 --quality 96 --zoom 1 http://localhost/ACS/1.html '.$filelocation.'\\'.$uniqueid;
 echo "&nbsp;&nbsp;";//echo "<br>";
   ob_start();
   passthru($command);
@@ -554,9 +619,10 @@ echo "&nbsp;&nbsp;";
   echo "content:".$content;
 //echo "&nbsp;&nbsp;<br>";
 
+
 //echo "<br>";echo "&nbsp;&nbsp;";// now save a copy of pic to locahost for preview.
 //echo "filelocation:".$filelocation;
-$command = 'wkhtmltoimage --width 574 --height 775 --quality 96 --zoom 1 1.html '.$uniqueid;
+$command = 'wkhtmltoimage --width 574 --height 775 --quality 96 --zoom 1 http://localhost/ACS/1.html '.$uniqueid;
 echo "&nbsp;&nbsp;";//echo "<br>";
   ob_start();
   passthru($command);
@@ -568,18 +634,23 @@ echo "&nbsp;&nbsp;";
   echo "content:".$content;
 echo "&nbsp;&nbsp;<br>";
 
+
+
+
 ?>
-<img src =  <?php echo $filelocation.'\\'.$uniqueid; ?> > <?php echo $filelocation.$uniqueid; ?>
+<img src =  <?php echo $filelocation.'\\'.$uniqueid; ?> > <?php echo $filelocation.$uniqueid; ?> 
 
 <?php
 
 
 $fffl = $filelocation;
 
+
+
 $filelocation = "file:///".$filelocation ;
 strtr($filelocation, array('\\' => '/')) ;
 echo "<br> <a href= '".$filelocation."' alt= 'Right-click in Ext App'>Open customer folder: ".$filelocation." </a> &nbsp;&nbsp;&nbsp; <br>";
-//include 'invEmail.php';
+//include "invEmail.php";
 ?>
 <font size = 3><b>
 <a href="mailto:<?php echo $CustEmail ?>?subject=<?php if (@$Draft == 'Paid')
@@ -590,10 +661,13 @@ Click to EMail customer</a><br>
 1preview:<br>
 <img src =  <?php echo $uniqueid; ?> ><br><br><br><br><br>
 
-<?php echo $uniqueid; ?>
+
+ <?php echo $uniqueid; ?> 
 <br><br>2preview the image:<br>
-<img src =  <?php echo $filelocation.'\\'.$uniqueid; ?> > <?php echo $filelocation.'\\'.$uniqueid; ?>
+<img src =  <?php echo $filelocation.'\\'.$uniqueid; ?> > <?php echo $filelocation.'\\'.$uniqueid; ?> 
 <br><br>3preview the image:<br>
-<br><img src =  <?php echo $fffl.'\\'.$uniqueid; ?> > <?php echo $fffl.'\\'.$uniqueid; ?>
+<br><img src =  <?php echo $fffl.'\\'.$uniqueid; ?> > <?php echo $fffl.'\\'.$uniqueid; ?> 
 <br><br>4Right-click to preview the image:<br>
 <a href = "<?php echo $filelocation.'\\'.$uniqueid; ?>" > <?php echo $filelocation.'\\'.$uniqueid; ?> </a>
+
+

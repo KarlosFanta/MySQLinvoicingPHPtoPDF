@@ -1,14 +1,15 @@
 <?php
 
-
-	//require_once 'login_check.php';
-	// -- Nothing Below this line requires editing --
+	
+	//	require_once('login_check.php');
+	// -- Nothing Below this line requires editing -- 
 
 	$page_title = "Customer";
-	//require_once 'header.php';
-	//require_once 'db.php';
-require_once 'inc_OnlineStoreDB.php';
-require_once 'header.php';
+	//require_once('header.php');	
+	//require_once('db.php');	
+	require_once("inc_OnlineStoreDB.php");
+	require_once("header.php");
+			
 
 ?>
 <!DOCTYPE html>
@@ -17,24 +18,37 @@ require_once 'header.php';
     <meta charset="utf-8">
     <title>Unassigned Expenses</title>
     <link href="dalogin/assets/css/bootstrap.css" rel="stylesheet">
-  </head>
-<?php //require_once 'header.php'; ?>
+  </head> 
+<?php //require_once "header.php"; ?>
 <b><font size = "4" type="arial">These expenses are not invoiced yet</b></font>
-</br>
-<?php
-?>
+</br></br>
+or select a year:<br>
+<form name="Editcust" action="viewEUProcess.php" >
 
-</br>
-</br>
+<select name="yr" onchange='this.form.submit()'>
+<option value="_no_selection_">Select A Year</option>";
+<option value='2019'>2019</option> 
+<option value='2018'>2018</option> 
+<option value='2017'>2017</option> 
+<option value='2016'>2016</option> 
+<option value='2015'>2015</option> 
+<option value='2014'>2014</option> 
+<option value='2013'>2013</option> 
+<option value='2012'>2012</option> 
+</select>
+<input type="submit" name="btn_submit" value="select year" /> 
+</form>  
+
+<br>
 
 <form name="selField" action="selectVC.php" method="post">
-    <input type="submit" name="formSubmit" value="Submit" /><br>
-
+  <!--  <input type="submit" name="formSubmit" value="Submit" /><br>-->
+	
 
 <?php
 
 $SQLstring = "select * from customer order by CustLN";
-echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+//echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
 $queryC = "select * from customer ORDER BY custLN";
@@ -50,13 +64,15 @@ while ($row = mysqli_fetch_assoc($resultC)) {
 echo "<tr>";
 $CustNo = $row["CustNo"];
 //echo "<th>".$row["CustNo"]."</th>";//CustNo is case senSitiVe
-echo "<th><a href='editCust.php?mydropdownEC={$CustNo}'  target='_blank'>{$CustNo}</a></th>";//Cno
+//echo "<th><a href='editCust.php?mydropdownEC={$CustNo}'  target='_blank'>{$CustNo}</a></th>";
+echo "<th><a href='assignStkInv.php?CustNo={$CustNo}'  target='_blank'>{$CustNo}</a></th>";//Cno
 
 echo "<th>".$row["CustFN"]."<a href = '{$row["CustLN"]}?='{$row["CustLN"]}'></a></th>";
 echo "<th>".$row["CustLN"]."";
 $row_cnt = mysqli_num_rows($resultC);
 //echo " rows: $row_cnt</th>";
 echo "</tr>\n";
+
 
 /*echo "<tr>";
 echo "<th>";
@@ -89,6 +105,14 @@ $row_cnt = mysqli_num_rows($resultA);
 //echo " rows: $row_cnt</th>";
 //echo "</tr>\n";
 
+
+
+
+
+
+
+
+
 echo "</tr>\n";
 
 }
@@ -104,6 +128,7 @@ mysqli_free_result($resultC);
 
 
 echo "</table>";
+
 
 ?>
 

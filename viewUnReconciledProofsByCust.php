@@ -1,20 +1,10 @@
 <?php
-
-	//$page_title = "Customer";
-require_once 'inc_OnlineStoreDB.php';
+//$CustInt = 1;
+require_once("inc_OnlineStoreDB.php");
 $SQLstring = "select * from aproof where CustNo = '$CustInt' and  TransNo = '' ";
 
 ?>
-<b><br>
-
-
-
-
-<?php 		//echo @$row['CustFN'];
-		//	echo " ";
-			//echo @$row['CustLN'];
-?>
-			</b></font><br>
+<br></font><br>
 Unreconciled Proofs</font><font color=#F5F5DC> </b>viewUnReconciledProofsByCust.php &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <?php echo $SQLstring; ?>
  </font><br>
@@ -85,25 +75,14 @@ echo "<th>ex8</th>";
 */
 echo "</tr>\n";
 
-    // fetch object array
+    // fetch object array 
 //    while ($row = $resultprf->fetch_row()) {
 	  while ($row = mysqli_fetch_assoc($resultprf)) {
 
-      /*
-			$date_array = explode("-",$row['InvDate']);
-$year = $date_array[0];
-$month = $date_array[1];
-$day = $date_array[2];
-//$day = $day[0].$day[1];
-//$ts = mktime(0,0,0,$month, $day, $year);
-//$dateVal = date("j-M-y", $ts);
-//echo "<br>Date is: ".$dateVal;
-
-echo "<th>".$day."/".$month."/".$year."</th>";//invDate
-*/
-					echo "<tr><th><font color = red>{$row['ProofNo']}</th>\n"; //0
+ 			echo "<tr><th><font color = red>{$row['ProofNo']}</th>\n"; //0
+			echo "<th>{$row['ProofDate']}</th>"; ///TOTAL AMOUNT Amt
 			echo "<th>R{$row['Amt']}</th>"; ///TOTAL AMOUNT Amt
-			echo "<th>{$row['Notes']}</th>"; //summary
+			echo "<th><textarea>{$row['Notes']}</textarea ></th>"; //summary
 			echo "<th>{$row['PMethod']}</th>\n"; //PDSTATUS
 			$Prfsummm = $Prfsummm + $row['Amt'];
 			$UnpaidPrfsummm = $UnpaidPrfsummm + $row['Amt'];
@@ -114,16 +93,15 @@ echo "<th>".$day."/".$month."/".$year."</th>";//invDate
 			echo "</tr></font>\n";
 
 	}
-    // free result set
     mysqli_free_result($resultprf);
-
+	
 }
 echo "</table>";
-//echo "Paid aproof total to:
+//echo "Paid aproof total to: 
 //if ($un == 'Y')
 //echo "aproofs total to: R ".$Prfsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid aproofs: R ".$PaidPrfsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid aproofs: R ".$UnpaidPrfsummm.")<br />";
 //else
 echo "Unpaid aproofs total to: &nbsp;&nbsp; <b>R ".$UnpaidPrfsummm;
 echo "</b><br>";
-
 ?>
+<a href = 'editProof.php' target = '_blank' >Click to reconcile proofs</a><br>

@@ -9,48 +9,51 @@ $rCL ='';
 $InvPdStatus = "N";
 $InvPdStatus = @$_POST['InvPdStatus'];
 
-	//$page_title = "Customer";
-require_once 'inc_OnlineStoreDB.php';
-?>
- &nbsp;&nbsp;&nbsp;&nbsp;</font> <font color=#F5F50C>view_Unpaid_inv_by_cust2.php &nbsp;&nbsp;&nbsp;order by InvNo desc</font>
 
-<?php
+	//$page_title = "Customer";
+	require_once("inc_OnlineStoreDB.php");
+?>
+ 
+
+<?php 
 // THIOS FILE REQUIRES view_inv_by_custADV3.php  $rCF ='';
 //	Line 20: $rCF = $rowC1["CustFN"];
 
-		echo "indesc: ".$indesc."</font>";	echo @$row['CustFN'];
+
+		//echo "indesc: ".$indesc."</font>";	
+		echo @$row['CustFN'];
 //			echo "> <input type='text' name='CustLN' value=";
 			echo " ";
 			echo @$row['CustLN'];
 ?>
 			</b></font>
-</br>Unpaid invoices with details <?php echo "[$rCF $rCL]"; //view_inv_by_custADV3.php ?> <br>
+</br>Unpaid invoices with details <?php //echo "[$rCF $rCL]"; //view_inv_by_custADV3.php ?>&nbsp;&nbsp;&nbsp;&nbsp;</font> <!--<font color=green>view_Unpaid_inv_by_cust2.php </font> --><br> 
 <?php
 //$SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvNo desc";
 
 $SQLstring = "SELECT * FROM invoice wHERE invoice.InvNo NOT
-IN ( SELECT InvNoA  FROM transaction )
+IN ( SELECT InvNoA  FROM transaction ) 
 AND invoice.InvNo NOT IN  ( SELECT InvNoB  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction )
-AND  invoice.InvNo NOT IN  ( SELECT InvNoH  FROM transaction )
+AND  invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction ) 
+AND  invoice.InvNo NOT IN  ( SELECT InvNoH  FROM transaction ) 
 AND invoice.CustNo = '$CustInt'";
 
 $SQLstring = "SELECT * FROM invoice WHERE invoice.CustNo = '$CustInt'
-AND invoice.InvNo NOT IN ( SELECT InvNoA  FROM transaction  where CustNo = '$CustInt')
+AND invoice.InvNo NOT IN ( SELECT InvNoA  FROM transaction  where CustNo = '$CustInt') 
 AND invoice.InvNo NOT IN  ( SELECT InvNoB  FROM transaction  where CustNo = '$CustInt')
-AND invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction  where CustNo = '$CustInt')
-AND invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction  where CustNo = '$CustInt')
-AND invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction  where CustNo = '$CustInt')
-AND invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction  where CustNo = '$CustInt')
-AND invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction where CustNo = '$CustInt' )
+AND invoice.InvNo NOT IN  ( SELECT InvNoC  FROM transaction  where CustNo = '$CustInt') 
+AND invoice.InvNo NOT IN  ( SELECT InvNoD  FROM transaction  where CustNo = '$CustInt') 
+AND invoice.InvNo NOT IN  ( SELECT InvNoE  FROM transaction  where CustNo = '$CustInt') 
+AND invoice.InvNo NOT IN  ( SELECT InvNoF  FROM transaction  where CustNo = '$CustInt') 
+AND invoice.InvNo NOT IN  ( SELECT InvNoG  FROM transaction where CustNo = '$CustInt' ) 
 AND invoice.InvNo NOT IN  ( SELECT InvNoH  FROM transaction where CustNo = '$CustInt' ) ";
 
 //$SQLstring = "select * from invoice where CustNo = '$CustInt' order by InvDate desc";
-echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+//echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
 
@@ -116,17 +119,24 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-    // fetch object array
+    // fetch object array 
 //    while ($row = $resultINV->fetch_row()) {
 	  while ($row = mysqli_fetch_assoc($resultINV)) {
 
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
-//	echo "unnn:".$un;
-
+	  
+	  
+	  
+	  
+	  
+//	echo "unnn:".$un;  
+	  
+	  
+	  
 //echo "<tr><th>";  deosnt work here when making paid invoices dissappear.
 
-if (@in_array(@$row['InvNo'], @$PaidInvs))
+if (@in_array(@$row['InvNo'], @$PaidInvs)) 
 {
     if ($un == 'Y')
 			{
@@ -138,17 +148,22 @@ if (@in_array(@$row['InvNo'], @$PaidInvs))
 							$Invsummm = $Invsummm + $row['TotAmt'];
 							$PaidInvsummm = $PaidInvsummm + $row['TotAmt'];
 			}
-
-
-		}
+			
+			
+		}	
 	else
 		{
 			echo "<tr><th><font color = red>{$row['InvNo']}"; //0
 //			echo "</th>\n";
 			$InvNor = $row['InvNo'];
+			
+			
+
+
+
 
 	//			echo "<th>"; //0
-
+			
 $queryAP = "select * from aproof where InvNoA = $InvNor OR InvNoB = $InvNor OR InvNoC = $InvNor OR InvNoD = $InvNor OR InvNoE = $InvNor OR InvNoF = $InvNor OR InvNoG = $InvNor OR InvNoH = $InvNor";
 //echo $queryAP;
 if ($resultAP = mysqli_query($DBConnect, $queryAP)) {
@@ -157,10 +172,10 @@ echo " ".$rowAP["ProofNo"];
 			}
 		 mysqli_free_result($resultAP);
 		}
-
-
-
-
+			
+			
+			
+			
 echo "</th>\n"; //0
 
 
@@ -171,6 +186,17 @@ echo "</th>\n"; //0
 if ($ShowDraft == "Y")
 			echo "<th>{$row['Draft']}</th>";
 
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 						$date_array = explode("-",$row['InvDate']);
 $year = $date_array[0];
 $month = $date_array[1];
@@ -190,12 +216,13 @@ echo "<br>A year ago";
 if ($out > 1 )
 echo "<br><font color = orange>$out years ago</font>";
 
+
 echo "</th>";//invDate
 
 
-
-
-
+			
+			
+			
 			echo "<th>R{$row['TotAmt']}</th>"; ///TOTAL AMOUNT TotAmt
 			echo "<th>{$row['Summary']}</th>"; //summary
 			//echo "<th>{$row['Draft']}</th>"; //summary
@@ -264,16 +291,18 @@ echo "</th>";//invDate
     // free result set
     //$resultINV->close();
 	mysqli_free_result($resultINV);
-
+	
 }
 echo "</table>";
-//echo "Paid invoice total to:
+//echo "Paid invoice total to: 
 //if ($un == 'Y')
 //echo "Invoices total to: R ".$Invsummm."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Paid Invoices: R ".$PaidInvsummm."&nbsp;&nbsp;&nbsp;&nbsp;Unpaid Invoices: R ".$UnpaidInvsummm.")<br />";
 //else
 echo "Unpaid Invoices total to: &nbsp;&nbsp; <b>R ".number_format($UnpaidInvsummm, 2, '.', '');
 
+
 //$english_format_number = number_format($number, 2, '.', '');
 echo "</b><br>";
 
+ 
 ?>

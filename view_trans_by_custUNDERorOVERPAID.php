@@ -1,16 +1,17 @@
 <?php
-require_once 'inc_OnlineStoreDB.php';
-
+require_once("inc_OnlineStoreDB.php");
+	
 $pr = "20";
 $pr = @$_POST['pr']; //inv descriptions
 //echo "indesc:".$indesc;
 if (@$indesc == '')
   $indesc = 8;
-
+  
 //  echo "indesc:".$indesc;
 $yo = 0;
 $loop = 0;
 $in = 8;
+
 
 if (@$_POST['in'] != "")
 $in = @$_POST['in'];
@@ -22,6 +23,7 @@ echo "<BR />";
 $un = 'N';
 echo "<b>Transactions that are overpaid or underpaid</b>";
 
+
 ?>
 
 <?php 	//		echo $row['CustFN'];
@@ -31,9 +33,9 @@ echo "<b>Transactions that are overpaid or underpaid</b>";
 ?>
 			</b></font> &nbsp; &nbsp;  <font color=#F5F5DC>view_trans_by_custUNDERorOVERPAID.php   order by transdate desc</font>
 			<a href = "edit_transCQ.php">edit_transCQ.php</a>
-			<a href = "../phpMyAdmin-3.5.2-english/index.php?db=kc&table=transaction">../phpMyAdmin-3.5.2-english/index.php?db=kc&table=transaction</a>
+			<a href = "../phpmyadmin/index.php?db=kc&table=transaction" target='_blank'>../phpmyadmin/index.php?db=kc&table=transaction</a>
 
-dzhg
+
 <!--
 OK
 SO NOW TO COMPARE THE AmtPaid OF Transaction with the amounts of the induvidual invoices added togehter.
@@ -43,9 +45,9 @@ select TotAmt from invoice where InvNoA = $InvNoA
 select TotAmt from invoice where InvNoB = $InvNoB
 select TotAmt from invoice where InvNoC = $InvNoC
 select TotAmt from invoice where InvNoD = $InvNoD
-
+			
 			-->
-
+			
 <?php
 $InvNoAincl = 0;
 $InvNoBincl = 0;
@@ -57,8 +59,8 @@ $InvNoGincl = 0;
 $InvNoHincl = 0;
 $InvALLAmt  = 0;
 $SQLstring = "select * from transaction where CustNo = '$CustInt' order by transdate desc";
-echo "<br>fnbnvhnvbn";
-echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
+echo "<br>";
+//echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
 //$QueryResult = @mysql_query($SQLstring, $DBConnect);
 $summm = 0;
@@ -109,14 +111,18 @@ echo "<th>TMethod</th>";
 //if ($indesc == "1")
 echo "<th>Priority</th></tr>\n";
 
-    // fetch object array
+    // fetch object array 
     while ($row = mysqli_fetch_assoc($result)) {
       //  printf ("%s (%s)\n", $row[0], $row[1]);
 
 	echo "<tr><th>";
-
-$mmm =  $row['InvNoA'];  //invNoA
+	
+	
+		  
+$mmm =  $row['InvNoA'];  //invNoA    
 //echo "mmm: ".$mmm;
+
+
 
 //if ($mmm >= 0)     //invNoA   if a zero OR if not a number  for exmaple 44p55   part paid.
 
@@ -130,15 +136,17 @@ echo "<font color = orange>";
 echo "{$row['TransNo']}</font></th>";//TransNo
 
 
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
 	echo "<th>";
+	
+	
 
 	$InvNoA =  $row['InvNoA'];
 	$SQLIA = "select TotAmt from invoice where InvNo = '$InvNoA'";
@@ -151,7 +159,7 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "<br>";
 		}   mysqli_free_result($resultIA);
 		}
-
+		
 	$InvNoB =  $row['InvNoB'];
 	$SQLIB = "select TotAmt from invoice where InvNo = '$InvNoB'";
     //echo $SQLIB."<br>";
@@ -162,8 +170,8 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "InvNoBincl R".$InvNoBincl;
 		}   mysqli_free_result($resultIB);
 		}
-
-
+		
+		
 	$InvNoC =  $row['InvNoC'];
 	$SQLIC = "select TotAmt from invoice where InvNo = '$InvNoC'";
     //echo $SQLIC."<br>";
@@ -174,8 +182,8 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "InvNoCincl R".$InvNoCincl;
 		}   mysqli_free_result($resultIC);
 		}
-
-
+		
+		
 	$InvNoD =  $row['InvNoD'];
 	$SQLID = "select TotAmt from invoice where InvNo = '$InvNoD'";
     //echo $SQLID."<br>";
@@ -186,7 +194,7 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "InvNoDincl R".$InvNoDincl;
 		}   mysqli_free_result($resultID);
 		}
-
+		
 		$InvNoE =  $row['InvNoE'];
 	$SQLIE = "select TotAmt from invoice where InvNo = '$InvNoE'";
     //echo $SQLIE."<br>";
@@ -198,7 +206,7 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "<br>";
 		}   mysqli_free_result($resultIE);
 		}
-
+		
 	$InvNoF =  $row['InvNoF'];
 	$SQLIF = "select TotAmt from invoice where InvNo = '$InvNoF'";
     //echo $SQLIF."<br>";
@@ -210,7 +218,7 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "<br>";
 		}   mysqli_free_result($resultIF);
 		}
-
+		
 	$InvNoG =  $row['InvNoG'];
 	$SQLIG = "select TotAmt from invoice where InvNo = '$InvNoG'";
     //echo $SQLIG."<br>";
@@ -222,7 +230,7 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "<br>";
 		}   mysqli_free_result($resultIG);
 		}
-
+		
 	$InvNoH =  $row['InvNoH'];
 	$SQLIH = "select TotAmt from invoice where InvNo = '$InvNoH'";
     //echo $SQLIH."<br>";
@@ -234,45 +242,76 @@ echo "{$row['TransNo']}</font></th>";//TransNo
 		//echo "<br>";
 		}   mysqli_free_result($resultIH);
 		}
-
+		
 	$InvALLAmt = $InvNoAincl + $InvNoBincl + $InvNoCincl + $InvNoDincl + $InvNoEincl + $InvNoFincl + $InvNoGincl + $InvNoHincl;
-
+		
 	//echo "InvALLAmt:"
 	$Amtpd = $row['AmtPaid'];
-
+	
 	$diff = ($Amtpd - $InvALLAmt);
 	$diff2 = ($InvALLAmt - $Amtpd);
-
+	
 	if (round($Amtpd,1) > round($InvALLAmt,1))
 	echo "<font color = 'darkgreen'>overpaid by ".number_format($diff, 2, '.', '')."<br>";
-
-	else
+	
+	else 
 	if (round($Amtpd,1) < round($InvALLAmt,1))
 	echo "<font color = 'purple'>underpaid  by ".number_format($diff2, 2, '.', '')."<br>";
 	//else if equal then dont say anything -not overpaid and not underpaid
-
-
-	if
+	
+	
+	if 
 	(number_format($Amtpd, 2, '.', '') > number_format($InvALLAmt, 2, '.', ''))
 	echo "<font color = 'blue'>";
 	else
-	if
+	if 
 	((number_format($Amtpd, 2, '.', '')) < number_format($InvALLAmt, 2, '.', ''))
 	echo "<font color = 'olive'>";
 	else
-	if
+	if 
 	((number_format($Amtpd, 2, '.', '')+0.1) < number_format($InvALLAmt, 2, '.', ''))
 	echo "<font color = 'red'>";
 
-	else
+	else 
 	echo "<font color = 'green'>";
-
+	
+	
+	
 	echo "paid: R".number_format($Amtpd, 2, '.', '');
 	echo "<br>";
 	echo "req : R".number_format($InvALLAmt, 2, '.', '');
-
+	
 	echo "</font>";
 	echo "</th>";
+  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+
+
+
+
+
+
+
+
+
 
 $date_array = explode("-",$row['TransDate']);
 $year = $date_array[0];
@@ -286,13 +325,14 @@ $day = $date_array[2];
 echo "<th>".$day."/".$month."/".$year."</th>";//Date
 echo "<th>R{$row['AmtPaid']}</th>";///TOTAL AmtPaid
 $yo = $yo+$row['AmtPaid'];
-echo "<th>{$row['Notes']}</th>\n";//Notes
-echo "<th>{$row['CustSDR']}</th>";//CustSDR
+echo "<th><textarea style='width:150px; height:20px;'  >{$row['Notes']}</textarea></th>\n";//Notes
+echo "<th><textarea style='width:230px; height:20px;'  >{$row['CustSDR']}</textarea></th>";//CustSDR
 
 //echo "<th>24:{$row[24]}</th>";//ERROR
 
-//echo "<th>R{$row[29]}</th>";
+//echo "<th>R{$row[29]}</th>"; 
 $summm = $summm + $row['AmtPaid'];
+
 
 //echo "<th align = 'left'>{$row[5]}</th>\n</font></p>";//Summary
 
@@ -306,27 +346,53 @@ echo "<th>{$row['InvNoAincl']}</th>\n";  //InAincl  from transaction table
 $loop++;
 //$PaidInvs[$loop]=$row['InvNoAincl'];
 
+
+
+
 if ($in >1)
-echo "<th>{$row['InvNoB']} </font><br>R".number_format($InvNoBincl, 2, '.', '')."</th>";//InvNoB
+	{
+		echo "<th>";
+	if ($InvNoBincl !== 0)
+echo "{$row['InvNoB']} </font><br>R".number_format($InvNoBincl, 2, '.', '')."";//InvNoB
+echo "<th>";
+}
 $loop++;
 //$PaidInvs[$loop]=$row['InvNoB'];
 
-if ($indesc >1)
+if ($indesc >1){
+	//if ($InvNoBincl !== '0')
+
 echo "<th>{$row['InvNoBincl']}</th>"; //InvNoBincl
 
-
+}
 
 
 
 if ($in >2)
-echo "<th>{$row['InvNoC']} </font><br>R".number_format($InvNoCincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoCincl !== 0)
+echo "{$row['InvNoC']} </font><br>R".number_format($InvNoCincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
+
 if ($indesc >2)
 echo "<th>{$row['InvNoEincl']}</th>";
 $loop++;
 //$PaidInvs[$loop]=$row['InvDincl'];
 
+
+
+
 if ($in >3)
-echo "<th>{$row['InvNoD']} </font><br>R".number_format($InvNoDincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoDincl !== 0)
+echo "{$row['InvNoD']} </font><br>R".number_format($InvNoDincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
  if ($indesc >3)
 echo "<th>{$row['InvNoDincl']}</th>";
 
@@ -334,28 +400,56 @@ $loop++;
 //$PaidInvs[$loop]=$row['14];
 
 if ($in >4)
-echo "<th>{$row['InvNoE']} </font><br>R".number_format($InvNoEincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoEincl !== 0)
+echo "{$row['InvNoE']} </font><br>R".number_format($InvNoEincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
  if ($indesc >4)
 echo "<th>{$row['InvNoEincl']}</th>";
 $loop++;
 //$PaidInvs[$loop]=$row['InvNoEincl'];
 
+
+
 if ($in >5)
 
-echo "<th>{$row['InvNoF']} </font><br>R".number_format($InvNoFincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoFincl !== 0)
+echo "{$row['InvNoF']} </font><br>R".number_format($InvNoFincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
  if ($indesc >5)
 echo "<th>{$row['InvNoFincl']}</th>";
 $loop++;
 //$PaidInvs[$loop]=$row['InvFincl'];
 
+
+
 if ($in >6)
-echo "<th>{$row['InvNoG']} </font><br>R".number_format($InvNoGincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoGincl !== 0)
+echo "{$row['InvNoG']} </font><br>R".number_format($InvNoGincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
  if ($indesc >6)
 echo "<th>{$row['InvNoGincl']}</th>";
 
 $loop++;
 if ($in >7)
-echo "<th>{$row['InvNoH']} </font><br>R".number_format($InvNoHincl, 2, '.', '')."</th>";
+{
+echo "<th>";
+if ($InvNoHincl !== 0)
+echo "{$row['InvNoH']} </font><br>R".number_format($InvNoHincl, 2, '.', '')."</th>";
+echo "</th>";
+}
+
 if ($indesc >7)
 echo "<th>{$row['InvNoHincl']}</th>";//InvNoHincl  Dont forget to enable invoice descriptions as well
 
@@ -364,6 +458,7 @@ echo "<th>{$row['TMethod']}</th>\n";//EFT TMethod
 echo "<th>{$row['Priority']}</th>";//priority
 
 echo "</tr>\n";
+
 
 //for resetting:
 	$InvNoAincl = 0;
@@ -389,6 +484,9 @@ $InvNoGincl = 0;
 $InvNoHincl = 0;
 $InvALLAmt  = 0;
 
+	
+	
+	
 }
 echo "</table>";
 //echo "Underpaid or overpaid transactions Paid totals to: R ".$summm."<br />";
