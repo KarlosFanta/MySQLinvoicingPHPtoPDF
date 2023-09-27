@@ -1,30 +1,16 @@
 
 <?php
-require_once 'inc_OnlineStoreDB.php';//page567
+//	require_once("inc_OnlineStoreDB.php");//page567
 
 
-require_once 'header.php';//page567
-
-    @session_start();
-	@$_SESSION['sel'] = "addInvC";
-	//echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
-	$CustInt = $_SESSION['CustNo'];
+//	require_once("header.php");//page567
+	
+//    @session_start();
+//	@$_SESSION['sel'] = "addInvC";
+//	$CustInt = $_SESSION['CustNo'];
 ?>
 
-<?php
-	$query = "SELECT * FROM customer WHERE CustNo = $CustInt" ;
 
-if ($result = mysqli_query($DBConnect, $query)) {      //I think this is all Cust Details
-  while ($row2 = @mysqli_fetch_assoc($result)) {
-
-  $dotstr = $row2['dotdot'];
-}
-mysqli_free_result($result);
-}
-$dotdot = intval($dotstr);
-//echo "dotdot:".$dotdot;
-
-?>
 <form name="EditInv" action="edit_inv_process.php" method="post">
 <?php
 $row_cnt = 7;
@@ -38,8 +24,8 @@ if ($row_cnt  == 0)
 echo "No draft invoices require editing";
 else
 {
-echo "<br><br><br><br><br><br>";
-echo "<b>You have $row_cnt invoices that require editing and sending:</b><br><br><br><br><br><br><br><br>";
+echo "<br><br><br><br>";
+echo "<b>You have $row_cnt invoices that require editing and sending:</b><br><br><br><br><br><br>";
 
 echo "<select name='mydropdownEC' onchange='this.form.submit()'>";
 echo "<option value='_no_selection_'>Select draft invoice to be updated</option>";
@@ -69,7 +55,7 @@ $item5 = $row["TotAmt"];
 print "_".$item3;
 print "_".$item4;
 print "_R".$item5;
-print " </option>";
+print " </option>"; 
 
 /*    echo $row["InvNo"];//case sensitive!
     echo $row["InvFN"];//case sensitive!
@@ -86,15 +72,15 @@ echo "<input type='submit' name='btn_submit' value='Update selected invoice' /> 
 echo "<br><br>";
 echo "<br><br>";
 echo "<br><br>";
-echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+echo "<br><br>";
 }
 //echo "<br><br>Notes: <br>";
-//include 'notes/index.php'; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
+//include "notes/index.php"; //this is AJAX notes  THIS INCLUDE DID NOT WORK PROPERLY
 
 
 ?>
-
-</select></p>
-
+	
+</select></p>  
+	
 	</form>
-
+	

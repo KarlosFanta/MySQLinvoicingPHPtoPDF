@@ -1,7 +1,7 @@
  <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+	include('header.php');	
+require_once("inc_OnlineStoreDB.php");
 ?>
 
 
@@ -11,229 +11,304 @@ $CustNo = '';
 $ProofDate = '';
 $Amt = '';
 $Notes ='';
+//$mde  = '';
+//$mde = @$_POST['mde'];
+//echo "<br>mde:".$mde."<<<<br>";
+//$mde3 = '';
+//$mde3 = @$_POST['mde3'];
+//echo "<br>mde3:".$mde3."<<<<br>";
+//$mde4  = '';
+//$mde4 = @$_POST['mde4'];
+//echo "<br>mde4:".$mde4."<<<<br><br><br>";
 
-//$CustNo"
+/*
+$mde1 = $_POST['mde1'];
+if ($mde1 == '_no_selection_')
+{
+	echo "no select";
+	$mde1 = $_POST['mde'];
+}
+echo "<br>CCC:".$mde1."<<<<br>";
+echo "<br>mde1:";
+echo $mde1;
+if ($mde1 == '_no_selection_')
+$mde1 =  $_POST['mde'];
+
+echo "<br><bR>";
+*/
+
+$result = '';
+
+if (@$_POST['mde1'] == '')
+	echo '<br>mde1 nothing<br>';
+else
+{	
+	$result = @$_POST['mde1'];
+	echo '<br>mde1 result '.$result.'<br>';
+	
+}
+if ($_POST['mde2'] == '_nooooo_selection_')
+	echo '<br>mde2 _nooooo_selection_<br>';
+else
+{	
+	$result = $_POST['mde2'];
+	echo '<br>mde2 result '.$result.'<br>';
+	
+}
+
+
+
+if ($_POST['mde3'] == '_nooooo_selection_')
+	echo '<br>mde3 _nooooo_selection_<br>';
+else
+{	
+	$result = $_POST['mde3'];
+	echo '<br>mde3 result '.$result.'<br>';
+	
+}
+
+if ($_POST['mde4'] == '_nott_selection_')
+	echo '<br>mde4 nott_selection_<br>';
+else
+{	
+	$result = @$_POST['mde4'];
+	echo '<br>mde4 result  '.$result.'<br>';
+	
+}
+
+$clExp2 = explode('_', $result);
+echo "clExp2[0]: ";
+echo "clExp2[1]: ";
+echo "clExp2[2]: ";
+echo $clExp2[0];
+echo "<br><bR>";
+$clExp3= $clExp2[0];
+
+
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
 
+
+
+//include "StockOldDetails.php";
+//include "StockUpdatedDetails.php";
+//First check whom the stock belongs to: 
+
+$SQLString = "SELECT * FROM expenses WHERE ExpNo = $clExp3";
+
+if ($result = mysqli_query($DBConnect, $SQLString)){
+	while ($row = mysqli_fetch_assoc($result)){
+		$ExpNo = $row["ExpNo"];
+		$Category = $row["Category"];
+		$ExpDesc = $row["ExpDesc"];
+		$SerialNo = $row["SerialNo"];
+		$SupCode = $row["SupCode"];
+		$ProdCostExVAT = $row["ProdCostExVAT"];
+		$Notes = $row["Notes"];
+		$CustNoOld = $row["CustNo"];
+		print "ExpNo: $ExpNo";
+		print "_category: ".$Category;
+		print "_ExpDesc: ".$ExpDesc;
+		print "_S/N: ".$SerialNo;
+		print "_SupCode: ".$SupCode;
+		print "_<br>R".$ProdCostExVAT."ex VAT_";
+		print " Notes: ".$Notes;
+		}
+	mysqli_free_result($result);
+}
+
+$SQLString = "SELECT * FROM customer WHERE CustNo = $CustNoOld" ;
+//echo $SQLString."<br>";
+
+if ($result = mysqli_query($DBConnect, $SQLString)) {
+  while ($row = mysqli_fetch_assoc($result)) {
+$CustFNOld =  $row["CustFN"];
+$CustLNOld =  $row["CustLN"];
+$CustEmailOld = $row["CustEmail"];
+//print "$item1";
+//print "<b> <font size = 3>".$CustFN;
+//print " <b>".$CustLN;
+//print "</font></b> ".$item4;
+//echo "..{$row['dotdot']}";
+}
+	mysqli_free_result($result);
+};
+
+echo"<br><font size = 2><b>The expense ExpNo $ExpNo: $ExpDesc SN $SerialNo  <br>&nbsp;currently belongs to: $CustNoOld $CustFNOld $CustLNOld<br>";
+
+
+
+
+
 $CustNo = $_POST['CustNo'];
-
 if ($CustNo == 0)
-echo "<font size = '5'>ERROR CUSTNo is zero</FONT>";
+echo "<font size = '5'>ERROR CUSTNo is zero</FONT><br>";
 
-$clExp = $_POST['clExp'];
-echo "clExp:";
-echo $clExp;
-echo "<br><bR>";
+$SQLString = "SELECT * FROM customer WHERE CustNo = $CustNo" ;
+//echo $SQLString."<br>";
 
-$clExp2 = explode('::', $clExp);
-echo "clExp2[1]:";
-echo $clExp2[1];
-echo "<br><bR>";
-$clExp3= $clExp2[1];
+if ($result = mysqli_query($DBConnect, $SQLString)) {
+  while ($row = mysqli_fetch_assoc($result)) {
+$CustFN =  $row["CustFN"];
+$CustLN =  $row["CustLN"];
+$item4 = $row["CustEmail"];
+$Important = $row["Important"];
+//print "<b> <font size = 3>".$CustFN;
+//print " <b>".$CustLN;
+//print "</font></b> ".$item4;
+//echo "..{$row['dotdot']}";
+}
+	mysqli_free_result($result);
+};
 
 $CustFN = $_POST['CustFN'];
 $CustLN = $_POST['CustLN'];
 $CustEmail = $_POST['CustEmail'];
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
+//echo "CustNo".$CustNo ." ExpNo".$clExp3 ."."  ;
 
-//$ProofNo = $_POST['ProofNo'];
+if ($CustNo != $CustNoOld)
+{
+	echo "<br>To confirm that you want to change the owner<br>
+	to $CustNo $CustFN $CustLN click here to continue: 
+<form name='Editcust' action='StockUpdate.php' method='post'>
+<input type='hidden' id='CustNo'  name='CustNo'  value='$CustNo'>
+<input type='hidden' id='ExpNo'  name='ExpNo'  value='$clExp3'  >";
+echo "<input type='submit' name='btn_submit'  style='width: 100px; height: 100px; background-color:orange;' value='Confirm' />
+</form>
 
-$Numb = "ProofNo1"; //default when table is empty.
-//$query = "SELECT MAXNUM(ProofNo)  AS MAXNUM FROM aproof order by ProofNo";
-//$query = "select ProofNo from aproof order by ProofNo desc limit 1"; // gives Proofno9 instead of Proofno11
-//$query = "select ProofNo from aproof asc limit 1";
-//$query = "select ProofNo from aproof order by SUBSTRING(ProofNo, 2) desc limit 1"; // gives Proofno9 instead
-//$query = "select ProofNo from aproof order by ProofDate desc limit 1";
-$query = "SELECT ProofNo,CONVERT(SUBSTRING_INDEX(ProofNo,'ProofNo',-1),UNSIGNED INTEGER) AS num
-FROM aproof ORDER BY num desc limit 1;  ";
- //http://stackoverflow.com/questions/5960620/convert-text-into-number-in-mysql-query
-//$result = mysqli_query($DBConnect, $query);// or die(mysql_error());
-
-/*while($row = mysqli_fetch_array($result)){
-	echo "<br>The max no ProofNo in customer table is:  ". $row[0] . "&nbsp;";
-$daNextNo = $row[0];
-$Numb = substr($daNextNo, 7);
-$Numb++;
+";//
 }
-echo "<br><br>";
-$ProofNo = "ProofNo".$Numb;
-*/
-/*
-$D1 = $_POST['ProofDate'];
-$D2 = explode("/", $D1);
-$ProofDate = $D2[2]."-".$D2[1]."-".$D2[0];
-$CustSDR = $_POST['CustSDR'];
-$Amt = $_POST['Amt'];
-$Notes = $_POST['Notes'];
-$EEmail = $Notes;
-echo " notes:".$Notes ;
-$charset = mysqli_character_set_name($DBConnect);
-printf ("Current character set is %s\n",$charset);
-$Notes = str_replace('"', '&quot;', $Notes);  //for mailto: emails.
-$EEmail = $Notes;
-$von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é");
-$zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;");
-$Notes = str_replace($von, $zu, $Notes);
-echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes); //Note, that if no connection is open, mysqli_real_escape_string() will return an empty string!
-$CustSDR = preg_replace("/ö/","oe",$CustSDR); //WORKS!
-*/
-echo "Thank you for details: ".$CustNo ." ".$clExp ."."  ;
-
-$query="update expenses set CustNo = '$CustNo'  where ExpNo = $clExp3";
-
-/*(TransNo = $ProofNo, CustNo = $CustNo, ProofDate ='$ProofDate', Amt = $Amt, Notes = '$Notes', PMethod = '$PMethod',
-InvNoA = '$InvNoA', InvNoAincl = '$InvNoAincl' ,
-InvNoB = '$InvNoB', InvNoBincl = '$InvNoBincl' ,
-InvNoC = '$InvNoC', InvNoCincl = '$InvNoCincl' ,
-InvNoD = '$InvNoD', InvNoDincl = '$InvNoDincl' ,
-InvNoE = '$InvNoE', InvNoEincl = '$InvNoEincl' ,
-InvNoF = '$InvNoF', InvNoFincl = '$InvNoFincl' ,
-InvNoG = '$InvNoG', InvNoGincl = '$InvNoGincl' ,
-InvNoH = '$InvNoH', InvNoHincl = '$InvNoHincl' ,
-Priority = '$Priority') ";*/
-//oracle: $query="update transaction set Transfn = '$CustNo', Transln ='$ProofDate', Transtel = '$Amt', Transcell= '$Notes', Transemail = '$PMethod', Transaddr = '$InvNoA', distance = '$InvNoAincl' where Transno = :ProofNoInt";
-echo '</br>';
-
-mysqli_query($DBConnect, $query);
-
- echo "<font size = 3 color = red><b>".mysqli_error($DBConnect)."<br></font>";
-
-//printf("Affected rows (UPDATE): %d\n", mysqli_affected_rows($DBConnect));
-//echo mysqli_affected_rows($DBConnect);
-if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 3  color = red><b><b>insert or update NOT successfull!!!<br> $query</b>!!</b></font><br><br></b>";
 else
-echo "<font size = 4>insert success! </font><br>$query<br>";
+{
+	echo "<br>Nothing changed , the expense has not changed ownership.<br>";
+echo "<br><br>Select an invoice the expense must be added to: <br>";
 
-//echo "<a href = 'view_trans_all.php'>view_trans_all.php</a></a><br>";
-
-//echo "<input type='text' id='CNN'  name='CNN' value=".$CustNo.">";
-
-//include ("addTransCustProcess3.php");
-
-//php to sql does not understand semicolon. remove the semicolon!!!
-//$ProofInt = intval($ProofNoInt);
-
-$SQLString = "SELECT * FROM expenses WHERE CustNo = $CustNo";
-//$SQLString = "SELECT * FROM transaction WHERE WHERE CustNo = $item2;
-?>
-<b><font size = "4" type="arial">You updated the expense:</b></font>
-
-</br>
-<?php
-if ($result = mysqli_query($DBConnect, $SQLString)) {
+echo "<form name='EditInv' action='invAssignProcess.php' method='post'>";
+echo "<br>ExpNo: <input type = text value='$clExp3' name= clExp3 id=clExp3><br>";
+echo "<select name='mydropdownEC' onchange='this.form.submit()'>";
+echo "<option value='_no_selection_'>Select invoice</option>";
+$query = "select * from invoice where CustNo = $CustNo ORDER BY InvNo DESC";
+echo "<br>firstWhile:<br><br>";
+if ($result = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($result)) {
-$item1 = $row["ExpNo"];
-//$item2 =  $row["CustNo"];
-//$CustInt =  $row["CustNo"];
-$item3 = $row["Category"];
-$item4 = $row["ExpDesc"];
-$item5 = $row["SerialNo"];
-$item6 = $row["SupCode"];
-$item7 = $row["ProdCostExVAT"];
-$item8 = $row["Notes"];
-$item9 = $row["CustNo"];
-print "$item1";
+$item1 = $row["InvNo"];
 
-print "_".$item3;
-print "_R".$item4;
-print "_".$item5;
-print "_".$item6;
-print "_".$item7;
-print "_".$item8;
-print "_".$item9;
+print "<option value='$item1'>$item1";
+$item2 =  $row["CustNo"];
+$item3 =  $row["Summary"];
+$queryEXP = "select * from expenses where InvNo = $item1";
+$ExpNo = '';
+
+if ($resultEXP = mysqli_query($DBConnect, $queryEXP)) {
+  while ($rowEXP = mysqli_fetch_assoc($resultEXP)) {
+$ExpNo = $rowEXP["ExpNo"];
+$ExpDesc =  $rowEXP["ExpDesc"];
+print "_[".$ExpNo;
+print "_".$ExpDesc."] ";
+
 }
-$result->free();
+mysqli_free_result($resultEXP);
 }
+if ($ExpNo == '')
+	echo "Not yet Assigned";
 
+echo " ".$item3;
+$item4 = $row["TotAmt"];
+echo " R".$item4;
+$item5 = $row["InvDate"];
+echo " ".$item5;
+echo " ".$row["D1"];
+echo " ".$row["D2"];
+echo " ".$row["D3"];
+echo " ".$row["D4"];
+echo " ".$row["D5"];
+echo " ".$row["D6"];
+echo " ".$row["D7"];
+echo " ".$row["D8"];
+}
+print " </option>"; 
+mysqli_free_result($result);
+}
+else
+	echo $queryC;
+echo "item2: ".$item2 ."<br>";
+echo "<br>";
+echo "<input type='submit' name='btn_submit' value='Select invoice' /> 
+</select></p>  ";
+}
+$SQLstring = "select * from invoice where CustNo = $CustNo  order by InvDate desc";
+//echo $SQLstring."<br><br>"; 
 
+if ($result = mysqli_query($DBConnect, $SQLstring)) {
+echo "<table width='10' border='1'>\n";
+echo "<tr><th>InvNo&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 
-//$file = "FileWriting/bkp.php";
-//include 'FileWriting/FileWriting.php';
-//$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
-//fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
-//fclose($open); // you must ALWAYS close the opened file once you have finished.
-//echo "<br /><br />Check log file: <a href = '.$file.'><br />";
+echo "<th>InvDate</th>";
+echo "<th>Summary</th>";
+echo "<th>TotAmt</th>";
+echo "<th>D1</th>";
+echo "<th>ex1</th>";
+echo "<th>D2</th>";
+echo "<th>ex2</th>";
+echo "<th>D3</th>";
+echo "<th>ex3</th>";
+echo "<th>D4</th>";
+echo "<th>ex4</th>";
+echo "<th>D5</th>";
+echo "<th>ex5</th>";
+echo "<th>D6</th>";
+echo "<th>ex6</th>";
+echo "<th>D7</th>";
+echo "<th>ex7</th>";
+echo "<th>D8</th>";
+echo "<th>ex8</th>";
 
-//$file = "logaddtrans.php";
-/*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
-fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
-fclose($open); // you must ALWAYS close the opened file once you have finished.
-echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/
+echo "</tr>\n";
+	  while ($row = mysqli_fetch_assoc($result)) {
+	  $x = $row["InvNo"];
+	  echo "<tr><th>";
+   echo $x;
+echo "</th></FONT>";
+echo "<th>".$row["InvDate"]."</th>";
+echo "<th>".substr($row["Summary"], 0, 15)."</th>";
+echo "<th>".$row["TotAmt"]."</th>\n";
+$str = chunk_split($row["D1"], 37, "\n\r");
+echo "<th>".$str."</th>\n";
+echo "<th>".chunk_split($row["ex1"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D2"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex2"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D3"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex3"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D4"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex4"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D5"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex5"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D6"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex6"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D7"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex7"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["D8"], 37, "\n\r")."</th>\n";
+echo "<th>".chunk_split($row["ex8"], 37, "\n\r")."</th>\n";
+echo "</tr>\n";
+		}
+    $result->close();
+}
+echo "</table>";
+
 ?>
-
-
-<!--<form name="Editcust" action="addProofCustProcess2sess.php" method="post">-->
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<form name="Editcust" action="addProof.php" method="post">
-
-<input type = "hidden" name="mydropdownEC" value="<?php echo $CustInt ?>">
+<form name="Editcust" action=".php" method="post">
 <input type = "hidden" name="CustNo" value="<?php echo $CustNo ?>">
 
-<input type = "hidden" name="Amt" value="<?php echo $Amt ?>">
-<input type = "hidden" name="ProofDate" value="<?php echo $ProofDate ?>">
-<input type = "hidden" name="Amt" value="<?php echo $Amt ?>">
-
+<a href = "editExpCQ.php"> Edit customer's expense</a>	<br><br>
 <a href = "add_proof.php"> Click to add another proof</a>	<br><br>
 <a href = "add_trans.php"> Click to add another transaction</a>	<br><br>
 
-	<!--<input type = "submit" value = "Click to add another transaction">-->
 
-
-
-
-<?php
-//echo $query;
-$ttttt = 0;
-
-echo "<br><br>";
-
-?>
-<a href='selectCustProof.php'>Click to add email proof for another customer</a> or <input type = "submit" value = "Click to add email proof for the same customer">
-</font></b>
-
-
-
-
-
-	<br><br>
-
-
-	<br><br>
-
-
-
-
-<br><br><br><br>
-<?php
-
-
-
-
-
-
-
-
-?>
-
-
-
-
-
-
-
+	
 

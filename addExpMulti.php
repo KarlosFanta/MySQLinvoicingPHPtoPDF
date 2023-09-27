@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Add a expense</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <script>
 
 function copyToClipboard(element) {
@@ -14,31 +14,14 @@ function copyToClipboard(element) {
 
 </script>
 <!-- jquery required for copyToClipbrd -->
-<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 </head>
 
 <?php	//this is "process_Trans.php"
- $page_title = "You added an expense";
-	include 'header.php';
-require_once 'inc_OnlineStoreDB.php';
-$ExpNo = 0;
-$ExpNo = $_POST['ExpNo'];
-$ExpNo = $_POST['ExpNo'];
-
-?>
-
-<a href = "selectCustExp.php"> Click to add another expense</a>	<br><br>
-<p id="p1"><?php echo $ExpNo; ?></p>
-
-<button onclick="copyToClipboard('#p1')" required>Copy ExpNo to clipboard memory</button><!--works with javascript object function copyToClipboard( -->
-<br>
-
-<?php
-
 $CustNo = '';
-$PurchDate = '';
+$PurchDate = '';				
 $SupCode = '';
 $Notes ='';
 $TMethod = '';
@@ -90,25 +73,82 @@ $EK = '';
 $FK = '';
 $GK = '';
 $HK = '';
+$ACustNo = '';
+$ACustNo = $_POST['AC'];
+$ACustNo = explode(",", $ACustNo);
+$ACustNo = $ACustNo[0];
 
+$PurchDate = '';
+$PurchDate = $_POST['PurchDate'];
+
+ $page_title = "You added an expense";
+	include('header.php');	
+require_once("inc_OnlineStoreDB.php");
+$ExpNo = 0;
+$ExpNo = $_POST['ExpNo'];
 $mydropdownINV  = '';
 $mydropdownINV  = @$_POST['mydropdownINV'];
 //echo "mydropdownINV: ".$mydropdownINV;
+echo "<font size = 4>ExpNo <b>$ExpNo</b></font>";
 if ($mydropdownINV != '_no_selection_')
 {
 	$V = explode ('_', $mydropdownINV);
 	$InvNo1 = $V[0];
 
+
+if ($InvNo1 == '')
+	$InvNo1=$_POST['InvNo1'];
+
+if ($InvNo1 != '')
+	echo "<font size = 4> assigned to Invoice No $InvNo1 Purchase Date: $PurchDate</font>";
+	
+	
+}
+$CCSQL = "SELECT * FROM customer WHERE CustNo = $ACustNo";
+//echo $CCSQL ;
+if ($resultC = mysqli_query($DBConnect, $CCSQL)) {
+  while ($row = mysqli_fetch_assoc($resultC)) {
+$CustFN = $row["CustFN"];
+$CustLN = $row["CustLN"];
+$CustLNshort = substr($CustLN, 0, 12);
+$CustEmail = $row["CustEmail"];
+
+}
+mysqli_free_result($resultC);
+}
+?>
+<br>
+
+<p id="p1">Exp<?php echo $ExpNo; 
+if (@$InvNo1 != '')
+	echo "	Inv$InvNo1$CustLNshort";   ?></p>
+
+<button onclick="copyToClipboard('#p1')" required>Copy ExpNo to clipboard memory</button><!--works with javascript object function copyToClipboard( -->
+<br>
+<a href = "selectCustExp.php"> Click to add another expense</a>	<br><br>
+<?php
+
+
+if ($mydropdownINV != '_no_selection_')
+{
+	$V = explode ('_', $mydropdownINV);
+	$InvNo1 = $V[0];
+
+
 if ($InvNo1== '')
 	$InvNo1=$_POST['InvNo1'];
 
-	echo "<font size = 6>Invoice No $InvNo1 assigned to:<br></font>";
-
+if ($InvNo1 != '')	
+	echo "<font size = 5>Invoice No $InvNo1  assigned to:<br></font> Inv$InvNo1";
+	
+	
 }
 //$pieces = explode(" ", $pizza);
 //echo $pieces[0]; // piece1
-else
+else 
 	$InvNo1 = $_POST['InvNo1'];
+
+
 
 $InvNo2 = @$_POST['InvNo2'];
 $InvNo3 = @$_POST['InvNo3'];
@@ -126,10 +166,11 @@ $FK = @$_POST['FK'];
 $GK = @$_POST['GK'];
 $HK = @$_POST['HK'];
 
+
+
 $ItemA = '';
 $Aex = '';
 $AS = '';
-$AC = '';
 $AN = '';
 $ItemB = @'';
 $Bex = @'';
@@ -167,11 +208,12 @@ $HS = '';
 $HC = '';
 $HN = '';
 
+
+
 $ItemA = $_POST['ItemA'];
 $ItemA = str_replace("'", "", $ItemA);
 $Aex = $_POST['Aex'];
 $AS = @$_POST['AS'];
-$AC = $_POST['AC'];
 $AN = $_POST['AN'];
 $ItemB = @$_POST['ItemB'];
 $ItemB = str_replace("'", "", $ItemB);
@@ -181,14 +223,14 @@ $BC = @$_POST['BC'];
 $BN = @$_POST['BN'];
 $ItemC = @$_POST['ItemC'];
 $ItemC = str_replace("'", "", $ItemC);
-
+								  
 $Cex = @$_POST['Cex'];
 $CS = @$_POST['CS'];
 $CC = @$_POST['CC'];
 $CN = @$_POST['CN'];
 $ItemD = @$_POST['ItemD'];
 $ItemD = str_replace("'", "", $ItemD);
-
+								  
 $Dex = @$_POST['Dex'];
 $DS = @$_POST['DS'];
 $DC = @$_POST['DC'];
@@ -222,8 +264,6 @@ $Priority = '.';
 //echo $pieces[0]; // piece1
 
 
-$AC = explode(",", $AC);
-$AC = $AC[0];
 $BC = explode(",", $BC);
 $BC = @$BC[0];
 $CC = explode(",", $CC);
@@ -239,6 +279,9 @@ $GC = @$GC[0];
 $HC = explode(",", $HC);
 $HC = @$HC[0];
 
+
+
+
 @$Ain = $_POST['Ain'];
 @$Bin = $_POST['Bin'];
 @$Cin = $_POST['Cin'];
@@ -247,91 +290,81 @@ $HC = @$HC[0];
 @$Fin = $_POST['Fin'];
 @$Gin = $_POST['Gin'];
 @$Hin = $_POST['Hin'];
-
+echo "Ain:".$Ain;
 if ($Ain != '')
 {
-	$Aex = $Ain /1.14;
-	//$Aex = number_format((float)$Aex, 2, '.', '');
+	$Aex = $Ain /1.15;
+	//$Aex = number_format((float)$Aex, 2, '.', ''); 
 	$Aex = sprintf('%0.2f', $Aex);
-echo "<br>Ain divide by 1.14 gives $Aex  ";
+echo "<br>Ain divide by 1.15 gives $Aex  ";
 }
 if ($Bin != '')
 {
-	$Bex = $Bin /1.14;
-	//$Bex = number_format((float)$Bex, 2, '.', '');
+	$Bex = $Bin /1.15;
+	//$Bex = number_format((float)$Bex, 2, '.', ''); 
 	$Bex = sprintf('%0.2f', $Bex);
-echo "<br>Bin divide by 1.14 gives $Bex ";
+echo "<br>Bin divide by 1.15 gives $Bex ";
 }
 if ($Cin != '')
 {
-	$Cex = $Cin /1.14;
-	//$Bex = number_format((float)$Bex, 2, '.', '');
+	$Cex = $Cin /1.15;
+	//$Bex = number_format((float)$Bex, 2, '.', ''); 
 	$Cex = sprintf('%0.2f', $Cex);
-echo "<br>Cin divide by 1.14 gives $Cex ";
+echo "<br>Cin divide by 1.15 gives $Cex ";
 }
 
 if ($Din != '')
 {
-	$Dex = $Din /1.14;
-	//$Dex = number_format((float)$Dex, 2, '.', '');
+	$Dex = $Din /1.15;
+	//$Dex = number_format((float)$Dex, 2, '.', ''); 
 	$Dex = sprintf('%0.2f', $Dex);
-echo "<br>Din divide by 1.14 gives $Dex";
+echo "<br>Din divide by 1.15 gives $Dex";
 }
 
 if ($Ein != '')
 {
-	$Eex = $Ein /1.14;
-	//$Eex = number_format((float)$Eex, 2, '.', '');
+	$Eex = $Ein /1.15;
+	//$Eex = number_format((float)$Eex, 2, '.', ''); 
 	$Eex = sprintf('%0.2f', $Eex);
-echo "<br>Ein divide by 1.14 gives $Eex";
+echo "<br>Ein divide by 1.15 gives $Eex";
 }
 
 if ($Fin != '')
 {
-	$Fex = $Fin /1.14;
-	//$Fex = number_format((float)$Fex, 2, '.', '');
+	$Fex = $Fin /1.15;
+	//$Fex = number_format((float)$Fex, 2, '.', ''); 
 	$Fex = sprintf('%0.2f', $Fex);
-echo "<br>Fin divide by 1.14 gives $Fex";
+echo "<br>Fin divide by 1.15 gives $Fex";
 }
 
 if ($Gin != '')
 {
-	$Gex = $Gin /1.14;
-	//$ex = number_format((float)$ex, 2, '.', '');
+	$Gex = $Gin /1.15;
+	//$ex = number_format((float)$ex, 2, '.', ''); 
 	$Gex = sprintf('%0.2f', $Gex);
-echo "<br>Gin divide by 1.14 gives $Gex";
+echo "<br>Gin divide by 1.15 gives $Gex";
 }
 
 if ($Hin != '')
 {
-	$Hex = $Hin /1.14;
-	//$ex = number_format((float)$ex, 2, '.', '');
+	$Hex = $Hin /1.15;
+	//$ex = number_format((float)$ex, 2, '.', ''); 
 	$Hex = sprintf('%0.2f', $Hex);
-echo "<br>Hin divide by 1.14 gives $Hex";
+echo "<br>Hin divide by 1.15 gives $Hex";
 }
 
 
 $ExpNo = $_POST['ExpNo'];
 //$CustNo = $_POST['CustNo'];
-if ($AC == 0)
-echo "<br><font size = '5'>ERROR CUSTNo $AC is zero</FONT>";
+if ($ACustNo == 0)
+echo "<br><font size = '5'>ERROR CUSTNo $ACustNo is zero  but Ok for private expense</FONT>";
 
 //echo "CustNO: ".$CustNo;
 
-$CCSQL = "SELECT * FROM customer WHERE CustNo = $AC";
-if ($resultC = mysqli_query($DBConnect, $CCSQL)) {
-  while ($row = mysqli_fetch_assoc($resultC)) {
-$CustFN = $row["CustFN"];
-$CustLN = $row["CustLN"];
-$CustEmail = $row["CustEmail"];
 
-}
-mysqli_free_result($resultC);
-}
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
 
-$PurchDate = $_POST['PurchDate'];
 $D1 = $PurchDate;
 $D2 = explode("/", $D1);
 //echo $D1[2]."____";
@@ -344,10 +377,10 @@ $D2 = explode("/", $D1);
 
 $PurchDate = $D2[2]."-".$D2[1]."-".$D2[0];
 
-//echo $PurchDate;
+echo $PurchDate;	 
 $charset = mysqli_character_set_name($DBConnect);//chek for UTF-8
 $AS = @$_POST['AS'];
-$AS = mysqli_real_escape_string($DBConnect, $AS);
+$AS = mysqli_real_escape_string($DBConnect, $AS); 
 mb_convert_encoding($AS, "ISO-8859-1");
 echo "CSR: $AS";
 echo "CSR:special".htmlspecialchars($AS);
@@ -367,6 +400,7 @@ mb_convert_encoding($AS, "UTF-8");
 $AS = str_replace("SPACE","%20",$AS); //for mailto to work
 
 echo " back to whitepace: $AS";
+
 
 $SupCode = $_POST['SupCode'];
 $Notes = @$_POST['Notes'];
@@ -397,16 +431,16 @@ $Notes = htmlentities( $Notes, ENT_SUBSTITUTE );  //and also header: charset=UTF
 
 $von = array("ä","ö","ü","ß","Ä","Ö","Ü"," ","é","\xA0");
 $zu  = array("&auml;","&ouml;","&uuml;","&szlig;","&Auml;","&Ouml;","&Uuml;","&nbsp;","&#233;","&nbsp;");
-$Notes = str_replace($von, $zu, $Notes);
-$AS = str_replace($von, $zu, $AS);
+$Notes = str_replace($von, $zu, $Notes);  
+$AS = str_replace($von, $zu, $AS);  
 //echo " specNotes:".$Notes."<br>" ;
-$Notes = mysqli_real_escape_string($DBConnect, $Notes);
-$AS = mysqli_real_escape_string($DBConnect, $AS);
+$Notes = mysqli_real_escape_string($DBConnect, $Notes); 
+$AS = mysqli_real_escape_string($DBConnect, $AS); 
 //dbl  backsl\and&hash# space (){}[]?//\\$%ö
 //$Notes = preg_replace("/ö/","\xF6",$Notes); not working
 //$Notes = preg_replace("/ö/","oe",$Notes); //WORKS!
 $AS = preg_replace("/ö/","oe",$AS); //WORKS!
-//iconv("UTF-8", "ISO-8859-1", $Notes);
+//iconv("UTF-8", "ISO-8859-1", $Notes); 
 //$Notes = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $Notes); //  not working
 //$Notes = addslashes($_POST[$Notes]);
 
@@ -422,7 +456,11 @@ $Notes = str_replace(' ', '_', $Notes);
 $SupCode = preg_replace("/,/","",$SupCode);
 $AS = preg_replace("/,/","",$AS);
 
+
 $Notes = mysqli_real_escape_string($DBConnect, $Notes);
+
+
+
 
 //echo "Thank you for adding the expense's details: ".$ExpNo." ".$CustNo ." ".$D1 ."."  ;
 
@@ -433,16 +471,22 @@ if ($InvNo1 != '')
 	echo " <font size = 4>assigned to InvoiceNo $InvNo1</font>";
 
 echo "</font><br>";
+if ($InvNo1 == '')
+echo "<a href = 'addInvCsessDexp.php?CustNo=$ACustNo&ExpNo=$ExpNo'><b> Click to add new invoice for this expense</a>	<br><br>";
+echo "<a href = 'StockUpdateChosen.php?CustNo=$ACustNo&ExpNo=$ExpNo'><b> Click to assign this expense to an existing invoice</a>	<br><br>";
+echo "<a href = 'viewExpmyeditbasic.php?CustNo=$ACustNo&ExpNo=$ExpNo'><b> Made a mistake? Click here</a>	<br><br>";
 
 $query="insert into expenses (ExpNo, CustNo, PurchDate, SupCode, Notes, SerialNo, ExpDesc, ProdCostExVAT, Category, InvNo )
-VALUES               ( $ExpNo, $AC, '$PurchDate', '$SupCode', '$AN', '$AS', '$ItemA', '$Aex','$AK', '$InvNo1' ) ";
+VALUES               ( $ExpNo, $ACustNo, '$PurchDate', '$SupCode', '$AN', '$AS', '$ItemA', '$Aex','$AK', '$InvNo1' ) ";
 echo '</br>';
 mysqli_query($DBConnect, $query);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
+echo "<font size = 5  color = red><b><b>insert into expenses NOT successful!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: ExpNo <input type='text' value = '$ExpNo'  size='4'> $ItemA</font><br>a: $query<br>";
+
+
 
 if ($ItemB != '')
 {
@@ -454,7 +498,7 @@ echo '</br>';
 mysqli_query($DBConnect, $query);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
+echo "<font size = 5  color = red><b><b>insert into expenses NOT successful!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 3 color = green >insert success: ExpNo $ExpNo</font><br>b: $query<br>";
 
@@ -472,7 +516,7 @@ echo '</br>';
 mysqli_query($DBConnect, $query);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
+echo "<font size = 5  color = red><b><b>insert into expenses NOT successful!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: ExpNo $ExpNo</font><br>c: $query<br>";
 
@@ -490,7 +534,7 @@ echo '</br>';
 mysqli_query($DBConnect, $query);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
+echo "<font size = 5  color = red><b><b>insert into expenses NOT successful!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: ExpNo $ExpNo</font><br>d: $query<br>";
 
@@ -508,7 +552,7 @@ echo '</br>';
 mysqli_query($DBConnect, $query);
 echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
 if (mysqli_affected_rows($DBConnect) == -1)
-echo "<font size = 5  color = red><b><b>insert into expenses NOT successfull!!!</b>!!</b></font><br>$query<br>";
+echo "<font size = 5  color = red><b><b>insert into expenses NOT successful!!!</b>!!</b></font><br>$query<br>";
 else
 echo "<font size = 4 color = green >insert success: ExpNo $ExpNo</font><br>e: $query<br>";
 
@@ -568,20 +612,37 @@ echo "<font size = 4 color= green>insert success: ExpNo $ExpNo</font><br>h: $que
 
 }
 
-?>
+?><br><br>
 </font>
+
+<a href = 'viewExpHEandExpCust.php'>viewExpHEandExpCust</a> all expenses of Customer</br>
+<a href = 'viewExpHEandExpD.php'>viewExpHEandExpD by Date</a></br>
+<a href = 'viewExp.php'>viewExp only</a></br>
+<a href = 'viewExpHEandExp.php'>viewExpHEandExp</a></br>
+<a href = 'viewExpmyedit.php'>viewExpmyedit</a></br>
+<a href = 'viewExpEmyedit.php'>viewExpEmyedit</a></br>
+<a href = 'viewExpHmyedit.php'>viewExpHmyedit</a></br>
+<a href = 'UnassignedCustStk.php'>UnassignedCustStk</a></br>
+<a href = 'viewExpSelectCatg.php'>viewExpSelectCatg</a></br>
+<a href = 'viewExpHEandExpCategory.php'>viewExpHEandExpCategory</a></br>
+
+<a href = '../phpmyadmin/#PMAURL-3:sql.php?db=kc&table=expensese&server=1&target='>phpMyadmin</a></br>
+
 <a href = "editExp.php">Edit Any Expenses </a></br></br>
 <a href = 'selectCustAssignStk.php'>Assign Stock to a Customer</a></br>
 <a href = 'selectCustAssignStkInv.php'>Assign Stock to Customer's invoice</a></br>
+
+<br><br>
 <?php
 
-$CustInt =$AC;
-//include 'viewExpCust.php';
-include 'viewExpCust2.php';
-//include 'viewExpCustMinimal.php';
-include 'viewExp.php';
+$CustInt =$ACustNo;
+include "viewExpSameDay.php";
+//include "viewExpCust.php";
+include "viewExpCust2.php";
+//include "viewExpCustMinimal.php";
+include "viewExp.php";
 
-//include 'viewExpLatest.php';
+//include "viewExpLatest.php";
 ?>
 <a href = 'viewExpLatest.php'>viewExpLatest</a></br>
 
@@ -635,24 +696,24 @@ print "_".$item9;
 }
 mysqli_free_result($result);
 }
-
+	
 
 
 $file = "FileWriting/bkp.php";
-include 'FileWriting/FileWriting.php';
+include("FileWriting/FileWriting.php");
 //$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>");
+//fwrite($open, "<br><br><b>Register:</b> " .$query . "<br/>"); 
 //fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 //fclose($open); // you must ALWAYS close the opened file once you have finished.
 //echo "<br /><br />Check log file: <a href = '.$file.'><br />";
-
+	
 //$file = "logaddtrans.php";
 /*$open = fopen($file, "a+"); //open the file, (e.g.log.htm).
-fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>");
+fwrite($open, "<br><br><b>Add transcaction:</b> <br>" .$query. ";<br/><br/><br/>"); 
 fwrite($open, "<b>Date & Time:</b>". date("d/m/Y"). "<br/>"); //print / write the date and time they viewed the log.
 fclose($open); // you must ALWAYS close the opened file once you have finished.
 echo "<br /><br /><a href = '$file.'><b>FILE WRITTEN </B>Check log file:</a> <br />";
-*/
+*/	
 
 
 $CustInt = $CustNo ;
@@ -668,11 +729,12 @@ $CustInt = $CustNo ;
 <input type = "hidden" name="PurchDate" value="<?php echo $PurchDate ?>">
 <input type = "hidden" name="SupCode" value="<?php echo $SupCode ?>">
 
-
+<a href = "selectCustExp.php"> Click to add another expense</a>	<br><br>
+	
 	<!--<input type = "submit" value = "Click to add another expense">-->
 
 
-
+	
 
 <?php
 echo $query;
@@ -685,10 +747,12 @@ echo "</b><table>";
 echo "<tr><th align = 'left' >.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "</th></tr>";
 
+
 if ($ItemA != '0')
 {
 
 $SQLINV = "SELECT * FROM invoice WHERE Item = $ItemA";
+
 
 if ($result = mysqli_query($DBConnect, $SQLINV)) {
  echo "<tr>";
@@ -908,8 +972,15 @@ mysqli_free_result($result);
 echo "</table>";
 echo "Total: ".$ttttt."<br>";
 
+
+
 $sptp = 'w';
 //echo sptp;
+
+
+
+
+
 
  ?>
 <font size= 2><b>
@@ -921,12 +992,12 @@ $sptp = 'w';
 
 
 	<br><br>
-
+	
 
 	<br><br>
 
-
-
+	
+	
 
 <br><br><br><br>
 <script type="text/javascript">

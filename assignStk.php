@@ -1,23 +1,108 @@
 <html>
 <head>
-<title>Assign stock</title>
 <meta charset="UTF-8">
 
 </head>
 <body>
 
-<form onsubmit='return formValidator()'  action="assignExpLast.php"   method="post">
 
 
 <?php	//this is "addTransCustProcess2.php"
-require_once 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+require_once('header.php');	
+require_once("inc_OnlineStoreDB.php");
 @session_start();
 //echo "SESSION CustNo: ". $_SESSION['CustNo'] ."<br />";
 
 $CustInt = '';
 $CustInt = @$_GET['CustNo'];
 //     echo " ". $_GET['CustNo']. ".";
+
+$queryS = "select CustNo, CustFN, CustLN, u1 from customer order by CustNo";
+
+?>
+<a href = 'selectCustAssignStkInv.php' target=_blank>Assign customer's Stock to Customer's invoice</a> &nbsp;&nbsp;
+assignStkInv</br></br>
+<a href = 'editExpCQ.php?CustNo=<?php echo $CustInt; ?>' target=_blank>Edit customer's expenses</a> &nbsp;&nbsp;
+editExpCQ</br></br>
+
+<form name="Editcust" action="assignStk.php">
+Select another customer<select name="CustNo" onload="this.size=70;"  method="GET">
+
+<?php
+
+if ($result = mysqli_query($DBConnect, $queryS)) {
+  while ($row = mysqli_fetch_assoc($result)) {
+$item1 = $row["CustNo"];
+$item2 =  mb_substr($row["CustLN"],  0, 13);
+$item3 = mb_substr($row["CustFN"],  0, 13);
+$adsl = $row["u1"];
+
+
+echo "<title>Assign stock $item1 $item3 $item2</title>";
+
+print "<option value='$item1'>$item2"; //all customers
+print "_".$item1;
+print "_".$item3;
+/*if ($adsl != "")
+{
+echo " &nbsp;&nbsp;&nbsp;&nbsp;adsl" ;
+//print "<option value='$item2'>$item2";
+//print "<option value='$item3'>$item3";
+
+//now to check whter the Nov invoice has been created
+//so we slect all invoices containing summary part saying Nov
+//include "NovChk.php"; //done
+
+
+}
+*/
+echo " </option>"; 
+
+/*    echo $row["CustNo"];//case sensitive!
+    echo $row["CustFN"];//case sensitive!
+    echo $row["CustLN"];//case sensitive!
+*/
+	}
+mysqli_free_result($result);
+
+}
+/* close connection */
+//$mysqli->close();
+
+echo " </option></select>"; 
+
+
+
+?>
+<input type="submit" name="btn_submit" value="Select the customer" /> 
+	<br><br>
+
+
+</form>
+
+<form onsubmit='return formValidator()'  action="assignExpLast.php"   method="post">
+
+<?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if (isset($_POST["mydropdownEC"]))
 {
@@ -75,7 +160,7 @@ $select = $_GET['select'];
 ?>
 
 <!--<form name="AddProof" action="addProofprocess.php" onsubmit="return formValidator();" method="post">-->
-<!--<form  onsubmit='return formValidator()' action="addProofprocess.php" method="post">-->
+<!--<form  onsubmit='return formValidator()' action="addProofprocess.php"  method="post" >-->
 <table border='0'>
 <?php
 echo "Select stock to be assigned to selected customer:<br>";
@@ -90,7 +175,7 @@ echo $query."<br>";
 
 ?>
 <!--<form name="Editcust" action="Process.php" method="post">-->
-Stock included as from march 2014<br>
+1)Stock included as from march 2014<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <select name="mde1" ><!--onchange='this.form.submit()'-->
 <option value="_no_selection_">Select Expense</option>
@@ -98,8 +183,8 @@ Stock included as from march 2014<br>
 //echo "<br>firstWhile:<br><br>";
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-
-
+			
+			
 	$ExpNo = $row["ExpNo"];
 	$Category =  $row["Category"];
 	$ExpDesc = $row["ExpDesc"];
@@ -119,7 +204,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
 	print "assigned to _".$CustNoB;
-
+	
 	$query = "select * from customer where CustNo = $CustNoB";
 if ($resultC = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($resultC)) {
@@ -129,16 +214,16 @@ echo $row["CustLN"]." ";
 			}
 		 mysqli_free_result($resultC);
 		}
-
-
-	print " </option>";
+	
+	
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 ?>
 </select>
 <input type="submit" name="btn_submit" value="select stk" /> <br>
-<input type="submit" name="btn_submit" value="select stk" />
+<input type="submit" name="btn_submit" value="select stk" /> 
 
 
 
@@ -148,7 +233,7 @@ $query = "SELECT * FROM expenses WHERE CustNo = '$CustInt'";
 $query = "SELECT * FROM expenses ";
 echo $query."<br>";
 //<form name="Editcust" action="Process.php" method="post">-->
-echo "Stock included as from march 2014<br>
+echo "2)Stock included as from march 2014<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <select name='mde2'><!-- onchange='this.form.submit()'-->
@@ -156,8 +241,8 @@ echo "Stock included as from march 2014<br>
 echo "<br>firstWhile:<br><br>";
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-
-
+			
+			
 	$ExpNo = $row["ExpNo"];
 	$Category =  $row["Category"];
 	$ExpDesc = $row["ExpDesc"];
@@ -176,7 +261,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
 	print "assigned to _".$CustNoB;
-
+	
 	$query = "select * from customer where CustNo = $CustNoB";
 if ($resultC = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($resultC)) {
@@ -186,16 +271,16 @@ echo $row["CustLN"]." ";
 			}
 		 mysqli_free_result($resultC);
 		}
-
-
-	print " </option>";
+	
+	
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 ?>
 </select>
 <input type="submit" name="btn_submit" value="select stok" /> <br>
-<input type="submit" name="btn_submit" value="select stok" />
+<input type="submit" name="btn_submit" value="select stok" /> 
 <br><br>
 Assign to a different customer: <a href = 'selectCustAssignStk.php'>selectCustAssignStk.php</a>
 <br><br><br>
@@ -206,7 +291,7 @@ Assign to a different customer: <a href = 'selectCustAssignStk.php'>selectCustAs
 $query = "SELECT * FROM expenses order by ExpNo desc";
 echo $query."<br>";
 //<!--<form name="Editcust" action="Process.php" method="post">-->
-echo "Stock included as from march 2014<br>
+echo "3)Stock included as from march 2014<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <select name='mde3'><!-- onchange='this.form.submit()'-->
@@ -214,8 +299,8 @@ echo "Stock included as from march 2014<br>
 echo "<br>firstWhile:<br><br>";
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-
-
+			
+			
 	$ExpNo = $row["ExpNo"];
 	$Category =  $row["Category"];
 	$ExpDesc = $row["ExpDesc"];
@@ -234,7 +319,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
 	print "assigned to _".$CustNoB;
-
+	
 	$query = "select * from customer where CustNo = $CustNoB";
 if ($resultC = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($resultC)) {
@@ -244,16 +329,16 @@ echo $row["CustLN"]." ";
 			}
 		 mysqli_free_result($resultC);
 		}
-
-
-	print " </option>";
+	
+	
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 ?>
 </select>
 
-	mde4:<input type="text" name="mde4" value="_nott_selection_" />
+	mde4:<input type="text" name="mde4" value="_nott_selection_" /> 
 
 
 
@@ -263,16 +348,16 @@ echo $row["CustLN"]." ";
 $query = "SELECT * FROM expenses order by SerialNo";
 echo $query."<br>";
 //<!--<form name="Editcust" action="Process.php" method="post">-->
-echo "Stock included as from march 2014<br>
+echo "4)Stock included as from march 2014<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<select name='mde3'><!-- onchange='this.form.submit()'-->
+<select name='mde7'><!-- onchange='this.form.submit()'-->
 <option value='_nooooo_selection_'>Select Expense by SerialNo</option>'";
 echo "<br>firstWhile:<br><br>";
 if ($result = mysqli_query($DBConnect, $query)) {
 	while ($row = mysqli_fetch_assoc($result)) {
-
-
+			
+			
 	$ExpNo = $row["ExpNo"];
 	$Category =  $row["Category"];
 	$ExpDesc = $row["ExpDesc"];
@@ -292,7 +377,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	print "_R".$ProdCostExVAT;
 	print "ex VAT_".$Notes;
 	print "assigned to _".$CustNoB;
-
+	
 	$query = "select * from customer where CustNo = $CustNoB";
 if ($resultC = mysqli_query($DBConnect, $query)) {
   while ($row = mysqli_fetch_assoc($resultC)) {
@@ -302,15 +387,19 @@ echo $row["CustLN"]." ";
 			}
 		 mysqli_free_result($resultC);
 		}
-
-
-	print " </option>";
+	
+	
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 ?>
 </select>
+ <br>
+<input type="submit" name="btn_submit" value="select stok" /> 
 
+
+</form>
 
 <br>
 Stock according to (multiple) category(catgories)
@@ -321,7 +410,10 @@ $query = "SELECT distinct Category FROM expenses  order by Category";
 //echo $query."<br>";
 
 ?>
-</form><form name="Editcust" action="ProcessCat.php" method="post">
+
+
+
+<form name="Editcust" action="ProcessCat.php" method="post">
 Stock>>>><<<<<<<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 <!--onchange='this.form.submit()-->
@@ -333,7 +425,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	$Category =  $row["Category"];//$ExpNo = $row["ExpNo"]; 	 	$ExpDesc = $row["ExpDesc"];
 	//$SerialNo = $row["SerialNo"]; 	$SupCode = $row["SupCode"]; 	$PurchDate = $row["PurchDate"];
 	//$ProdCostExVAT = $row["ProdCostExVAT"]; 	$Notes = $row["Notes"]; 	$CustNoB = $row["CustNo"];
-	print "<option value='$Category'>$Category";
+	print "<option value='$Category'>$Category";	
 	//print "_".$Category;	print "_".$ExpDesc;
 	//print "_".$SerialNo;	print "_".$SupCode;	print "_".$PurchDate;
 	//print "_R".$ProdCostExVAT;	print "ex VAT_".$Notes;	print "assigned to _".$CustNoB;
@@ -345,7 +437,7 @@ echo $row["CustFN"]." "; echo $row["CustLN"]." ";
 		 mysqli_free_result($resultC);
 		}
 		*/
-	print " </option>";
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
@@ -361,7 +453,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	$Category =  $row["Category"];//$ExpNo = $row["ExpNo"]; 	 	$ExpDesc = $row["ExpDesc"];
 	//$SerialNo = $row["SerialNo"]; 	$SupCode = $row["SupCode"]; 	$PurchDate = $row["PurchDate"];
 	//$ProdCostExVAT = $row["ProdCostExVAT"]; 	$Notes = $row["Notes"]; 	$CustNoB = $row["CustNo"];
-	print "<option value='$Category'>$Category";
+	print "<option value='$Category'>$Category";	
 	//print "_".$Category;	print "_".$ExpDesc;
 	//print "_".$SerialNo;	print "_".$SupCode;	print "_".$PurchDate;
 	//print "_R".$ProdCostExVAT;	print "ex VAT_".$Notes;	print "assigned to _".$CustNoB;
@@ -373,7 +465,7 @@ echo $row["CustFN"]." "; echo $row["CustLN"]." ";
 		 mysqli_free_result($resultC);
 		}
 		*/
-	print " </option>";
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
@@ -389,7 +481,7 @@ if ($result = mysqli_query($DBConnect, $query)) {
 	$Category =  $row["Category"];//$ExpNo = $row["ExpNo"]; 	 	$ExpDesc = $row["ExpDesc"];
 	//$SerialNo = $row["SerialNo"]; 	$SupCode = $row["SupCode"]; 	$PurchDate = $row["PurchDate"];
 	//$ProdCostExVAT = $row["ProdCostExVAT"]; 	$Notes = $row["Notes"]; 	$CustNoB = $row["CustNo"];
-	print "<option value='$Category'>$Category";
+	print "<option value='$Category'>$Category";	
 	//print "_".$Category;	print "_".$ExpDesc;
 	//print "_".$SerialNo;	print "_".$SupCode;	print "_".$PurchDate;
 	//print "_R".$ProdCostExVAT;	print "ex VAT_".$Notes;	print "assigned to _".$CustNoB;
@@ -401,14 +493,14 @@ echo $row["CustFN"]." "; echo $row["CustLN"]." ";
 		 mysqli_free_result($resultC);
 		}
 		*/
-	print " </option>";
+	print " </option>"; 
 	}
 	mysqli_free_result($result);
 }
 
 ?>
 </select> <input type="submit" name="btn_submit" value="select stk" /> <br>
-<input type="submit" name="btn_submit" value="select stk" />
+<input type="submit" name="btn_submit" value="select stk" /> 
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 </form><br><br>
@@ -418,21 +510,27 @@ echo $row["CustFN"]." "; echo $row["CustLN"]." ";
 
 <input type="hidden" id="CustNo"  name="CustNo" value="<?php echo $CustInt;?>";
 
+
 <!--"SELECT * FROM expenses WHERE CustNo = '$CustInt'"-->
 
+	
 
 
 
-
-
+</form>
+<b><font size = 4> Customer's expenses:</a></font></b>
 <?php
 
 include ("viewExpCust2.php");
-include ("viewExp.php");
+include ("viewExpChoose.php");
  include ("view_proof_by_cust.php");
 include ("view_proof_by_cust2.php");
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
+
+
+
+
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
@@ -441,100 +539,104 @@ echo "<b>Total Amount outstanding: R".($Invsummm - $yo)."</b><BR />";
 
 //include ("view_event_by_cust.php");
 
+
+
 /*$message = 'You have deleted '.$TBLrow.'  from your Oracle database.';
 echo "<SCRIPT>
 alert('$message');
 </SCRIPT>";
 
 */
-?>
+?> 
 </table>
-<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y");
+<?php $DateD = date("Y.m.d");$DateDay = date("d");$DateM = date("m");$DateY = date("Y"); 
 		$NewFormat = date("d/m/Y");
+		
 
-//include ("viewExp.php");
-include ("view_proof_all.php");
-
+//include ("viewExp.php");		
+include ("view_proof_all.php");		
+		
 		?>
 		<!--	<input type="text"  size="10" id="ProofDate"  name="ProofDate" value="" /> -->
 
 	<!-- selecting too many files above can casue conflicts-->
 <!--	<link rel="stylesheet" href="/resources/demos/style.css">-->
 
-<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>    
 <script type="text/javascript">
 $(function() {
-
+    
     //autocomplete
     $(".auto").autocomplete({
         source: "search.php",
         minLength: 0
-
+		
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});
+	});                
+ 
 
      $(".clInvNo").autocomplete({
         source: "searchinvAdd.php",
         minLength: 0
-
+		
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	});
+	});                
 
 //expenses or products
     $(".clExp").autocomplete({
         source: "searchExpb.php",
         minLength: 0
-
+		
 				}).focus(function() {
 				$(this).autocomplete("search");
-	});
-
+	});     
+	
 	//var delay = $( ".clExpC" ).autocomplete( "option", "delay" );
 
     $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
-
+		
 				}).mouseover(function() {
 				$(this).autocomplete("search");
-	//});
+	//});                
 		//		}).mouseout(function() {
 		//		$(this).autocomplete("reset");
-	//});
+	//});                
 //$(".clExpC").autocomplete({
     //    source: "searchExpC.php",
    //     minLength: 0
-	});
+	});                
 /*
        $(".clExpC").autocomplete({
         source: "searchExpC.php",
         minLength: 0
 
-
+   
 		}).mouseleave(function() {
 			$(this).autocomplete("close", "delay", 5000);
-	});
+	});                
 
 	*/
-
-
-
-
-
+	
+	
+	
+	
+	
 				//Solution: http://jsfiddle.net/ricardolohmann/SdLaP/
 //http://stackoverflow.com/questions/4604216/jquery-ui-autocomplete-minlength0-issue
-
+	
 /*	$("input#autocomplete").focus(function(e) {
     if(!e.isTrigger) {
         $(this).autocomplete("search", "");
     }
     return false;
 */
-
-
+	
+ 
  });
 </script>
 

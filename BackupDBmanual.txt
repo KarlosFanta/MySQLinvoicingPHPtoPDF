@@ -1,0 +1,12 @@
+ backupDB.php has a link:
+backupDb2.php?dbname=mydbname (my database is called kc)
+and creates a .sql file of entire DB.
+
+BackupTables.php
+launches BackupTablesSQL.php
+or
+BackupTablesCSV.php
+
+which backs up all tables in either CSV or SQL form
+with tableProcess.php file.
+

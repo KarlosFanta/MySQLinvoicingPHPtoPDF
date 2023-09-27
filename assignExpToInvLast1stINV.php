@@ -1,21 +1,24 @@
  <?php	//this is "process_Trans.php"
  $page_title = "You added a transaction";
-	include 'header.php';
-require_once 'inc_OnlineStoreDB.php';
+	include('header.php');	
+require_once("inc_OnlineStoreDB.php");
 $CustNo = '';
 $ProofDate = '';
 $Amt = '';
 $Notes ='';
 
-//$CustNo"
+//$CustNo" 
 $CustFN ="_";
 $CustLN ="_";
 $CustEmail = "_";
+
 
 $CustNo = $_POST['CustNo'];
 
 if ($CustNo == 0)
 echo "<font size = '5'>ERROR CUSTNo is zero</FONT>";
+
+
 
 $clInv = $_POST['mydropdownEC'];
 echo "mydropdownEC:";
@@ -34,9 +37,13 @@ $CustEmail = $_POST['CustEmail'];
 
 $CustEmail = str_replace(';', '; ', $CustEmail);
 
+
 //$ProofNo = $_POST['ProofNo'];
 
+
 echo "CustNo ".$CustNo ." ExpNo ".$clInv ."."  ;
+
+
 
 //$SQLString = "SELECT * FROM expenses WHERE CustNo = $CustNo";
 //$SQLString = "SELECT * FROM transaction WHERE WHERE CustNo = $item2;
@@ -50,7 +57,7 @@ echo $SQLstring."<br><br>";
 $NN = '';
 $NNN = '';
 $row_cnt = 0;
-if ($result = mysqli_query($DBConnect, $SQLstring)) {
+if ($resultG = mysqli_query($DBConnect, $SQLstring)) {
 
 echo "<table  border='1' >\n";
 echo "<tr><th>ExpNo</th>";
@@ -65,7 +72,8 @@ echo "<th>CustNo</th>\n";
 echo "<th>Serial</th>\n";
 echo "</tr>\n";
 
-while ($row = mysqli_fetch_assoc($result))
+
+while ($row = mysqli_fetch_assoc($resultG)) 
 {
 echo "<th>".$row['ExpNo']."</th>";
 echo "<th>".$row['ExpDesc']."</th>";
@@ -74,23 +82,25 @@ echo "<th>".$row['PurchDate']."</th>";
 //echo "<th>testss</th>";
 echo "<th>".$row['ProdCostExVAT']."</th>";
 $PEX= $row['ProdCostExVAT'];
-$PIV = number_format($PEX*1.14 , 2, '.', '');
+$PIV = number_format($PEX*1.15 , 2, '.', '');
 echo "<th>".$PIV."</th>";
 
 echo "<th>".$row['InvNo']."</th>";
 echo "<th>".$row['Notes']."</th>";
 $CCCC = $row['CustNo'];
-$row_cnt = mysqli_num_rows($resultC);
+$row_cnt = mysqli_num_rows($resultG);
 
 $s = "SELECT * from customer where CustNo = '$CCCC'";
 if ($resultCC = mysqli_query($DBConnect, $s)) {
-while ($rowCC = mysqli_fetch_assoc($resultCC))
-{
+while ($rowCC = mysqli_fetch_assoc($resultCC)) 
+{ 
 
 $NN = $rowCC['CustLN'];
 $NNN = $rowCC['CustFN'];
 
-}}
+}
+mysqli_free_result($resultCC);
+}
 echo "<th>".$row['CustNo'].$NN.$NNN."</th>";
 echo "<th>".$row['SerialNo']."</th>";
 
@@ -99,88 +109,30 @@ echo "</tr>";
 }
 echo "</table >";
 
-mysqli_free_result($result);
+mysqli_free_result($resultG);
+
 
 }
 
 echo " There are currently $row_cnt expenses for this invoice.";
 
-//mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
-//include 'edit_invCQ.php';
-//echo "<br>";
-//include 'view_inv_by_custBasic.php';
 
+//mysqli_close($DBConnect); //wqarning! causes mysqli_query(): Couldn't fetch mysqli in other files
+//include "edit_invCQ.php";
+//echo "<br>";
+//include "view_inv_by_custBasic.php";
+ 
+	
+	
+	
 echo "Select an expense to be assigned to: ";
 
 ?>
-<form name="EditInv" action="ExpToInvAssignProcess1stINV.php" method="post">
+<form name="EditInv" action="ExpToInvAssignProcess1stINVchk.php" method="post">
 <?php
 echo "<br>InvNo: <input type = text value='$clInv3' name= clInv3 id=clInv3><br>";
-?>
-<!--<form name="EditInv" action="print_invoice.php" method="post">-->
 
-<select name="mydropdownEC" onchange='this.form.submit()'>
-
-<option value="_no_selection_">Select expense</option>";
-
-<?php
-$query = "select * from expenses where CustNo = $CustNo ORDER BY ExpNo DESC";
-
-echo "<br>firstWhile:<br><br>";
-//print "<option value='$item'>$item";
-  //print " </option>";
-//while ($row = mysql_fetch_assoc($result)) {
-if ($result = mysqli_query($DBConnect, $query)) {
-  while ($row = mysqli_fetch_assoc($result)) {
-	$ExpNo = $row["ExpNo"];//case sensitive!
-	$InvNo = $row["InvNo"];//case sensitive!
-	$Category =  $row["Category"];//case sensitive!
-	$ExpDesc = $row["ExpDesc"];//case sensitive!
-	$SerialNo = $row["SerialNo"];//case sensitive!
-	$SupCode = $row["SupCode"];//case sensitive!
-	$PurchDate = $row["PurchDate"];//case sensitive!
-	$ProdCostExVAT = $row["ProdCostExVAT"];//case sensitive!
-	$Notes = $row["Notes"];//case sensitive!
-	$CustNoB = $row["CustNo"];//case sensitive!
-	print "<option value='$ExpNo'>$ExpNo";
-if ($InvNo != '')
-	print "_assigned to InvNo".$InvNo;
-else
-{
-	print "_NOT ASSIGNED YET__";
-}
-	print "_".$Category;
-	print "_".$ExpDesc;
-	print "_".$SerialNo;
-	print "_".$SupCode;
-	print "_".$PurchDate;
-	print "_R".$ProdCostExVAT;
-	print "ex VAT_".$Notes;
-	print " </option>";
-  }
-
-
-mysqli_free_result($result);
-
-}
-else
-
-
-	echo $queryC;
-/* close connection */
-//$mysqli->close();
-//echo "item2: ".$item2 ."<br>";
-?>
-<br>
-<input type="submit" name="btn_submit" value="Select invoice" />
-
-</select></p>
-
-<a href = "edit_invCQ.php" target=_blank>Search through customer's invoices here</a>
-
-<?php
-
-
+echo "Invoice details:";
 $SQLstring = "select * from invoice where InvNo = $clInv3  ";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
 
@@ -213,15 +165,11 @@ echo "<th>D8</th>";
 echo "<th>ex8</th>";
 
 echo "</tr>\n";
-
-    // fetch object array
-	  while ($row = mysqli_fetch_assoc($result)) {
+ 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
-
 	  echo "<tr><th>";
-
-	   echo $x;
-echo "</th></FONT>";
+	  echo $x;
+	echo "</th></FONT>";
 
 echo "<th>".$row["InvDate"]."</th>";
 echo "<th>".substr($row["Summary"], 0, 15)."</th>";
@@ -247,13 +195,178 @@ echo "<th>".chunk_split($row["D8"], 37, "\n\r")."</th>\n";
 echo "<th>".chunk_split($row["ex8"], 37, "\n\r")."</th>\n";
 //echo "<th>".$row["InvPdStatus"]."</th>\n";
 echo "</tr>\n";
-		}
-    //
-    $result->close();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$SQLstring = "select * from expenses where InvNo = $x";
+//echo $SQLstring."<br><br>";
+
+if ($resultG = mysqli_query($DBConnect, $SQLstring)) {
+
+while ($row = mysqli_fetch_assoc($resultG)) 
+{
+echo "<tr>";
+echo "<th>".$row['ExpNo']."</th>";
+echo "<th>".$row['ExpDesc']."</th>";
+echo "<th>".$row['SupCode']."</th>";
+echo "<th>".$row['PurchDate']."</th>";
+echo "<th>".$row['ProdCostExVAT']."</th>";
+$PEX= $row['ProdCostExVAT'];
+$PIV = number_format($PEX*1.15 , 2, '.', '');
+echo "<th>".$PIV."</th>";
+echo "<th>".$row['InvNo']."</th>";
+echo "<th>".$row['Notes']."</th>";
+echo "<th>".$row['SerialNo']."</th>";
+echo "</tr>";
+
+}
+mysqli_free_result($resultG);
+}
+
+
+	}
+ mysqli_free_result($result);
+	
 }
 echo "</table>";
 echo "<br><br>";
+
+
+
+?>
+<!--<form name="EditInv" action="print_invoice.php" method="post">-->
+
+<select name="mydropdownEC" >
+
+<option value="_no_selection_">Select unassigned expense</option>";
+
+<?php
+$query = "select * from expenses where CustNo = $CustNo and InvNo='' ORDER BY category, ExpNo DESC";
+
+echo "<br>firstWhile:<br><br>";
+//print "<option value='$item'>$item";
+  //print " </option>"; 
+//while ($row = mysql_fetch_assoc($result)) {
+if ($result = mysqli_query($DBConnect, $query)) {
+  while ($row = mysqli_fetch_assoc($result)) {
+	$ExpNo = $row["ExpNo"];//case sensitive!
+	$InvNo = $row["InvNo"];//case sensitive!
+	$Category =  $row["Category"];//case sensitive!
+	$ExpDesc = $row["ExpDesc"];//case sensitive!
+	$SerialNo = $row["SerialNo"];//case sensitive!
+	$SupCode = $row["SupCode"];//case sensitive!
+	$PurchDate = $row["PurchDate"];//case sensitive!
+	$ProdCostExVAT = $row["ProdCostExVAT"];//case sensitive!
+	$Notes = $row["Notes"];//case sensitive!
+	$CustNoB = $row["CustNo"];//case sensitive!
+	print "<option value='$ExpNo'>$ExpNo";
+/*if ($InvNo != '')
+	print "_assigned to InvNo".$InvNo;
+else
+{
+	print "_NOT ASSIGNED YET__";
+}*/
+	print "_".$Category;
+	print "_".$ExpDesc;
+	print "_".$SerialNo;
+	print "_".$SupCode;
+	print "_".$PurchDate;
+	print "_R".$ProdCostExVAT;
+	print "ex VAT_".$Notes;
+	print " </option>"; 
+  }
+
+
+mysqli_free_result($result);
+
+}
+else
+
+
+	echo $queryC;
+/* close connection */
+//$mysqli->close();
+//echo "item2: ".$item2 ."<br>";
+?>
+<br>
+<input type="submit" name="btn_submit" value="Select unassigned expense" /> 
+
+</select></p>  
+
+<select name="mydropdownEC2" >
+
+<option value="_no_selection_">Select assigned expense (with InvNo)</option>";
+
+<?php
+$query = "select * from expenses where CustNo = $CustNo and InvNo!='' ORDER BY ExpNo DESC";
+
+echo "<br>firstWhile:<br><br>";
+//print "<option value='$item'>$item";
+  //print " </option>"; 
+//while ($row = mysql_fetch_assoc($result)) {
+if ($result = mysqli_query($DBConnect, $query)) {
+  while ($row = mysqli_fetch_assoc($result)) {
+	$ExpNo = $row["ExpNo"];//case sensitive!
+	$InvNo = $row["InvNo"];//case sensitive!
+	$Category =  $row["Category"];//case sensitive!
+	$ExpDesc = $row["ExpDesc"];//case sensitive!
+	$SerialNo = $row["SerialNo"];//case sensitive!
+	$SupCode = $row["SupCode"];//case sensitive!
+	$PurchDate = $row["PurchDate"];//case sensitive!
+	$ProdCostExVAT = $row["ProdCostExVAT"];//case sensitive!
+	$Notes = $row["Notes"];//case sensitive!
+	$CustNoB = $row["CustNo"];//case sensitive!
+	print "<option value='$ExpNo'>$ExpNo";
+/*if ($InvNo != '')
+	print "_assigned to InvNo".$InvNo;
+else
+{
+	print "_NOT ASSIGNED YET__";
+}*/
+	print "_".$Category;
+	print "_".$ExpDesc;
+	print "_".$SerialNo;
+	print "_".$SupCode;
+	print "_".$PurchDate;
+	print "_R".$ProdCostExVAT;
+	print "ex VAT_".$Notes;
+	print "_InvNo_".$InvNo;
+	print " </option>"; 
+  }
+
+
+mysqli_free_result($result);
+
+}
+else
+	echo $queryC;
+/* close connection */
+//$mysqli->close();
+//echo "item2: ".$item2 ."<br>";
+?>
+<br>
+<input type="submit" name="btn_submit" value="Reassign expense to another invoice" /> 
+
+</select></p>  
+
+<a href = "edit_invCQ.php" target=_blank>Search through customer's invoices here</a>
+
+<?php
+
 
 $SQLstring = "select * from invoice where CustNo = $CustNo  order by InvDate desc";
 //echo $SQLstring."<br><br>"; //the whole content of the table is now require_onced in a PHP array with the name $QueryResult.
@@ -288,12 +401,15 @@ echo "<th>ex8</th>";
 
 echo "</tr>\n";
 
-    // fetch object array
+
+    // fetch object array 
 	  while ($row = mysqli_fetch_assoc($result)) {
 	  $x = $row["InvNo"];
 
-	  echo "<tr><th>";
 
+
+	  echo "<tr><th>";
+	  
 	   echo $x;
 echo "</th></FONT>";
 
@@ -321,14 +437,73 @@ echo "<th>".chunk_split($row["D8"], 37, "\n\r")."</th>\n";
 echo "<th>".chunk_split($row["ex8"], 37, "\n\r")."</th>\n";
 //echo "<th>".$row["InvPdStatus"]."</th>\n";
 echo "</tr>\n";
-		}
-    //
-    $result->close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$SQLstring = "select * from expenses where InvNo = $x";
+//echo $SQLstring."<br><br>";
+
+if ($resultG = mysqli_query($DBConnect, $SQLstring)) {
+
+
+
+while ($row = mysqli_fetch_assoc($resultG)) 
+{
+echo "<tr>";
+echo "<th> </th>";
+echo "<th> </th>";
+echo "<th> </th>";
+echo "<th> </th>";
+echo "<th> </th>";
+echo "<th><font color = green>".$row['ExpNo']." ".$row['ExpDesc']."<br>".$row['SupCode']." ".$row['PurchDate']." R".$row['ProdCostExVAT']." R";
+$PEX= $row['ProdCostExVAT'];
+$PIV = number_format($PEX*1.15 , 0, '.', '');
+echo $PIV." ".$row['SerialNo']."</th>"; 
+echo "<th><font color = green>".$row['Notes']."</th>";
+//echo "<th><font color = green>".$row['SerialNo']."</th>";
+
+echo "</tr>";
 
 }
+mysqli_free_result($resultG);
+}
+
+
+}
+
+mysqli_free_result($result);
+
+}
+
+
+
 echo "</table>";
 echo "<br><br>Exclude ADSL invoices:<br>";
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ?>
 
 
@@ -356,13 +531,15 @@ echo "<br><br>Exclude ADSL invoices:<br>";
 	<!--<input type = "submit" value = "Click to add another transaction">-->
 
 
-
+	
 
 <?php
 //echo $query;
 $ttttt = 0;
 
 echo "<br><br>";
+
+
 
 ?>
 <a href='selectCustProof.php'>Click to add email proof for another customer</a> or <input type = "submit" value = "Click to add email proof for the same customer">
@@ -371,31 +548,4 @@ echo "<br><br>";
 
 
 
-
-	<br><br>
-
-
-	<br><br>
-
-
-
-
-<br><br><br><br>
-<?php
-
-
-
-
-
-
-
-
-?>
-
-
-
-
-
-
-
-
+</form>
