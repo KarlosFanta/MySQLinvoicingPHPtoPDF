@@ -147,29 +147,7 @@ if (preg_match('/[#]/', $CustPW))
 }
 */
 
-echo " <a href = 'http://www.karl.co.za/cyb/UsageCS.php?account_username=$RU1&cmb_company_realm=$RU2&pwd=$CustPW2' target=_blank>UsageCS</a> ";
-echo " <a href = 'http://www.k-connect.co.za/$RU1' target=_blank>UsageKC</a> ";
-//http://www.karl.co.za/cyb/UsageCS.php?account_username=tw&cmb_company_realm=kconnect.net&pwd=howlingwolf
-echo "<a href = 'AllConn.php' target=_blank><b>ALL</b></a> ";
 
-
-
-
-echo " <a href = 'http://www.karl.co.za/karllo0/reseller_resetport.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Reset+Port' target=_blank>Reset port</a>";
-echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_resetport.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Reset+Port' target=_blank>RPC</a>";
-
-echo " <a href = 'http://www.karl.co.za/karllo0/reseller_unlock_template.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Temporarily+Unlock' target=_blank>Unlock</a>";
-$ADSLTel = $row["ADSLTel"];
-
-echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_unlock_template.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Temporarily+Unlock' target=_blank>UnC</a>";
-$ADSLTel = $row["ADSLTel"];
-
-
-echo " <a href = 'http://www.karl.co.za/karllo0/reseller_interrogate.php?tel_number=$ADSLTel'  target=_blank>KIntrrogate</a> ";
-echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_interrogate.php?tel_number=$ADSLTel'  target=_blank>CIntrgt</a> ";
-	echo " <a href = 'interrogate.php' target=_blank>Old</a> ";
-echo "<a href = 'http://www.karl.co.za/karllo0/combo.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Combo</b></a> ";
-echo "<br>";
 $II = $row['Important'];
 $II = str_replace( "&nbsp;&nbsp;", "&nbsp;", $II );
 	$II = preg_replace( "/&nbsp;/", " ", $II );
@@ -190,29 +168,7 @@ echo "Important for ".$ABBB.": </b></font>";	echo "<textarea id='Important' styl
 
 	echo $II; echo "</textarea><br>";
 	
-echo "<a href = 'http://www.karl.co.za/karllo0/reseller_account_status_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Check status</b></a> ";
 
-
-
-echo " <a href = 'https://www.cybersmart.co.za/login/?destination=&credential_0=".$RU1."%40".$RU2."&credential_1=adsl&Submit=' target=_blank><b>Usage</b></a> ";
-echo " <a href = '../START/Q/superuser.php' target=_blank><b>Usage</b></a> ";
-
-
-echo " <a href = 'http://www.k-connect.co.za/usage2/index.php?account_username=$RU1&cmb_company_realm=$RU2' target=_blank>Usage2</a>";
-echo " <a href = 'http://www.k-connect.co.za/usage/index.php' target=_blank>Usage3</a> ";
-echo " <a href = 'http://www.k-connect.co.za/$RU1' target=_blank>Usage4</a> ";
-
-echo "<a href = 'http://www.karl.co.za/karllo0/reseller_account_status_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Status</b></a> ";
-echo "<a href = 'http://reselldemo.cybersmart.co.za/reseller_usage_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnUsage=Display+Usage' target=_blank><b>CGraph</b></a> ";
-
-echo "<a href = 'http://www.k-connect.co.za/$RU1' target=_blank><b>KConnectGraph</b></a>";
-//echo "<!--<a href = 'http://www.karl.co.za/karllo0/reseller_usage_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnUsage=Display+Usage' target=_blank>--><b>KGraph</b></a>";
-
-echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_account_status_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>CStatus</b></a>";
-//echo "<br>";
-echo " <a href = 'http://reselldemo.cybersmart.co.za/reseller_connection_logs_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>CConnectLogs</b></a>";
-echo " <a href = 'http://www.karl.co.za/karllo0/reseller_connection_logs_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>KCLogs</b></a>";
-echo "<br>";
 
 
 echo "";
@@ -279,27 +235,9 @@ echo $CEd."'>email</a>";
 
 $u1 = $row["u1"];
 $u2 = $row["u2"];
-	echo "'> <a href = 'usage.php?CustNo=$CustInt&CustEmail=$CustEmail&u1=$u1&u2=$u2&CustEmail=$CustEmail&";
-echo $CEd."'>Usage.php</a>";
-$invvD1 = $row['adslinv'];
-
-echo " <a href = 'mailto:";
-echo "$CEd?subject=Usage&body=NB FIRST CHECK CORRECT GIG %0D%0A $invvD1 %0D%0A%0D%0AHi%0D%0AYou might run out of Gigs on the &nbsp;???&nbsp;&nbsp; this month. %0D%0A%0D%0A%0D%0A(If you have run out you can order topups.)%0D%0A%0D%0APlease check your usage on www.k-connect.co.za/$u1 %0D%0A%0D%0AOr you may choose to upgrade your account to a  200 / 300 / 400 Gig cap account(NB upgrade orders take effect in 3 business days). %0D%0AYou used Gigs%0D%0AYou have Gigs left%0D%0AThank you%0D%0AKL'>emailUsage</a>";
-echo " <a href = 'mailto:";
-echo "$CEd?subject=Usage&body=Hi%0D%0ANB FIRST CHECK CORRECT GIG %0D%0A $invvD1 %0D%0A%0D%0AHi. %0D%0AYou might run out of Gigs on the th. %0D%0A%0D%0APlease check your usage on www.k-connect.co.za/$u1 %0D%0AOr you may choose to upgrade your account to a 200 / 300 / 400 Gig cap account.%0D%0A
-(upgrade orders take effect in 2 to 3 business days).%0D%0A%0D%0AYou have Gigs left%0D%0A%0D%0AThank you%0D%0A%0D%0AKL'>emailUsage</a>";
-
-echo " <a href = 'mailto:";
-echo "accounts@cybersmart.co.za?subject=request $u1 &body=Hi%0D%0APlease change $u1@$u2 to a + Gig reseller account please.%0D%0Awhen: Today/ASAP%0D%0A%0D%0AThanks%0D%0A%0D%0AKarl%0D%0A%0D%0ARESELLER'>upgrade req</a>";
-
-echo " <a href = 'mailto:";
-echo $CEd."?subject=Usage&body=Hi%0D%0AYou used Gigs%0D%0AYou have Gigs left%0D%0AThank you%0D%0AKL%0D%0ARESELLER'>email</a>";
+	
 
 
-
-
-
-echo " <a href= 'http://www.k-connect.co.za/$u1' target = _blank>USAGE</a> ";
 echo "<br>Postal Address:";
 /*echo "<input type='text' size = 70 name='CustPA' value='";
 //print $row['CustAddr'];
@@ -330,12 +268,12 @@ $DDD= $row["CustDetails"];
 $FF = urlencode($DDD);
 $DDD = str_replace("SEMICOLONN", ";", $DDD);
 $DDD = str_replace("COLONN", "'", $DDD);
-$DDD = str_replace("CopyrightSign", "©", $DDD);
-$DDD = str_replace("RegTrademark", "®", $DDD);
-$DDD = str_replace("EuroCurrency", "€", $DDD);
-$DDD = str_replace("YenCurrency", "¥", $DDD);
-$DDD = str_replace("PoundCurrency", "£", $DDD);
-$DDD = str_replace("centT", "¢", $DDD);
+$DDD = str_replace("CopyrightSign", "Â©", $DDD);
+$DDD = str_replace("RegTrademark", "Â®", $DDD);
+$DDD = str_replace("EuroCurrency", "Â€", $DDD);
+$DDD = str_replace("YenCurrency", "Â¥", $DDD);
+$DDD = str_replace("PoundCurrency", "Â£", $DDD);
+$DDD = str_replace("centT", "Â¢", $DDD);
 
 
 echo "<br> ";echo "<textarea id='CustDetails' style='white-space:pre-wrap; font-family:arial;width:500px;font-size: 7pt' rows = '7' size = '100' name='CustDetails' >";
@@ -351,12 +289,12 @@ $FF = urlencode($EEE);
 
 $EEE = str_replace("SEMICOLONN", ";", $EEE);
 $EEE = str_replace("COLONN", "'", $EEE);
-$EEE = str_replace("CopyrightSign", "©", $EEE);
-$EEE = str_replace("RegTrademark", "®", $EEE);
-$EEE = str_replace("EuroCurrency", "€", $EEE);
-$EEE = str_replace("YenCurrency", "¥", $EEE);
-$EEE = str_replace("PoundCurrency", "£", $EEE);
-$EEE = str_replace("centT", "¢", $EEE);
+$EEE = str_replace("CopyrightSign", "Â©", $EEE);
+$EEE = str_replace("RegTrademark", "Â®", $EEE);
+$EEE = str_replace("EuroCurrency", "Â€", $EEE);
+$EEE = str_replace("YenCurrency", "Â¥", $EEE);
+$EEE = str_replace("PoundCurrency", "Â£", $EEE);
+$EEE = str_replace("centT", "Â¢", $EEE);
 
 
 
@@ -412,12 +350,12 @@ $FF = urlencode($EEE);
 
 $EEE = str_replace("SEMICOLONN", ";", $EEE);
 $EEE = str_replace("COLONN", "'", $EEE);
-$EEE = str_replace("CopyrightSign", "©", $EEE);
-$EEE = str_replace("RegTrademark", "®", $EEE);
-$EEE = str_replace("EuroCurrency", "€", $EEE);
-$EEE = str_replace("YenCurrency", "¥", $EEE);
-$EEE = str_replace("PoundCurrency", "£", $EEE);
-$EEE = str_replace("centT", "¢", $EEE);
+$EEE = str_replace("CopyrightSign", "Â©", $EEE);
+$EEE = str_replace("RegTrademark", "Â®", $EEE);
+$EEE = str_replace("EuroCurrency", "Â€", $EEE);
+$EEE = str_replace("YenCurrency", "Â¥", $EEE);
+$EEE = str_replace("PoundCurrency", "Â£", $EEE);
+$EEE = str_replace("centT", "Â¢", $EEE);
 
 
 // "<textarea id='Confid' style='white-space:pre-wrap; font-family:arial;width:800px;font-size: 7pt' rows= '1' size = '80' name='Confid' >";
@@ -488,8 +426,7 @@ echo "";
 echo "<input style='font-size: 5pt' type='text'  size = 7  name='CustPW' value='";
 echo strtr($row['CustPW'], array(' ' => '&nbsp;')) ;
 
-echo "'> <a href=http://www.karl.co.za/karllo0/reseller_account_status_template.php target=_blank>MyAPI</a>";
-echo "&nbsp;&nbsp;&nbsp;&nbsp; ";
+echo "'> 
 
 
 
