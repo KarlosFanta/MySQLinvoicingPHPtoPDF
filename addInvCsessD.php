@@ -339,89 +339,10 @@ $InvSQLDateYY =  date("Y");
 //echo "<br>InvSQLdate: ".$InvSQLDate." ___<br>";
 
 
-$daNextNo = 1; //default when table is empty.
+$daNextNo = $InvNo; //default when table is empty.
 
-$sgs = 10398; //5598 changed to 5698  changed to 5798 when i got 5698 duplicate error and changed insert to 5764
-//see calcualtion below for premiershoes ..61
-$queryM = "SELECT  MAX(InvNo)  AS MAXNUM FROM invoice where invno < $sgs";
-
-$result = $DBConnect->query($queryM);
-echo "<font size = 4 color = red>".mysqli_error($DBConnect)."</font>";
-if (mysqli_affected_rows($DBConnect) == -1)
-echo "<br><br><font size = 5 color = red><b><b>queryM NOT successfull!!!</b></b></font><br><br>";
-//else
-//echo "select success! <br>";
-
-$daNextNo = 1; //forces a 1 if table is completely empty.
-while($row = mysqli_fetch_array($result)){
-//	echo "The max no EventNo in customer table is:  ". $row[0] . "&nbsp;";
-$daNextNo = intval($row[0])+1;
-}
-//include "monthtables.php";
-
-$trimdaNextNoLL = $end[] = substr($daNextNo, -2);
-//echo "trimdaNextNoLL: ". $trimdaNextNoLL."  ";
-$trimdaNextNoFF = $end[] = substr($daNextNo, 0, 2);
-//echo "trimdaNextNoFF: ". $trimdaNextNoFF."  ";
-
-if ($trimdaNextNoLL < '62')
-{
-$daNextNoBB = '64';
-
-$daNextNo = $trimdaNextNoFF.$daNextNoBB;
-
-}
-if ($trimdaNextNoLL > '97')
-{
-	//currently max dotdot is 77
-	$daNextNo = $daNextNo +  
-	$trimdaNextNoLL = $end[] = substr($daNextNo, -2);
-
-}
-
-if ($trimdaNextNoLL > '97')
-{
-	$sgs100 = $sgs + 100;
-echo "<b><br><br><br><br><br><br><br><br><br><font color = red>NB ! change program for new Invoice Number suggestion.<br>
-\Change variable sgs amount of \$sgs  $sgs to maybe $sgs100 in addInvCsessD.php</b>
-<br>
-<br>Max amoutn of ADSL customers currently at daNextNoBB $daNextNoBB
-
-<br>
-<br>The dotdot number is the last 2 characters. max dot number currently is 77 but in 2015 it was 68<br><br>
-8464 WiFiSignal<br>
-8463<br>
-
-8401  May2015adsl<br>
-8397  normal invoice<br>
-8396  <br>
-8395  <br>
-8394  <br>
-8393  <br>
-8392  <br>
-8391  <br>
-8390  <br>
-8389  <br>
-etc<br>
-8375  <br>
-8374  <br>
-8373  <br>
-8372  <br>
-8371  <br>
-8370  <br>
-8369  <br>
-etc<br>
-8362  <br>
-8361  Apr2015adsl<br>
-<br><br>
-8301  Dec2015adsl<br>
-836  <br>
-836  <br>
-8379  <br>
-837  <br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-}
-
+//if(file_exists('111confidential_inv.php'))
+//	include '111confidential_inv.php'; //sgs moved to thsii file.  This code is not for the public.
 		
 //echo "Suggested InvNo: ";
 //echo $daNextNo;
@@ -580,36 +501,8 @@ echo "<br>";
 			echo $InvSQLDateYY;
 			//echo "201";
 			echo "> ";
-					
-			//echo "Today: ".$InvSQLDateDD;
-		//	echo "/";
+		
 			
-		//	echo $InvSQLDateMM;
-		//	echo "/";
-			
-		//	echo $InvSQLDateYY;
-		//	echo " ";
-						$RU1 = "_";
-			$RU2 = "_";
-			$RU1 = $row["u1"];
-			$RU2 = $row["u2"];
-
-			
-			
-			echo " <a href = '../START/progress.html' target = _blank><b>Progress</b></a> ";
-	echo "<a href = 'http://www.karl.co.za/karllo0/reseller_account_status_template.php?account_username=$RU1&cmb_company_realm=$RU2&btnAccountStatus=Submit+Query' target=_blank><b>Check status</b></a>";
-			echo " <a href = 'http://localhost/START/Q/superuser.php' target=_blank><b>Usage</b></a>";
-			echo " <a href = 'http://www.karl.co.za/karllo0/reseller_resetport.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Reset+Port' target=_blank>Reset port</a>";
-			echo " <a href = 'http://www.karl.co.za/karllo0/reseller_unlock_template.php?account_username=$RU1&cmb_company_realm=$RU2&reason=&btnAddUser=Temporarily+Unlock' target=_blank>Temp Unlock</a>";
-					
-				echo "Inv Sent or Paid? (InvPdStatus)";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $daNextNo; q_mark>" /></dd>-->
-			echo "<input type='text' name='InvPdStatus' size = 5 value=";
-
-
-
-			echo "_";
-			echo "> ";
 			
 		echo "</dd>";
 	echo "</font></b></dd></dl>";
@@ -619,28 +512,14 @@ echo "<br>";
 
 
  		?>
-        <br><label>SumMary:</label><input type='text' name='Summary' id='Summary' value='' size='36' required><!-- 
-		='autoS' ><!--search.php-->
-		<!-- class auto check mysql table autosuggest from search.php or search2.php-->
-		<!-- onmouseover='mouseOver(this)'-->
-       <input type="submit"  value="Submit"  class="eStore_buy_now_button"  /> 
+        <br><label>SumMary:</label><input type='text' name='Summary' id='Summary' value='' size='36' required>
+       <input type="submit"  value="Submit"   /> 
   	<?php
-	/*		echo "&nbsp;adslinv:";
-			
-echo "<textarea name='adslinv' id='adslinv'  style='white-space:pre-wrap;height:18px;font-family:arial;width:250px;font-size:10pt' >";
-
-			echo "{$row2['adslinv']}";
-			echo "</textarea> &nbsp;&nbsp;&nbsp;&nbsp;";	
-		*/	
-  		
-		//exec('"C:\Program Files (x86)\Notepad++\notepad++.exe" "C:\foo.php"'); 
 		echo "Travel: ";
-			//     <!--<dd><input type="text" name="Inv_name" id="Inv_fn" value="<?php echo $Dist; q_mark>" /></dd>-->
+			
 			echo $Dist;
 			echo "km ";	
-			echo $u1;
-			echo $u2;
-			
+		
 			
 			
 
@@ -754,55 +633,7 @@ echo"<TR>
 
 		
 	";
-
-
-
-
-if ($CustInt == 24)//auslese
-{
-echo "<b><font size = '3'>1GIG FREE</font></b>&nbsp;&nbsp;";
-}
-
-
-
-
-elseif ($CustInt == 155)//bluesky
-{
-echo "<b><font size = '3'>3GIG FREE</font></b>&nbsp;&nbsp;";
-}
-elseif ($CustInt == 76)//hildebrand
-{
-echo "<b><font size = '3'>3GIG FREE</font></b>&nbsp;&nbsp;";
-}
-elseif ($CustInt == 152)//mark
-{
-echo "<b><font size = '3'>3GIG FREE AT HOME</font></b>&nbsp;&nbsp;";
-}
-elseif ($CustInt == 14)//batsch
-{
-echo "<b><font size = '3'>2GIG FREE</font></b>&nbsp;&nbsp;";
-}
-elseif ($CustInt == 68)//elke
-{
-echo "<b><font size = '3'>1GIG FREE</font></b>&nbsp;&nbsp;";
-}
-else
-echo "";
-
- 
-
-
-echo $row2['u1'];
-echo $row2['u2'];
-//echo $row2['CustPW'];
 echo $row2['invD2'];
-
-
-
-
-
-
-
 
 //echo "</table>";
 
