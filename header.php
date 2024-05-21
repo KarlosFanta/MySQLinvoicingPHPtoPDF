@@ -243,7 +243,7 @@
 			<li class=""><a href="../phpmyadmin/index.php?db=kc&token=954ececb41886fa8043ceefca56c867d#PMAURL:db=kc&server=1&target=db_export.php" target = "_blank">Backup DB with PHPMyAdmin</a></li>
 
 
-			<a href="./codetricks.php">Code Tricks</a></li><br />
+			<a href="./codetricks2.php">Code Tricks</a></li><br />
 			<a href="../phpmyadmin/index.php?db=kc&token=218d93aa9bb914967a647a013f3ad1e8#PMAURL:db=kc&server=1&target=db_structure.php&token=218d93aa9bb914967a647a013f3ad1e8" target="_blank">phpMyAdmin</a></li><br>
 
 
