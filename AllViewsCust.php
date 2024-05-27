@@ -8,14 +8,8 @@ include "view_inv_by_custLATESTnotadsl.php";  //gives only totals
 //echo "test<br>";
 include "view_trans_by_custUNDERorOVERPAID.php";
 
-
-
 include ("view_trans_by_cust.php");
 include ("view_inv_by_cust.php");
-
-
-
-
 
 echo "<BR />Invoices total to: R".$Invsummm."<br />";
 echo "All transactions total to: R".$yo."<br>";
