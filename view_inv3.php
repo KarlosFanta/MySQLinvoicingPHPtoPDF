@@ -57,7 +57,7 @@ function madeSelection(elem, helperMsg){
 <form name="selField" onsubmit="return formValidator()" action="selectVCinv.php" method="post">
 
 <?php
-$CustNo = '';
+$CustNo = '1';
 //	$_SESSION['sel'] = "select_C";
 //	$_SESSION['CustNo'] = "NotYet";
 if(isset($_GET["CustNo"])) echo "GET CustNo:".$CustNo."<br>";
@@ -70,7 +70,7 @@ if(isset($_GET["CustNo"])) echo "GET CustNo:".$CustNo."<br>";
 echo $_SESSION['CustNo'];
 
 	
-} 
+}
 
 $queryS = "select CustNo, CustFN, CustLN, u1 from customer where CustNo = $CustNo";
 
